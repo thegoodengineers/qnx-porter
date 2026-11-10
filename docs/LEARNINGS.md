@@ -15,6 +15,14 @@ Dated entries. Labels: [Verified] ran it ourselves, [To verify] from documentati
   checks it. If missing, switch `gnu_env()` / `meson_cross()` in `qnx_porter/qnx.py` to `qcc -Vgcc_ntox86_64`.
 - [To verify] The QEMU image's sshd accepts root with the `--ssh-ident` key, and the image has `tar`.
 
+- [Verified] From QNX's 8.0 docs (C Library Reference, io-sock Networking APIs, Migrating to QNX OS 8.0):
+  libsocket still exists; dlopen, pthread_setname_np, pipe2, clock_gettime are in libc; mmap documents
+  `MAP_ANON`; `gettid()` is in `<process.h>`; the socket API is ported from FreeBSD 14.3; SDP 8.0 uses GCC 12.
+  Correction: QNX 8.0 *has* inotify (moved to libfsnotify); our first hint said it had none.
+  These became 22 rows in docs/LINUX_ISMS.md, each with a test.
+- [Verified] On the host, GCC's wording for `#error`, the one-argument `pthread_setname_np`, and ld's
+  "multiple definition" matches what the parser expects (checked with gcc 11 in WSL and gcc 13 in CI).
+
 ## Blocked on QNX SDP 8.0 (needs the install in SETUP.md)
 1. `qnx-porter doctor` all ok on a real SDP.
 2. First real port (json-c), by hand-checking every patch the agent wrote.

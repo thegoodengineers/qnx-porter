@@ -26,8 +26,9 @@ every change visible.
    `CMAKE_C_COMPILER_TARGET gcc_ntox86_64` and `$QNX_TARGET` as sysroot, a Meson cross file, or
    `--host=x86_64-pc-nto-qnx8.0.0` for autotools.
 3. Builds, and parses every GCC, linker, CMake and configure error into structured diagnostics.
-4. Applies deterministic QNX rules first (missing headers, `_QNX_SOURCE`, `-lsocket`, libc-provided
-   libraries, `-Werror` warnings). Each change is a numbered patch file with the rule, the reason and the
+4. Applies deterministic QNX rules first: 22 Linux-isms, with the QNX 8.0 documentation behind them
+   (`docs/LINUX_ISMS.md`): missing headers, libsocket and libfsnotify, libc-provided pthread/rt/dl,
+   `MAP_ANON`, `prctl` to `pthread_setname_np`, OS `#if` chains that end in `#error`, GCC 12's `-fno-common`. Each change is a numbered patch file with the rule, the reason and the
    exact error it answers.
 5. Sends only what no rule handles to an optional model, with QNX-specific hints. The model must answer
    with a diff; it must pass `git apply --check`, and if the rebuild still shows the error, the agent
@@ -44,18 +45,28 @@ model, [minutes] minutes in total. Table: `results/ports.csv`.
 ## Evidence of QNX use
 | Claim | File, function, output |
 |---|---|
-| Builds with the QNX SDP 8.0 toolchain | `qnx_porter/qnx.py`: `cmake_toolchain()`, `meson_cross()`, `gnu_env()`, `ARCHES` (gcc_ntox86_64, gcc_ntoaarch64le, x86_64-pc-nto-qnx8.0.0) |
-| Finds and checks the SDP | `qnx_porter/qnx.py`: `sdp_env()` sources `qnxsdp-env.sh`; `doctor()` runs `qcc -V` |
-| QNX-specific porting knowledge | `qnx_porter/fixes.py`: `SOCKET_SYMBOLS` (libsocket), `IN_LIBC` (pthread/rt/dl), `_QNX_SOURCE` rule, `LINUX_ONLY` hints (ionotify, timer_create, pthread_setname_np) |
-| Runs tests on QNX 8.0 | `qnx_porter/target.py`: `write_wrapper()` is the ctest/meson/automake test wrapper, `Target.sync()`; output `ports/<library>/logs/tests.log` |
-| Target identity | every `ports/<library>/report.json` has `target` = `uname -a` from the QNX target |
-| Per-library QNX build files | `ports/<library>/qnx-toolchain.cmake` (or `qnx-cross.ini`, `qnx-env.sh`) and `qnx.patch` |
+| Finds and checks QNX SDP 8.0 | `qnx_porter/qnx.py`: `sdp_env()` sources `qnxsdp-env.sh`; `doctor()` runs `qcc -V` |
+| Generates the QNX toolchain | `qnx_porter/qnx.py`: `cmake_toolchain()` (`qcc`, `gcc_ntox86_64`, sysroot `$QNX_TARGET`), `meson_cross()`, `gnu_env()` (`x86_64-pc-nto-qnx8.0.0`) |
+| Invokes qcc | `qnx_porter/build.py`: `Job.steps()` builds the configure/build commands, `run()` executes them; logs in `ports/<library>/logs/round-NN.log` |
+| QNX 8.0 porting knowledge (22 Linux-isms, sources listed) | `qnx_porter/fixes.py` `_rule()`, `qnx_porter/linuxisms.py`; table in `docs/LINUX_ISMS.md` |
+| Runs the library's tests on QNX 8.0 in QEMU (`mkqnximage`) | `qnx_porter/target.py`: `Target.sync()`, `write_wrapper()`, `remote_command()`; output `ports/<library>/logs/tests.log` |
+| Target identity | `Target.uname()`; field `target` in every `ports/<library>/report.json` |
+| One command | `scripts/run_campaign.py` (`preflight()` stops if qcc or the target is missing) |
+| Results | `results/ports.csv`, written by `scripts/ports_csv.py` from the reports only |
+
+## Potential impact: why an RTOS needs this
+QNX targets have no compiler and cannot run the build machine's binaries, so every library must be
+cross-compiled with qcc and tested on the target itself; most upstream projects ship no QNX toolchain file
+and assume glibc. The same Linux-isms break library after library, which is why they can be rules. QNX's
+markets (automotive, medical, industrial) review every dependency change, so each patch carries its rule,
+reason and compiler error, and model patches are reverted unless a rebuild proves them. The campaign
+targets libraries those systems need (TLS, crypto, MQTT, Modbus, messaging) that were not on oss.qnx.com.
 
 ## How we built it
 Python 3 standard library only (no runtime dependencies), so it installs anywhere the SDP does. The
 agent loop is in `qnx_porter/agent.py`; rules in `fixes.py`; error parsing in `errors.py`; the model
 client in `llm.py` (any OpenAI-compatible endpoint, configured only through `QNX_PORTER_API_KEY`,
-`QNX_PORTER_MODEL` and `QNX_PORTER_BASE_URL`). 35 pytest tests run in CI without QNX, including full
+`QNX_PORTER_MODEL` and `QNX_PORTER_BASE_URL`). pytest tests run in CI without QNX, including full
 runs of the porting loop on a deliberately broken library with the host compiler. Candidates were
 checked against all of oss.qnx.com and the qnx-ports organisation by `scripts/check_candidates.py`.
 
