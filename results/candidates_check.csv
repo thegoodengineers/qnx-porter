@@ -1,0 +1,13 @@
+library,url,tag,tag_exists,on_oss_qnx_com,in_qnx_ports_org,checked
+json-c,https://github.com/json-c/json-c.git,json-c-0.18-20240915,True,no,False,2026-11-10
+yyjson,https://github.com/ibireme/yyjson.git,0.10.0,True,no,False,2026-11-10
+cmocka,https://gitlab.com/cmocka/cmocka.git,cmocka-1.1.7,True,no,False,2026-11-10
+libcbor,https://github.com/PJK/libcbor.git,v0.11.0,True,no,False,2026-11-10
+mbedtls,https://github.com/Mbed-TLS/mbedtls.git,v3.6.2,True,no,False,2026-11-10
+libsodium,https://github.com/jedisct1/libsodium.git,1.0.20-RELEASE,True,no,False,2026-11-10
+libmodbus,https://github.com/stephane/libmodbus.git,v3.1.11,True,no,False,2026-11-10
+nng,https://github.com/nanomsg/nng.git,v1.9.0,True,no,False,2026-11-10
+libconfig,https://github.com/hyperrealm/libconfig.git,v1.7.3,True,no,False,2026-11-10
+paho.mqtt.c,https://github.com/eclipse/paho.mqtt.c.git,v1.3.14,True,no,False,2026-11-10
+libcoap,https://github.com/obgm/libcoap.git,v4.3.5,True,no,False,2026-11-10
+yaml-cpp,https://github.com/jbeder/yaml-cpp.git,0.8.0,True,no,False,2026-11-10

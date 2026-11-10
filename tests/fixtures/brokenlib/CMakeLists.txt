@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.13)
+project(brokenlib C)
+# Strict like many real projects: every warning is an error.
+add_compile_options(-Wall -Werror)
+add_library(brokenlib textutil.c)
+include(CTest)
+if(BUILD_TESTING)
+  add_executable(test_textutil test_textutil.c)
+  target_link_libraries(test_textutil brokenlib)
+  add_test(NAME textutil COMMAND test_textutil)
+endif()
