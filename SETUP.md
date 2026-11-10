@@ -54,7 +54,7 @@ ssh root@172.31.1.11 uname -a   # expect: QNX ... 8.0.0 ... x86_64
 ```bash
 git clone https://github.com/thegoodengineers/qnx-porter && cd qnx-porter
 python3 -m pip install -e ".[test]"
-python3 -m pytest -q                 # 34 tests, no QNX needed
+python3 -m pytest -q                 # no QNX needed
 source ~/qnx800/qnxsdp-env.sh
 qnx-porter doctor                    # every line should say ok
 qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11
