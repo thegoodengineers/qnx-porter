@@ -97,8 +97,7 @@ said; if a fix needs judgement, it belongs to the model or a person.
 
 ## 7. Port a batch and publish the numbers
 ```bash
-qnx-porter batch candidates.json --target root@172.31.1.11
-python3 scripts/ports_csv.py         # writes results/ports.csv and the README table
+python3 scripts/run_campaign.py      # every library in campaign.yaml; writes results/ports.csv and the README table
 ```
 `ports_csv.py` reads only the agent's own `report.json` files, so the table cannot drift from what ran.
 

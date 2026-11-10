@@ -1,4 +1,4 @@
-"""Check each candidate in candidates.json is not already ported: oss.qnx.com packages and the qnx-ports org.
+"""Check each library in campaign.yaml is not already ported: oss.qnx.com packages and the qnx-ports org.
 
 Writes results/candidates_check.csv. Also checks the release tag exists upstream (git ls-remote).
 Usage: python scripts/check_candidates.py
@@ -10,6 +10,8 @@ import urllib.parse
 import urllib.request
 from datetime import date
 from pathlib import Path
+
+import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 OSS = "https://5p3b9woc03.execute-api.us-east-1.amazonaws.com/prod-PFQje4ICJpDlAzyUmbTu/packages"  # oss.qnx.com's API
@@ -36,7 +38,7 @@ def qnx_ports_repos() -> set:
 
 
 def main():
-    cands = json.loads((ROOT / "candidates.json").read_text())
+    cands = yaml.safe_load((ROOT / "campaign.yaml").read_text(encoding="utf-8"))["libraries"]
     names, urls = oss_packages()
     ports = qnx_ports_repos()
     rows = []
@@ -44,9 +46,9 @@ def main():
         n = c["name"].lower()
         url = c["url"].lower().removesuffix(".git")
         on_oss = sorted(x for x in names if x == n or x.startswith(n + "-")) + (["(repo url)"] if url in urls else [])
-        tag_ok = bool(subprocess.run(["git", "ls-remote", "--tags", c["url"], c["tag"]], capture_output=True,
+        tag_ok = bool(subprocess.run(["git", "ls-remote", "--tags", c["url"], str(c["tag"])], capture_output=True,
                                      text=True, timeout=120).stdout.strip())
-        rows.append({"library": c["name"], "url": c["url"], "tag": c["tag"], "tag_exists": tag_ok,
+        rows.append({"library": c["name"], "url": c["url"], "tag": str(c["tag"]), "tag_exists": tag_ok,
                      "on_oss_qnx_com": ";".join(on_oss) or "no", "in_qnx_ports_org": n in ports,
                      "checked": date.today().isoformat()})
         print(rows[-1])

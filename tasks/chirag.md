@@ -21,7 +21,7 @@ Deadline: Devpost **16 Dec 2026, 12:30 AM IST**. Code freeze **14 Dec, 9:00 PM I
 - Commit `ports/json-c/` (not `work/`; it is ignored).
 
 ## 3. Batch run and results (by 5 Dec)
-- `qnx-porter batch candidates.json --target root@172.31.1.11`, then `python3 scripts/ports_csv.py`.
+- `source ~/qnx800/qnxsdp-env.sh && python3 scripts/run_campaign.py` (stops with a SETUP.md pointer if qcc or the target is missing).
 - Commit `ports/`, `results/ports.csv` and the README table it rewrites. CI fails if they disagree.
 
 ## 4. Submit (by 15 Dec, 9:00 PM IST)

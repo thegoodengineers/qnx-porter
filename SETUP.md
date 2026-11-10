@@ -58,7 +58,7 @@ python3 -m pytest -q                 # 34 tests, no QNX needed
 source ~/qnx800/qnxsdp-env.sh
 qnx-porter doctor                    # every line should say ok
 qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11
-python3 scripts/ports_csv.py         # results/ports.csv from ports/*/report.json
+python3 scripts/run_campaign.py      # all of campaign.yaml -> ports/<lib>/, results/ports.csv
 ```
 
 ## 6. Optional: the model for the long tail

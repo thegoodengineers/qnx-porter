@@ -18,7 +18,6 @@ Dated entries. Labels: [Verified] ran it ourselves, [To verify] from documentati
 ## Blocked on QNX SDP 8.0 (needs the install in SETUP.md)
 1. `qnx-porter doctor` all ok on a real SDP.
 2. First real port (json-c), by hand-checking every patch the agent wrote.
-3. `qnx-porter batch candidates.json --target root@172.31.1.11`, then `python3 scripts/ports_csv.py` to fill
-   `results/ports.csv` and the README table.
+3. `python3 scripts/run_campaign.py` (all of campaign.yaml), which fills `results/ports.csv` and the README table.
 4. Model runs on the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).
 5. Demo video shots of QNX in QEMU, and the numbers in docs/DEVPOST.md and docs/VIDEO_SCRIPT.md.

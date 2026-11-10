@@ -9,5 +9,3 @@ libmodbus,https://github.com/stephane/libmodbus.git,v3.1.11,True,no,False,2026-1
 nng,https://github.com/nanomsg/nng.git,v1.9.0,True,no,False,2026-11-10
 libconfig,https://github.com/hyperrealm/libconfig.git,v1.7.3,True,no,False,2026-11-10
 paho.mqtt.c,https://github.com/eclipse/paho.mqtt.c.git,v1.3.14,True,no,False,2026-11-10
-libcoap,https://github.com/obgm/libcoap.git,v4.3.5,True,no,False,2026-11-10
-yaml-cpp,https://github.com/jbeder/yaml-cpp.git,0.8.0,True,no,False,2026-11-10
