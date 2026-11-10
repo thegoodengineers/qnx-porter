@@ -12,7 +12,7 @@ from . import build, errors, fixes, llm, patches, qnx
 from .target import Target, parse_results, write_wrapper
 
 MODEL_TRIES = 2  # model attempts per error before the agent reports it as blocked
-LLM_KINDS = ("error", "implicit_decl", "undeclared", "missing_header", "cmake_error", "werror")
+LLM_KINDS = ("error", "implicit_decl", "undeclared", "missing_header", "cmake_error", "werror", "hash_error")
 
 
 def loose(d: errors.Diagnostic):
@@ -56,7 +56,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
 
     applied: list[patches.Patch] = []
     tried: set = set()
-    pending = None  # (patch, diagnostic it should clear, error count before) for a model patch
+    pending = None  # (patch, diagnostic it should clear, error count before): a patch on probation
     blocked: list[dict] = []
     ok, rounds = False, 0
     for rounds in range(1, max_rounds + 1):
@@ -69,7 +69,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
             if not ok and (want_gone in {loose(d) for d in diags} or len(diags) > before):
                 patches.revert_last(src)
                 p.kept = False
-                log(f"      model patch {p.number:04d} did not clear the error: reverted")
+                log(f"      patch {p.number:04d} ({p.source}) did not clear the error: reverted")
                 ok, text = build.run(job.steps(tests=True), work, env, logs / f"round-{rounds:02d}b.log")
                 diags = [] if ok else errors.parse(text) or [errors.Diagnostic("error", _tail(text))]
         if ok:
@@ -78,11 +78,14 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         log(f"      round {rounds}: {len(diags)} error(s); first: {diags[0].raw or diags[0].message}"[:200])
 
         planned = fixes.plan(diags, src, flags, tried)
-        for f in planned:
+        safe = [f for f in planned if not f.verify]
+        for f in safe or planned[:1]:  # a fix that needs proof goes alone, so its rebuild judges only it
             tried.add(f.key())
             n = len(applied) + 1
             applied.append(_apply(f, n, src, out, job, work))
             log(f"      fix {n:04d} [{f.rule}] {f.reason}"[:200])
+            if f.verify:
+                pending = (applied[-1], loose(f.diag), len(diags))
         if planned:
             continue
         if use_llm and llm.configured():
@@ -91,7 +94,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                 applied.append(p)
                 pending = (p, p._diag, len(diags))
                 continue
-        blocked = [{"kind": d.kind, "error": d.raw or d.message, "hint": fixes.linux_only_hint(d)}
+        blocked = [{"kind": d.kind, "error": d.raw or d.message, "hint": fixes.hint(d)}
                    for d in diags[:8]]
         log("      no rule or model fix left for: " + (diags[0].raw or diags[0].message)[:160])
         break
@@ -161,7 +164,7 @@ def _ask_model(diags, src: Path, out: Path, n: int, log_text: str, tried: set, l
         tried.add(("model", loose(d), attempt))
         log(f"      asking the model about: {d.raw or d.message}"[:200])
         try:
-            reply = llm.ask(llm.context(src, d, rel, fixes.linux_only_hint(d), log_text))
+            reply = llm.ask(llm.context(src, d, rel, fixes.hint(d), log_text))
         except Exception as e:  # network, quota, bad JSON: report it and fall through to "blocked"
             log(f"      model call failed: {e}")
             return None

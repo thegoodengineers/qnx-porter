@@ -7,6 +7,7 @@ import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
+from . import linuxisms
 from .errors import Diagnostic
 from .qnx import Flags
 
@@ -14,6 +15,15 @@ from .qnx import Flags
 SYMBOL_HEADERS = {
     **dict.fromkeys(["strcasecmp", "strncasecmp", "bzero", "bcopy", "index", "rindex", "ffs"], "strings.h"),
     "alloca": "alloca.h",
+    # QNX 8.0 C Library Reference: where QNX declares these (differs from glibc for gettid, dl_iterate_phdr)
+    "gettid": "process.h",
+    "dl_iterate_phdr": "sys/link.h",
+    **dict.fromkeys(["getopt_long", "getopt_long_only"], "getopt.h"),
+    **dict.fromkeys(["memalign", "malloc_usable_size", "mallinfo"], "malloc.h"),
+    **dict.fromkeys(["strsep", "strcasestr", "memmem", "strerror_r"], "string.h"),
+    **dict.fromkeys(["asprintf", "vasprintf"], "stdio.h"),
+    "pipe2": "unistd.h",
+    "posix_memalign": "stdlib.h",
     **dict.fromkeys(["select", "fd_set", "FD_SET", "FD_ZERO", "FD_ISSET", "FD_CLR"], "sys/select.h"),
     **dict.fromkeys(["gettimeofday", "timeval", "settimeofday"], "sys/time.h"),
     **dict.fromkeys(["inet_pton", "inet_ntop", "inet_addr", "inet_ntoa", "htons", "htonl", "ntohs", "ntohl"],
@@ -45,23 +55,12 @@ SOCKET_SYMBOLS = {"socket", "bind", "connect", "listen", "accept", "accept4", "s
                   "getpeername", "getsockname", "inet_pton", "inet_ntop", "inet_addr", "inet_ntoa",
                   "if_nametoindex", "if_indextoname", "getifaddrs", "freeifaddrs", "socketpair"}
 
-# On Linux these are separate libraries; on QNX their functions are in libc, so -lX finds nothing.
+# On Linux these are separate libraries; on QNX 8.0 their functions are in libc (the C Library Reference
+# lists "Library: libc" for pthread_*, clock_gettime, timer_create, shm_open, mq_open and dlopen).
 IN_LIBC = {"pthread", "rt", "dl"}
 
-# Linux-only headers. No rule can replace them honestly; they go to the model with this hint.
-LINUX_ONLY = {
-    "sys/epoll.h": "QNX has no epoll: use poll()/select(), or QNX's ionotify() for event notification",
-    "sys/inotify.h": "QNX has no inotify: watch files with polling or the QNX inotify-compatible resource manager",
-    "sys/eventfd.h": "QNX has no eventfd: use a pipe() pair or a pulse",
-    "sys/prctl.h": "QNX has no prctl: thread names use pthread_setname_np()",
-    "sys/sysinfo.h": "QNX has no sysinfo(): use sysconf(_SC_NPROCESSORS_ONLN), or the syspage for memory",
-    "sys/sendfile.h": "QNX has no sendfile(): copy with read()/write()",
-    "sys/signalfd.h": "QNX has no signalfd: use sigwaitinfo() in a thread",
-    "sys/timerfd.h": "QNX has no timerfd: use timer_create() with a pulse or a signal",
-    "byteswap.h": "QNX has no <byteswap.h>: use __builtin_bswap16/32/64",
-    "execinfo.h": "QNX has no backtrace(): guard the code with !defined(__QNX__)",
-    "features.h": "<features.h> is glibc-only: remove the include on QNX",
-}
+# QNX 8.0 moved inotify_* out of libc into libfsnotify ("Migrating to QNX OS 8.0", C and C++ applications).
+FSNOTIFY_SYMBOLS = {"inotify_init", "inotify_init1", "inotify_add_watch", "inotify_rm_watch"}
 
 INCLUDE = re.compile(r"^\s*#\s*include\b")
 
@@ -76,6 +75,7 @@ class Fix:
     ldflags: list[str] = field(default_factory=list)
     libs: list[str] = field(default_factory=list)
     stubs: list[str] = field(default_factory=list)
+    verify: bool = False  # needs a rebuild to prove it: applied alone, reverted if the error stays
 
     def key(self):
         return (self.rule, tuple(sorted(self.edits)), tuple(self.cflags), tuple(self.libs), tuple(self.stubs),
@@ -132,9 +132,11 @@ def plan(diags: list[Diagnostic], src: Path, flags: Flags, tried: set) -> list[F
 
 def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
     rel = in_tree(src, d.file) if d.file else None
+    if rel and (f := _source_rule(d, src, rel)):
+        return f
     if d.kind in ("implicit_decl", "undeclared") and rel:
         header = d.header or SYMBOL_HEADERS.get(d.symbol)
-        how = "the compiler's own note names it" if d.header else "POSIX declares it there"
+        how = "the compiler's own note names it" if d.header else "that is where QNX declares it"
         if header:
             new = add_include(src, rel, header, d.line)
             if new is not None:
@@ -145,6 +147,14 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                 return Fix("qnx-source", f"`{d.symbol}` is in <{header}>, which {rel} already includes, so a "
                            "strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions "
                            "in QNX's headers, as _GNU_SOURCE does on glibc.", d, cflags=["-D_QNX_SOURCE"])
+    if d.kind == "undeclared" and d.symbol == "MAP_ANONYMOUS" and not _defined(flags, "MAP_ANONYMOUS"):
+        return Fix("map-anon", "QNX 8.0's mmap() documents MAP_ANON for anonymous memory; Linux code spells it "
+                   "MAP_ANONYMOUS. Same flag, so define one as the other.", d, cflags=["-DMAP_ANONYMOUS=MAP_ANON"])
+    if d.kind == "undeclared" and d.symbol == "MSG_NOSIGNAL" and not _defined(flags, "MSG_NOSIGNAL") \
+            and linuxisms.tree_ignores_sigpipe(src):
+        return Fix("msg-nosignal", "MSG_NOSIGNAL is not visible here, and this library already ignores "
+                   "SIGPIPE (signal(SIGPIPE, SIG_IGN)), so the flag has nothing left to do: define it as 0.",
+                   d, cflags=["-DMSG_NOSIGNAL=0"])
     if d.kind == "werror" and d.flag and f"-Wno-error={d.flag}" not in flags.cflags:
         return Fix("no-werror", f"Warning -W{d.flag} is promoted to an error by the project's -Werror. Keep "
                    "it a warning (still printed in the build log) instead of editing the library's code; "
@@ -153,6 +163,14 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
     if d.kind == "undefined_ref" and d.symbol in SOCKET_SYMBOLS and "-lsocket" not in flags.libs:
         return Fix("link-libsocket", f"`{d.symbol}` is in QNX's libsocket, not in libc as on Linux: link "
                    "with -lsocket.", d, libs=["-lsocket"])
+    if d.kind == "undefined_ref" and d.symbol in FSNOTIFY_SYMBOLS and "-lfsnotify" not in flags.libs:
+        return Fix("link-libfsnotify", f"QNX 8.0 has inotify, but `{d.symbol}` moved from libc to libfsnotify: "
+                   "link with -lfsnotify.", d, libs=["-lfsnotify"])
+    if d.kind == "multiple_def" and "-fcommon" not in flags.cflags:
+        return Fix("fcommon", f"`{d.symbol}` is a tentative definition in a header, shared by several files. "
+                   "GCC 10 and later (SDP 8.0 ships GCC 12) default to -fno-common, which makes that a link "
+                   "error; -fcommon restores the old behaviour without editing the library.",
+                   d, cflags=["-fcommon"])
     if d.kind == "missing_lib" and d.symbol in IN_LIBC:
         return Fix("stub-lib", f"-l{d.symbol} names a separate library on Linux; on QNX its functions are in "
                    f"libc. An empty lib{d.symbol}.a satisfies the link without editing the build files.",
@@ -160,9 +178,22 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
     return None
 
 
-def linux_only_hint(d: Diagnostic) -> str:
-    if d.kind == "missing_header":
-        if d.header.startswith("linux/"):
-            return f"<{d.header}> is a Linux kernel header and does not exist on QNX"
-        return LINUX_ONLY.get(d.header, "")
-    return ""
+def _defined(flags: Flags, name: str) -> bool:
+    return any(c.startswith(f"-D{name}=") for c in flags.cflags)
+
+
+def _source_rule(d: Diagnostic, src: Path, rel: str) -> Fix | None:
+    """Rules that rewrite a few lines of source (linuxisms.py)."""
+    risky = {"prctl-set-name", "qnx-platform-guard"}
+    for rule_fn, kinds in ((linuxisms.missing_header, ("missing_header",)),
+                           (linuxisms.renamed_call, ("implicit_decl",)),
+                           (linuxisms.one_arg_setname, ("error",)),
+                           (linuxisms.platform_guard, ("hash_error",))):
+        if d.kind in kinds and (r := rule_fn(d, src, rel)):
+            rule, reason, text = r
+            return Fix(rule, reason, d, edits={rel: text}, verify=rule in risky)
+    return None
+
+
+def hint(d: Diagnostic) -> str:
+    return linuxisms.hint(d)
