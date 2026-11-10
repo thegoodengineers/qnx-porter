@@ -1,0 +1,55 @@
+# The libraries we port for the results table. Pinned to release tags.
+# None was on oss.qnx.com or in github.com/qnx-ports when checked (results/candidates_check.csv);
+# scripts/run_campaign.py checks oss.qnx.com again before every run and skips any that appear.
+#
+# Run: source ~/qnx800/qnxsdp-env.sh && python3 scripts/run_campaign.py
+
+target: root@172.31.1.11      # QEMU image from mkqnximage (SETUP.md step 4); null = build only
+target_dir: /data/qnx-porter  # writable partition on that image
+arch: x86_64
+max_rounds: 15
+
+libraries:
+  - name: json-c                # JSON for C; CMake + ctest
+    url: https://github.com/json-c/json-c.git
+    tag: json-c-0.18-20240915
+
+  - name: yyjson                # fast JSON; CMake + ctest
+    url: https://github.com/ibireme/yyjson.git
+    tag: 0.10.0
+    args: [-DYYJSON_BUILD_TESTS=ON]
+
+  - name: cmocka                # C unit-test framework; CMake + ctest
+    url: https://gitlab.com/cmocka/cmocka.git
+    tag: cmocka-1.1.7
+    args: [-DUNIT_TESTING=ON]
+
+  - name: libcbor               # CBOR, used in IoT and FIDO; CMake
+    url: https://github.com/PJK/libcbor.git
+    tag: v0.11.0
+
+  - name: mbedtls               # TLS and crypto for embedded; CMake + ctest
+    url: https://github.com/Mbed-TLS/mbedtls.git
+    tag: v3.6.2
+    args: [-DENABLE_PROGRAMS=OFF]
+
+  - name: libsodium             # crypto; autotools + make check
+    url: https://github.com/jedisct1/libsodium.git
+    tag: 1.0.20-RELEASE
+
+  - name: libmodbus             # industrial fieldbus; autotools
+    url: https://github.com/stephane/libmodbus.git
+    tag: v3.1.11
+
+  - name: nng                   # messaging (successor of nanomsg); CMake + ctest
+    url: https://github.com/nanomsg/nng.git
+    tag: v1.9.0
+    args: [-DNNG_TESTS=ON]
+
+  - name: libconfig             # configuration files; CMake
+    url: https://github.com/hyperrealm/libconfig.git
+    tag: v1.7.3
+
+  - name: paho.mqtt.c           # MQTT client for vehicles and IoT; CMake
+    url: https://github.com/eclipse/paho.mqtt.c.git
+    tag: v1.3.14

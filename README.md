@@ -95,8 +95,7 @@ python3 -m pip install -e ".[test]"
 python3 -m pytest -q                                   # no QNX needed
 source ~/qnx800/qnxsdp-env.sh && qnx-porter doctor
 qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11
-qnx-porter batch candidates.json --target root@172.31.1.11
-python3 scripts/ports_csv.py
+python3 scripts/run_campaign.py                       # every library in campaign.yaml, then the CSV
 ```
 Build and run requirements: **QNX SDP 8.0**, target **x86_64 QEMU** (from `mkqnximage`) or **aarch64le**
 hardware with ssh, toolchain **qcc / GCC from SDP 8.0**, host **Ubuntu 22.04/24.04 or WSL2**. Details: [SETUP.md](SETUP.md).
