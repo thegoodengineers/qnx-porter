@@ -65,8 +65,8 @@ def test_werror_and_no_repeats(tmp_path):
 
 
 def test_linux_only_headers_get_a_hint_not_a_guess():
-    assert "poll" in fixes.linux_only_hint(Diagnostic("missing_header", "", header="sys/epoll.h"))
-    assert "kernel" in fixes.linux_only_hint(Diagnostic("missing_header", "", header="linux/if.h"))
+    assert "poll" in fixes.hint(Diagnostic("missing_header", "", header="sys/epoll.h"))
+    assert "kernel" in fixes.hint(Diagnostic("missing_header", "", header="linux/if.h"))
 
 
 def test_source_patch_is_written_with_its_reason_and_committed(tmp_path):

@@ -24,6 +24,7 @@ UNDECLARED = re.compile(
 )
 WERROR = re.compile(r"\[-Werror=(?P<flag>[\w=+-]+)\]\s*$")
 UNDEFINED_REF = re.compile(rf"undefined reference to {Q}(?P<symbol>[^'’`]+){Q}")
+MULTIPLE_DEF = re.compile(rf"multiple definition of {Q}(?P<symbol>[^'\u2019`]+){Q}")
 MISSING_LIB = re.compile(r"cannot find -l(?P<lib>[\w+.-]+)")
 CMAKE_ERROR = re.compile(r"^CMake Error(?: at (?P<file>[^:]+):(?P<line>\d+))?")
 CONFIGURE_ERROR = re.compile(r"^configure: error: (?P<msg>.*)$")
@@ -32,8 +33,8 @@ MESON_ERROR = re.compile(r"^(?P<file>[^\s:][^:]*):(?P<line>\d+):(?P<col>\d+): ER
 
 @dataclass
 class Diagnostic:
-    kind: str  # missing_header, implicit_decl, undeclared, werror, undefined_ref, missing_lib,
-    #            cmake_error, configure_error, error
+    kind: str  # missing_header, implicit_decl, undeclared, werror, undefined_ref, multiple_def,
+    #            missing_lib, hash_error, cmake_error, configure_error, error
     message: str
     file: str = ""
     line: int = 0
@@ -78,6 +79,8 @@ def parse(log: str) -> list[Diagnostic]:
             continue
         if (m := UNDEFINED_REF.search(line)):
             add(Diagnostic("undefined_ref", line.strip(), symbol=m["symbol"], raw=line))
+        elif (m := MULTIPLE_DEF.search(line)):
+            add(Diagnostic("multiple_def", line.strip(), symbol=m["symbol"], raw=line))
         elif (m := MISSING_LIB.search(line)):
             add(Diagnostic("missing_lib", line.strip(), symbol=m["lib"], raw=line))
         elif (m := CMAKE_ERROR.match(line)):
@@ -93,6 +96,8 @@ def parse(log: str) -> list[Diagnostic]:
 def _classify(msg: str, where: dict) -> Diagnostic:
     if (m := MISSING_HEADER.match(msg)):
         return Diagnostic("missing_header", msg, header=m["header"], **where)
+    if msg.startswith("#error"):
+        return Diagnostic("hash_error", msg, **where)
     if (m := WERROR.search(msg)):
         if (i := IMPLICIT.search(msg)):
             return Diagnostic("implicit_decl", msg, symbol=i["symbol"], flag=m["flag"], **where)

@@ -70,9 +70,14 @@ ports/<library>/  REPORT.md · report.json · patches/ · qnx.patch · toolchain
 | `link-libsocket` | `undefined reference to socket/getaddrinfo/...` | `-lsocket` (QNX keeps sockets in libsocket) |
 | `stub-lib` | `cannot find -lpthread/-lrt/-ldl` | an empty archive, because QNX has these in libc |
 | `no-werror` | a warning promoted by `-Werror` | `-Wno-error=<that warning>` |
+| `guard-linux-header` | `<sys/epoll.h>`, `<sys/sendfile.h>`, ... missing and unused by the file | `#ifndef __QNX__` around the include |
+| `byteswap-builtins`, `prctl-set-name`, `pthread-setname*` | `<byteswap.h>`, `prctl(PR_SET_NAME)`, BSD/macOS thread-name calls | QNX's `__builtin_bswap*`, `pthread_setname_np(tid, name)` |
+| `qnx-platform-guard` | `#error "Unsupported platform"` after an OS `#if` chain | QNX joins the BSD/Unix branch; kept only if the rebuild proves it |
+| `map-anon`, `msg-nosignal`, `link-libfsnotify`, `fcommon` | `MAP_ANONYMOUS`, `MSG_NOSIGNAL`, inotify, GCC 12 `-fno-common` | see the corpus |
 
-Linux-only headers (`sys/epoll.h`, `sys/inotify.h`, `linux/*`, ...) are never patched by a rule; they go
-to the model with a QNX-specific hint (for example "use poll(), or ionotify()"), or are reported as blocked.
+All 22 patterns, the QNX 8.0 documentation each fact comes from, and the test for each:
+[docs/LINUX_ISMS.md](docs/LINUX_ISMS.md). Linux-only code that is actually *used* (epoll loops, sendfile)
+is never rewritten by a rule; it goes to the model with a QNX-specific hint, or is reported as blocked.
 
 **The model is optional and checked.** Set `QNX_PORTER_API_KEY` and `QNX_PORTER_MODEL` (any
 OpenAI-compatible endpoint; `QNX_PORTER_BASE_URL` to change it). It must answer with a unified diff and

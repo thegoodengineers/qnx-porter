@@ -75,3 +75,27 @@ def test_without_a_model_it_stops_and_says_what_is_left(tmp_path, monkeypatch):
     r = agent.port(str(lib), "v1", tmp_path / "ports", arch=None, name="brokenlib", log=lambda *_: None)
     assert r["build_result"] == "failed"
     assert "sys/not_on_qnx.h" in r["blocked_on"][0]["error"]
+
+
+@needs_tools
+def test_gcc10_common_symbols_are_fixed_with_real_linker_output(tmp_path):
+    lib = upstream(tmp_path, {"counter.h": "int shared_counter;\n",
+                              "textutil.h": "#include \"counter.h\"\nint same_word(const char *a, const char *b);\n",
+                              "test_textutil.c": "#include \"textutil.h\"\nint main(void) { return shared_counter + !same_word(\"a\", \"A\"); }\n"})
+    r = agent.port(str(lib), "v1", tmp_path / "ports", arch=None, use_llm=False, name="brokenlib",
+                   log=lambda *_: None)
+    assert r["build_result"] == "built", r["blocked_on"]
+    assert "fcommon" in [p["rule"] for p in r["patches"]]
+
+
+@needs_tools
+def test_a_rule_that_needs_proof_is_reverted_when_the_rebuild_disagrees(tmp_path):
+    # On the Linux host __QNX__ is not defined, so letting QNX join the FreeBSD branch cannot help here:
+    # the agent must notice and revert its own rule, as it does for the model.
+    guard = "#if defined(__FreeBSD__)\nint platform = 1;\n#else\n#error \"Unsupported platform\"\n#endif\n"
+    lib = upstream(tmp_path, {"textutil.h": guard + "int same_word(const char *a, const char *b);\n"})
+    r = agent.port(str(lib), "v1", tmp_path / "ports", arch=None, use_llm=False, name="brokenlib",
+                   log=lambda *_: None)
+    [p] = [p for p in r["patches"] if p["rule"] == "qnx-platform-guard"]
+    assert p["kept"] is False and r["build_result"] == "failed"
+    assert "#error" in r["blocked_on"][0]["error"]
