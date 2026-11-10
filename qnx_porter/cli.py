@@ -1,6 +1,8 @@
 """qnx-porter: port an open-source C/C++ library to QNX 8.0 and prove it with the library's own tests."""
 import argparse
 import json
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -29,6 +31,9 @@ def main(argv=None) -> int:
     d = sub.add_parser("detect", help="print the build system of a source folder")
     d.add_argument("path")
     sub.add_parser("doctor", help="check the QNX SDP 8.0 install and host tools")
+    st = sub.add_parser("selftest", help="run the loop on a deliberately broken library with the host "
+                                         "compiler (no QNX needed)")
+    st.add_argument("--out", default="ports-selftest")
 
     a = ap.parse_args(argv)
     if a.cmd == "detect":
@@ -40,6 +45,8 @@ def main(argv=None) -> int:
             print(f"{'ok ' if ok else 'BAD'} {what:12s} {detail}")
             bad += not ok
         return 1 if bad else 0
+    if a.cmd == "selftest":
+        return selftest(Path(a.out))
     target = Target.parse(a.target, a.target_dir) if a.target else None
     jobs = ([{"url": a.url, "tag": a.tag, "args": a.arg}] if a.cmd == "port"
             else json.loads(Path(a.list).read_text(encoding="utf-8")))
@@ -50,6 +57,18 @@ def main(argv=None) -> int:
                        extra_args=tuple(j.get("args", [])), name=j.get("name", ""))
         failed += r["build_result"] != "built"
     return 1 if failed else 0
+
+
+def selftest(out: Path) -> int:
+    """Copy the bundled broken library into a git repo and port it with the host compiler."""
+    lib = (out / "upstream").resolve()
+    shutil.rmtree(lib, ignore_errors=True)
+    shutil.copytree(Path(__file__).parent / "brokenlib", lib)
+    for cmd in (["init", "-q"], ["add", "-A"], ["-c", "user.name=selftest", "-c", "user.email=selftest@localhost",
+                                                "commit", "-qm", "v1"], ["tag", "v1"]):
+        subprocess.run(["git", "-C", str(lib), *cmd], check=True)
+    r = agent.port(str(lib), "v1", out, arch=None, use_llm=False, name="brokenlib")
+    return 0 if r["build_result"] == "built" and r["patches_kept"] == 2 else 1
 
 
 if __name__ == "__main__":

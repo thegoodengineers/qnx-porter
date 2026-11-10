@@ -20,5 +20,8 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 packages = ["qnx_porter"]
 
+[tool.setuptools.package-data]
+qnx_porter = ["brokenlib/*"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

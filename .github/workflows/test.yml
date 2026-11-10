@@ -18,7 +18,8 @@ jobs:
       - name: CLI smoke test
         run: |
           qnx-porter --help
-          qnx-porter detect tests/fixtures/brokenlib | grep -x cmake
+          qnx-porter detect qnx_porter/brokenlib | grep -x cmake
+          qnx-porter selftest
       - name: No QNX numbers that a script did not produce
         run: |
           python scripts/ports_csv.py && git diff --exit-code results/ports.csv README.md

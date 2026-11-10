@@ -13,7 +13,7 @@ import pytest
 
 from qnx_porter import agent, llm
 
-FIXTURE = Path(__file__).parent / "fixtures" / "brokenlib"
+FIXTURE = Path(agent.__file__).parent / "brokenlib"
 needs_tools = pytest.mark.skipif(
     os.name == "nt" or not (shutil.which("cmake") and shutil.which("cc")),
     reason="the agent runs on a Linux host (WSL on Windows) with cmake and a C compiler")
