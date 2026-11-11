@@ -184,3 +184,13 @@ def test_qnx_header_locations(tmp_path, sym, header):
 def test_removed_itoa_gets_the_snprintf_hint():
     d = parse("a.c:1:1: error: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]\n")[0]
     assert "snprintf" in fixes.hint(d)
+
+
+def test_math_classification_macros_need_libm_on_qnx(tmp_path):
+    # Real ld output from porting yyjson 0.10.0 with qcc (SDP 8.0 build 141).
+    log = ("/home/u/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: "
+           "test_number.c:(.text+0x33ca): undefined reference to `__isfinite'\n"
+           "test_json_writer.c:(.text+0xd5): undefined reference to `__isinf'\n")
+    [f] = run(tmp_path, {}, log)
+    assert f.rule == "link-libm" and f.libs == ["-lm"]
+    assert run(tmp_path, {}, log, Flags(libs=["-lm"])) == []

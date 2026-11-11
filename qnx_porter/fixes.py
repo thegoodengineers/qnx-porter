@@ -62,6 +62,17 @@ IN_LIBC = {"pthread", "rt", "dl"}
 # QNX 8.0 moved inotify_* out of libc into libfsnotify ("Migrating to QNX OS 8.0", C and C++ applications).
 FSNOTIFY_SYMBOLS = {"inotify_init", "inotify_init1", "inotify_add_watch", "inotify_rm_watch"}
 
+# QNX's <math.h> turns isinf()/isfinite()/isnan()/fpclassify() into calls to __isinf etc., and those, like
+# sqrt and floor, are exported by libm.so and not by libc.so (checked with nm on SDP 8.0 build 141). glibc
+# resolves the classification macros inline or in libc, so Linux projects often never link -lm.
+_MATH = ["sqrt", "cbrt", "pow", "exp", "exp2", "expm1", "log", "log2", "log10", "log1p", "floor", "ceil",
+         "round", "lround", "llround", "trunc", "rint", "lrint", "llrint", "nearbyint", "fmod", "remainder",
+         "sin", "cos", "tan", "asin", "acos", "atan", "atan2", "sinh", "cosh", "tanh", "asinh", "acosh",
+         "atanh", "hypot", "ldexp", "frexp", "modf", "scalbn", "copysign", "nextafter", "fmax", "fmin", "fdim",
+         "fma", "erf", "erfc", "tgamma", "lgamma", "nan"]
+_CLASSIFY = ["__isinf", "__isnan", "__isfinite", "__isnormal", "__fpclassify", "__signbit"]
+LIBM_SYMBOLS = {f"{n}{s}" for n in _MATH + _CLASSIFY for s in ("", "f", "l")}
+
 INCLUDE = re.compile(r"^\s*#\s*include\b")
 
 
@@ -78,8 +89,10 @@ class Fix:
     verify: bool = False  # needs a rebuild to prove it: applied alone, reverted if the error stays
 
     def key(self):
-        return (self.rule, tuple(sorted(self.edits)), tuple(self.cflags), tuple(self.libs), tuple(self.stubs),
-                self.diag.symbol, self.diag.header)
+        flags = (self.rule, tuple(self.cflags), tuple(self.ldflags), tuple(self.libs), tuple(self.stubs))
+        if not self.edits:
+            return flags  # one flag change answers every error that asks for it
+        return flags + (tuple(sorted(self.edits)), self.diag.symbol, self.diag.header)
 
 
 def add_include(src: Path, rel: str, header: str, before_line: int) -> str | None:
@@ -166,6 +179,10 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
     if d.kind == "undefined_ref" and d.symbol in FSNOTIFY_SYMBOLS and "-lfsnotify" not in flags.libs:
         return Fix("link-libfsnotify", f"QNX 8.0 has inotify, but `{d.symbol}` moved from libc to libfsnotify: "
                    "link with -lfsnotify.", d, libs=["-lfsnotify"])
+    if d.kind == "undefined_ref" and d.symbol in LIBM_SYMBOLS and "-lm" not in flags.libs:
+        return Fix("link-libm", f"`{d.symbol}` is in QNX's libm, not in libc: QNX's <math.h> implements "
+                   "isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. "
+                   "Link with -lm.", d, libs=["-lm"])
     if d.kind == "multiple_def" and "-fcommon" not in flags.cflags:
         return Fix("fcommon", f"`{d.symbol}` is a tentative definition in a header, shared by several files. "
                    "GCC 10 and later (SDP 8.0 ships GCC 12) default to -fno-common, which makes that a link "

@@ -32,7 +32,8 @@ def test_cmake_toolchain_uses_qcc_targets_and_sysroot():
     assert "CMAKE_CXX_COMPILER_TARGET gcc_ntox86_64_cxx" in t
     assert 'CMAKE_SYSROOT "/q/target/qnx"' in t
     assert 'CMAKE_C_FLAGS_INIT "-D_QNX_SOURCE"' in t
-    assert 'CMAKE_EXE_LINKER_FLAGS_INIT "-L/w/stubs -lsocket"' in t
+    assert 'CMAKE_EXE_LINKER_FLAGS_INIT "-L/w/stubs"' in t
+    assert 'CMAKE_C_STANDARD_LIBRARIES "-lsocket"' in t  # libraries after the objects
 
 
 def test_aarch64_and_meson_cross_file():
