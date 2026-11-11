@@ -1,0 +1,93 @@
+10 libraries, 4 built for QNX 8.0; tests ran for 4: 68/72 passed -> /home/chirag/qnx-porter/results/ports.csv
+target: QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+=== [1/10] json-c json-c-0.18-20240915 ===
+[1/5] fetch https://github.com/json-c/json-c.git @ json-c-0.18-20240915
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      24/25 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/json-c/REPORT.md
+=== [2/10] yyjson 0.10.0 ===
+[1/5] fetch https://github.com/ibireme/yyjson.git @ 0.10.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 14 error(s); first: test_json_writer.c:(.text+0xd5): undefined reference to `__isinf'
+      no rule or model fix left for: test_json_writer.c:(.text+0xd5): undefined reference to `__isinf'
+[5/5] report: /home/chirag/qnx-porter/ports/yyjson/REPORT.md
+=== [3/10] cmocka cmocka-1.1.7 ===
+[1/5] fetch https://gitlab.com/cmocka/cmocka.git @ cmocka-1.1.7
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      44/46 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/cmocka/REPORT.md
+=== [4/10] libcbor v0.11.0 ===
+[1/5] fetch https://github.com/PJK/libcbor.git @ v0.11.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libcbor/REPORT.md
+=== [5/10] mbedtls v3.6.2 ===
+[1/5] fetch https://github.com/Mbed-TLS/mbedtls.git @ v3.6.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 23 error(s); first: x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+      fix 0001 [link-libsocket] `getaddrinfo` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0002 [link-libsocket] `connect` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0003 [link-libsocket] `socket` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0004 [link-libsocket] `freeaddrinfo` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0005 [link-libsocket] `setsockopt` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0006 [link-libsocket] `bind` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0007 [link-libsocket] `listen` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0008 [link-libsocket] `getsockopt` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0009 [link-libsocket] `recvfrom` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0010 [link-libsocket] `accept` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0011 [link-libsocket] `getsockname` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0012 [link-libsocket] `shutdown` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      round 2: 28 error(s); first: x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+      no rule or model fix left for: x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+[5/5] report: /home/chirag/qnx-porter/ports/mbedtls/REPORT.md
+=== [6/10] libsodium 1.0.20-RELEASE ===
+[1/5] fetch https://github.com/jedisct1/libsodium.git @ 1.0.20-RELEASE
+[2/5] build system: autotools; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: make[1]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/home/chirag/qnx-port
+      no rule or model fix left for: make[1]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/home/chirag/qn
+[5/5] report: /home/chirag/qnx-porter/ports/libsodium/REPORT.md
+=== [7/10] libmodbus v3.1.11 ===
+[1/5] fetch https://github.com/stephane/libmodbus.git @ v3.1.11
+[2/5] build system: autotools; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first:   CC       unit-test-server.o
+  CC       unit-test-client.o
+  CC       version.o
+make[4]: *** No rule to make target 'all'.
+make[4]: *** No rule to make target 'all'.
+      no rule or model fix left for:   CC       unit-test-server.o
+  CC       unit-test-client.o
+  CC       version.o
+make[4]: *** No rule to make target 'all'.
+make[4]: *** No rule to make target 
+[5/5] report: /home/chirag/qnx-porter/ports/libmodbus/REPORT.md
+=== [8/10] nng v1.9.0 ===
+[1/5] fetch https://github.com/nanomsg/nng.git @ v1.9.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+      no rule or model fix left for: /home/chirag/qnx-porter/ports/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+[5/5] report: /home/chirag/qnx-porter/ports/nng/REPORT.md
+=== [9/10] libconfig v1.7.3 ===
+[1/5] fetch https://github.com/hyperrealm/libconfig.git @ v1.7.3
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libconfig/REPORT.md
+=== [10/10] paho.mqtt.c v1.3.14 ===
+[1/5] fetch https://github.com/eclipse/paho.mqtt.c.git @ v1.3.14
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+      fix 0001 [stub-lib] -lpthread names a separate library on Linux; on QNX its functions are in libc. An empty libpthread.a satisfies the link without editing the build files.
+      round 2: 2 error(s); first: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: cannot find -lpthread: No such file or directory
+      no rule or model fix left for: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: cannot find -lpthread: No such file or directory
+[5/5] report: /home/chirag/qnx-porter/ports/paho.mqtt.c/REPORT.md

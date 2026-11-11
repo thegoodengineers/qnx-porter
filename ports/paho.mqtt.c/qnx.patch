@@ -1,0 +1,14 @@
+diff --git a/src/MQTTPacket.h b/src/MQTTPacket.h
+index fd384ae..ecdae83 100644
+--- a/src/MQTTPacket.h
++++ b/src/MQTTPacket.h
+@@ -28,7 +28,9 @@
+ #include "LinkedList.h"
+ #include "Clients.h"
+ 
++#ifndef __bool_true_false_are_defined  /* qnx-porter: QNX's <sys/socket.h> includes <stdbool.h> */
+ typedef unsigned int bool;
++#endif
+ typedef void* (*pf)(int, unsigned char, char*, size_t);
+ 
+ #include "MQTTProperties.h"

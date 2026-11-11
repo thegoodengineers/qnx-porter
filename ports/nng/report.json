@@ -1,0 +1,37 @@
+{
+  "library": "nng",
+  "url": "https://github.com/nanomsg/nng.git",
+  "version": "v1.9.0",
+  "commit": "29aff2bacc9e2cfa6dcc52155d2816582617f918",
+  "build_system": "cmake",
+  "arch": "x86_64",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
+  "build_result": "built",
+  "rounds": 2,
+  "tests_passed": 82,
+  "tests_total": 86,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "header-alias",
+      "source": "rule",
+      "reason": "<sys/errno.h> is a glibc alias QNX 8.0 does not ship; POSIX's <errno.h> declares the same things, and QNX has it.",
+      "error": "/home/chirag/qnx-porter/ports/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory",
+      "files": [
+        "src/platform/posix/posix_udp.c"
+      ],
+      "path": "patches/0001-header-alias-posix-udp-c.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 4.1,
+  "note": "",
+  "finished": "2026-11-11T16:20:47+00:00"
+}

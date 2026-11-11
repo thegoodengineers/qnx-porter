@@ -92,12 +92,14 @@ def verdict(rc: int | None, out: str, props: dict) -> str:
         return "fail"  # timed out
     if "SKIP_RETURN_CODE" in props and rc == int(props["SKIP_RETURN_CODE"]):
         return "skip"
-    if any(re.search(r, out) for r in _regexes(props.get("SKIP_REGULAR_EXPRESSION"))):
+    def found(key):  # CMake regexes let `.` match newlines; Python needs DOTALL for the same meaning
+        return any(re.search(r, out, re.S) for r in _regexes(props.get(key)))
+    if found("SKIP_REGULAR_EXPRESSION"):
         return "skip"
-    if any(re.search(r, out) for r in _regexes(props.get("FAIL_REGULAR_EXPRESSION"))):
+    if found("FAIL_REGULAR_EXPRESSION"):
         ok = False
     elif _regexes(props.get("PASS_REGULAR_EXPRESSION")):
-        ok = any(re.search(r, out) for r in _regexes(props["PASS_REGULAR_EXPRESSION"]))
+        ok = found("PASS_REGULAR_EXPRESSION")
     else:
         ok = rc == 0
     if _on(props.get("WILL_FAIL")):
@@ -138,7 +140,7 @@ def ctest_on_target(t: Target, build: Path, work: Path, emulator: str, same_path
             passed += v == "pass"
         lines.append(f"{v.upper():5s} {test['name']} (exit {rc})\n")
         if v == "fail":
-            lines.append("".join(f"    {ln}\n" for ln in out.strip().splitlines()[-40:]))
+            lines.append("".join(f"    {ln}\n" for ln in out.strip().splitlines()[-150:]))
     lines.append(f"\n{passed}/{total} tests passed on the QNX target\n")
     log_path.write_text("".join(lines), encoding="utf-8")
     return passed, total

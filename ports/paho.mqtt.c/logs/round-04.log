@@ -1,0 +1,120 @@
+$ cmake -S /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src -B /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/paho.mqtt.c/work/qnx-toolchain.cmake
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- CMake version: 3.22.1
+-- CMake system name: QNX
+-- Timestamp is 2026-11-11T16:21:20Z
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build -j 4 -- -k
+Consolidate compiler generated dependencies of target thread
+Consolidate compiler generated dependencies of target common_obj
+[  1%] Building C object test/CMakeFiles/thread.dir/thread.c.o
+[  3%] Building C object test/CMakeFiles/thread.dir/__/src/Thread.c.o
+[  4%] Building C object src/CMakeFiles/common_obj.dir/MQTTProtocolClient.c.o
+[  6%] Building C object src/CMakeFiles/common_obj.dir/MQTTTime.c.o
+[  8%] Building C object src/CMakeFiles/common_obj.dir/Clients.c.o
+[  9%] Building C object src/CMakeFiles/common_obj.dir/utf-8.c.o
+[ 11%] Building C object src/CMakeFiles/common_obj.dir/MQTTPacket.c.o
+[ 12%] Building C object src/CMakeFiles/common_obj.dir/MQTTPacketOut.c.o
+[ 14%] Linking C executable thread
+[ 14%] Built target thread
+[ 16%] Building C object src/CMakeFiles/common_obj.dir/Messages.c.o
+[ 17%] Building C object src/CMakeFiles/common_obj.dir/Tree.c.o
+[ 19%] Building C object src/CMakeFiles/common_obj.dir/Socket.c.o
+[ 20%] Building C object src/CMakeFiles/common_obj.dir/Log.c.o
+[ 22%] Building C object src/CMakeFiles/common_obj.dir/MQTTPersistence.c.o
+[ 24%] Building C object src/CMakeFiles/common_obj.dir/Thread.c.o
+[ 25%] Building C object src/CMakeFiles/common_obj.dir/MQTTProtocolOut.c.o
+[ 27%] Building C object src/CMakeFiles/common_obj.dir/MQTTPersistenceDefault.c.o
+[ 29%] Building C object src/CMakeFiles/common_obj.dir/SocketBuffer.c.o
+[ 32%] Building C object src/CMakeFiles/common_obj.dir/MQTTProperties.c.o
+[ 30%] Building C object src/CMakeFiles/common_obj.dir/LinkedList.c.o
+[ 33%] Building C object src/CMakeFiles/common_obj.dir/MQTTReasonCodes.c.o
+[ 35%] Building C object src/CMakeFiles/common_obj.dir/Base64.c.o
+[ 37%] Building C object src/CMakeFiles/common_obj.dir/SHA1.c.o
+[ 38%] Building C object src/CMakeFiles/common_obj.dir/WebSocket.c.o
+[ 40%] Building C object src/CMakeFiles/common_obj.dir/Proxy.c.o
+[ 41%] Building C object src/CMakeFiles/common_obj.dir/StackTrace.c.o
+[ 43%] Building C object src/CMakeFiles/common_obj.dir/Heap.c.o
+[ 43%] Built target common_obj
+Consolidate compiler generated dependencies of target paho-mqtt3c
+Consolidate compiler generated dependencies of target paho-mqtt3a
+[ 45%] Building C object src/CMakeFiles/paho-mqtt3a.dir/MQTTAsync.c.o
+[ 46%] Building C object src/CMakeFiles/paho-mqtt3c.dir/MQTTClient.c.o
+[ 48%] Building C object src/CMakeFiles/paho-mqtt3a.dir/MQTTAsyncUtils.c.o
+[ 50%] Linking C shared library libpaho-mqtt3c.so
+[ 50%] Built target paho-mqtt3c
+Consolidate compiler generated dependencies of target test15
+Consolidate compiler generated dependencies of target test1
+Consolidate compiler generated dependencies of target test2
+[ 51%] Building C object test/CMakeFiles/test15.dir/test15.c.o
+[ 53%] Building C object test/CMakeFiles/test1.dir/test1.c.o
+[ 54%] Building C object test/CMakeFiles/test2.dir/test2.c.o
+[ 56%] Linking C shared library libpaho-mqtt3a.so
+[ 58%] Linking C executable test2
+[ 58%] Built target test2
+[ 58%] Built target paho-mqtt3a
+Consolidate compiler generated dependencies of target test10
+Consolidate compiler generated dependencies of target test_sync_session_present
+[ 59%] Building C object test/CMakeFiles/test10.dir/test10.c.o
+[ 61%] Building C object test/CMakeFiles/test_sync_session_present.dir/test_sync_session_present.c.o
+[ 62%] Linking C executable test1
+[ 64%] Linking C executable test15
+[ 64%] Built target test1
+[ 64%] Built target test15
+Consolidate compiler generated dependencies of target test_connect_destroy
+Consolidate compiler generated dependencies of target MQTTVersion
+[ 66%] Building C object test/CMakeFiles/test_connect_destroy.dir/test_connect_destroy.c.o
+[ 67%] Building C object src/CMakeFiles/MQTTVersion.dir/MQTTVersion.c.o
+[ 69%] Linking C executable test_sync_session_present
+[ 70%] Linking C executable test_connect_destroy
+[ 70%] Built target test_sync_session_present
+[ 72%] Linking C executable MQTTVersion
+Consolidate compiler generated dependencies of target test4
+[ 74%] Building C object test/CMakeFiles/test4.dir/test4.c.o
+[ 74%] Built target test_connect_destroy
+Consolidate compiler generated dependencies of target test45
+[ 74%] Built target MQTTVersion
+Consolidate compiler generated dependencies of target test6
+[ 75%] Building C object test/CMakeFiles/test45.dir/test45.c.o
+[ 77%] Building C object test/CMakeFiles/test6.dir/test6.c.o
+[ 79%] Linking C executable test10
+[ 79%] Built target test10
+[ 80%] Linking C executable test6
+Consolidate compiler generated dependencies of target test8
+[ 82%] Building C object test/CMakeFiles/test8.dir/test8.c.o
+[ 82%] Built target test6
+Consolidate compiler generated dependencies of target test9
+[ 83%] Building C object test/CMakeFiles/test9.dir/test9.c.o
+[ 85%] Linking C executable test4
+[ 85%] Built target test4
+Consolidate compiler generated dependencies of target test95
+[ 87%] Building C object test/CMakeFiles/test95.dir/test95.c.o
+[ 88%] Linking C executable test45
+[ 88%] Built target test45
+Consolidate compiler generated dependencies of target test11
+[ 90%] Building C object test/CMakeFiles/test11.dir/test11.c.o
+[ 91%] Linking C executable test8
+[ 91%] Built target test8
+Consolidate compiler generated dependencies of target test_issue373
+[ 93%] Building C object test/CMakeFiles/test_issue373.dir/test_issue373.c.o
+[ 95%] Linking C executable test_issue373
+[ 95%] Built target test_issue373
+[ 96%] Linking C executable test95
+[ 96%] Built target test95
+[ 98%] Linking C executable test11
+[ 98%] Built target test11
+[100%] Linking C executable test9
+[100%] Built target test9

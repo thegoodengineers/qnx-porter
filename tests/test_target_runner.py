@@ -14,6 +14,9 @@ def test_verdict_follows_ctest_rules():
     assert verdict(0, "all good", {"PASS_REGULAR_EXPRESSION": ["good"]}) == "pass"
     assert verdict(0, "meh", {"PASS_REGULAR_EXPRESSION": ["good"]}) == "fail"
     assert verdict(0, "ERROR x", {"FAIL_REGULAR_EXPRESSION": ["ERROR"]}) == "fail"
+    # cmocka's XML tests: CMake's `.` matches newlines (the run on QNX passed, our first verdict said fail)
+    xml = '<testcase name="a" time="0.0" >\n        </testcase>'
+    assert verdict(0, xml, {"PASS_REGULAR_EXPRESSION": ['<testcase name="a" time="[0-9.]+" >.*</testcase>']}) == "pass"
 
 
 def test_same_path_runs_unchanged_and_otherwise_remaps():

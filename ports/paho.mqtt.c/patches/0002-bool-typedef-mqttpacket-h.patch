@@ -1,0 +1,19 @@
+Subject: [qnx-porter 0002] bool-typedef
+Source: deterministic rule
+Reason: src/MQTTPacket.h defines its own `bool`, but on QNX 8.0 <sys/socket.h> already includes <stdbool.h> (via io-sock/types_fbsd.h), so `bool` is taken. The typedef is skipped when stdbool's bool is visible. Note: bool is then _Bool, not unsigned int, in those files.
+Error: /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+---
+diff --git a/src/MQTTPacket.h b/src/MQTTPacket.h
+index fd384ae..ecdae83 100644
+--- a/src/MQTTPacket.h
++++ b/src/MQTTPacket.h
+@@ -28,7 +28,9 @@
+ #include "LinkedList.h"
+ #include "Clients.h"
+ 
++#ifndef __bool_true_false_are_defined  /* qnx-porter: QNX's <sys/socket.h> includes <stdbool.h> */
+ typedef unsigned int bool;
++#endif
+ typedef void* (*pf)(int, unsigned char, char*, size_t);
+ 
+ #include "MQTTProperties.h"

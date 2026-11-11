@@ -1,0 +1,33 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/json-c/work/build); every test command runs on root@172.31.1.11 over ssh
+PASS  test1 (exit 0)
+PASS  test2 (exit 0)
+PASS  test4 (exit 0)
+PASS  testReplaceExisting (exit 0)
+PASS  test_cast (exit 0)
+PASS  test_charcase (exit 0)
+PASS  test_compare (exit 0)
+PASS  test_deep_copy (exit 0)
+PASS  test_double_serializer (exit 0)
+PASS  test_float (exit 0)
+PASS  test_int_add (exit 0)
+PASS  test_int_get (exit 0)
+PASS  test_locale (exit 0)
+PASS  test_null (exit 0)
+PASS  test_parse (exit 0)
+PASS  test_parse_int64 (exit 0)
+PASS  test_printbuf (exit 0)
+PASS  test_set_serializer (exit 0)
+PASS  test_set_value (exit 0)
+PASS  test_strerror (exit 0)
+PASS  test_util_file (exit 0)
+PASS  test_visit (exit 0)
+PASS  test_object_iterator (exit 0)
+PASS  test_json_pointer (exit 0)
+FAIL  test_json_patch (exit 1)
+    Memory fault (core dumped) 
+    ERROR: "test_json_patch /home/chirag/qnx-porter/ports/json-c/work/src/tests" exited with non-zero exit status: 139
+    ERROR: "test_json_patch /home/chirag/qnx-porter/ports/json-c/work/src/tests" (test_json_patch) failed (set VERBOSE=1 to see full output):
+    + diff /home/chirag/qnx-porter/ports/json-c/work/src/tests/test_json_patch.expected testSubDir/test_json_patch.test/test_json_patch.out
+    cp "testSubDir/test_json_patch.test/test_json_patch.out" "/home/chirag/qnx-porter/ports/json-c/work/src/tests/test_json_patch.expected"
+
+24/25 tests passed on the QNX target

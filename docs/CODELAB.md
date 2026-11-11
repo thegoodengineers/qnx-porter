@@ -102,11 +102,16 @@ The log has five stages:
 1. **fetch**: a shallow clone at the tag, tagged `qnx-porter-base`, so every later change is a diff against upstream.
 2. **build system**: `CMakeLists.txt` was found, so CMake.
 3. **build OK / rounds**: build with qcc, parse the errors, apply rules, rebuild. Each `fix` line names its rule.
-   A library that is already portable builds in round 1 with no fixes. That is a good result too.
+   json-c needs no fixes: our run printed `[3/5] build OK after 1 round(s)`. A library that is already
+   portable is a good result too; try `yyjson` (tag `0.10.0`, `--arg -DYYJSON_BUILD_TESTS=ON`) to watch the
+   `link-libm` rule fire.
 4. **tests on target**: the build tree is copied to `/data/qnx-porter` on QNX, and ctest runs json-c's own
    tests. Each test binary runs **on QNX** through `work/qnx-run`, which the tool passes to CMake as
    `CMAKE_CROSSCOMPILING_EMULATOR`.
 5. **report**: `ports/json-c/REPORT.md`.
+
+Our run ended with `24/25 tests passed`. The one failure, `test_json_patch`, is a real "Memory fault" on
+QNX that we have not diagnosed yet: look at the bottom of `ports/json-c/logs/tests.log`.
 
 Open the toolchain the tool generated:
 ```bash
@@ -135,11 +140,13 @@ If you disagree with a change, you have the error, the rule and the reason in on
 
 Now see for yourself that the tests ran on QNX, not on your host:
 ```bash
-file ports/json-c/work/build/tests/test1     # its interpreter is QNX's dynamic linker (ldqnx...), not ld-linux
-ctest --test-dir ports/json-c/work/build -R test1 -V | grep -E "Test command|Passed|Failed"
+file ports/json-c/work/build/tests/test1     # its interpreter is QNX's /usr/lib/ldqnx-64.so.2
+head -3 ports/json-c/logs/tests.log
+ssh root@172.31.1.11 ls -l /home            # a QNX path-space link to /data/qnx-porter/home
 ```
-The `Test command` line starts with `.../work/qnx-run`: ctest called the wrapper, the wrapper ran `test1` on
-172.31.1.11 over ssh.
+`tests.log` starts with the list ctest gave (`ctest --show-only=json-v1`) and then one line per test, each
+run on 172.31.1.11 over ssh. json-c's tests are shell scripts; CMake's cross-compiling emulator never wraps
+scripts, which is why qnx-porter runs every ctest command on QNX itself (`ctest_on_target()`).
 
 Exercise: apply the port to a clean checkout and build it yourself.
 ```bash

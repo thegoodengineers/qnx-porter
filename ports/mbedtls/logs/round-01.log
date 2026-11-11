@@ -1,0 +1,1768 @@
+$ cmake -S /home/chirag/qnx-porter/ports/mbedtls/work/src -B /home/chirag/qnx-porter/ports/mbedtls/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/mbedtls/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/mbedtls/work/qnx-run -DENABLE_PROGRAMS=OFF
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/mbedtls/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/mbedtls/work/build -j 4 -- -k
+[  0%] Building C object 3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m_driver_entrypoints.c.o
+[  0%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/asn1_helpers.c.o
+[  0%] Building C object CMakeFiles/mbedtls_test_helpers.dir/tests/src/test_helpers/ssl_helpers.c.o
+[  0%] Building C object 3rdparty/everest/CMakeFiles/everest.dir/library/everest.c.o
+[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/bignum_helpers.c.o
+[  1%] Building C object 3rdparty/p256-m/CMakeFiles/p256m.dir/p256-m/p256-m.c.o
+[  1%] Building C object 3rdparty/everest/CMakeFiles/everest.dir/library/x25519.c.o
+[  1%] Building C object 3rdparty/everest/CMakeFiles/everest.dir/library/Hacl_Curve25519_joined.c.o
+[  1%] Linking C static library libp256m.a
+[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/certs.c.o
+[  1%] Linking C static library libeverest.a
+[  1%] Built target p256m
+[  1%] Built target everest
+[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/hash.c.o
+[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/platform_builtin_keys.c.o
+[  1%] Built target test_suite_psa_generated_data
+[  1%] Built target test_suite_bignum_generated_data
+[  1%] Built target test_suite_config_generated_data
+[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_aead.c.o
+[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_asymmetric_encryption.c.o
+[  2%] Built target test_suite_ecp_generated_data
+[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_key_agreement.c.o
+[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_cipher.c.o
+[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_key_management.c.o
+[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_mac.c.o
+[  2%] Building C object library/CMakeFiles/mbedcrypto.dir/aes.c.o
+[  3%] Building C object library/CMakeFiles/mbedcrypto.dir/aesni.c.o
+[  3%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_pake.c.o
+[  4%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_signature.c.o
+[  4%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/fake_external_rng_for_test.c.o
+[  4%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/helpers.c.o
+[  4%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_crypto_helpers.c.o
+[  4%] Building C object library/CMakeFiles/mbedcrypto.dir/aesce.c.o
+[  4%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_crypto_stubs.c.o
+[  5%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_exercise_key.c.o
+[  5%] Building C object library/CMakeFiles/mbedcrypto.dir/aria.c.o
+[  5%] Built target mbedtls_test_helpers
+[  5%] Building C object library/CMakeFiles/mbedcrypto.dir/asn1parse.c.o
+[  5%] Building C object library/CMakeFiles/mbedcrypto.dir/asn1write.c.o
+[  6%] Building C object library/CMakeFiles/mbedcrypto.dir/base64.c.o
+[  6%] Building C object library/CMakeFiles/mbedcrypto.dir/bignum.c.o
+[  6%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_memory_poisoning_wrappers.c.o
+[  6%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_test_wrappers.c.o
+[  6%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/random.c.o
+[  6%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/test_memory.c.o
+[  6%] Building C object library/CMakeFiles/mbedcrypto.dir/bignum_core.c.o
+[  7%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/threading_helpers.c.o
+[  7%] Built target mbedtls_test
+[  7%] Building C object library/CMakeFiles/mbedcrypto.dir/bignum_mod.c.o
+[  7%] Building C object library/CMakeFiles/mbedcrypto.dir/bignum_mod_raw.c.o
+[  8%] Building C object library/CMakeFiles/mbedcrypto.dir/block_cipher.c.o
+[  8%] Building C object library/CMakeFiles/mbedcrypto.dir/camellia.c.o
+[  8%] Building C object library/CMakeFiles/mbedcrypto.dir/ccm.c.o
+[  8%] Building C object library/CMakeFiles/mbedcrypto.dir/chacha20.c.o
+[  8%] Building C object library/CMakeFiles/mbedcrypto.dir/chachapoly.c.o
+[  8%] Building C object library/CMakeFiles/mbedcrypto.dir/cipher.c.o
+[  9%] Building C object library/CMakeFiles/mbedcrypto.dir/cipher_wrap.c.o
+[  9%] Building C object library/CMakeFiles/mbedcrypto.dir/constant_time.c.o
+[  9%] Building C object library/CMakeFiles/mbedcrypto.dir/cmac.c.o
+[  9%] Building C object library/CMakeFiles/mbedcrypto.dir/ctr_drbg.c.o
+[  9%] Building C object library/CMakeFiles/mbedcrypto.dir/des.c.o
+[ 10%] Building C object library/CMakeFiles/mbedcrypto.dir/dhm.c.o
+[ 10%] Building C object library/CMakeFiles/mbedcrypto.dir/ecdh.c.o
+[ 10%] Building C object library/CMakeFiles/mbedcrypto.dir/ecdsa.c.o
+[ 10%] Building C object library/CMakeFiles/mbedcrypto.dir/ecjpake.c.o
+[ 10%] Building C object library/CMakeFiles/mbedcrypto.dir/ecp.c.o
+[ 11%] Building C object library/CMakeFiles/mbedcrypto.dir/ecp_curves.c.o
+[ 11%] Building C object library/CMakeFiles/mbedcrypto.dir/ecp_curves_new.c.o
+[ 11%] Building C object library/CMakeFiles/mbedcrypto.dir/entropy.c.o
+[ 11%] Building C object library/CMakeFiles/mbedcrypto.dir/entropy_poll.c.o
+[ 11%] Building C object library/CMakeFiles/mbedcrypto.dir/error.c.o
+[ 11%] Building C object library/CMakeFiles/mbedcrypto.dir/gcm.c.o
+[ 12%] Building C object library/CMakeFiles/mbedcrypto.dir/hkdf.c.o
+[ 12%] Building C object library/CMakeFiles/mbedcrypto.dir/hmac_drbg.c.o
+[ 12%] Building C object library/CMakeFiles/mbedcrypto.dir/lmots.c.o
+[ 12%] Building C object library/CMakeFiles/mbedcrypto.dir/lms.c.o
+[ 12%] Building C object library/CMakeFiles/mbedcrypto.dir/md.c.o
+[ 13%] Building C object library/CMakeFiles/mbedcrypto.dir/md5.c.o
+[ 12%] Building C object library/CMakeFiles/mbedcrypto.dir/memory_buffer_alloc.c.o
+[ 13%] Building C object library/CMakeFiles/mbedcrypto.dir/nist_kw.c.o
+[ 13%] Building C object library/CMakeFiles/mbedcrypto.dir/oid.c.o
+[ 13%] Building C object library/CMakeFiles/mbedcrypto.dir/padlock.c.o
+[ 14%] Building C object library/CMakeFiles/mbedcrypto.dir/pem.c.o
+[ 14%] Building C object library/CMakeFiles/mbedcrypto.dir/pk.c.o
+[ 14%] Building C object library/CMakeFiles/mbedcrypto.dir/pk_ecc.c.o
+[ 14%] Building C object library/CMakeFiles/mbedcrypto.dir/pk_wrap.c.o
+[ 14%] Building C object library/CMakeFiles/mbedcrypto.dir/pkcs12.c.o
+[ 15%] Building C object library/CMakeFiles/mbedcrypto.dir/pkparse.c.o
+[ 15%] Building C object library/CMakeFiles/mbedcrypto.dir/pkcs5.c.o
+[ 15%] Building C object library/CMakeFiles/mbedcrypto.dir/pkwrite.c.o
+[ 15%] Building C object library/CMakeFiles/mbedcrypto.dir/platform.c.o
+[ 15%] Building C object library/CMakeFiles/mbedcrypto.dir/platform_util.c.o
+[ 15%] Building C object library/CMakeFiles/mbedcrypto.dir/poly1305.c.o
+[ 16%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto.c.o
+[ 16%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_aead.c.o
+[ 16%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_cipher.c.o
+[ 16%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_client.c.o
+[ 17%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_ecp.c.o
+[ 17%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_driver_wrappers_no_static.c.o
+[ 17%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_ffdh.c.o
+[ 17%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_hash.c.o
+[ 17%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_mac.c.o
+[ 17%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_pake.c.o
+[ 17%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_rsa.c.o
+[ 18%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_se.c.o
+[ 18%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_slot_management.c.o
+[ 18%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_crypto_storage.c.o
+[ 18%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_its_file.c.o
+[ 18%] Building C object library/CMakeFiles/mbedcrypto.dir/psa_util.c.o
+[ 19%] Building C object library/CMakeFiles/mbedcrypto.dir/ripemd160.c.o
+[ 19%] Building C object library/CMakeFiles/mbedcrypto.dir/rsa.c.o
+[ 19%] Building C object library/CMakeFiles/mbedcrypto.dir/rsa_alt_helpers.c.o
+[ 19%] Building C object library/CMakeFiles/mbedcrypto.dir/sha1.c.o
+[ 19%] Building C object library/CMakeFiles/mbedcrypto.dir/sha256.c.o
+[ 20%] Building C object library/CMakeFiles/mbedcrypto.dir/sha512.c.o
+[ 20%] Building C object library/CMakeFiles/mbedcrypto.dir/sha3.c.o
+[ 20%] Building C object library/CMakeFiles/mbedcrypto.dir/threading.c.o
+[ 20%] Building C object library/CMakeFiles/mbedcrypto.dir/timing.c.o
+[ 20%] Building C object library/CMakeFiles/mbedcrypto.dir/version.c.o
+[ 20%] Building C object library/CMakeFiles/mbedcrypto.dir/version_features.c.o
+[ 21%] Linking C static library libmbedcrypto.a
+[ 21%] Built target mbedcrypto
+[ 21%] Building C object library/CMakeFiles/mbedx509.dir/pkcs7.c.o
+[ 22%] Building C object library/CMakeFiles/mbedx509.dir/x509_crl.c.o
+[ 22%] Building C object library/CMakeFiles/mbedx509.dir/x509_create.c.o
+[ 22%] Building C object library/CMakeFiles/mbedx509.dir/x509.c.o
+[ 22%] Building C object library/CMakeFiles/mbedx509.dir/x509_crt.c.o
+[ 22%] Building C object library/CMakeFiles/mbedx509.dir/x509_csr.c.o
+[ 22%] Building C object library/CMakeFiles/mbedx509.dir/x509write.c.o
+[ 22%] Building C object library/CMakeFiles/mbedx509.dir/x509write_crt.c.o
+[ 22%] Building C object library/CMakeFiles/mbedx509.dir/x509write_csr.c.o
+[ 23%] Linking C static library libmbedx509.a
+[ 23%] Built target mbedx509
+[ 23%] Building C object library/CMakeFiles/mbedtls.dir/debug.c.o
+[ 23%] Building C object library/CMakeFiles/mbedtls.dir/mps_reader.c.o
+[ 23%] Building C object library/CMakeFiles/mbedtls.dir/mps_trace.c.o
+[ 23%] Building C object library/CMakeFiles/mbedtls.dir/net_sockets.c.o
+[ 24%] Building C object library/CMakeFiles/mbedtls.dir/ssl_cache.c.o
+[ 24%] Building C object library/CMakeFiles/mbedtls.dir/ssl_ciphersuites.c.o
+[ 24%] Building C object library/CMakeFiles/mbedtls.dir/ssl_client.c.o
+[ 24%] Building C object library/CMakeFiles/mbedtls.dir/ssl_cookie.c.o
+[ 24%] Building C object library/CMakeFiles/mbedtls.dir/ssl_debug_helpers_generated.c.o
+[ 25%] Building C object library/CMakeFiles/mbedtls.dir/ssl_msg.c.o
+[ 25%] Building C object library/CMakeFiles/mbedtls.dir/ssl_ticket.c.o
+[ 25%] Building C object library/CMakeFiles/mbedtls.dir/ssl_tls.c.o
+[ 25%] Building C object library/CMakeFiles/mbedtls.dir/ssl_tls12_client.c.o
+[ 25%] Building C object library/CMakeFiles/mbedtls.dir/ssl_tls12_server.c.o
+[ 25%] Building C object library/CMakeFiles/mbedtls.dir/ssl_tls13_keys.c.o
+[ 26%] Building C object library/CMakeFiles/mbedtls.dir/ssl_tls13_server.c.o
+[ 26%] Building C object library/CMakeFiles/mbedtls.dir/ssl_tls13_client.c.o
+[ 26%] Building C object library/CMakeFiles/mbedtls.dir/ssl_tls13_generic.c.o
+[ 26%] Linking C static library libmbedtls.a
+[ 26%] Built target mbedtls
+[ 26%] Generating test_suite_aes.cbc.c
+[ 26%] Generating test_suite_aes.cfb.c
+[ 26%] Generating test_suite_aes.ecb.c
+[ 27%] Generating test_suite_aes.ctr.c
+[ 27%] Building C object tests/CMakeFiles/test_suite_aes.ctr.dir/test_suite_aes.ctr.c.o
+[ 27%] Building C object tests/CMakeFiles/test_suite_aes.ecb.dir/test_suite_aes.ecb.c.o
+[ 28%] Building C object tests/CMakeFiles/test_suite_aes.cbc.dir/test_suite_aes.cbc.c.o
+[ 28%] Building C object tests/CMakeFiles/test_suite_aes.cfb.dir/test_suite_aes.cfb.c.o
+[ 28%] Linking C executable test_suite_aes.cbc
+[ 28%] Linking C executable test_suite_aes.cfb
+[ 28%] Linking C executable test_suite_aes.ctr
+[ 28%] Generating test_suite_aes.rest.c
+[ 29%] Generating test_suite_aes.ofb.c
+[ 29%] Linking C executable test_suite_aes.ecb
+[ 29%] Building C object tests/CMakeFiles/test_suite_aes.rest.dir/test_suite_aes.rest.c.o
+[ 29%] Generating test_suite_aes.xts.c
+[ 29%] Building C object tests/CMakeFiles/test_suite_aes.ofb.dir/test_suite_aes.ofb.c.o
+[ 29%] Generating test_suite_alignment.c
+[ 30%] Building C object tests/CMakeFiles/test_suite_alignment.dir/test_suite_alignment.c.o
+[ 30%] Building C object tests/CMakeFiles/test_suite_aes.xts.dir/test_suite_aes.xts.c.o
+[ 30%] Linking C executable test_suite_aes.ofb
+[ 30%] Generating test_suite_aria.c
+[ 30%] Building C object tests/CMakeFiles/test_suite_aria.dir/test_suite_aria.c.o
+[ 30%] Linking C executable test_suite_alignment
+[ 31%] Linking C executable test_suite_aes.rest
+[ 31%] Linking C executable test_suite_aes.xts
+[ 31%] Generating test_suite_asn1parse.c
+[ 32%] Generating test_suite_base64.c
+[ 32%] Generating test_suite_asn1write.c
+[ 33%] Building C object tests/CMakeFiles/test_suite_asn1parse.dir/test_suite_asn1parse.c.o
+[ 33%] Building C object tests/CMakeFiles/test_suite_base64.dir/test_suite_base64.c.o
+[ 33%] Building C object tests/CMakeFiles/test_suite_asn1write.dir/test_suite_asn1write.c.o
+[ 33%] Linking C executable test_suite_aria
+[ 33%] Generating test_suite_bignum.generated.c
+[ 33%] Building C object tests/CMakeFiles/test_suite_bignum.generated.dir/test_suite_bignum.generated.c.o
+[ 33%] Linking C executable test_suite_base64
+[ 33%] Generating test_suite_bignum.misc.c
+[ 33%] Linking C executable test_suite_asn1parse
+[ 33%] Linking C executable test_suite_asn1write
+[ 33%] Building C object tests/CMakeFiles/test_suite_bignum.misc.dir/test_suite_bignum.misc.c.o
+[ 33%] Generating test_suite_bignum_core.misc.c
+[ 33%] Generating test_suite_bignum_core.generated.c
+[ 33%] Building C object tests/CMakeFiles/test_suite_bignum_core.misc.dir/test_suite_bignum_core.misc.c.o
+[ 33%] Building C object tests/CMakeFiles/test_suite_bignum_core.generated.dir/test_suite_bignum_core.generated.c.o
+[ 34%] Linking C executable test_suite_bignum.generated
+[ 34%] Generating test_suite_bignum_mod.generated.c
+[ 35%] Building C object tests/CMakeFiles/test_suite_bignum_mod.generated.dir/test_suite_bignum_mod.generated.c.o
+[ 35%] Linking C executable test_suite_bignum.misc
+[ 35%] Linking C executable test_suite_bignum_mod.generated
+[ 35%] Generating test_suite_bignum_mod.misc.c
+[ 36%] Generating test_suite_bignum_mod_raw.c
+[ 36%] Linking C executable test_suite_bignum_core.misc
+[ 37%] Linking C executable test_suite_bignum_core.generated
+[ 37%] Building C object tests/CMakeFiles/test_suite_bignum_mod_raw.dir/test_suite_bignum_mod_raw.c.o
+[ 37%] Generating test_suite_bignum_mod_raw.generated.c
+[ 37%] Building C object tests/CMakeFiles/test_suite_bignum_mod.misc.dir/test_suite_bignum_mod.misc.c.o
+[ 38%] Generating test_suite_bignum_random.c
+[ 38%] Building C object tests/CMakeFiles/test_suite_bignum_random.dir/test_suite_bignum_random.c.o
+[ 38%] Building C object tests/CMakeFiles/test_suite_bignum_mod_raw.generated.dir/test_suite_bignum_mod_raw.generated.c.o
+[ 38%] Linking C executable test_suite_bignum_mod_raw
+[ 38%] Generating test_suite_block_cipher.c
+[ 38%] Building C object tests/CMakeFiles/test_suite_block_cipher.dir/test_suite_block_cipher.c.o
+[ 38%] Linking C executable test_suite_bignum_mod.misc
+[ 38%] Linking C executable test_suite_bignum_random
+[ 38%] Generating test_suite_block_cipher.psa.c
+[ 38%] Generating test_suite_camellia.c
+[ 38%] Linking C executable test_suite_bignum_mod_raw.generated
+[ 38%] Building C object tests/CMakeFiles/test_suite_block_cipher.psa.dir/test_suite_block_cipher.psa.c.o
+[ 39%] Linking C executable test_suite_block_cipher
+[ 39%] Generating test_suite_ccm.c
+[ 40%] Building C object tests/CMakeFiles/test_suite_camellia.dir/test_suite_camellia.c.o
+[ 40%] Generating test_suite_chacha20.c
+[ 41%] Building C object tests/CMakeFiles/test_suite_chacha20.dir/test_suite_chacha20.c.o
+[ 41%] Building C object tests/CMakeFiles/test_suite_ccm.dir/test_suite_ccm.c.o
+[ 41%] Linking C executable test_suite_block_cipher.psa
+[ 41%] Generating test_suite_chachapoly.c
+[ 41%] Building C object tests/CMakeFiles/test_suite_chachapoly.dir/test_suite_chachapoly.c.o
+[ 41%] Linking C executable test_suite_camellia
+[ 42%] Generating test_suite_cipher.aes.c
+[ 42%] Linking C executable test_suite_chacha20
+[ 42%] Building C object tests/CMakeFiles/test_suite_cipher.aes.dir/test_suite_cipher.aes.c.o
+[ 42%] Generating test_suite_cipher.aria.c
+[ 42%] Linking C executable test_suite_chachapoly
+[ 42%] Building C object tests/CMakeFiles/test_suite_cipher.aria.dir/test_suite_cipher.aria.c.o
+[ 42%] Generating test_suite_cipher.camellia.c
+[ 42%] Building C object tests/CMakeFiles/test_suite_cipher.camellia.dir/test_suite_cipher.camellia.c.o
+[ 42%] Linking C executable test_suite_ccm
+[ 42%] Generating test_suite_cipher.ccm.c
+[ 42%] Building C object tests/CMakeFiles/test_suite_cipher.ccm.dir/test_suite_cipher.ccm.c.o
+[ 42%] Linking C executable test_suite_cipher.aes
+[ 43%] Linking C executable test_suite_cipher.aria
+[ 43%] Generating test_suite_cipher.chacha20.c
+[ 43%] Generating test_suite_cipher.chachapoly.c
+[ 43%] Building C object tests/CMakeFiles/test_suite_cipher.chacha20.dir/test_suite_cipher.chacha20.c.o
+[ 43%] Linking C executable test_suite_cipher.camellia
+[ 44%] Building C object tests/CMakeFiles/test_suite_cipher.chachapoly.dir/test_suite_cipher.chachapoly.c.o
+[ 44%] Generating test_suite_cipher.des.c
+[ 44%] Building C object tests/CMakeFiles/test_suite_cipher.des.dir/test_suite_cipher.des.c.o
+[ 45%] Linking C executable test_suite_cipher.ccm
+[ 46%] Generating test_suite_cipher.gcm.c
+[ 46%] Building C object tests/CMakeFiles/test_suite_cipher.gcm.dir/test_suite_cipher.gcm.c.o
+[ 46%] Linking C executable test_suite_cipher.chacha20
+[ 46%] Linking C executable test_suite_cipher.chachapoly
+[ 46%] Generating test_suite_cipher.misc.c
+[ 47%] Generating test_suite_cipher.nist_kw.c
+[ 47%] Building C object tests/CMakeFiles/test_suite_cipher.misc.dir/test_suite_cipher.misc.c.o
+[ 47%] Building C object tests/CMakeFiles/test_suite_cipher.nist_kw.dir/test_suite_cipher.nist_kw.c.o
+[ 47%] Linking C executable test_suite_cipher.des
+[ 47%] Generating test_suite_cipher.null.c
+[ 47%] Linking C executable test_suite_cipher.gcm
+[ 47%] Building C object tests/CMakeFiles/test_suite_cipher.null.dir/test_suite_cipher.null.c.o
+[ 47%] Generating test_suite_cipher.padding.c
+[ 47%] Building C object tests/CMakeFiles/test_suite_cipher.padding.dir/test_suite_cipher.padding.c.o
+[ 47%] Linking C executable test_suite_cipher.nist_kw
+[ 47%] Linking C executable test_suite_cipher.misc
+[ 47%] Generating test_suite_cmac.c
+[ 47%] Generating test_suite_common.c
+[ 48%] Building C object tests/CMakeFiles/test_suite_cmac.dir/test_suite_cmac.c.o
+[ 48%] Building C object tests/CMakeFiles/test_suite_common.dir/test_suite_common.c.o
+[ 49%] Linking C executable test_suite_cipher.null
+[ 49%] Linking C executable test_suite_cmac
+[ 50%] Generating test_suite_config.crypto_combinations.c
+[ 50%] Generating test_suite_config.mbedtls_boolean.c
+[ 50%] Building C object tests/CMakeFiles/test_suite_config.crypto_combinations.dir/test_suite_config.crypto_combinations.c.o
+[ 50%] Linking C executable test_suite_cipher.padding
+[ 50%] Building C object tests/CMakeFiles/test_suite_config.mbedtls_boolean.dir/test_suite_config.mbedtls_boolean.c.o
+[ 51%] Generating test_suite_config.psa_boolean.c
+[ 51%] Building C object tests/CMakeFiles/test_suite_config.psa_boolean.dir/test_suite_config.psa_boolean.c.o
+[ 51%] Linking C executable test_suite_common
+[ 51%] Linking C executable test_suite_config.crypto_combinations
+[ 51%] Generating test_suite_config.psa_combinations.c
+[ 51%] Generating test_suite_config.tls_combinations.c
+[ 51%] Building C object tests/CMakeFiles/test_suite_config.psa_combinations.dir/test_suite_config.psa_combinations.c.o
+[ 51%] Linking C executable test_suite_config.mbedtls_boolean
+[ 51%] Linking C executable test_suite_config.psa_boolean
+[ 51%] Building C object tests/CMakeFiles/test_suite_config.tls_combinations.dir/test_suite_config.tls_combinations.c.o
+[ 51%] Generating test_suite_constant_time.c
+[ 51%] Generating test_suite_constant_time_hmac.c
+[ 52%] Building C object tests/CMakeFiles/test_suite_constant_time.dir/test_suite_constant_time.c.o
+[ 53%] Linking C executable test_suite_config.psa_combinations
+[ 53%] Building C object tests/CMakeFiles/test_suite_constant_time_hmac.dir/test_suite_constant_time_hmac.c.o
+[ 53%] Generating test_suite_ctr_drbg.c
+[ 53%] Linking C executable test_suite_config.tls_combinations
+[ 54%] Building C object tests/CMakeFiles/test_suite_ctr_drbg.dir/test_suite_ctr_drbg.c.o
+[ 54%] Generating test_suite_debug.c
+[ 54%] Linking C executable test_suite_constant_time_hmac
+[ 54%] Building C object tests/CMakeFiles/test_suite_debug.dir/test_suite_debug.c.o
+[ 55%] Generating test_suite_des.c
+[ 55%] Building C object tests/CMakeFiles/test_suite_des.dir/test_suite_des.c.o
+[ 55%] Linking C executable test_suite_debug
+[ 55%] Generating test_suite_dhm.c
+[ 55%] Linking C executable test_suite_constant_time
+[ 55%] Building C object tests/CMakeFiles/test_suite_dhm.dir/test_suite_dhm.c.o
+[ 55%] Linking C executable test_suite_des
+[ 55%] Generating test_suite_ecdh.c
+[ 55%] Linking C executable test_suite_ctr_drbg
+[ 55%] Generating test_suite_ecdsa.c
+[ 55%] Generating test_suite_ecjpake.c
+[ 55%] Building C object tests/CMakeFiles/test_suite_ecdsa.dir/test_suite_ecdsa.c.o
+[ 55%] Building C object tests/CMakeFiles/test_suite_ecjpake.dir/test_suite_ecjpake.c.o
+[ 55%] Building C object tests/CMakeFiles/test_suite_ecdh.dir/test_suite_ecdh.c.o
+[ 56%] Linking C executable test_suite_dhm
+[ 56%] Linking C executable test_suite_ecjpake
+[ 56%] Linking C executable test_suite_ecdh
+[ 56%] Generating test_suite_ecp.c
+[ 56%] Generating test_suite_ecp.generated.c
+[ 57%] Generating test_suite_entropy.c
+[ 57%] Building C object tests/CMakeFiles/test_suite_entropy.dir/test_suite_entropy.c.o
+[ 58%] Building C object tests/CMakeFiles/test_suite_ecp.dir/test_suite_ecp.c.o
+[ 59%] Linking C executable test_suite_ecdsa
+[ 59%] Building C object tests/CMakeFiles/test_suite_ecp.generated.dir/test_suite_ecp.generated.c.o
+[ 59%] Generating test_suite_error.c
+[ 59%] Building C object tests/CMakeFiles/test_suite_error.dir/test_suite_error.c.o
+[ 59%] Linking C executable test_suite_entropy
+[ 60%] Generating test_suite_gcm.aes128_de.c
+[ 60%] Building C object tests/CMakeFiles/test_suite_gcm.aes128_de.dir/test_suite_gcm.aes128_de.c.o
+[ 60%] Linking C executable test_suite_error
+[ 60%] Generating test_suite_gcm.aes128_en.c
+[ 60%] Building C object tests/CMakeFiles/test_suite_gcm.aes128_en.dir/test_suite_gcm.aes128_en.c.o
+[ 60%] Linking C executable test_suite_ecp.generated
+[ 60%] Linking C executable test_suite_ecp
+[ 60%] Generating test_suite_gcm.aes192_de.c
+[ 60%] Generating test_suite_gcm.aes192_en.c
+[ 61%] Building C object tests/CMakeFiles/test_suite_gcm.aes192_en.dir/test_suite_gcm.aes192_en.c.o
+[ 61%] Linking C executable test_suite_gcm.aes128_de
+[ 61%] Building C object tests/CMakeFiles/test_suite_gcm.aes192_de.dir/test_suite_gcm.aes192_de.c.o
+[ 61%] Generating test_suite_gcm.aes256_de.c
+[ 61%] Building C object tests/CMakeFiles/test_suite_gcm.aes256_de.dir/test_suite_gcm.aes256_de.c.o
+[ 62%] Linking C executable test_suite_gcm.aes128_en
+[ 62%] Generating test_suite_gcm.aes256_en.c
+[ 62%] Linking C executable test_suite_gcm.aes192_de
+[ 63%] Building C object tests/CMakeFiles/test_suite_gcm.aes256_en.dir/test_suite_gcm.aes256_en.c.o
+[ 63%] Generating test_suite_gcm.camellia.c
+[ 63%] Linking C executable test_suite_gcm.aes192_en
+[ 63%] Linking C executable test_suite_gcm.aes256_de
+[ 64%] Generating test_suite_gcm.misc.c
+[ 64%] Building C object tests/CMakeFiles/test_suite_gcm.camellia.dir/test_suite_gcm.camellia.c.o
+[ 64%] Generating test_suite_hkdf.c
+[ 64%] Building C object tests/CMakeFiles/test_suite_gcm.misc.dir/test_suite_gcm.misc.c.o
+[ 64%] Building C object tests/CMakeFiles/test_suite_hkdf.dir/test_suite_hkdf.c.o
+[ 64%] Linking C executable test_suite_gcm.aes256_en
+[ 65%] Linking C executable test_suite_hkdf
+[ 65%] Generating test_suite_hmac_drbg.misc.c
+[ 65%] Generating test_suite_hmac_drbg.no_reseed.c
+[ 65%] Building C object tests/CMakeFiles/test_suite_hmac_drbg.misc.dir/test_suite_hmac_drbg.misc.c.o
+[ 65%] Linking C executable test_suite_gcm.camellia
+[ 65%] Building C object tests/CMakeFiles/test_suite_hmac_drbg.no_reseed.dir/test_suite_hmac_drbg.no_reseed.c.o
+[ 65%] Linking C executable test_suite_gcm.misc
+[ 65%] Generating test_suite_hmac_drbg.nopr.c
+[ 65%] Generating test_suite_hmac_drbg.pr.c
+[ 65%] Building C object tests/CMakeFiles/test_suite_hmac_drbg.nopr.dir/test_suite_hmac_drbg.nopr.c.o
+[ 66%] Building C object tests/CMakeFiles/test_suite_hmac_drbg.pr.dir/test_suite_hmac_drbg.pr.c.o
+[ 67%] Linking C executable test_suite_hmac_drbg.no_reseed
+[ 67%] Linking C executable test_suite_hmac_drbg.misc
+[ 67%] Generating test_suite_lmots.c
+[ 68%] Generating test_suite_lms.c
+[ 68%] Building C object tests/CMakeFiles/test_suite_lms.dir/test_suite_lms.c.o
+[ 68%] Linking C executable test_suite_hmac_drbg.pr
+[ 68%] Building C object tests/CMakeFiles/test_suite_lmots.dir/test_suite_lmots.c.o
+[ 68%] Generating test_suite_md.c
+[ 68%] Linking C executable test_suite_hmac_drbg.nopr
+[ 68%] Building C object tests/CMakeFiles/test_suite_md.dir/test_suite_md.c.o
+[ 69%] Generating test_suite_md.psa.c
+[ 69%] Building C object tests/CMakeFiles/test_suite_md.psa.dir/test_suite_md.psa.c.o
+[ 69%] Linking C executable test_suite_lmots
+[ 69%] Linking C executable test_suite_lms
+[ 69%] Generating test_suite_mdx.c
+[ 69%] Generating test_suite_memory_buffer_alloc.c
+[ 69%] Building C object tests/CMakeFiles/test_suite_mdx.dir/test_suite_mdx.c.o
+[ 69%] Building C object tests/CMakeFiles/test_suite_memory_buffer_alloc.dir/test_suite_memory_buffer_alloc.c.o
+[ 69%] Linking C executable test_suite_md
+[ 69%] Linking C executable test_suite_memory_buffer_alloc
+[ 69%] Linking C executable test_suite_md.psa
+[ 69%] Generating test_suite_mps.c
+[ 69%] Generating test_suite_net.c
+[ 70%] Linking C executable test_suite_mdx
+[ 70%] Generating test_suite_nist_kw.c
+[ 71%] Building C object tests/CMakeFiles/test_suite_mps.dir/test_suite_mps.c.o
+[ 71%] Building C object tests/CMakeFiles/test_suite_net.dir/test_suite_net.c.o
+[ 71%] Generating test_suite_oid.c
+[ 72%] Building C object tests/CMakeFiles/test_suite_nist_kw.dir/test_suite_nist_kw.c.o
+[ 72%] Building C object tests/CMakeFiles/test_suite_oid.dir/test_suite_oid.c.o
+[ 72%] Linking C executable test_suite_net
+[ 73%] Generating test_suite_pem.c
+[ 73%] Building C object tests/CMakeFiles/test_suite_pem.dir/test_suite_pem.c.o
+[ 73%] Linking C executable test_suite_oid
+[ 73%] Linking C executable test_suite_nist_kw
+[ 73%] Generating test_suite_pk.c
+[ 73%] Generating test_suite_pkcs12.c
+[ 73%] Building C object tests/CMakeFiles/test_suite_pk.dir/test_suite_pk.c.o
+[ 73%] Building C object tests/CMakeFiles/test_suite_pkcs12.dir/test_suite_pkcs12.c.o
+[ 73%] Linking C executable test_suite_mps
+[ 73%] Linking C executable test_suite_pem
+[ 73%] Generating test_suite_pkcs1_v15.c
+[ 73%] Generating test_suite_pkcs1_v21.c
+[ 74%] Building C object tests/CMakeFiles/test_suite_pkcs1_v15.dir/test_suite_pkcs1_v15.c.o
+[ 74%] Linking C executable test_suite_pkcs12
+[ 74%] Building C object tests/CMakeFiles/test_suite_pkcs1_v21.dir/test_suite_pkcs1_v21.c.o
+[ 74%] Generating test_suite_pkcs5.c
+[ 75%] Building C object tests/CMakeFiles/test_suite_pkcs5.dir/test_suite_pkcs5.c.o
+[ 75%] Linking C executable test_suite_pkcs1_v15
+[ 75%] Linking C executable test_suite_pkcs1_v21
+[ 75%] Linking C executable test_suite_pkcs5
+[ 75%] Generating test_suite_pkcs7.c
+[ 76%] Linking C executable test_suite_pk
+[ 77%] Generating test_suite_pkparse.c
+[ 77%] Generating test_suite_pkwrite.c
+[ 77%] Building C object tests/CMakeFiles/test_suite_pkparse.dir/test_suite_pkparse.c.o
+[ 77%] Generating test_suite_platform.c
+[ 77%] Building C object tests/CMakeFiles/test_suite_pkcs7.dir/test_suite_pkcs7.c.o
+[ 77%] Building C object tests/CMakeFiles/test_suite_pkwrite.dir/test_suite_pkwrite.c.o
+[ 77%] Building C object tests/CMakeFiles/test_suite_platform.dir/test_suite_platform.c.o
+[ 78%] Linking C executable test_suite_pkwrite
+[ 78%] Linking C executable test_suite_pkparse
+[ 78%] Linking C executable test_suite_platform
+[ 78%] Generating test_suite_platform_printf.c
+[ 78%] Generating test_suite_platform_util.c
+[ 78%] Generating test_suite_poly1305.c
+[ 78%] Building C object tests/CMakeFiles/test_suite_platform_util.dir/test_suite_platform_util.c.o
+[ 78%] Linking C executable test_suite_pkcs7
+[ 78%] Building C object tests/CMakeFiles/test_suite_platform_printf.dir/test_suite_platform_printf.c.o
+[ 79%] Building C object tests/CMakeFiles/test_suite_poly1305.dir/test_suite_poly1305.c.o
+[ 79%] Generating test_suite_psa_crypto.c
+[ 79%] Building C object tests/CMakeFiles/test_suite_psa_crypto.dir/test_suite_psa_crypto.c.o
+[ 79%] Linking C executable test_suite_poly1305
+[ 80%] Linking C executable test_suite_platform_printf
+[ 80%] Linking C executable test_suite_platform_util
+[ 81%] Generating test_suite_psa_crypto.pbkdf2.c
+[ 81%] Generating test_suite_psa_crypto_attributes.c
+[ 81%] Building C object tests/CMakeFiles/test_suite_psa_crypto_attributes.dir/test_suite_psa_crypto_attributes.c.o
+[ 82%] Generating test_suite_psa_crypto_driver_wrappers.c
+[ 82%] Building C object tests/CMakeFiles/test_suite_psa_crypto.pbkdf2.dir/test_suite_psa_crypto.pbkdf2.c.o
+[ 82%] Building C object tests/CMakeFiles/test_suite_psa_crypto_driver_wrappers.dir/test_suite_psa_crypto_driver_wrappers.c.o
+[ 82%] Linking C executable test_suite_psa_crypto_attributes
+[ 82%] Generating test_suite_psa_crypto_entropy.c
+[ 82%] Building C object tests/CMakeFiles/test_suite_psa_crypto_entropy.dir/test_suite_psa_crypto_entropy.c.o
+[ 82%] Linking C executable test_suite_psa_crypto_driver_wrappers
+[ 83%] Linking C executable test_suite_psa_crypto_entropy
+[ 83%] Generating test_suite_psa_crypto_generate_key.generated.c
+[ 83%] Generating test_suite_psa_crypto_hash.c
+[ 84%] Building C object tests/CMakeFiles/test_suite_psa_crypto_hash.dir/test_suite_psa_crypto_hash.c.o
+[ 84%] Building C object tests/CMakeFiles/test_suite_psa_crypto_generate_key.generated.dir/test_suite_psa_crypto_generate_key.generated.c.o
+[ 84%] Linking C executable test_suite_psa_crypto_hash
+[ 84%] Linking C executable test_suite_psa_crypto_generate_key.generated
+[ 84%] Generating test_suite_psa_crypto_init.c
+[ 84%] Building C object tests/CMakeFiles/test_suite_psa_crypto_init.dir/test_suite_psa_crypto_init.c.o
+[ 84%] Generating test_suite_psa_crypto_low_hash.generated.c
+[ 85%] Building C object tests/CMakeFiles/test_suite_psa_crypto_low_hash.generated.dir/test_suite_psa_crypto_low_hash.generated.c.o
+[ 85%] Linking C executable test_suite_psa_crypto_init
+[ 85%] Linking C executable test_suite_psa_crypto_low_hash.generated
+[ 85%] Generating test_suite_psa_crypto_memory.c
+[ 86%] Generating test_suite_psa_crypto_metadata.c
+[ 86%] Building C object tests/CMakeFiles/test_suite_psa_crypto_memory.dir/test_suite_psa_crypto_memory.c.o
+[ 86%] Building C object tests/CMakeFiles/test_suite_psa_crypto_metadata.dir/test_suite_psa_crypto_metadata.c.o
+[ 86%] Linking C executable test_suite_psa_crypto_memory
+[ 86%] Generating test_suite_psa_crypto_not_supported.generated.c
+[ 86%] Building C object tests/CMakeFiles/test_suite_psa_crypto_not_supported.generated.dir/test_suite_psa_crypto_not_supported.generated.c.o
+[ 87%] Linking C executable test_suite_psa_crypto_not_supported.generated
+[ 87%] Generating test_suite_psa_crypto_not_supported.misc.c
+[ 87%] Building C object tests/CMakeFiles/test_suite_psa_crypto_not_supported.misc.dir/test_suite_psa_crypto_not_supported.misc.c.o
+[ 87%] Linking C executable test_suite_psa_crypto_metadata
+[ 87%] Generating test_suite_psa_crypto_op_fail.generated.c
+[ 87%] Linking C executable test_suite_psa_crypto_not_supported.misc
+[ 87%] Generating test_suite_psa_crypto_op_fail.misc.c
+[ 87%] Building C object tests/CMakeFiles/test_suite_psa_crypto_op_fail.misc.dir/test_suite_psa_crypto_op_fail.misc.c.o
+[ 87%] Building C object tests/CMakeFiles/test_suite_psa_crypto_op_fail.generated.dir/test_suite_psa_crypto_op_fail.generated.c.o
+[ 87%] Linking C executable test_suite_psa_crypto_op_fail.misc
+[ 87%] Generating test_suite_psa_crypto_pake.c
+[ 88%] Building C object tests/CMakeFiles/test_suite_psa_crypto_pake.dir/test_suite_psa_crypto_pake.c.o
+[ 89%] Linking C executable test_suite_psa_crypto_op_fail.generated
+[ 89%] Generating test_suite_psa_crypto_persistent_key.c
+[ 89%] Building C object tests/CMakeFiles/test_suite_psa_crypto_persistent_key.dir/test_suite_psa_crypto_persistent_key.c.o
+[ 89%] Linking C executable test_suite_psa_crypto
+[ 90%] Generating test_suite_psa_crypto_se_driver_hal.c
+[ 90%] Building C object tests/CMakeFiles/test_suite_psa_crypto_se_driver_hal.dir/test_suite_psa_crypto_se_driver_hal.c.o
+[ 90%] Linking C executable test_suite_psa_crypto.pbkdf2
+[ 90%] Generating test_suite_psa_crypto_se_driver_hal_mocks.c
+[ 90%] Building C object tests/CMakeFiles/test_suite_psa_crypto_se_driver_hal_mocks.dir/test_suite_psa_crypto_se_driver_hal_mocks.c.o
+[ 90%] Linking C executable test_suite_psa_crypto_se_driver_hal
+[ 91%] Generating test_suite_psa_crypto_slot_management.c
+[ 91%] Linking C executable test_suite_psa_crypto_persistent_key
+[ 91%] Generating test_suite_psa_crypto_storage_format.current.c
+[ 91%] Linking C executable test_suite_psa_crypto_se_driver_hal_mocks
+[ 91%] Building C object tests/CMakeFiles/test_suite_psa_crypto_slot_management.dir/test_suite_psa_crypto_slot_management.c.o
+[ 91%] Linking C executable test_suite_psa_crypto_pake
+[ 91%] Generating test_suite_psa_crypto_storage_format.misc.c
+[ 91%] Generating test_suite_psa_crypto_storage_format.v0.c
+[ 91%] Building C object tests/CMakeFiles/test_suite_psa_crypto_storage_format.current.dir/test_suite_psa_crypto_storage_format.current.c.o
+[ 91%] Building C object tests/CMakeFiles/test_suite_psa_crypto_storage_format.misc.dir/test_suite_psa_crypto_storage_format.misc.c.o
+[ 92%] Building C object tests/CMakeFiles/test_suite_psa_crypto_storage_format.v0.dir/test_suite_psa_crypto_storage_format.v0.c.o
+[ 92%] Linking C executable test_suite_psa_crypto_storage_format.misc
+[ 93%] Linking C executable test_suite_psa_crypto_storage_format.current
+[ 93%] Generating test_suite_psa_crypto_util.c
+[ 93%] Linking C executable test_suite_psa_crypto_slot_management
+[ 93%] Generating test_suite_psa_its.c
+[ 93%] Building C object tests/CMakeFiles/test_suite_psa_crypto_util.dir/test_suite_psa_crypto_util.c.o
+[ 93%] Generating test_suite_random.c
+[ 94%] Building C object tests/CMakeFiles/test_suite_psa_its.dir/test_suite_psa_its.c.o
+[ 94%] Building C object tests/CMakeFiles/test_suite_random.dir/test_suite_random.c.o
+[ 94%] Linking C executable test_suite_psa_crypto_storage_format.v0
+[ 95%] Generating test_suite_rsa.c
+[ 95%] Linking C executable test_suite_psa_crypto_util
+[ 95%] Linking C executable test_suite_random
+[ 95%] Building C object tests/CMakeFiles/test_suite_rsa.dir/test_suite_rsa.c.o
+[ 95%] Linking C executable test_suite_psa_its
+[ 95%] Generating test_suite_shax.c
+[ 95%] Generating test_suite_ssl.c
+[ 95%] Generating test_suite_ssl_decrypt.misc.c
+[ 95%] Building C object tests/CMakeFiles/test_suite_shax.dir/test_suite_shax.c.o
+[ 95%] Building C object tests/CMakeFiles/test_suite_ssl.dir/test_suite_ssl.c.o
+[ 95%] Building C object tests/CMakeFiles/test_suite_ssl_decrypt.misc.dir/test_suite_ssl_decrypt.misc.c.o
+[ 96%] Linking C executable test_suite_ssl_decrypt.misc
+[ 97%] Linking C executable test_suite_shax
+[ 97%] Generating test_suite_test_helpers.c
+[ 97%] Generating test_suite_timing.c
+[ 97%] Building C object tests/CMakeFiles/test_suite_test_helpers.dir/test_suite_test_helpers.c.o
+[ 97%] Linking C executable test_suite_rsa
+[ 98%] Building C object tests/CMakeFiles/test_suite_timing.dir/test_suite_timing.c.o
+[ 98%] Generating test_suite_version.c
+[ 98%] Building C object tests/CMakeFiles/test_suite_version.dir/test_suite_version.c.o
+[ 98%] Linking C executable test_suite_test_helpers
+[ 99%] Generating test_suite_x509parse.c
+[ 99%] Building C object tests/CMakeFiles/test_suite_x509parse.dir/test_suite_x509parse.c.o
+[ 99%] Linking C executable test_suite_timing
+[ 99%] Linking C executable test_suite_version
+[ 99%] Generating test_suite_x509write.c
+[ 99%] Building C object tests/CMakeFiles/test_suite_x509write.dir/test_suite_x509write.c.o
+[ 99%] Linking C executable test_suite_ssl
+[100%] Linking C executable test_suite_x509write
+[100%] Linking C executable test_suite_x509parse
+/home/chirag/qnx-porter/ports/mbedtls/work/src/library/x509_crt.c: In function 'mbedtls_x509_crt_parse_path':
+/home/chirag/qnx-porter/ports/mbedtls/work/src/library/x509_crt.c:1621:20: warning: implicit declaration of function 'stat'; did you mean 'strcat'? [-Wimplicit-function-declaration]
+ 1621 |         } else if (stat(entry_name, &sb) == -1) {
+      |                    ^~~~
+      |                    strcat
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_aes.cbc.dir/build.make:160: tests/test_suite_aes.cbc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_aes.cbc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:903: tests/CMakeFiles/test_suite_aes.cbc.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_aes.cfb.dir/build.make:160: tests/test_suite_aes.cfb] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_aes.cfb.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:939: tests/CMakeFiles/test_suite_aes.cfb.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_aes.ctr.dir/build.make:160: tests/test_suite_aes.ctr] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_aes.ctr.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:975: tests/CMakeFiles/test_suite_aes.ctr.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_aes.ecb.dir/build.make:160: tests/test_suite_aes.ecb] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_aes.ecb.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1011: tests/CMakeFiles/test_suite_aes.ecb.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_aes.ofb.dir/build.make:160: tests/test_suite_aes.ofb] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_aes.ofb.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1047: tests/CMakeFiles/test_suite_aes.ofb.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_aes.rest.dir/build.make:160: tests/test_suite_aes.rest] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_aes.rest.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1083: tests/CMakeFiles/test_suite_aes.rest.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_aes.xts.dir/build.make:160: tests/test_suite_aes.xts] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_aes.xts.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1119: tests/CMakeFiles/test_suite_aes.xts.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_alignment.dir/build.make:160: tests/test_suite_alignment] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_alignment.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1155: tests/CMakeFiles/test_suite_alignment.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_aria.dir/build.make:160: tests/test_suite_aria] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_aria.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1191: tests/CMakeFiles/test_suite_aria.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_base64.dir/build.make:160: tests/test_suite_base64] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_base64.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1299: tests/CMakeFiles/test_suite_base64.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_asn1write.dir/build.make:160: tests/test_suite_asn1write] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_asn1write.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1263: tests/CMakeFiles/test_suite_asn1write.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_asn1parse.dir/build.make:160: tests/test_suite_asn1parse] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_asn1parse.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1227: tests/CMakeFiles/test_suite_asn1parse.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum.generated.dir/build.make:160: tests/test_suite_bignum.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1332: tests/CMakeFiles/test_suite_bignum.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum.misc.dir/build.make:160: tests/test_suite_bignum.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1368: tests/CMakeFiles/test_suite_bignum.misc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum_mod.generated.dir/build.make:160: tests/test_suite_bignum_mod.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum_mod.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1470: tests/CMakeFiles/test_suite_bignum_mod.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum_core.misc.dir/build.make:160: tests/test_suite_bignum_core.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum_core.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1437: tests/CMakeFiles/test_suite_bignum_core.misc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum_core.generated.dir/build.make:160: tests/test_suite_bignum_core.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum_core.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1401: tests/CMakeFiles/test_suite_bignum_core.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum_mod_raw.dir/build.make:160: tests/test_suite_bignum_mod_raw] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum_mod_raw.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1542: tests/CMakeFiles/test_suite_bignum_mod_raw.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum_mod.misc.dir/build.make:160: tests/test_suite_bignum_mod.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum_mod.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1506: tests/CMakeFiles/test_suite_bignum_mod.misc.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum_random.dir/build.make:160: tests/test_suite_bignum_random] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum_random.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1611: tests/CMakeFiles/test_suite_bignum_random.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_bignum_mod_raw.generated.dir/build.make:160: tests/test_suite_bignum_mod_raw.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_bignum_mod_raw.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1575: tests/CMakeFiles/test_suite_bignum_mod_raw.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_block_cipher.dir/build.make:160: tests/test_suite_block_cipher] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_block_cipher.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1647: tests/CMakeFiles/test_suite_block_cipher.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_block_cipher.psa.dir/build.make:160: tests/test_suite_block_cipher.psa] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_block_cipher.psa.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1683: tests/CMakeFiles/test_suite_block_cipher.psa.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_camellia.dir/build.make:160: tests/test_suite_camellia] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_camellia.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1719: tests/CMakeFiles/test_suite_camellia.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_chacha20.dir/build.make:160: tests/test_suite_chacha20] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_chacha20.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1791: tests/CMakeFiles/test_suite_chacha20.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_chachapoly.dir/build.make:160: tests/test_suite_chachapoly] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_chachapoly.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1827: tests/CMakeFiles/test_suite_chachapoly.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_ccm.dir/build.make:160: tests/test_suite_ccm] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ccm.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1755: tests/CMakeFiles/test_suite_ccm.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.aes.dir/build.make:160: tests/test_suite_cipher.aes] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.aes.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1863: tests/CMakeFiles/test_suite_cipher.aes.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.aria.dir/build.make:160: tests/test_suite_cipher.aria] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.aria.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1899: tests/CMakeFiles/test_suite_cipher.aria.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.camellia.dir/build.make:160: tests/test_suite_cipher.camellia] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.camellia.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1935: tests/CMakeFiles/test_suite_cipher.camellia.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.ccm.dir/build.make:160: tests/test_suite_cipher.ccm] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.ccm.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1971: tests/CMakeFiles/test_suite_cipher.ccm.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.chacha20.dir/build.make:160: tests/test_suite_cipher.chacha20] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.chacha20.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2007: tests/CMakeFiles/test_suite_cipher.chacha20.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.chachapoly.dir/build.make:160: tests/test_suite_cipher.chachapoly] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.chachapoly.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2043: tests/CMakeFiles/test_suite_cipher.chachapoly.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.des.dir/build.make:160: tests/test_suite_cipher.des] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.des.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2079: tests/CMakeFiles/test_suite_cipher.des.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.gcm.dir/build.make:160: tests/test_suite_cipher.gcm] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.gcm.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2115: tests/CMakeFiles/test_suite_cipher.gcm.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.nist_kw.dir/build.make:160: tests/test_suite_cipher.nist_kw] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.nist_kw.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2187: tests/CMakeFiles/test_suite_cipher.nist_kw.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.misc.dir/build.make:160: tests/test_suite_cipher.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2151: tests/CMakeFiles/test_suite_cipher.misc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.null.dir/build.make:160: tests/test_suite_cipher.null] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.null.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2223: tests/CMakeFiles/test_suite_cipher.null.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cmac.dir/build.make:160: tests/test_suite_cmac] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cmac.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2295: tests/CMakeFiles/test_suite_cmac.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_cipher.padding.dir/build.make:160: tests/test_suite_cipher.padding] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_cipher.padding.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2259: tests/CMakeFiles/test_suite_cipher.padding.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_config.crypto_combinations.dir/build.make:160: tests/test_suite_config.crypto_combinations] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_config.crypto_combinations.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2367: tests/CMakeFiles/test_suite_config.crypto_combinations.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_common.dir/build.make:160: tests/test_suite_common] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_common.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2331: tests/CMakeFiles/test_suite_common.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_config.psa_boolean.dir/build.make:160: tests/test_suite_config.psa_boolean] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_config.psa_boolean.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2433: tests/CMakeFiles/test_suite_config.psa_boolean.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_config.mbedtls_boolean.dir/build.make:160: tests/test_suite_config.mbedtls_boolean] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_config.mbedtls_boolean.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2400: tests/CMakeFiles/test_suite_config.mbedtls_boolean.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_config.psa_combinations.dir/build.make:160: tests/test_suite_config.psa_combinations] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_config.psa_combinations.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2469: tests/CMakeFiles/test_suite_config.psa_combinations.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_config.tls_combinations.dir/build.make:160: tests/test_suite_config.tls_combinations] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_config.tls_combinations.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2505: tests/CMakeFiles/test_suite_config.tls_combinations.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_constant_time_hmac.dir/build.make:160: tests/test_suite_constant_time_hmac] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_constant_time_hmac.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2577: tests/CMakeFiles/test_suite_constant_time_hmac.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_debug.dir/build.make:160: tests/test_suite_debug] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_debug.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2649: tests/CMakeFiles/test_suite_debug.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_constant_time.dir/build.make:160: tests/test_suite_constant_time] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_constant_time.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2541: tests/CMakeFiles/test_suite_constant_time.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_des.dir/build.make:160: tests/test_suite_des] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_des.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2685: tests/CMakeFiles/test_suite_des.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_ctr_drbg.dir/build.make:160: tests/test_suite_ctr_drbg] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ctr_drbg.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2613: tests/CMakeFiles/test_suite_ctr_drbg.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_dhm.dir/build.make:160: tests/test_suite_dhm] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_dhm.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2721: tests/CMakeFiles/test_suite_dhm.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_ecjpake.dir/build.make:160: tests/test_suite_ecjpake] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ecjpake.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2829: tests/CMakeFiles/test_suite_ecjpake.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_ecdh.dir/build.make:160: tests/test_suite_ecdh] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ecdh.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2757: tests/CMakeFiles/test_suite_ecdh.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_ecdsa.dir/build.make:160: tests/test_suite_ecdsa] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ecdsa.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2793: tests/CMakeFiles/test_suite_ecdsa.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_entropy.dir/build.make:160: tests/test_suite_entropy] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_entropy.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2934: tests/CMakeFiles/test_suite_entropy.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_error.dir/build.make:160: tests/test_suite_error] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_error.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2970: tests/CMakeFiles/test_suite_error.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_ecp.generated.dir/build.make:160: tests/test_suite_ecp.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ecp.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2898: tests/CMakeFiles/test_suite_ecp.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_ecp.dir/build.make:160: tests/test_suite_ecp] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ecp.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:2865: tests/CMakeFiles/test_suite_ecp.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_gcm.aes128_de.dir/build.make:160: tests/test_suite_gcm.aes128_de] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_gcm.aes128_de.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3006: tests/CMakeFiles/test_suite_gcm.aes128_de.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_gcm.aes128_en.dir/build.make:160: tests/test_suite_gcm.aes128_en] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_gcm.aes128_en.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3042: tests/CMakeFiles/test_suite_gcm.aes128_en.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_gcm.aes192_de.dir/build.make:160: tests/test_suite_gcm.aes192_de] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_gcm.aes192_de.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3078: tests/CMakeFiles/test_suite_gcm.aes192_de.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_gcm.aes192_en.dir/build.make:160: tests/test_suite_gcm.aes192_en] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_gcm.aes192_en.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3114: tests/CMakeFiles/test_suite_gcm.aes192_en.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_gcm.aes256_de.dir/build.make:160: tests/test_suite_gcm.aes256_de] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_gcm.aes256_de.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3150: tests/CMakeFiles/test_suite_gcm.aes256_de.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_gcm.aes256_en.dir/build.make:160: tests/test_suite_gcm.aes256_en] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_gcm.aes256_en.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3186: tests/CMakeFiles/test_suite_gcm.aes256_en.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_hkdf.dir/build.make:160: tests/test_suite_hkdf] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_hkdf.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3294: tests/CMakeFiles/test_suite_hkdf.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_gcm.camellia.dir/build.make:160: tests/test_suite_gcm.camellia] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_gcm.camellia.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3222: tests/CMakeFiles/test_suite_gcm.camellia.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_gcm.misc.dir/build.make:160: tests/test_suite_gcm.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_gcm.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3258: tests/CMakeFiles/test_suite_gcm.misc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_hmac_drbg.misc.dir/build.make:160: tests/test_suite_hmac_drbg.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_hmac_drbg.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3330: tests/CMakeFiles/test_suite_hmac_drbg.misc.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_hmac_drbg.no_reseed.dir/build.make:160: tests/test_suite_hmac_drbg.no_reseed] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_hmac_drbg.no_reseed.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3366: tests/CMakeFiles/test_suite_hmac_drbg.no_reseed.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_hmac_drbg.pr.dir/build.make:160: tests/test_suite_hmac_drbg.pr] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_hmac_drbg.pr.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3438: tests/CMakeFiles/test_suite_hmac_drbg.pr.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_hmac_drbg.nopr.dir/build.make:160: tests/test_suite_hmac_drbg.nopr] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_hmac_drbg.nopr.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3402: tests/CMakeFiles/test_suite_hmac_drbg.nopr.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_lmots.dir/build.make:160: tests/test_suite_lmots] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_lmots.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3474: tests/CMakeFiles/test_suite_lmots.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_lms.dir/build.make:160: tests/test_suite_lms] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_lms.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3510: tests/CMakeFiles/test_suite_lms.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_md.dir/build.make:160: tests/test_suite_md] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_md.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3546: tests/CMakeFiles/test_suite_md.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_memory_buffer_alloc.dir/build.make:160: tests/test_suite_memory_buffer_alloc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_memory_buffer_alloc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3654: tests/CMakeFiles/test_suite_memory_buffer_alloc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_md.psa.dir/build.make:160: tests/test_suite_md.psa] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_md.psa.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3582: tests/CMakeFiles/test_suite_md.psa.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_mdx.dir/build.make:160: tests/test_suite_mdx] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_mdx.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3618: tests/CMakeFiles/test_suite_mdx.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedtls.a(net_sockets.c.o): in function `mbedtls_net_connect':
+net_sockets.c:(.text+0x8c): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0xb2): undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0xdf): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x102): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedtls.a(net_sockets.c.o): in function `mbedtls_net_bind':
+net_sockets.c:(.text+0x1c7): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x1ee): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x21b): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x22f): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x246): undefined reference to `listen'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x25c): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedtls.a(net_sockets.c.o): in function `mbedtls_net_accept':
+net_sockets.c:(.text+0x35e): undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x3b2): undefined reference to `recvfrom'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x428): undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x47d): undefined reference to `accept'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x4fc): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x51a): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x540): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: net_sockets.c:(.text+0x556): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedtls.a(net_sockets.c.o): in function `mbedtls_net_free':
+net_sockets.c:(.text+0xb6e): undefined reference to `shutdown'
+gmake[2]: *** [tests/CMakeFiles/test_suite_net.dir/build.make:160: tests/test_suite_net] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_net.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3726: tests/CMakeFiles/test_suite_net.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_nist_kw.dir/build.make:160: tests/test_suite_nist_kw] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_nist_kw.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3762: tests/CMakeFiles/test_suite_nist_kw.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_oid.dir/build.make:160: tests/test_suite_oid] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_oid.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3798: tests/CMakeFiles/test_suite_oid.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_mps.dir/build.make:160: tests/test_suite_mps] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_mps.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3690: tests/CMakeFiles/test_suite_mps.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_pem.dir/build.make:160: tests/test_suite_pem] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pem.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3834: tests/CMakeFiles/test_suite_pem.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_pkcs12.dir/build.make:160: tests/test_suite_pkcs12] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pkcs12.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3906: tests/CMakeFiles/test_suite_pkcs12.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_pkcs1_v15.dir/build.make:160: tests/test_suite_pkcs1_v15] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pkcs1_v15.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3942: tests/CMakeFiles/test_suite_pkcs1_v15.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_pkcs1_v21.dir/build.make:160: tests/test_suite_pkcs1_v21] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pkcs1_v21.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:3978: tests/CMakeFiles/test_suite_pkcs1_v21.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_pk.dir/build.make:160: tests/test_suite_pk] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pk.dir/build' not remade because of errors.
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+gmake[1]: *** [CMakeFiles/Makefile2:3870: tests/CMakeFiles/test_suite_pk.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_pkcs5.dir/build.make:160: tests/test_suite_pkcs5] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pkcs5.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4014: tests/CMakeFiles/test_suite_pkcs5.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_pkwrite.dir/build.make:160: tests/test_suite_pkwrite] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pkwrite.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4122: tests/CMakeFiles/test_suite_pkwrite.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_pkparse.dir/build.make:160: tests/test_suite_pkparse] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pkparse.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4086: tests/CMakeFiles/test_suite_pkparse.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_platform.dir/build.make:160: tests/test_suite_platform] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_platform.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4158: tests/CMakeFiles/test_suite_platform.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_pkcs7.dir/build.make:160: tests/test_suite_pkcs7] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_pkcs7.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4050: tests/CMakeFiles/test_suite_pkcs7.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_poly1305.dir/build.make:160: tests/test_suite_poly1305] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_poly1305.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4266: tests/CMakeFiles/test_suite_poly1305.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_platform_printf.dir/build.make:160: tests/test_suite_platform_printf] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_platform_printf.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4194: tests/CMakeFiles/test_suite_platform_printf.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_platform_util.dir/build.make:160: tests/test_suite_platform_util] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_platform_util.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4230: tests/CMakeFiles/test_suite_platform_util.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_attributes.dir/build.make:160: tests/test_suite_psa_crypto_attributes] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_attributes.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4374: tests/CMakeFiles/test_suite_psa_crypto_attributes.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_driver_wrappers.dir/build.make:160: tests/test_suite_psa_crypto_driver_wrappers] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_driver_wrappers.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4410: tests/CMakeFiles/test_suite_psa_crypto_driver_wrappers.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_entropy.dir/build.make:160: tests/test_suite_psa_crypto_entropy] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_entropy.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4446: tests/CMakeFiles/test_suite_psa_crypto_entropy.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_hash.dir/build.make:160: tests/test_suite_psa_crypto_hash] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_hash.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4515: tests/CMakeFiles/test_suite_psa_crypto_hash.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_generate_key.generated.dir/build.make:160: tests/test_suite_psa_crypto_generate_key.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_generate_key.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4479: tests/CMakeFiles/test_suite_psa_crypto_generate_key.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_init.dir/build.make:160: tests/test_suite_psa_crypto_init] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_init.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4551: tests/CMakeFiles/test_suite_psa_crypto_init.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_low_hash.generated.dir/build.make:160: tests/test_suite_psa_crypto_low_hash.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_low_hash.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4584: tests/CMakeFiles/test_suite_psa_crypto_low_hash.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_memory.dir/build.make:160: tests/test_suite_psa_crypto_memory] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_memory.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4620: tests/CMakeFiles/test_suite_psa_crypto_memory.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_not_supported.generated.dir/build.make:160: tests/test_suite_psa_crypto_not_supported.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_not_supported.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4689: tests/CMakeFiles/test_suite_psa_crypto_not_supported.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_metadata.dir/build.make:160: tests/test_suite_psa_crypto_metadata] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_metadata.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4656: tests/CMakeFiles/test_suite_psa_crypto_metadata.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_not_supported.misc.dir/build.make:160: tests/test_suite_psa_crypto_not_supported.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_not_supported.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4725: tests/CMakeFiles/test_suite_psa_crypto_not_supported.misc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_op_fail.misc.dir/build.make:160: tests/test_suite_psa_crypto_op_fail.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_op_fail.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4794: tests/CMakeFiles/test_suite_psa_crypto_op_fail.misc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_op_fail.generated.dir/build.make:160: tests/test_suite_psa_crypto_op_fail.generated] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_op_fail.generated.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4758: tests/CMakeFiles/test_suite_psa_crypto_op_fail.generated.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto.dir/build.make:160: tests/test_suite_psa_crypto] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4302: tests/CMakeFiles/test_suite_psa_crypto.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto.pbkdf2.dir/build.make:160: tests/test_suite_psa_crypto.pbkdf2] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto.pbkdf2.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4338: tests/CMakeFiles/test_suite_psa_crypto.pbkdf2.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_se_driver_hal.dir/build.make:160: tests/test_suite_psa_crypto_se_driver_hal] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_se_driver_hal.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4902: tests/CMakeFiles/test_suite_psa_crypto_se_driver_hal.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_persistent_key.dir/build.make:160: tests/test_suite_psa_crypto_persistent_key] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_persistent_key.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4866: tests/CMakeFiles/test_suite_psa_crypto_persistent_key.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_se_driver_hal_mocks.dir/build.make:160: tests/test_suite_psa_crypto_se_driver_hal_mocks] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_se_driver_hal_mocks.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4938: tests/CMakeFiles/test_suite_psa_crypto_se_driver_hal_mocks.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_pake.dir/build.make:160: tests/test_suite_psa_crypto_pake] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_pake.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4830: tests/CMakeFiles/test_suite_psa_crypto_pake.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_storage_format.misc.dir/build.make:160: tests/test_suite_psa_crypto_storage_format.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_storage_format.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5043: tests/CMakeFiles/test_suite_psa_crypto_storage_format.misc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_storage_format.current.dir/build.make:160: tests/test_suite_psa_crypto_storage_format.current] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_storage_format.current.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5007: tests/CMakeFiles/test_suite_psa_crypto_storage_format.current.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_slot_management.dir/build.make:160: tests/test_suite_psa_crypto_slot_management] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_slot_management.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:4974: tests/CMakeFiles/test_suite_psa_crypto_slot_management.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_storage_format.v0.dir/build.make:160: tests/test_suite_psa_crypto_storage_format.v0] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_storage_format.v0.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5076: tests/CMakeFiles/test_suite_psa_crypto_storage_format.v0.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_crypto_util.dir/build.make:160: tests/test_suite_psa_crypto_util] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_crypto_util.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5112: tests/CMakeFiles/test_suite_psa_crypto_util.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_random.dir/build.make:160: tests/test_suite_random] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_random.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5184: tests/CMakeFiles/test_suite_random.dir/all] Error 2
+gmake[2]: *** [tests/CMakeFiles/test_suite_psa_its.dir/build.make:160: tests/test_suite_psa_its] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_psa_its.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5148: tests/CMakeFiles/test_suite_psa_its.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_ssl_decrypt.misc.dir/build.make:160: tests/test_suite_ssl_decrypt.misc] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ssl_decrypt.misc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5328: tests/CMakeFiles/test_suite_ssl_decrypt.misc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_shax.dir/build.make:160: tests/test_suite_shax] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_shax.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5256: tests/CMakeFiles/test_suite_shax.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_rsa.dir/build.make:160: tests/test_suite_rsa] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_rsa.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5220: tests/CMakeFiles/test_suite_rsa.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_test_helpers.dir/build.make:160: tests/test_suite_test_helpers] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_test_helpers.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5364: tests/CMakeFiles/test_suite_test_helpers.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_timing.dir/build.make:160: tests/test_suite_timing] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_timing.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5400: tests/CMakeFiles/test_suite_timing.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_version.dir/build.make:160: tests/test_suite_version] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_version.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5436: tests/CMakeFiles/test_suite_version.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_ssl.dir/build.make:160: tests/test_suite_ssl] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_ssl.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5292: tests/CMakeFiles/test_suite_ssl.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_x509write.dir/build.make:160: tests/test_suite_x509write] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_x509write.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5508: tests/CMakeFiles/test_suite_x509write.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `x509_crt_verify_name.constprop.0':
+x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x8a4): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../library/libmbedx509.a(x509_crt.c.o): in function `mbedtls_x509_crt_parse_cn_inet_pton':
+x509_crt.c:(.text+0x1b6a): undefined reference to `__inet_pton'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: x509_crt.c:(.text+0x1b86): undefined reference to `__inet_pton'
+gmake[2]: *** [tests/CMakeFiles/test_suite_x509parse.dir/build.make:160: tests/test_suite_x509parse] Error 1
+gmake[2]: Target 'tests/CMakeFiles/test_suite_x509parse.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:5472: tests/CMakeFiles/test_suite_x509parse.dir/all] Error 2
+gmake[1]: Target 'all' not remade because of errors.
+gmake: *** [Makefile:146: all] Error 2
+gmake: Target 'default_target' not remade because of errors.
+[exit 2]
