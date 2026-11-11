@@ -21,6 +21,8 @@ def test_same_path_runs_unchanged_and_otherwise_remaps():
     argv = ["/home/u/w/src/tests/test1.test"]
     assert remote_command(t, "/home/u/w", "/home/u/w/build", argv, True) == \
         "cd /home/u/w/build && exec /home/u/w/src/tests/test1.test"
+    assert remote_command(t, "/home/u/w", "/home/u/w/build", argv, True, limit=300) == \
+        "cd /home/u/w/build && exec timeout -s KILL 300 /home/u/w/src/tests/test1.test"
     assert remote_command(t, "/home/u/w", "/home/u/w/build", argv, False, ["A=/home/u/w/x"]) == \
         "cd /data/qnx-porter/home/u/w/build && exec env A=/data/qnx-porter/home/u/w/x " \
         "/data/qnx-porter/home/u/w/src/tests/test1.test"
@@ -50,6 +52,6 @@ def test_every_ctest_command_runs_on_the_target_including_scripts(tmp_path, monk
     passed, total = target.ctest_on_target(Target.parse("root@q"), tmp_path, tmp_path, "/w/qnx-run", True,
                                            tmp_path / "tests.log")
     assert (passed, total) == (3, 3)
-    assert sent[0] == "cd /w/build/tests && exec /w/src/tests/test1.test"
-    assert sent[1].endswith("exec /w/build/unit")  # our emulator prefix is stripped: the command runs on QNX
+    assert sent[0] == "cd /w/build/tests && exec timeout -s KILL 300 /w/src/tests/test1.test"
+    assert sent[1].endswith("exec timeout -s KILL 300 /w/build/unit")  # our emulator prefix is stripped: the command runs on QNX
     assert "3/3 tests passed on the QNX target" in (tmp_path / "tests.log").read_text()

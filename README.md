@@ -32,8 +32,8 @@ Status: the agent and its tests are done and green in CI. The QNX runs need QNX 
 (see SETUP.md) and fill `results/ports.csv`; until then this table is intentionally empty.
 
 <!-- results:start -->
-| Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes |
-|---|---|---|---|---|---|
+| Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |
+|---|---|---|---|---|---|---|
 <!-- results:end -->
 
 ## How it works

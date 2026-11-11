@@ -22,7 +22,7 @@ def loose(d: errors.Diagnostic):
 
 def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target: Target | None = None,
          max_rounds: int = 15, use_llm: bool = True, extra_args: tuple[str, ...] = (), name: str = "",
-         log=print) -> dict:
+         log=print, note: str = "") -> dict:
     t0 = time.time()
     name = name or url.rstrip("/").removesuffix(".git").rsplit("/", 1)[-1]
     out = (out_root / name).resolve()
@@ -56,17 +56,27 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
 
     applied: list[patches.Patch] = []
     tried: set = set()
-    pending = None  # (patch, diagnostic it should clear, error count before): a patch on probation
+    pending = None  # (patch, diagnostic it should clear, diagnostics before): a patch on probation
     blocked: list[dict] = []
     ok, rounds = False, 0
     for rounds in range(1, max_rounds + 1):
-        job.toolchain_path().write_text(job.toolchain_text(), encoding="utf-8")
+        tc = job.toolchain_path()
+        if tc.exists() and tc.read_text(encoding="utf-8") != job.toolchain_text():
+            # CMake reads CMAKE_*_INIT only into a fresh cache: a flag fix is invisible until it is wiped.
+            (bdir / "CMakeCache.txt").unlink(missing_ok=True)
+            shutil.rmtree(bdir / "CMakeFiles", ignore_errors=True)
+        tc.write_text(job.toolchain_text(), encoding="utf-8")
         ok, text = build.run(job.steps(tests=True), work, env, logs / f"round-{rounds:02d}.log")
         diags = [] if ok else errors.parse(text) or [errors.Diagnostic("error", _tail(text))]
         if pending:
             p, want_gone, before = pending
             pending = None
-            if not ok and (want_gone in {loose(d) for d in diags} or len(diags) > before):
+            now = {loose(d) for d in diags}
+            # New errors elsewhere are progress (a compile fix lets the linker run); new errors in the
+            # files the patch touched, or the same error again, mean the patch did not work.
+            touched = {loose(d) for d in diags if loose(d) not in before and d.file
+                       and fixes.in_tree(src, d.file) in set(p.files)}
+            if not ok and (want_gone in now or touched):
                 patches.revert_last(src)
                 p.kept = False
                 log(f"      patch {p.number:04d} ({p.source}) did not clear the error: reverted")
@@ -85,14 +95,14 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
             applied.append(_apply(f, n, src, out, job, work))
             log(f"      fix {n:04d} [{f.rule}] {f.reason}"[:200])
             if f.verify:
-                pending = (applied[-1], loose(f.diag), len(diags))
+                pending = (applied[-1], loose(f.diag), {loose(d) for d in diags})
         if planned:
             continue
         if use_llm and llm.configured():
             p = _ask_model(diags, src, out, len(applied) + 1, text, tried, log)
             if p:
                 applied.append(p)
-                pending = (p, p._diag, len(diags))
+                pending = (p, p._diag, {loose(d) for d in diags})
                 continue
         blocked = [{"kind": d.kind, "error": d.raw or d.message, "hint": fixes.hint(d)}
                    for d in diags[:8]]
@@ -104,6 +114,8 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     if ok and target and job.test_cmd():
         uname = target.uname()
         log(f"[4/5] tests on target {target.host}:{target.port} ({uname or 'uname failed'})")
+        if job.pretest_cmd():  # automake builds its test programs only in `make check`: build them first
+            build.run([job.pretest_cmd()], work, env, logs / "tests-build.log")
         same = target.sync([src, bdir, work / "stubs"] if (work / "stubs").exists() else [src, bdir])
         (work / SAME_PATH_MARK).unlink(missing_ok=True)
         if same:
@@ -113,10 +125,16 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                                                         logs / "tests.log")
         else:
             _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
+            if system == "autotools":  # each test's own log has the QNX output
+                ttext += "".join(f"\n--- {p.relative_to(bdir)}\n" + p.read_text(errors="replace")[-3000:]
+                                 for p in sorted(bdir.rglob("*.log")) if p.name not in ("config.log",
+                                                                                      "test-suite.log"))
+                (logs / "tests.log").write_text(ttext, encoding="utf-8")
             tests_passed, tests_total = parse_results(system, ttext)
         log(f"      {tests_passed}/{tests_total} tests passed")
     elif ok:
-        log("[4/5] tests skipped: " + ("no --target given" if not target else "no test runner for " + system))
+        log("[4/5] tests skipped: " + (note or ("no --target given" if not target
+                                                 else "no test runner for " + system)))
 
     kept = [p for p in applied if p.kept]
     patches.export_series(src, base, out)
@@ -129,11 +147,13 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         "patches_kept": len(kept), "patches_by_rule": sum(p.source == "rule" for p in kept),
         "patches_by_model": sum(p.source == "model" for p in kept),
         "patches": [p.to_dict() for p in applied], "blocked_on": blocked,
-        "minutes": round((time.time() - t0) / 60, 1),
+        "minutes": round((time.time() - t0) / 60, 1), "note": note,
         "finished": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
     (out / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     (out / job.toolchain_path().name).write_text(job.toolchain_text(), encoding="utf-8")
+    if (work / "qnx-compat").is_dir():  # headers the toolchain -includes, kept with the port
+        shutil.copytree(work / "qnx-compat", out / "qnx-compat", dirs_exist_ok=True)
     (out / "REPORT.md").write_text(render(report, job), encoding="utf-8")
     log(f"[5/5] report: {out / 'REPORT.md'}")
     return report
@@ -150,6 +170,15 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
             (src / rel).write_text(text, encoding="utf-8", errors="surrogateescape")
         return patches.commit_source(src, out, n, f.rule, "rule", f.reason, error, list(f.edits))
     before = job.toolchain_text()
+    extra = ""
+    for name, text in f.compat.items():
+        d = work / "qnx-compat"
+        d.mkdir(exist_ok=True)
+        (d / name).write_text(text, encoding="utf-8")
+        job.flags.cflags += ["-include", str(d / name)]
+        extra += "".join(["--- /dev/null\n", f"+++ b/qnx-compat/{name}\n",
+                          f"@@ -0,0 +1,{len(text.splitlines())} @@\n",
+                          *[f"+{ln}\n" for ln in text.splitlines()]])
     job.flags.cflags += f.cflags
     job.flags.ldflags += f.ldflags
     job.flags.libs += f.libs
@@ -159,7 +188,7 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
         (stub / f"lib{lib}.a").write_bytes(b"!<arch>\n")  # an empty ar archive
         job.flags.stub_dir = str(stub)
     return patches.record_flags(out, n, f.rule, f.reason, error, job.toolchain_path().name, before,
-                                job.toolchain_text())
+                                job.toolchain_text(), extra)
 
 
 def _ask_model(diags, src: Path, out: Path, n: int, log_text: str, tried: set, log):
@@ -215,6 +244,8 @@ def render(r: dict, job: build.Job) -> str:
 | # | Rule | From | Status | Files | Reason |
 |---|---|---|---|---|---|
 {rows}
+
+{('Note: ' + r['note']) if r.get('note') else ''}
 
 All kept source changes in one file: `qnx.patch` (apply to the upstream tag with `git apply qnx.patch`).
 Build logs for every round: `logs/`.

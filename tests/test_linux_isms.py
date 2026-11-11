@@ -184,3 +184,63 @@ def test_qnx_header_locations(tmp_path, sym, header):
 def test_removed_itoa_gets_the_snprintf_hint():
     d = parse("a.c:1:1: error: implicit declaration of function 'itoa' [-Wimplicit-function-declaration]\n")[0]
     assert "snprintf" in fixes.hint(d)
+
+
+def test_math_classification_macros_need_libm_on_qnx(tmp_path):
+    # Real ld output from porting yyjson 0.10.0 with qcc (SDP 8.0 build 141).
+    log = ("/home/u/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: "
+           "test_number.c:(.text+0x33ca): undefined reference to `__isfinite'\n"
+           "test_json_writer.c:(.text+0xd5): undefined reference to `__isinf'\n")
+    [f] = run(tmp_path, {}, log)
+    assert f.rule == "link-libm" and f.libs == ["-lm"]
+    assert run(tmp_path, {}, log, Flags(libs=["-lm"])) == []
+
+
+def test_inet_pton_is_renamed_by_qnx_headers_and_lives_in_libsocket(tmp_path):
+    # Real ld output from porting mbedtls v3.6.2: QNX's <arpa/inet.h> does `#define inet_pton __inet_pton`.
+    [f] = run(tmp_path, {}, "x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'\n")
+    assert f.rule == "link-libsocket"
+
+
+@pytest.mark.parametrize("h", ["errno", "signal", "syslog", "unistd", "fcntl", "termios", "dirent"])
+def test_sys_header_aliases_qnx_does_not_ship(tmp_path, h):
+    # Real error from porting nng v1.9.0: posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+    src = f"#include <stdio.h>\n#include <sys/{h}.h>\nint x;\n"
+    [f] = run(tmp_path, {"u.c": src}, f"u.c:2:10: fatal error: sys/{h}.h: No such file or directory\n")
+    assert f.rule == "header-alias" and f"#include <{h}.h>" in f.edits["u.c"]
+
+
+def test_own_bool_typedef_after_qnx_sys_socket(tmp_path):
+    # Real error from porting paho.mqtt.c v1.3.14: QNX's <sys/socket.h> includes <stdbool.h>.
+    src = "#include <stdbool.h>\n#include <stdio.h>\ntypedef unsigned int bool;\nbool f(void) { return 1; }\n"
+    log = "MQTTPacket.h:3:22: error: two or more data types in declaration specifiers\n"
+    [f] = run(tmp_path, {"MQTTPacket.h": src}, log)
+    assert f.rule == "bool-typedef" and f.verify
+    assert "#ifndef __bool_true_false_are_defined" in f.edits["MQTTPacket.h"]
+    if CC:
+        assert compiles(tmp_path, f.edits["MQTTPacket.h"])
+
+
+def test_unused_endian_h_is_guarded_and_used_gets_gulliver_hint(tmp_path):
+    [f] = run(tmp_path, {"e.c": "#include <endian.h>\nint x;\n"},
+              "e.c:1:10: fatal error: endian.h: No such file or directory\n")
+    assert f.rule == "guard-linux-header"
+    log = "g.c:1:10: fatal error: endian.h: No such file or directory\n"
+    assert run(tmp_path, {"g.c": "#include <endian.h>\nunsigned f(unsigned x) { return htobe32(x); }\n"}, log) == []
+    assert "gulliver.h" in fixes.hint(parse(log)[0])
+
+
+def test_glibc_endian_functions_come_from_qnx_netbyte(tmp_path):
+    # Real ld output from porting paho.mqtt.c v1.3.14 (QNX 8.0 has no <endian.h>; it has <net/netbyte.h>).
+    [f] = run(tmp_path, {}, "../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'\n")
+    assert f.rule == "endian-netbyte" and not any("(" in c for c in f.cflags)  # no shell-hostile flags
+    h = f.compat["qnx-endian.h"]
+    assert "#include <net/netbyte.h>" in h
+    assert "#define htobe32(x) __NET_BE32((x))" in h and "#define le64toh(x) __NET_LE64((x))" in h
+
+
+def test_bool_typedef_also_matches_newer_gcc_wording(tmp_path):
+    src = "#include <stdbool.h>\ntypedef unsigned int bool;\n"
+    log = "b.h:2:22: error: 'bool' cannot be defined via 'typedef'\n"  # GCC 13+
+    [f] = run(tmp_path, {"b.h": src}, log)
+    assert f.rule == "bool-typedef"

@@ -24,7 +24,12 @@ LINUX_HEADERS = {
     "execinfo.h": (r"\bbacktrace\w*", "QNX has no backtrace(): guard that code with !defined(__QNX__)"),
     "features.h": (r"(?!)", "<features.h> is glibc-only"),  # provides nothing a port needs
     "mcheck.h": (r"\bmcheck\w*|\bmtrace\b|\bmuntrace\b", "glibc-only heap checking: guard with !defined(__QNX__)"),
+    "endian.h": (r"\b(?:htobe|htole|be|le)(?:16|32|64)(?:toh)?\b|\b__?BYTE_ORDER\b|\b__?(?:LITTLE|BIG)_ENDIAN\b",
+                 "QNX 8.0 has no <endian.h>: use <gulliver.h> (ENDIAN_LE32 etc.) or GCC's __BYTE_ORDER__"),
 }
+# <sys/X.h> spellings glibc accepts and QNX 8.0 does not ship; the plain <X.h> exists (SDP 8.0 build 141).
+HEADER_ALIASES = {f"sys/{h}.h": f"{h}.h" for h in
+                  ("errno", "signal", "syslog", "unistd", "fcntl", "termios", "dirent")}
 REMOVED = {  # removed from QNX 8.0's libc ("Migrating to QNX OS 8.0", C and C++ applications)
     **dict.fromkeys(["itoa", "ltoa", "lltoa", "ultoa", "ulltoa", "utoa"],
                     "QNX 8.0 removed itoa() and friends from <stdlib.h>: use snprintf()"),
@@ -79,6 +84,40 @@ def missing_header(d: Diagnostic, src: Path, rel: str):
                     "which on QNX is pthread_setname_np(pthread_self(), name) (libc, <pthread.h>). Note: it "
                     "returns an errno value instead of -1.", new)
     return None
+
+
+def header_alias(d: Diagnostic, src: Path, rel: str):
+    """`#include <sys/errno.h>` and friends: QNX ships only the POSIX spelling <errno.h>."""
+    plain = HEADER_ALIASES.get(d.header)
+    if not plain:
+        return None
+    text = _read(src, rel)
+    new, n = re.subn(rf"(#[ \t]*include[ \t]*)<{re.escape(d.header)}>", rf"\1<{plain}>", text)
+    if not n:
+        return None
+    return ("header-alias", f"<{d.header}> is a glibc alias QNX 8.0 does not ship; POSIX's <{plain}> declares "
+            "the same things, and QNX has it.", new)
+
+
+def bool_typedef(d: Diagnostic, src: Path, rel: str):
+    """`typedef unsigned int bool;` after QNX's <sys/socket.h>, which pulls in <stdbool.h>.
+
+    On QNX 8.0, <sys/socket.h> includes io-sock/types_fbsd.h, which includes <stdbool.h>, so `bool` is
+    already the _Bool macro. Guard the typedef so the library uses stdbool's bool. Proved by rebuilding.
+    """
+    # GCC 12 (qcc in SDP 8.0) says "two or more data types"; GCC 13+ says "'bool' cannot be defined via 'typedef'"
+    if not re.search(r"two or more data types in declaration specifiers|bool.{0,3} cannot be defined via", d.message):
+        return None
+    lines = _read(src, rel).splitlines(keepends=True)
+    i = d.line - 1
+    if not (0 <= i < len(lines)) or not re.match(r"\s*typedef\s+[\w\s]+\s+bool\s*;", lines[i]):
+        return None
+    lines[i] = (f"#ifndef __bool_true_false_are_defined  /* qnx-porter: QNX's <sys/socket.h> includes "
+                f"<stdbool.h> */\n{lines[i]}#endif\n")
+    return ("bool-typedef", f"{rel} defines its own `bool`, but on QNX 8.0 <sys/socket.h> already includes "
+            "<stdbool.h> (via io-sock/types_fbsd.h), so `bool` is taken. The typedef is skipped when "
+            "stdbool's bool is visible. Note: bool is then _Bool, not unsigned int, in those files.",
+            "".join(lines))
 
 
 def prctl_to_setname(text: str) -> str | None:

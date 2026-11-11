@@ -64,12 +64,14 @@ def link_command(root: str, rel: list[str]) -> str:
 
 
 def remote_command(t: Target, work: str, cwd: str, argv: list[str], same_path: bool = False,
-                   env: list[str] = ()) -> str:
+                   env: list[str] = (), limit: int = 0) -> str:
     """The shell command that runs argv on the target. Unless the trees are visible at their host paths,
-    host paths under `work` are moved under t.root."""
+    host paths under `work` are moved under t.root. With a limit, QNX's own `timeout` kills the test on
+    the target, so a hung test cannot outlive its ssh session."""
     def move(a: str) -> str:
         return a.replace(work, t.root + work) if (work in a and not same_path) else a
-    prefix = ("env " + " ".join(shlex.quote(move(e)) for e in env) + " ") if env else ""
+    prefix = f"timeout -s KILL {limit} " if limit else ""
+    prefix += ("env " + " ".join(shlex.quote(move(e)) for e in env) + " ") if env else ""
     return f"cd {shlex.quote(move(cwd))} && exec {prefix}{' '.join(shlex.quote(move(a)) for a in argv)}"
 
 
@@ -121,13 +123,15 @@ def ctest_on_target(t: Target, build: Path, work: Path, emulator: str, same_path
         env = props.get("ENVIRONMENT") or []
         env = env if isinstance(env, list) else [env]
         cwd = props.get("WORKING_DIRECTORY", str(build))
-        limit = float(props.get("TIMEOUT") or default_timeout)
+        limit = int(min(float(props.get("TIMEOUT") or default_timeout), default_timeout))
         try:
-            r = t.ssh(remote_command(t, str(work), cwd, cmd, same_path, env), capture_output=True, text=True,
-                      errors="replace", timeout=limit + 30)
+            r = t.ssh(remote_command(t, str(work), cwd, cmd, same_path, env, limit), capture_output=True,
+                      text=True, errors="replace", timeout=limit + 60)
             rc, out = r.returncode, r.stdout + r.stderr
+            if rc == 137:
+                rc, out = None, out + f"\nkilled on the target after {limit} s"
         except subprocess.TimeoutExpired:
-            rc, out = None, f"timed out after {limit:.0f} s"
+            rc, out = None, f"timed out after {limit} s"
         v = verdict(rc, out, props)
         if v != "skip":
             total += 1

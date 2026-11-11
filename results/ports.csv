@@ -1,1 +1,1 @@
-library,version,build_system,arch,build_result,tests_passed,tests_total,patches,patches_by_rule,patches_by_model,rounds,minutes,target,finished
+library,version,build_system,arch,build_result,tests_passed,tests_total,patches,patches_by_rule,patches_by_model,rounds,minutes,target,finished,note

@@ -62,6 +62,25 @@ IN_LIBC = {"pthread", "rt", "dl"}
 # QNX 8.0 moved inotify_* out of libc into libfsnotify ("Migrating to QNX OS 8.0", C and C++ applications).
 FSNOTIFY_SYMBOLS = {"inotify_init", "inotify_init1", "inotify_add_watch", "inotify_rm_watch"}
 
+# QNX's <math.h> turns isinf()/isfinite()/isnan()/fpclassify() into calls to __isinf etc., and those, like
+# sqrt and floor, are exported by libm.so and not by libc.so (checked with nm on SDP 8.0 build 141). glibc
+# resolves the classification macros inline or in libc, so Linux projects often never link -lm.
+_MATH = ["sqrt", "cbrt", "pow", "exp", "exp2", "expm1", "log", "log2", "log10", "log1p", "floor", "ceil",
+         "round", "lround", "llround", "trunc", "rint", "lrint", "llrint", "nearbyint", "fmod", "remainder",
+         "sin", "cos", "tan", "asin", "acos", "atan", "atan2", "sinh", "cosh", "tanh", "asinh", "acosh",
+         "atanh", "hypot", "ldexp", "frexp", "modf", "scalbn", "copysign", "nextafter", "fmax", "fmin", "fdim",
+         "fma", "erf", "erfc", "tgamma", "lgamma", "nan"]
+_CLASSIFY = ["__isinf", "__isnan", "__isfinite", "__isnormal", "__fpclassify", "__signbit"]
+ENDIAN_MACROS = {f"{a}{n}{b}" for n in (16, 32, 64) for a, b in
+                 (("htobe", ""), ("htole", ""), ("be", "toh"), ("le", "toh"))}
+# QNX 8.0 has these as BSD macros in <net/netbyte.h>, visible only with __EXT_BSD (off under strict POSIX
+# macros). The compat header includes it and fills any missing name from QNX's own __NET_BE*/__NET_LE*
+# helpers. It is -included into every compile: function-like -D flags would break the make shell.
+ENDIAN_HEADER = ("/* qnx-porter: glibc <endian.h> names, from QNX's <net/netbyte.h> */\n#include <net/netbyte.h>\n"
+                 + "".join(f"#ifndef {m}\n#define {m}(x) __NET_{'BE' if m.startswith(('htobe', 'be')) else 'LE'}"
+                           f"{''.join(c for c in m if c.isdigit())}((x))\n#endif\n" for m in sorted(ENDIAN_MACROS)))
+LIBM_SYMBOLS = {f"{n}{s}" for n in _MATH + _CLASSIFY for s in ("", "f", "l")}
+
 INCLUDE = re.compile(r"^\s*#\s*include\b")
 
 
@@ -76,10 +95,13 @@ class Fix:
     libs: list[str] = field(default_factory=list)
     stubs: list[str] = field(default_factory=list)
     verify: bool = False  # needs a rebuild to prove it: applied alone, reverted if the error stays
+    compat: dict[str, str] = field(default_factory=dict)  # header name -> text, -included in every compile
 
     def key(self):
-        return (self.rule, tuple(sorted(self.edits)), tuple(self.cflags), tuple(self.libs), tuple(self.stubs),
-                self.diag.symbol, self.diag.header)
+        flags = (self.rule, tuple(self.cflags), tuple(self.ldflags), tuple(self.libs), tuple(self.stubs))
+        if not self.edits:
+            return flags  # one flag change answers every error that asks for it
+        return flags + (tuple(sorted(self.edits)), self.diag.symbol, self.diag.header)
 
 
 def add_include(src: Path, rel: str, header: str, before_line: int) -> str | None:
@@ -160,12 +182,24 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                    "it a warning (still printed in the build log) instead of editing the library's code; "
                    "QNX's headers and qcc raise warnings a glibc build does not.",
                    d, cflags=[f"-Wno-error={d.flag}"])
-    if d.kind == "undefined_ref" and d.symbol in SOCKET_SYMBOLS and "-lsocket" not in flags.libs:
+    # QNX's <arpa/inet.h> maps inet_pton to __inet_pton and so on, all exported by libsocket.
+    if d.kind == "undefined_ref" and d.symbol.lstrip("_") in SOCKET_SYMBOLS and "-lsocket" not in flags.libs:
         return Fix("link-libsocket", f"`{d.symbol}` is in QNX's libsocket, not in libc as on Linux: link "
                    "with -lsocket.", d, libs=["-lsocket"])
     if d.kind == "undefined_ref" and d.symbol in FSNOTIFY_SYMBOLS and "-lfsnotify" not in flags.libs:
         return Fix("link-libfsnotify", f"QNX 8.0 has inotify, but `{d.symbol}` moved from libc to libfsnotify: "
                    "link with -lfsnotify.", d, libs=["-lfsnotify"])
+    if d.kind in ("undefined_ref", "implicit_decl") and d.symbol in ENDIAN_MACROS \
+            and "-D_QNX_PORTER_ENDIAN" not in flags.cflags:
+        return Fix("endian-netbyte", f"`{d.symbol}` comes from glibc's <endian.h>, which QNX 8.0 does not have. "
+                   "QNX has the same names as BSD macros in <net/netbyte.h>; a small header (-included in "
+                   "every compile) includes it and defines any name strict POSIX flags hid, from QNX's "
+                   "__NET_BE*/__NET_LE* helpers.", d,
+                   cflags=["-D_QNX_PORTER_ENDIAN"], compat={"qnx-endian.h": ENDIAN_HEADER})
+    if d.kind == "undefined_ref" and d.symbol in LIBM_SYMBOLS and "-lm" not in flags.libs:
+        return Fix("link-libm", f"`{d.symbol}` is in QNX's libm, not in libc: QNX's <math.h> implements "
+                   "isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. "
+                   "Link with -lm.", d, libs=["-lm"])
     if d.kind == "multiple_def" and "-fcommon" not in flags.cflags:
         return Fix("fcommon", f"`{d.symbol}` is a tentative definition in a header, shared by several files. "
                    "GCC 10 and later (SDP 8.0 ships GCC 12) default to -fno-common, which makes that a link "
@@ -184,8 +218,10 @@ def _defined(flags: Flags, name: str) -> bool:
 
 def _source_rule(d: Diagnostic, src: Path, rel: str) -> Fix | None:
     """Rules that rewrite a few lines of source (linuxisms.py)."""
-    risky = {"prctl-set-name", "qnx-platform-guard"}
-    for rule_fn, kinds in ((linuxisms.missing_header, ("missing_header",)),
+    risky = {"prctl-set-name", "qnx-platform-guard", "bool-typedef"}
+    for rule_fn, kinds in ((linuxisms.header_alias, ("missing_header",)),
+                           (linuxisms.missing_header, ("missing_header",)),
+                           (linuxisms.bool_typedef, ("error",)),
                            (linuxisms.renamed_call, ("implicit_decl",)),
                            (linuxisms.one_arg_setname, ("error",)),
                            (linuxisms.platform_guard, ("hash_error",))):
