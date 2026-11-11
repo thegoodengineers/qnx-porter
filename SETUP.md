@@ -36,19 +36,35 @@ sudo apt update && sudo apt install -y build-essential cmake ninja-build meson a
    ```
 
 ## 4. QEMU x86_64 target running QNX 8.0
+`scripts/qemu_target.sh` wraps QNX's `mkqnximage` with the two fixes we needed on SDP 8.0 (below):
+```bash
+sudo scripts/qemu_target.sh net "$USER"   # once per boot (on WSL, after every `wsl --shutdown`)
+scripts/qemu_target.sh build              # image in ~/qnx-images/qemu (about 2 minutes)
+scripts/qemu_target.sh start              # boots headless, waits for ssh, prints uname
+```
+Expected last line: `QNX qnx-porter 8.0.0 ... x86pc x86_64`. `scripts/qemu_target.sh stop` stops it.
+What the script does, by hand:
 ```bash
 source ~/qnx800/qnxsdp-env.sh
 ssh-keygen -t ed25519 -N "" -f ~/.ssh/id_ed25519   # skip if you already have a key
 mkdir -p ~/qnx-images/qemu && cd ~/qnx-images/qemu
-mkqnximage --type=qemu --arch=x86_64 --ip=172.31.1.11 \
-  --ssh-ident=$HOME/.ssh/id_ed25519.pub --data-size=5000 --data-inodes=40000
-mkqnximage --run=-h        # starts QEMU in the background (headless)
-ssh root@172.31.1.11 uname -a   # expect: QNX ... 8.0.0 ... x86_64
+mkqnximage --noprompt --type=qemu --arch=x86_64 --ip=172.31.1.11 --hostname=qnx-porter \
+  --ssh-ident=$HOME/.ssh/id_ed25519.pub --data-size=5000 --data-inodes=40000 --ram=2G --cpu=4
+echo '[perms=555] /usr/libexec/sshd-auth=usr/libexec/sshd-auth' >> local/snippets/ifs_files.custom
+mkqnximage --noprompt --build
+setsid nohup mkqnximage --run=-h >/dev/null 2>&1 </dev/null &
+ssh root@172.31.1.11 uname -a
 ```
-- `mkqnximage --stop` stops it; `mkqnximage --help=brief` lists every option.
-- `/data` is the image's large writable partition; qnx-porter copies test trees to `/data/qnx-porter`.
-- If `--run` complains about networking, it needs a bridge; it prints the `sudo .../net.sh` command to
-  run once.
+- **sshd-auth:** SDP 8.0's sshd (OpenSSH 10) also needs `sshd-auth`, which this mkqnximage does not copy into
+  the image; without the snippet line, sshd exits at boot with
+  `/usr/libexec/sshd-auth does not exist or is not executable` and ssh is refused.
+- **Networking:** `mkqnximage --run` needs the `br0` bridge from QNX's `qemu/net.sh` (run as root). Its
+  dnsmasq call uses `--except-interface=lo0`, which collides with WSL's own DNS address; the script starts
+  dnsmasq with `--except-interface=lo --port=0` instead. Install `dnsmasq-base` first.
+- **KVM:** add yourself to the `kvm` group (the script does), or QEMU runs much slower.
+- **setsid:** on WSL a plain background QEMU dies when the `wsl` command that started it exits.
+- `/data` is the image's large writable partition; qnx-porter copies test trees to `/data/qnx-porter` and
+  links them into place with QNX's `ln -sP` so they appear at the same paths as on the host.
 
 ## 5. qnx-porter
 ```bash

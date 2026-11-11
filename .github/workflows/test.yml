@@ -9,10 +9,10 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+      - run: cmake --version && cc --version  # both preinstalled on ubuntu-latest
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: sudo apt-get update && sudo apt-get install -y cmake build-essential
       - run: python -m pip install -e ".[test]"
       - run: python -m pytest -q
       - name: CLI smoke test

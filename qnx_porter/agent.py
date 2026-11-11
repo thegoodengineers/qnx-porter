@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import build, errors, fixes, llm, patches, qnx
-from .target import Target, parse_results, write_wrapper
+from .target import SAME_PATH_MARK, Target, ctest_on_target, parse_results, write_wrapper
 
 MODEL_TRIES = 2  # model attempts per error before the agent reports it as blocked
 LLM_KINDS = ("error", "implicit_decl", "undeclared", "missing_header", "cmake_error", "werror", "hash_error")
@@ -104,9 +104,16 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     if ok and target and job.test_cmd():
         uname = target.uname()
         log(f"[4/5] tests on target {target.host}:{target.port} ({uname or 'uname failed'})")
-        target.sync([src, bdir, work / "stubs"] if (work / "stubs").exists() else [src, bdir])
-        _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
-        tests_passed, tests_total = parse_results(system, ttext)
+        same = target.sync([src, bdir, work / "stubs"] if (work / "stubs").exists() else [src, bdir])
+        (work / SAME_PATH_MARK).unlink(missing_ok=True)
+        if same:
+            (work / SAME_PATH_MARK).write_text("")
+        if system == "cmake":
+            tests_passed, tests_total = ctest_on_target(target, bdir, work, job.emulator, same,
+                                                        logs / "tests.log")
+        else:
+            _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
+            tests_passed, tests_total = parse_results(system, ttext)
         log(f"      {tests_passed}/{tests_total} tests passed")
     elif ok:
         log("[4/5] tests skipped: " + ("no --target given" if not target else "no test runner for " + system))
