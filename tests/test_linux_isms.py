@@ -228,3 +228,14 @@ def test_unused_endian_h_is_guarded_and_used_gets_gulliver_hint(tmp_path):
     log = "g.c:1:10: fatal error: endian.h: No such file or directory\n"
     assert run(tmp_path, {"g.c": "#include <endian.h>\nunsigned f(unsigned x) { return htobe32(x); }\n"}, log) == []
     assert "gulliver.h" in fixes.hint(parse(log)[0])
+
+
+def test_glibc_endian_functions_become_builtins_on_little_endian_qnx(tmp_path):
+    # Real ld output from porting paho.mqtt.c v1.3.14 (QNX 8.0 has no <endian.h>).
+    [f] = run(tmp_path, {}, "../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'\n")
+    assert f.rule == "endian-builtins"
+    assert "-Dhtobe32(x)=__builtin_bswap32(x)" in f.cflags and "-Dle64toh(x)=(x)" in f.cflags
+    if CC:
+        defs = [c for c in f.cflags if c.startswith("-D")]
+        assert compiles(tmp_path, "#include <stdint.h>\nuint32_t f(uint32_t x) { return htobe32(be32toh(x)); }\n"
+                        "uint64_t g(uint64_t x) { return htole64(x); }\n", "-U_GNU_SOURCE", *defs)

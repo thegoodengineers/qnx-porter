@@ -30,7 +30,8 @@ def readme_table(data: list[dict]) -> str:
     lines = ["| Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes |",
              "|---|---|---|---|---|---|"]
     for r in data:
-        tests = f"{r['tests_passed']}/{r['tests_total']}" if r["tests_total"] != "" else "not run"
+        tests = ("not run" if r["tests_total"] == "" else "none built" if r["tests_total"] == 0
+                 else f"{r['tests_passed']}/{r['tests_total']}")
         lines.append(f"| [{r['library']}](ports/{r['library']}/REPORT.md) | {r['version']} | {r['build_result']} "
                      f"| {tests} | {r['patches']} ({r['patches_by_rule']} / {r['patches_by_model']}) "
                      f"| {r['minutes']} |")

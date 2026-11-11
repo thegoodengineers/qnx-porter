@@ -99,3 +99,18 @@ def test_a_rule_that_needs_proof_is_reverted_when_the_rebuild_disagrees(tmp_path
     [p] = [p for p in r["patches"] if p["rule"] == "qnx-platform-guard"]
     assert p["kept"] is False and r["build_result"] == "failed"
     assert "#error" in r["blocked_on"][0]["error"]
+
+
+@needs_tools
+def test_a_proved_fix_that_lets_the_build_reach_the_linker_is_kept(tmp_path):
+    # paho.mqtt.c on QNX: fixing its own `bool` typedef let compilation finish, and link errors (a different
+    # file) appeared. That is progress, not a reason to revert.
+    header = ("#include <stdbool.h>\ntypedef unsigned int bool;\n"
+              "int same_word(const char *a, const char *b);\nint not_defined_anywhere(void);\n")
+    test = '#include "textutil.h"\nint main(void) { return not_defined_anywhere(); }\n'
+    lib = upstream(tmp_path, {"textutil.h": header, "test_textutil.c": test})
+    r = agent.port(str(lib), "v1", tmp_path / "ports", arch=None, use_llm=False, name="brokenlib",
+                   log=lambda *_: None)
+    [p] = [p for p in r["patches"] if p["rule"] == "bool-typedef"]
+    assert p["kept"] is True
+    assert "not_defined_anywhere" in r["blocked_on"][0]["error"]

@@ -91,8 +91,14 @@ class Job:
         b = str(self.build)
         return {"cmake": ["ctest", "--test-dir", b, "--output-on-failure", "--timeout", "300"],
                 "meson": ["meson", "test", "-C", b, "--print-errorlogs", "-t", "5"],
-                "autotools": ["make", "-k", "-C", b, "check", *([f"LOG_COMPILER={self.emulator}"]
-                                                              if self.emulator else [])]}.get(self.system, [])
+                "autotools": ["make", "-k", "-C", b, "check",
+                              *([f"LOG_COMPILER={self.emulator}", f"SH_LOG_COMPILER={self.emulator}"]
+                                if self.emulator else [])]}.get(self.system, [])
+
+    def pretest_cmd(self) -> list[str]:
+        """automake builds check_PROGRAMS only during `make check`; TESTS= builds them without running."""
+        return ["make", "-k", "-j", JOBS, "-C", str(self.build), "check", "TESTS="] \
+            if self.system == "autotools" else []
 
 
 def run(cmds: list[list[str]], cwd: Path, env: dict, log_path: Path) -> tuple[bool, str]:

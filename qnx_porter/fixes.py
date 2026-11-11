@@ -71,6 +71,11 @@ _MATH = ["sqrt", "cbrt", "pow", "exp", "exp2", "expm1", "log", "log2", "log10", 
          "atanh", "hypot", "ldexp", "frexp", "modf", "scalbn", "copysign", "nextafter", "fmax", "fmin", "fdim",
          "fma", "erf", "erfc", "tgamma", "lgamma", "nan"]
 _CLASSIFY = ["__isinf", "__isnan", "__isfinite", "__isnormal", "__fpclassify", "__signbit"]
+ENDIAN_MACROS = {f"{a}{n}{b}" for n in (16, 32, 64) for a, b in
+                 (("htobe", ""), ("htole", ""), ("be", "toh"), ("le", "toh"))}
+ENDIAN_FLAGS = [f"-D{m}(x)=__builtin_bswap{m[-2:] if m.startswith('ht') else m[2:4]}(x)" for m in
+                sorted(ENDIAN_MACROS) if m.startswith(("htobe", "be"))] + \
+               [f"-D{m}(x)=(x)" for m in sorted(ENDIAN_MACROS) if m.startswith(("htole", "le"))]
 LIBM_SYMBOLS = {f"{n}{s}" for n in _MATH + _CLASSIFY for s in ("", "f", "l")}
 
 INCLUDE = re.compile(r"^\s*#\s*include\b")
@@ -180,6 +185,12 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
     if d.kind == "undefined_ref" and d.symbol in FSNOTIFY_SYMBOLS and "-lfsnotify" not in flags.libs:
         return Fix("link-libfsnotify", f"QNX 8.0 has inotify, but `{d.symbol}` moved from libc to libfsnotify: "
                    "link with -lfsnotify.", d, libs=["-lfsnotify"])
+    if d.kind in ("undefined_ref", "implicit_decl") and d.symbol in ENDIAN_MACROS \
+            and "-D_QNX_PORTER_ENDIAN" not in flags.cflags:
+        return Fix("endian-builtins", f"`{d.symbol}` comes from glibc's <endian.h>, which QNX 8.0 does not have. "
+                   "Both QNX targets (x86_64, aarch64le) are little-endian, so htobeNN/beNNtoh are GCC's "
+                   "__builtin_bswapNN and htoleNN/leNNtoh are the value itself.", d,
+                   cflags=["-D_QNX_PORTER_ENDIAN", *ENDIAN_FLAGS])
     if d.kind == "undefined_ref" and d.symbol in LIBM_SYMBOLS and "-lm" not in flags.libs:
         return Fix("link-libm", f"`{d.symbol}` is in QNX's libm, not in libc: QNX's <math.h> implements "
                    "isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. "

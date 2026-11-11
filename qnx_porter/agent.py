@@ -56,7 +56,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
 
     applied: list[patches.Patch] = []
     tried: set = set()
-    pending = None  # (patch, diagnostic it should clear, error count before): a patch on probation
+    pending = None  # (patch, diagnostic it should clear, diagnostics before): a patch on probation
     blocked: list[dict] = []
     ok, rounds = False, 0
     for rounds in range(1, max_rounds + 1):
@@ -71,7 +71,12 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         if pending:
             p, want_gone, before = pending
             pending = None
-            if not ok and (want_gone in {loose(d) for d in diags} or len(diags) > before):
+            now = {loose(d) for d in diags}
+            # New errors elsewhere are progress (a compile fix lets the linker run); new errors in the
+            # files the patch touched, or the same error again, mean the patch did not work.
+            touched = {loose(d) for d in diags if loose(d) not in before and d.file
+                       and fixes.in_tree(src, d.file) in set(p.files)}
+            if not ok and (want_gone in now or touched):
                 patches.revert_last(src)
                 p.kept = False
                 log(f"      patch {p.number:04d} ({p.source}) did not clear the error: reverted")
@@ -90,14 +95,14 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
             applied.append(_apply(f, n, src, out, job, work))
             log(f"      fix {n:04d} [{f.rule}] {f.reason}"[:200])
             if f.verify:
-                pending = (applied[-1], loose(f.diag), len(diags))
+                pending = (applied[-1], loose(f.diag), {loose(d) for d in diags})
         if planned:
             continue
         if use_llm and llm.configured():
             p = _ask_model(diags, src, out, len(applied) + 1, text, tried, log)
             if p:
                 applied.append(p)
-                pending = (p, p._diag, len(diags))
+                pending = (p, p._diag, {loose(d) for d in diags})
                 continue
         blocked = [{"kind": d.kind, "error": d.raw or d.message, "hint": fixes.hint(d)}
                    for d in diags[:8]]
@@ -109,6 +114,8 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     if ok and target and job.test_cmd():
         uname = target.uname()
         log(f"[4/5] tests on target {target.host}:{target.port} ({uname or 'uname failed'})")
+        if job.pretest_cmd():  # automake builds its test programs only in `make check`: build them first
+            build.run([job.pretest_cmd()], work, env, logs / "tests-build.log")
         same = target.sync([src, bdir, work / "stubs"] if (work / "stubs").exists() else [src, bdir])
         (work / SAME_PATH_MARK).unlink(missing_ok=True)
         if same:
@@ -118,6 +125,11 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                                                         logs / "tests.log")
         else:
             _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
+            if system == "autotools":  # each test's own log has the QNX output
+                ttext += "".join(f"\n--- {p.relative_to(bdir)}\n" + p.read_text(errors="replace")[-3000:]
+                                 for p in sorted(bdir.rglob("*.log")) if p.name not in ("config.log",
+                                                                                      "test-suite.log"))
+                (logs / "tests.log").write_text(ttext, encoding="utf-8")
             tests_passed, tests_total = parse_results(system, ttext)
         log(f"      {tests_passed}/{tests_total} tests passed")
     elif ok:
