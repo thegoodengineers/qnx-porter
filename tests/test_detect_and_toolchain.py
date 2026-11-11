@@ -75,3 +75,32 @@ def test_sdp_env_explains_what_to_do_when_missing(monkeypatch, tmp_path):
         assert "SETUP.md" in str(e)
     else:
         raise AssertionError("expected SystemExit")
+
+
+def fake_sdp(tmp_path, empty_cc1=False):
+    bin_ = tmp_path / "host" / "usr" / "bin"
+    bin_.mkdir(parents=True)
+    for n in ("x86_64-pc-nto-qnx8.0.0-gcc-12.2.0", "x86_64-pc-nto-qnx8.0.0-gcc-9.3.0", "x86_64-pc-nto-qnx8.0.0-ar"):
+        (bin_ / n).write_text("x")
+    cc1 = tmp_path / "host" / "usr" / "lib" / "gcc" / "x86_64-pc-nto-qnx8.0.0" / "12.2.0" / "cc1"
+    cc1.parent.mkdir(parents=True)
+    cc1.write_text("" if empty_cc1 else "ELF")
+    for arch in ("x86_64", "aarch64le"):
+        lib = tmp_path / "target" / arch / "lib"
+        lib.mkdir(parents=True)
+        for n in ("libc.so", "libsocket.so"):
+            (lib / n).write_text("ELF")
+    return {"QNX_HOST": str(tmp_path / "host"), "QNX_TARGET": str(tmp_path / "target")}
+
+
+def test_sdp8_ships_gcc_only_with_a_version_suffix(tmp_path):
+    env = fake_sdp(tmp_path)
+    assert qnx.gnu_tool(env, "x86_64-pc-nto-qnx8.0.0", "gcc").endswith("x86_64-pc-nto-qnx8.0.0-gcc-12.2.0")
+    assert qnx.gnu_tool(env, "x86_64-pc-nto-qnx8.0.0", "ar").endswith("x86_64-pc-nto-qnx8.0.0-ar")
+    assert "-gcc-12.2.0" in qnx.gnu_env(qnx.ARCHES["x86_64"], env, qnx.Flags())["CC"]
+
+
+def test_an_interrupted_install_is_detected(tmp_path):
+    assert qnx.sdp_damage(fake_sdp(tmp_path)) == []
+    bad = qnx.sdp_damage(fake_sdp(tmp_path / "broken", empty_cc1=True))
+    assert len(bad) == 1 and bad[0].endswith("cc1")

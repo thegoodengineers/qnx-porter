@@ -119,7 +119,8 @@ The path from "a git URL" to "tests passed on QNX 8.0", function by function:
 
 ## Quick start
 ```bash
-python3 -m pip install -e ".[test]"
+python3 -m pip install --user --upgrade pip   # Ubuntu 22.04's pip 22 cannot do editable installs
+python3 -m pip install --user -e ".[test]"
 python3 -m pytest -q                                   # no QNX needed
 source ~/qnx800/qnxsdp-env.sh && qnx-porter doctor
 qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11

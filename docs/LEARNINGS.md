@@ -23,6 +23,17 @@ Dated entries. Labels: [Verified] ran it ourselves, [To verify] from documentati
 - [Verified] On the host, GCC's wording for `#error`, the one-argument `pthread_setname_np`, and ld's
   "multiple definition" matches what the parser expects (checked with gcc 11 in WSL and gcc 13 in CI).
 
+## 11 Nov 2026: first real SDP install
+- [Verified] SDP 8.0 ships gcc/g++ only with a version suffix (`x86_64-pc-nto-qnx8.0.0-gcc-12.2.0`); binutils
+  and `qcc`/`q++` are unversioned. `qcc -V` lists 12.2.0 `gcc_ntox86_64` (default) and `gcc_ntoaarch64le`.
+  `gnu_tool()` in `qnx_porter/qnx.py` now picks the versioned driver.
+- [Verified] Our first install was incomplete: 4,019 of 8,726 files under `~/qnx800` were 0 bytes (including
+  `cc1` and the target libc), the Software Center log stopped mid-unarchive after a connection reset, and qcc
+  failed with `cc1: Exec format error`. `qnx-porter doctor` now checks for this ("SDP complete") and
+  compiles a socket program with qcc before saying ok.
+- [Verified] Ubuntu 22.04's pip 22 cannot install a pyproject-only package in editable mode; upgrade pip
+  with `--user` first. Docs updated.
+
 ## Blocked on QNX SDP 8.0 (needs the install in SETUP.md)
 1. `qnx-porter doctor` all ok on a real SDP.
 2. First real port (json-c), by hand-checking every patch the agent wrote.
