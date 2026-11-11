@@ -1,10 +1,16 @@
 """Run the library's own tests on a QNX 8.0 target (the SDP's QEMU image, or a board) over ssh.
 
-ctest, meson and automake all accept a wrapper that runs each cross-built test binary. Ours copies the
-build and source trees to the target under --target-dir, then runs every test there over ssh, mapping
-host paths in arguments to their target copies so tests that read data files still find them.
+The build and source trees are copied to --target-dir on the target, and a QNX path-space link
+(`ln -sP`) makes them appear at the same absolute path as on the host, so generated test scripts with
+host paths baked in work unchanged. If that top-level path already exists on the target, host paths in
+arguments are remapped under --target-dir instead.
+
+CMake tests are run by `ctest_on_target()`: it reads ctest's own test list and runs every command on QNX.
+That includes tests whose command is a script (json-c's `test1.test`), which CMake's cross-compiling
+emulator never wraps. Meson and automake use the generated wrapper (`exe_wrapper`, `LOG_COMPILER`).
 """
 import argparse
+import json
 import os
 import re
 import shlex
@@ -35,20 +41,103 @@ class Target:
         r = self.ssh("uname -a", capture_output=True, text=True, timeout=60)
         return r.stdout.strip() if r.returncode == 0 else ""
 
-    def sync(self, paths: list[Path]) -> None:
-        """Copy host directories to root+path on the target (tar over ssh)."""
+    def sync(self, paths: list[Path]) -> bool:
+        """Copy host directories to root+path on the target (tar over ssh). True if they are also visible
+        at their host paths, through a QNX path-space link from /<top> to root/<top>."""
         rel = [str(p.resolve()).lstrip("/") for p in paths]
+        root = shlex.quote(self.root)
+        self.ssh("rm -rf " + " ".join(shlex.quote(self.root + "/" + r) for r in rel), timeout=600)
         tar = subprocess.Popen(["tar", "-C", "/", "-cf", "-", *rel], stdout=subprocess.PIPE)
-        self.ssh(f"mkdir -p {shlex.quote(self.root)} && tar -C {shlex.quote(self.root)} -xf -",
-                 stdin=tar.stdout, check=True, timeout=1800)
+        self.ssh(f"mkdir -p {root} && tar -C {root} -xf -", stdin=tar.stdout, check=True, timeout=1800)
         tar.wait()
+        return self.ssh(link_command(self.root, rel), capture_output=True, timeout=60).returncode == 0
 
 
-def remote_command(t: Target, work: str, cwd: str, argv: list[str]) -> str:
-    """The shell command that runs argv on the target, with host paths under `work` moved under t.root."""
+def link_command(root: str, rel: list[str]) -> str:
+    """Shell that makes /<top> show root/<top> (QNX `ln -sP`), and fails if /<top> is something else."""
+    checks = []
+    for top in sorted({r.split("/", 1)[0] for r in rel}):
+        src, dst = shlex.quote(f"{root}/{top}"), shlex.quote(f"/{top}")
+        checks.append(f'{{ [ -e {dst} ] || ln -sP {src} {dst}; }} && '
+                      f'[ "$(cd {dst} && pwd -P)" = "$(cd {src} && pwd -P)" ]')
+    return " && ".join(checks)
+
+
+def remote_command(t: Target, work: str, cwd: str, argv: list[str], same_path: bool = False,
+                   env: list[str] = ()) -> str:
+    """The shell command that runs argv on the target. Unless the trees are visible at their host paths,
+    host paths under `work` are moved under t.root."""
     def move(a: str) -> str:
-        return a.replace(work, t.root + work) if work in a else a
-    return f"cd {shlex.quote(move(cwd))} && exec {' '.join(shlex.quote(move(a)) for a in argv)}"
+        return a.replace(work, t.root + work) if (work in a and not same_path) else a
+    prefix = ("env " + " ".join(shlex.quote(move(e)) for e in env) + " ") if env else ""
+    return f"cd {shlex.quote(move(cwd))} && exec {prefix}{' '.join(shlex.quote(move(a)) for a in argv)}"
+
+
+SAME_PATH_MARK = ".qnx-same-path"  # written in the work folder when sync() linked the paths
+
+
+def _regexes(v) -> list[str]:
+    return [x for x in (v if isinstance(v, list) else [v]) if x] if v else []
+
+
+def _on(v) -> bool:
+    return v in (True, 1) or str(v).upper() in ("ON", "TRUE", "1", "YES")
+
+
+def verdict(rc: int | None, out: str, props: dict) -> str:
+    """ctest's pass/fail/skip rules for one finished test: 'pass', 'fail' or 'skip'."""
+    if rc is None:
+        return "fail"  # timed out
+    if "SKIP_RETURN_CODE" in props and rc == int(props["SKIP_RETURN_CODE"]):
+        return "skip"
+    if any(re.search(r, out) for r in _regexes(props.get("SKIP_REGULAR_EXPRESSION"))):
+        return "skip"
+    if any(re.search(r, out) for r in _regexes(props.get("FAIL_REGULAR_EXPRESSION"))):
+        ok = False
+    elif _regexes(props.get("PASS_REGULAR_EXPRESSION")):
+        ok = any(re.search(r, out) for r in _regexes(props["PASS_REGULAR_EXPRESSION"]))
+    else:
+        ok = rc == 0
+    if _on(props.get("WILL_FAIL")):
+        ok = not ok
+    return "pass" if ok else "fail"
+
+
+def ctest_on_target(t: Target, build: Path, work: Path, emulator: str, same_path: bool, log_path: Path,
+                    default_timeout: int = 300) -> tuple[int, int]:
+    """Run every test ctest knows about on the QNX target. Returns (passed, total); skips are not counted."""
+    listing = subprocess.run(["ctest", "--show-only=json-v1"], cwd=build, capture_output=True, text=True,
+                             check=True).stdout
+    passed = total = 0
+    lines = [f"$ ctest --show-only=json-v1 (in {build}); every test command runs on {t.host} over ssh\n"]
+    for test in json.loads(listing).get("tests", []):
+        props = {p["name"]: p["value"] for p in test.get("properties", [])}
+        cmd = list(test.get("command") or [])
+        if _on(props.get("DISABLED")) or not cmd:
+            lines.append(f"SKIP  {test['name']} (disabled or not built)\n")
+            continue
+        if emulator and cmd[0] == emulator:
+            cmd = cmd[1:]
+        env = props.get("ENVIRONMENT") or []
+        env = env if isinstance(env, list) else [env]
+        cwd = props.get("WORKING_DIRECTORY", str(build))
+        limit = float(props.get("TIMEOUT") or default_timeout)
+        try:
+            r = t.ssh(remote_command(t, str(work), cwd, cmd, same_path, env), capture_output=True, text=True,
+                      errors="replace", timeout=limit + 30)
+            rc, out = r.returncode, r.stdout + r.stderr
+        except subprocess.TimeoutExpired:
+            rc, out = None, f"timed out after {limit:.0f} s"
+        v = verdict(rc, out, props)
+        if v != "skip":
+            total += 1
+            passed += v == "pass"
+        lines.append(f"{v.upper():5s} {test['name']} (exit {rc})\n")
+        if v == "fail":
+            lines.append("".join(f"    {ln}\n" for ln in out.strip().splitlines()[-40:]))
+    lines.append(f"\n{passed}/{total} tests passed on the QNX target\n")
+    log_path.write_text("".join(lines), encoding="utf-8")
+    return passed, total
 
 
 def write_wrapper(path: Path, t: Target, work: Path) -> str:
@@ -91,7 +180,8 @@ def main() -> int:
     ap.add_argument("argv", nargs="+")
     a = ap.parse_args()
     t = Target.parse(a.target, a.root)
-    return t.ssh(remote_command(t, a.work, os.getcwd(), a.argv)).returncode
+    same = (Path(a.work) / SAME_PATH_MARK).exists()
+    return t.ssh(remote_command(t, a.work, os.getcwd(), a.argv, same)).returncode
 
 
 if __name__ == "__main__":
