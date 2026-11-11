@@ -105,7 +105,8 @@ def bool_typedef(d: Diagnostic, src: Path, rel: str):
     On QNX 8.0, <sys/socket.h> includes io-sock/types_fbsd.h, which includes <stdbool.h>, so `bool` is
     already the _Bool macro. Guard the typedef so the library uses stdbool's bool. Proved by rebuilding.
     """
-    if "two or more data types in declaration specifiers" not in d.message:
+    # GCC 12 (qcc in SDP 8.0) says "two or more data types"; GCC 13+ says "'bool' cannot be defined via 'typedef'"
+    if not re.search(r"two or more data types in declaration specifiers|bool.{0,3} cannot be defined via", d.message):
         return None
     lines = _read(src, rel).splitlines(keepends=True)
     i = d.line - 1

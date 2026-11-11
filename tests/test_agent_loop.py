@@ -111,6 +111,6 @@ def test_a_proved_fix_that_lets_the_build_reach_the_linker_is_kept(tmp_path):
     lib = upstream(tmp_path, {"textutil.h": header, "test_textutil.c": test})
     r = agent.port(str(lib), "v1", tmp_path / "ports", arch=None, use_llm=False, name="brokenlib",
                    log=lambda *_: None)
-    [p] = [p for p in r["patches"] if p["rule"] == "bool-typedef"]
-    assert p["kept"] is True
+    kept = [p for p in r["patches"] if p["rule"] == "bool-typedef"]
+    assert kept and kept[0]["kept"] is True, (r["patches"], r["blocked_on"])
     assert "not_defined_anywhere" in r["blocked_on"][0]["error"]

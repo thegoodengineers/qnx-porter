@@ -237,3 +237,10 @@ def test_glibc_endian_functions_come_from_qnx_netbyte(tmp_path):
     h = f.compat["qnx-endian.h"]
     assert "#include <net/netbyte.h>" in h
     assert "#define htobe32(x) __NET_BE32((x))" in h and "#define le64toh(x) __NET_LE64((x))" in h
+
+
+def test_bool_typedef_also_matches_newer_gcc_wording(tmp_path):
+    src = "#include <stdbool.h>\ntypedef unsigned int bool;\n"
+    log = "b.h:2:22: error: 'bool' cannot be defined via 'typedef'\n"  # GCC 13+
+    [f] = run(tmp_path, {"b.h": src}, log)
+    assert f.rule == "bool-typedef"
