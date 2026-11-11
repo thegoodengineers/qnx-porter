@@ -21,7 +21,8 @@ shell on the QNX target. If something does not match what you see, jump to [If s
 ```bash
 sudo apt update && sudo apt install -y git python3-pip cmake build-essential
 git clone https://github.com/thegoodengineers/qnx-porter && cd qnx-porter
-python3 -m pip install -e ".[test]"
+python3 -m pip install --user --upgrade pip   # Ubuntu 22.04's pip 22 cannot do editable installs
+python3 -m pip install --user -e ".[test]"
 qnx-porter selftest
 ```
 You should see:

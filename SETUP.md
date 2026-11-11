@@ -53,7 +53,8 @@ ssh root@172.31.1.11 uname -a   # expect: QNX ... 8.0.0 ... x86_64
 ## 5. qnx-porter
 ```bash
 git clone https://github.com/thegoodengineers/qnx-porter && cd qnx-porter
-python3 -m pip install -e ".[test]"
+python3 -m pip install --user --upgrade pip   # Ubuntu 22.04's pip 22 cannot do editable installs
+python3 -m pip install --user -e ".[test]"
 python3 -m pytest -q                 # no QNX needed
 source ~/qnx800/qnxsdp-env.sh
 qnx-porter doctor                    # every line should say ok
@@ -71,9 +72,15 @@ export QNX_PORTER_BASE_URL="..."     # optional; default https://api.openai.com/
 ```
 `--no-model` turns it off for a run.
 
-## Things to check on the first real install
-These are written from QNX's documentation, not yet run on our machine:
-- the SDP 8.0 GNU-style drivers are named `x86_64-pc-nto-qnx8.0.0-gcc` etc. (`qnx-porter doctor` checks it);
+## Checked on a real install (11 Nov 2026)
+- SDP 8.0 ships `qcc`/`q++`, binutils as `x86_64-pc-nto-qnx8.0.0-ar` etc., and gcc only with a version
+  suffix: `x86_64-pc-nto-qnx8.0.0-gcc-12.2.0`. qnx-porter finds the versioned driver itself.
+- An interrupted Software Center install leaves thousands of 0-byte files and qcc fails with
+  `cc1: Exec format error`. `qnx-porter doctor` now reports this as "SDP complete: BAD" and compiles a test
+  program with qcc. Fix: open the Software Center, sign in, and repair or reinstall SDP 8.0.
+- `~/.local/bin` must be on PATH for the `qnx-porter` command after a `--user` install.
+
+Not yet run on our machine:
 - the QEMU image's sshd accepts `root` with the key from `--ssh-ident`;
 - the image has `tar` (qnx-porter copies test trees with `tar` over ssh).
 If one is wrong, note it in `docs/LEARNINGS.md` and fix `qnx_porter/qnx.py` or `qnx_porter/target.py`.
