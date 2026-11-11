@@ -73,9 +73,12 @@ _MATH = ["sqrt", "cbrt", "pow", "exp", "exp2", "expm1", "log", "log2", "log10", 
 _CLASSIFY = ["__isinf", "__isnan", "__isfinite", "__isnormal", "__fpclassify", "__signbit"]
 ENDIAN_MACROS = {f"{a}{n}{b}" for n in (16, 32, 64) for a, b in
                  (("htobe", ""), ("htole", ""), ("be", "toh"), ("le", "toh"))}
-ENDIAN_FLAGS = [f"-D{m}(x)=__builtin_bswap{m[-2:] if m.startswith('ht') else m[2:4]}(x)" for m in
-                sorted(ENDIAN_MACROS) if m.startswith(("htobe", "be"))] + \
-               [f"-D{m}(x)=(x)" for m in sorted(ENDIAN_MACROS) if m.startswith(("htole", "le"))]
+# QNX 8.0 has these as BSD macros in <net/netbyte.h>, visible only with __EXT_BSD (off under strict POSIX
+# macros). The compat header includes it and fills any missing name from QNX's own __NET_BE*/__NET_LE*
+# helpers. It is -included into every compile: function-like -D flags would break the make shell.
+ENDIAN_HEADER = ("/* qnx-porter: glibc <endian.h> names, from QNX's <net/netbyte.h> */\n#include <net/netbyte.h>\n"
+                 + "".join(f"#ifndef {m}\n#define {m}(x) __NET_{'BE' if m.startswith(('htobe', 'be')) else 'LE'}"
+                           f"{''.join(c for c in m if c.isdigit())}((x))\n#endif\n" for m in sorted(ENDIAN_MACROS)))
 LIBM_SYMBOLS = {f"{n}{s}" for n in _MATH + _CLASSIFY for s in ("", "f", "l")}
 
 INCLUDE = re.compile(r"^\s*#\s*include\b")
@@ -92,6 +95,7 @@ class Fix:
     libs: list[str] = field(default_factory=list)
     stubs: list[str] = field(default_factory=list)
     verify: bool = False  # needs a rebuild to prove it: applied alone, reverted if the error stays
+    compat: dict[str, str] = field(default_factory=dict)  # header name -> text, -included in every compile
 
     def key(self):
         flags = (self.rule, tuple(self.cflags), tuple(self.ldflags), tuple(self.libs), tuple(self.stubs))
@@ -187,10 +191,11 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                    "link with -lfsnotify.", d, libs=["-lfsnotify"])
     if d.kind in ("undefined_ref", "implicit_decl") and d.symbol in ENDIAN_MACROS \
             and "-D_QNX_PORTER_ENDIAN" not in flags.cflags:
-        return Fix("endian-builtins", f"`{d.symbol}` comes from glibc's <endian.h>, which QNX 8.0 does not have. "
-                   "Both QNX targets (x86_64, aarch64le) are little-endian, so htobeNN/beNNtoh are GCC's "
-                   "__builtin_bswapNN and htoleNN/leNNtoh are the value itself.", d,
-                   cflags=["-D_QNX_PORTER_ENDIAN", *ENDIAN_FLAGS])
+        return Fix("endian-netbyte", f"`{d.symbol}` comes from glibc's <endian.h>, which QNX 8.0 does not have. "
+                   "QNX has the same names as BSD macros in <net/netbyte.h>; a small header (-included in "
+                   "every compile) includes it and defines any name strict POSIX flags hid, from QNX's "
+                   "__NET_BE*/__NET_LE* helpers.", d,
+                   cflags=["-D_QNX_PORTER_ENDIAN"], compat={"qnx-endian.h": ENDIAN_HEADER})
     if d.kind == "undefined_ref" and d.symbol in LIBM_SYMBOLS and "-lm" not in flags.libs:
         return Fix("link-libm", f"`{d.symbol}` is in QNX's libm, not in libc: QNX's <math.h> implements "
                    "isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. "

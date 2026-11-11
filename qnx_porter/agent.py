@@ -22,7 +22,7 @@ def loose(d: errors.Diagnostic):
 
 def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target: Target | None = None,
          max_rounds: int = 15, use_llm: bool = True, extra_args: tuple[str, ...] = (), name: str = "",
-         log=print) -> dict:
+         log=print, note: str = "") -> dict:
     t0 = time.time()
     name = name or url.rstrip("/").removesuffix(".git").rsplit("/", 1)[-1]
     out = (out_root / name).resolve()
@@ -133,7 +133,8 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
             tests_passed, tests_total = parse_results(system, ttext)
         log(f"      {tests_passed}/{tests_total} tests passed")
     elif ok:
-        log("[4/5] tests skipped: " + ("no --target given" if not target else "no test runner for " + system))
+        log("[4/5] tests skipped: " + (note or ("no --target given" if not target
+                                                 else "no test runner for " + system)))
 
     kept = [p for p in applied if p.kept]
     patches.export_series(src, base, out)
@@ -146,11 +147,13 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         "patches_kept": len(kept), "patches_by_rule": sum(p.source == "rule" for p in kept),
         "patches_by_model": sum(p.source == "model" for p in kept),
         "patches": [p.to_dict() for p in applied], "blocked_on": blocked,
-        "minutes": round((time.time() - t0) / 60, 1),
+        "minutes": round((time.time() - t0) / 60, 1), "note": note,
         "finished": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
     (out / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     (out / job.toolchain_path().name).write_text(job.toolchain_text(), encoding="utf-8")
+    if (work / "qnx-compat").is_dir():  # headers the toolchain -includes, kept with the port
+        shutil.copytree(work / "qnx-compat", out / "qnx-compat", dirs_exist_ok=True)
     (out / "REPORT.md").write_text(render(report, job), encoding="utf-8")
     log(f"[5/5] report: {out / 'REPORT.md'}")
     return report
@@ -167,6 +170,15 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
             (src / rel).write_text(text, encoding="utf-8", errors="surrogateescape")
         return patches.commit_source(src, out, n, f.rule, "rule", f.reason, error, list(f.edits))
     before = job.toolchain_text()
+    extra = ""
+    for name, text in f.compat.items():
+        d = work / "qnx-compat"
+        d.mkdir(exist_ok=True)
+        (d / name).write_text(text, encoding="utf-8")
+        job.flags.cflags += ["-include", str(d / name)]
+        extra += "".join(["--- /dev/null\n", f"+++ b/qnx-compat/{name}\n",
+                          f"@@ -0,0 +1,{len(text.splitlines())} @@\n",
+                          *[f"+{ln}\n" for ln in text.splitlines()]])
     job.flags.cflags += f.cflags
     job.flags.ldflags += f.ldflags
     job.flags.libs += f.libs
@@ -176,7 +188,7 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
         (stub / f"lib{lib}.a").write_bytes(b"!<arch>\n")  # an empty ar archive
         job.flags.stub_dir = str(stub)
     return patches.record_flags(out, n, f.rule, f.reason, error, job.toolchain_path().name, before,
-                                job.toolchain_text())
+                                job.toolchain_text(), extra)
 
 
 def _ask_model(diags, src: Path, out: Path, n: int, log_text: str, tried: set, log):
@@ -232,6 +244,8 @@ def render(r: dict, job: build.Job) -> str:
 | # | Rule | From | Status | Files | Reason |
 |---|---|---|---|---|---|
 {rows}
+
+{('Note: ' + r['note']) if r.get('note') else ''}
 
 All kept source changes in one file: `qnx.patch` (apply to the upstream tag with `git apply qnx.patch`).
 Build logs for every round: `logs/`.

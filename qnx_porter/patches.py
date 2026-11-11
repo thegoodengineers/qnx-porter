@@ -56,9 +56,9 @@ def commit_source(src: Path, out: Path, n: int, rule: str, source: str, reason: 
 
 
 def record_flags(out: Path, n: int, rule: str, reason: str, error: str, name_in_diff: str, before: str,
-                 after: str) -> Patch:
+                 after: str, extra: str = "") -> Patch:
     diff = "".join(difflib.unified_diff(before.splitlines(True), after.splitlines(True),
-                                        f"a/{name_in_diff}", f"b/{name_in_diff}"))
+                                        f"a/{name_in_diff}", f"b/{name_in_diff}")) + extra
     name = f"patches/{n:04d}-{slug(rule)}.patch"
     (out / name).write_text(header(n, rule, "rule", reason, error) + diff, encoding="utf-8")
     return Patch(n, rule, "rule", reason, error.strip(), [name_in_diff], name)

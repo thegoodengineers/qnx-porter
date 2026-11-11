@@ -53,3 +53,5 @@ libraries:
   - name: paho.mqtt.c           # MQTT client for vehicles and IoT; CMake
     url: https://github.com/eclipse/paho.mqtt.c.git
     tag: v1.3.14
+    tests: false                  # its 103 tests need an MQTT broker on localhost:1883, which the image lacks
+    note: "build only: the test suite needs an MQTT broker on the target"

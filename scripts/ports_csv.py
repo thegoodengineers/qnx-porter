@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FIELDS = ["library", "version", "build_system", "arch", "build_result", "tests_passed", "tests_total",
-          "patches", "patches_by_rule", "patches_by_model", "rounds", "minutes", "target", "finished"]
+          "patches", "patches_by_rule", "patches_by_model", "rounds", "minutes", "target", "finished", "note"]
 
 
 def rows(ports: Path) -> list[dict]:
@@ -27,14 +27,14 @@ def rows(ports: Path) -> list[dict]:
 
 
 def readme_table(data: list[dict]) -> str:
-    lines = ["| Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes |",
-             "|---|---|---|---|---|---|"]
+    lines = ["| Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |",
+             "|---|---|---|---|---|---|---|"]
     for r in data:
         tests = ("not run" if r["tests_total"] == "" else "none built" if r["tests_total"] == 0
                  else f"{r['tests_passed']}/{r['tests_total']}")
         lines.append(f"| [{r['library']}](ports/{r['library']}/REPORT.md) | {r['version']} | {r['build_result']} "
                      f"| {tests} | {r['patches']} ({r['patches_by_rule']} / {r['patches_by_model']}) "
-                     f"| {r['minutes']} |")
+                     f"| {r['minutes']} | {r.get('note', '')} |")
     return "\n".join(lines)
 
 
