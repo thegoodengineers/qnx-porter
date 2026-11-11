@@ -60,7 +60,12 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     blocked: list[dict] = []
     ok, rounds = False, 0
     for rounds in range(1, max_rounds + 1):
-        job.toolchain_path().write_text(job.toolchain_text(), encoding="utf-8")
+        tc = job.toolchain_path()
+        if tc.exists() and tc.read_text(encoding="utf-8") != job.toolchain_text():
+            # CMake reads CMAKE_*_INIT only into a fresh cache: a flag fix is invisible until it is wiped.
+            (bdir / "CMakeCache.txt").unlink(missing_ok=True)
+            shutil.rmtree(bdir / "CMakeFiles", ignore_errors=True)
+        tc.write_text(job.toolchain_text(), encoding="utf-8")
         ok, text = build.run(job.steps(tests=True), work, env, logs / f"round-{rounds:02d}.log")
         diags = [] if ok else errors.parse(text) or [errors.Diagnostic("error", _tail(text))]
         if pending:

@@ -49,6 +49,7 @@ class Job:
             self.system, "qnx-env.sh")
 
     def steps(self, tests: bool) -> list[list[str]]:
+        self.build.mkdir(parents=True, exist_ok=True)
         tc = str(self.toolchain_path())
         b, s = str(self.build), str(self.src)
         if self.system == "cmake":
@@ -72,8 +73,9 @@ class Job:
             pre = [] if (self.src / "configure").is_file() else [["autoreconf", "-fi", s]]
             host = [f"--host={self.arch.triplet}"] if self.arch else []
             env_args = [f"{k}={v}" for k, v in self.compiler_env().items()]
-            return pre + [[f"{s}/configure", *host, "--disable-shared", *env_args, *self.extra_args],
-                          ["make", "-k", "-j", JOBS]]
+            return pre + [["env", "-C", b, f"{s}/configure", *host, "--disable-shared", *env_args,
+                           *self.extra_args],
+                          ["make", "-k", "-j", JOBS, "-C", b]]
         if self.system == "make":
             return [["make", "-k", "-j", JOBS, "-C", s, *[f"{k}={v}" for k, v in self.compiler_env().items()
                                                           if k in ("CC", "CXX", "AR")], *self.extra_args]]

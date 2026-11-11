@@ -173,7 +173,8 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                    "it a warning (still printed in the build log) instead of editing the library's code; "
                    "QNX's headers and qcc raise warnings a glibc build does not.",
                    d, cflags=[f"-Wno-error={d.flag}"])
-    if d.kind == "undefined_ref" and d.symbol in SOCKET_SYMBOLS and "-lsocket" not in flags.libs:
+    # QNX's <arpa/inet.h> maps inet_pton to __inet_pton and so on, all exported by libsocket.
+    if d.kind == "undefined_ref" and d.symbol.lstrip("_") in SOCKET_SYMBOLS and "-lsocket" not in flags.libs:
         return Fix("link-libsocket", f"`{d.symbol}` is in QNX's libsocket, not in libc as on Linux: link "
                    "with -lsocket.", d, libs=["-lsocket"])
     if d.kind == "undefined_ref" and d.symbol in FSNOTIFY_SYMBOLS and "-lfsnotify" not in flags.libs:
@@ -201,8 +202,10 @@ def _defined(flags: Flags, name: str) -> bool:
 
 def _source_rule(d: Diagnostic, src: Path, rel: str) -> Fix | None:
     """Rules that rewrite a few lines of source (linuxisms.py)."""
-    risky = {"prctl-set-name", "qnx-platform-guard"}
-    for rule_fn, kinds in ((linuxisms.missing_header, ("missing_header",)),
+    risky = {"prctl-set-name", "qnx-platform-guard", "bool-typedef"}
+    for rule_fn, kinds in ((linuxisms.header_alias, ("missing_header",)),
+                           (linuxisms.missing_header, ("missing_header",)),
+                           (linuxisms.bool_typedef, ("error",)),
                            (linuxisms.renamed_call, ("implicit_decl",)),
                            (linuxisms.one_arg_setname, ("error",)),
                            (linuxisms.platform_guard, ("hash_error",))):

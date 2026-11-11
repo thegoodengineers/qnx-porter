@@ -194,3 +194,37 @@ def test_math_classification_macros_need_libm_on_qnx(tmp_path):
     [f] = run(tmp_path, {}, log)
     assert f.rule == "link-libm" and f.libs == ["-lm"]
     assert run(tmp_path, {}, log, Flags(libs=["-lm"])) == []
+
+
+def test_inet_pton_is_renamed_by_qnx_headers_and_lives_in_libsocket(tmp_path):
+    # Real ld output from porting mbedtls v3.6.2: QNX's <arpa/inet.h> does `#define inet_pton __inet_pton`.
+    [f] = run(tmp_path, {}, "x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'\n")
+    assert f.rule == "link-libsocket"
+
+
+@pytest.mark.parametrize("h", ["errno", "signal", "syslog", "unistd", "fcntl", "termios", "dirent"])
+def test_sys_header_aliases_qnx_does_not_ship(tmp_path, h):
+    # Real error from porting nng v1.9.0: posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+    src = f"#include <stdio.h>\n#include <sys/{h}.h>\nint x;\n"
+    [f] = run(tmp_path, {"u.c": src}, f"u.c:2:10: fatal error: sys/{h}.h: No such file or directory\n")
+    assert f.rule == "header-alias" and f"#include <{h}.h>" in f.edits["u.c"]
+
+
+def test_own_bool_typedef_after_qnx_sys_socket(tmp_path):
+    # Real error from porting paho.mqtt.c v1.3.14: QNX's <sys/socket.h> includes <stdbool.h>.
+    src = "#include <stdbool.h>\n#include <stdio.h>\ntypedef unsigned int bool;\nbool f(void) { return 1; }\n"
+    log = "MQTTPacket.h:3:22: error: two or more data types in declaration specifiers\n"
+    [f] = run(tmp_path, {"MQTTPacket.h": src}, log)
+    assert f.rule == "bool-typedef" and f.verify
+    assert "#ifndef __bool_true_false_are_defined" in f.edits["MQTTPacket.h"]
+    if CC:
+        assert compiles(tmp_path, f.edits["MQTTPacket.h"])
+
+
+def test_unused_endian_h_is_guarded_and_used_gets_gulliver_hint(tmp_path):
+    [f] = run(tmp_path, {"e.c": "#include <endian.h>\nint x;\n"},
+              "e.c:1:10: fatal error: endian.h: No such file or directory\n")
+    assert f.rule == "guard-linux-header"
+    log = "g.c:1:10: fatal error: endian.h: No such file or directory\n"
+    assert run(tmp_path, {"g.c": "#include <endian.h>\nunsigned f(unsigned x) { return htobe32(x); }\n"}, log) == []
+    assert "gulliver.h" in fixes.hint(parse(log)[0])
