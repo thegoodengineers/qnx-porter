@@ -58,9 +58,37 @@ Dated entries. Labels: [Verified] ran it ourselves, [To verify] from documentati
   `Out of bounds (lower)` (patch path `/bar/-1`), where Linux prints "Invalid argument". Not investigated
   further yet: the SDP has no x86_64 gdb installed and the image keeps no core dumps. Candidate upstream issue.
 
-## Blocked on QNX SDP 8.0 (needs the install in SETUP.md)
-1. `qnx-porter doctor` all ok on a real SDP.
-2. First real port (json-c), by hand-checking every patch the agent wrote.
-3. `python3 scripts/run_campaign.py` (all of campaign.yaml), which fills `results/ports.csv` and the README table.
-4. Model runs on the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).
-5. Demo video shots of QNX in QEMU, and the numbers in docs/DEVPOST.md and docs/VIDEO_SCRIPT.md.
+## 11 Nov 2026: the campaign on QNX 8.0 (four runs, logs in results/runs/)
+Summaries as printed by `scripts/run_campaign.py`:
+- Run 1: 4/10 built, 68/72 tests passed. Run 2: 9/10, 292/381. Run 3: 9/10, 372/381. Run 4: 10/10, 372/381.
+  Then cmocka re-run after the regex fix: 46/46, giving the final 374/381 in results/ports.csv.
+
+What each run taught us (all [Verified] on the target):
+- **Our bugs, not QNX's:** (1) CMake reads `CMAKE_*_INIT` only into a fresh cache, so every flag fix after
+  round 1 was silently ignored; mbedtls "received" `-lsocket` twelve times. (2) Autotools ran `configure` in
+  the wrong folder. (3) Automake builds its test programs only inside `make check`, after we had copied the
+  tree to QNX, so libsodium showed 0/80; it is 80/80 now. (4) `.sh` tests need `SH_LOG_COMPILER`. (5) A
+  proved fix was reverted when it let the build reach the linker (new link errors are progress). (6) CMake's
+  pass regexes let `.` match newlines; Python needs DOTALL (cmocka 44/46 -> 46/46).
+- **QNX 8.0 facts the rules now encode** (each from a real error, see docs/LINUX_ISMS.md rows 14b-14f):
+  `isinf`/`isfinite` become `__isinf`/`__isfinite` in libm (yyjson); `inet_pton` is `__inet_pton` in
+  libsocket (mbedtls); `<sys/errno.h>` does not exist (nng); `<sys/socket.h>` includes `<stdbool.h>`, which
+  breaks a library's own `bool` typedef (paho.mqtt.c); glibc's `htobe32` family is in `<net/netbyte.h>`, only
+  with `__EXT_BSD` (paho.mqtt.c). Defining those as `-D` function-like macros broke the make shell, and
+  bswap macros collided with QNX's own declarations, so the fix is a small header that includes
+  `<net/netbyte.h>`; we compiled it with qcc under strict `_POSIX_C_SOURCE` and ran it on the target.
+- **Tests that hang:** paho.mqtt.c's 103 tests wait up to 540 s each for an MQTT broker. A test killed on
+  the host side kept running on QNX, so each test now runs under QNX's own `timeout -s KILL` (300 s cap).
+  paho.mqtt.c is marked build-only in campaign.yaml with that reason.
+- **Open failures (7 of 381):** json-c `test_json_patch` "Memory fault" on patch path `/bar/-1`; libconfig's
+  test binary "Memory fault" at start; libmodbus's test script needs `killall` (QNX: `slay`); nng
+  `httpclient` and resolver need the internet; nng `udp_test` returns a different error for two invalid
+  addresses ("udp send ipc address" expects EADDRINVAL or ENOTSUP); nng `sockaddr_test` failed in the run and
+  passed when re-run by hand. The two crashes need an x86_64 QNX debugger (our install has only the aarch64
+  gdb): ask the Software Center for it, or use the Momentics IDE.
+
+## Still to do
+1. Diagnose the two "Memory fault" crashes (json-c, libconfig) with an x86_64 debugger; report upstream if real.
+2. Runs with the language model on for the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).
+3. libcbor's tests (build cmocka for QNX first and point libcbor at it) and an MQTT broker for paho.mqtt.c.
+4. Demo video shots, and aarch64 on real hardware.

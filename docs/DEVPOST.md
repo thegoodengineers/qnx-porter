@@ -38,9 +38,11 @@ every change visible.
 7. Writes `ports/<library>/`: REPORT.md, report.json, every patch, one combined `qnx.patch`, the toolchain
    file and every build log.
 
-Results on [N, from results/ports.csv] libraries that were not on oss.qnx.com: [built] built for QNX 8.0,
-[passed]/[total] of their own tests passed on QNX 8.0 in QEMU, [rule] patches by rules and [model] by the
-model, [minutes] minutes in total. Table: `results/ports.csv`.
+Results on 10 libraries that were not on oss.qnx.com (json-c, yyjson, cmocka, libcbor, mbedtls, libsodium,
+libmodbus, nng, libconfig, paho.mqtt.c): **all 10 built for QNX 8.0 with qcc, and 374 of 381 of their own
+tests passed on QNX 8.0 in QEMU** (paho.mqtt.c build-only: its tests need an MQTT broker). The agent wrote
+7 patches, all by deterministic rules; mbedtls passed 130/130 and libsodium 80/80. Table:
+`results/ports.csv`, generated from the per-library reports.
 
 ## Evidence of QNX use
 | Claim | File, function, output |
@@ -49,7 +51,8 @@ model, [minutes] minutes in total. Table: `results/ports.csv`.
 | Generates the QNX toolchain | `qnx_porter/qnx.py`: `cmake_toolchain()` (`qcc`, `gcc_ntox86_64`, sysroot `$QNX_TARGET`), `meson_cross()`, `gnu_env()` (`x86_64-pc-nto-qnx8.0.0`) |
 | Invokes qcc | `qnx_porter/build.py`: `Job.steps()` builds the configure/build commands, `run()` executes them; logs in `ports/<library>/logs/round-NN.log` |
 | QNX 8.0 porting knowledge (22 Linux-isms, sources listed) | `qnx_porter/fixes.py` `_rule()`, `qnx_porter/linuxisms.py`; table in `docs/LINUX_ISMS.md` |
-| Runs the library's tests on QNX 8.0 in QEMU (`mkqnximage`) | `qnx_porter/target.py`: `Target.sync()`, `write_wrapper()`, `remote_command()`; output `ports/<library>/logs/tests.log` |
+| Runs the library's tests on QNX 8.0 in QEMU (`mkqnximage`) | `qnx_porter/target.py`: `ctest_on_target()`, `Target.sync()` (QNX `ln -sP` path links), `write_wrapper()`, `remote_command()` (QNX `timeout`); output `ports/<library>/logs/tests.log`, e.g. `ports/mbedtls/logs/tests.log` ends "130/130 tests passed on the QNX target" |
+| Builds the QNX target | `scripts/qemu_target.sh` (mkqnximage, sshd-auth snippet, bridge networking) |
 | Target identity | `Target.uname()`; field `target` in every `ports/<library>/report.json` |
 | One command | `scripts/run_campaign.py` (`preflight()` stops if qcc or the target is missing) |
 | Results | `results/ports.csv`, written by `scripts/ports_csv.py` from the reports only |
@@ -71,12 +74,23 @@ runs of the porting loop on a deliberately broken library with the host compiler
 checked against all of oss.qnx.com and the qnx-ports organisation by `scripts/check_candidates.py`.
 
 ## Challenges we ran into
-[Fill from docs/LEARNINGS.md after the QNX runs: what broke first, what the agent could not fix.]
+- Our first SDP install was silently incomplete (4,019 empty files, qcc failing with "cc1: Exec format
+  error"); `qnx-porter doctor` now detects that and compiles a test program before saying ok.
+- The QEMU image from mkqnximage booted QNX 8.0, but sshd exited: `sshd-auth` was not in the image. One
+  snippet line fixed it; `scripts/qemu_target.sh` now does it.
+- The first campaign run built 4 of 10 libraries. Most failures were our own tool: CMake ignores toolchain
+  flag changes on an existing cache, automake builds tests only inside `make check`, and ctest never wraps
+  script-based tests with the emulator. We fixed each one and re-ran: 4/10, then 9/10, then 10/10 built,
+  and 68/72, then 292/381, then 374/381 tests (logs in `results/runs/`).
+- Real QNX 8.0 differences we turned into rules: `isinf` lives in libm, `inet_pton` is `__inet_pton` in
+  libsocket, `<sys/socket.h>` includes `<stdbool.h>`, `<sys/errno.h>` does not exist, glibc's `htobe32`
+  family is in `<net/netbyte.h>`.
 
 ## Accomplishments that we're proud of
 - Every change is a patch file with a reason; nothing is hidden, and a model patch that does not help is
   reverted and shown as reverted.
 - A port only counts when the library's own tests ran on QNX 8.0.
+- 374 of 381 upstream tests passing on QNX 8.0 across 10 libraries QNX's ports site did not have.
 - [Ports offered upstream / to qnx-ports: link PRs here.]
 
 ## What we learned

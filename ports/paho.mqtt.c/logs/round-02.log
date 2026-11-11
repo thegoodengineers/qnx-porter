@@ -1,0 +1,168 @@
+$ cmake -S /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src -B /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/paho.mqtt.c/work/qnx-toolchain.cmake
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- CMake version: 3.22.1
+-- CMake system name: QNX
+-- Timestamp is 2026-11-11T16:21:15Z
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build -j 4 -- -k
+Consolidate compiler generated dependencies of target thread
+Consolidate compiler generated dependencies of target common_obj
+[  1%] Linking C executable thread
+[  3%] Building C object src/CMakeFiles/common_obj.dir/MQTTPacket.c.o
+[  4%] Building C object src/CMakeFiles/common_obj.dir/MQTTProtocolClient.c.o
+[  6%] Building C object src/CMakeFiles/common_obj.dir/MQTTPacketOut.c.o
+[  9%] Built target thread
+[ 11%] Building C object src/CMakeFiles/common_obj.dir/Log.c.o
+[ 12%] Building C object src/CMakeFiles/common_obj.dir/MQTTPersistence.c.o
+[ 14%] Building C object src/CMakeFiles/common_obj.dir/MQTTProtocolOut.c.o
+[ 16%] Building C object src/CMakeFiles/common_obj.dir/MQTTProperties.c.o
+[ 17%] Building C object src/CMakeFiles/common_obj.dir/WebSocket.c.o
+[ 19%] Building C object src/CMakeFiles/common_obj.dir/MQTTReasonCodes.c.o
+[ 20%] Building C object src/CMakeFiles/common_obj.dir/Proxy.c.o
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.c:28:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacketOut.h:23,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacketOut.c:30:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:132: src/CMakeFiles/common_obj.dir/MQTTPacket.c.o] Error 1
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:146: src/CMakeFiles/common_obj.dir/MQTTPacketOut.c.o] Error 1
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolClient.h:25,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolClient.c:35:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:90: src/CMakeFiles/common_obj.dir/MQTTProtocolClient.c.o] Error 1
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Log.c:27:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolOut.h:26,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolOut.c:38:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:244: src/CMakeFiles/common_obj.dir/MQTTProtocolOut.c.o] Error 1
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:202: src/CMakeFiles/common_obj.dir/Log.c.o] Error 1
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Clients.h:36,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPersistence.h:27,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPersistence.c:29:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+In file included from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolClient.h:25,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPersistence.c:31:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:216: src/CMakeFiles/common_obj.dir/MQTTPersistence.c.o] Error 1
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProperties.c:19:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:300: src/CMakeFiles/common_obj.dir/MQTTProperties.c.o] Error 1
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTReasonCodes.c:19:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/WebSocket.h:21,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/WebSocket.c:24:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:314: src/CMakeFiles/common_obj.dir/MQTTReasonCodes.c.o] Error 1
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:356: src/CMakeFiles/common_obj.dir/WebSocket.c.o] Error 1
+In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolOut.h:26,
+                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Proxy.c:34:
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+   31 | typedef unsigned int bool;
+      |                      ^~~~
+/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
+   31 | typedef unsigned int bool;
+      | ^~~~~~~
+gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:370: src/CMakeFiles/common_obj.dir/Proxy.c.o] Error 1
+gmake[2]: Target 'src/CMakeFiles/common_obj.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:152: src/CMakeFiles/common_obj.dir/all] Error 2
+gmake[1]: Target 'all' not remade because of errors.
+gmake: *** [Makefile:166: all] Error 2
+gmake: Target 'default_target' not remade because of errors.
+[exit 2]

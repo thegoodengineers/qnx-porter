@@ -1,0 +1,84 @@
+target: QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+=== [1/10] json-c json-c-0.18-20240915 ===
+[1/5] fetch https://github.com/json-c/json-c.git @ json-c-0.18-20240915
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      24/25 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/json-c/REPORT.md
+=== [2/10] yyjson 0.10.0 ===
+[1/5] fetch https://github.com/ibireme/yyjson.git @ 0.10.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 14 error(s); first: test_json_writer.c:(.text+0xd5): undefined reference to `__isinf'
+      fix 0001 [link-libm] `__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      12/12 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/yyjson/REPORT.md
+=== [3/10] cmocka cmocka-1.1.7 ===
+[1/5] fetch https://gitlab.com/cmocka/cmocka.git @ cmocka-1.1.7
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      44/46 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/cmocka/REPORT.md
+=== [4/10] libcbor v0.11.0 ===
+[1/5] fetch https://github.com/PJK/libcbor.git @ v0.11.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libcbor/REPORT.md
+=== [5/10] mbedtls v3.6.2 ===
+[1/5] fetch https://github.com/Mbed-TLS/mbedtls.git @ v3.6.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 25 error(s); first: x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+      fix 0001 [link-libsocket] `__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      130/130 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/mbedtls/REPORT.md
+=== [6/10] libsodium 1.0.20-RELEASE ===
+[1/5] fetch https://github.com/jedisct1/libsodium.git @ 1.0.20-RELEASE
+[2/5] build system: autotools; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      80/80 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libsodium/REPORT.md
+=== [7/10] libmodbus v3.1.11 ===
+[1/5] fetch https://github.com/stephane/libmodbus.git @ v3.1.11
+[2/5] build system: autotools; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libmodbus/REPORT.md
+=== [8/10] nng v1.9.0 ===
+[1/5] fetch https://github.com/nanomsg/nng.git @ v1.9.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+      fix 0001 [header-alias] <sys/errno.h> is a glibc alias QNX 8.0 does not ship; POSIX's <errno.h> declares the same things, and QNX has it.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      82/86 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/nng/REPORT.md
+=== [9/10] libconfig v1.7.3 ===
+[1/5] fetch https://github.com/hyperrealm/libconfig.git @ v1.7.3
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libconfig/REPORT.md
+=== [10/10] paho.mqtt.c v1.3.14 ===
+[1/5] fetch https://github.com/eclipse/paho.mqtt.c.git @ v1.3.14
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+      fix 0001 [stub-lib] -lpthread names a separate library on Linux; on QNX its functions are in libc. An empty libpthread.a satisfies the link without editing the build files.
+      round 2: 1 error(s); first: /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+      fix 0002 [bool-typedef] src/MQTTPacket.h defines its own `bool`, but on QNX 8.0 <sys/socket.h> already includes <stdbool.h> (via io-sock/types_fbsd.h), so `bool` is taken. The typedef is skipped
+      round 3: 33 error(s); first: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'
+      fix 0003 [link-libsocket] `recv` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0004 [endian-builtins] `be32toh` comes from glibc's <endian.h>, which QNX 8.0 does not have. Both QNX targets (x86_64, aarch64le) are little-endian, so htobeNN/beNNtoh are GCC's __builtin_bs
+      round 4: 1 error(s); first: CMake Error at /usr/share/cmake-3.22/Modules/CMakeTestCCompiler.cmake:69 (message):
+      no rule or model fix left for: CMake Error at /usr/share/cmake-3.22/Modules/CMakeTestCCompiler.cmake:69 (message):
+[5/5] report: /home/chirag/qnx-porter/ports/paho.mqtt.c/REPORT.md
+10 libraries, 9 built for QNX 8.0; tests ran for 9: 372/381 passed -> /home/chirag/qnx-porter/results/ports.csv

@@ -19,6 +19,8 @@ Chirag, Bhumika, Ayush and Abhijeet (The Good Engineers).
 
 ## For judges, start here
 - **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
+- **Headline:** 10 of 10 libraries built for QNX 8.0 with qcc; 374 of 381 of their own tests passed on a QNX 8.0
+  target (one library build-only). 7 patches in total, all by deterministic rules. See [Results](#results-on-qnx-80).
 - **Results:** [`results/ports.csv`](results/ports.csv), written by `scripts/ports_csv.py` from each
   port's own `ports/<library>/report.json`. No number in this README or the video comes from anywhere else.
 - **Every patch the agent made:** `ports/<library>/patches/*.patch`, each with the rule, the reason and
@@ -27,14 +29,46 @@ Chirag, Bhumika, Ayush and Abhijeet (The Good Engineers).
   `scripts/check_candidates.py`, which queries all of oss.qnx.com and the qnx-ports GitHub organisation.
 - Setup: [SETUP.md](SETUP.md). Tutorial: [docs/CODELAB.md](docs/CODELAB.md).
 
-## Results
-Status: the agent and its tests are done and green in CI. The QNX runs need QNX SDP 8.0 installed
-(see SETUP.md) and fill `results/ports.csv`; until then this table is intentionally empty.
+## Results on QNX 8.0
+Ten libraries that were not on oss.qnx.com, ported by `scripts/run_campaign.py` on 11 Nov 2026 with
+QNX SDP 8.0 (build 141, qcc 12.2.0) and their own test suites run on QNX 8.0 x86_64 in QEMU
+(`mkqnximage`). Rules only, no language model. The table is generated from `ports/*/report.json`:
 
 <!-- results:start -->
 | Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |
 |---|---|---|---|---|---|---|
+| [cmocka](ports/cmocka/REPORT.md) | cmocka-1.1.7 | built | 46/46 | 0 (0 / 0) | 0.5 |  |
+| [json-c](ports/json-c/REPORT.md) | json-c-0.18-20240915 | built | 24/25 | 0 (0 / 0) | 0.5 |  |
+| [libcbor](ports/libcbor/REPORT.md) | v0.11.0 | built | none built | 0 (0 / 0) | 0.3 |  |
+| [libconfig](ports/libconfig/REPORT.md) | v1.7.3 | built | 0/1 | 0 (0 / 0) | 0.4 |  |
+| [libmodbus](ports/libmodbus/REPORT.md) | v3.1.11 | built | 0/1 | 0 (0 / 0) | 0.5 |  |
+| [libsodium](ports/libsodium/REPORT.md) | 1.0.20-RELEASE | built | 80/80 | 0 (0 / 0) | 3.2 |  |
+| [mbedtls](ports/mbedtls/REPORT.md) | v3.6.2 | built | 130/130 | 1 (1 / 0) | 3.7 |  |
+| [nng](ports/nng/REPORT.md) | v1.9.0 | built | 82/86 | 1 (1 / 0) | 4.1 |  |
+| [paho.mqtt.c](ports/paho.mqtt.c/REPORT.md) | v1.3.14 | built | not run | 4 (4 / 0) | 0.3 | build only: the test suite needs an MQTT broker on the target |
+| [yyjson](ports/yyjson/REPORT.md) | 0.10.0 | built | 12/12 | 1 (1 / 0) | 1.3 |  |
 <!-- results:end -->
+
+**What the failures are** (details in [docs/LEARNINGS.md](docs/LEARNINGS.md); each test's QNX output is in
+`ports/<library>/logs/tests.log`):
+- json-c `test_json_patch` and libconfig's single test binary stop with "Memory fault" on QNX. Not
+  diagnosed yet (no x86_64 debugger in our SDP install); candidate upstream issues.
+- libmodbus's one test is a shell script that calls `killall`, which QNX does not have (QNX uses `slay`).
+- nng: `httpclient` and the resolver test need the internet (example.com, Google DNS), which the QEMU
+  target does not have; `udp_test` gets a different error code than Linux for two invalid-address cases;
+  `sockaddr_test` failed in the campaign run but passed when run again by hand.
+- libcbor's tests need cmocka installed for QNX (they were not built); paho.mqtt.c's tests need an MQTT
+  broker on the target.
+
+**How we got here** (each line is the summary the campaign script printed; logs in [`results/runs/`](results/runs/)):
+
+| Run | Built | Tests passed on QNX | What we changed before the next run |
+|---|---|---|---|
+| 1 | 4/10 | 68/72 | CMake ignored flag fixes after round 1; autotools configured in the wrong folder; new rules for libm, `__inet_pton`, `<sys/errno.h>`, `bool` |
+| 2 | 9/10 | 292/381 | automake test programs were never copied to QNX; `.sh` tests ran on Linux |
+| 3 | 9/10 | 372/381 | a proved fix was reverted when it let the link step run; endian names from `<net/netbyte.h>` |
+| 4 | 10/10 | 372/381 | CMake pass regexes need DOTALL (cmocka re-run: 46/46) |
+
 
 ## How it works
 ```
@@ -98,6 +132,26 @@ The path from "a git URL" to "tests passed on QNX 8.0", function by function:
 | 7. Run tests on QNX | copies the build to the target (`tar` over ssh), then ctest / meson test / make check run every test binary on QNX through a generated wrapper (`CMAKE_CROSSCOMPILING_EMULATOR`, meson `exe_wrapper`, automake `LOG_COMPILER`) | [`target.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/target.py) `Target.sync()`, `write_wrapper()`, `remote_command()`, `main()`; output `ports/<library>/logs/tests.log` |
 | 8. Record the target | `uname -a` from the QNX target in every report | `target.py` `Target.uname()`; `ports/<library>/report.json` field `target` |
 | 9. One command for all of it | stops early if `qcc` or the target is missing | [`scripts/run_campaign.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/scripts/run_campaign.py) `preflight()`, `check_target()` |
+
+Real output from our runs (11 Nov 2026):
+```
+$ qnx-porter doctor                      # on the build host, WSL Ubuntu 22.04
+ok  qcc          /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc
+ok  qcc targets  cc: targets available in /home/chirag/qnx800/host/linux/x86_64/etc/qcc: ...
+ok  SDP complete no empty compiler or libc files
+ok  qcc builds hello ok
+$ ssh root@172.31.1.11 uname -a          # the QEMU target
+QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+$ tail -1 ports/mbedtls/logs/tests.log   # written by ctest_on_target()
+130/130 tests passed on the QNX target
+```
+The one patch mbedtls needed, as the agent wrote it ([`ports/mbedtls/patches/0001-link-libsocket.patch`](ports/mbedtls/patches/0001-link-libsocket.patch)):
+```
+Subject: [qnx-porter 0001] link-libsocket
+Source: deterministic rule
+Reason: `__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+Error: x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+```
 
 ## Why a real-time OS needs this tooling
 - **Nothing builds on the target.** A QNX system in a car, a robot or a medical device has no compiler; every

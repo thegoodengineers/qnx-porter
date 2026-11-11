@@ -1,0 +1,246 @@
+$ cmake -S /home/chirag/qnx-porter/ports/json-c/work/src -B /home/chirag/qnx-porter/ports/json-c/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/json-c/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/json-c/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Looking for fcntl.h
+-- Looking for fcntl.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for stdarg.h
+-- Looking for stdarg.h - found
+-- Looking for strings.h
+-- Looking for strings.h - found
+-- Looking for string.h
+-- Looking for string.h - found
+-- Looking for syslog.h
+-- Looking for syslog.h - found
+-- Looking for 4 include files stdlib.h, ..., float.h
+-- Looking for 4 include files stdlib.h, ..., float.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for sys/resource.h
+-- Looking for sys/resource.h - found
+-- Looking for dlfcn.h
+-- Looking for dlfcn.h - found
+-- Looking for endian.h
+-- Looking for endian.h - not found
+-- Looking for limits.h
+-- Looking for limits.h - found
+-- Looking for locale.h
+-- Looking for locale.h - found
+-- Looking for memory.h
+-- Looking for memory.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - found
+-- Looking for sys/cdefs.h
+-- Looking for sys/cdefs.h - found
+-- Looking for sys/param.h
+-- Looking for sys/param.h - found
+-- Looking for sys/random.h
+-- Looking for sys/random.h - not found
+-- Looking for sys/stat.h
+-- Looking for sys/stat.h - found
+-- Looking for xlocale.h
+-- Looking for xlocale.h - not found
+-- Looking for _isnan
+-- Looking for _isnan - not found
+-- Looking for _finite
+-- Looking for _finite - not found
+-- Looking for INFINITY
+-- Looking for INFINITY - found
+-- Looking for isinf
+-- Looking for isinf - found
+-- Looking for isnan
+-- Looking for isnan - found
+-- Looking for nan
+-- Looking for nan - found
+-- Looking for _doprnt
+-- Looking for _doprnt - not found
+-- Looking for snprintf
+-- Looking for snprintf - found
+-- Looking for vasprintf
+-- Looking for vasprintf - found
+-- Looking for vsnprintf
+-- Looking for vsnprintf - found
+-- Looking for vprintf
+-- Looking for vprintf - found
+-- Looking for arc4random
+-- Looking for arc4random - not found
+-- Looking for bsd/stdlib.h
+-- Looking for bsd/stdlib.h - not found
+-- Looking for open
+-- Looking for open - found
+-- Looking for realloc
+-- Looking for realloc - found
+-- Looking for setlocale
+-- Looking for setlocale - found
+-- Looking for uselocale
+-- Looking for uselocale - not found
+-- Looking for strcasecmp
+-- Looking for strcasecmp - found
+-- Looking for strncasecmp
+-- Looking for strncasecmp - found
+-- Looking for strdup
+-- Looking for strdup - found
+-- Looking for strerror
+-- Looking for strerror - found
+-- Looking for vsyslog
+-- Looking for vsyslog - found
+-- Looking for getrusage
+-- Looking for getrusage - found
+-- Looking for strtoll
+-- Looking for strtoll - found
+-- Looking for strtoull
+-- Looking for strtoull - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of int
+-- Check size of int - done
+-- Check size of int64_t
+-- Check size of int64_t - done
+-- Check size of long
+-- Check size of long - done
+-- Check size of long long
+-- Check size of long long - done
+-- Check size of size_t
+-- Check size of size_t - done
+-- Check size of ssize_t
+-- Check size of ssize_t - done
+-- Performing Test HAS_GNU_WARNING_LONG
+-- Performing Test HAS_GNU_WARNING_LONG - Failed
+-- Performing Test HAVE_ATOMIC_BUILTINS
+-- Performing Test HAVE_ATOMIC_BUILTINS - Success
+-- Performing Test HAVE___THREAD
+-- Performing Test HAVE___THREAD - Success
+-- Wrote /home/chirag/qnx-porter/ports/json-c/work/build/config.h
+-- Wrote /home/chirag/qnx-porter/ports/json-c/work/build/json_config.h
+-- Performing Test REENTRANT_WORKS
+-- Performing Test REENTRANT_WORKS - Success
+-- Performing Test BSYMBOLIC_WORKS
+-- Performing Test BSYMBOLIC_WORKS - Success
+-- Performing Test VERSION_SCRIPT_WORKS
+-- Performing Test VERSION_SCRIPT_WORKS - Success
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Wrote /home/chirag/qnx-porter/ports/json-c/work/build/apps_config.h
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/json-c/work/build
+Warning: doxygen not found, the 'doc' target will not be included
+CMake Deprecation Warning at apps/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/json-c/work/build -j 4 -- -k
+[  1%] Building C object CMakeFiles/json-c.dir/arraylist.c.o
+[  2%] Building C object CMakeFiles/json-c.dir/json_c_version.c.o
+[  4%] Building C object CMakeFiles/json-c.dir/debug.c.o
+[  5%] Building C object CMakeFiles/json-c.dir/json_object.c.o
+[  6%] Building C object CMakeFiles/json-c.dir/json_tokener.c.o
+[  8%] Building C object CMakeFiles/json-c.dir/json_object_iterator.c.o
+[  9%] Building C object CMakeFiles/json-c.dir/json_util.c.o
+[ 10%] Building C object CMakeFiles/json-c.dir/json_visit.c.o
+[ 12%] Building C object CMakeFiles/json-c.dir/linkhash.c.o
+[ 13%] Building C object CMakeFiles/json-c.dir/printbuf.c.o
+[ 15%] Building C object CMakeFiles/json-c.dir/random_seed.c.o
+[ 16%] Building C object CMakeFiles/json-c.dir/strerror_override.c.o
+[ 17%] Building C object CMakeFiles/json-c.dir/json_pointer.c.o
+[ 19%] Building C object CMakeFiles/json-c.dir/json_patch.c.o
+[ 20%] Linking C static library libjson-c.a
+[ 20%] Built target json-c
+[ 21%] Building C object tests/CMakeFiles/test1Formatted.dir/test1.c.o
+[ 23%] Building C object tests/CMakeFiles/test2Formatted.dir/test2.c.o
+[ 24%] Building C object tests/CMakeFiles/test1.dir/test1.c.o
+[ 26%] Building C object tests/CMakeFiles/test2.dir/test2.c.o
+[ 27%] Building C object tests/CMakeFiles/test2Formatted.dir/parse_flags.c.o
+[ 28%] Linking C executable test2Formatted
+[ 30%] Linking C executable test2
+[ 31%] Building C object tests/CMakeFiles/test1Formatted.dir/parse_flags.c.o
+[ 31%] Built target test2Formatted
+[ 31%] Built target test2
+[ 32%] Linking C executable test1Formatted
+[ 34%] Building C object tests/CMakeFiles/test4.dir/test4.c.o
+[ 35%] Linking C executable test1
+[ 36%] Building C object tests/CMakeFiles/testReplaceExisting.dir/testReplaceExisting.c.o
+[ 36%] Built target test1Formatted
+[ 36%] Built target test1
+[ 38%] Linking C executable test4
+[ 39%] Linking C executable testReplaceExisting
+[ 41%] Building C object tests/CMakeFiles/test_cast.dir/test_cast.c.o
+[ 42%] Building C object tests/CMakeFiles/test_charcase.dir/test_charcase.c.o
+[ 42%] Built target test4
+[ 43%] Building C object tests/CMakeFiles/test_compare.dir/test_compare.c.o
+[ 43%] Built target testReplaceExisting
+[ 45%] Linking C executable test_cast
+[ 46%] Linking C executable test_charcase
+[ 47%] Building C object tests/CMakeFiles/test_deep_copy.dir/test_deep_copy.c.o
+[ 47%] Built target test_cast
+[ 49%] Linking C executable test_compare
+[ 49%] Built target test_charcase
+[ 50%] Building C object tests/CMakeFiles/test_double_serializer.dir/test_double_serializer.c.o
+[ 52%] Linking C executable test_deep_copy
+[ 52%] Built target test_compare
+[ 53%] Building C object tests/CMakeFiles/test_float.dir/test_float.c.o
+[ 54%] Building C object tests/CMakeFiles/test_int_add.dir/test_int_add.c.o
+[ 56%] Linking C executable test_double_serializer
+[ 56%] Built target test_deep_copy
+[ 57%] Linking C executable test_float
+[ 58%] Building C object tests/CMakeFiles/test_int_get.dir/test_int_get.c.o
+[ 58%] Built target test_double_serializer
+[ 60%] Linking C executable test_int_add
+[ 60%] Built target test_float
+[ 61%] Building C object tests/CMakeFiles/test_locale.dir/test_locale.c.o
+[ 63%] Building C object tests/CMakeFiles/test_null.dir/test_null.c.o
+[ 63%] Built target test_int_add
+[ 64%] Linking C executable test_int_get
+[ 65%] Linking C executable test_locale
+[ 67%] Linking C executable test_null
+[ 68%] Building C object tests/CMakeFiles/test_parse.dir/test_parse.c.o
+[ 68%] Built target test_int_get
+[ 68%] Built target test_locale
+[ 68%] Built target test_null
+[ 69%] Building C object tests/CMakeFiles/test_parse_int64.dir/test_parse_int64.c.o
+[ 71%] Building C object tests/CMakeFiles/test_printbuf.dir/test_printbuf.c.o
+[ 72%] Building C object tests/CMakeFiles/test_set_serializer.dir/test_set_serializer.c.o
+[ 73%] Linking C executable test_set_serializer
+[ 75%] Linking C executable test_printbuf
+[ 75%] Built target test_set_serializer
+[ 76%] Linking C executable test_parse_int64
+[ 78%] Building C object tests/CMakeFiles/test_set_value.dir/test_set_value.c.o
+[ 79%] Linking C executable test_parse
+[ 79%] Built target test_printbuf
+[ 79%] Built target test_parse
+[ 80%] Building C object tests/CMakeFiles/test_strerror.dir/test_strerror.c.o
+[ 80%] Built target test_parse_int64
+[ 82%] Building C object tests/CMakeFiles/test_util_file.dir/test_util_file.c.o
+[ 83%] Building C object tests/CMakeFiles/test_visit.dir/test_visit.c.o
+[ 84%] Linking C executable test_strerror
+[ 86%] Linking C executable test_set_value
+[ 86%] Built target test_strerror
+[ 86%] Built target test_set_value
+[ 87%] Building C object tests/CMakeFiles/test_object_iterator.dir/test_object_iterator.c.o
+[ 90%] Linking C executable test_visit
+[ 90%] Building C object tests/CMakeFiles/test_json_pointer.dir/test_json_pointer.c.o
+[ 91%] Linking C executable test_util_file
+[ 91%] Built target test_visit
+[ 93%] Linking C executable test_object_iterator
+[ 94%] Building C object tests/CMakeFiles/test_json_patch.dir/test_json_patch.c.o
+[ 94%] Built target test_util_file
+[ 94%] Built target test_object_iterator
+[ 95%] Building C object apps/CMakeFiles/json_parse.dir/json_parse.c.o
+[ 97%] Linking C executable test_json_patch
+[ 98%] Linking C executable test_json_pointer
+[ 98%] Built target test_json_patch
+[100%] Linking C executable json_parse
+[100%] Built target test_json_pointer
+[100%] Built target json_parse
