@@ -10,10 +10,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FIELDS = ["library", "version", "build_system", "arch", "build_result", "tests_passed", "tests_total",
-          "patches", "patches_by_rule", "patches_by_model", "rounds", "minutes", "target", "finished", "note"]
+          "patches", "patches_by_rule", "patches_by_model", "rounds", "minutes", "target", "finished", "note",
+          "on_oss_qnx_com"]
 
 
 def rows(ports: Path) -> list[dict]:
+    listed_file = ROOT / "results" / "oss_listed.json"  # written by run_campaign.py from oss.qnx.com
+    listed = set(json.loads(listed_file.read_text())) if listed_file.exists() else None
     out = []
     for f in sorted(ports.glob("*/report.json")):
         r = json.loads(f.read_text(encoding="utf-8"))
@@ -22,6 +25,7 @@ def rows(ports: Path) -> list[dict]:
         r["patches"] = r["patches_kept"]
         if not r["tests_ran"]:
             r["tests_passed"] = r["tests_total"] = ""  # not run is not the same as 0 of 0
+        r["on_oss_qnx_com"] = "" if listed is None else ("yes" if r["library"] in listed else "no")
         out.append({k: r.get(k, "") for k in FIELDS})
     return out
 

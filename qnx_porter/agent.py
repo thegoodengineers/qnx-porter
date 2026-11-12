@@ -22,7 +22,7 @@ def loose(d: errors.Diagnostic):
 
 def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target: Target | None = None,
          max_rounds: int = 15, use_llm: bool = True, extra_args: tuple[str, ...] = (), name: str = "",
-         log=print, note: str = "") -> dict:
+         log=print, note: str = "", subdir: str = "") -> dict:
     t0 = time.time()
     name = name or url.rstrip("/").removesuffix(".git").rsplit("/", 1)[-1]
     out = (out_root / name).resolve()
@@ -45,11 +45,12 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     shutil.rmtree(bdir, ignore_errors=True)
     bdir.mkdir()
 
-    system = build.detect(src)
+    build_src = src / subdir if subdir else src  # some projects keep their build files in a subfolder
+    system = build.detect(build_src)
     env = qnx.sdp_env() if arch else dict(os.environ)
     a = qnx.ARCHES[arch] if arch else None
     flags = qnx.Flags()
-    job = build.Job(src, bdir, system, a, env, flags, extra_args=tuple(extra_args))
+    job = build.Job(build_src, bdir, system, a, env, flags, extra_args=tuple(extra_args))
     if target:
         job.emulator = write_wrapper(work / "qnx-run", target, work)
     log(f"[2/5] build system: {system}; target: {a.triplet if a else 'host compiler (self-test)'}")

@@ -38,8 +38,10 @@ def load(path: Path) -> dict:
         lib["args"] = [str(a) for a in lib.get("args", [])]
         lib["tests"] = lib.get("tests", True) is not False
         lib["note"] = str(lib.get("note", ""))
+        lib["subdir"] = str(lib.get("subdir", ""))
     return {"target": c.get("target"), "target_dir": c.get("target_dir", "/data/qnx-porter"),
-            "arch": c.get("arch", "x86_64"), "max_rounds": int(c.get("max_rounds", 15)), "libraries": libs}
+            "arch": c.get("arch", "x86_64"), "max_rounds": int(c.get("max_rounds", 15)), "libraries": libs,
+            "skip_ported": bool(c.get("skip_ported", True))}
 
 
 def preflight(env_source=None) -> dict:
@@ -105,9 +107,13 @@ def main(argv=None) -> int:
     if not a.skip_oss_check:
         from check_candidates import oss_packages
         ported = already_on_oss(libs, *oss_packages())
+        listed = ROOT / "results" / "oss_listed.json"  # read by ports_csv.py for the on_oss_qnx_com column
+        old = set(json.loads(listed.read_text())) if listed.exists() else set()
+        listed.write_text(json.dumps(sorted(old - {lib["name"] for lib in libs} | set(ported)), indent=1) + "\n")
         for name in ported:
-            print(f"skip {name}: oss.qnx.com lists it now")
-        libs = [lib for lib in libs if lib["name"] not in ported]
+            print(f"{'skip' if c['skip_ported'] else 'note'} {name}: oss.qnx.com lists it")
+        if c["skip_ported"]:
+            libs = [lib for lib in libs if lib["name"] not in ported]
 
     out = Path(a.out)
     for i, lib in enumerate(libs, 1):
@@ -116,7 +122,7 @@ def main(argv=None) -> int:
         try:
             agent.port(lib["url"], lib["tag"], out, arch=c["arch"], target=target if lib["tests"] else None,
                        max_rounds=c["max_rounds"], use_llm=not a.no_model, extra_args=tuple(lib["args"]),
-                       name=lib["name"], note=lib["note"])
+                       name=lib["name"], note=lib["note"], subdir=lib["subdir"])
         except (subprocess.CalledProcessError, OSError, RuntimeError, ValueError) as e:
             print(f"    {lib['name']}: agent error: {e}")
             error_report(out, lib, c["arch"], str(e), (time.time() - t0) / 60)
