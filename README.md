@@ -17,6 +17,43 @@ Chirag, Bhumika, Ayush and Abhijeet (The Good Engineers).
 - A port that compiles is not a port. qnx-porter counts a library as ported only when its own test
   suite runs on QNX 8.0.
 
+## Why C and C++
+**QNX itself is built for C and C++.** QNX OS for Safety 8.0 ships C and C++ toolchains classified for ISO 26262
+and IEC 61508, plus a certified C library and C++ library
+([QNX OS for Safety 8.0](https://qnx.software/en/software/products-and-solutions/qnx-os-and-os-for-safety),
+[certified tools](https://qnx.software/en/software/technologies/safety-certified/certified-tools),
+[product brief](https://qnx.software/content/dam/qnx-xwalk/pdf/product-briefs/qnx-os-for-safety-product-brief.pdf)).
+The OS's own interfaces, such as the C library reference, resource managers and message passing, are C APIs.
+
+**Other languages stand on C libraries.** Python's [`zlib`](https://docs.python.org/3/library/zlib.html) and
+[`sqlite3`](https://docs.python.org/3/library/sqlite3.html) modules use the zlib and SQLite C libraries.
+[PyNaCl](https://pypi.org/project/PyNaCl/) wraps libsodium. In Rust,
+[`rusqlite`](https://crates.io/crates/rusqlite) links SQLite through
+[`libsqlite3-sys`](https://crates.io/crates/libsqlite3-sys). [`flate2`](https://crates.io/crates/flate2) can
+use zlib through [`libz-sys`](https://crates.io/crates/libz-sys). If the C library does not build for QNX,
+nothing above it does. All three are in our campaign:
+- zlib: built, 2/2 tests pass on QNX 8.0.
+- libsodium: built, 80/80 tests pass.
+- sqlite: built. Its test suite needs Tcl on the target, so it was not run.
+
+([`results/ports.csv`](results/ports.csv)).
+
+## Related work: QNX's own ports
+QNX maintains hand-made build recipes in [qnx-ports](https://github.com/qnx-ports)
+([build-files](https://github.com/qnx-ports/build-files)): a person adapts each library and writes its recipe.
+qnx-porter generates a port and then tests it:
+- it applies documented rules to the compiler's errors;
+- every change is a patch with its reason;
+- a library counts as ported only when its own tests run on a QNX target.
+
+The two meet in three places:
+- 21 of our 61 libraries also have a qnx-ports recipe. We compared them library by library in
+  [docs/related/qnx-ports-comparison.md](docs/related/qnx-ports-comparison.md).
+- For the 34 CMake ports that qnx-ports does not have, we generate recipes in their layout
+  ([recipes/build-files/](recipes/build-files/)).
+- The draft pull request text is in [docs/upstream/](docs/upstream/qnx-ports-build-files-PR.md). It has not
+  been sent.
+
 ## For judges, start here
 - **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
   Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.

@@ -19,6 +19,19 @@ libraries whose functions are already in QNX's libc, `-Werror` tripping on new w
 be a tool. The rest, real Linux-only code like epoll, deserves a person's or a model's attention, with
 every change visible.
 
+**Why C and C++.** QNX itself is built for C and C++: QNX OS for Safety 8.0 ships C and C++ toolchains
+classified for ISO 26262 and IEC 61508, plus a certified C library and C++ library
+(https://qnx.software/en/software/products-and-solutions/qnx-os-and-os-for-safety). Other languages stand on C
+libraries. Python's `zlib` and `sqlite3` modules use the zlib and SQLite C libraries, PyNaCl wraps libsodium,
+and Rust's `rusqlite` links SQLite through `libsqlite3-sys`. All three C libraries are in our campaign. Port the
+C layer, and the languages above it can follow.
+
+**How this differs from QNX's own ports.** QNX maintains hand-made recipes in the qnx-ports organisation on
+GitHub. qnx-porter instead generates the port and proves it with the library's own tests on a QNX target. 21 of
+our 61 libraries also have a qnx-ports recipe. We compared each one (docs/related/qnx-ports-comparison.md):
+- in 6, we found the same QNX change independently;
+- in 3, we found the problem at the same line, but only QNX fixed it.
+
 ## What it does
 `qnx-porter port <git URL> --tag <release> --target root@<qnx-ip>`:
 1. Clones the library at the tag and detects CMake, Meson, autotools or Make.
