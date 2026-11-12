@@ -1,15 +1,20 @@
 #!/usr/bin/env bash
-# Build, start and stop the QNX 8.0 x86_64 QEMU target that qnx-porter runs tests on.
+# Build, start and stop the QNX 8.0 QEMU target (x86_64, or aarch64le virt) that qnx-porter runs tests on.
 # Uses QNX's own mkqnximage; adds the two fixes we needed on SDP 8.0 build 141 (see docs/LEARNINGS.md).
 #
 #   sudo scripts/qemu_target.sh net     # once per boot (WSL: after every `wsl --shutdown`): bridge + DHCP
 #   scripts/qemu_target.sh build        # make the image in $IMAGE_DIR
 #   scripts/qemu_target.sh start        # boot headless and wait for ssh
 #   scripts/qemu_target.sh status|stop
+# QNX_TARGET_ARCH=aarch64le selects the 64-bit Arm target (needs the SDP's qemuvirt BSP package).
 set -euo pipefail
 
-IP=${QNX_TARGET_IP:-172.31.1.11}
-IMAGE_DIR=${IMAGE_DIR:-$HOME/qnx-images/qemu}
+ARCH=${QNX_TARGET_ARCH:-x86_64}
+if [ "$ARCH" = x86_64 ]; then
+    IP=${QNX_TARGET_IP:-172.31.1.11}; IMAGE_DIR=${IMAGE_DIR:-$HOME/qnx-images/qemu}
+else
+    IP=${QNX_TARGET_IP:-172.31.1.12}; IMAGE_DIR=${IMAGE_DIR:-$HOME/qnx-images/qemu-$ARCH}
+fi
 SSH=(ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR
      -o ConnectTimeout=5 "root@$IP")
 
@@ -40,7 +45,7 @@ build)
     sdp
     [ -f ~/.ssh/id_ed25519.pub ] || ssh-keygen -q -t ed25519 -N '' -f ~/.ssh/id_ed25519
     mkdir -p "$IMAGE_DIR" && cd "$IMAGE_DIR"
-    [ -d local ] || mkqnximage --noprompt --type=qemu --arch=x86_64 --ip="$IP" --hostname=qnx-porter \
+    [ -d local ] || mkqnximage --noprompt --type=qemu --arch="$ARCH" --ip="$IP" --hostname="qnx-porter-$ARCH" \
         --ssh-ident="$HOME/.ssh/id_ed25519.pub" --data-size=5000 --data-inodes=40000 --ram=2G --cpu=4
     # SDP 8.0's sshd (OpenSSH 10) also needs sshd-auth; mkqnximage only copies sshd-session. Without this
     # sshd exits at boot with "/usr/libexec/sshd-auth does not exist or is not executable".
