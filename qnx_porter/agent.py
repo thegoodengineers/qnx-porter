@@ -2,6 +2,7 @@
 import json
 import os
 import platform
+import re
 import shutil
 import subprocess
 import time
@@ -18,6 +19,28 @@ LLM_KINDS = ("error", "implicit_decl", "undeclared", "missing_header", "cmake_er
 def loose(d: errors.Diagnostic):
     """A diagnostic's identity across rebuilds (line numbers move when a patch adds lines)."""
     return (d.kind, d.file, d.symbol, d.header, d.message)
+
+
+NETWORK_DOWN = re.compile(r"Could not resolve host|Failed to connect|Connection timed out|Connection reset|"
+                          r"unable to access|early EOF|RPC failed")
+
+
+def clone(url: str, tag: str, src: Path, log=print, waits=(60, 300, 900)) -> None:
+    """git clone, retried when the network is down (a DNS outage stopped 60 of 61 clones on 12 Nov 2026).
+    Any other failure, such as a tag that does not exist, is raised at once."""
+    branch = ["--branch", tag] if tag else []  # no tag: the repository's default branch (or a local HEAD)
+    cmd = ["git", "-c", "advice.detachedHead=false", "clone", "-q", "--depth", "1", *branch,
+           "--recurse-submodules", "--shallow-submodules",
+           ("file://" + str(Path(url).resolve())) if Path(url).is_dir() else url, str(src)]
+    for wait in (*waits, None):
+        r = subprocess.run(cmd, capture_output=True, text=True, errors="replace")
+        if r.returncode == 0:
+            return
+        shutil.rmtree(src, ignore_errors=True)
+        if wait is None or not NETWORK_DOWN.search(r.stderr):
+            raise subprocess.CalledProcessError(r.returncode, cmd, r.stdout, r.stderr)
+        log(f"      clone failed, network down? ({r.stderr.strip().splitlines()[-1][:120]}); retry in {wait} s")
+        time.sleep(wait)
 
 
 def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target: Target | None = None,
@@ -38,10 +61,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         patches.git(src, "reset", "-q", "--hard", "qnx-porter-base")
         patches.git(src, "clean", "-qfdx")
     else:
-        branch = ["--branch", tag] if tag else []  # no tag: the repository's default branch (or a local HEAD)
-        subprocess.run(["git", "-c", "advice.detachedHead=false", "clone", "-q", "--depth", "1", *branch,
-                        "--recurse-submodules", "--shallow-submodules",
-                        ("file://" + str(Path(url).resolve())) if Path(url).is_dir() else url, str(src)], check=True)
+        clone(url, tag, src, log)
         patches.git(src, "tag", "qnx-porter-base")
     base = patches.git(src, "rev-parse", "HEAD").strip()
     shutil.rmtree(bdir, ignore_errors=True)

@@ -5,7 +5,7 @@
 #   sudo scripts/qemu_target.sh net     # once per boot (WSL: after every `wsl --shutdown`): bridge + DHCP
 #   scripts/qemu_target.sh build        # make the image in $IMAGE_DIR
 #   scripts/qemu_target.sh start        # boot headless and wait for ssh
-#   scripts/qemu_target.sh status|stop
+#   scripts/qemu_target.sh status|stop|restart   # restart: for a target that stopped answering
 # QNX_TARGET_ARCH=aarch64le selects the 64-bit Arm target (needs the SDP's qemuvirt BSP package).
 set -euo pipefail
 
@@ -77,6 +77,15 @@ status)
 stop)
     sdp
     cd "$IMAGE_DIR" && mkqnximage --stop
+    ;;
+restart)
+    # For a target that stopped answering (run_campaign.py --restart-target). A hung QEMU may ignore
+    # mkqnximage --stop, so end this architecture's QEMU process too, then boot again.
+    "$0" stop || true
+    sleep 5
+    pkill -f "qemu-system-${ARCH%le}" 2>/dev/null || true
+    sleep 5
+    exec "$0" start
     ;;
 *)
     sed -n '2,9p' "$0"; exit 1

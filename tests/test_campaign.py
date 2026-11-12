@@ -68,3 +68,41 @@ def test_weekly_head_history_appends_one_row_per_library(tmp_path, monkeypatch):
     lines = (tmp_path / "history.csv").read_text().splitlines()
     assert lines[0].startswith("run,library,branch,commit") and len(lines) == 3
     assert ",zlib,develop,51b7f2abdade,x86_64,built,1,0,0.3" in lines[1]
+def test_resume_skips_finished_libraries_but_not_errors(tmp_path):
+    (tmp_path / "a").mkdir()
+    (tmp_path / "a/report.json").write_text(json.dumps({"build_result": "failed"}))
+    (tmp_path / "b").mkdir()
+    (tmp_path / "b/report.json").write_text(json.dumps({"build_result": "error"}))
+    assert rc.finished(tmp_path / "a/report.json")
+    assert not rc.finished(tmp_path / "b/report.json") and not rc.finished(tmp_path / "c/report.json")
+
+
+def test_dead_target_is_restarted_once(monkeypatch):
+    class T:
+        answers = iter(["", "", "QNX qnx-porter 8.0.0"])
+        def uname(self):
+            return next(self.answers)
+    ran = []
+    monkeypatch.setattr(rc.subprocess, "run", lambda cmd, shell: ran.append(cmd))
+    monkeypatch.setattr(rc.time, "sleep", lambda s: None)
+    assert rc.alive(T(), "qemu_target.sh restart") and ran == ["qemu_target.sh restart"]
+    assert not rc.alive(type("D", (), {"uname": lambda self: ""})(), None)
+
+
+def test_clone_retries_only_when_the_network_is_down(tmp_path, monkeypatch):
+    import subprocess
+    from qnx_porter import agent
+    calls = []
+    def run(cmd, **kw):
+        calls.append(cmd)
+        err = "fatal: unable to access 'https://x/': Could not resolve host: github.com" if len(calls) < 3 else ""
+        return subprocess.CompletedProcess(cmd, 128 if err else 0, "", err)
+    monkeypatch.setattr(agent.subprocess, "run", run)
+    monkeypatch.setattr(agent.time, "sleep", lambda s: None)
+    agent.clone("https://x/y.git", "v1", tmp_path / "src", log=lambda m: None)
+    assert len(calls) == 3
+    calls.clear()
+    monkeypatch.setattr(agent.subprocess, "run", lambda cmd, **kw: subprocess.CompletedProcess(
+        cmd, 128, "", "fatal: Remote branch v9 not found in upstream origin"))
+    with pytest.raises(subprocess.CalledProcessError):
+        agent.clone("https://x/y.git", "v9", tmp_path / "src", log=lambda m: None)
