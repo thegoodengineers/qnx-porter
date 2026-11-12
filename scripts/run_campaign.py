@@ -113,9 +113,13 @@ def main(argv=None) -> int:
         print(f"target: {check_target(target)}")
     if not a.skip_oss_check:
         from check_candidates import oss_packages
-        ported = already_on_oss(libs, *oss_packages())
         listed = ROOT / "results" / "oss_listed.json"  # read by ports_csv.py for the on_oss_qnx_com column
         old = set(json.loads(listed.read_text())) if listed.exists() else set()
+        try:
+            ported = already_on_oss(libs, *oss_packages())
+        except OSError as e:  # the site is down or resets the connection: keep the last saved answer
+            ported = sorted(old & {lib["name"] for lib in libs})
+            print(f"oss.qnx.com check failed ({e}); using the last saved list in {listed.relative_to(ROOT)}")
         listed.write_text(json.dumps(sorted(old - {lib["name"] for lib in libs} | set(ported)), indent=1) + "\n")
         for name in ported:
             print(f"{'skip' if c['skip_ported'] else 'note'} {name}: oss.qnx.com lists it")
