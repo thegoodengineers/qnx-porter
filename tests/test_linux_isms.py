@@ -244,3 +244,17 @@ def test_bool_typedef_also_matches_newer_gcc_wording(tmp_path):
     log = "b.h:2:22: error: 'bool' cannot be defined via 'typedef'\n"  # GCC 13+
     [f] = run(tmp_path, {"b.h": src}, log)
     assert f.rule == "bool-typedef"
+
+
+def test_bare_werror_warning_without_its_own_switch(tmp_path):
+    # Real GCC output from porting libwebsockets v4.3.3 (its QNX branch redefines BYTE_ORDER).
+    log = 'lib/plat/unix/private-lib-plat-unix.h:67: error: "BYTE_ORDER" redefined [-Werror]\n'
+    [f] = run(tmp_path, {}, log)
+    assert f.rule == "no-werror" and f.cflags == ["-Wno-error"]
+
+
+def test_sa_restart_is_not_supported_on_qnx_8(tmp_path):
+    # Real error from porting libevent 2.1.12; QNX 8.0 <signal.h>: "SA_RESTART ... (not supported yet)".
+    log = "signal.c:257:24: error: 'SA_RESTART' undeclared (first use in this function)\n"
+    [f] = run(tmp_path, {"signal.c": "#include <signal.h>\n"}, log)
+    assert f.rule == "sa-restart" and f.cflags == ["-DSA_RESTART=0"] and "EINTR" in f.reason

@@ -22,7 +22,7 @@ UNDECLARED = re.compile(
     rf"|unknown type name {Q}(?P<type>\w+){Q}"
     rf"|{Q}(?P<member>\w+){Q} is not a member of {Q}std{Q}"
 )
-WERROR = re.compile(r"\[-Werror=(?P<flag>[\w=+-]+)\]\s*$")
+WERROR = re.compile(r"\[-Werror(?:=(?P<flag>[\w=+-]+))?\]\s*$")  # bare [-Werror]: a warning with no switch
 UNDEFINED_REF = re.compile(rf"undefined reference to {Q}(?P<symbol>[^'’`]+){Q}")
 MULTIPLE_DEF = re.compile(rf"multiple definition of {Q}(?P<symbol>[^'\u2019`]+){Q}")
 MISSING_LIB = re.compile(r"cannot find -l(?P<lib>[\w+.-]+)")
@@ -100,8 +100,8 @@ def _classify(msg: str, where: dict) -> Diagnostic:
         return Diagnostic("hash_error", msg, **where)
     if (m := WERROR.search(msg)):
         if (i := IMPLICIT.search(msg)):
-            return Diagnostic("implicit_decl", msg, symbol=i["symbol"], flag=m["flag"], **where)
-        return Diagnostic("werror", msg, flag=m["flag"], **where)
+            return Diagnostic("implicit_decl", msg, symbol=i["symbol"], flag=m["flag"] or "", **where)
+        return Diagnostic("werror", msg, flag=m["flag"] or "", **where)
     if (m := IMPLICIT.search(msg)):
         return Diagnostic("implicit_decl", msg, symbol=m["symbol"], **where)
     if (m := UNDECLARED.search(msg)):

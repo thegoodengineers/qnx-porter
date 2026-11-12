@@ -169,6 +169,11 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                 return Fix("qnx-source", f"`{d.symbol}` is in <{header}>, which {rel} already includes, so a "
                            "strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions "
                            "in QNX's headers, as _GNU_SOURCE does on glibc.", d, cflags=["-D_QNX_SOURCE"])
+    if d.kind == "undeclared" and d.symbol == "SA_RESTART" and not _defined(flags, "SA_RESTART"):
+        return Fix("sa-restart", "QNX 8.0's <signal.h> lists SA_RESTART as not supported yet. Defining it as 0 "
+                   "lets the code build; system calls interrupted by a signal then return EINTR instead of "
+                   "restarting, which the library's tests on QNX show it handles or not.", d,
+                   cflags=["-DSA_RESTART=0"])
     if d.kind == "undeclared" and d.symbol == "MAP_ANONYMOUS" and not _defined(flags, "MAP_ANONYMOUS"):
         return Fix("map-anon", "QNX 8.0's mmap() documents MAP_ANON for anonymous memory; Linux code spells it "
                    "MAP_ANONYMOUS. Same flag, so define one as the other.", d, cflags=["-DMAP_ANONYMOUS=MAP_ANON"])
@@ -177,6 +182,10 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
         return Fix("msg-nosignal", "MSG_NOSIGNAL is not visible here, and this library already ignores "
                    "SIGPIPE (signal(SIGPIPE, SIG_IGN)), so the flag has nothing left to do: define it as 0.",
                    d, cflags=["-DMSG_NOSIGNAL=0"])
+    if d.kind == "werror" and not d.flag and "-Wno-error" not in flags.cflags:
+        return Fix("no-werror", "A warning that has no -W switch of its own (here: " + d.message[:80] + ") is made an "
+                   "error by the project's -Werror. The only way to keep it a warning is -Wno-error; the warning "
+                   "is still printed in the build log.", d, cflags=["-Wno-error"])
     if d.kind == "werror" and d.flag and f"-Wno-error={d.flag}" not in flags.cflags:
         return Fix("no-werror", f"Warning -W{d.flag} is promoted to an error by the project's -Werror. Keep "
                    "it a warning (still printed in the build log) instead of editing the library's code; "
