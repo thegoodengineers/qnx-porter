@@ -1,0 +1,13 @@
+diff --git a/googletest/src/gtest-death-test.cc b/googletest/src/gtest-death-test.cc
+index 15472f1..f809e2e 100644
+--- a/googletest/src/gtest-death-test.cc
++++ b/googletest/src/gtest-death-test.cc
+@@ -1260,7 +1260,7 @@ static pid_t ExecDeathTestSpawnChild(char* const* argv, int close_fd) {
+ #ifdef GTEST_OS_QNX
+   // Obtains the current directory and sets it to be closed in the child
+   // process.
+-  const int cwd_fd = open(".", O_RDONLY);
++  const int cwd_fd = open(".", O_RDONLY | O_DIRECTORY);
+   GTEST_DEATH_TEST_CHECK_(cwd_fd != -1);
+   GTEST_DEATH_TEST_CHECK_SYSCALL_(fcntl(cwd_fd, F_SETFD, FD_CLOEXEC));
+   // We need to execute the test program in the same environment where
