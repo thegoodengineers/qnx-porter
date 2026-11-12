@@ -10,7 +10,7 @@ Branch: `<name>/<task>`, pull request into `main`. Run `python3 -m pytest -q` be
 Deadline: Devpost **16 Dec 2026, 12:30 AM IST**. Code freeze **14 Dec, 9:00 PM IST**.
 
 ## 1. Turn the model step on and measure it (after Chirag's first batch, by 30 Nov)
-- Set `QNX_PORTER_API_KEY`, `QNX_PORTER_MODEL` (and `QNX_PORTER_BASE_URL` if not the default) in your own
+- Set `QNX_PORTER_API_KEY`, `QNX_PORTER_MODEL` and `QNX_PORTER_BASE_URL` in your own
   shell only. Never commit them.
 - Re-run the libraries that ended `failed` with rules only. For each model patch: is it right? Count
   kept / reverted / wrong-but-kept, and write the counts in your PR.

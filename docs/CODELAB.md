@@ -165,7 +165,7 @@ Rules handle errors that are always fixed the same way. For the rest, any OpenAI
 ```bash
 export QNX_PORTER_API_KEY="..."    # your key, in this shell only; never in a file in the repo
 export QNX_PORTER_MODEL="..."      # a model ID from your provider's model list
-export QNX_PORTER_BASE_URL="..."   # only if your provider is not the default endpoint
+export QNX_PORTER_BASE_URL="..."   # your provider's OpenAI-compatible base URL
 qnx-porter port https://github.com/nanomsg/nng.git --tag v1.9.0 --arg -DNNG_TESTS=ON --target root@172.31.1.11
 ```
 The model gets the error, about 65 lines of code around it, and a QNX hint (for example "QNX has no epoll:

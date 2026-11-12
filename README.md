@@ -121,7 +121,7 @@ All 22 patterns, where each QNX fact comes from, and the test for each:
 is never rewritten by a rule; it goes to the model with a QNX-specific hint, or is reported as blocked.
 
 **The model is optional and checked.** Set `QNX_PORTER_API_KEY` and `QNX_PORTER_MODEL` (any
-OpenAI-compatible endpoint; `QNX_PORTER_BASE_URL` to change it). It must answer with a unified diff and
+OpenAI-compatible endpoint, set with `QNX_PORTER_BASE_URL`). It must answer with a unified diff and
 a one-sentence reason. The diff must pass `git apply --check`; after the rebuild, if the error it targeted
 is still there or the error count grew, the agent reverts it and marks it `reverted` in the report.
 

@@ -98,12 +98,24 @@ def test_model_reply_parsing():
     assert llm.parse_reply("sorry")["diff"] == ""
 
 
-def test_model_needs_both_env_vars(monkeypatch):
+def test_model_needs_key_model_and_endpoint(monkeypatch):
     monkeypatch.delenv("QNX_PORTER_API_KEY", raising=False)
     monkeypatch.setenv("QNX_PORTER_MODEL", "m")
+    monkeypatch.setenv("QNX_PORTER_BASE_URL", "https://example.invalid/v1")
     assert not llm.configured()
     monkeypatch.setenv("QNX_PORTER_API_KEY", "k")
     assert llm.configured()
+    monkeypatch.delenv("QNX_PORTER_BASE_URL")
+    assert not llm.configured()  # no built-in default endpoint
+
+
+def test_temperature_is_sent_only_when_set():
+    env = {"QNX_PORTER_MODEL": "m"}
+    body = llm.request_body("p", env)
+    assert "temperature" not in body and "max_tokens" not in body  # some models reject sampling parameters
+    assert body["model"] == "m" and body["messages"][1]["content"] == "p"
+    body = llm.request_body("p", {**env, "QNX_PORTER_TEMPERATURE": "0", "QNX_PORTER_MAX_TOKENS": "4096"})
+    assert body["temperature"] == 0.0 and body["max_tokens"] == 4096
 
 
 def test_test_summaries_from_each_runner():

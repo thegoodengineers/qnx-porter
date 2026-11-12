@@ -84,7 +84,8 @@ never in a file in this repository):
 ```bash
 export QNX_PORTER_API_KEY="..."      # key for any OpenAI-compatible chat-completions endpoint
 export QNX_PORTER_MODEL="..."        # model ID from that provider's model list
-export QNX_PORTER_BASE_URL="..."     # optional; default https://api.openai.com/v1
+export QNX_PORTER_BASE_URL="..."     # the OpenAI-compatible base URL of your provider
+export QNX_PORTER_TEMPERATURE=0       # optional; leave unset if your model rejects sampling parameters
 ```
 `--no-model` turns it off for a run.
 
