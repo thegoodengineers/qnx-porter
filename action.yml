@@ -1,0 +1,112 @@
+name: "qnx-porter: build and test for QNX 8.0"
+description: >
+  Build this repository's C/C++ library for QNX 8.0 with qcc, apply qnx-porter's porting rules to what
+  breaks, run the library's own tests on a QNX target, and attach the report and patches to the run.
+branding:
+  icon: cpu
+  color: blue
+
+# QNX SDP 8.0 is licensed per developer and cannot be downloaded inside a GitHub-hosted job, so this
+# action runs on a self-hosted Linux runner where the SDP is installed (default ~/qnx800). A QNX target
+# reachable over ssh (for example the QEMU image from scripts/qemu_target.sh) is optional: without it the
+# action builds only. `selftest: true` checks the action itself with the host compiler, on any runner.
+
+inputs:
+  path:
+    description: "Library to port: a git URL or a local checkout (default: this repository)"
+    default: "."
+  tag:
+    description: "Tag or branch to port (default: what is checked out)"
+    default: ""
+  subdir:
+    description: "Folder that holds the build files, if not the top level"
+    default: ""
+  arch:
+    description: "x86_64 or aarch64le"
+    default: "x86_64"
+  target:
+    description: "QNX target for the tests, user@host[:port]; empty = build only"
+    default: ""
+  sdp:
+    description: "Folder of the QNX SDP 8.0 installation on the runner"
+    default: "~/qnx800"
+  args:
+    description: "Extra configure arguments, space-separated"
+    default: ""
+  fail-on-test-failure:
+    description: "Fail the job when any of the library's tests fail on QNX"
+    default: "false"
+  selftest:
+    description: "Only run qnx-porter's self-test with the host compiler (no SDP needed)"
+    default: "false"
+
+outputs:
+  build-result:
+    description: "built, failed or error"
+    value: ${{ steps.port.outputs.build-result }}
+  tests:
+    description: "passed/total on the QNX target, or 'not run'"
+    value: ${{ steps.port.outputs.tests }}
+
+runs:
+  using: composite
+  steps:
+    - name: Install qnx-porter
+      shell: bash
+      run: python3 -m pip install --quiet "${{ github.action_path }}"
+
+    - name: Self-test (host compiler)
+      if: inputs.selftest == 'true'
+      shell: bash
+      run: |
+        qnx-porter selftest --out "$RUNNER_TEMP/qnx-porter-selftest"
+        cat "$RUNNER_TEMP/qnx-porter-selftest/brokenlib/REPORT.md" >> "$GITHUB_STEP_SUMMARY"
+
+    - name: Port for QNX 8.0
+      id: port
+      if: inputs.selftest != 'true'
+      shell: bash
+      env:
+        IN_PATH: ${{ inputs.path }}
+        IN_TAG: ${{ inputs.tag }}
+        IN_SUBDIR: ${{ inputs.subdir }}
+        IN_ARCH: ${{ inputs.arch }}
+        IN_TARGET: ${{ inputs.target }}
+        IN_SDP: ${{ inputs.sdp }}
+        IN_ARGS: ${{ inputs.args }}
+        IN_FAIL_TESTS: ${{ inputs.fail-on-test-failure }}
+      run: |
+        set -euo pipefail
+        sdp="${IN_SDP/#\~/$HOME}"
+        [ -f "$sdp/qnxsdp-env.sh" ] || { echo "::error::QNX SDP 8.0 not found at $sdp (see SETUP.md)"; exit 1; }
+        source "$sdp/qnxsdp-env.sh" >/dev/null
+        qnx-porter doctor || { echo "::error::qnx-porter doctor found a problem with the SDP"; exit 1; }
+        out="$RUNNER_TEMP/qnx-port"
+        cmd=(qnx-porter port "$IN_PATH" --out "$out" --name qnx-port --arch "$IN_ARCH" --no-model)
+        [ -n "$IN_TAG" ] && cmd+=(--tag "$IN_TAG")
+        [ -n "$IN_SUBDIR" ] && cmd+=(--subdir "$IN_SUBDIR")
+        [ -n "$IN_TARGET" ] && cmd+=(--target "$IN_TARGET")
+        for a in $IN_ARGS; do cmd+=(--arg "$a"); done
+        "${cmd[@]}" || true
+        rm -rf "$out/qnx-port/work"
+        python3 - "$out/qnx-port/report.json" >> "$GITHUB_OUTPUT" <<'PY'
+        import json, sys
+        r = json.load(open(sys.argv[1]))
+        print(f"build-result={r['build_result']}")
+        print("tests=" + (f"{r['tests_passed']}/{r['tests_total']}" if r["tests_ran"] else "not run"))
+        PY
+        cat "$out/qnx-port/REPORT.md" >> "$GITHUB_STEP_SUMMARY"
+        result=$(python3 -c "import json;print(json.load(open('$out/qnx-port/report.json'))['build_result'])")
+        [ "$result" = built ] || { echo "::error::did not build for QNX 8.0; see the report"; exit 1; }
+        if [ "$IN_FAIL_TESTS" = true ]; then
+          python3 -c "import json,sys;r=json.load(open('$out/qnx-port/report.json'));sys.exit(r['tests_ran'] and r['tests_passed']<r['tests_total'])" \
+            || { echo "::error::some of the library's tests failed on QNX"; exit 1; }
+        fi
+
+    - name: Upload the port
+      if: inputs.selftest != 'true' && always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: qnx-port-${{ inputs.arch }}
+        path: ${{ runner.temp }}/qnx-port/qnx-port
+        if-no-files-found: ignore

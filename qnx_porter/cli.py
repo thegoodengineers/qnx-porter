@@ -14,8 +14,10 @@ def main(argv=None) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     p = sub.add_parser("port", help="port one library")
-    p.add_argument("url", help="git URL of the upstream library")
-    p.add_argument("--tag", required=True, help="release tag or branch to port")
+    p.add_argument("url", help="git URL of the library, or a local git checkout")
+    p.add_argument("--tag", default="", help="release tag or branch (default: the default branch)")
+    p.add_argument("--subdir", default="", help="folder that holds the build files, if not the top level")
+    p.add_argument("--name", default="", help="name of the port folder (default: from the URL)")
     p.add_argument("--arg", action="append", default=[], help="extra configure argument (repeatable)")
     for s in (p,):
         s.add_argument("--arch", default="x86_64", choices=sorted(qnx.ARCHES))
@@ -46,7 +48,7 @@ def main(argv=None) -> int:
         return selftest(Path(a.out))
     target = Target.parse(a.target, a.target_dir) if a.target else None
     r = agent.port(a.url, a.tag, Path(a.out), arch=a.arch, target=target, max_rounds=a.max_rounds,
-                   use_llm=not a.no_model, extra_args=tuple(a.arg))
+                   use_llm=not a.no_model, extra_args=tuple(a.arg), name=a.name, subdir=a.subdir)
     return 0 if r["build_result"] == "built" else 1
 
 
