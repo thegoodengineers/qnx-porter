@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FIELDS = ["library", "version", "build_system", "arch", "build_result", "tests_passed", "tests_total",
           "patches", "patches_by_rule", "patches_by_model", "rounds", "minutes", "target", "finished", "note",
-          "on_oss_qnx_com"]
+          "on_oss_qnx_com", "tests_not_runnable"]
 
 
 def rows(ports: Path) -> list[dict]:
@@ -26,6 +26,9 @@ def rows(ports: Path) -> list[dict]:
         if not r["tests_ran"]:
             r["tests_passed"] = r["tests_total"] = ""  # not run is not the same as 0 of 0
         r["on_oss_qnx_com"] = "" if listed is None else ("yes" if r["library"] in listed else "no")
+        nr = r.get("tests_not_runnable") or []
+        r["tests_not_runnable"] = "; ".join(sorted({f"{sum(x['needs'] == n for x in nr)} need {n}"
+                                                   for n in {x["needs"] for x in nr}}))
         out.append({k: r.get(k, "") for k in FIELDS})
     return out
 

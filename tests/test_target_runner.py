@@ -52,9 +52,32 @@ def test_every_ctest_command_runs_on_the_target_including_scripts(tmp_path, monk
         sent.append(command)
         return subprocess.CompletedProcess(command, 1 if "bad" in command else 0, "", "")
     monkeypatch.setattr(Target, "ssh", fake_ssh)
-    passed, total = target.ctest_on_target(Target.parse("root@q"), tmp_path, tmp_path, "/w/qnx-run", True,
-                                           tmp_path / "tests.log")
-    assert (passed, total) == (3, 3)
+    r = target.ctest_on_target(Target.parse("root@q"), tmp_path, tmp_path, "/w/qnx-run", True,
+                               tmp_path / "tests.log")
+    assert (r["passed"], r["total"], r["not_runnable"]) == (3, 3, [])
     assert sent[0] == "cd /w/build/tests && exec timeout -s KILL 300 /w/src/tests/test1.test"
     assert sent[1].endswith("exec timeout -s KILL 300 /w/build/unit")  # our emulator prefix is stripped: the command runs on QNX
     assert "3/3 tests passed on the QNX target" in (tmp_path / "tests.log").read_text()
+
+
+def test_missing_interpreters_bash_retries_with_ksh_python_is_not_runnable(tmp_path, monkeypatch):
+    # Real cases from the 61-library campaign: expat's tests start with /usr/bin/bash, cmark's with python3.
+    tests = [
+        {"name": "runtests", "cmd": ["/usr/bin/bash", "/w/run.sh"], "cwd": "/w", "env": [], "props": {}},
+        {"name": "spectest", "cmd": ["/usr/bin/python3.10", "/w/spec.py"], "cwd": "/w", "env": [], "props": {}},
+    ]
+    sent = []
+
+    def fake_ssh(self, command, **kw):
+        sent.append(command)
+        missing = next((p for p in ("/usr/bin/bash", "/usr/bin/python3.10") if f" {p} " in command), None)
+        if missing:
+            return subprocess.CompletedProcess(command, 127, "", f"timeout: exec {missing}: No such file or directory")
+        return subprocess.CompletedProcess(command, 0, "ok", "")
+    monkeypatch.setattr(Target, "ssh", fake_ssh)
+    r = target.run_tests(Target.parse("root@q"), tests, tmp_path, True, tmp_path / "t.log", "")
+    assert (r["passed"], r["total"]) == (1, 1)
+    assert r["not_runnable"] == [{"name": "spectest", "needs": "python3.10"}]
+    assert any("exec timeout -s KILL 300 ksh /w/run.sh" in c for c in sent)
+    log = (tmp_path / "t.log").read_text()
+    assert "N/A   spectest (needs python3.10 on the target)" in log and "run with ksh" in log
