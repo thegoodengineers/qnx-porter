@@ -283,7 +283,9 @@ def test_wcswidth_is_missing_from_qnx_libc(tmp_path):
         (tmp_path / "h.h").write_text(f.compat["qnx-wcswidth.h"])
         (tmp_path / "w.c").write_text('#include <stdio.h>\nint main(void) { return wcswidth(L"abc", 3) != 3; }\n')
         exe = tmp_path / "w"
-        assert subprocess.run([CC, "-include", str(tmp_path / "h.h"), str(tmp_path / "w.c"), "-o", str(exe)]).returncode == 0
+        # QNX's <wchar.h> declares wcwidth() by default; glibc's only for X/Open, which newer GCCs require
+        cmd = [CC, "-D_XOPEN_SOURCE=700", "-include", str(tmp_path / "h.h"), str(tmp_path / "w.c"), "-o", str(exe)]
+        assert subprocess.run(cmd).returncode == 0
         assert subprocess.run([str(exe)]).returncode == 0
 
 
