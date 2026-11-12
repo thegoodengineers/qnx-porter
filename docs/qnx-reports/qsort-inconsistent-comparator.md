@@ -23,6 +23,8 @@ Linux (glibc):   0 of 2000 qsort calls wrote outside the array
   by the same helper.
 - `replay_driver`: `rdb_check_add_unordered failed at index 150`, same helper.
 
-## Fix (for libsrtp)
-Shuffle with a Fisher-Yates loop driven by the same test random source instead of `qsort()`. The library code
-itself (`srtp_rdbx_*`, `bitvector_*`) is not involved.
+## Fix (for libsrtp, not sent)
+`libsrtp-ut-sim-shuffle.patch` (this folder) shuffles with a Fisher-Yates loop driven by the same test random
+source instead of `qsort()`. Built with qcc and run on the same QNX 8.0 target, `rdbx_driver`,
+`replay_driver` and `roc_driver` all exit 0; built for Linux, all three still exit 0. The library code itself
+(`srtp_rdbx_*`, `bitvector_*`) needs no change.
