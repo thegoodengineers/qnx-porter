@@ -1,0 +1,13 @@
+$ cmake -S /home/chirag/qnx-porter/ports/tinyxml2/work/src -B /home/chirag/qnx-porter/ports/tinyxml2/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/tinyxml2/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/tinyxml2/work/qnx-run
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/tinyxml2/work/build
+$ cmake --build /home/chirag/qnx-porter/ports/tinyxml2/work/build -j 2 -- -k
+Consolidate compiler generated dependencies of target tinyxml2
+[ 50%] Built target tinyxml2
+Consolidate compiler generated dependencies of target xmltest
+[ 75%] Building CXX object CMakeFiles/xmltest.dir/xmltest.cpp.o
+[100%] Linking CXX executable xmltest
+[100%] Built target xmltest
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated

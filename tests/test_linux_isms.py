@@ -244,3 +244,53 @@ def test_bool_typedef_also_matches_newer_gcc_wording(tmp_path):
     log = "b.h:2:22: error: 'bool' cannot be defined via 'typedef'\n"  # GCC 13+
     [f] = run(tmp_path, {"b.h": src}, log)
     assert f.rule == "bool-typedef"
+
+
+def test_bare_werror_warning_without_its_own_switch(tmp_path):
+    # Real GCC output from porting libwebsockets v4.3.3 (its QNX branch redefines BYTE_ORDER).
+    log = 'lib/plat/unix/private-lib-plat-unix.h:67: error: "BYTE_ORDER" redefined [-Werror]\n'
+    [f] = run(tmp_path, {}, log)
+    assert f.rule == "no-werror" and f.late == ["-Wno-error"]  # after the project's own -Werror
+
+
+def test_sa_restart_is_not_supported_on_qnx_8(tmp_path):
+    # Real error from porting libevent 2.1.12; QNX 8.0 <signal.h>: "SA_RESTART ... (not supported yet)".
+    log = "signal.c:257:24: error: 'SA_RESTART' undeclared (first use in this function)\n"
+    [f] = run(tmp_path, {"signal.c": "#include <signal.h>\n"}, log)
+    assert f.rule == "sa-restart" and f.cflags == ["-DSA_RESTART=0"] and "EINTR" in f.reason
+
+
+def test_posix_regex_is_in_libregex_on_qnx(tmp_path):
+    # Real ld output from porting fmt 11.0.2's tests (gmock uses POSIX regex).
+    log = "gmock-gtest-all.cc:11045:(.text+0xbb65): undefined reference to `regcomp'\n"
+    [f] = run(tmp_path, {}, log)
+    assert f.rule == "link-libregex" and f.libs == ["-lregex"]
+
+
+def test_strict_cxx_mode_hides_posix_stat(tmp_path):
+    # Real g++ error from porting spdlog v1.15.0 (-std=c++11): only struct stat is visible.
+    log = ("os-inl.h:188:45: error: no matching function for call to "
+           "'stat::stat(const std::__2::basic_string<char>::value_type*, stat*)'\n")
+    [f] = run(tmp_path, {"os-inl.h": "#include <sys/stat.h>\n"}, log)
+    assert f.rule == "qnx-source" and f.cflags == ["-D_QNX_SOURCE"]
+
+
+def test_wcswidth_is_missing_from_qnx_libc(tmp_path):
+    # Real ld output from porting flac 1.4.3 (QNX 8.0 libc exports wcwidth, not wcswidth).
+    [f] = run(tmp_path, {}, "utils.c:223:(.text+0x166): undefined reference to `wcswidth'\n")
+    assert f.rule == "wcswidth-compat" and "#define wcswidth qnx_porter_wcswidth" in f.compat["qnx-wcswidth.h"]
+    if CC:
+        (tmp_path / "h.h").write_text(f.compat["qnx-wcswidth.h"])
+        (tmp_path / "w.c").write_text('#include <stdio.h>\nint main(void) { return wcswidth(L"abc", 3) != 3; }\n')
+        exe = tmp_path / "w"
+        # QNX's <wchar.h> declares wcwidth() by default; glibc's only for X/Open, which newer GCCs require
+        cmd = [CC, "-D_XOPEN_SOURCE=700", "-include", str(tmp_path / "h.h"), str(tmp_path / "w.c"), "-o", str(exe)]
+        assert subprocess.run(cmd).returncode == 0
+        assert subprocess.run([str(exe)]).returncode == 0
+
+
+def test_qcc_rejects_sysroot_from_a_project_script(tmp_path):
+    # Real output from porting libpng 1.6.44: its genout.cmake passes --sysroot to the compiler.
+    log = "cc: unknown option: '--sysroot=/home/u/qnx800/target/qnx'\nCMake Error at scripts/cmake/genout.cmake:87 (message):\n  Failed to generate\n"
+    planned = run(tmp_path, {}, log)
+    assert planned[0].rule == "qcc-sysroot" and planned[0].settings == {"omit_sysroot": True}

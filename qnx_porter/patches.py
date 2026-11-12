@@ -44,6 +44,17 @@ def header(n: int, rule: str, source: str, reason: str, error: str) -> str:
             f"Error: {error.strip()}\n---\n")
 
 
+def write_source(path: Path, text: str) -> None:
+    """Write a rule's edit of a library file. The rules read with universal newlines, so put CRLF back where
+    the file had it; otherwise the patch rewrites every line (tinyxml2's xmltest.cpp is CRLF)."""
+    # ponytail: decides per file; a file with mixed endings gets the majority one on every line.
+    raw = path.read_bytes()
+    if raw.count(b"\r\n") * 2 > raw.count(b"\n"):
+        text = text.replace("\r\n", "\n").replace("\n", "\r\n")
+    with open(path, "w", encoding="utf-8", errors="surrogateescape", newline="") as f:
+        f.write(text)
+
+
 def commit_source(src: Path, out: Path, n: int, rule: str, source: str, reason: str, error: str,
                   files: list[str]) -> Patch:
     git(src, "add", "--", *files)

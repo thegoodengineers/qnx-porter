@@ -17,8 +17,11 @@ Every command below runs in that Ubuntu terminal.
 
 ```bash
 sudo apt update && sudo apt install -y build-essential cmake ninja-build meson autoconf automake libtool \
-  pkg-config git python3 python3-pip qemu-system-x86 qemu-utils bridge-utils net-tools openssh-client
+  pkg-config git python3 python3-pip qemu-system-x86 qemu-utils bridge-utils net-tools openssh-client \
+  protobuf-compiler tcl
 ```
+
+`protobuf-compiler` and `tcl` are host tools that nanopb's and sqlite's own builds run.
 
 ## 3. QNX Software Center and SDP 8.0 (you)
 1. From the QNX Everywhere page, download **QNX Software Center for Linux hosts**

@@ -1,0 +1,39 @@
+{
+  "library": "spdlog",
+  "url": "https://github.com/gabime/spdlog.git",
+  "version": "v1.15.0",
+  "commit": "8e5613379f5140fefb0b60412fbf1f5406e7c7f8",
+  "build_system": "cmake",
+  "arch": "x86_64",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
+  "build_result": "built",
+  "rounds": 2,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "qnx-source",
+      "source": "rule",
+      "reason": "C++ sees only `struct stat`, not the POSIX function `stat()`: in strict -std=c++NN mode QNX's headers hide POSIX extensions (here sys/stat.h declares stat() only under __EXT_POSIX1_198808). -D_QNX_SOURCE exposes them, as _GNU_SOURCE does on glibc.",
+      "error": "/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:188:45: error: no matching function for call to 'stat::stat(const std::__2::basic_string<char>::value_type*, stat*)'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-qnx-source.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 0.7,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T08:32:59+00:00"
+}

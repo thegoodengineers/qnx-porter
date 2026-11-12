@@ -22,7 +22,7 @@
       "rule": "link-libsocket",
       "source": "rule",
       "reason": "`__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
-      "error": "x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'",
+      "error": "/home/chirag/qnx-porter/ports/mbedtls/work/src/library/x509_crt.c:2867:(.text+0x843): undefined reference to `__inet_pton'",
       "files": [
         "qnx-toolchain.cmake"
       ],
@@ -31,7 +31,9 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 3.7,
+  "minutes": 4.6,
   "note": "",
-  "finished": "2026-11-11T16:13:01+00:00"
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T07:35:22+00:00"
 }

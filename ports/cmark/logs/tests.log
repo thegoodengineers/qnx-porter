@@ -1,0 +1,8 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/cmark/work/build); every test command runs on root@172.31.1.11 over ssh
+PASS  api_test (exit 0)
+N/A   html_normalization (needs python3.10 on the target)
+N/A   spectest_executable (needs python3.10 on the target)
+N/A   smartpuncttest_executable (needs python3.10 on the target)
+N/A   regressiontest_executable (needs python3.10 on the target)
+
+1/1 tests passed on the QNX target; 4 not runnable there

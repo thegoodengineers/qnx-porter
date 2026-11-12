@@ -33,6 +33,8 @@ def test_cmake_toolchain_uses_qcc_targets_and_sysroot():
     assert 'CMAKE_SYSROOT "/q/target/qnx"' in t
     assert 'CMAKE_C_FLAGS_INIT "-g -D_QNX_SOURCE"' in t  # -g so crash backtraces have file:line
     assert 'CMAKE_EXE_LINKER_FLAGS_INIT "-L/w/stubs"' in t
+    # find_library re-roots under the sysroot; checked with cmake 3.22 on libccd's librt test
+    assert '"/q/target/qnx/x86_64" "/w")' in t and 'set(CMAKE_LIBRARY_PATH "/stubs")' in t
     assert 'CMAKE_C_STANDARD_LIBRARIES "-lsocket"' in t  # libraries after the objects
 
 

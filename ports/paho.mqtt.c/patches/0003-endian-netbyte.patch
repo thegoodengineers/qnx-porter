@@ -1,0 +1,59 @@
+Subject: [qnx-porter 0003] endian-netbyte
+Source: deterministic rule
+Reason: `be32toh` comes from glibc's <endian.h>, which QNX 8.0 does not have. QNX has the same names as BSD macros in <net/netbyte.h>; a small header (-included in every compile) includes it and defines any name strict POSIX flags hid, from QNX's __NET_BE*/__NET_LE* helpers.
+Error: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `be32toh'
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -13,8 +13,8 @@
+ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+-set(CMAKE_C_FLAGS_INIT "-g ")
+-set(CMAKE_CXX_FLAGS_INIT "-g ")
++set(CMAKE_C_FLAGS_INIT "-g -include /home/chirag/qnx-porter/ports/paho.mqtt.c/work/qnx-compat/qnx-endian.h -D_QNX_PORTER_ENDIAN")
++set(CMAKE_CXX_FLAGS_INIT "-g -include /home/chirag/qnx-porter/ports/paho.mqtt.c/work/qnx-compat/qnx-endian.h -D_QNX_PORTER_ENDIAN")
+ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/paho.mqtt.c/work/stubs")
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/paho.mqtt.c/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none
+--- /dev/null
++++ b/qnx-compat/qnx-endian.h
+@@ -0,0 +1,38 @@
++/* qnx-porter: glibc <endian.h> names, from QNX's <net/netbyte.h> */
++#include <net/netbyte.h>
++#ifndef be16toh
++#define be16toh(x) __NET_BE16((x))
++#endif
++#ifndef be32toh
++#define be32toh(x) __NET_BE32((x))
++#endif
++#ifndef be64toh
++#define be64toh(x) __NET_BE64((x))
++#endif
++#ifndef htobe16
++#define htobe16(x) __NET_BE16((x))
++#endif
++#ifndef htobe32
++#define htobe32(x) __NET_BE32((x))
++#endif
++#ifndef htobe64
++#define htobe64(x) __NET_BE64((x))
++#endif
++#ifndef htole16
++#define htole16(x) __NET_LE16((x))
++#endif
++#ifndef htole32
++#define htole32(x) __NET_LE32((x))
++#endif
++#ifndef htole64
++#define htole64(x) __NET_LE64((x))
++#endif
++#ifndef le16toh
++#define le16toh(x) __NET_LE16((x))
++#endif
++#ifndef le32toh
++#define le32toh(x) __NET_LE32((x))
++#endif
++#ifndef le64toh
++#define le64toh(x) __NET_LE64((x))
++#endif

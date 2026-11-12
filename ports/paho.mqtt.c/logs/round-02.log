@@ -1,167 +1,272 @@
 $ cmake -S /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src -B /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/paho.mqtt.c/work/qnx-toolchain.cmake
--- The C compiler identification is QCC 12.2.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
 -- CMake version: 3.22.1
 -- CMake system name: QNX
--- Timestamp is 2026-11-11T16:21:15Z
+-- Timestamp is 2026-11-12T07:47:18Z
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build
-CMake Warning:
-  Manually-specified variables were not used by the project:
-
-    BUILD_TESTING
-
-
-$ cmake --build /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build -j 4 -- -k
+$ cmake --build /home/chirag/qnx-porter/ports/paho.mqtt.c/work/build -j 2 -- -k
 Consolidate compiler generated dependencies of target thread
 Consolidate compiler generated dependencies of target common_obj
-[  1%] Linking C executable thread
-[  3%] Building C object src/CMakeFiles/common_obj.dir/MQTTPacket.c.o
-[  4%] Building C object src/CMakeFiles/common_obj.dir/MQTTProtocolClient.c.o
-[  6%] Building C object src/CMakeFiles/common_obj.dir/MQTTPacketOut.c.o
-[  9%] Built target thread
+[  4%] Built target thread
+[  6%] Building C object src/CMakeFiles/common_obj.dir/MQTTProtocolClient.c.o
+[  8%] Building C object src/CMakeFiles/common_obj.dir/MQTTPacket.c.o
+[  9%] Building C object src/CMakeFiles/common_obj.dir/MQTTPacketOut.c.o
 [ 11%] Building C object src/CMakeFiles/common_obj.dir/Log.c.o
 [ 12%] Building C object src/CMakeFiles/common_obj.dir/MQTTPersistence.c.o
 [ 14%] Building C object src/CMakeFiles/common_obj.dir/MQTTProtocolOut.c.o
 [ 16%] Building C object src/CMakeFiles/common_obj.dir/MQTTProperties.c.o
-[ 17%] Building C object src/CMakeFiles/common_obj.dir/WebSocket.c.o
-[ 19%] Building C object src/CMakeFiles/common_obj.dir/MQTTReasonCodes.c.o
+[ 17%] Building C object src/CMakeFiles/common_obj.dir/MQTTReasonCodes.c.o
+[ 19%] Building C object src/CMakeFiles/common_obj.dir/WebSocket.c.o
 [ 20%] Building C object src/CMakeFiles/common_obj.dir/Proxy.c.o
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.c:28:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacketOut.h:23,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacketOut.c:30:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:132: src/CMakeFiles/common_obj.dir/MQTTPacket.c.o] Error 1
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:146: src/CMakeFiles/common_obj.dir/MQTTPacketOut.c.o] Error 1
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolClient.h:25,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolClient.c:35:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:90: src/CMakeFiles/common_obj.dir/MQTTProtocolClient.c.o] Error 1
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Log.c:27:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolOut.h:26,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolOut.c:38:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:244: src/CMakeFiles/common_obj.dir/MQTTProtocolOut.c.o] Error 1
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:202: src/CMakeFiles/common_obj.dir/Log.c.o] Error 1
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Clients.h:36,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPersistence.h:27,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPersistence.c:29:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-In file included from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolClient.h:25,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPersistence.c:31:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:216: src/CMakeFiles/common_obj.dir/MQTTPersistence.c.o] Error 1
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProperties.c:19:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:300: src/CMakeFiles/common_obj.dir/MQTTProperties.c.o] Error 1
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTReasonCodes.c:19:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/WebSocket.h:21,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/WebSocket.c:24:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:314: src/CMakeFiles/common_obj.dir/MQTTReasonCodes.c.o] Error 1
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:356: src/CMakeFiles/common_obj.dir/WebSocket.c.o] Error 1
-In file included from /home/chirag/qnx800/target/qnx/usr/include/io-sock/types_fbsd.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/sys/socket.h:47,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Socket.h:50,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:24,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTProtocolOut.h:26,
-                 from /home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/Proxy.c:34:
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
-   31 | typedef unsigned int bool;
-      |                      ^~~~
-/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:1: warning: useless type name in empty declaration
-   31 | typedef unsigned int bool;
-      | ^~~~~~~
-gmake[2]: *** [src/CMakeFiles/common_obj.dir/build.make:370: src/CMakeFiles/common_obj.dir/Proxy.c.o] Error 1
-gmake[2]: Target 'src/CMakeFiles/common_obj.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:152: src/CMakeFiles/common_obj.dir/all] Error 2
+[ 43%] Built target common_obj
+[ 45%] Building C object src/CMakeFiles/paho-mqtt3c.dir/MQTTClient.c.o
+[ 46%] Building C object src/CMakeFiles/paho-mqtt3a.dir/MQTTAsync.c.o
+[ 48%] Building C object src/CMakeFiles/paho-mqtt3a.dir/MQTTAsyncUtils.c.o
+[ 50%] Linking C shared library libpaho-mqtt3c.so
+[ 50%] Built target paho-mqtt3c
+[ 51%] Building C object test/CMakeFiles/test1.dir/test1.c.o
+[ 53%] Linking C executable test1
+[ 54%] Building C object test/CMakeFiles/test15.dir/test15.c.o
+[ 56%] Linking C shared library libpaho-mqtt3a.so
+[ 56%] Built target paho-mqtt3a
+[ 58%] Building C object test/CMakeFiles/test2.dir/test2.c.o
+[ 59%] Linking C executable test2
+[ 61%] Building C object test/CMakeFiles/test4.dir/test4.c.o
+[ 62%] Linking C executable test15
+[ 64%] Building C object test/CMakeFiles/test45.dir/test45.c.o
+[ 66%] Linking C executable test4
+[ 67%] Building C object test/CMakeFiles/test6.dir/test6.c.o
+[ 69%] Linking C executable test45
+[ 70%] Building C object test/CMakeFiles/test8.dir/test8.c.o
+[ 72%] Linking C executable test6
+[ 74%] Building C object test/CMakeFiles/test9.dir/test9.c.o
+[ 75%] Linking C executable test8
+[ 77%] Building C object test/CMakeFiles/test95.dir/test95.c.o
+[ 79%] Linking C executable test9
+[ 80%] Linking C executable test95
+[ 82%] Building C object test/CMakeFiles/test10.dir/test10.c.o
+[ 83%] Building C object test/CMakeFiles/test11.dir/test11.c.o
+[ 85%] Linking C executable test10
+[ 87%] Building C object test/CMakeFiles/test_issue373.dir/test_issue373.c.o
+[ 88%] Linking C executable test11
+[ 90%] Building C object test/CMakeFiles/test_sync_session_present.dir/test_sync_session_present.c.o
+[ 91%] Linking C executable test_issue373
+[ 93%] Building C object test/CMakeFiles/test_connect_destroy.dir/test_connect_destroy.c.o
+[ 95%] Linking C executable test_sync_session_present
+[ 96%] Linking C executable test_connect_destroy
+[ 98%] Building C object src/CMakeFiles/MQTTVersion.dir/MQTTVersion.c.o
+[100%] Linking C executable MQTTVersion
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test1.dir/build.make:98: test/test1] Error 1
+gmake[2]: Target 'test/CMakeFiles/test1.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:335: test/CMakeFiles/test1.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test2.dir/build.make:98: test/test2] Error 1
+gmake[2]: Target 'test/CMakeFiles/test2.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:387: test/CMakeFiles/test2.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test15.dir/build.make:98: test/test15] Error 1
+gmake[2]: Target 'test/CMakeFiles/test15.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:361: test/CMakeFiles/test15.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test4.dir/build.make:98: test/test4] Error 1
+gmake[2]: Target 'test/CMakeFiles/test4.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:413: test/CMakeFiles/test4.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test45.dir/build.make:98: test/test45] Error 1
+gmake[2]: Target 'test/CMakeFiles/test45.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:439: test/CMakeFiles/test45.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test6.dir/build.make:98: test/test6] Error 1
+gmake[2]: Target 'test/CMakeFiles/test6.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:465: test/CMakeFiles/test6.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test8.dir/build.make:98: test/test8] Error 1
+gmake[2]: Target 'test/CMakeFiles/test8.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:491: test/CMakeFiles/test8.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test9.dir/build.make:98: test/test9] Error 1
+gmake[2]: Target 'test/CMakeFiles/test9.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:517: test/CMakeFiles/test9.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test95.dir/build.make:98: test/test95] Error 1
+gmake[2]: Target 'test/CMakeFiles/test95.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:543: test/CMakeFiles/test95.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test10.dir/build.make:98: test/test10] Error 1
+gmake[2]: Target 'test/CMakeFiles/test10.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:569: test/CMakeFiles/test10.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test11.dir/build.make:98: test/test11] Error 1
+gmake[2]: Target 'test/CMakeFiles/test11.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:595: test/CMakeFiles/test11.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test_issue373.dir/build.make:98: test/test_issue373] Error 1
+gmake[2]: Target 'test/CMakeFiles/test_issue373.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:621: test/CMakeFiles/test_issue373.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test_sync_session_present.dir/build.make:98: test/test_sync_session_present] Error 1
+gmake[2]: Target 'test/CMakeFiles/test_sync_session_present.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:647: test/CMakeFiles/test_sync_session_present.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [test/CMakeFiles/test_connect_destroy.dir/build.make:98: test/test_connect_destroy] Error 1
+gmake[2]: Target 'test/CMakeFiles/test_connect_destroy.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:673: test/CMakeFiles/test_connect_destroy.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `__inet_ntop'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `be32toh'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `shutdown'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `getsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libpaho-mqtt3a.so.1.3.14: undefined reference to `htobe32'
+gmake[2]: *** [src/CMakeFiles/MQTTVersion.dir/build.make:99: src/MQTTVersion] Error 1
+gmake[2]: Target 'src/CMakeFiles/MQTTVersion.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:179: src/CMakeFiles/MQTTVersion.dir/all] Error 2
 gmake[1]: Target 'all' not remade because of errors.
 gmake: *** [Makefile:166: all] Error 2
 gmake: Target 'default_target' not remade because of errors.

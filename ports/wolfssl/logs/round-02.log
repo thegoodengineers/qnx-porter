@@ -1,0 +1,207 @@
+$ cmake -S /home/chirag/qnx-porter/ports/wolfssl/work/src -B /home/chirag/qnx-porter/ports/wolfssl/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/wolfssl/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/wolfssl/work/qnx-run -DWOLFSSL_EXAMPLES=OFF
+-- The C compiler identification is QCC 12.2.0
+-- The ASM compiler identification is QCC
+-- Found assembler: /home/chirag/qnx-porter/ports/wolfssl/work/wrap/qcc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx-porter/ports/wolfssl/work/wrap/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found WOLFSSL_ROOT = /home/chirag/qnx-porter/ports/wolfssl/work/src
+-- Looking for arpa/inet.h
+-- Looking for arpa/inet.h - found
+-- Looking for fcntl.h
+-- Looking for fcntl.h - found
+-- Looking for limits.h
+-- Looking for limits.h - found
+-- Looking for netdb.h
+-- Looking for netdb.h - found
+-- Looking for netinet/in.h
+-- Looking for netinet/in.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Looking for time.h
+-- Looking for time.h - found
+-- Looking for sys/ioctl.h
+-- Looking for sys/ioctl.h - found
+-- Looking for sys/socket.h
+-- Looking for sys/socket.h - found
+-- Looking for sys/time.h
+-- Looking for sys/time.h - found
+-- Looking for errno.h
+-- Looking for errno.h - found
+-- Looking for dlfcn.h
+-- Looking for dlfcn.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for memory.h
+-- Looking for memory.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - found
+-- Looking for string.h
+-- Looking for string.h - found
+-- Looking for strings.h
+-- Looking for strings.h - found
+-- Looking for sys/stat.h
+-- Looking for sys/stat.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for gethostbyname
+-- Looking for gethostbyname - not found
+-- Looking for getaddrinfo
+-- Looking for getaddrinfo - not found
+-- Looking for gettimeofday
+-- Looking for gettimeofday - found
+-- Looking for gmtime_r
+-- Looking for gmtime_r - found
+-- Looking for inet_ntoa
+-- Looking for inet_ntoa - not found
+-- Looking for memset
+-- Looking for memset - found
+-- Looking for socket
+-- Looking for socket - not found
+-- Looking for strftime
+-- Looking for strftime - found
+-- Looking for __atomic_fetch_add
+-- Looking for __atomic_fetch_add - not found
+-- Check size of __uint128_t
+-- Check size of __uint128_t - done
+-- Check size of long long
+-- Check size of long long - done
+-- Check size of long
+-- Check size of long - done
+-- Check size of time_t
+-- Check size of time_t - done
+-- Check size of uintptr_t
+-- Check size of uintptr_t - done
+-- Performing Test THREAD_LS_ON
+-- Performing Test THREAD_LS_ON - Success
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Looking for WOLFSSL_EXPERIMENTAL
+-- Looking for WOLFSSL_EXPERIMENTAL - not found
+-- Generating user options header...
+-- Static Libs: wolfcrypt/src/hmac.c;wolfcrypt/src/hash.c;wolfcrypt/src/cpuid.c;wolfcrypt/src/kdf.c;wolfcrypt/src/random.c;wolfcrypt/src/sha256.c;wolfcrypt/src/rsa.c;wolfcrypt/src/sp_int.c;wolfcrypt/src/aes.c;wolfcrypt/src/sha.c;wolfcrypt/src/sha512.c;wolfcrypt/src/sha3.c;wolfcrypt/src/logging.c;wolfcrypt/src/wc_port.c;wolfcrypt/src/error.c;wolfcrypt/src/wc_encrypt.c;wolfcrypt/src/signature.c;wolfcrypt/src/wolfmath.c;wolfcrypt/src/memory.c;wolfcrypt/src/dh.c;wolfcrypt/src/asn.c;wolfcrypt/src/coding.c;wolfcrypt/src/poly1305.c;wolfcrypt/src/md5.c;wolfcrypt/src/pwdbased.c;wolfcrypt/src/pkcs12.c;wolfcrypt/src/chacha.c;wolfcrypt/src/chacha20_poly1305.c;wolfcrypt/src/integer.c;wolfcrypt/src/ecc.c;src/internal.c;src/wolfio.c;src/keys.c;src/ssl.c;src/ocsp.c;src/tls.c;src/tls13.c
+-- WOLFSSL_INCLUDE_DIRS is blank. No additional directories will be added.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/wolfssl/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/wolfssl/work/build -j 2 -- -k
+[  4%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/hash.c.o
+[  4%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/hmac.c.o
+[  7%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/cpuid.c.o
+[  9%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/kdf.c.o
+[ 11%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/random.c.o
+[ 14%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/sha256.c.o
+[ 16%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/rsa.c.o
+[ 19%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/sp_int.c.o
+[ 21%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/aes.c.o
+[ 23%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/sha.c.o
+[ 26%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/sha512.c.o
+[ 28%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/sha3.c.o
+[ 30%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/logging.c.o
+[ 33%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/wc_port.c.o
+[ 35%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/error.c.o
+[ 38%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/wc_encrypt.c.o
+[ 40%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/signature.c.o
+[ 42%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/wolfmath.c.o
+[ 45%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/memory.c.o
+[ 47%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/dh.c.o
+[ 50%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/asn.c.o
+[ 52%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/coding.c.o
+[ 54%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/poly1305.c.o
+[ 57%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/md5.c.o
+[ 59%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/pwdbased.c.o
+[ 61%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/pkcs12.c.o
+[ 64%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/chacha.c.o
+[ 66%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/chacha20_poly1305.c.o
+[ 69%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/integer.c.o
+[ 71%] Building C object CMakeFiles/wolfssl.dir/wolfcrypt/src/ecc.c.o
+[ 73%] Building C object CMakeFiles/wolfssl.dir/src/internal.c.o
+[ 76%] Building C object CMakeFiles/wolfssl.dir/src/wolfio.c.o
+[ 78%] Building C object CMakeFiles/wolfssl.dir/src/keys.c.o
+[ 80%] Building C object CMakeFiles/wolfssl.dir/src/ssl.c.o
+[ 83%] Building C object CMakeFiles/wolfssl.dir/src/ocsp.c.o
+[ 85%] Building C object CMakeFiles/wolfssl.dir/src/tls.c.o
+[ 88%] Building C object CMakeFiles/wolfssl.dir/src/tls13.c.o
+[ 90%] Linking C static library libwolfssl.a
+[ 90%] Built target wolfssl
+[ 92%] Building C object CMakeFiles/wolfcrypttest.dir/wolfcrypt/test/test.c.o
+[ 95%] Building C object CMakeFiles/wolfcryptbench.dir/wolfcrypt/benchmark/benchmark.c.o
+[ 97%] Linking C executable wolfcrypt/benchmark/benchmark
+[100%] Linking C executable wolfcrypt/test/testwolfcrypt
+In function 'Hmac_UpdateFinal_CT',
+    inlined from 'TLS_hmac' at /home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1346:23:
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1078:50: warning: writing 16 bytes into a region of size 0 [-Wstringop-overflow=]
+ 1078 |             ((unsigned char*)hmac->innerHash)[j] |= hashBlock[j] & isOutBlock;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c: In function 'TLS_hmac':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1283:12: note: at offset 784 into destination object 'hmac' of size 784
+ 1283 |     Hmac   hmac;
+      |            ^~~~
+In function 'Hmac_UpdateFinal_CT',
+    inlined from 'TLS_hmac' at /home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1346:23:
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1078:50: warning: writing 16 bytes into a region of size 0 [-Wstringop-overflow=]
+ 1078 |             ((unsigned char*)hmac->innerHash)[j] |= hashBlock[j] & isOutBlock;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c: In function 'TLS_hmac':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1283:12: note: at offset 800 into destination object 'hmac' of size 784
+ 1283 |     Hmac   hmac;
+      |            ^~~~
+In function 'Hmac_UpdateFinal_CT',
+    inlined from 'TLS_hmac' at /home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1346:23:
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1078:50: warning: writing 16 bytes into a region of size 0 [-Wstringop-overflow=]
+ 1078 |             ((unsigned char*)hmac->innerHash)[j] |= hashBlock[j] & isOutBlock;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c: In function 'TLS_hmac':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1283:12: note: at offset 816 into destination object 'hmac' of size 784
+ 1283 |     Hmac   hmac;
+      |            ^~~~
+In function 'Hmac_UpdateFinal_CT',
+    inlined from 'TLS_hmac' at /home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1346:23:
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1078:50: warning: writing 16 bytes into a region of size 0 [-Wstringop-overflow=]
+ 1078 |             ((unsigned char*)hmac->innerHash)[j] |= hashBlock[j] & isOutBlock;
+      |             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c: In function 'TLS_hmac':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1283:12: note: at offset 832 into destination object 'hmac' of size 784
+ 1283 |     Hmac   hmac;
+      |            ^~~~
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libwolfssl.a(wolfio.c.o): in function `wolfIO_Recv':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1152:(.text+0x13): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libwolfssl.a(wolfio.c.o): in function `wolfIO_Send':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1162:(.text+0xa3): undefined reference to `send'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libwolfssl.a(wolfio.c.o): in function `wolfIO_Recv':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1152:(.text+0x118): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libwolfssl.a(wolfio.c.o): in function `wolfIO_Send':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1162:(.text+0x198): undefined reference to `send'
+gmake[2]: *** [CMakeFiles/wolfcryptbench.dir/build.make:98: wolfcrypt/benchmark/benchmark] Error 1
+gmake[2]: Target 'CMakeFiles/wolfcryptbench.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:139: CMakeFiles/wolfcryptbench.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libwolfssl.a(wolfio.c.o): in function `wolfIO_Recv':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1152:(.text+0x13): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libwolfssl.a(wolfio.c.o): in function `wolfIO_Send':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1162:(.text+0xa3): undefined reference to `send'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libwolfssl.a(wolfio.c.o): in function `wolfIO_Recv':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1152:(.text+0x118): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libwolfssl.a(wolfio.c.o): in function `wolfIO_Send':
+/home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1162:(.text+0x198): undefined reference to `send'
+gmake[2]: *** [CMakeFiles/wolfcrypttest.dir/build.make:98: wolfcrypt/test/testwolfcrypt] Error 1
+gmake[2]: Target 'CMakeFiles/wolfcrypttest.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:113: CMakeFiles/wolfcrypttest.dir/all] Error 2
+gmake[1]: Target 'all' not remade because of errors.
+gmake: *** [Makefile:146: all] Error 2
+gmake: Target 'default_target' not remade because of errors.
+[exit 2]

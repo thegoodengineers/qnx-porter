@@ -1,4 +1,4 @@
-$ make -k -j 4 -C /home/chirag/qnx-porter/ports/libsodium/work/build check TESTS=
+$ make -k -j 2 -C /home/chirag/qnx-porter/ports/libsodium/work/build check TESTS=
 make: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build'
 Making check in builds
 make[1]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/builds'

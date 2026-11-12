@@ -13,9 +13,9 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import ports_csv  # noqa: E402
 
 
-def test_campaign_pins_8_to_10_libraries_with_tags():
+def test_campaign_pins_50_plus_libraries_with_tags():
     c = rc.load(ROOT / "campaign.yaml")
-    assert 8 <= len(c["libraries"]) <= 10
+    assert len(c["libraries"]) >= 50
     assert all(lib["tag"] and lib["url"].startswith("https://") for lib in c["libraries"])
     assert len({lib["name"] for lib in c["libraries"]}) == len(c["libraries"])
     assert c["arch"] == "x86_64" and c["target"]

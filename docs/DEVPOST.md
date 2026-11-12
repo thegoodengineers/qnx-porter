@@ -26,7 +26,7 @@ every change visible.
    `CMAKE_C_COMPILER_TARGET gcc_ntox86_64` and `$QNX_TARGET` as sysroot, a Meson cross file, or
    `--host=x86_64-pc-nto-qnx8.0.0` for autotools.
 3. Builds, and parses every GCC, linker, CMake and configure error into structured diagnostics.
-4. Applies deterministic QNX rules first: 22 Linux-isms, with the QNX 8.0 documentation behind them
+4. Applies deterministic QNX rules first: 35 Linux-isms, with the QNX 8.0 documentation behind them
    (`docs/LINUX_ISMS.md`): missing headers, libsocket and libfsnotify, libc-provided pthread/rt/dl,
    `MAP_ANON`, `prctl` to `pthread_setname_np`, OS `#if` chains that end in `#error`, GCC 12's `-fno-common`. Each change is a numbered patch file with the rule, the reason and the
    exact error it answers.
@@ -52,7 +52,7 @@ is mechanical: two "Memory fault"s turned out to be `printf("%s", NULL)`, which 
 | Finds and checks QNX SDP 8.0 | `qnx_porter/qnx.py`: `sdp_env()` sources `qnxsdp-env.sh`; `doctor()` runs `qcc -V` |
 | Generates the QNX toolchain | `qnx_porter/qnx.py`: `cmake_toolchain()` (`qcc`, `gcc_ntox86_64`, sysroot `$QNX_TARGET`), `meson_cross()`, `gnu_env()` (`x86_64-pc-nto-qnx8.0.0`) |
 | Invokes qcc | `qnx_porter/build.py`: `Job.steps()` builds the configure/build commands, `run()` executes them; logs in `ports/<library>/logs/round-NN.log` |
-| QNX 8.0 porting knowledge (22 Linux-isms, sources listed) | `qnx_porter/fixes.py` `_rule()`, `qnx_porter/linuxisms.py`; table in `docs/LINUX_ISMS.md` |
+| QNX 8.0 porting knowledge (35 Linux-isms, sources listed) | `qnx_porter/fixes.py` `_rule()`, `qnx_porter/linuxisms.py`; table in `docs/LINUX_ISMS.md` |
 | Runs the library's tests on QNX 8.0 in QEMU (`mkqnximage`) | `qnx_porter/target.py`: `ctest_on_target()`, `Target.sync()` (QNX `ln -sP` path links), `write_wrapper()`, `remote_command()` (QNX `timeout`); output `ports/<library>/logs/tests.log`, e.g. `ports/mbedtls/logs/tests.log` ends "130/130 tests passed on the QNX target" |
 | Builds the QNX target | `scripts/qemu_target.sh` (mkqnximage, sshd-auth snippet, bridge networking) |
 | Target identity | `Target.uname()`; field `target` in every `ports/<library>/report.json` |

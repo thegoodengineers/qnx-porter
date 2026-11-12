@@ -1,0 +1,15 @@
+Subject: [qnx-porter 0001] link-libm
+Source: deterministic rule
+Reason: `__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
+Error: /home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -19,5 +19,5 @@
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/jansson/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none
+ # Libraries the agent adds go at the end of every link line, after the objects that need them.
+-set(CMAKE_C_STANDARD_LIBRARIES "")
+-set(CMAKE_CXX_STANDARD_LIBRARIES "")
++set(CMAKE_C_STANDARD_LIBRARIES "-lm")
++set(CMAKE_CXX_STANDARD_LIBRARIES "-lm")

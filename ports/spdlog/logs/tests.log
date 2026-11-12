@@ -1,0 +1,3 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/spdlog/work/build); every test command runs on root@172.31.1.11 over ssh
+
+0/0 tests passed on the QNX target

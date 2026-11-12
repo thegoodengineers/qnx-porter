@@ -1,0 +1,169 @@
+$ cmake -S /home/chirag/qnx-porter/ports/yaml-cpp/work/src -B /home/chirag/qnx-porter/ports/yaml-cpp/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/yaml-cpp/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/yaml-cpp/work/qnx-run -DYAML_CPP_BUILD_TESTS=ON
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Python: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/yaml-cpp/work/build
+$ cmake --build /home/chirag/qnx-porter/ports/yaml-cpp/work/build -j 2 -- -k
+[  1%] Building CXX object test/prefix/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[  3%] Building CXX object CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilder.cpp.o
+[  4%] Building CXX object CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilderadapter.cpp.o
+[  6%] Building CXX object CMakeFiles/yaml-cpp.dir/src/binary.cpp.o
+[  8%] Building CXX object CMakeFiles/yaml-cpp.dir/src/convert.cpp.o
+[  9%] Building CXX object CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.o
+[ 11%] Building CXX object CMakeFiles/yaml-cpp.dir/src/directives.cpp.o
+[ 13%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emit.cpp.o
+[ 14%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.o
+[ 16%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emitter.cpp.o
+[ 18%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.o
+[ 19%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.o
+[ 21%] Building CXX object CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.o
+[ 22%] Linking CXX static library ../../../lib/libgtest.a
+[ 24%] Building CXX object CMakeFiles/yaml-cpp.dir/src/exp.cpp.o
+[ 24%] Built target gtest
+[ 26%] Building CXX object test/prefix/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+[ 27%] Building CXX object CMakeFiles/yaml-cpp.dir/src/memory.cpp.o
+[ 29%] Building CXX object CMakeFiles/yaml-cpp.dir/src/node.cpp.o
+[ 31%] Building CXX object CMakeFiles/yaml-cpp.dir/src/node_data.cpp.o
+[ 32%] Building CXX object CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.o
+[ 34%] Linking CXX static library ../../../lib/libgmock.a
+[ 34%] Built target gmock
+[ 36%] Building CXX object test/prefix/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o
+[ 37%] Building CXX object CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o
+[ 39%] Linking CXX static library ../../../lib/libgtest_main.a
+[ 39%] Built target gtest_main
+[ 40%] Building CXX object CMakeFiles/yaml-cpp.dir/src/null.cpp.o
+[ 42%] Building CXX object CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.o
+[ 44%] Building CXX object CMakeFiles/yaml-cpp.dir/src/parse.cpp.o
+[ 45%] Building CXX object CMakeFiles/yaml-cpp.dir/src/parser.cpp.o
+[ 47%] Building CXX object CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.o
+[ 49%] Building CXX object CMakeFiles/yaml-cpp.dir/src/scanner.cpp.o
+[ 50%] Building CXX object CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.o
+[ 52%] Building CXX object CMakeFiles/yaml-cpp.dir/src/scantag.cpp.o
+[ 54%] Building CXX object CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.o
+[ 55%] Building CXX object CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o
+[ 57%] Building CXX object CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.o
+[ 59%] Building CXX object CMakeFiles/yaml-cpp.dir/src/stream.cpp.o
+[ 60%] Building CXX object CMakeFiles/yaml-cpp.dir/src/tag.cpp.o
+[ 62%] Building CXX object test/prefix/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+[ 63%] Linking CXX static library libyaml-cpp.a
+[ 63%] Built target yaml-cpp
+[ 65%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/binary_test.cpp.o
+[ 67%] Linking CXX static library ../../../lib/libgmock_main.a
+[ 67%] Built target gmock_main
+[ 68%] Building CXX object util/CMakeFiles/yaml-cpp-sandbox.dir/sandbox.cpp.o
+[ 70%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/integration/emitter_test.cpp.o
+[ 72%] Linking CXX executable sandbox
+[ 72%] Built target yaml-cpp-sandbox
+[ 73%] Building CXX object util/CMakeFiles/yaml-cpp-parse.dir/parse.cpp.o
+[ 75%] Linking CXX executable parse
+[ 75%] Built target yaml-cpp-parse
+[ 77%] Building CXX object util/CMakeFiles/yaml-cpp-read.dir/read.cpp.o
+[ 78%] Linking CXX executable read
+[ 78%] Built target yaml-cpp-read
+[ 80%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/integration/encoding_test.cpp.o
+[ 81%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/integration/error_messages_test.cpp.o
+[ 83%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/integration/gen_emitter_test.cpp.o
+[ 85%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/integration/handler_spec_test.cpp.o
+[ 86%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/integration/handler_test.cpp.o
+[ 88%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/integration/load_node_test.cpp.o
+[ 90%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/integration/node_spec_test.cpp.o
+[ 91%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/main.cpp.o
+[ 93%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/node/node_test.cpp.o
+[ 95%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/ostream_wrapper_test.cpp.o
+[ 96%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/parser_test.cpp.o
+[ 98%] Building CXX object test/CMakeFiles/yaml-cpp-tests.dir/regex_test.cpp.o
+[100%] Linking CXX executable yaml-cpp-tests
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+/home/chirag/qnx-porter/ports/yaml-cpp/work/src/test/integration/gen_emitter_test.cpp: In function 'void __static_initialization_and_destruction_0(int, int)':
+/home/chirag/qnx-porter/ports/yaml-cpp/work/src/test/integration/gen_emitter_test.cpp:9936:1: note: variable tracking size limit exceeded with '-fvar-tracking-assignments', retrying without
+ 9936 | }  // namespace YAML
+      | ^
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../lib/libgtest.a(gtest-all.cc.o): in function `testing::internal::RE::~RE()':
+/home/chirag/qnx-porter/ports/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:717:(.text+0xb655): undefined reference to `regfree'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:718:(.text+0xb65e): undefined reference to `regfree'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../lib/libgtest.a(gtest-all.cc.o): in function `testing::internal::RE::FullMatch(char const*, testing::internal::RE const&)':
+/home/chirag/qnx-porter/ports/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:728:(.text+0xb6a8): undefined reference to `regexec'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../lib/libgtest.a(gtest-all.cc.o): in function `testing::internal::RE::PartialMatch(char const*, testing::internal::RE const&)':
+/home/chirag/qnx-porter/ports/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:737:(.text+0xb708): undefined reference to `regexec'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../lib/libgtest.a(gtest-all.cc.o): in function `testing::internal::RE::Init(char const*)':
+/home/chirag/qnx-porter/ports/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:750:(.text+0x2726e): undefined reference to `regcomp'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:761:(.text+0x27293): undefined reference to `regcomp'
+gmake[2]: *** [test/CMakeFiles/yaml-cpp-tests.dir/build.make:308: test/yaml-cpp-tests] Error 1
+gmake[2]: Target 'test/CMakeFiles/yaml-cpp-tests.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:986: test/CMakeFiles/yaml-cpp-tests.dir/all] Error 2
+gmake[1]: Target 'all' not remade because of errors.
+gmake: *** [Makefile:146: all] Error 2
+gmake: Target 'default_target' not remade because of errors.
+[exit 2]

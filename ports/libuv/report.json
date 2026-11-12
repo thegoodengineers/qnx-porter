@@ -1,0 +1,37 @@
+{
+  "library": "libuv",
+  "url": "https://github.com/libuv/libuv.git",
+  "version": "v1.49.2",
+  "commit": "e1095c7a4373ce00cd8874d8e820de5afb25776e",
+  "build_system": "cmake",
+  "arch": "x86_64",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "",
+  "build_result": "failed",
+  "rounds": 1,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ran": false,
+  "patches_kept": 0,
+  "patches_by_rule": 0,
+  "patches_by_model": 0,
+  "patches": [],
+  "blocked_on": [
+    {
+      "kind": "error",
+      "error": "/home/chirag/qnx-porter/ports/libuv/work/src/src/unix/qnx.c:117:19: error: 'struct qtime_entry' has no member named 'nsec'",
+      "hint": ""
+    },
+    {
+      "kind": "error",
+      "error": "/home/chirag/qnx-porter/ports/libuv/work/src/src/unix/qnx.c:124:57: error: 'struct syspage_entry' has no member named 'new_cpuinfo'; did you mean 'cpuinfo'?",
+      "hint": ""
+    }
+  ],
+  "minutes": 0.3,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T09:22:05+00:00"
+}

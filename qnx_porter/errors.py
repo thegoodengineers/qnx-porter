@@ -22,11 +22,12 @@ UNDECLARED = re.compile(
     rf"|unknown type name {Q}(?P<type>\w+){Q}"
     rf"|{Q}(?P<member>\w+){Q} is not a member of {Q}std{Q}"
 )
-WERROR = re.compile(r"\[-Werror=(?P<flag>[\w=+-]+)\]\s*$")
+WERROR = re.compile(r"\[-Werror(?:=(?P<flag>[\w=+-]+))?\]\s*$")  # bare [-Werror]: a warning with no switch
 UNDEFINED_REF = re.compile(rf"undefined reference to {Q}(?P<symbol>[^'’`]+){Q}")
 MULTIPLE_DEF = re.compile(rf"multiple definition of {Q}(?P<symbol>[^'\u2019`]+){Q}")
 MISSING_LIB = re.compile(r"cannot find -l(?P<lib>[\w+.-]+)")
 CMAKE_ERROR = re.compile(r"^CMake Error(?: at (?P<file>[^:]+):(?P<line>\d+))?")
+QCC_OPTION = re.compile(r"^cc: unknown option: '(?P<opt>[^']+)'")
 CONFIGURE_ERROR = re.compile(r"^configure: error: (?P<msg>.*)$")
 MESON_ERROR = re.compile(r"^(?P<file>[^\s:][^:]*):(?P<line>\d+):(?P<col>\d+): ERROR: (?P<msg>.*)$")
 
@@ -86,6 +87,8 @@ def parse(log: str) -> list[Diagnostic]:
         elif (m := CMAKE_ERROR.match(line)):
             body = " ".join(x.strip() for x in lines[i + 1:i + 6] if x.strip())
             add(Diagnostic("cmake_error", body or line, file=m["file"] or "", line=int(m["line"] or 0), raw=line))
+        elif (m := QCC_OPTION.match(line)):
+            add(Diagnostic("qcc_option", line.strip(), symbol=m["opt"], raw=line))
         elif (m := CONFIGURE_ERROR.match(line)):
             add(Diagnostic("configure_error", m["msg"], raw=line))
         elif (m := MESON_ERROR.match(line)):
@@ -100,8 +103,8 @@ def _classify(msg: str, where: dict) -> Diagnostic:
         return Diagnostic("hash_error", msg, **where)
     if (m := WERROR.search(msg)):
         if (i := IMPLICIT.search(msg)):
-            return Diagnostic("implicit_decl", msg, symbol=i["symbol"], flag=m["flag"], **where)
-        return Diagnostic("werror", msg, flag=m["flag"], **where)
+            return Diagnostic("implicit_decl", msg, symbol=i["symbol"], flag=m["flag"] or "", **where)
+        return Diagnostic("werror", msg, flag=m["flag"] or "", **where)
     if (m := IMPLICIT.search(msg)):
         return Diagnostic("implicit_decl", msg, symbol=m["symbol"], **where)
     if (m := UNDECLARED.search(msg)):

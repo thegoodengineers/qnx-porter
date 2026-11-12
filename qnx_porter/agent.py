@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from . import build, crash, errors, fixes, llm, patches, qnx
-from .target import SAME_PATH_MARK, Target, ctest_on_target, parse_results, write_wrapper
+from .target import SAME_PATH_MARK, Target, ctest_on_target, meson_on_target, parse_results, write_wrapper
 
 MODEL_TRIES = 2  # model attempts per error before the agent reports it as blocked
 LLM_KINDS = ("error", "implicit_decl", "undeclared", "missing_header", "cmake_error", "werror", "hash_error")
@@ -22,7 +22,7 @@ def loose(d: errors.Diagnostic):
 
 def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target: Target | None = None,
          max_rounds: int = 15, use_llm: bool = True, extra_args: tuple[str, ...] = (), name: str = "",
-         log=print, note: str = "") -> dict:
+         log=print, note: str = "", subdir: str = "") -> dict:
     t0 = time.time()
     name = name or url.rstrip("/").removesuffix(".git").rsplit("/", 1)[-1]
     out = (out_root / name).resolve()
@@ -45,11 +45,17 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     shutil.rmtree(bdir, ignore_errors=True)
     bdir.mkdir()
 
-    system = build.detect(src)
+    build_src = src / subdir if subdir else src  # some projects keep their build files in a subfolder
+    system = build.detect(build_src)
     env = qnx.sdp_env() if arch else dict(os.environ)
     a = qnx.ARCHES[arch] if arch else None
     flags = qnx.Flags()
-    job = build.Job(src, bdir, system, a, env, flags, extra_args=tuple(extra_args))
+    if a:  # QNX keeps pthread, rt and dl in libc: empty stand-ins let `-ldl` and CMake's library checks succeed
+        (work / "stubs").mkdir(exist_ok=True)
+        for lib in fixes.IN_LIBC:
+            (work / "stubs" / f"lib{lib}.a").write_bytes(b"!<arch>\n")
+        flags.stub_dir = str(work / "stubs")
+    job = build.Job(build_src, bdir, system, a, env, flags, extra_args=tuple(extra_args))
     if target:
         job.emulator = write_wrapper(work / "qnx-run", target, work)
     log(f"[2/5] build system: {system}; target: {a.triplet if a else 'host compiler (self-test)'}")
@@ -112,10 +118,11 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     tests_passed = tests_total = 0
     uname = ""
     crashes: list[dict] = []
+    not_runnable: list[dict] = []
     if ok and target and job.test_cmd():
         uname = target.uname()
         log(f"[4/5] tests on target {target.host}:{target.port} ({uname or 'uname failed'})")
-        tests_passed, tests_total, crashes = _run_tests(job, target, src, bdir, work, env, logs)
+        tests_passed, tests_total, crashes, not_runnable = _run_tests(job, target, src, bdir, work, env, logs)
         log(f"      {tests_passed}/{tests_total} tests passed")
         # A crash the backtrace explains mechanically gets a patch; it stays only if the re-run is better.
         crash_fixes = []
@@ -123,22 +130,22 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
             if (r := crash.printf_null(c["backtrace"], src, fixes.in_tree)) and r[0] not in {f[0] for f in crash_fixes}:
                 crash_fixes.append(r)
         if crash_fixes:
-            before = (tests_passed, tests_total, crashes)
+            before = (tests_passed, tests_total, crashes, not_runnable)
             first = len(applied)
             for rel, reason, text in crash_fixes:
-                (src / rel).write_text(text, encoding="utf-8", errors="surrogateescape")
+                patches.write_source(src / rel, text)
                 applied.append(patches.commit_source(src, out, len(applied) + 1, "printf-null", "rule", reason,
                                                      "Memory fault (SIGSEGV) in strlen <- printf on QNX", [rel]))
                 log(f"      fix {len(applied):04d} [printf-null] {reason}"[:200])
             rebuilt, _ = build.run(job.steps(tests=True), work, env, logs / "rebuild-after-crash-fix.log")
             if rebuilt:
-                tests_passed, tests_total, crashes = _run_tests(job, target, src, bdir, work, env, logs)
+                tests_passed, tests_total, crashes, not_runnable = _run_tests(job, target, src, bdir, work, env, logs)
                 log(f"      after crash fixes: {tests_passed}/{tests_total} tests passed")
             if not rebuilt or tests_passed <= before[0]:
                 for p in applied[first:]:
                     patches.revert_last(src)
                     p.kept = False
-                tests_passed, tests_total, crashes = before
+                tests_passed, tests_total, crashes, not_runnable = before
                 log("      crash fixes did not help: reverted")
     elif ok:
         log("[4/5] tests skipped: " + (note or ("no --target given" if not target
@@ -156,6 +163,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         "patches_by_model": sum(p.source == "model" for p in kept),
         "patches": [p.to_dict() for p in applied], "blocked_on": blocked,
         "minutes": round((time.time() - t0) / 60, 1), "note": note,
+        "tests_not_runnable": not_runnable,
         "crashes": [{"binary": Path(c["binary"]).name, "backtrace": c["backtrace"]} for c in crashes],
         "finished": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
@@ -178,8 +186,11 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
     if same:
         (work / SAME_PATH_MARK).write_text("")
     crash.clear_cores(target)
-    if job.system == "cmake":
-        passed, total = ctest_on_target(target, bdir, work, job.emulator, same, logs / "tests.log")
+    not_runnable = []
+    if job.system in ("cmake", "meson"):
+        r = (ctest_on_target(target, bdir, work, job.emulator, same, logs / "tests.log") if job.system == "cmake"
+             else meson_on_target(target, bdir, work, same, logs / "tests.log"))
+        passed, total, not_runnable = r["passed"], r["total"], r["not_runnable"]
     else:
         _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
         if job.system == "autotools":  # each test's own log has the QNX output
@@ -188,11 +199,12 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
             (logs / "tests.log").write_text(ttext, encoding="utf-8")
         passed, total = parse_results(job.system, ttext)
     crashes = crash.collect(target, bdir, env, job.arch.triplet, work / "cores") if job.arch else []
+    target.remove([src, bdir, work / "stubs"])
     if crashes:
         (logs / "crashes.log").write_text("".join(
             f"=== {c['binary']}\n{c['backtrace'] or '(no backtrace: binary not found on the host)'}\n\n"
             for c in crashes), encoding="utf-8")
-    return passed, total, crashes
+    return passed, total, crashes, not_runnable
 
 
 def _tail(text: str) -> str:
@@ -203,7 +215,7 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
     error = f.diag.raw or f.diag.message
     if f.edits:
         for rel, text in f.edits.items():
-            (src / rel).write_text(text, encoding="utf-8", errors="surrogateescape")
+            patches.write_source(src / rel, text)
         return patches.commit_source(src, out, n, f.rule, "rule", f.reason, error, list(f.edits))
     before = job.toolchain_text()
     extra = ""
@@ -216,6 +228,14 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
                           f"@@ -0,0 +1,{len(text.splitlines())} @@\n",
                           *[f"+{ln}\n" for ln in text.splitlines()]])
     job.flags.cflags += f.cflags
+    for k, v in f.settings.items():
+        setattr(job.flags, k, v)
+    if f.late:
+        job.flags.late += f.late
+        if job.arch:  # cross builds: wrappers put these flags after the project's own
+            qnx.write_wrappers(job.env, job.flags, work / "wrap", job.arch)
+        else:  # host self-test: the host compiler takes them through CFLAGS
+            job.flags.cflags += f.late
     job.flags.ldflags += f.ldflags
     job.flags.libs += f.libs
     for lib in f.stubs:

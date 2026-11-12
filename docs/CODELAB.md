@@ -173,8 +173,9 @@ use poll()/select(), or ionotify()"). Its diff must pass `git apply --check`. Af
 error is still there, the tool reverts the patch and the report marks it `reverted`.
 
 ## 7. Teach the tool a rule (10 min)
-Rules live in `qnx_porter/fixes.py` (small ones) and `qnx_porter/linuxisms.py` (rewrites). The 22 we have,
-each with its QNX documentation source, are listed in [LINUX_ISMS.md](LINUX_ISMS.md). Add one:
+Rules live in `qnx_porter/fixes.py` (small ones) and `qnx_porter/linuxisms.py` (rewrites). Every one we have,
+each with its QNX documentation source or the real build that found it, is a row in
+[LINUX_ISMS.md](LINUX_ISMS.md). Add one:
 
 Say a library calls `getopt()` without `#include <unistd.h>` and the build fails with
 `implicit declaration of function 'getopt'`.
@@ -198,9 +199,44 @@ If it does, it belongs to the model or a person.
 ```bash
 python3 scripts/run_campaign.py
 ```
-It checks `qcc` and the target first, re-checks oss.qnx.com and skips anything QNX has published since, ports
-every library in `campaign.yaml`, and rewrites `results/ports.csv` and the README table from the reports.
-Nothing in that table is typed by hand.
+It checks `qcc` and the target first, notes which libraries oss.qnx.com already lists, ports every library in
+`campaign.yaml` (61 of them; our 12 Nov 2026 run on a laptop took 1 h 54 min with `QNX_PORTER_JOBS=2`, though a DNS outage cut 6 libraries short, so allow about two hours), and rewrites `results/ports.csv`,
+the README table and the README headline from the reports. Nothing in that table is typed by hand.
+
+Useful switches:
+- `QNX_PORTER_JOBS=2 python3 scripts/run_campaign.py` limits parallel compiles (the QEMU target already
+  takes 2 GB of RAM).
+- `python3 scripts/run_campaign.py --only zlib,expat` ports a few libraries.
+- `python3 scripts/run_campaign.py --arch aarch64le --target none` cross-builds every library for 64-bit Arm
+  without running tests (results go to `ports-aarch64le/`).
+
+## 9. Find the QNX difference behind a failing test (15 min)
+A failing test after a clean build is the interesting case: either the test assumes glibc, or QNX behaves
+differently. Take googletest's death tests, which abort on QNX 8.0.
+
+1. Read the backtrace the agent took from the core dump:
+   ```bash
+   grep -A6 googletest-death-test-test ports/googletest/logs/crashes.log
+   ```
+   It ends in `DeathTestAbort <- ExecDeathTestSpawnChild`, a QNX-only code path in googletest.
+2. Find the check that failed. The message is in the core; `docs/qnx-reports/fchdir-o-rdonly.md` shows how we
+   read it with the SDP's gdb: `fchdir(cwd_fd) != -1`.
+3. Reduce it to a few lines and run them on both systems:
+   ```bash
+   qcc -Vgcc_ntox86_64 docs/qnx-reports/fchdir_test.c -o /tmp/fchdir_test
+   scp /tmp/fchdir_test root@172.31.1.11:/data/ && ssh root@172.31.1.11 /data/fchdir_test
+   gcc docs/qnx-reports/fchdir_test.c -o /tmp/fchdir_host && /tmp/fchdir_host
+   ```
+   On QNX, `fchdir()` on a directory opened with `open(".", O_RDONLY)` fails with "Not a directory"; with
+   `O_DIRECTORY` it works. On Linux both work.
+4. Check QNX's documentation, then decide where the fix belongs. QNX's
+   [`fchdir()` page](https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.lib_ref/topic/f/fchdir.html)
+   lists ENOTDIR for a descriptor not opened with `O_DIRECTORY`, so this is intended QNX behaviour and the fix
+   belongs in googletest: a one-line patch (`docs/qnx-reports/googletest-qnx-fchdir.patch`) that we checked on
+   the target, 61 of 61 death tests pass.
+
+The same method found every report in [docs/qnx-reports/](qnx-reports/): `strtod()` rounding, `strftime()`
+with `%Ex`, and a libsrtp test that sorts with a random comparator.
 
 When you are done: `cd ~/qnx-images/qemu && mkqnximage --stop`.
 

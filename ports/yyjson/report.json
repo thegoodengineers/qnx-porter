@@ -22,7 +22,7 @@
       "rule": "link-libm",
       "source": "rule",
       "reason": "`__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.",
-      "error": "test_json_writer.c:(.text+0xd5): undefined reference to `__isinf'",
+      "error": "/home/chirag/qnx-porter/ports/yyjson/work/src/test/test_json_writer.c:15:(.text+0xd5): undefined reference to `__isinf'",
       "files": [
         "qnx-toolchain.cmake"
       ],
@@ -31,7 +31,9 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 1.3,
+  "minutes": 1.5,
   "note": "",
-  "finished": "2026-11-11T16:08:37+00:00"
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T07:30:08+00:00"
 }

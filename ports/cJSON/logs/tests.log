@@ -1,0 +1,22 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/cJSON/work/build); every test command runs on root@172.31.1.11 over ssh
+PASS  cJSON_test (exit 0)
+PASS  parse_examples (exit 0)
+PASS  parse_number (exit 0)
+PASS  parse_hex4 (exit 0)
+PASS  parse_string (exit 0)
+PASS  parse_array (exit 0)
+PASS  parse_object (exit 0)
+PASS  parse_value (exit 0)
+PASS  print_string (exit 0)
+PASS  print_number (exit 0)
+PASS  print_array (exit 0)
+PASS  print_object (exit 0)
+PASS  print_value (exit 0)
+PASS  misc_tests (exit 0)
+PASS  parse_with_opts (exit 0)
+PASS  compare_tests (exit 0)
+PASS  cjson_add (exit 0)
+PASS  readme_examples (exit 0)
+PASS  minify_tests (exit 0)
+
+19/19 tests passed on the QNX target

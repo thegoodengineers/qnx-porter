@@ -60,6 +60,25 @@ SOCKET_SYMBOLS = {"socket", "bind", "connect", "listen", "accept", "accept4", "s
 IN_LIBC = {"pthread", "rt", "dl"}
 
 # QNX 8.0 moved inotify_* out of libc into libfsnotify ("Migrating to QNX OS 8.0", C and C++ applications).
+WCSWIDTH_HEADER = """/* qnx-porter: POSIX wcswidth() on top of QNX 8.0's wcwidth() */
+#include <stddef.h>
+#include <wchar.h>
+static inline int qnx_porter_wcswidth(const wchar_t *s, size_t n)
+{
+    int width = 0;
+    for (; n > 0 && *s != L'\\0'; n--, s++) {
+        int w = wcwidth(*s);
+        if (w < 0)
+            return -1;
+        width += w;
+    }
+    return width;
+}
+#define wcswidth qnx_porter_wcswidth
+"""
+
+# POSIX regex functions: exported by libregex.so on QNX 8.0, not by libc.so (nm on SDP 8.0 build 141).
+REGEX_SYMBOLS = {"regcomp", "regexec", "regfree", "regerror"}
 FSNOTIFY_SYMBOLS = {"inotify_init", "inotify_init1", "inotify_add_watch", "inotify_rm_watch"}
 
 # QNX's <math.h> turns isinf()/isfinite()/isnan()/fpclassify() into calls to __isinf etc., and those, like
@@ -94,11 +113,14 @@ class Fix:
     ldflags: list[str] = field(default_factory=list)
     libs: list[str] = field(default_factory=list)
     stubs: list[str] = field(default_factory=list)
+    late: list[str] = field(default_factory=list)  # flags that must come after the project's own
+    settings: dict = field(default_factory=dict)  # toolchain switches, set on Flags
     verify: bool = False  # needs a rebuild to prove it: applied alone, reverted if the error stays
     compat: dict[str, str] = field(default_factory=dict)  # header name -> text, -included in every compile
 
     def key(self):
-        flags = (self.rule, tuple(self.cflags), tuple(self.ldflags), tuple(self.libs), tuple(self.stubs))
+        flags = (self.rule, tuple(self.cflags), tuple(self.ldflags), tuple(self.libs), tuple(self.stubs),
+                 tuple(self.late), tuple(sorted(self.settings.items())))
         if not self.edits:
             return flags  # one flag change answers every error that asks for it
         return flags + (tuple(sorted(self.edits)), self.diag.symbol, self.diag.header)
@@ -169,6 +191,17 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                 return Fix("qnx-source", f"`{d.symbol}` is in <{header}>, which {rel} already includes, so a "
                            "strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions "
                            "in QNX's headers, as _GNU_SOURCE does on glibc.", d, cflags=["-D_QNX_SOURCE"])
+    if d.kind == "error" and "-D_QNX_SOURCE" not in flags.cflags and \
+            (m := re.search(r"no matching function for call to .(\w+)::\1\(", d.message)) and m[1] in SYMBOL_HEADERS:
+        return Fix("qnx-source", f"C++ sees only `struct {m[1]}`, not the POSIX function `{m[1]}()`: in strict "
+                   "-std=c++NN mode QNX's headers hide POSIX extensions (here sys/stat.h declares stat() only under "
+                   "__EXT_POSIX1_198808). -D_QNX_SOURCE exposes them, as _GNU_SOURCE does on glibc.",
+                   d, cflags=["-D_QNX_SOURCE"])
+    if d.kind == "undeclared" and d.symbol == "SA_RESTART" and not _defined(flags, "SA_RESTART"):
+        return Fix("sa-restart", "QNX 8.0's <signal.h> lists SA_RESTART as not supported yet. Defining it as 0 "
+                   "lets the code build; system calls interrupted by a signal then return EINTR instead of "
+                   "restarting, which the library's tests on QNX show it handles or not.", d,
+                   cflags=["-DSA_RESTART=0"])
     if d.kind == "undeclared" and d.symbol == "MAP_ANONYMOUS" and not _defined(flags, "MAP_ANONYMOUS"):
         return Fix("map-anon", "QNX 8.0's mmap() documents MAP_ANON for anonymous memory; Linux code spells it "
                    "MAP_ANONYMOUS. Same flag, so define one as the other.", d, cflags=["-DMAP_ANONYMOUS=MAP_ANON"])
@@ -177,15 +210,32 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
         return Fix("msg-nosignal", "MSG_NOSIGNAL is not visible here, and this library already ignores "
                    "SIGPIPE (signal(SIGPIPE, SIG_IGN)), so the flag has nothing left to do: define it as 0.",
                    d, cflags=["-DMSG_NOSIGNAL=0"])
-    if d.kind == "werror" and d.flag and f"-Wno-error={d.flag}" not in flags.cflags:
+    if d.kind == "werror" and not d.flag and "-Wno-error" not in flags.cflags + flags.late:
+        return Fix("no-werror", "A warning that has no -W switch of its own (here: " + d.message[:80] + ") is made an "
+                   "error by the project's -Werror. The only way to keep it a warning is -Wno-error; the warning "
+                   "is still printed in the build log.", d, late=["-Wno-error"])
+    if d.kind == "werror" and d.flag and f"-Wno-error={d.flag}" not in flags.cflags + flags.late:
         return Fix("no-werror", f"Warning -W{d.flag} is promoted to an error by the project's -Werror. Keep "
                    "it a warning (still printed in the build log) instead of editing the library's code; "
                    "QNX's headers and qcc raise warnings a glibc build does not.",
-                   d, cflags=[f"-Wno-error={d.flag}"])
+                   d, late=[f"-Wno-error={d.flag}"])
     # QNX's <arpa/inet.h> maps inet_pton to __inet_pton and so on, all exported by libsocket.
     if d.kind == "undefined_ref" and d.symbol.lstrip("_") in SOCKET_SYMBOLS and "-lsocket" not in flags.libs:
         return Fix("link-libsocket", f"`{d.symbol}` is in QNX's libsocket, not in libc as on Linux: link "
                    "with -lsocket.", d, libs=["-lsocket"])
+    if d.kind in ("undefined_ref", "implicit_decl") and d.symbol == "wcswidth" and "-D_QNX_PORTER_WCSWIDTH" not in flags.cflags:
+        return Fix("wcswidth-compat", "QNX 8.0's libc has wcwidth() but no wcswidth(). POSIX defines wcswidth(s, n) "
+                   "as the sum of wcwidth() over the first n characters of s, or -1 if any is not printable; a "
+                   "small header (-included in every compile) implements exactly that on top of QNX's wcwidth().",
+                   d, cflags=["-D_QNX_PORTER_WCSWIDTH"], compat={"qnx-wcswidth.h": WCSWIDTH_HEADER})
+    if d.kind == "qcc_option" and d.symbol.startswith("--sysroot") and not flags.omit_sysroot:
+        return Fix("qcc-sysroot", "The project's own build script passes --sysroot to the compiler, which qcc does "
+                   "not accept. qcc already finds the SDP sysroot through QNX_TARGET, so the toolchain stops "
+                   "setting CMAKE_SYSROOT (libraries are still found through CMAKE_FIND_ROOT_PATH).",
+                   d, settings={"omit_sysroot": True})
+    if d.kind == "undefined_ref" and d.symbol in REGEX_SYMBOLS and "-lregex" not in flags.libs:
+        return Fix("link-libregex", f"`{d.symbol}` (POSIX <regex.h>) is in QNX's libregex, not in libc as on "
+                   "Linux: link with -lregex.", d, libs=["-lregex"])
     if d.kind == "undefined_ref" and d.symbol in FSNOTIFY_SYMBOLS and "-lfsnotify" not in flags.libs:
         return Fix("link-libfsnotify", f"QNX 8.0 has inotify, but `{d.symbol}` moved from libc to libfsnotify: "
                    "link with -lfsnotify.", d, libs=["-lfsnotify"])

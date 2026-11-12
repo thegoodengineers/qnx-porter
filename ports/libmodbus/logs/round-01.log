@@ -14,7 +14,7 @@ configure.ac:32: installing 'build-aux/install-sh'
 configure.ac:32: installing 'build-aux/missing'
 src/Makefile.am: installing 'build-aux/depcomp'
 parallel-tests: installing 'build-aux/test-driver'
-$ env -C /home/chirag/qnx-porter/ports/libmodbus/work/build /home/chirag/qnx-porter/ports/libmodbus/work/src/configure --host=x86_64-pc-nto-qnx8.0.0 --disable-shared CC=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc CXX=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-g++ AR=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ar RANLIB=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ranlib CFLAGS=-O2 CXXFLAGS=-O2 LDFLAGS= LIBS=
+$ env -C /home/chirag/qnx-porter/ports/libmodbus/work/build /home/chirag/qnx-porter/ports/libmodbus/work/src/configure --host=x86_64-pc-nto-qnx8.0.0 --disable-shared CC=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc CXX=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-g++ AR=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ar RANLIB=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ranlib CFLAGS=-O2 -g CXXFLAGS=-O2 -g LDFLAGS=-L/home/chirag/qnx-porter/ports/libmodbus/work/stubs LIBS= QNX_PORTER_LATE_FLAGS=
 checking for a BSD-compatible install... /usr/bin/install -c
 checking whether build environment is sane... yes
 checking for x86_64-pc-nto-qnx8.0.0-strip... x86_64-pc-nto-qnx8.0.0-strip
@@ -178,12 +178,12 @@ config.status: executing libtool commands
 
         compiler:               /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc
         cflags:                 -O2 -Wall -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wpointer-arith -Wsign-compare -Wchar-subscripts -Wstrict-prototypes -Wshadow -Wformat-security
-        ldflags:                
+        ldflags:                -L/home/chirag/qnx-porter/ports/libmodbus/work/stubs
 
         tests:                  yes
 
 configure: WARNING: using cross tools not prefixed with host triplet
-$ make -k -j 4 -C /home/chirag/qnx-porter/ports/libmodbus/work/build
+$ make -k -j 2 -C /home/chirag/qnx-porter/ports/libmodbus/work/build
 make: Entering directory '/home/chirag/qnx-porter/ports/libmodbus/work/build'
 make --no-print-directory all-recursive
 Making all in src

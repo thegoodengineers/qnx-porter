@@ -1,0 +1,57 @@
+$ cmake -S /home/chirag/qnx-porter/ports/libpng/work/src -B /home/chirag/qnx-porter/ports/libpng/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/libpng/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/libpng/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- The ASM compiler identification is QCC
+-- Found assembler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Building for target architecture: x86_64
+-- Found ZLIB: /home/chirag/qnx800/target/qnx/x86_64/usr/lib/libz.so (found version "1.2.13") 
+-- Performing Test HAVE_LD_VERSION_SCRIPT
+-- Performing Test HAVE_LD_VERSION_SCRIPT - Success
+-- Found AWK program: /usr/bin/gawk
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/libpng/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/libpng/work/build -j 2 -- -k
+[  1%] Generating pnglibconf.c
+[  2%] Generating pngprefix.h
+[  2%] Built target pngprefix_h
+[  3%] Generating scripts/symbols.out
+[  3%] Built target pnglibconf_c
+[  4%] Generating scripts/pnglibconf.c
+[  5%] Building C object CMakeFiles/png-fix-itxt.dir/contrib/tools/png-fix-itxt.c.o
+[  5%] Built target png_scripts_pnglibconf_c
+[  6%] Generating pnglibconf.out
+[  7%] Linking C executable png-fix-itxt
+[  7%] Built target png-fix-itxt
+cc: unknown option: '--sysroot=/home/chirag/qnx800/target/qnx'
+CMake Error at scripts/cmake/genout.cmake:87 (message):
+  Failed to generate
+  /home/chirag/qnx-porter/ports/libpng/work/build/scripts/symbols.out.tf1
+
+
+gmake[2]: *** [CMakeFiles/png_scripts_symbols_out.dir/build.make:76: scripts/symbols.out] Error 1
+gmake[2]: Target 'CMakeFiles/png_scripts_symbols_out.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:328: CMakeFiles/png_scripts_symbols_out.dir/all] Error 2
+cc: unknown option: '--sysroot=/home/chirag/qnx800/target/qnx'
+CMake Error at scripts/cmake/genout.cmake:87 (message):
+  Failed to generate
+  /home/chirag/qnx-porter/ports/libpng/work/build/pnglibconf.out.tf1
+
+
+gmake[2]: *** [CMakeFiles/pnglibconf_out.dir/build.make:73: pnglibconf.out] Error 1
+gmake[2]: Target 'CMakeFiles/pnglibconf_out.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:166: CMakeFiles/pnglibconf_out.dir/all] Error 2
+gmake[1]: Target 'all' not remade because of errors.
+gmake: *** [Makefile:146: all] Error 2
+gmake: Target 'default_target' not remade because of errors.
+[exit 2]

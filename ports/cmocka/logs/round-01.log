@@ -151,97 +151,97 @@ $ cmake -S /home/chirag/qnx-porter/ports/cmocka/work/src -B /home/chirag/qnx-por
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/cmocka/work/build
-$ cmake --build /home/chirag/qnx-porter/ports/cmocka/work/build -j 4 -- -k
+$ cmake --build /home/chirag/qnx-porter/ports/cmocka/work/build -j 2 -- -k
 [  1%] Building C object src/CMakeFiles/cmocka.dir/cmocka.c.o
 [  3%] Building C object src/CMakeFiles/cmocka-static.dir/cmocka.c.o
-[  4%] Linking C static library libcmocka-static.a
-[  4%] Built target cmocka-static
-[  6%] Linking C static library libcmocka.a
-[  8%] Building C object tests/CMakeFiles/test_group_setup_assert.dir/test_group_setup_assert.c.o
+[  4%] Linking C static library libcmocka.a
+[  6%] Linking C static library libcmocka-static.a
+[  6%] Built target cmocka-static
+[  6%] Built target cmocka
 [  9%] Building C object tests/CMakeFiles/test_alloc.dir/test_alloc.c.o
-[ 11%] Building C object tests/CMakeFiles/test_group_setup_fail.dir/test_group_setup_fail.c.o
-[ 13%] Linking C executable test_group_setup_assert
-[ 13%] Built target cmocka
-[ 14%] Linking C executable test_alloc
-[ 14%] Built target test_group_setup_assert
-[ 16%] Linking C executable test_group_setup_fail
-[ 18%] Building C object tests/CMakeFiles/test_fixtures.dir/test_fixtures.c.o
-[ 19%] Building C object tests/CMakeFiles/test_group_fixtures.dir/test_group_fixtures.c.o
-[ 19%] Built target test_alloc
-[ 21%] Building C object tests/CMakeFiles/test_groups.dir/test_groups.c.o
-[ 21%] Built target test_group_setup_fail
-[ 22%] Linking C executable test_group_fixtures
-[ 24%] Linking C executable test_fixtures
-[ 26%] Building C object tests/CMakeFiles/test_float_macros.dir/test_float_macros.c.o
+[  9%] Building C object tests/CMakeFiles/test_group_setup_assert.dir/test_group_setup_assert.c.o
+[ 11%] Linking C executable test_group_setup_assert
+[ 13%] Linking C executable test_alloc
+[ 13%] Built target test_group_setup_assert
+[ 13%] Built target test_alloc
+[ 14%] Building C object tests/CMakeFiles/test_group_setup_fail.dir/test_group_setup_fail.c.o
+[ 16%] Building C object tests/CMakeFiles/test_fixtures.dir/test_fixtures.c.o
+[ 18%] Linking C executable test_group_setup_fail
+[ 19%] Linking C executable test_fixtures
+[ 19%] Built target test_group_setup_fail
+[ 21%] Building C object tests/CMakeFiles/test_group_fixtures.dir/test_group_fixtures.c.o
+[ 21%] Built target test_fixtures
+[ 22%] Building C object tests/CMakeFiles/test_groups.dir/test_groups.c.o
+[ 24%] Linking C executable test_group_fixtures
+[ 26%] Linking C executable test_groups
 [ 26%] Built target test_group_fixtures
-[ 27%] Linking C executable test_groups
-[ 27%] Built target test_fixtures
-[ 29%] Building C object tests/CMakeFiles/test_double_macros.dir/test_double_macros.c.o
-[ 29%] Built target test_groups
-[ 31%] Linking C executable test_float_macros
-[ 32%] Building C object tests/CMakeFiles/test_assert_macros.dir/test_assert_macros.c.o
-[ 34%] Building C object tests/CMakeFiles/test_assert_macros_fail.dir/test_assert_macros_fail.c.o
-[ 36%] Linking C executable test_double_macros
-[ 36%] Built target test_float_macros
+[ 27%] Building C object tests/CMakeFiles/test_float_macros.dir/test_float_macros.c.o
+[ 27%] Built target test_groups
+[ 29%] Linking C executable test_float_macros
+[ 31%] Building C object tests/CMakeFiles/test_double_macros.dir/test_double_macros.c.o
+[ 32%] Linking C executable test_double_macros
+[ 32%] Built target test_float_macros
+[ 34%] Building C object tests/CMakeFiles/test_assert_macros.dir/test_assert_macros.c.o
+[ 34%] Built target test_double_macros
+[ 36%] Building C object tests/CMakeFiles/test_assert_macros_fail.dir/test_assert_macros_fail.c.o
 [ 37%] Linking C executable test_assert_macros
-[ 39%] Building C object tests/CMakeFiles/test_basics.dir/test_basics.c.o
-[ 40%] Linking C executable test_assert_macros_fail
-[ 40%] Built target test_assert_macros
-[ 40%] Built target test_double_macros
+[ 39%] Linking C executable test_assert_macros_fail
+[ 39%] Built target test_assert_macros
+[ 40%] Building C object tests/CMakeFiles/test_basics.dir/test_basics.c.o
+[ 40%] Built target test_assert_macros_fail
 [ 42%] Building C object tests/CMakeFiles/test_skip.dir/test_skip.c.o
-[ 44%] Building C object tests/CMakeFiles/test_strmatch.dir/test_strmatch.c.o
-[ 45%] Built target test_assert_macros_fail
-[ 45%] Linking C executable test_basics
-[ 47%] Linking C executable test_skip
+[ 44%] Linking C executable test_basics
+[ 45%] Linking C executable test_skip
+[ 45%] Built target test_basics
+[ 47%] Building C object tests/CMakeFiles/test_strmatch.dir/test_strmatch.c.o
+[ 47%] Built target test_skip
 [ 49%] Building C object tests/CMakeFiles/test_setup_fail.dir/test_setup_fail.c.o
-[ 49%] Built target test_basics
-[ 49%] Built target test_skip
 [ 50%] Linking C executable test_setup_fail
+[ 50%] Built target test_setup_fail
 [ 52%] Building C object tests/CMakeFiles/test_ordering.dir/test_ordering.c.o
-[ 54%] Building C object tests/CMakeFiles/test_ordering_fail.dir/test_ordering_fail.c.o
-[ 54%] Built target test_setup_fail
-[ 55%] Linking C executable test_ordering_fail
-[ 57%] Building C object tests/CMakeFiles/test_returns.dir/test_returns.c.o
-[ 59%] Linking C executable test_ordering
-[ 59%] Built target test_ordering_fail
-[ 59%] Built target test_ordering
-[ 60%] Building C object tests/CMakeFiles/test_returns_fail.dir/test_returns_fail.c.o
-[ 62%] Building C object tests/CMakeFiles/test_string.dir/test_string.c.o
-[ 63%] Linking C executable test_returns
-[ 65%] Linking C executable test_string
-[ 65%] Built target test_returns
-[ 67%] Linking C executable test_returns_fail
+[ 54%] Linking C executable test_ordering
+[ 54%] Built target test_ordering
+[ 55%] Building C object tests/CMakeFiles/test_ordering_fail.dir/test_ordering_fail.c.o
+[ 57%] Linking C executable test_ordering_fail
+[ 57%] Built target test_ordering_fail
+[ 59%] Building C object tests/CMakeFiles/test_returns.dir/test_returns.c.o
+[ 60%] Linking C executable test_returns
+[ 60%] Built target test_returns
+[ 62%] Building C object tests/CMakeFiles/test_returns_fail.dir/test_returns_fail.c.o
+[ 63%] Linking C executable test_returns_fail
+[ 63%] Built target test_returns_fail
+[ 65%] Building C object tests/CMakeFiles/test_string.dir/test_string.c.o
+[ 67%] Linking C executable test_string
 [ 67%] Built target test_string
 [ 68%] Building C object tests/CMakeFiles/test_wildcard.dir/test_wildcard.c.o
-[ 68%] Built target test_returns_fail
-[ 70%] Building C object tests/CMakeFiles/test_cmockery.dir/test_cmockery.c.o
+[ 70%] Linking C executable test_wildcard
+[ 70%] Built target test_wildcard
 [ 72%] Building C object tests/CMakeFiles/test_skip_filter.dir/test_skip_filter.c.o
-[ 73%] Linking C executable test_wildcard
-[ 75%] Linking C executable test_skip_filter
+[ 73%] Linking C executable test_skip_filter
+[ 73%] Built target test_skip_filter
+[ 75%] Building C object tests/CMakeFiles/test_cmockery.dir/test_cmockery.c.o
 [ 77%] Linking C executable test_cmockery
-[ 77%] Built target test_wildcard
+[ 77%] Built target test_cmockery
 [ 78%] Building C object tests/CMakeFiles/test_exception_handler.dir/test_exception_handler.c.o
-[ 78%] Built target test_skip_filter
-[ 78%] Built target test_cmockery
-[ 80%] Building C object example/CMakeFiles/allocate_module_test.dir/allocate_module.c.o
+[ 80%] Linking C executable test_exception_handler
+[ 80%] Built target test_exception_handler
 [ 81%] Building C object example/CMakeFiles/simple_test.dir/simple_test.c.o
-[ 83%] Linking C executable test_exception_handler
-[ 85%] Building C object example/CMakeFiles/allocate_module_test.dir/allocate_module_test.c.o
-[ 86%] Linking C executable simple_test
-[ 86%] Built target test_exception_handler
-[ 88%] Linking C executable allocate_module_test
-[ 88%] Built target simple_test
-[ 90%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro.c.o
-[ 91%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module.c.o
+[ 83%] Linking C executable simple_test
+[ 83%] Built target simple_test
+[ 85%] Building C object example/CMakeFiles/allocate_module_test.dir/allocate_module.c.o
+[ 86%] Building C object example/CMakeFiles/allocate_module_test.dir/allocate_module_test.c.o
+[ 88%] Linking C executable test_strmatch
+[ 90%] Linking C executable allocate_module_test
+[ 90%] Built target test_strmatch
+[ 91%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro.c.o
 [ 91%] Built target allocate_module_test
-[ 93%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro_test.c.o
-[ 95%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module_test.c.o
-[ 96%] Linking C executable assert_module_test
+[ 93%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module.c.o
+[ 95%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro_test.c.o
+[ 96%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module_test.c.o
 [ 98%] Linking C executable assert_macro_test
-[ 98%] Built target assert_module_test
-[ 98%] Built target assert_macro_test
-[100%] Linking C executable test_strmatch
-[100%] Built target test_strmatch
+[100%] Linking C executable assert_module_test
+[100%] Built target assert_macro_test
+[100%] Built target assert_module_test
 /home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_cmockery.c: In function 'main':
 /home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_cmockery.c:31:5: warning: '_run_tests' is deprecated [-Wdeprecated-declarations]
    31 |     return run_tests(tests);

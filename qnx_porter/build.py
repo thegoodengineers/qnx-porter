@@ -6,7 +6,7 @@ from pathlib import Path
 
 from . import qnx
 
-JOBS = str(os.cpu_count() or 2)
+JOBS = os.environ.get("QNX_PORTER_JOBS") or str(os.cpu_count() or 2)  # fewer on small-memory hosts (C++)
 
 
 def detect(src: Path) -> str:
@@ -39,7 +39,7 @@ class Job:
         if self.arch is None:
             return "\n".join(["# host build", *self.flags.cflags, *self.flags.link(), *self.flags.libs]) + "\n"
         if self.system == "meson":
-            return qnx.meson_cross(self.arch, self.env, self.flags, self.emulator)
+            return qnx.meson_cross(self.arch, self.env, self.flags, "")  # tests run via meson_on_target()
         if self.system == "cmake":
             return qnx.cmake_toolchain(self.arch, self.env, self.flags)
         return "".join(f"{k}={v}\n" for k, v in qnx.gnu_env(self.arch, self.env, self.flags).items())
