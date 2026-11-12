@@ -2,8 +2,13 @@
 
 The harness (BENCH_C) runs the call N times in a SCHED_FIFO thread at priority 60, timing each call with
 ClockCycles() (the TSC on x86, CNTVCT_EL0 on ARM; QNX C Library Reference) and converting with
-SYSPAGE_ENTRY(qtime)->cycles_per_sec. It runs twice: idle, and with one load thread per CPU at priority 10
-churning the heap and the caches. It prints min / median / p99 / max in microseconds as JSON.
+SYSPAGE_ENTRY(qtime)->cycles_per_sec. It runs three times: idle; with one load thread per CPU at priority
+10 churning the heap and the caches; and the same load with the CPUs split by QNX runmasks
+(ThreadCtl(_NTO_TCTL_RUNMASK): the measured thread on CPU 0, the load on the others). It prints
+min / median / p99 / max in microseconds as JSON.
+
+QNX 8.0 has no adaptive partitioning (no `aps` utility, and SchedCtl() only takes CPU on/offline commands),
+so runmask isolation is the QNX-specific way this benchmark separates the real-time work from the load.
 
 The call for each library is in bench/specs.yaml: a few lines of C written against the library's public API.
 """
@@ -30,6 +35,8 @@ BENCH_C = r"""/* qnx-porter real-time benchmark: generated, see qnx_porter/rt_be
 
 static unsigned char in[1024], out[4096];
 static volatile int stop;
+static int isolate;
+static unsigned ncpu;
 @GLOBALS@
 
 static int setup(void) { @SETUP@ return 0; }
@@ -40,6 +47,8 @@ static void *load(void *arg)
     struct sched_param p = { .sched_priority = 10 };
     unsigned x = (unsigned)(uintptr_t)arg + 1;
     pthread_setschedparam(pthread_self(), SCHED_RR, &p);
+    if (isolate && ncpu > 1)               /* load on every CPU except 0 */
+        ThreadCtl(_NTO_TCTL_RUNMASK, (void *)(uintptr_t)(((1u << ncpu) - 1u) & ~1u));
     while (!stop) {                        /* heap churn and cache pressure */
         size_t n = 64 + x % 8192;
         unsigned char *m = malloc(n);
@@ -59,7 +68,13 @@ int main(int argc, char **argv)
 {
     int n = argc > 1 ? atoi(argv[1]) : 10000, nload = argc > 2 ? atoi(argv[2]) : 0;
     struct sched_param p = { .sched_priority = 60 };
-    int prio_rc = pthread_setschedparam(pthread_self(), SCHED_FIFO, &p);
+    int prio_rc = pthread_setschedparam(pthread_self(), SCHED_FIFO, &p), mask_rc = 0;
+    ncpu = (unsigned)sysconf(_SC_NPROCESSORS_ONLN);
+    isolate = argc > 3 && atoi(argv[3]) == 1;
+    if (nload < 0)
+        nload = (int)ncpu;
+    if (isolate && ncpu > 1)               /* the measured thread alone on CPU 0 */
+        mask_rc = ThreadCtl(_NTO_TCTL_RUNMASK, (void *)(uintptr_t)1u);
     pthread_t t[64];
     uint64_t *d = malloc(sizeof(uint64_t) * (size_t)n);
     for (size_t i = 0; i < sizeof in; i++)
@@ -81,10 +96,10 @@ int main(int argc, char **argv)
         pthread_join(t[i], NULL);
     qsort(d, (size_t)n, sizeof d[0], cmp);
     double us = 1e6 / (double)SYSPAGE_ENTRY(qtime)->cycles_per_sec;
-    printf("{\"n\": %d, \"load_threads\": %d, \"policy\": \"SCHED_FIFO\", \"priority\": 60, "
-           "\"setschedparam_rc\": %d, \"min_us\": %.3f, \"median_us\": %.3f, \"p99_us\": %.3f, "
-           "\"max_us\": %.3f}\n", n, nload, prio_rc, d[0] * us, d[n / 2] * us, d[(n * 99) / 100] * us,
-           d[n - 1] * us);
+    printf("{\"n\": %d, \"load_threads\": %d, \"cpus\": %u, \"isolated\": %d, \"runmask_rc\": %d, "
+           "\"policy\": \"SCHED_FIFO\", \"priority\": 60, \"setschedparam_rc\": %d, \"min_us\": %.3f, "
+           "\"median_us\": %.3f, \"p99_us\": %.3f, \"max_us\": %.3f}\n", n, nload, ncpu, isolate, mask_rc,
+           prio_rc, d[0] * us, d[n / 2] * us, d[(n * 99) / 100] * us, d[n - 1] * us);
     return 0;
 }
 """
@@ -114,15 +129,16 @@ def compile_bench(spec: dict, src: Path, bdir: Path, out: Path, env: dict, qcc_t
     return r.returncode == 0, r.stderr[-1500:]
 
 
-def run_bench(t: Target, binary: Path, name: str, n: int = 20000, load_threads: int = 4) -> dict:
-    """Copy the harness to the target and run it idle and under load. Returns both result objects."""
+def run_bench(t: Target, binary: Path, name: str, n: int = 20000) -> dict:
+    """Copy the harness to the target; run it idle, under load, and under load with runmask isolation."""
     remote = f"{t.root}/bench/{name}"
     t.ssh(f"mkdir -p {shlex.quote(t.root)}/bench", capture_output=True, timeout=60)
     subprocess.run(["scp", "-q", *SSH_OPTS, "-P", str(t.port), str(binary), f"{t.host}:{remote}"],
                    check=True, capture_output=True, timeout=300)
     res = {}
-    for label, k in (("idle", 0), ("loaded", load_threads)):
-        r = t.ssh(f"timeout -s KILL 300 {shlex.quote(remote)} {n} {k}", capture_output=True, text=True, timeout=360)
+    for label, args in (("idle", "0 0"), ("loaded", "-1 0"), ("loaded_isolated", "-1 1")):
+        r = t.ssh(f"timeout -s KILL 300 {shlex.quote(remote)} {n} {args}", capture_output=True, text=True,
+                  timeout=360)
         m = re.search(r"\{.*\}", r.stdout)
         res[label] = json.loads(m.group(0)) if (r.returncode == 0 and m) else \
             {"error": f"exit {r.returncode}: {(r.stdout + r.stderr).strip()[-300:]}"}
