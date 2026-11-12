@@ -9,6 +9,7 @@ Each library's patches, diff (qnx.patch), toolchain file and logs land in ports/
 """
 import argparse
 import json
+import re
 import subprocess
 import sys
 import time
@@ -75,6 +76,13 @@ def already_on_oss(libs: list[dict], names: set, urls: set) -> list[str]:
     return [lib["name"] for lib in libs if listed(lib)]
 
 
+def default_branch(url: str) -> str:
+    """The branch upstream's HEAD points at (`git ls-remote --symref`), or "" if it cannot be read."""
+    r = subprocess.run(["git", "ls-remote", "--symref", url, "HEAD"], capture_output=True, text=True, timeout=120)
+    m = re.search(r"^ref: refs/heads/(\S+)\s+HEAD", r.stdout, re.M)
+    return m.group(1) if m else ""
+
+
 def error_report(out: Path, lib: dict, arch: str, err: str, minutes: float) -> None:
     """A report.json for a library the agent could not even start on, so the CSV still shows it."""
     d = out / lib["name"]
@@ -98,6 +106,8 @@ def main(argv=None) -> int:
     ap.add_argument("--no-tests", action="store_true", help="build only, do not use the QNX target")
     ap.add_argument("--no-model", action="store_true", help="deterministic rules only")
     ap.add_argument("--skip-oss-check", action="store_true", help="do not re-check oss.qnx.com first")
+    ap.add_argument("--head", action="store_true",
+                    help="port each library's upstream default branch (HEAD) instead of its pinned tag")
     a = ap.parse_args(argv)
 
     c = load(Path(a.campaign))
@@ -106,6 +116,9 @@ def main(argv=None) -> int:
     if a.target:
         c["target"] = None if a.target == "none" else a.target
     libs = [lib for lib in c["libraries"] if not a.only or lib["name"] in a.only.split(",")]
+    if a.head:
+        for lib in libs:
+            lib["tag"] = default_branch(lib["url"]) or lib["tag"]
     preflight()
     target = None
     if c["target"] and not a.no_tests:

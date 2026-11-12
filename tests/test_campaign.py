@@ -54,3 +54,17 @@ def test_agent_error_still_lands_in_the_csv(tmp_path):
     [row] = ports_csv.rows(tmp_path)
     assert row["build_result"] == "error" and row["tests_total"] == ""
     assert json.loads((tmp_path / "x" / "report.json").read_text())["blocked_on"][0]["error"] == "clone failed"
+
+
+def test_weekly_head_history_appends_one_row_per_library(tmp_path, monkeypatch):
+    import head_history
+    (tmp_path / "ports-head/zlib").mkdir(parents=True)
+    (tmp_path / "ports-head/zlib/report.json").write_text(json.dumps({
+        "library": "zlib", "version": "develop", "commit": "51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf",
+        "arch": "x86_64", "build_result": "built", "rounds": 1, "patches_kept": 0, "minutes": 0.3}))
+    monkeypatch.setattr(head_history, "DEST", tmp_path / "history.csv")
+    head_history.main([str(tmp_path / "ports-head")])
+    head_history.main([str(tmp_path / "ports-head")])
+    lines = (tmp_path / "history.csv").read_text().splitlines()
+    assert lines[0].startswith("run,library,branch,commit") and len(lines) == 3
+    assert ",zlib,develop,51b7f2abdade,x86_64,built,1,0,0.3" in lines[1]

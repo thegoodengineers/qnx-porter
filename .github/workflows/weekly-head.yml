@@ -1,0 +1,50 @@
+# Every Monday: port every library in campaign.yaml again, at its upstream default branch (HEAD) instead of the
+# pinned tag, build only, and append the result to results/head/history.csv on the data/head-history branch.
+# It shows when an upstream change breaks the QNX 8.0 build, and whether the agent's rules still cover it.
+#
+# The QNX SDP cannot be installed on GitHub's hosted runners (it needs a myQNX licence), so this runs on a
+# self-hosted runner with the SDP installed; label it `qnx-sdp`. See SETUP.md for the SDP.
+name: weekly upstream HEAD
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency: weekly-head
+jobs:
+  head:
+    runs-on: [self-hosted, linux, qnx-sdp]
+    timeout-minutes: 480
+    steps:
+      - uses: actions/checkout@v4
+      - name: Previous history
+        run: |
+          git fetch origin data/head-history || true
+          git show origin/data/head-history:results/head/history.csv > /tmp/history.csv 2>/dev/null || true
+          mkdir -p results/head && [ -s /tmp/history.csv ] && cp /tmp/history.csv results/head/history.csv || true
+      - name: Port every library at upstream HEAD (build only, rules only)
+        run: |
+          source "${QNX_SDP:-$HOME/qnx800}/qnxsdp-env.sh"
+          python3 -m pip install -q -e .
+          python3 scripts/run_campaign.py --head --no-tests --no-model --skip-oss-check --out ports-head | tee head.log
+          python3 scripts/head_history.py ports-head
+      - name: Save the history on data/head-history
+        run: |
+          git config user.name "qnx-porter weekly"
+          git config user.email "qnx-porter-weekly@users.noreply.github.com"
+          cp results/head/history.csv /tmp/history.csv
+          git fetch origin data/head-history && git checkout -B data/head-history origin/data/head-history \
+            || git checkout --orphan data/head-history
+          git rm -rq --cached . 2>/dev/null || true
+          mkdir -p results/head && cp /tmp/history.csv results/head/history.csv
+          git add results/head/history.csv
+          git commit -qm "weekly upstream HEAD: $(date -u +%F)" && git push -q origin data/head-history
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: head-reports
+          path: |
+            head.log
+            ports-head/*/REPORT.md
+            ports-head/*/report.json
