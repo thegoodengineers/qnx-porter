@@ -9,6 +9,11 @@ on:
   schedule:
     - cron: "0 3 * * 1"
   workflow_dispatch:
+    inputs:
+      only:
+        description: "Comma-separated libraries (empty = all 61). A small list is a quick test of the runner."
+        required: false
+        default: ""
 permissions:
   contents: write
 concurrency: weekly-head
@@ -24,10 +29,14 @@ jobs:
           git show origin/data/head-history:results/head/history.csv > /tmp/history.csv 2>/dev/null || true
           mkdir -p results/head && [ -s /tmp/history.csv ] && cp /tmp/history.csv results/head/history.csv || true
       - name: Port every library at upstream HEAD (build only, rules only)
+        env:
+          ONLY: ${{ inputs.only }}
         run: |
           source "${QNX_SDP:-$HOME/qnx800}/qnxsdp-env.sh"
+          export PATH="$HOME/.local/bin:$PATH"
           python3 -m pip install -q -e .
-          python3 scripts/run_campaign.py --head --no-tests --no-model --skip-oss-check --out ports-head | tee head.log
+          python3 scripts/run_campaign.py --head --no-tests --no-model --skip-oss-check --out ports-head \
+            ${ONLY:+--only "$ONLY"} | tee head.log
           python3 scripts/head_history.py ports-head
       - name: Save the history on data/head-history
         run: |
