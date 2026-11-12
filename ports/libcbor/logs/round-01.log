@@ -31,14 +31,14 @@ $ cmake -S /home/chirag/qnx-porter/ports/libcbor/work/src -B /home/chirag/qnx-po
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/libcbor/work/build
-$ cmake --build /home/chirag/qnx-porter/ports/libcbor/work/build -j 4 -- -k
+$ cmake --build /home/chirag/qnx-porter/ports/libcbor/work/build -j 2 -- -k
 [  3%] Building C object src/CMakeFiles/cbor.dir/cbor.c.o
 [  6%] Building C object src/CMakeFiles/cbor.dir/allocators.c.o
 [  9%] Building C object src/CMakeFiles/cbor.dir/cbor/streaming.c.o
 [ 12%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/encoders.c.o
 [ 15%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/builder_callbacks.c.o
-[ 18%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/memory_utils.c.o
-[ 21%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/loaders.c.o
+[ 18%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/loaders.c.o
+[ 21%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/memory_utils.c.o
 [ 24%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/stack.c.o
 [ 27%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/unicode.c.o
 [ 30%] Building C object src/CMakeFiles/cbor.dir/cbor/encoding.c.o
@@ -46,29 +46,29 @@ $ cmake --build /home/chirag/qnx-porter/ports/libcbor/work/build -j 4 -- -k
 [ 36%] Building C object src/CMakeFiles/cbor.dir/cbor/arrays.c.o
 [ 39%] Building C object src/CMakeFiles/cbor.dir/cbor/common.c.o
 [ 42%] Building C object src/CMakeFiles/cbor.dir/cbor/floats_ctrls.c.o
-[ 45%] Building C object src/CMakeFiles/cbor.dir/cbor/callbacks.c.o
+[ 45%] Building C object src/CMakeFiles/cbor.dir/cbor/bytestrings.c.o
+[ 48%] Building C object src/CMakeFiles/cbor.dir/cbor/callbacks.c.o
 [ 51%] Building C object src/CMakeFiles/cbor.dir/cbor/strings.c.o
-[ 51%] Building C object src/CMakeFiles/cbor.dir/cbor/bytestrings.c.o
 [ 54%] Building C object src/CMakeFiles/cbor.dir/cbor/maps.c.o
 [ 57%] Building C object src/CMakeFiles/cbor.dir/cbor/tags.c.o
 [ 60%] Building C object src/CMakeFiles/cbor.dir/cbor/ints.c.o
 [ 63%] Linking C static library libcbor.a
 [ 63%] Built target cbor
-[ 66%] Building C object examples/CMakeFiles/readfile.dir/readfile.c.o
-[ 69%] Building C object examples/CMakeFiles/streaming_parser.dir/streaming_parser.c.o
-[ 72%] Building C object examples/CMakeFiles/create_items.dir/create_items.c.o
-[ 75%] Building C object examples/CMakeFiles/streaming_array.dir/streaming_array.c.o
-[ 78%] Linking C executable readfile
-[ 81%] Linking C executable create_items
+[ 69%] Building C object examples/CMakeFiles/create_items.dir/create_items.c.o
+[ 69%] Building C object examples/CMakeFiles/readfile.dir/readfile.c.o
+[ 72%] Linking C executable create_items
+[ 75%] Linking C executable readfile
+[ 75%] Built target create_items
+[ 75%] Built target readfile
+[ 78%] Building C object examples/CMakeFiles/streaming_parser.dir/streaming_parser.c.o
+[ 81%] Building C object examples/CMakeFiles/streaming_array.dir/streaming_array.c.o
 [ 84%] Linking C executable streaming_parser
 [ 87%] Linking C executable streaming_array
-[ 87%] Built target readfile
 [ 87%] Built target streaming_parser
-[ 87%] Built target create_items
 [ 87%] Built target streaming_array
 [ 90%] Building C object examples/CMakeFiles/sort.dir/sort.c.o
 [ 93%] Building C object examples/CMakeFiles/hello.dir/hello.c.o
-[ 96%] Linking C executable hello
+[100%] Linking C executable hello
 [100%] Linking C executable sort
 [100%] Built target hello
 [100%] Built target sort

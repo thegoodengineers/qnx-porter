@@ -31,8 +31,9 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 1.1,
+  "minutes": 0.5,
   "note": "",
+  "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T02:00:46+00:00"
+  "finished": "2026-11-12T09:26:17+00:00"
 }

@@ -1,0 +1,155 @@
+$ cmake -S /home/chirag/qnx-porter/ports/miniz/work/src -B /home/chirag/qnx-porter/ports/miniz/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/miniz/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/miniz/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Failed
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/miniz/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/miniz/work/build -j 2 -- -k
+/usr/bin/cmake -S/home/chirag/qnx-porter/ports/miniz/work/src -B/home/chirag/qnx-porter/ports/miniz/work/build --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles /home/chirag/qnx-porter/ports/miniz/work/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/gmake  -f CMakeFiles/miniz.dir/build.make CMakeFiles/miniz.dir/depend
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+cd /home/chirag/qnx-porter/ports/miniz/work/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles/miniz.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/gmake  -f CMakeFiles/miniz.dir/build.make CMakeFiles/miniz.dir/build
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[ 11%] Building C object CMakeFiles/miniz.dir/miniz.c.o
+[ 11%] Building C object CMakeFiles/miniz.dir/miniz_zip.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx  -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/miniz.dir/miniz.c.o.d -Wp,-MT,CMakeFiles/miniz.dir/miniz.c.o -Wp,-MF,CMakeFiles/miniz.dir/miniz.c.o.d -o CMakeFiles/miniz.dir/miniz.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/miniz.c
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx  -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/miniz.dir/miniz_zip.c.o.d -Wp,-MT,CMakeFiles/miniz.dir/miniz_zip.c.o -Wp,-MF,CMakeFiles/miniz.dir/miniz_zip.c.o.d -o CMakeFiles/miniz.dir/miniz_zip.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/miniz_zip.c
+[ 17%] Building C object CMakeFiles/miniz.dir/miniz_tinfl.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx  -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/miniz.dir/miniz_tinfl.c.o.d -Wp,-MT,CMakeFiles/miniz.dir/miniz_tinfl.c.o -Wp,-MF,CMakeFiles/miniz.dir/miniz_tinfl.c.o.d -o CMakeFiles/miniz.dir/miniz_tinfl.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/miniz_tinfl.c
+[ 23%] Building C object CMakeFiles/miniz.dir/miniz_tdef.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx  -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/miniz.dir/miniz_tdef.c.o.d -Wp,-MT,CMakeFiles/miniz.dir/miniz_tdef.c.o -Wp,-MF,CMakeFiles/miniz.dir/miniz_tdef.c.o.d -o CMakeFiles/miniz.dir/miniz_tdef.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/miniz_tdef.c
+[ 29%] Linking C static library libminiz.a
+/usr/bin/cmake -P CMakeFiles/miniz.dir/cmake_clean_target.cmake
+/usr/bin/cmake -E cmake_link_script CMakeFiles/miniz.dir/link.txt --verbose=1
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/ntox86_64-ar qc libminiz.a CMakeFiles/miniz.dir/miniz.c.o CMakeFiles/miniz.dir/miniz_zip.c.o CMakeFiles/miniz.dir/miniz_tinfl.c.o CMakeFiles/miniz.dir/miniz_tdef.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/ntox86_64-ranlib libminiz.a
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[ 29%] Built target miniz
+/usr/bin/gmake  -f CMakeFiles/example1.dir/build.make CMakeFiles/example1.dir/depend
+/usr/bin/gmake  -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/depend
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+cd /home/chirag/qnx-porter/ports/miniz/work/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles/example1.dir/DependInfo.cmake --color=
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+cd /home/chirag/qnx-porter/ports/miniz/work/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles/example2.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/gmake  -f CMakeFiles/example2.dir/build.make CMakeFiles/example2.dir/build
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/gmake  -f CMakeFiles/example1.dir/build.make CMakeFiles/example1.dir/build
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[ 35%] Building C object CMakeFiles/example2.dir/examples/example2.c.o
+[ 41%] Building C object CMakeFiles/example1.dir/examples/example1.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -DMINIZ_STATIC_DEFINE -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/example2.dir/examples/example2.c.o.d -Wp,-MT,CMakeFiles/example2.dir/examples/example2.c.o -Wp,-MF,CMakeFiles/example2.dir/examples/example2.c.o.d -o CMakeFiles/example2.dir/examples/example2.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/examples/example2.c
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -DMINIZ_STATIC_DEFINE -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/example1.dir/examples/example1.c.o.d -Wp,-MT,CMakeFiles/example1.dir/examples/example1.c.o -Wp,-MF,CMakeFiles/example1.dir/examples/example1.c.o.d -o CMakeFiles/example1.dir/examples/example1.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/examples/example1.c
+[ 47%] Linking C executable /home/chirag/qnx-porter/ports/miniz/work/src/bin/example1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/example1.dir/link.txt --verbose=1
+[ 52%] Linking C executable /home/chirag/qnx-porter/ports/miniz/work/src/bin/example2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/example2.dir/link.txt --verbose=1
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -L/home/chirag/qnx-porter/ports/miniz/work/stubs CMakeFiles/example1.dir/examples/example1.c.o -o /home/chirag/qnx-porter/ports/miniz/work/src/bin/example1  libminiz.a 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -L/home/chirag/qnx-porter/ports/miniz/work/stubs CMakeFiles/example2.dir/examples/example2.c.o -o /home/chirag/qnx-porter/ports/miniz/work/src/bin/example2  libminiz.a 
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[ 52%] Built target example1
+/usr/bin/gmake  -f CMakeFiles/example3.dir/build.make CMakeFiles/example3.dir/depend
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+cd /home/chirag/qnx-porter/ports/miniz/work/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles/example3.dir/DependInfo.cmake --color=
+[ 52%] Built target example2
+/usr/bin/gmake  -f CMakeFiles/example4.dir/build.make CMakeFiles/example4.dir/depend
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+cd /home/chirag/qnx-porter/ports/miniz/work/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles/example4.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/gmake  -f CMakeFiles/example3.dir/build.make CMakeFiles/example3.dir/build
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/gmake  -f CMakeFiles/example4.dir/build.make CMakeFiles/example4.dir/build
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[ 58%] Building C object CMakeFiles/example3.dir/examples/example3.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -DMINIZ_STATIC_DEFINE -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/example3.dir/examples/example3.c.o.d -Wp,-MT,CMakeFiles/example3.dir/examples/example3.c.o -Wp,-MF,CMakeFiles/example3.dir/examples/example3.c.o.d -o CMakeFiles/example3.dir/examples/example3.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/examples/example3.c
+[ 64%] Building C object CMakeFiles/example4.dir/examples/example4.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -DMINIZ_STATIC_DEFINE -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/example4.dir/examples/example4.c.o.d -Wp,-MT,CMakeFiles/example4.dir/examples/example4.c.o -Wp,-MF,CMakeFiles/example4.dir/examples/example4.c.o.d -o CMakeFiles/example4.dir/examples/example4.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/examples/example4.c
+[ 70%] Linking C executable /home/chirag/qnx-porter/ports/miniz/work/src/bin/example4
+/usr/bin/cmake -E cmake_link_script CMakeFiles/example4.dir/link.txt --verbose=1
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -L/home/chirag/qnx-porter/ports/miniz/work/stubs CMakeFiles/example4.dir/examples/example4.c.o -o /home/chirag/qnx-porter/ports/miniz/work/src/bin/example4  libminiz.a 
+[ 76%] Linking C executable /home/chirag/qnx-porter/ports/miniz/work/src/bin/example3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/example3.dir/link.txt --verbose=1
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -L/home/chirag/qnx-porter/ports/miniz/work/stubs CMakeFiles/example3.dir/examples/example3.c.o -o /home/chirag/qnx-porter/ports/miniz/work/src/bin/example3  libminiz.a 
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[ 76%] Built target example4
+/usr/bin/gmake  -f CMakeFiles/example5.dir/build.make CMakeFiles/example5.dir/depend
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+cd /home/chirag/qnx-porter/ports/miniz/work/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles/example5.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/gmake  -f CMakeFiles/example5.dir/build.make CMakeFiles/example5.dir/build
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[ 76%] Built target example3
+/usr/bin/gmake  -f CMakeFiles/example6.dir/build.make CMakeFiles/example6.dir/depend
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+cd /home/chirag/qnx-porter/ports/miniz/work/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/src /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles/example6.dir/DependInfo.cmake --color=
+[ 82%] Building C object CMakeFiles/example5.dir/examples/example5.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -DMINIZ_STATIC_DEFINE -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/example5.dir/examples/example5.c.o.d -Wp,-MT,CMakeFiles/example5.dir/examples/example5.c.o -Wp,-MF,CMakeFiles/example5.dir/examples/example5.c.o.d -o CMakeFiles/example5.dir/examples/example5.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/examples/example5.c
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/gmake  -f CMakeFiles/example6.dir/build.make CMakeFiles/example6.dir/build
+gmake[2]: Entering directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[ 88%] Building C object CMakeFiles/example6.dir/examples/example6.c.o
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -DMINIZ_STATIC_DEFINE -I/home/chirag/qnx-porter/ports/miniz/work/src -I/home/chirag/qnx-porter/ports/miniz/work/build -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu90 -Wp,-MD,CMakeFiles/example6.dir/examples/example6.c.o.d -Wp,-MT,CMakeFiles/example6.dir/examples/example6.c.o -Wp,-MF,CMakeFiles/example6.dir/examples/example6.c.o.d -o CMakeFiles/example6.dir/examples/example6.c.o -c /home/chirag/qnx-porter/ports/miniz/work/src/examples/example6.c
+[ 94%] Linking C executable /home/chirag/qnx-porter/ports/miniz/work/src/bin/example5
+[100%] Linking C executable /home/chirag/qnx-porter/ports/miniz/work/src/bin/example6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/example5.dir/link.txt --verbose=1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/example6.dir/link.txt --verbose=1
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -L/home/chirag/qnx-porter/ports/miniz/work/stubs CMakeFiles/example5.dir/examples/example5.c.o -o /home/chirag/qnx-porter/ports/miniz/work/src/bin/example5  libminiz.a 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc -Vgcc_ntox86_64 -Wc,-isysroot,/home/chirag/qnx800/target/qnx -g -Wshadow -Wformat=2 -Wall -Wno-overlength-strings -pedantic -O3 -DNDEBUG -O3 -DNDEBUG -L/home/chirag/qnx-porter/ports/miniz/work/stubs CMakeFiles/example6.dir/examples/example6.c.o -o /home/chirag/qnx-porter/ports/miniz/work/src/bin/example6  libminiz.a -lm 
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+gmake[2]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+[100%] Built target example5
+[100%] Built target example6
+gmake[1]: Leaving directory '/home/chirag/qnx-porter/ports/miniz/work/build'
+/usr/bin/cmake -E cmake_progress_start /home/chirag/qnx-porter/ports/miniz/work/build/CMakeFiles 0
+/home/chirag/qnx-porter/ports/miniz/work/src/miniz_zip.c:165:9: note: '#pragma message: Using fopen, ftello, fseeko, stat() etc. path for file I/O - this path may not support large files.'
+  165 | #pragma message("Using fopen, ftello, fseeko, stat() etc. path for file I/O - this path may not support large files.")
+      |         ^~~~~~~
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example1.c:1:1: warning: C++ style comments are not allowed in ISO C90
+    1 | // example1.c - Demonstrates miniz.c's compress() and uncompress() functions (same as zlib's).
+      | ^
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example1.c:1:1: note: (this will be reported only once per input file)
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example2.c:1:1: warning: C++ style comments are not allowed in ISO C90
+    1 | // example2.c - Simple demonstration of miniz.c's ZIP archive API's.
+      | ^
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example2.c:1:1: note: (this will be reported only once per input file)
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example3.c:1:1: warning: C++ style comments are not allowed in ISO C90
+    1 | // example3.c - Demonstrates how to use miniz.c's deflate() and inflate() functions for simple file compression.
+      | ^
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example3.c:1:1: note: (this will be reported only once per input file)
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example4.c:1:1: warning: C++ style comments are not allowed in ISO C90
+    1 | // example4.c - Uses tinfl.c to decompress a zlib stream in memory to an output file
+      | ^
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example4.c:1:1: note: (this will be reported only once per input file)
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example5.c:1:1: warning: C++ style comments are not allowed in ISO C90
+    1 | // example5.c - Demonstrates how to use miniz.c's low-level tdefl_compress() and tinfl_inflate() API's for simple file to file compression/decompression.
+      | ^
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example5.c:1:1: note: (this will be reported only once per input file)
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example6.c:1:1: warning: C++ style comments are not allowed in ISO C90
+    1 | // example6.c - Demonstrates how to miniz's PNG writer func
+      | ^
+/home/chirag/qnx-porter/ports/miniz/work/src/examples/example6.c:1:1: note: (this will be reported only once per input file)

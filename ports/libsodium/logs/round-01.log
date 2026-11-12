@@ -1,4 +1,4 @@
-$ env -C /home/chirag/qnx-porter/ports/libsodium/work/build /home/chirag/qnx-porter/ports/libsodium/work/src/configure --host=x86_64-pc-nto-qnx8.0.0 --disable-shared CC=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc CXX=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-g++ AR=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ar RANLIB=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ranlib CFLAGS=-O2 CXXFLAGS=-O2 LDFLAGS= LIBS=
+$ env -C /home/chirag/qnx-porter/ports/libsodium/work/build /home/chirag/qnx-porter/ports/libsodium/work/src/configure --host=x86_64-pc-nto-qnx8.0.0 --disable-shared CC=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc CXX=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-g++ AR=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ar RANLIB=/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ranlib CFLAGS=-O2 -g CXXFLAGS=-O2 -g LDFLAGS=-L/home/chirag/qnx-porter/ports/libsodium/work/stubs LIBS= QNX_PORTER_LATE_FLAGS=
 checking build system type... x86_64-pc-linux-gnu
 checking host system type... x86_64-pc-nto-qnx
 checking target system type... x86_64-pc-nto-qnx
@@ -44,8 +44,7 @@ checking for a sed that does not truncate output... /usr/bin/sed
 checking how to run the C preprocessor... /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc -E
 checking for egrep -e... /usr/bin/grep -E
 checking whether /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc is Clang... no
-checking whether pthreads work with "-pthread" and "-lpthread"... no
-checking whether pthreads work with -pthread... yes
+checking whether pthreads work with "-pthread" and "-lpthread"... yes
 checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
 checking whether more special flags are required for pthreads... no
 checking for PTHREAD_PRIO_INHERIT... yes
@@ -59,11 +58,11 @@ checking whether C compiler accepts -fno-strict-aliasing... yes
 checking whether C compiler accepts -fno-strict-overflow... yes
 checking whether C compiler accepts -fstack-protector... yes
 checking whether the linker accepts -fstack-protector... yes
-checking whether C compiler accepts -O2 -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wall... yes
-checking whether C compiler accepts -O2 -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations... yes
-checking whether C compiler accepts -O2 -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations -Wno-unknown-pragmas... yes
+checking whether C compiler accepts -O2 -g -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wall... yes
+checking whether C compiler accepts -O2 -g -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations... yes
+checking whether C compiler accepts -O2 -g -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations -Wno-unknown-pragmas... yes
 checking for clang... no
-checking whether C compiler accepts -O2 -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wall -Wextra... yes
+checking whether C compiler accepts -O2 -g -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wall -Wextra... yes
 checking whether C compiler accepts  -Wextra -Warray-bounds... yes
 checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast... yes
 checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual... yes
@@ -248,7 +247,7 @@ config.status: executing libtool commands
 configure: WARNING: On this platform, segmentation violations cannot be caught using signal handlers. This is expected if you enabled a tool such as Address Sanitizer (-fsanitize=address), but be aware that using Address Sanitizer may also significantly reduce performance.
 configure: WARNING: On this platform, SIGABRT cannot be caught using signal handlers.
 configure: WARNING: using cross tools not prefixed with host triplet
-$ make -k -j 4 -C /home/chirag/qnx-porter/ports/libsodium/work/build
+$ make -k -j 2 -C /home/chirag/qnx-porter/ports/libsodium/work/build
 make: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build'
 Making all in builds
 make[1]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/builds'
@@ -298,8 +297,8 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/
   CC       crypto_auth/hmacsha512256/libsodium_la-auth_hmacsha512256.lo
   CC       crypto_box/libsodium_la-crypto_box.lo
   CC       crypto_box/libsodium_la-crypto_box_easy.lo
-  CC       crypto_box/curve25519xsalsa20poly1305/libsodium_la-box_curve25519xsalsa20poly1305.lo
   CC       crypto_box/libsodium_la-crypto_box_seal.lo
+  CC       crypto_box/curve25519xsalsa20poly1305/libsodium_la-box_curve25519xsalsa20poly1305.lo
   CC       crypto_core/ed25519/ref10/libsodium_la-ed25519_ref10.lo
   CC       crypto_core/hchacha20/libsodium_la-core_hchacha20.lo
   CC       crypto_core/hsalsa20/ref2/libsodium_la-core_hsalsa20_ref2.lo

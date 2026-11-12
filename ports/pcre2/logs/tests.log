@@ -1,0 +1,100 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/pcre2/work/build); every test command runs on root@172.31.1.11 over ssh
+FAIL  pcre2_test (exit 1)
+    (run with ksh: the target has no sh)
+    
+    PCRE2 C library tests using test data from /home/chirag/qnx-porter/ports/pcre2/work/src/testdata
+    PCRE2 version 10.44 2024-06-07 (8-bit)
+    
+    ---- Testing 8-bit library ----
+    
+    Test 0: Unchecked pcre2test argument tests (to improve coverage)
+      OK
+    Test 1: Main non-UTF, non-UCP functionality (compatible with Perl >= 5.10)
+      OK
+    Test 2: API, errors, internals and non-Perl stuff (excluding UTF-8)
+      OK
+    Cannot test locale-specific features - none of the 'fr_FR', 'fr_CA',
+    'fr' or 'french' locales can be set, or the "locale" command is
+    not available to check for them.
+     
+    Test 4: UTF-8 and Unicode property support (compatible with Perl >= 5.10)
+      OK
+    Test 5: API, internals, and non-Perl stuff for UTF-8 and UCP support
+      OK
+    Test 6: DFA matching main non-UTF, non-UCP functionality
+      OK
+    Test 7: DFA matching with UTF-8 and Unicode property support
+      OK
+    Test 8: Internal offsets and code size tests
+    ** pcre2test failed - check testtry
+    /home/chirag/qnx-porter/ports/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports/pcre2/work/src/RunTest[911]: locale: cannot execute - No such file or directory
+    /home/chirag/qnx-porter/ports/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports/pcre2/work/src/RunTest[911]: locale: cannot execute - No such file or directory
+    /home/chirag/qnx-porter/ports/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports/pcre2/work/src/RunTest[911]: locale: cannot execute - No such file or directory
+    /home/chirag/qnx-porter/ports/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports/pcre2/work/src/RunTest[911]: locale: cannot execute - No such file or directory
+    Memory fault (core dumped)
+FAIL  pcre2_grep_test (exit 1)
+    (run with ksh: the target has no sh)
+    Testing pcre2grep version 10.44 2024-06-07
+    Testing pcre2grep main features
+    Testing pcre2grep UTF-8 features
+    Testing pcre2grep newline settings
+    Testing pcre2grep newline settings with UTF-8 features
+    Testing pcre2grep script callouts
+    --- /home/chirag/qnx-porter/ports/pcre2/work/src/testdata/grepoutputC	2026-11-12 09:08:28.000000000 +0000
+    +++ testtrygrep	2026-11-12 08:59:13.000000000 +0000
+    @@ -1,27 +1,3 @@
+    -Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+    -The quick brown
+    -Arg1: [T] [his] [s] Arg2: |T| () () (0)
+    -This time it jumps and jumps and jumps.
+    -Arg1: [T] [his] [s] Arg2: |T| () () (0)
+    -This line contains \E and (regex) *meta* [characters].
+    -Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+    -The word is cat in this line
+    -Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+    -The caterpillar sat on the mat
+    -Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
+    -The snowcat is not an animal
+    -Arg1: [qu] [qu]
+    -The quick brown
+    -Arg1: [ t] [ t]
+    -This time it jumps and jumps and jumps.
+    -Arg1: [ l] [ l]
+    -This line contains \E and (regex) *meta* [characters].
+    -Arg1: [wo] [wo]
+    -The word is cat in this line
+    -Arg1: [ca] [ca]
+    -The caterpillar sat on the mat
+    -Arg1: [sn] [sn]
+    -The snowcat is not an animal
+     0:T
+     The quick brown
+     0:T
+    @@ -34,24 +10,6 @@
+     The caterpillar sat on the mat
+     0:T
+     The snowcat is not an animal
+    -0:T
+    -
+    -The quick brown
+    -0:T
+    -
+    -This time it jumps and jumps and jumps.
+    -0:T
+    -
+    -This line contains \E and (regex) *meta* [characters].
+    -0:T
+    -
+    -The word is cat in this line
+    -0:T
+    -
+    -The caterpillar sat on the mat
+    -0:T
+    -
+    -The snowcat is not an animal
+     T
+     T
+     T
+PASS  pcre2posix_test (exit 0)
+
+1/3 tests passed on the QNX target

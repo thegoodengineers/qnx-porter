@@ -2,28 +2,28 @@ $ cmake -S /home/chirag/qnx-porter/ports/libconfig/work/src -B /home/chirag/qnx-
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/libconfig/work/build
-$ cmake --build /home/chirag/qnx-porter/ports/libconfig/work/build -j 4 -- -k
+$ cmake --build /home/chirag/qnx-porter/ports/libconfig/work/build -j 2 -- -k
 Consolidate compiler generated dependencies of target config
-Consolidate compiler generated dependencies of target libtinytest
 Consolidate compiler generated dependencies of target config++
-[  5%] Built target libtinytest
-[ 29%] Built target config
+[ 24%] Built target config
+Consolidate compiler generated dependencies of target libtinytest
+[ 51%] Built target config++
+[ 56%] Built target libtinytest
 Consolidate compiler generated dependencies of target c_example1
-[ 56%] Built target config++
 Consolidate compiler generated dependencies of target c_example2
-Consolidate compiler generated dependencies of target libconfig_tests
-Consolidate compiler generated dependencies of target c_example3
 [ 62%] Built target c_example1
-[ 64%] Building C object tests/CMakeFiles/libconfig_tests.dir/tests.c.o
-[ 70%] Built target c_example2
+[ 67%] Built target c_example2
+Consolidate compiler generated dependencies of target c_example3
+[ 72%] Built target c_example3
 Consolidate compiler generated dependencies of target c++_example1
-[ 75%] Built target c_example3
+[ 78%] Built target c++_example1
 Consolidate compiler generated dependencies of target c++_example2
-[ 81%] Built target c++_example1
+[ 83%] Built target c++_example2
 Consolidate compiler generated dependencies of target c++_example3
-[ 86%] Built target c++_example2
+[ 89%] Built target c++_example3
+Consolidate compiler generated dependencies of target libconfig_tests
+[ 91%] Building C object tests/CMakeFiles/libconfig_tests.dir/tests.c.o
 Consolidate compiler generated dependencies of target c++_example4
-[ 91%] Built target c++_example3
 [ 97%] Built target c++_example4
 [100%] Linking C executable ../out/libconfig_tests
 [100%] Built target libconfig_tests

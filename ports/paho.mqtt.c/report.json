@@ -9,28 +9,16 @@
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
   "target": "",
   "build_result": "built",
-  "rounds": 4,
+  "rounds": 3,
   "tests_passed": 0,
   "tests_total": 0,
   "tests_ran": false,
-  "patches_kept": 4,
-  "patches_by_rule": 4,
+  "patches_kept": 3,
+  "patches_by_rule": 3,
   "patches_by_model": 0,
   "patches": [
     {
       "number": 1,
-      "rule": "stub-lib",
-      "source": "rule",
-      "reason": "-lpthread names a separate library on Linux; on QNX its functions are in libc. An empty libpthread.a satisfies the link without editing the build files.",
-      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: cannot find -lpthread: No such file or directory",
-      "files": [
-        "qnx-toolchain.cmake"
-      ],
-      "path": "patches/0001-stub-lib.patch",
-      "kept": true
-    },
-    {
-      "number": 2,
       "rule": "bool-typedef",
       "source": "rule",
       "reason": "src/MQTTPacket.h defines its own `bool`, but on QNX 8.0 <sys/socket.h> already includes <stdbool.h> (via io-sock/types_fbsd.h), so `bool` is taken. The typedef is skipped when stdbool's bool is visible. Note: bool is then _Bool, not unsigned int, in those files.",
@@ -38,11 +26,11 @@
       "files": [
         "src/MQTTPacket.h"
       ],
-      "path": "patches/0002-bool-typedef-mqttpacket-h.patch",
+      "path": "patches/0001-bool-typedef-mqttpacket-h.patch",
       "kept": true
     },
     {
-      "number": 3,
+      "number": 2,
       "rule": "link-libsocket",
       "source": "rule",
       "reason": "`recv` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
@@ -50,11 +38,11 @@
       "files": [
         "qnx-toolchain.cmake"
       ],
-      "path": "patches/0003-link-libsocket.patch",
+      "path": "patches/0002-link-libsocket.patch",
       "kept": true
     },
     {
-      "number": 4,
+      "number": 3,
       "rule": "endian-netbyte",
       "source": "rule",
       "reason": "`be32toh` comes from glibc's <endian.h>, which QNX 8.0 does not have. QNX has the same names as BSD macros in <net/netbyte.h>; a small header (-included in every compile) includes it and defines any name strict POSIX flags hid, from QNX's __NET_BE*/__NET_LE* helpers.",
@@ -62,12 +50,14 @@
       "files": [
         "qnx-toolchain.cmake"
       ],
-      "path": "patches/0004-endian-netbyte.patch",
+      "path": "patches/0003-endian-netbyte.patch",
       "kept": true
     }
   ],
   "blocked_on": [],
-  "minutes": 0.3,
+  "minutes": 0.4,
   "note": "build only: the test suite needs an MQTT broker on the target",
-  "finished": "2026-11-11T16:21:26+00:00"
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T07:47:38+00:00"
 }

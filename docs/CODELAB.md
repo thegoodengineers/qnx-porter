@@ -200,7 +200,7 @@ If it does, it belongs to the model or a person.
 python3 scripts/run_campaign.py
 ```
 It checks `qcc` and the target first, notes which libraries oss.qnx.com already lists, ports every library in
-`campaign.yaml` (61 of them, in about two and a half hours on a laptop), and rewrites `results/ports.csv`,
+`campaign.yaml` (61 of them; our 12 Nov 2026 run on a laptop took 1 h 54 min with `QNX_PORTER_JOBS=2`, though a DNS outage cut 6 libraries short, so allow about two hours), and rewrites `results/ports.csv`,
 the README table and the README headline from the reports. Nothing in that table is typed by hand.
 
 Useful switches:

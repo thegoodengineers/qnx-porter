@@ -1,0 +1,26 @@
+$ cmake -S /home/chirag/qnx-porter/ports/msgpack-c/work/src -B /home/chirag/qnx-porter/ports/msgpack-c/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/msgpack-c/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/msgpack-c/work/qnx-run -DMSGPACK_BUILD_TESTS=OFF -DMSGPACK_BUILD_EXAMPLES=OFF
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/msgpack-c/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+    CMAKE_CROSSCOMPILING_EMULATOR
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/msgpack-c/work/build -j 2 -- -k
+[ 16%] Building C object CMakeFiles/msgpack-c.dir/src/objectc.c.o
+[ 33%] Building C object CMakeFiles/msgpack-c.dir/src/unpack.c.o
+[ 50%] Building C object CMakeFiles/msgpack-c.dir/src/version.c.o
+[ 66%] Building C object CMakeFiles/msgpack-c.dir/src/vrefbuffer.c.o
+[ 83%] Building C object CMakeFiles/msgpack-c.dir/src/zone.c.o
+[100%] Linking C static library libmsgpack-c.a
+[100%] Built target msgpack-c

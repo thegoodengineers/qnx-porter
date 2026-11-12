@@ -1,0 +1,5 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/zlib/work/build); every test command runs on root@172.31.1.11 over ssh
+PASS  example (exit 0)
+PASS  example64 (exit 0)
+
+2/2 tests passed on the QNX target

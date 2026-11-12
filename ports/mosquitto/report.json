@@ -1,0 +1,39 @@
+{
+  "library": "mosquitto",
+  "url": "https://github.com/eclipse/mosquitto.git",
+  "version": "v2.0.20",
+  "commit": "a196c2b244f248072a6b3ac8fb3f00ce0ff63dea",
+  "build_system": "cmake",
+  "arch": "x86_64",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
+  "build_result": "built",
+  "rounds": 2,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "link-libsocket",
+      "source": "rule",
+      "reason": "`connect` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
+      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `connect'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-link-libsocket.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 0.5,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T08:21:39+00:00"
+}

@@ -1,4 +1,4 @@
-$ make -k -j 4 -C /home/chirag/qnx-porter/ports/libmodbus/work/build check TESTS=
+$ make -k -j 2 -C /home/chirag/qnx-porter/ports/libmodbus/work/build check TESTS=
 make: Entering directory '/home/chirag/qnx-porter/ports/libmodbus/work/build'
 Making check in src
 make[1]: Nothing to be done for 'check'.

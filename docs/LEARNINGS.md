@@ -19,7 +19,7 @@ Dated entries. Labels: [Verified] ran it ourselves, [To verify] from documentati
   libsocket still exists; dlopen, pthread_setname_np, pipe2, clock_gettime are in libc; mmap documents
   `MAP_ANON`; `gettid()` is in `<process.h>`; the socket API is ported from FreeBSD 14.3; SDP 8.0 uses GCC 12.
   Correction: QNX 8.0 *has* inotify (moved to libfsnotify); our first hint said it had none.
-  These became 22 rows in docs/LINUX_ISMS.md, each with a test.
+  These became the first 22 rows in docs/LINUX_ISMS.md, each with a test.
 - [Verified] On the host, GCC's wording for `#error`, the one-argument `pthread_setname_np`, and ld's
   "multiple definition" matches what the parser expects (checked with gcc 11 in WSL and gcc 13 in CI).
 
@@ -134,27 +134,59 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
   8 of them feed 410 tests) now run as the QNX shell commands that do the same; the target had no resolv.conf
   (static address, dhcpcd never writes it), so libevent's evdns test found no name server.
 - [Verified] New build rules: `wcswidth-compat` (flac; QNX libc has `wcwidth` only), `qcc-sysroot` (libpng's
-  own script passes `--sysroot`, which qcc rejects), and stub archives are now visible to `find_library()`
-  (libccd stopped at "Could NOT find required library librt").
+  own script passes `--sysroot`, which qcc rejects). A first attempt to make stub archives visible to `find_library()`
+  (libccd stopped at "Could NOT find required library librt") did not work; see the final-run entry below.
 - [Verified] libxml2 2.13.5 `testapi` crashes in library code, not test code: `xmlSAX2ResolveEntity()` warns
   "Can't resolve URI: %s" with a NULL `systemId` (backtrace `strlen <- vsnprintf <- xmlStrVASPrintf <- ...
   xmlWarnMsg`, SAX2.c). An application calling it the same way would crash on QNX too. libxml2's current
-  master checks `systemId != NULL` first, so this is already fixed upstream; nothing to send.
+  master checks `systemId != NULL` first, so this is already fixed upstream; nothing to send. QNX's own
+  libxml2 port patches the same line (`libxml2.patch` in qnx-ports/build-files).
 - [Verified] nng `sockaddr_test` (7 of its 10 cases end in SIGSEGV): the test logger in
   `src/testing/util.c:207` prints `"%s: %s: %s"` with `msgid == NULL`, the same glibc-only `(null)` habit.
   The `printf-null` rule cannot place this fix: GCC compiled `nuts_logger()` as a tail call, so the
   backtrace jumps from `test_message_color_` to `nni_vlog` and never names the line that passes NULL. A limit
   of fixing from backtraces; a person (or the model, given the backtrace) has to find the caller.
 - [Not investigated yet] libevent `main/fork`: after a forked child exits, the parent's event loop never
-  sees its own `SIGUSR1`, and the test's alarm ends it. pcre2 test 8 (internal code sizes) and pcre2grep
-  output differences.
+  sees its own `SIGUSR1`, and the test's alarm ends it. pcre2 test 8 (internal code sizes) ends in SIGSEGV
+  inside recursive `compile_regex()` (core dump in `ports/pcre2/logs/crashes.log`); deep recursion suggests
+  the stack, but that is not confirmed.
+- [Verified cause, environment] pcre2grep's "script callouts" test runs `/bin/echo`; our QEMU image has
+  `echo` only as `/proc/boot/echo` (a toybox link), so the callout lines are missing from the output.
 - [Verified cause, environment] zstd: `zstreamtest` sets `hashLog = 29` (a hash table of about 2 GiB) and
-  gets "Allocation error : not enough memory" on our 2 GiB QEMU target; `fuzzer` reached 5,151 of 30,000
-  iterations before the runner's 300 s cap. Neither is a porting problem; a larger target would tell more.
+  gets "Allocation error : not enough memory" on our 2 GiB QEMU target; `fuzzer` reached about 7,000 of 30,000
+  iterations before the runner's time cap (`ports/zstd/logs/tests.log`). Neither is a porting problem; a larger target would tell more.
 - Expected not to port, and reported as such: libgpiod (Linux GPIO character device) and can-utils (SocketCAN).
+
+## 12 Nov 2026: the final 61-library run, and a check against QNX's own ports
+- [Verified] The final run (`results/runs/campaign-7.log`, code `da9da0c` for the full pass) took 1 h 54 min.
+  A DNS outage in WSL at 08:07 stopped 6 libraries at `git clone`. Those 6 were re-run into the same
+  log (code `5fbe7c5`, then `865406c`; each section names its code), with sqlite (configure picked up the build host's editline headers, now
+  `--disable-editline --disable-readline`), 4 `printf-null` ports and libccd. Result: 57 of 61 built;
+  1332 of 1366 tests passed, in the 33 libraries whose suites ran at least one test. `campaign-6.log` is the earlier
+  61-library pass, whose code changed during the run (rules were added between libraries).
+- [Verified] Two patch-quality bugs, found by reading our own patches: rules rewrote CRLF files with LF (the
+  tinyxml2 patch replaced all 2,743 lines of `xmltest.cpp` to change 4), and `printf-null` put its helper
+  after the last `#include` even when that include sat in a non-Windows `#else` branch, which would break
+  the patch on MSVC. Both are fixed and tested, and the 4 affected ports were re-run.
+- [Verified] 21 of our libraries have a hand-made recipe in qnx-ports. In 6 of them, qnx-porter found the
+  same QNX change or cause independently. In 3 (libxml2, libwebsockets, libuv), it found the same problem at
+  the same line but did not fix it. 9 needed no source change on either side. 3 differ or cannot be
+  compared. Table and caveats (versions and targets differ):
+  [docs/related/qnx-ports-comparison.md](related/qnx-ports-comparison.md).
+- [Verified] The unpatched c-ares resolves names on our target (`ahost`, `adig`), because the image has
+  `/etc/resolv.conf`. QNX's fork adds a reader for QNX's own resolver configuration; that only matters on
+  images without the file, and we did not test one.
+- [Verified] libccd's "Could NOT find required library librt": the empty stub `librt.a` was there from
+  round 1, but with `CMAKE_SYSROOT` set, CMake re-rooted its absolute path under the SDP and never looked
+  at the real folder (`cmake --debug-find`). The toolchain now makes the stub folder's parent a find root
+  and searches `/stubs` in it; libccd builds and passes 3 of 3. The other 60 libraries were not re-run
+  with this toolchain change.
+- [Verified] Rust gate for crate porting: the `x86_64-pc-qnx` target (tier 3) with nightly
+  1.102.0, `-Zbuild-std` and `qcc` as linker. A hello world, plus 12 of 12 std checks (threads, channels,
+  fs, time, TCP/UDP loopback, `process::Command`, env, unwinding), ran on the QNX 8.0 x86_64 target.
 
 ## Still to do
 1. Offer the two test fixes upstream (json-c, libconfig): `printf("%s", NULL)` in their tests is undefined C.
 2. Runs with the language model on for the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).
 3. libcbor's tests (build cmocka for QNX first and point libcbor at it) and an MQTT broker for paho.mqtt.c.
-4. Demo video shots, and aarch64 on real hardware.
+4. Demo video shots, and the same campaign for aarch64 on QEMU.

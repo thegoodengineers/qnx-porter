@@ -56,6 +56,10 @@ def headline(data: list[dict]) -> str:
                      f"{sum(r['tests_passed'] for r in tested)} of {sum(r['tests_total'] for r in tested)} of their own "
                      f"tests passed on a QNX 8.0 target ({len(tested)} libraries with tests that ran); "
                      f"{sum(int(r['patches']) for r in rs)} patches, {sum(int(r['patches_by_rule']) for r in rs)} by rules")
+        new = [r for r in rs if r.get("on_oss_qnx_com") == "no"]
+        if new:
+            parts[-1] += (f" ({sum(r['build_result'] == 'built' for r in new)} of the {len(new)} libraries "
+                          f"oss.qnx.com does not list built)")
     return "; ".join(parts) + "."
 
 
@@ -77,8 +81,8 @@ def main():
     for arch in sorted({r["arch"] for r in data}):
         rs = [r for r in data if r["arch"] == arch]
         built = sum(r["build_result"] == "built" for r in rs)
-        tested = [r for r in rs if r["tests_total"] != ""]
-        print(f"{arch}: {len(rs)} libraries, {built} built for QNX 8.0; tests ran for {len(tested)}: "
+        tested = [r for r in rs if r["tests_total"] not in ("", 0)]  # same count as the headline
+        print(f"{arch}: {len(rs)} libraries, {built} built for QNX 8.0; tests ran for {len(tested)} (at least one test each): "
               f"{sum(r['tests_passed'] for r in tested)}/{sum(r['tests_total'] for r in tested)} passed")
     print(f"-> {dest}")
 

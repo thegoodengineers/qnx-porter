@@ -20,55 +20,55 @@ CMake Warning:
     BUILD_TESTING
 
 
-$ cmake --build /home/chirag/qnx-porter/ports/libconfig/work/build -j 4 -- -k
-[  2%] Building C object lib/CMakeFiles/config++.dir/grammar.c.o
-[  5%] Building C object lib/CMakeFiles/config++.dir/libconfig.c.o
-[  8%] Building C object lib/CMakeFiles/config.dir/grammar.c.o
-[ 10%] Building C object tinytest/CMakeFiles/libtinytest.dir/tinytest.c.o
-[ 13%] Linking C static library ../out/liblibtinytest.a
-[ 13%] Built target libtinytest
-[ 16%] Building C object lib/CMakeFiles/config.dir/libconfig.c.o
+$ cmake --build /home/chirag/qnx-porter/ports/libconfig/work/build -j 2 -- -k
+[  5%] Building C object lib/CMakeFiles/config++.dir/grammar.c.o
+[  5%] Building C object lib/CMakeFiles/config.dir/grammar.c.o
+[  8%] Building C object lib/CMakeFiles/config++.dir/libconfig.c.o
+[ 10%] Building C object lib/CMakeFiles/config.dir/libconfig.c.o
+[ 13%] Building C object lib/CMakeFiles/config.dir/scanctx.c.o
+[ 16%] Building C object lib/CMakeFiles/config.dir/scanner.c.o
 [ 18%] Building C object lib/CMakeFiles/config++.dir/scanctx.c.o
-[ 21%] Building C object lib/CMakeFiles/config.dir/scanctx.c.o
-[ 24%] Building C object lib/CMakeFiles/config.dir/scanner.c.o
-[ 27%] Building C object lib/CMakeFiles/config++.dir/scanner.c.o
-[ 29%] Building C object lib/CMakeFiles/config++.dir/strbuf.c.o
-[ 32%] Building C object lib/CMakeFiles/config.dir/strbuf.c.o
-[ 35%] Building C object lib/CMakeFiles/config++.dir/strvec.c.o
-[ 37%] Building C object lib/CMakeFiles/config++.dir/util.c.o
-[ 40%] Building C object lib/CMakeFiles/config++.dir/wincompat.c.o
-[ 43%] Building C object lib/CMakeFiles/config.dir/strvec.c.o
-[ 45%] Building C object lib/CMakeFiles/config.dir/util.c.o
-[ 48%] Building CXX object lib/CMakeFiles/config++.dir/libconfigcpp.cc.o
-[ 51%] Building C object lib/CMakeFiles/config.dir/wincompat.c.o
-[ 54%] Linking C static library ../out/libconfig.a
-[ 54%] Built target config
+[ 21%] Building C object lib/CMakeFiles/config++.dir/scanner.c.o
+[ 24%] Building C object lib/CMakeFiles/config.dir/strbuf.c.o
+[ 27%] Building C object lib/CMakeFiles/config.dir/strvec.c.o
+[ 29%] Building C object lib/CMakeFiles/config.dir/util.c.o
+[ 32%] Building C object lib/CMakeFiles/config.dir/wincompat.c.o
+[ 35%] Building C object lib/CMakeFiles/config++.dir/strbuf.c.o
+[ 37%] Linking C static library ../out/libconfig.a
+[ 40%] Building C object lib/CMakeFiles/config++.dir/strvec.c.o
+[ 40%] Built target config
+[ 43%] Building C object tinytest/CMakeFiles/libtinytest.dir/tinytest.c.o
+[ 45%] Building C object lib/CMakeFiles/config++.dir/util.c.o
+[ 48%] Building C object lib/CMakeFiles/config++.dir/wincompat.c.o
+[ 51%] Building CXX object lib/CMakeFiles/config++.dir/libconfigcpp.cc.o
+[ 54%] Linking C static library ../out/liblibtinytest.a
+[ 54%] Built target libtinytest
 [ 56%] Building C object examples/c/CMakeFiles/c_example1.dir/example1.c.o
-[ 59%] Building C object examples/c/CMakeFiles/c_example2.dir/example2.c.o
-[ 62%] Linking C executable ../../out/c_example1
-[ 64%] Building C object examples/c/CMakeFiles/c_example3.dir/example3.c.o
-[ 67%] Linking C executable ../../out/c_example2
-[ 67%] Built target c_example1
-[ 67%] Built target c_example2
+[ 59%] Linking C executable ../../out/c_example1
+[ 59%] Built target c_example1
+[ 62%] Building C object examples/c/CMakeFiles/c_example2.dir/example2.c.o
+[ 64%] Linking C executable ../../out/c_example2
+[ 64%] Built target c_example2
+[ 67%] Building C object examples/c/CMakeFiles/c_example3.dir/example3.c.o
 [ 70%] Linking C executable ../../out/c_example3
+[ 70%] Built target c_example3
 [ 72%] Building C object tests/CMakeFiles/libconfig_tests.dir/tests.c.o
-[ 72%] Built target c_example3
 [ 75%] Linking C executable ../out/libconfig_tests
 [ 75%] Built target libconfig_tests
 [ 78%] Linking CXX static library ../out/libconfig++.a
 [ 78%] Built target config++
-[ 81%] Building CXX object examples/c++/CMakeFiles/c++_example2.dir/example2.cpp.o
-[ 83%] Building CXX object examples/c++/CMakeFiles/c++_example3.dir/example3.cpp.o
-[ 86%] Building CXX object examples/c++/CMakeFiles/c++_example4.dir/example4.cpp.o
-[ 89%] Building CXX object examples/c++/CMakeFiles/c++_example1.dir/example1.cpp.o
-[ 91%] Linking CXX executable ../../out/c++_example4
-[ 94%] Linking CXX executable ../../out/c++_example3
-[ 94%] Built target c++_example4
-[ 94%] Built target c++_example3
-[ 97%] Linking CXX executable ../../out/c++_example1
-[ 97%] Built target c++_example1
-[100%] Linking CXX executable ../../out/c++_example2
-[100%] Built target c++_example2
+[ 83%] Building CXX object examples/c++/CMakeFiles/c++_example1.dir/example1.cpp.o
+[ 83%] Building CXX object examples/c++/CMakeFiles/c++_example2.dir/example2.cpp.o
+[ 86%] Linking CXX executable ../../out/c++_example2
+[ 86%] Built target c++_example2
+[ 89%] Building CXX object examples/c++/CMakeFiles/c++_example3.dir/example3.cpp.o
+[ 91%] Linking CXX executable ../../out/c++_example1
+[ 91%] Built target c++_example1
+[ 94%] Building CXX object examples/c++/CMakeFiles/c++_example4.dir/example4.cpp.o
+[ 97%] Linking CXX executable ../../out/c++_example3
+[ 97%] Built target c++_example3
+[100%] Linking CXX executable ../../out/c++_example4
+[100%] Built target c++_example4
 /home/chirag/qnx-porter/ports/libconfig/work/src/lib/libconfig.c: In function '__config_locale_override':
 /home/chirag/qnx-porter/ports/libconfig/work/src/lib/libconfig.c:100:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
   100 | #warning "No way to modify calling thread's locale!"

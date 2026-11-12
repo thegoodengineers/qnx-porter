@@ -1,0 +1,15 @@
+Subject: [qnx-porter 0002] link-libsocket
+Source: deterministic rule
+Reason: `recv` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+Error: /home/chirag/qnx-porter/ports/wolfssl/work/src/src/wolfio.c:1152:(.text+0x13): undefined reference to `recv'
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -19,5 +19,5 @@
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/wolfssl/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in /home/chirag/qnx-porter/ports/wolfssl/work/wrap): -Wno-error=stringop-overflow=
+ # Libraries the agent adds go at the end of every link line, after the objects that need them.
+-set(CMAKE_C_STANDARD_LIBRARIES "")
+-set(CMAKE_CXX_STANDARD_LIBRARIES "")
++set(CMAKE_C_STANDARD_LIBRARIES "-lsocket")
++set(CMAKE_CXX_STANDARD_LIBRARIES "-lsocket")

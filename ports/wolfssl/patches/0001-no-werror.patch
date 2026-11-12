@@ -1,0 +1,28 @@
+Subject: [qnx-porter 0001] no-werror
+Source: deterministic rule
+Reason: Warning -Wstringop-overflow= is promoted to an error by the project's -Werror. Keep it a warning (still printed in the build log) instead of editing the library's code; QNX's headers and qcc raise warnings a glibc build does not.
+Error: /home/chirag/qnx-porter/ports/wolfssl/work/src/src/tls.c:1078:50: error: writing 16 bytes into a region of size 0 [-Werror=stringop-overflow=]
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -2,9 +2,9 @@
+ set(CMAKE_SYSTEM_NAME QNX)
+ set(CMAKE_SYSTEM_VERSION 8.0.0)
+ set(CMAKE_SYSTEM_PROCESSOR x86_64)
+-set(CMAKE_C_COMPILER "/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc")
++set(CMAKE_C_COMPILER "/home/chirag/qnx-porter/ports/wolfssl/work/wrap/qcc")
+ set(CMAKE_C_COMPILER_TARGET gcc_ntox86_64)
+-set(CMAKE_CXX_COMPILER "/home/chirag/qnx800/host/linux/x86_64/usr/bin/q++")
++set(CMAKE_CXX_COMPILER "/home/chirag/qnx-porter/ports/wolfssl/work/wrap/q++")
+ set(CMAKE_CXX_COMPILER_TARGET gcc_ntox86_64_cxx)
+ set(CMAKE_SYSROOT "/home/chirag/qnx800/target/qnx")
+ set(CMAKE_FIND_ROOT_PATH "/home/chirag/qnx800/target/qnx" "/home/chirag/qnx800/target/qnx/x86_64" "/home/chirag/qnx-porter/ports/wolfssl/work/stubs")
+@@ -17,7 +17,7 @@
+ set(CMAKE_CXX_FLAGS_INIT "-g ")
+ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/wolfssl/work/stubs")
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/wolfssl/work/stubs")
+-# Flags after the project's own (appended by the compiler wrappers in -): none
++# Flags after the project's own (appended by the compiler wrappers in /home/chirag/qnx-porter/ports/wolfssl/work/wrap): -Wno-error=stringop-overflow=
+ # Libraries the agent adds go at the end of every link line, after the objects that need them.
+ set(CMAKE_C_STANDARD_LIBRARIES "")
+ set(CMAKE_CXX_STANDARD_LIBRARIES "")

@@ -21,49 +21,114 @@ Chirag, Bhumika, Ayush and Abhijeet (The Good Engineers).
 - **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
   Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.
 - **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
-- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->x86_64: 10 of 10 libraries built for QNX 8.0; 376 of 381 of their own tests passed on a QNX 8.0 target (8 libraries with tests that ran); 9 patches, 9 by rules.<!-- headline:end -->
+- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->x86_64: 57 of 61 libraries built for QNX 8.0; 1332 of 1366 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 25 patches, 25 by rules (29 of the 31 libraries oss.qnx.com does not list built).<!-- headline:end -->
   See [Results](#results-on-qnx-80).
 - **Results:** [`results/ports.csv`](results/ports.csv), written by `scripts/ports_csv.py` from each
   port's own `ports/<library>/report.json`. No number in this README or the video comes from anywhere else.
 - **Every patch the agent made:** `ports/<library>/patches/*.patch`, each with the rule, the reason and
   the exact compiler error it answers. `ports/<library>/REPORT.md` is the summary.
-- **Candidates were new to QNX:** [`results/candidates_check.csv`](results/candidates_check.csv), written by
-  `scripts/check_candidates.py`, which queries all of oss.qnx.com and the qnx-ports GitHub organisation.
+- **Which libraries QNX already ships:** the `on_oss_qnx_com` column of `results/ports.csv` (the campaign
+  queries all of oss.qnx.com on every run). The first ten candidates were chosen as new to QNX:
+  [`results/candidates_check.csv`](results/candidates_check.csv), written by `scripts/check_candidates.py`.
+- **Checked against QNX's own hand-made ports:** 21 of our libraries also have a recipe in
+  [qnx-ports](https://github.com/qnx-ports). [docs/related/qnx-ports-comparison.md](docs/related/qnx-ports-comparison.md)
+  compares them library by library. It covers where we found the same QNX change, where QNX fixed something our
+  run only reported, and where the two sides differ.
 - Setup: [SETUP.md](SETUP.md). Tutorial: [docs/CODELAB.md](docs/CODELAB.md).
 
 ## Results on QNX 8.0
-Ten libraries that were not on oss.qnx.com, ported by `scripts/run_campaign.py` on 11 Nov 2026 with
-QNX SDP 8.0 (build 141, qcc 12.2.0) and their own test suites run on QNX 8.0 x86_64 in QEMU
-(`mkqnximage`). Rules only, no language model. The table is generated from `ports/*/report.json`:
+61 libraries, ported by `scripts/run_campaign.py` on 12 Nov 2026 with QNX SDP 8.0 (build 141, qcc 12.2.0).
+Their own test suites ran on QNX 8.0 x86_64 in QEMU (`mkqnximage`). Rules only, no language model. The
+libraries are infrastructure an embedded team reaches for: parsers (JSON, XML, YAML, CBOR, TOML), compression,
+crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatting, test frameworks, codecs.
+"none built" means the library's build registers no tests, or registers them only behind an option we left off.
+"not run" means the suite needs something the target lacks (the Note says what). The table is generated from
+`ports/*/report.json`:
 
 <!-- results:start -->
 | Library | Version | Arch | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |
 |---|---|---|---|---|---|---|---|
-| [cmocka](ports/cmocka/REPORT.md) | cmocka-1.1.7 | x86_64 | built | 46/46 | 0 (0 / 0) | 0.5 |  |
-| [json-c](ports/json-c/REPORT.md) | json-c-0.18-20240915 | x86_64 | built | 25/25 | 1 (1 / 0) | 1.4 |  |
-| [libcbor](ports/libcbor/REPORT.md) | v0.11.0 | x86_64 | built | none built | 0 (0 / 0) | 0.3 |  |
-| [libconfig](ports/libconfig/REPORT.md) | v1.7.3 | x86_64 | built | 1/1 | 1 (1 / 0) | 1.1 |  |
-| [libmodbus](ports/libmodbus/REPORT.md) | v3.1.11 | x86_64 | built | 0/1 | 0 (0 / 0) | 0.5 |  |
-| [libsodium](ports/libsodium/REPORT.md) | 1.0.20-RELEASE | x86_64 | built | 80/80 | 0 (0 / 0) | 3.2 |  |
-| [mbedtls](ports/mbedtls/REPORT.md) | v3.6.2 | x86_64 | built | 130/130 | 1 (1 / 0) | 3.7 |  |
-| [nng](ports/nng/REPORT.md) | v1.9.0 | x86_64 | built | 82/86 | 1 (1 / 0) | 4.1 |  |
-| [paho.mqtt.c](ports/paho.mqtt.c/REPORT.md) | v1.3.14 | x86_64 | built | not run | 4 (4 / 0) | 0.3 | build only: the test suite needs an MQTT broker on the target |
-| [yyjson](ports/yyjson/REPORT.md) | 0.10.0 | x86_64 | built | 12/12 | 1 (1 / 0) | 1.3 |  |
+| [BLAKE3](ports/BLAKE3/REPORT.md) | 1.5.4 | x86_64 | built | none built | 0 (0 / 0) | 0.1 | portable C: its CMake has SIMD flags only for compilers it knows, not qcc |
+| [Micro-CDR](ports/Micro-CDR/REPORT.md) | v2.0.1 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
+| [benchmark](ports/benchmark/REPORT.md) | v1.9.1 | x86_64 | built | none built | 0 (0 / 0) | 0.6 |  |
+| [c-ares](ports/c-ares/REPORT.md) | v1.34.3 | x86_64 | built | none built | 0 (0 / 0) | 0.5 |  |
+| [cJSON](ports/cJSON/REPORT.md) | v1.7.18 | x86_64 | built | 19/19 | 0 (0 / 0) | 0.5 |  |
+| [can-utils](ports/can-utils/REPORT.md) | v2023.03 | x86_64 | failed | not run | 0 (0 / 0) | 0.1 | Linux SocketCAN tools: expected not to port |
+| [capstone](ports/capstone/REPORT.md) | 5.0.3 | x86_64 | built | 24/24 | 1 (1 / 0) | 5.2 |  |
+| [cglm](ports/cglm/REPORT.md) | v0.9.4 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.5 |  |
+| [cmark](ports/cmark/REPORT.md) | 0.31.1 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.3 |  |
+| [cmocka](ports/cmocka/REPORT.md) | cmocka-1.1.7 | x86_64 | built | 46/46 | 0 (0 / 0) | 0.4 |  |
+| [expat](ports/expat/REPORT.md) | R_2_6_4 | x86_64 | built | 2/2 | 0 (0 / 0) | 2.5 |  |
+| [flac](ports/flac/REPORT.md) | 1.4.3 | x86_64 | built | 7/10 | 1 (1 / 0) | 8.7 |  |
+| [flatcc](ports/flatcc/REPORT.md) | v0.6.1 | x86_64 | built | not run | 0 (0 / 0) | 0.2 | build only: its tests run the just-built flatcc compiler on the build host |
+| [fmt](ports/fmt/REPORT.md) | 11.0.2 | x86_64 | built | 17/20 | 1 (1 / 0) | 6.9 |  |
+| [googletest](ports/googletest/REPORT.md) | v1.15.2 | x86_64 | built | 25/27 | 1 (1 / 0) | 9.8 |  |
+| [inih](ports/inih/REPORT.md) | r58 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
+| [jansson](ports/jansson/REPORT.md) | v2.14 | x86_64 | built | 209/213 | 1 (1 / 0) | 1.2 |  |
+| [json-c](ports/json-c/REPORT.md) | json-c-0.18-20240915 | x86_64 | built | 25/25 | 1 (1 / 0) | 0.8 |  |
+| [kissfft](ports/kissfft/REPORT.md) | 131.1.0 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
+| [libcbor](ports/libcbor/REPORT.md) | v0.11.0 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
+| [libccd](ports/libccd/REPORT.md) | v2.1 | x86_64 | built | 3/3 | 0 (0 / 0) | 0.3 |  |
+| [libcoap](ports/libcoap/REPORT.md) | v4.3.5 | x86_64 | built | none built | 1 (1 / 0) | 0.7 |  |
+| [libconfig](ports/libconfig/REPORT.md) | v1.7.3 | x86_64 | built | 1/1 | 1 (1 / 0) | 0.5 |  |
+| [libdeflate](ports/libdeflate/REPORT.md) | v1.22 | x86_64 | built | none built | 0 (0 / 0) | 0.3 |  |
+| [libevent](ports/libevent/REPORT.md) | release-2.1.12-stable | x86_64 | built | 20/24 | 2 (2 / 0) | 11.9 |  |
+| [libgpiod](ports/libgpiod/REPORT.md) | v2.2.4 | x86_64 | failed | not run | 0 (0 / 0) | 0.3 | Linux GPIO character-device API: expected not to port |
+| [libjpeg-turbo](ports/libjpeg-turbo/REPORT.md) | 3.0.4 | x86_64 | built | 590/590 | 0 (0 / 0) | 5.1 |  |
+| [libmodbus](ports/libmodbus/REPORT.md) | v3.1.11 | x86_64 | built | 0/1 | 0 (0 / 0) | 1.0 |  |
+| [libogg](ports/libogg/REPORT.md) | v1.3.5 | x86_64 | built | 2/2 | 0 (0 / 0) | 0.2 |  |
+| [libpng](ports/libpng/REPORT.md) | v1.6.44 | x86_64 | built | none built | 1 (1 / 0) | 0.5 |  |
+| [libsamplerate](ports/libsamplerate/REPORT.md) | 0.2.2 | x86_64 | built | 12/13 | 0 (0 / 0) | 0.5 |  |
+| [libsodium](ports/libsodium/REPORT.md) | 1.0.20-RELEASE | x86_64 | built | 80/80 | 0 (0 / 0) | 6.0 |  |
+| [libsrtp](ports/libsrtp/REPORT.md) | v2.6.0 | x86_64 | built | 8/12 | 1 (1 / 0) | 0.8 |  |
+| [libtommath](ports/libtommath/REPORT.md) | v1.3.0 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.4 |  |
+| [libuv](ports/libuv/REPORT.md) | v1.49.2 | x86_64 | failed | not run | 0 (0 / 0) | 0.3 |  |
+| [libwebsockets](ports/libwebsockets/REPORT.md) | v4.3.3 | x86_64 | failed | not run | 1 (1 / 0) | 0.8 |  |
+| [libxml2](ports/libxml2/REPORT.md) | v2.13.5 | x86_64 | built | 7/8 | 0 (0 / 0) | 2.3 |  |
+| [libyaml](ports/libyaml/REPORT.md) | 0.2.5 | x86_64 | built | 2/2 | 0 (0 / 0) | 0.2 |  |
+| [lz4](ports/lz4/REPORT.md) | v1.10.0 | x86_64 | built | none built | 0 (0 / 0) | 0.5 |  |
+| [mbedtls](ports/mbedtls/REPORT.md) | v3.6.2 | x86_64 | built | 130/130 | 1 (1 / 0) | 4.6 |  |
+| [miniz](ports/miniz/REPORT.md) | 3.0.2 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
+| [mosquitto](ports/mosquitto/REPORT.md) | v2.0.20 | x86_64 | built | none built | 1 (1 / 0) | 0.5 |  |
+| [msgpack-c](ports/msgpack-c/REPORT.md) | c-6.1.0 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
+| [nanopb](ports/nanopb/REPORT.md) | 0.4.9 | x86_64 | built | not run | 0 (0 / 0) | 0.0 | build only: its tests use scons and protoc |
+| [nng](ports/nng/REPORT.md) | v1.9.0 | x86_64 | built | 82/86 | 1 (1 / 0) | 4.3 |  |
+| [open62541](ports/open62541/REPORT.md) | v1.4.6 | x86_64 | built | none built | 0 (0 / 0) | 2.4 |  |
+| [opus](ports/opus/REPORT.md) | v1.5.2 | x86_64 | built | none built | 0 (0 / 0) | 0.5 |  |
+| [paho.mqtt.c](ports/paho.mqtt.c/REPORT.md) | v1.3.14 | x86_64 | built | not run | 3 (3 / 0) | 0.4 | build only: the test suite needs an MQTT broker on the target |
+| [pcre2](ports/pcre2/REPORT.md) | pcre2-10.44 | x86_64 | built | 1/3 | 0 (0 / 0) | 0.7 |  |
+| [pugixml](ports/pugixml/REPORT.md) | v1.14 | x86_64 | built | 0/1 | 0 (0 / 0) | 0.9 |  |
+| [spdlog](ports/spdlog/REPORT.md) | v1.15.0 | x86_64 | built | none built | 1 (1 / 0) | 0.7 |  |
+| [sqlite](ports/sqlite/REPORT.md) | version-3.47.2 | x86_64 | built | not run | 0 (0 / 0) | 2.7 | build only: its test suite needs Tcl on the target |
+| [tinycbor](ports/tinycbor/REPORT.md) | v0.6.0 | x86_64 | built | not run | 0 (0 / 0) | 0.0 |  |
+| [tinyxml2](ports/tinyxml2/REPORT.md) | 10.0.0 | x86_64 | built | 1/1 | 1 (1 / 0) | 0.4 |  |
+| [tomlplusplus](ports/tomlplusplus/REPORT.md) | v3.4.0 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
+| [wolfssl](ports/wolfssl/REPORT.md) | v5.7.4-stable | x86_64 | built | 1/1 | 2 (2 / 0) | 1.9 |  |
+| [xxHash](ports/xxHash/REPORT.md) | v0.8.2 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
+| [yaml-cpp](ports/yaml-cpp/REPORT.md) | 0.8.0 | x86_64 | built | 0/1 | 1 (1 / 0) | 5.0 |  |
+| [yyjson](ports/yyjson/REPORT.md) | 0.10.0 | x86_64 | built | 12/12 | 1 (1 / 0) | 1.5 |  |
+| [zlib](ports/zlib/REPORT.md) | v1.3.1 | x86_64 | built | 2/2 | 0 (0 / 0) | 0.3 |  |
+| [zstd](ports/zstd/REPORT.md) | v1.5.6 | x86_64 | built | 1/4 | 0 (0 / 0) | 9.2 |  |
 <!-- results:end -->
 
-**What the failures are** (details in [docs/LEARNINGS.md](docs/LEARNINGS.md); each test's QNX output is in
-`ports/<library>/logs/tests.log`):
-- (Fixed 12 Nov) json-c `test_json_patch` and libconfig's test binary crashed with "Memory fault" on QNX.
-  Root cause, from their core dumps: both tests call `printf("%s", NULL)`. C leaves that undefined; glibc
-  prints `(null)` (both tests' expected output even contains `(null)`), QNX's libc faults in `strlen`. The
-  agent now reads core dumps from the target (`qnx_porter/crash.py`) and its `printf-null` rule fixes this
-  case; both libraries now pass all their tests on QNX. The patches touch only test code.
-- libmodbus's one test is a shell script that calls `killall`, which QNX does not have (QNX uses `slay`).
-- nng: `httpclient` and the resolver test need the internet (example.com, Google DNS), which the QEMU
-  target does not have; `udp_test` gets a different error code than Linux for two invalid-address cases;
-  `sockaddr_test` failed in the campaign run but passed when run again by hand.
-- libcbor's tests need cmocka installed for QNX (they were not built); paho.mqtt.c's tests need an MQTT
-  broker on the target.
+**What the failures are.** Each one was reproduced outside the campaign before being named. Details are in
+[docs/LEARNINGS.md](docs/LEARNINGS.md), each test's QNX output is in `ports/<library>/logs/tests.log`, and the
+reproducers are in [docs/qnx-reports/](docs/qnx-reports/):
+- **QNX C library behaviour** (draft reports, not sent):
+  - `strtod()` is not correctly rounded (pugixml, jansson, yaml-cpp).
+  - `strftime()` writes nothing for `%Ex`/`%EX`/`%Ec` (fmt).
+  - `fchdir()` needs `O_DIRECTORY` (googletest's death tests). QNX documents this.
+  - `qsort()` writes outside the array when the comparator is inconsistent (libsrtp's tests use a random
+    comparator).
+- **Undefined C that glibc tolerates:** `printf("%s", NULL)`. The agent reads the core dump and fixes it in
+  json-c, libconfig, tinyxml2 and capstone (all now pass). It finds the same thing but cannot place the fix
+  in libxml2 (library code) and nng (behind a tail call).
+- **What the test image lacks:** `killall` (libmodbus), `/bin/echo` (pcre2grep), internet access (nng),
+  2 GiB of memory for one zstd test, a `locale` command (pcre2 skips those tests), Tcl (sqlite), an MQTT
+  broker (paho), cmake on the target (libpng's tests are CMake scripts).
+- **Did not build** (4): libgpiod and can-utils use Linux-only kernel interfaces, as expected. libuv
+  (`struct qtime_entry` has no `nsec` in QNX 8.0) and libwebsockets (`TCPCTL_KEEPCNT`) stop on errors no rule
+  covers yet. QNX's own ports of these two libraries change exactly those lines.
 
 **How we got here** (each line is the summary the campaign script printed; logs in [`results/runs/`](results/runs/)):
 
@@ -74,6 +139,12 @@ QNX SDP 8.0 (build 141, qcc 12.2.0) and their own test suites run on QNX 8.0 x86
 | 3 | 9/10 | 372/381 | a proved fix was reverted when it let the link step run; endian names from `<net/netbyte.h>` |
 | 4 | 10/10 | 372/381 | CMake pass regexes need DOTALL (cmocka re-run: 46/46) |
 | 5 (json-c, libconfig only) | 2/2 | 26/26 | crash triage from QNX core dumps + `printf-null` rule (both crashes were `printf("%s", NULL)`) |
+| 6 (61 libraries) | 50/61 | 1185/1345 | `cmake -E` test helpers run as QNX shell commands; rules `wcswidth-compat`, `qcc-sysroot`; a resolv.conf on the target |
+| 7 (61 libraries) | 57/61 | 1332/1366 | final run; re-runs into the same log: 6 libraries after a DNS outage, sqlite without editline, CRLF-safe and MSVC-safe `printf-null` patches, libccd once CMake could find the stub `librt` |
+
+Runs 6 and 7 count tests the way the campaign script did on the day. Run 6 counted libraries whose suite
+registered no tests as "tests ran". Since run 7, the summary and the headline count only libraries with at
+least one test.
 
 
 ## How it works
@@ -115,7 +186,7 @@ ports/<library>/  REPORT.md · report.json · patches/ · qnx.patch · toolchain
 | `qnx-platform-guard` | `#error "Unsupported platform"` after an OS `#if` chain | QNX joins the BSD/Unix branch; kept only if the rebuild proves it |
 | `map-anon`, `msg-nosignal`, `link-libfsnotify`, `fcommon` | `MAP_ANONYMOUS`, `MSG_NOSIGNAL`, inotify, GCC 12 `-fno-common` | see the corpus |
 
-All 22 patterns, where each QNX fact comes from, and the test for each:
+All 35 patterns, where each QNX fact comes from, and the test for each:
 [docs/LINUX_ISMS.md](docs/LINUX_ISMS.md). Linux-only code that is actually *used* (epoll loops, sendfile)
 is never rewritten by a rule; it goes to the model with a QNX-specific hint, or is reported as blocked.
 
@@ -133,7 +204,7 @@ The path from "a git URL" to "tests passed on QNX 8.0", function by function:
 | 2. Check it | runs `qcc -V` and looks for `gcc_ntox86_64`; checks the `x86_64-pc-nto-qnx8.0.0-gcc` drivers | `qnx.py` `doctor()` (CLI: `qnx-porter doctor`) |
 | 3. Write the QNX toolchain | CMake: `CMAKE_SYSTEM_NAME QNX`, `CMAKE_C_COMPILER $QNX_HOST/usr/bin/qcc`, `CMAKE_C_COMPILER_TARGET gcc_ntox86_64`, `CMAKE_SYSROOT $QNX_TARGET`. Meson: a cross file with `system = 'qnx'`. Autotools: `--host=x86_64-pc-nto-qnx8.0.0` | `qnx.py` `cmake_toolchain()`, `meson_cross()`, `gnu_env()`, `ARCHES`; saved per port as `ports/<library>/qnx-toolchain.cmake` |
 | 4. Invoke qcc | the configure and build commands that drive qcc through that toolchain; output goes to `ports/<library>/logs/round-NN.log` | [`build.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/build.py) `Job.steps()` builds the commands, `run()` executes them; called from [`agent.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/agent.py) `port()` |
-| 5. Fix what QNX rejects | 22 Linux-isms and the QNX 8.0 answer to each (libsocket, libfsnotify, libc-provided pthread/rt/dl, `MAP_ANON`, `pthread_setname_np`, `<process.h>`, `_QNX_SOURCE`, ...), sourced from QNX's 8.0 documentation | [`fixes.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/fixes.py) `_rule()`, [`linuxisms.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/linuxisms.py); sources per fact in [docs/LINUX_ISMS.md](docs/LINUX_ISMS.md) |
+| 5. Fix what QNX rejects | 35 Linux-isms and the QNX 8.0 answer to each (libsocket, libfsnotify, libc-provided pthread/rt/dl, `MAP_ANON`, `pthread_setname_np`, `<process.h>`, `_QNX_SOURCE`, ...), sourced from QNX's 8.0 documentation | [`fixes.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/fixes.py) `_rule()`, [`linuxisms.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/linuxisms.py); sources per fact in [docs/LINUX_ISMS.md](docs/LINUX_ISMS.md) |
 | 6. Start the QNX target | QEMU image made by QNX's `mkqnximage --type=qemu --arch=x86_64` from the SDP | [SETUP.md](SETUP.md) step 4 |
 | 7. Run tests on QNX | copies the build to the target (`tar` over ssh), then ctest / meson test / make check run every test binary on QNX through a generated wrapper (`CMAKE_CROSSCOMPILING_EMULATOR`, meson `exe_wrapper`, automake `LOG_COMPILER`) | [`target.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/target.py) `Target.sync()`, `write_wrapper()`, `remote_command()`, `main()`; output `ports/<library>/logs/tests.log` |
 | 8. Record the target | `uname -a` from the QNX target in every report | `target.py` `Target.uname()`; `ports/<library>/report.json` field `target` |

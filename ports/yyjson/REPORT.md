@@ -8,7 +8,7 @@
 | Build | **built** after 2 round(s) |
 | Library's own tests | 12/12 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 1.3 min |
+| Time | 1.5 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |
