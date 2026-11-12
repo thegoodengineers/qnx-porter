@@ -199,6 +199,7 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
             (logs / "tests.log").write_text(ttext, encoding="utf-8")
         passed, total = parse_results(job.system, ttext)
     crashes = crash.collect(target, bdir, env, job.arch.triplet, work / "cores") if job.arch else []
+    target.remove([src, bdir, work / "stubs"])
     if crashes:
         (logs / "crashes.log").write_text("".join(
             f"=== {c['binary']}\n{c['backtrace'] or '(no backtrace: binary not found on the host)'}\n\n"

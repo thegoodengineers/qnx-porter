@@ -52,6 +52,13 @@ class Target:
         tar.wait()
         return self.ssh(link_command(self.root, rel), capture_output=True, timeout=60).returncode == 0
 
+    def remove(self, paths: list[Path]) -> None:
+        """Delete copied trees from the target once their tests are done. The QEMU image's /data has a
+        fixed number of inodes (mkqnximage --data-inodes), and source trees are many small files."""
+        rel = [str(p.resolve()).lstrip("/") for p in paths]
+        self.ssh("rm -rf " + " ".join(shlex.quote(self.root + "/" + r) for r in rel), capture_output=True,
+                 timeout=600)
+
 
 def link_command(root: str, rel: list[str]) -> str:
     """Shell that makes /<top> show root/<top> (QNX `ln -sP`), and fails if /<top> is something else."""
