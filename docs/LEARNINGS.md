@@ -130,6 +130,10 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
 - [Verified] New build rules: `wcswidth-compat` (flac; QNX libc has `wcwidth` only), `qcc-sysroot` (libpng's
   own script passes `--sysroot`, which qcc rejects), and stub archives are now visible to `find_library()`
   (libccd stopped at "Could NOT find required library librt").
+- [Verified] libxml2 2.13.5 `testapi` crashes in library code, not test code: `xmlSAX2ResolveEntity()` warns
+  "Can't resolve URI: %s" with a NULL `systemId` (backtrace `strlen <- vsnprintf <- xmlStrVASPrintf <- ...
+  xmlWarnMsg`, SAX2.c). An application calling it the same way would crash on QNX too. libxml2's current
+  master checks `systemId != NULL` first, so this is already fixed upstream; nothing to send.
 - [Not investigated yet] libevent `main/fork`: after a forked child exits, the parent's event loop never
   sees its own `SIGUSR1`, and the test's alarm ends it. pcre2 test 8 (internal code sizes) and pcre2grep
   output differences.
