@@ -56,7 +56,8 @@ Dated entries. Labels: [Verified] ran it ourselves, [To verify] from documentati
 - [Verified] json-c json-c-0.18-20240915 then built with qcc in one round with **no patches**, and **24 of 25**
   of its own tests passed on QNX 8.0. `test_json_patch` dies with "Memory fault" on the case
   `Out of bounds (lower)` (patch path `/bar/-1`), where Linux prints "Invalid argument". Not investigated
-  further yet: the SDP has no x86_64 gdb installed and the image keeps no core dumps. Candidate upstream issue.
+  further yet. (Correction, 12 Nov: the SDP does have `x86_64-nto-qnx8.0.0-gdb`, and the image does keep
+  core dumps in /data/var/dumper; see the 12 Nov entry.)
 
 ## 11 Nov 2026: the campaign on QNX 8.0 (four runs, logs in results/runs/)
 Summaries as printed by `scripts/run_campaign.py`:
@@ -80,15 +81,36 @@ What each run taught us (all [Verified] on the target):
 - **Tests that hang:** paho.mqtt.c's 103 tests wait up to 540 s each for an MQTT broker. A test killed on
   the host side kept running on QNX, so each test now runs under QNX's own `timeout -s KILL` (300 s cap).
   paho.mqtt.c is marked build-only in campaign.yaml with that reason.
-- **Open failures (7 of 381):** json-c `test_json_patch` "Memory fault" on patch path `/bar/-1`; libconfig's
+- **Open failures (7 of 381 at the end of 11 Nov; 5 after 12 Nov):** json-c `test_json_patch` "Memory fault" on patch path `/bar/-1`; libconfig's
   test binary "Memory fault" at start; libmodbus's test script needs `killall` (QNX: `slay`); nng
   `httpclient` and resolver need the internet; nng `udp_test` returns a different error for two invalid
   addresses ("udp send ipc address" expects EADDRINVAL or ENOTSUP); nng `sockaddr_test` failed in the run and
-  passed when re-run by hand. The two crashes need an x86_64 QNX debugger (our install has only the aarch64
-  gdb): ask the Software Center for it, or use the Momentics IDE.
+  passed when re-run by hand. The two crashes were diagnosed on 12 Nov (below).
+
+## 12 Nov 2026: the two "Memory fault" crashes, root-caused and fixed by the agent
+- [Verified] We were wrong on 11 Nov: the SDP has `x86_64-nto-qnx8.0.0-gdb` 14.2 (we had looked with
+  `head -3`, which showed only the aarch64 entries). The mkqnximage image runs `dumper -d /data/var/dumper`,
+  so every crash left `<binary>.core` there.
+- [Verified] json-c `test_json_patch`: backtrace from the core with the SDP gdb (debug build):
+  `strlen <- _Putfld <- _Printf <- printf <- test_json_patch_op at tests/test_json_patch.c:31`. The test case
+  after "Out of bounds (lower)" has neither `comment` nor `error`, so `printf("Testing '%s', ...")` gets NULL.
+  json-c's own `test_json_patch.expected` contains `Testing '(null)', ...`: the test was written against
+  glibc's behaviour.
+- [Verified] libconfig `libconfig_tests`: `strlen <- _Putfld <- _Printf <- snprintf <-
+  parse_string_and_compare_error at tests/tests.c:99`; `config_error_file()` is NULL when parsing a string,
+  and the test expects the text `(null):...`.
+- [Verified] The difference itself, one 8-line program (`printf("[%s]\n", (char *)NULL)`): glibc prints
+  `[(null)]` and exits 0; on the QNX 8.0 target it prints `Memory fault (core dumped)` and exits 139.
+  C makes this undefined, so neither libc is wrong; the tests are glibc-only. The libraries' own code is fine.
+- [Verified] New in the agent: after the tests, `qnx_porter/crash.py` copies each core from the target,
+  runs the SDP gdb on it with the target libraries, and writes the backtraces to `logs/crashes.log`. Builds
+  now carry `-g` (debug info only, same code) so frames have file:line. The `printf-null` rule wraps each
+  `%s` argument of the crashing call in `qnx_porter_str()`, which returns `"(null)"` for NULL, then rebuilds and
+  re-runs; the patch is kept only if more tests pass. Result on QNX: json-c 25/25, libconfig 1/1 (its binary
+  reports `13 tests; 13 passed, 0 failed`).
 
 ## Still to do
-1. Diagnose the two "Memory fault" crashes (json-c, libconfig) with an x86_64 debugger; report upstream if real.
+1. Offer the two test fixes upstream (json-c, libconfig): `printf("%s", NULL)` in their tests is undefined C.
 2. Runs with the language model on for the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).
 3. libcbor's tests (build cmocka for QNX first and point libcbor at it) and an MQTT broker for paho.mqtt.c.
 4. Demo video shots, and aarch64 on real hardware.

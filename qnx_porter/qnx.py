@@ -134,8 +134,9 @@ set(CMAKE_FIND_ROOT_PATH "{env['QNX_TARGET']}" "{env['QNX_TARGET']}/{arch.name}"
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-set(CMAKE_C_FLAGS_INIT "{c}")
-set(CMAKE_CXX_FLAGS_INIT "{c}")
+# -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+set(CMAKE_C_FLAGS_INIT "-g {c}")
+set(CMAKE_CXX_FLAGS_INIT "-g {c}")
 set(CMAKE_EXE_LINKER_FLAGS_INIT "{ld}")
 set(CMAKE_SHARED_LINKER_FLAGS_INIT "{ld}")
 # Libraries the agent adds go at the end of every link line, after the objects that need them.
@@ -155,8 +156,8 @@ ar = '{gnu_tool(env, arch.triplet, "ar")}'
 strip = '{gnu_tool(env, arch.triplet, "strip")}'
 {wrapper}
 [built-in options]
-c_args = {q(flags.cflags)}
-cpp_args = {q(flags.cflags)}
+c_args = {q(['-g'] + flags.cflags)}
+cpp_args = {q(['-g'] + flags.cflags)}
 c_link_args = {q(flags.link() + flags.libs)}
 cpp_link_args = {q(flags.link() + flags.libs)}
 
@@ -175,8 +176,8 @@ def gnu_env(arch: Arch, env: dict, flags: Flags) -> dict:
         "CXX": gnu_tool(env, arch.triplet, "g++"),
         "AR": gnu_tool(env, arch.triplet, "ar"),
         "RANLIB": gnu_tool(env, arch.triplet, "ranlib"),
-        "CFLAGS": " ".join(["-O2"] + flags.cflags),
-        "CXXFLAGS": " ".join(["-O2"] + flags.cflags),
+        "CFLAGS": " ".join(["-O2", "-g"] + flags.cflags),
+        "CXXFLAGS": " ".join(["-O2", "-g"] + flags.cflags),
         "LDFLAGS": " ".join(flags.link()),
         "LIBS": " ".join(flags.libs),
     }

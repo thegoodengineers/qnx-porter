@@ -39,9 +39,11 @@ every change visible.
    file and every build log.
 
 Results on 10 libraries that were not on oss.qnx.com (json-c, yyjson, cmocka, libcbor, mbedtls, libsodium,
-libmodbus, nng, libconfig, paho.mqtt.c): **all 10 built for QNX 8.0 with qcc, and 374 of 381 of their own
+libmodbus, nng, libconfig, paho.mqtt.c): **all 10 built for QNX 8.0 with qcc, and 376 of 381 of their own
 tests passed on QNX 8.0 in QEMU** (paho.mqtt.c build-only: its tests need an MQTT broker). The agent wrote
-7 patches, all by deterministic rules; mbedtls passed 130/130 and libsodium 80/80. Table:
+9 patches, all by deterministic rules; mbedtls passed 130/130, libsodium 80/80, json-c 25/25. When a test
+crashes on QNX, the agent copies the core dump back, reads it with the SDP's gdb, and fixes the crash if it
+is mechanical: two "Memory fault"s turned out to be `printf("%s", NULL)`, which glibc tolerates and QNX does not. Table:
 `results/ports.csv`, generated from the per-library reports.
 
 ## Evidence of QNX use
@@ -81,7 +83,7 @@ checked against all of oss.qnx.com and the qnx-ports organisation by `scripts/ch
 - The first campaign run built 4 of 10 libraries. Most failures were our own tool: CMake ignores toolchain
   flag changes on an existing cache, automake builds tests only inside `make check`, and ctest never wraps
   script-based tests with the emulator. We fixed each one and re-ran: 4/10, then 9/10, then 10/10 built,
-  and 68/72, then 292/381, then 374/381 tests (logs in `results/runs/`).
+  and 68/72, then 292/381, then 374/381 tests, then 376/381 after crash triage (logs in `results/runs/`).
 - Real QNX 8.0 differences we turned into rules: `isinf` lives in libm, `inet_pton` is `__inet_pton` in
   libsocket, `<sys/socket.h>` includes `<stdbool.h>`, `<sys/errno.h>` does not exist, glibc's `htobe32`
   family is in `<net/netbyte.h>`.
@@ -90,7 +92,7 @@ checked against all of oss.qnx.com and the qnx-ports organisation by `scripts/ch
 - Every change is a patch file with a reason; nothing is hidden, and a model patch that does not help is
   reverted and shown as reverted.
 - A port only counts when the library's own tests ran on QNX 8.0.
-- 374 of 381 upstream tests passing on QNX 8.0 across 10 libraries QNX's ports site did not have.
+- 376 of 381 upstream tests passing on QNX 8.0 across 10 libraries QNX's ports site did not have.
 - [Ports offered upstream / to qnx-ports: link PRs here.]
 
 ## What we learned

@@ -11,8 +11,9 @@ set(CMAKE_FIND_ROOT_PATH "/home/chirag/qnx800/target/qnx" "/home/chirag/qnx800/t
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-set(CMAKE_C_FLAGS_INIT "")
-set(CMAKE_CXX_FLAGS_INIT "")
+# -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+set(CMAKE_C_FLAGS_INIT "-g ")
+set(CMAKE_CXX_FLAGS_INIT "-g ")
 set(CMAKE_EXE_LINKER_FLAGS_INIT "")
 set(CMAKE_SHARED_LINKER_FLAGS_INIT "")
 # Libraries the agent adds go at the end of every link line, after the objects that need them.

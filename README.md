@@ -19,8 +19,9 @@ Chirag, Bhumika, Ayush and Abhijeet (The Good Engineers).
 
 ## For judges, start here
 - **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
-- **Headline:** 10 of 10 libraries built for QNX 8.0 with qcc; 374 of 381 of their own tests passed on a QNX 8.0
-  target (one library build-only). 7 patches in total, all by deterministic rules. See [Results](#results-on-qnx-80).
+- **Headline:** 10 of 10 libraries built for QNX 8.0 with qcc; 376 of 381 of their own tests passed on a QNX 8.0
+  target (one library build-only). 9 patches in total, all by deterministic rules; two of them fix test crashes
+  found from QNX core dumps. See [Results](#results-on-qnx-80).
 - **Results:** [`results/ports.csv`](results/ports.csv), written by `scripts/ports_csv.py` from each
   port's own `ports/<library>/report.json`. No number in this README or the video comes from anywhere else.
 - **Every patch the agent made:** `ports/<library>/patches/*.patch`, each with the rule, the reason and
@@ -38,9 +39,9 @@ QNX SDP 8.0 (build 141, qcc 12.2.0) and their own test suites run on QNX 8.0 x86
 | Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |
 |---|---|---|---|---|---|---|
 | [cmocka](ports/cmocka/REPORT.md) | cmocka-1.1.7 | built | 46/46 | 0 (0 / 0) | 0.5 |  |
-| [json-c](ports/json-c/REPORT.md) | json-c-0.18-20240915 | built | 24/25 | 0 (0 / 0) | 0.5 |  |
+| [json-c](ports/json-c/REPORT.md) | json-c-0.18-20240915 | built | 25/25 | 1 (1 / 0) | 1.4 |  |
 | [libcbor](ports/libcbor/REPORT.md) | v0.11.0 | built | none built | 0 (0 / 0) | 0.3 |  |
-| [libconfig](ports/libconfig/REPORT.md) | v1.7.3 | built | 0/1 | 0 (0 / 0) | 0.4 |  |
+| [libconfig](ports/libconfig/REPORT.md) | v1.7.3 | built | 1/1 | 1 (1 / 0) | 1.1 |  |
 | [libmodbus](ports/libmodbus/REPORT.md) | v3.1.11 | built | 0/1 | 0 (0 / 0) | 0.5 |  |
 | [libsodium](ports/libsodium/REPORT.md) | 1.0.20-RELEASE | built | 80/80 | 0 (0 / 0) | 3.2 |  |
 | [mbedtls](ports/mbedtls/REPORT.md) | v3.6.2 | built | 130/130 | 1 (1 / 0) | 3.7 |  |
@@ -51,8 +52,11 @@ QNX SDP 8.0 (build 141, qcc 12.2.0) and their own test suites run on QNX 8.0 x86
 
 **What the failures are** (details in [docs/LEARNINGS.md](docs/LEARNINGS.md); each test's QNX output is in
 `ports/<library>/logs/tests.log`):
-- json-c `test_json_patch` and libconfig's single test binary stop with "Memory fault" on QNX. Not
-  diagnosed yet (no x86_64 debugger in our SDP install); candidate upstream issues.
+- (Fixed 12 Nov) json-c `test_json_patch` and libconfig's test binary crashed with "Memory fault" on QNX.
+  Root cause, from their core dumps: both tests call `printf("%s", NULL)`. C leaves that undefined; glibc
+  prints `(null)` (both tests' expected output even contains `(null)`), QNX's libc faults in `strlen`. The
+  agent now reads core dumps from the target (`qnx_porter/crash.py`) and its `printf-null` rule fixes this
+  case; both libraries now pass all their tests on QNX. The patches touch only test code.
 - libmodbus's one test is a shell script that calls `killall`, which QNX does not have (QNX uses `slay`).
 - nng: `httpclient` and the resolver test need the internet (example.com, Google DNS), which the QEMU
   target does not have; `udp_test` gets a different error code than Linux for two invalid-address cases;
@@ -68,6 +72,7 @@ QNX SDP 8.0 (build 141, qcc 12.2.0) and their own test suites run on QNX 8.0 x86
 | 2 | 9/10 | 292/381 | automake test programs were never copied to QNX; `.sh` tests ran on Linux |
 | 3 | 9/10 | 372/381 | a proved fix was reverted when it let the link step run; endian names from `<net/netbyte.h>` |
 | 4 | 10/10 | 372/381 | CMake pass regexes need DOTALL (cmocka re-run: 46/46) |
+| 5 (json-c, libconfig only) | 2/2 | 26/26 | crash triage from QNX core dumps + `printf-null` rule (both crashes were `printf("%s", NULL)`) |
 
 
 ## How it works

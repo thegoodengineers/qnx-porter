@@ -8,7 +8,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import build, errors, fixes, llm, patches, qnx
+from . import build, crash, errors, fixes, llm, patches, qnx
 from .target import SAME_PATH_MARK, Target, ctest_on_target, parse_results, write_wrapper
 
 MODEL_TRIES = 2  # model attempts per error before the agent reports it as blocked
@@ -111,27 +111,35 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
 
     tests_passed = tests_total = 0
     uname = ""
+    crashes: list[dict] = []
     if ok and target and job.test_cmd():
         uname = target.uname()
         log(f"[4/5] tests on target {target.host}:{target.port} ({uname or 'uname failed'})")
-        if job.pretest_cmd():  # automake builds its test programs only in `make check`: build them first
-            build.run([job.pretest_cmd()], work, env, logs / "tests-build.log")
-        same = target.sync([src, bdir, work / "stubs"] if (work / "stubs").exists() else [src, bdir])
-        (work / SAME_PATH_MARK).unlink(missing_ok=True)
-        if same:
-            (work / SAME_PATH_MARK).write_text("")
-        if system == "cmake":
-            tests_passed, tests_total = ctest_on_target(target, bdir, work, job.emulator, same,
-                                                        logs / "tests.log")
-        else:
-            _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
-            if system == "autotools":  # each test's own log has the QNX output
-                ttext += "".join(f"\n--- {p.relative_to(bdir)}\n" + p.read_text(errors="replace")[-3000:]
-                                 for p in sorted(bdir.rglob("*.log")) if p.name not in ("config.log",
-                                                                                      "test-suite.log"))
-                (logs / "tests.log").write_text(ttext, encoding="utf-8")
-            tests_passed, tests_total = parse_results(system, ttext)
+        tests_passed, tests_total, crashes = _run_tests(job, target, src, bdir, work, env, logs)
         log(f"      {tests_passed}/{tests_total} tests passed")
+        # A crash the backtrace explains mechanically gets a patch; it stays only if the re-run is better.
+        crash_fixes = []
+        for c in crashes:
+            if (r := crash.printf_null(c["backtrace"], src, fixes.in_tree)) and r[0] not in {f[0] for f in crash_fixes}:
+                crash_fixes.append(r)
+        if crash_fixes:
+            before = (tests_passed, tests_total, crashes)
+            first = len(applied)
+            for rel, reason, text in crash_fixes:
+                (src / rel).write_text(text, encoding="utf-8", errors="surrogateescape")
+                applied.append(patches.commit_source(src, out, len(applied) + 1, "printf-null", "rule", reason,
+                                                     "Memory fault (SIGSEGV) in strlen <- printf on QNX", [rel]))
+                log(f"      fix {len(applied):04d} [printf-null] {reason}"[:200])
+            rebuilt, _ = build.run(job.steps(tests=True), work, env, logs / "rebuild-after-crash-fix.log")
+            if rebuilt:
+                tests_passed, tests_total, crashes = _run_tests(job, target, src, bdir, work, env, logs)
+                log(f"      after crash fixes: {tests_passed}/{tests_total} tests passed")
+            if not rebuilt or tests_passed <= before[0]:
+                for p in applied[first:]:
+                    patches.revert_last(src)
+                    p.kept = False
+                tests_passed, tests_total, crashes = before
+                log("      crash fixes did not help: reverted")
     elif ok:
         log("[4/5] tests skipped: " + (note or ("no --target given" if not target
                                                  else "no test runner for " + system)))
@@ -148,6 +156,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         "patches_by_model": sum(p.source == "model" for p in kept),
         "patches": [p.to_dict() for p in applied], "blocked_on": blocked,
         "minutes": round((time.time() - t0) / 60, 1), "note": note,
+        "crashes": [{"binary": Path(c["binary"]).name, "backtrace": c["backtrace"]} for c in crashes],
         "finished": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
     (out / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -157,6 +166,33 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     (out / "REPORT.md").write_text(render(report, job), encoding="utf-8")
     log(f"[5/5] report: {out / 'REPORT.md'}")
     return report
+
+
+def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path, env: dict,
+               logs: Path) -> tuple[int, int, list[dict]]:
+    """Copy the trees to the target, run the library's tests there, and collect any core dumps."""
+    if job.pretest_cmd():  # automake builds its test programs only in `make check`: build them first
+        build.run([job.pretest_cmd()], work, env, logs / "tests-build.log")
+    same = target.sync([src, bdir, work / "stubs"] if (work / "stubs").exists() else [src, bdir])
+    (work / SAME_PATH_MARK).unlink(missing_ok=True)
+    if same:
+        (work / SAME_PATH_MARK).write_text("")
+    crash.clear_cores(target)
+    if job.system == "cmake":
+        passed, total = ctest_on_target(target, bdir, work, job.emulator, same, logs / "tests.log")
+    else:
+        _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
+        if job.system == "autotools":  # each test's own log has the QNX output
+            ttext += "".join(f"\n--- {p.relative_to(bdir)}\n" + p.read_text(errors="replace")[-3000:]
+                             for p in sorted(bdir.rglob("*.log")) if p.name not in ("config.log", "test-suite.log"))
+            (logs / "tests.log").write_text(ttext, encoding="utf-8")
+        passed, total = parse_results(job.system, ttext)
+    crashes = crash.collect(target, bdir, env, job.arch.triplet, work / "cores") if job.arch else []
+    if crashes:
+        (logs / "crashes.log").write_text("".join(
+            f"=== {c['binary']}\n{c['backtrace'] or '(no backtrace: binary not found on the host)'}\n\n"
+            for c in crashes), encoding="utf-8")
+    return passed, total, crashes
 
 
 def _tail(text: str) -> str:
@@ -225,6 +261,8 @@ def render(r: dict, job: build.Job) -> str:
                      for p in r["patches"]) or "| - | - | - | - | - | no changes needed |"
     blocked = "\n".join(f"- `{b['error'][:200]}`" + (f"  \n  QNX note: {b['hint']}" if b["hint"] else "")
                         for b in r["blocked_on"]) or "- nothing"
+    crashes = "".join(f"\n## Crash on QNX: {c['binary']}\nBacktrace from the core dump (SDP gdb):\n```\n"
+                      f"{c['backtrace'] or 'no backtrace'}\n```\n" for c in r.get("crashes", []))
     tests = (f"{r['tests_passed']}/{r['tests_total']} passed on `{r['target']}`" if r["tests_ran"]
              else "not run")
     where = f"on QNX 8.0 ({r['arch']})" if r["arch"] != "host" else "(self-test with the host compiler, not QNX)"
@@ -252,4 +290,4 @@ Build logs for every round: `logs/`.
 
 ## Still failing
 {blocked if r['build_result'] == 'failed' else '- nothing'}
-"""
+{crashes}"""
