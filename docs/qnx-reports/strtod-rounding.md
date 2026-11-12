@@ -34,8 +34,22 @@ sscanf %lf = 98.765432101234495, atof = 98.765432101234509
 C17 7.22.1.3 lets an implementation be off by one ULP for decimal strings with more significant digits than
 `DECIMAL_DIG`, but `%.17g` output has 17 digits, which is within that bound for IEEE double, so the value must
 round-trip. Text formats (JSON, XML, YAML, CSV, configuration files) depend on this: a value written and read
-back changes. In our campaign, 7 of pugixml 1.14's 962 tests fail on QNX for this reason alone
-(`ports/pugixml/logs/tests.log`).
+back changes. In our campaign, 7 of pugixml 1.14's 962 tests and 4 of jansson 2.14's 213 tests fail on QNX
+for this reason alone (`ports/pugixml/logs/tests.log`, `ports/jansson/logs/tests.log`).
+
+## A second library: jansson 2.14
+4 of jansson's 213 tests fail on QNX 8.0 (`valid/real-exponent`, `valid/real-subnormal-number` and their
+`__strip` variants). `strtod_inputs.c` (this folder) parses exactly those inputs:
+
+```
+--- Linux
+123e45                       strtod 1.2299999999999999e+47   sscanf 1.2299999999999999e+47
+1.8011670033376514e-308      strtod 1.8011670033376514e-308   sscanf 1.8011670033376514e-308
+--- QNX 8.0
+123e45                       strtod 1.2300000000000002e+47   sscanf 1.2299999999999999e+47
+1.8011670033376514e-308      strtod 1.8011670033376509e-308   sscanf 1.8011670033376514e-308
+```
+jansson's expected outputs are `1.2299999999999999e47` and `1.8011670033376514e-308`.
 
 ## Workaround until fixed
 `sscanf(s, "%lf", &d)` returns the correctly rounded value on QNX 8.0.
