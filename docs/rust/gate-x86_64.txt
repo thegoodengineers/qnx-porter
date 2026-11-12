@@ -1,0 +1,26 @@
+/home/chirag/rustgate/target/x86_64-pc-qnx/release/hello:    ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /usr/lib/ldqnx-64.so.2, BuildID[md5/uuid]=6c78cc2010ecb8c657dd5a1f352fb094, not stripped
+/home/chirag/rustgate/target/x86_64-pc-qnx/release/stdcheck: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /usr/lib/ldqnx-64.so.2, BuildID[md5/uuid]=40e6bc4aeb01911e81fd6f857d271f6b, not stripped
+ 0x0000000000000001 (NEEDED)             Shared library: [libgcc_s.so.1]
+ 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]
+ 0x0000000000000001 (NEEDED)             Shared library: [libsocket.so.4]
+QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+hello from Rust on qnx
+hello exit 0
+PASS threads + mutex
+PASS mpsc channel
+PASS fs write/read/metadata/remove in /tmp
+PASS fs create_dir_all/read_dir/remove_dir_all
+PASS Instant + sleep(50ms) -> 51.878787ms
+PASS SystemTime after 2020
+PASS TCP loopback echo
+PASS UDP loopback
+PASS process::Command uname -s -> "QNX"
+PASS env var
+PASS available_parallelism -> Ok(4)
+PASS panic unwinds and is caught
+12/12 std checks passed on qnx x86_64
+
+thread 'main' (1) panicked at src/stdcheck.rs:69:41:
+unwind
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+stdcheck exit 0
