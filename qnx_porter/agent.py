@@ -47,6 +47,8 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
          max_rounds: int = 15, use_llm: bool = True, extra_args: tuple[str, ...] = (), name: str = "",
          log=print, note: str = "", subdir: str = "") -> dict:
     t0 = time.time()
+    for k in llm.USAGE:
+        llm.USAGE[k] = 0
     name = name or url.rstrip("/").removesuffix(".git").rsplit("/", 1)[-1]
     out = (out_root / name).resolve()
     work, logs = out / "work", out / "logs"
@@ -185,6 +187,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         "patches_by_model": sum(p.source == "model" for p in kept),
         "patches": [p.to_dict() for p in applied], "blocked_on": blocked,
         "minutes": round((time.time() - t0) / 60, 1), "note": note,
+        "model_usage": {**llm.USAGE, "seconds": round(llm.USAGE["seconds"], 1)} if use_llm and llm.configured() else None,
         "tests_not_runnable": not_runnable,
         "crashes": [{"binary": Path(c["binary"]).name, "backtrace": c["backtrace"]} for c in crashes],
         "finished": datetime.now(timezone.utc).isoformat(timespec="seconds"),

@@ -12,6 +12,7 @@ rebuild clears the error it was meant to fix without adding new ones in the file
 import json
 import os
 import re
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -27,6 +28,11 @@ Facts about QNX 8.0 that matter when porting from Linux:
   __builtin_bswap*, /dev/urandom. inotify exists but lives in libfsnotify. itoa() was removed: use snprintf().
 - The socket API (io-sock) is ported from FreeBSD 14.3: prefer the FreeBSD branch of #ifdefs for networking.
 - mmap's anonymous flag is documented as MAP_ANON. gettid() is in <process.h>.
+- POSIX regex (regcomp/regexec) is in libregex (-lregex); isinf/isfinite/sqrt are in libm (-lm).
+- SA_RESTART is not supported on QNX 8.0 (<signal.h> says so); code must cope with EINTR.
+- QNX 8.0's struct qtime_entry has no nsec field: use clock_gettime(CLOCK_MONOTONIC) for uptime.
+- In strict -std=c++NN or -std=c99 builds, QNX hides POSIX functions unless _QNX_SOURCE is defined.
+- QNX 8.0 has no <endian.h>; htobe32 and friends are in <net/netbyte.h> (BSD extensions).
 - -D_QNX_SOURCE exposes POSIX and QNX extensions, like _GNU_SOURCE on glibc.
 - Endianness: <gulliver.h> or __BYTE_ORDER__ from the compiler.
 Rules for your answer:
@@ -68,20 +74,30 @@ def request_body(prompt: str, environ=None) -> dict:
     return body
 
 
+USAGE = {"calls": 0, "failed_calls": 0, "tokens_in": 0, "tokens_out": 0, "seconds": 0.0}  # per port, reset by agent
+
+
 def ask(prompt: str, timeout: int = 300) -> dict:
     base = os.environ["QNX_PORTER_BASE_URL"].rstrip("/")
     req = urllib.request.Request(base + "/chat/completions", data=json.dumps(request_body(prompt)).encode(),
                                  method="POST", headers={"Content-Type": "application/json",
                                                          "Authorization": f"Bearer {os.environ['QNX_PORTER_API_KEY']}"})
+    t0 = time.time()
+    USAGE["calls"] += 1
     try:
         with urllib.request.urlopen(req, timeout=timeout) as r:
             data = json.load(r)
     except urllib.error.HTTPError as e:  # report what the server said; never the request (it holds the key)
+        USAGE["failed_calls"] += 1
         raise RuntimeError(f"model endpoint returned HTTP {e.code}: {e.read().decode(errors='replace')[:500]}")
+    finally:
+        USAGE["seconds"] += time.time() - t0
     reply = data["choices"][0]["message"]["content"]
     usage = data.get("usage") or {}
     out = parse_reply(reply)
     out["tokens"] = {"in": usage.get("prompt_tokens", 0), "out": usage.get("completion_tokens", 0)}
+    USAGE["tokens_in"] += out["tokens"]["in"]
+    USAGE["tokens_out"] += out["tokens"]["out"]
     return out
 
 
