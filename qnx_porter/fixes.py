@@ -96,11 +96,13 @@ class Fix:
     ldflags: list[str] = field(default_factory=list)
     libs: list[str] = field(default_factory=list)
     stubs: list[str] = field(default_factory=list)
+    late: list[str] = field(default_factory=list)  # flags that must come after the project's own
     verify: bool = False  # needs a rebuild to prove it: applied alone, reverted if the error stays
     compat: dict[str, str] = field(default_factory=dict)  # header name -> text, -included in every compile
 
     def key(self):
-        flags = (self.rule, tuple(self.cflags), tuple(self.ldflags), tuple(self.libs), tuple(self.stubs))
+        flags = (self.rule, tuple(self.cflags), tuple(self.ldflags), tuple(self.libs), tuple(self.stubs),
+                 tuple(self.late))
         if not self.edits:
             return flags  # one flag change answers every error that asks for it
         return flags + (tuple(sorted(self.edits)), self.diag.symbol, self.diag.header)
@@ -190,15 +192,15 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
         return Fix("msg-nosignal", "MSG_NOSIGNAL is not visible here, and this library already ignores "
                    "SIGPIPE (signal(SIGPIPE, SIG_IGN)), so the flag has nothing left to do: define it as 0.",
                    d, cflags=["-DMSG_NOSIGNAL=0"])
-    if d.kind == "werror" and not d.flag and "-Wno-error" not in flags.cflags:
+    if d.kind == "werror" and not d.flag and "-Wno-error" not in flags.cflags + flags.late:
         return Fix("no-werror", "A warning that has no -W switch of its own (here: " + d.message[:80] + ") is made an "
                    "error by the project's -Werror. The only way to keep it a warning is -Wno-error; the warning "
-                   "is still printed in the build log.", d, cflags=["-Wno-error"])
-    if d.kind == "werror" and d.flag and f"-Wno-error={d.flag}" not in flags.cflags:
+                   "is still printed in the build log.", d, late=["-Wno-error"])
+    if d.kind == "werror" and d.flag and f"-Wno-error={d.flag}" not in flags.cflags + flags.late:
         return Fix("no-werror", f"Warning -W{d.flag} is promoted to an error by the project's -Werror. Keep "
                    "it a warning (still printed in the build log) instead of editing the library's code; "
                    "QNX's headers and qcc raise warnings a glibc build does not.",
-                   d, cflags=[f"-Wno-error={d.flag}"])
+                   d, late=[f"-Wno-error={d.flag}"])
     # QNX's <arpa/inet.h> maps inet_pton to __inet_pton and so on, all exported by libsocket.
     if d.kind == "undefined_ref" and d.symbol.lstrip("_") in SOCKET_SYMBOLS and "-lsocket" not in flags.libs:
         return Fix("link-libsocket", f"`{d.symbol}` is in QNX's libsocket, not in libc as on Linux: link "

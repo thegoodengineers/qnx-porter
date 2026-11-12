@@ -250,7 +250,7 @@ def test_bare_werror_warning_without_its_own_switch(tmp_path):
     # Real GCC output from porting libwebsockets v4.3.3 (its QNX branch redefines BYTE_ORDER).
     log = 'lib/plat/unix/private-lib-plat-unix.h:67: error: "BYTE_ORDER" redefined [-Werror]\n'
     [f] = run(tmp_path, {}, log)
-    assert f.rule == "no-werror" and f.cflags == ["-Wno-error"]
+    assert f.rule == "no-werror" and f.late == ["-Wno-error"]  # after the project's own -Werror
 
 
 def test_sa_restart_is_not_supported_on_qnx_8(tmp_path):

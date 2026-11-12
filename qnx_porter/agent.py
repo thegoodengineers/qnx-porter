@@ -228,6 +228,12 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
                           f"@@ -0,0 +1,{len(text.splitlines())} @@\n",
                           *[f"+{ln}\n" for ln in text.splitlines()]])
     job.flags.cflags += f.cflags
+    if f.late:
+        job.flags.late += f.late
+        if job.arch:  # cross builds: wrappers put these flags after the project's own
+            qnx.write_wrappers(job.env, job.flags, work / "wrap", job.arch)
+        else:  # host self-test: the host compiler takes them through CFLAGS
+            job.flags.cflags += f.late
     job.flags.ldflags += f.ldflags
     job.flags.libs += f.libs
     for lib in f.stubs:

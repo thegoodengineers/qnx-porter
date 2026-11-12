@@ -60,7 +60,7 @@ def test_link_rules(tmp_path):
 def test_werror_and_no_repeats(tmp_path):
     d = Diagnostic("werror", "x [-Werror=cast-align]", flag="cast-align")
     [f] = fixes.plan([d, d], tmp_path, Flags(), set())
-    assert f.cflags == ["-Wno-error=cast-align"]
+    assert f.late == ["-Wno-error=cast-align"]
     assert fixes.plan([d], tmp_path, Flags(), {f.key()}) == []
 
 
