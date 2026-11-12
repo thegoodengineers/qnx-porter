@@ -117,3 +117,10 @@ def test_helper_goes_after_the_platform_branch_holding_the_last_include():
     assert lines.index("#endif") < lines.index(crash.HELPER.splitlines()[-1])
     guarded = '#ifndef A_H\n#define A_H\n#include <stdio.h>\nint y;\n#endif\n'
     assert crash._insert_helper(guarded).rstrip().endswith("int y;\n#endif")
+
+
+def test_aarch64_libc_strlen_has_another_name(tmp_path):
+    # QNX 8.0 aarch64le, same json-c test: frame #0 is __generic_strlen (lib/c/string/aarch64/strlen.S)
+    src = setup(tmp_path, "tests/test_json_patch.c", JSONC_SRC)
+    bt = JSONC_BT.replace("{src}", str(src)).replace("#0  strlen ()", "#0  __generic_strlen ()")
+    assert "__generic_strlen" in bt and crash.printf_null(bt, src, in_tree) is not None
