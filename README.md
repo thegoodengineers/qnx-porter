@@ -18,6 +18,8 @@ Chirag, Bhumika, Ayush and Abhijeet (The Good Engineers).
   suite runs on QNX 8.0.
 
 ## For judges, start here
+- **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
+  Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.
 - **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
 - **Headline:** 10 of 10 libraries built for QNX 8.0 with qcc; 376 of 381 of their own tests passed on a QNX 8.0
   target (one library build-only). 9 patches in total, all by deterministic rules; two of them fix test crashes

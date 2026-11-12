@@ -38,7 +38,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         patches.git(src, "reset", "-q", "--hard", "qnx-porter-base")
         patches.git(src, "clean", "-qfdx")
     else:
-        subprocess.run(["git", "clone", "-q", "--depth", "1", "--branch", tag, "--recurse-submodules",
+        subprocess.run(["git", "-c", "advice.detachedHead=false", "clone", "-q", "--depth", "1", "--branch", tag, "--recurse-submodules",
                         "--shallow-submodules", ("file://" + url) if Path(url).is_dir() else url, str(src)], check=True)
         patches.git(src, "tag", "qnx-porter-base")
     base = patches.git(src, "rev-parse", "HEAD").strip()
