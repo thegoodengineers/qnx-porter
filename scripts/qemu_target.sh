@@ -28,11 +28,12 @@ net)
     command -v dnsmasq >/dev/null || apt-get install -y -q dnsmasq-base
     [ -n "$user" ] && adduser "$user" kvm >/dev/null  # mkqnximage's runimage asks for this; KVM makes QEMU fast
     # QNX's net.sh sets up br0 and bridge.conf. Its dnsmasq call uses --except-interface=lo0, which on Linux
-    # (and WSL, whose lo carries 10.255.255.254) collides; start our own DHCP-only dnsmasq instead.
+    # (and WSL, whose lo carries 10.255.255.254) collides; start our own dnsmasq instead. It also answers DNS on
+    # br0 (forwarding to the host's resolver), so tests that read the system's name servers find one.
     "${home}/qnx800/host/common/mkqnximage/qemu/net.sh" /usr/lib/qemu/qemu-bridge-helper /etc/qemu/bridge.conf nat \
         2>/dev/null || true
     pgrep -f 'dnsmasq --interface=br0' >/dev/null ||
-        dnsmasq --interface=br0 --bind-interfaces --except-interface=lo --port=0 --dhcp-range=172.31.1.2,172.31.1.254
+        dnsmasq --interface=br0 --bind-interfaces --except-interface=lo --dhcp-range=172.31.1.2,172.31.1.254
     ip -4 addr show br0 | grep -q 172.31.1.1 && echo "br0 ready"
     ;;
 build)
@@ -56,7 +57,12 @@ start)
     MKQNXIMAGE_NOPROMPT=1 setsid nohup mkqnximage --run=-h >"$IMAGE_DIR/../run.log" 2>&1 </dev/null &
     for _ in $(seq 1 30); do
         sleep 3
-        if "${SSH[@]}" uname -a 2>/dev/null; then exit 0; fi
+        if "${SSH[@]}" uname -a 2>/dev/null; then
+            # The image's /etc/resolv.conf links to dhcpcd's file, which a static address never creates.
+            "${SSH[@]}" "mkdir -p /data/var/dhcpcd; [ -s /data/var/dhcpcd/resolv.conf ] ||
+                echo 'nameserver ${IP%.*}.1' > /data/var/dhcpcd/resolv.conf"
+            exit 0
+        fi
     done
     echo "QNX target did not answer ssh; see $IMAGE_DIR/output/qemu.out"; exit 1
     ;;
