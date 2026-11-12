@@ -9,7 +9,10 @@ conversions `%Ex`, `%EX` and `%Ec` in the default "C" locale. The other `E` and 
 `%EC`, `%Od`, `%OH`, `%Oy`) work.
 
 POSIX (`strftime`, modified conversion specifiers) requires that when the current locale has no alternative
-format, a modified conversion behaves as the unmodified one. So in the "C" locale `%Ex` must print what `%x` prints, `%EX` what `%X` prints, `%Ec` what `%c` prints.
+format, a modified conversion behaves as the unmodified one. QNX's own
+[`strftime()` page](https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.lib_ref/topic/s/strftime.html)
+for 8.0 lists `%Ec`, `%Ex` and `%EX` and says the same, so the behaviour also differs from QNX's documentation.
+So in the "C" locale `%Ex` must print what `%x` prints, `%EX` what `%X` prints, `%Ec` what `%c` prints.
 
 ## Reproduce
 ```

@@ -66,5 +66,12 @@ glibc. The exact value of the double is `0.123456788999999997336...`, so the cor
 is 4: QNX's `printf` truncates there instead of rounding. This does not break `%.17g` round trips, which is
 why the summary above says formatting is not the problem for them.
 
+## QNX's own ports work around it
+QNX's hand-made ports of jansson and pugixml (`qnx-ports/build-files`, commit `1964dba`,
+`ports/jansson/project_hooks.cmake` and `ports/pugixml/`) link a separate float-conversion library,
+`libmuslflt.a`, into every binary with `--whole-archive`; without it their build warns that the libraries'
+floating-point conversion tests will not pass on QNX. That is the same two libraries, and the same cause,
+that our campaign found on its own.
+
 ## Workaround until fixed
 `sscanf(s, "%lf", &d)` returns the correctly rounded value on QNX 8.0.

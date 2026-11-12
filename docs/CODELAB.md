@@ -229,8 +229,11 @@ differently. Take googletest's death tests, which abort on QNX 8.0.
    ```
    On QNX, `fchdir()` on a directory opened with `open(".", O_RDONLY)` fails with "Not a directory"; with
    `O_DIRECTORY` it works. On Linux both work.
-4. Decide where the fix belongs. Here, both: a report for QNX, and a one-line patch for googletest
-   (`docs/qnx-reports/googletest-qnx-fchdir.patch`) that we checked on the target: 61 of 61 death tests pass.
+4. Check QNX's documentation, then decide where the fix belongs. QNX's
+   [`fchdir()` page](https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.lib_ref/topic/f/fchdir.html)
+   lists ENOTDIR for a descriptor not opened with `O_DIRECTORY`, so this is intended QNX behaviour and the fix
+   belongs in googletest: a one-line patch (`docs/qnx-reports/googletest-qnx-fchdir.patch`) that we checked on
+   the target, 61 of 61 death tests pass.
 
 The same method found every report in [docs/qnx-reports/](qnx-reports/): `strtod()` rounding, `strftime()`
 with `%Ex`, and a libsrtp test that sorts with a random comparator.

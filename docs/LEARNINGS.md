@@ -121,6 +121,12 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
 - [Verified] QNX `fchdir()` fails with ENOTDIR on a directory opened with `open(".", O_RDONLY)`; it works with
   `O_DIRECTORY`. googletest's QNX-only death-test code does exactly that, so `googletest-death-test-test` and
   `gtest_repeat_test` abort. With `O_DIRECTORY` added (one line), 61/61 death tests pass on QNX 8.0.
+  QNX documents the requirement (the 8.0 `fchdir()` page lists ENOTDIR for it), so it is a QNX difference
+  rather than a bug, and QNX's own googletest fork in qnx-ports makes the same one-line change.
+- [Verified] QNX's own hand-made ports agree with two more findings: their jansson and pugixml ports link a
+  separate float-conversion library (`libmuslflt.a`) because of the `strtod()` rounding, and their libxml2
+  patch guards NULL `%s` arguments. Survey of their 21 ports that overlap ours:
+  [docs/related/qnx-ports-survey.md](related/qnx-ports-survey.md).
 - [Verified] libsrtp's tests "shuffle" with `qsort()` and a comparator that answers at random (undefined in
   C). QNX's qsort then writes outside the array (480 of 2,000 calls in a guard-word test; glibc 0), which
   explains all three crashing libsrtp tests. The fix belongs in libsrtp's test helper, not in QNX.

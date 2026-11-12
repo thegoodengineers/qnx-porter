@@ -1,14 +1,16 @@
-# QNX 8.0: fchdir() fails with ENOTDIR on a directory opened with open(".", O_RDONLY)
+# QNX 8.0: fchdir() needs a directory opened with O_DIRECTORY (Linux does not)
 
-**Status:** draft report for QNX, not sent, plus a one-line patch for googletest (`googletest-qnx-fchdir.patch`,
-not sent). Found by qnx-porter's campaign (googletest 1.15.2's own tests), reproduced with `fchdir_test.c`
-(this folder) on 12 Nov 2026. The team decides whether and where to send them.
+**Status:** a documented QNX difference, not a QNX bug, plus a one-line patch for upstream googletest
+(`googletest-qnx-fchdir.patch`, not sent). Found by qnx-porter's campaign (googletest 1.15.2's own tests),
+reproduced with `fchdir_test.c` (this folder) on 12 Nov 2026. The team decides whether to send the patch.
 
 ## Summary
 On QNX SDP 8.0 (build 141, x86_64), `open(".", O_RDONLY)` succeeds, but `fchdir()` on that descriptor fails
 with `ENOTDIR`. The same directory opened with `O_RDONLY | O_DIRECTORY` works with `fchdir()`. On Linux both
-work. POSIX `fchdir()` takes any open descriptor that refers to a directory; `O_DIRECTORY` is only a check
-that the path names one.
+work. QNX documents this: the 8.0 C library reference's
+[`fchdir()` page](https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.lib_ref/topic/f/fchdir.html)
+lists `ENOTDIR` for a descriptor that "wasn't opened with O_DIRECTORY". POSIX lets `fchdir()` take any open
+descriptor that refers to a directory, so code written for Linux or POSIX trips on it.
 
 ## Reproduce
 ```
@@ -46,5 +48,11 @@ CHECK failed: File .../googletest/src/gtest-death-test.cc, line 1287: fchdir(cwd
 With `O_DIRECTORY` added to that `open()` (`googletest-qnx-fchdir.patch`), rebuilt with qcc and run on the
 same target: `googletest-death-test-test` passes 61 of 61 tests and `gtest_repeat_test` passes.
 
-## Workaround until fixed
+## QNX's own googletest port makes the same change
+QNX's hand-made googletest port (`qnx-ports/googletest`, branch `qnx_v1.13.0`, `googletest/src/gtest-death-test.cc`
+line 1296) opens the directory with `O_RDONLY | O_DIRECTORY` under `#if __QNX__ >= 800`. We found the same
+fix independently, from the core dump, before reading their port. Upstream googletest 1.15.2 still opens it with
+`O_RDONLY` only, which is what the patch in this folder changes.
+
+## What to do
 Open directories that will be passed to `fchdir()` with `O_DIRECTORY`.
