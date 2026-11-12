@@ -60,6 +60,8 @@ SOCKET_SYMBOLS = {"socket", "bind", "connect", "listen", "accept", "accept4", "s
 IN_LIBC = {"pthread", "rt", "dl"}
 
 # QNX 8.0 moved inotify_* out of libc into libfsnotify ("Migrating to QNX OS 8.0", C and C++ applications).
+# POSIX regex functions: exported by libregex.so on QNX 8.0, not by libc.so (nm on SDP 8.0 build 141).
+REGEX_SYMBOLS = {"regcomp", "regexec", "regfree", "regerror"}
 FSNOTIFY_SYMBOLS = {"inotify_init", "inotify_init1", "inotify_add_watch", "inotify_rm_watch"}
 
 # QNX's <math.h> turns isinf()/isfinite()/isnan()/fpclassify() into calls to __isinf etc., and those, like
@@ -169,6 +171,12 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                 return Fix("qnx-source", f"`{d.symbol}` is in <{header}>, which {rel} already includes, so a "
                            "strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions "
                            "in QNX's headers, as _GNU_SOURCE does on glibc.", d, cflags=["-D_QNX_SOURCE"])
+    if d.kind == "error" and "-D_QNX_SOURCE" not in flags.cflags and \
+            (m := re.search(r"no matching function for call to .(\w+)::\1\(", d.message)) and m[1] in SYMBOL_HEADERS:
+        return Fix("qnx-source", f"C++ sees only `struct {m[1]}`, not the POSIX function `{m[1]}()`: in strict "
+                   "-std=c++NN mode QNX's headers hide POSIX extensions (here sys/stat.h declares stat() only under "
+                   "__EXT_POSIX1_198808). -D_QNX_SOURCE exposes them, as _GNU_SOURCE does on glibc.",
+                   d, cflags=["-D_QNX_SOURCE"])
     if d.kind == "undeclared" and d.symbol == "SA_RESTART" and not _defined(flags, "SA_RESTART"):
         return Fix("sa-restart", "QNX 8.0's <signal.h> lists SA_RESTART as not supported yet. Defining it as 0 "
                    "lets the code build; system calls interrupted by a signal then return EINTR instead of "
@@ -195,6 +203,9 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
     if d.kind == "undefined_ref" and d.symbol.lstrip("_") in SOCKET_SYMBOLS and "-lsocket" not in flags.libs:
         return Fix("link-libsocket", f"`{d.symbol}` is in QNX's libsocket, not in libc as on Linux: link "
                    "with -lsocket.", d, libs=["-lsocket"])
+    if d.kind == "undefined_ref" and d.symbol in REGEX_SYMBOLS and "-lregex" not in flags.libs:
+        return Fix("link-libregex", f"`{d.symbol}` (POSIX <regex.h>) is in QNX's libregex, not in libc as on "
+                   "Linux: link with -lregex.", d, libs=["-lregex"])
     if d.kind == "undefined_ref" and d.symbol in FSNOTIFY_SYMBOLS and "-lfsnotify" not in flags.libs:
         return Fix("link-libfsnotify", f"QNX 8.0 has inotify, but `{d.symbol}` moved from libc to libfsnotify: "
                    "link with -lfsnotify.", d, libs=["-lfsnotify"])

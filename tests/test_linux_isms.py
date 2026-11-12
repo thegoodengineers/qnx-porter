@@ -258,3 +258,18 @@ def test_sa_restart_is_not_supported_on_qnx_8(tmp_path):
     log = "signal.c:257:24: error: 'SA_RESTART' undeclared (first use in this function)\n"
     [f] = run(tmp_path, {"signal.c": "#include <signal.h>\n"}, log)
     assert f.rule == "sa-restart" and f.cflags == ["-DSA_RESTART=0"] and "EINTR" in f.reason
+
+
+def test_posix_regex_is_in_libregex_on_qnx(tmp_path):
+    # Real ld output from porting fmt 11.0.2's tests (gmock uses POSIX regex).
+    log = "gmock-gtest-all.cc:11045:(.text+0xbb65): undefined reference to `regcomp'\n"
+    [f] = run(tmp_path, {}, log)
+    assert f.rule == "link-libregex" and f.libs == ["-lregex"]
+
+
+def test_strict_cxx_mode_hides_posix_stat(tmp_path):
+    # Real g++ error from porting spdlog v1.15.0 (-std=c++11): only struct stat is visible.
+    log = ("os-inl.h:188:45: error: no matching function for call to "
+           "'stat::stat(const std::__2::basic_string<char>::value_type*, stat*)'\n")
+    [f] = run(tmp_path, {"os-inl.h": "#include <sys/stat.h>\n"}, log)
+    assert f.rule == "qnx-source" and f.cflags == ["-D_QNX_SOURCE"]
