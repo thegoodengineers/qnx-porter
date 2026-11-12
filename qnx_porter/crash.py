@@ -15,7 +15,8 @@ from .target import SSH_OPTS, Target
 
 CORE_DIRS = ["/data/var/dumper", "/var/dumps"]
 PRINTF_FMT_ARG = {"printf": 0, "fprintf": 1, "sprintf": 1, "dprintf": 1, "asprintf": 1, "snprintf": 2}
-FRAME = re.compile(r"^#\d+\s+(?:0x[0-9a-f]+ in )?(?P<func>[\w.]+) \(.*?\)(?: at (?P<path>\S+):(?P<line>\d+))?",
+# Greedy up to the last ") at file:line": arguments can contain strings with parentheses in them.
+FRAME = re.compile(r"^#\d+\s+(?:0x[0-9a-f]+ in )?(?P<func>[\w.:~<>]+) \(.*\)(?: at (?P<path>\S+):(?P<line>\d+))?\s*$",
                    re.M)
 HELPER = ('/* qnx-porter: glibc prints "(null)" for a NULL %s argument; QNX\'s libc faults (it is undefined C). */\n'
           'static const char *qnx_porter_str(const char *s) { return s ? s : "(null)"; }\n')
