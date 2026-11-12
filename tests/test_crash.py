@@ -108,3 +108,12 @@ def test_wrapped_code_still_compiles(tmp_path):
     assert r is not None
     (tmp_path / "w.c").write_text(r[2])
     assert subprocess.run([CC, "-fsyntax-only", "-Wall", "-Werror", str(tmp_path / "w.c")]).returncode == 0
+
+
+def test_helper_goes_after_the_platform_branch_holding_the_last_include():
+    src = ('#include "tinyxml2.h"\n#if defined(_MSC_VER)\n#include <windows.h>\n#else\n#include <sys/stat.h>\n'
+           '#endif\nint x;\n')
+    lines = crash._insert_helper(src).splitlines()
+    assert lines.index("#endif") < lines.index(crash.HELPER.splitlines()[-1])
+    guarded = '#ifndef A_H\n#define A_H\n#include <stdio.h>\nint y;\n#endif\n'
+    assert crash._insert_helper(guarded).rstrip().endswith("int y;\n#endif")

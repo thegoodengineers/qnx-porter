@@ -190,6 +190,15 @@ def wrap_string_args(path: Path, func: str, line: int) -> str | None:
 
 def _insert_helper(text: str) -> str:
     lines = text.splitlines(keepends=True)
+    depth, depths = 0, []  # #if nesting before each line
+    for ln in lines:
+        depths.append(depth)
+        depth += 1 if re.match(r"\s*#\s*if", ln) else -1 if re.match(r"\s*#\s*endif\b", ln) else 0
     incs = [i for i, ln in enumerate(lines) if re.match(r"\s*#\s*include\b", ln)]
     at = incs[-1] + 1 if incs else 0
+    # The last include can sit in a platform branch (tinyxml2's xmltest.cpp: `#else` of `_MSC_VER`); put the
+    # helper after that branch's #endif, at the shallowest include depth (inside an include guard, not past it).
+    base = min((depths[i] for i in incs), default=0)
+    while at < len(lines) and depths[at] > base:
+        at += 1
     return "".join(lines[:at] + ["\n", HELPER] + lines[at:])
