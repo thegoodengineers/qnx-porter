@@ -1,0 +1,4 @@
+out/*
+!out/qnx-porter-demo.mp4
+!out/demo.cast
+!out/markers.json

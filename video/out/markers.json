@@ -1,0 +1,119 @@
+[
+ {
+  "t": 0.0,
+  "slide": "title"
+ },
+ {
+  "t": 0.0,
+  "slide": "problem"
+ },
+ {
+  "t": 0.0,
+  "caption": "1/4  A real QNX 8.0 target (QEMU image from mkqnximage) and the SDP 8.0 toolchain"
+ },
+ {
+  "t": 0.0,
+  "command": "scripts/qemu_target.sh status"
+ },
+ {
+  "t": 0.275,
+  "done": "scripts/qemu_target.sh status",
+  "exit": 0
+ },
+ {
+  "t": 0.275,
+  "command": "qnx-porter doctor | grep -v '^[[:space:]]' | cut -c1-120"
+ },
+ {
+  "t": 0.825,
+  "done": "qnx-porter doctor | grep -v '^[[:space:]]' | cut -c1-120",
+  "exit": 0
+ },
+ {
+  "t": 0.825,
+  "caption": "2/4  paho.mqtt.c (MQTT client) does not build for QNX: four rule-based fixes, rebuilt each round"
+ },
+ {
+  "t": 0.825,
+  "command": "qnx-porter port https://github.com/eclipse/paho.mqtt.c.git --tag v1.3.14 --no-model --out /tmp/qnx-porter-demo"
+ },
+ {
+  "t": 22.043,
+  "done": "qnx-porter port https://github.com/eclipse/paho.mqtt.c.git --tag v1.3.14 --no-model --out /tmp/qnx-porter-demo",
+  "exit": 0
+ },
+ {
+  "t": 22.043,
+  "command": "head -24 /tmp/qnx-porter-demo/paho.mqtt.c/patches/0002-*.patch | cut -c1-138"
+ },
+ {
+  "t": 22.049,
+  "done": "head -24 /tmp/qnx-porter-demo/paho.mqtt.c/patches/0002-*.patch | cut -c1-138",
+  "exit": 0
+ },
+ {
+  "t": 22.049,
+  "caption": "3/4  json-c: built with qcc, its own 25 tests run ON the QNX target; a crash is traced from the core dump"
+ },
+ {
+  "t": 22.049,
+  "command": "qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11 --no-model --out /tmp/qnx-porter-demo"
+ },
+ {
+  "t": 119.876,
+  "done": "qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11 --no-model --out /tmp/qnx-porter-demo",
+  "exit": 0
+ },
+ {
+  "t": 119.879,
+  "command": "grep -E '^(#[0-4] |Program)' /tmp/qnx-porter-demo/json-c/logs/crashes.log | awk '!seen[$1]++' | cut -c1-138"
+ },
+ {
+  "t": 119.931,
+  "done": "grep -E '^(#[0-4] |Program)' /tmp/qnx-porter-demo/json-c/logs/crashes.log | awk '!seen[$1]++' | cut -c1-138",
+  "exit": 0
+ },
+ {
+  "t": 119.931,
+  "command": "tail -4 /tmp/qnx-porter-demo/json-c/logs/tests.log"
+ },
+ {
+  "t": 119.942,
+  "done": "tail -4 /tmp/qnx-porter-demo/json-c/logs/tests.log",
+  "exit": 0
+ },
+ {
+  "t": 119.943,
+  "caption": "4/4  The campaign: 10 libraries not on oss.qnx.com, every number written by the scripts"
+ },
+ {
+  "t": 119.943,
+  "command": "python3 scripts/ports_csv.py | sed 's| -> .*||'"
+ },
+ {
+  "t": 120.081,
+  "done": "python3 scripts/ports_csv.py | sed 's| -> .*||'",
+  "exit": 0
+ },
+ {
+  "t": 120.082,
+  "command": "cut -d, -f1,5,6,7,8 results/ports.csv | column -s, -t"
+ },
+ {
+  "t": 120.091,
+  "done": "cut -d, -f1,5,6,7,8 results/ports.csv | column -s, -t",
+  "exit": 0
+ },
+ {
+  "t": 120.091,
+  "slide": "results"
+ },
+ {
+  "t": 120.091,
+  "slide": "failures"
+ },
+ {
+  "t": 120.091,
+  "slide": "close"
+ }
+]
