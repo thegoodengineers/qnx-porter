@@ -142,3 +142,13 @@ def test_parse_then_plan_on_a_real_gcc_log(tmp_path):
            "[-Werror=implicit-function-declaration]\n")
     [f] = fixes.plan(parse(log), tmp_path, Flags(), set())
     assert f.rule == "add-include"
+
+
+def test_an_edit_of_a_crlf_file_changes_only_the_edited_lines(tmp_path):
+    (tmp_path / "t.cpp").write_bytes(b"int a;\r\nint b;\r\n")
+    repo(tmp_path, {})
+    text = (tmp_path / "t.cpp").read_text()  # universal newlines, as the rules read
+    patches.write_source(tmp_path / "t.cpp", text.replace("int b;", "int b, c;"))
+    assert (tmp_path / "t.cpp").read_bytes() == b"int a;\r\nint b, c;\r\n"
+    diff = patches.git(tmp_path, "diff")
+    assert "-int a;" not in diff and "+int b, c;" in diff

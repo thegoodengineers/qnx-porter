@@ -115,4 +115,4 @@ libraries:
   - {name: kissfft, url: https://github.com/mborgerding/kissfft.git, tag: 131.1.0, args: [-DKISSFFT_TEST=OFF, -DKISSFFT_TOOLS=OFF]}
   - {name: capstone, url: https://github.com/capstone-engine/capstone.git, tag: 5.0.3}
   - {name: pcre2, url: https://github.com/PCRE2Project/pcre2.git, tag: pcre2-10.44}
-  - {name: sqlite, url: https://github.com/sqlite/sqlite.git, tag: version-3.47.2, args: [--disable-tcl], tests: false, note: "build only: its test suite needs Tcl on the target"}
+  - {name: sqlite, url: https://github.com/sqlite/sqlite.git, tag: version-3.47.2, args: [--disable-tcl, --disable-editline, --disable-readline], tests: false, note: "build only: its test suite needs Tcl on the target"}

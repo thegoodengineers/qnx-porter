@@ -133,7 +133,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
             before = (tests_passed, tests_total, crashes, not_runnable)
             first = len(applied)
             for rel, reason, text in crash_fixes:
-                (src / rel).write_text(text, encoding="utf-8", errors="surrogateescape")
+                patches.write_source(src / rel, text)
                 applied.append(patches.commit_source(src, out, len(applied) + 1, "printf-null", "rule", reason,
                                                      "Memory fault (SIGSEGV) in strlen <- printf on QNX", [rel]))
                 log(f"      fix {len(applied):04d} [printf-null] {reason}"[:200])
@@ -215,7 +215,7 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
     error = f.diag.raw or f.diag.message
     if f.edits:
         for rel, text in f.edits.items():
-            (src / rel).write_text(text, encoding="utf-8", errors="surrogateescape")
+            patches.write_source(src / rel, text)
         return patches.commit_source(src, out, n, f.rule, "rule", f.reason, error, list(f.edits))
     before = job.toolchain_text()
     extra = ""
