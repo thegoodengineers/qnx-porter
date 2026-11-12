@@ -134,6 +134,11 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
   "Can't resolve URI: %s" with a NULL `systemId` (backtrace `strlen <- vsnprintf <- xmlStrVASPrintf <- ...
   xmlWarnMsg`, SAX2.c). An application calling it the same way would crash on QNX too. libxml2's current
   master checks `systemId != NULL` first, so this is already fixed upstream; nothing to send.
+- [Verified] nng `sockaddr_test` (7 of its 10 cases end in SIGSEGV): the test logger in
+  `src/testing/util.c:207` prints `"%s: %s: %s"` with `msgid == NULL`, the same glibc-only `(null)` habit.
+  The `printf-null` rule cannot place this fix: GCC compiled `nuts_logger()` as a tail call, so the
+  backtrace jumps from `test_message_color_` to `nni_vlog` and never names the line that passes NULL. A limit
+  of fixing from backtraces; a person (or the model, given the backtrace) has to find the caller.
 - [Not investigated yet] libevent `main/fork`: after a forked child exits, the parent's event loop never
   sees its own `SIGUSR1`, and the test's alarm ends it. pcre2 test 8 (internal code sizes) and pcre2grep
   output differences.
