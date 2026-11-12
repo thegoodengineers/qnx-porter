@@ -294,3 +294,11 @@ def test_qcc_rejects_sysroot_from_a_project_script(tmp_path):
     log = "cc: unknown option: '--sysroot=/home/u/qnx800/target/qnx'\nCMake Error at scripts/cmake/genout.cmake:87 (message):\n  Failed to generate\n"
     planned = run(tmp_path, {}, log)
     assert planned[0].rule == "qcc-sysroot" and planned[0].settings == {"omit_sysroot": True}
+
+
+def test_library_guessing_a_32_bit_word_size_on_aarch64(tmp_path):
+    # Real qcc error from porting cmocka 1.1.7 for aarch64le: cmocka.h assumes 32 bits unless __WORDSIZE or __x86_64__.
+    log = ("cmocka.h:137:28: error: conflicting types for 'uintptr_t'; have 'unsigned int'\n"
+           "stdint.h:38:33: note: previous declaration of 'uintptr_t' with type 'uintptr_t' {aka 'long unsigned int'}\n")
+    [f] = run(tmp_path, {"cmocka.h": "typedef unsigned int uintptr_t;\n"}, log)
+    assert f.rule == "wordsize-64" and f.cflags == ["-D__WORDSIZE=64"]
