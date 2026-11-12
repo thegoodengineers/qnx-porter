@@ -25,8 +25,7 @@ UNDECLARED = re.compile(
 WERROR = re.compile(r"\[-Werror(?:=(?P<flag>[\w=+-]+))?\]\s*$")  # bare [-Werror]: a warning with no switch
 UNDEFINED_REF = re.compile(rf"undefined reference to {Q}(?P<symbol>[^'’`]+){Q}")
 MULTIPLE_DEF = re.compile(rf"multiple definition of {Q}(?P<symbol>[^'\u2019`]+){Q}")
-# the linker, or a CMake check worded like libccd's: "Could NOT find required library librt"
-MISSING_LIB = re.compile(r"(?:cannot find -l|Could NOT find required library lib)(?P<lib>[\w+.-]+)")
+MISSING_LIB = re.compile(r"cannot find -l(?P<lib>[\w+.-]+)")
 CMAKE_ERROR = re.compile(r"^CMake Error(?: at (?P<file>[^:]+):(?P<line>\d+))?")
 QCC_OPTION = re.compile(r"^cc: unknown option: '(?P<opt>[^']+)'")
 CONFIGURE_ERROR = re.compile(r"^configure: error: (?P<msg>.*)$")

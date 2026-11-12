@@ -55,9 +55,3 @@ def test_configure_and_cmake_errors():
 def test_duplicates_are_dropped():
     line = "a.c:3:5: error: 'MSG_NOSIGNAL' undeclared (first use in this function)\n"
     assert len(parse(line * 3)) == 1
-
-
-def test_cmake_check_for_librt_is_a_missing_library():
-    log = ("CMake Error at src/testsuites/cu/CMakeLists.txt:11 (message):\n"
-           "  Could NOT find required library librt\n")
-    assert ("missing_lib", "rt") in kinds(log)
