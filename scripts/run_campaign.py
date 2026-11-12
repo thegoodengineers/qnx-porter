@@ -148,7 +148,7 @@ def main(argv=None) -> int:
                        max_rounds=c["max_rounds"], use_llm=not a.no_model,
                        extra_args=tuple(lib["args"] + lib["arch_args"].get(c["arch"], [])),
                        name=lib["name"], note=lib["note"], subdir=lib["subdir"])
-        except (subprocess.CalledProcessError, OSError, RuntimeError, ValueError) as e:
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError, RuntimeError, ValueError) as e:
             print(f"    {lib['name']}: agent error: {e}")
             error_report(out, lib, c["arch"], str(e), (time.time() - t0) / 60)
     subprocess.run([sys.executable, str(ROOT / "scripts" / "ports_csv.py")], check=True)
