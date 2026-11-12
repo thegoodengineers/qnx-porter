@@ -1,15 +1,18 @@
 """The long tail: errors no rule handles go to a language model, which must answer with a small diff.
 
-Configuration comes only from the environment:
-  QNX_PORTER_API_KEY   key for an OpenAI-compatible chat-completions endpoint
-  QNX_PORTER_MODEL     model ID
-  QNX_PORTER_BASE_URL  endpoint base (default https://api.openai.com/v1; any compatible server works)
+Configuration comes only from the environment (nothing provider-specific lives in this repository):
+  QNX_PORTER_API_KEY      key for an OpenAI-compatible chat-completions endpoint
+  QNX_PORTER_MODEL        model ID
+  QNX_PORTER_BASE_URL     the endpoint's base URL (ending before /chat/completions)
+  QNX_PORTER_TEMPERATURE  optional; sent only when set (some models reject sampling parameters)
+  QNX_PORTER_MAX_TOKENS   optional; sent only when set
 The model's diff is never trusted: it must pass `git apply --check`, and the agent keeps it only if the
-rebuild clears the error it was meant to fix without adding new ones.
+rebuild clears the error it was meant to fix without adding new ones in the files it touched.
 """
 import json
 import os
 import re
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -37,7 +40,7 @@ Rules for your answer:
 
 
 def configured() -> bool:
-    return bool(os.environ.get("QNX_PORTER_API_KEY") and os.environ.get("QNX_PORTER_MODEL"))
+    return all(os.environ.get(k) for k in ("QNX_PORTER_API_KEY", "QNX_PORTER_MODEL", "QNX_PORTER_BASE_URL"))
 
 
 def context(src: Path, d: Diagnostic, rel: str | None, hint: str, log_tail: str) -> str:
@@ -53,16 +56,33 @@ def context(src: Path, d: Diagnostic, rel: str | None, hint: str, log_tail: str)
     return "\n\n".join(parts)
 
 
-def ask(prompt: str, timeout: int = 120) -> dict:
-    base = os.environ.get("QNX_PORTER_BASE_URL", "https://api.openai.com/v1").rstrip("/")
-    body = {"model": os.environ["QNX_PORTER_MODEL"], "temperature": 0,
+def request_body(prompt: str, environ=None) -> dict:
+    """The chat-completions request. Optional parameters are sent only when their env var is set."""
+    env = os.environ if environ is None else environ
+    body = {"model": env["QNX_PORTER_MODEL"],
             "messages": [{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}]}
-    req = urllib.request.Request(base + "/chat/completions", data=json.dumps(body).encode(), method="POST",
-                                 headers={"Content-Type": "application/json",
-                                          "Authorization": f"Bearer {os.environ['QNX_PORTER_API_KEY']}"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        reply = json.load(r)["choices"][0]["message"]["content"]
-    return parse_reply(reply)
+    if env.get("QNX_PORTER_TEMPERATURE", "").strip():
+        body["temperature"] = float(env["QNX_PORTER_TEMPERATURE"])
+    if env.get("QNX_PORTER_MAX_TOKENS", "").strip():
+        body["max_tokens"] = int(env["QNX_PORTER_MAX_TOKENS"])
+    return body
+
+
+def ask(prompt: str, timeout: int = 300) -> dict:
+    base = os.environ["QNX_PORTER_BASE_URL"].rstrip("/")
+    req = urllib.request.Request(base + "/chat/completions", data=json.dumps(request_body(prompt)).encode(),
+                                 method="POST", headers={"Content-Type": "application/json",
+                                                         "Authorization": f"Bearer {os.environ['QNX_PORTER_API_KEY']}"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            data = json.load(r)
+    except urllib.error.HTTPError as e:  # report what the server said; never the request (it holds the key)
+        raise RuntimeError(f"model endpoint returned HTTP {e.code}: {e.read().decode(errors='replace')[:500]}")
+    reply = data["choices"][0]["message"]["content"]
+    usage = data.get("usage") or {}
+    out = parse_reply(reply)
+    out["tokens"] = {"in": usage.get("prompt_tokens", 0), "out": usage.get("completion_tokens", 0)}
+    return out
 
 
 def parse_reply(text: str) -> dict:
