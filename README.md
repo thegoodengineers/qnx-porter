@@ -21,9 +21,8 @@ Chirag, Bhumika, Ayush and Abhijeet (The Good Engineers).
 - **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
   Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.
 - **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
-- **Headline:** 10 of 10 libraries built for QNX 8.0 with qcc; 376 of 381 of their own tests passed on a QNX 8.0
-  target (one library build-only). 9 patches in total, all by deterministic rules; two of them fix test crashes
-  found from QNX core dumps. See [Results](#results-on-qnx-80).
+- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->x86_64: 10 of 10 libraries built for QNX 8.0; 376 of 381 of their own tests passed on a QNX 8.0 target (8 libraries with tests that ran); 9 patches, 9 by rules.<!-- headline:end -->
+  See [Results](#results-on-qnx-80).
 - **Results:** [`results/ports.csv`](results/ports.csv), written by `scripts/ports_csv.py` from each
   port's own `ports/<library>/report.json`. No number in this README or the video comes from anywhere else.
 - **Every patch the agent made:** `ports/<library>/patches/*.patch`, each with the rule, the reason and
@@ -38,18 +37,18 @@ QNX SDP 8.0 (build 141, qcc 12.2.0) and their own test suites run on QNX 8.0 x86
 (`mkqnximage`). Rules only, no language model. The table is generated from `ports/*/report.json`:
 
 <!-- results:start -->
-| Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |
-|---|---|---|---|---|---|---|
-| [cmocka](ports/cmocka/REPORT.md) | cmocka-1.1.7 | built | 46/46 | 0 (0 / 0) | 0.5 |  |
-| [json-c](ports/json-c/REPORT.md) | json-c-0.18-20240915 | built | 25/25 | 1 (1 / 0) | 1.4 |  |
-| [libcbor](ports/libcbor/REPORT.md) | v0.11.0 | built | none built | 0 (0 / 0) | 0.3 |  |
-| [libconfig](ports/libconfig/REPORT.md) | v1.7.3 | built | 1/1 | 1 (1 / 0) | 1.1 |  |
-| [libmodbus](ports/libmodbus/REPORT.md) | v3.1.11 | built | 0/1 | 0 (0 / 0) | 0.5 |  |
-| [libsodium](ports/libsodium/REPORT.md) | 1.0.20-RELEASE | built | 80/80 | 0 (0 / 0) | 3.2 |  |
-| [mbedtls](ports/mbedtls/REPORT.md) | v3.6.2 | built | 130/130 | 1 (1 / 0) | 3.7 |  |
-| [nng](ports/nng/REPORT.md) | v1.9.0 | built | 82/86 | 1 (1 / 0) | 4.1 |  |
-| [paho.mqtt.c](ports/paho.mqtt.c/REPORT.md) | v1.3.14 | built | not run | 4 (4 / 0) | 0.3 | build only: the test suite needs an MQTT broker on the target |
-| [yyjson](ports/yyjson/REPORT.md) | 0.10.0 | built | 12/12 | 1 (1 / 0) | 1.3 |  |
+| Library | Version | Arch | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |
+|---|---|---|---|---|---|---|---|
+| [cmocka](ports/cmocka/REPORT.md) | cmocka-1.1.7 | x86_64 | built | 46/46 | 0 (0 / 0) | 0.5 |  |
+| [json-c](ports/json-c/REPORT.md) | json-c-0.18-20240915 | x86_64 | built | 25/25 | 1 (1 / 0) | 1.4 |  |
+| [libcbor](ports/libcbor/REPORT.md) | v0.11.0 | x86_64 | built | none built | 0 (0 / 0) | 0.3 |  |
+| [libconfig](ports/libconfig/REPORT.md) | v1.7.3 | x86_64 | built | 1/1 | 1 (1 / 0) | 1.1 |  |
+| [libmodbus](ports/libmodbus/REPORT.md) | v3.1.11 | x86_64 | built | 0/1 | 0 (0 / 0) | 0.5 |  |
+| [libsodium](ports/libsodium/REPORT.md) | 1.0.20-RELEASE | x86_64 | built | 80/80 | 0 (0 / 0) | 3.2 |  |
+| [mbedtls](ports/mbedtls/REPORT.md) | v3.6.2 | x86_64 | built | 130/130 | 1 (1 / 0) | 3.7 |  |
+| [nng](ports/nng/REPORT.md) | v1.9.0 | x86_64 | built | 82/86 | 1 (1 / 0) | 4.1 |  |
+| [paho.mqtt.c](ports/paho.mqtt.c/REPORT.md) | v1.3.14 | x86_64 | built | not run | 4 (4 / 0) | 0.3 | build only: the test suite needs an MQTT broker on the target |
+| [yyjson](ports/yyjson/REPORT.md) | 0.10.0 | x86_64 | built | 12/12 | 1 (1 / 0) | 1.3 |  |
 <!-- results:end -->
 
 **What the failures are** (details in [docs/LEARNINGS.md](docs/LEARNINGS.md); each test's QNX output is in

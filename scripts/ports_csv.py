@@ -46,6 +46,19 @@ def readme_table(data: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def headline(data: list[dict]) -> str:
+    """One sentence per architecture, from the same rows as the CSV."""
+    parts = []
+    for arch in sorted({r["arch"] for r in data}):
+        rs = [r for r in data if r["arch"] == arch]
+        tested = [r for r in rs if r["tests_total"] not in ("", 0)]
+        parts.append(f"{arch}: {sum(r['build_result'] == 'built' for r in rs)} of {len(rs)} libraries built for QNX 8.0; "
+                     f"{sum(r['tests_passed'] for r in tested)} of {sum(r['tests_total'] for r in tested)} of their own "
+                     f"tests passed on a QNX 8.0 target ({len(tested)} libraries with tests that ran); "
+                     f"{sum(int(r['patches']) for r in rs)} patches, {sum(int(r['patches_by_rule']) for r in rs)} by rules")
+    return "; ".join(parts) + "."
+
+
 def main():
     dirs = [Path(sys.argv[1])] if len(sys.argv) > 1 else [ROOT / "ports", ROOT / "ports-aarch64le"]
     data = [r for d in dirs for r in rows(d)]
@@ -58,6 +71,8 @@ def main():
     text = readme.read_text(encoding="utf-8")
     text = re.sub(r"(<!-- results:start -->\n).*?(\n<!-- results:end -->)",
                   lambda m: m[1] + readme_table(data) + m[2], text, flags=re.S)
+    text = re.sub(r"(<!-- headline:start -->).*?(<!-- headline:end -->)",
+                  lambda m: m[1] + headline(data) + m[2], text, flags=re.S)
     readme.write_text(text, encoding="utf-8", newline="\n")
     for arch in sorted({r["arch"] for r in data}):
         rs = [r for r in data if r["arch"] == arch]
