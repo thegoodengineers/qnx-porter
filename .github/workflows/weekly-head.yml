@@ -50,6 +50,7 @@ jobs:
           git add results/head/history.csv
           git commit -qm "weekly upstream HEAD: $(date -u +%F)" && git push -q origin data/head-history
       - uses: actions/upload-artifact@v4
+        continue-on-error: true  # the history is already saved; a flaky upload must not fail the run
         if: always()
         with:
           name: head-reports
