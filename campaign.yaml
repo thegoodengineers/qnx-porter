@@ -66,7 +66,7 @@ libraries:
   - {name: msgpack-c, url: https://github.com/msgpack/msgpack-c.git, tag: c-6.1.0, args: [-DMSGPACK_BUILD_TESTS=OFF, -DMSGPACK_BUILD_EXAMPLES=OFF]}
   - {name: tinycbor, url: https://github.com/intel/tinycbor.git, tag: v0.6.0}
   - {name: nanopb, url: https://github.com/nanopb/nanopb.git, tag: 0.4.9, tests: false, note: "build only: its tests use scons and protoc"}
-  - {name: flatcc, url: https://github.com/dvidelabs/flatcc.git, tag: v0.6.1}
+  - {name: flatcc, url: https://github.com/dvidelabs/flatcc.git, tag: v0.6.1, args: [-DFLATCC_TEST=OFF], tests: false, note: "build only: its tests run the just-built flatcc compiler on the build host"}
   - {name: pugixml, url: https://github.com/zeux/pugixml.git, tag: v1.14, args: [-DPUGIXML_BUILD_TESTS=ON]}
   - {name: tinyxml2, url: https://github.com/leethomason/tinyxml2.git, tag: 10.0.0}
   - {name: expat, url: https://github.com/libexpat/libexpat.git, tag: R_2_6_4, subdir: expat, args: [-DEXPAT_BUILD_DOCS=OFF]}
@@ -80,7 +80,7 @@ libraries:
   - {name: miniz, url: https://github.com/richgel999/miniz.git, tag: 3.0.2}
   - {name: libdeflate, url: https://github.com/ebiggers/libdeflate.git, tag: v1.22}
   - {name: xxHash, url: https://github.com/Cyan4973/xxHash.git, tag: v0.8.2, subdir: cmake_unofficial}
-  - {name: BLAKE3, url: https://github.com/BLAKE3-team/BLAKE3.git, tag: 1.5.4, subdir: c, arch_args: {x86_64: [-DBLAKE3_SIMD_TYPE=x86-intrinsics], aarch64le: [-DBLAKE3_SIMD_TYPE=neon-intrinsics]}}
+  - {name: BLAKE3, url: https://github.com/BLAKE3-team/BLAKE3.git, tag: 1.5.4, subdir: c, args: [-DBLAKE3_SIMD_TYPE=none], note: "portable C: its CMake has SIMD flags only for compilers it knows, not qcc"}
   - {name: libtommath, url: https://github.com/libtom/libtommath.git, tag: v1.3.0}
   # ---- crypto and security
   - {name: wolfssl, url: https://github.com/wolfSSL/wolfssl.git, tag: v5.7.4-stable, args: [-DWOLFSSL_EXAMPLES=OFF]}
