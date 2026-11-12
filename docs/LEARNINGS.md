@@ -109,6 +109,35 @@ What each run taught us (all [Verified] on the target):
   re-runs; the patch is kept only if more tests pass. Result on QNX: json-c 25/25, libconfig 1/1 (its binary
   reports `13 tests; 13 passed, 0 failed`).
 
+## 12 Nov 2026: 61 libraries, and what their failing tests were really about
+Each item below was reproduced outside the campaign with a few-line program on the QNX 8.0 target and on
+Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
+- [Verified] QNX `strtod()` is not correctly rounded (51% of 100,000 `%.17g` round trips wrong, up to 4 ulp);
+  `sscanf("%lf")` is. Three libraries' tests hit it: pugixml, jansson (4 tests) and yaml-cpp (1 test).
+  QNX `printf("%.20f")` also truncates the 20th decimal where glibc rounds it.
+- [Verified] QNX `strftime()` writes nothing for `%Ex`, `%EX`, `%Ec` in the C locale; POSIX says they must
+  fall back to `%x`, `%X`, `%c`. That is 2 of fmt's 3 failing tests; the third is `%a` printing `0x9.a52p+7`
+  where glibc prints `0x1.34ap+10`, which C allows (not a bug, the test assumes glibc).
+- [Verified] QNX `fchdir()` fails with ENOTDIR on a directory opened with `open(".", O_RDONLY)`; it works with
+  `O_DIRECTORY`. googletest's QNX-only death-test code does exactly that, so `googletest-death-test-test` and
+  `gtest_repeat_test` abort. With `O_DIRECTORY` added (one line), 61/61 death tests pass on QNX 8.0.
+- [Verified] libsrtp's tests "shuffle" with `qsort()` and a comparator that answers at random (undefined in
+  C). QNX's qsort then writes outside the array (480 of 2,000 calls in a guard-word test; glibc 0), which
+  explains all three crashing libsrtp tests. The fix belongs in libsrtp's test helper, not in QNX.
+- [Verified] Test-harness gaps, now fixed in the agent: `cmake -E copy_if_different` setup steps (libjpeg-turbo:
+  8 of them feed 410 tests) now run as the QNX shell commands that do the same; the target had no resolv.conf
+  (static address, dhcpcd never writes it), so libevent's evdns test found no name server.
+- [Verified] New build rules: `wcswidth-compat` (flac; QNX libc has `wcwidth` only), `qcc-sysroot` (libpng's
+  own script passes `--sysroot`, which qcc rejects), and stub archives are now visible to `find_library()`
+  (libccd stopped at "Could NOT find required library librt").
+- [Not investigated yet] libevent `main/fork`: after a forked child exits, the parent's event loop never
+  sees its own `SIGUSR1`, and the test's alarm ends it. pcre2 test 8 (internal code sizes) and pcre2grep
+  output differences.
+- [Verified cause, environment] zstd: `zstreamtest` sets `hashLog = 29` (a hash table of about 2 GiB) and
+  gets "Allocation error : not enough memory" on our 2 GiB QEMU target; `fuzzer` reached 5,151 of 30,000
+  iterations before the runner's 300 s cap. Neither is a porting problem; a larger target would tell more.
+- Expected not to port, and reported as such: libgpiod (Linux GPIO character device) and can-utils (SocketCAN).
+
 ## Still to do
 1. Offer the two test fixes upstream (json-c, libconfig): `printf("%s", NULL)` in their tests is undefined C.
 2. Runs with the language model on for the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).
