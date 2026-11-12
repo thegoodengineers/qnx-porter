@@ -8,7 +8,7 @@
 
 target: root@172.31.1.11      # QEMU image from mkqnximage (SETUP.md step 4); null = build only
 target_dir: /data/qnx-porter  # writable partition on that image
-arch: x86_64
+arch: x86_64           # python3 scripts/run_campaign.py --arch aarch64le for the other one
 max_rounds: 15
 skip_ported: false   # true: skip libraries oss.qnx.com already lists
 
@@ -80,7 +80,7 @@ libraries:
   - {name: miniz, url: https://github.com/richgel999/miniz.git, tag: 3.0.2}
   - {name: libdeflate, url: https://github.com/ebiggers/libdeflate.git, tag: v1.22}
   - {name: xxHash, url: https://github.com/Cyan4973/xxHash.git, tag: v0.8.2, subdir: cmake_unofficial}
-  - {name: BLAKE3, url: https://github.com/BLAKE3-team/BLAKE3.git, tag: 1.5.4, subdir: c}
+  - {name: BLAKE3, url: https://github.com/BLAKE3-team/BLAKE3.git, tag: 1.5.4, subdir: c, arch_args: {x86_64: [-DBLAKE3_SIMD_TYPE=x86-intrinsics], aarch64le: [-DBLAKE3_SIMD_TYPE=neon-intrinsics]}}
   - {name: libtommath, url: https://github.com/libtom/libtommath.git, tag: v1.3.0}
   # ---- crypto and security
   - {name: wolfssl, url: https://github.com/wolfSSL/wolfssl.git, tag: v5.7.4-stable, args: [-DWOLFSSL_EXAMPLES=OFF]}

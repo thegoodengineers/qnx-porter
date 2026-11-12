@@ -36,6 +36,7 @@ def load(path: Path) -> dict:
             raise SystemExit(f"{path}: library {lib} is missing {', '.join(missing)}")
         lib["tag"] = str(lib["tag"])
         lib["args"] = [str(a) for a in lib.get("args", [])]
+        lib["arch_args"] = {k: [str(a) for a in v] for k, v in (lib.get("arch_args") or {}).items()}
         lib["tests"] = lib.get("tests", True) is not False
         lib["note"] = str(lib.get("note", ""))
         lib["subdir"] = str(lib.get("subdir", ""))
@@ -90,7 +91,9 @@ def error_report(out: Path, lib: dict, arch: str, err: str, minutes: float) -> N
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--campaign", default=str(ROOT / "campaign.yaml"))
-    ap.add_argument("--out", default=str(ROOT / "ports"))
+    ap.add_argument("--out", help="default: ports/ for x86_64, ports-<arch>/ otherwise")
+    ap.add_argument("--arch", help="override campaign.yaml (x86_64 or aarch64le)")
+    ap.add_argument("--target", help="override campaign.yaml: user@host[:port], or 'none' to build only")
     ap.add_argument("--only", help="comma-separated library names")
     ap.add_argument("--no-tests", action="store_true", help="build only, do not use the QNX target")
     ap.add_argument("--no-model", action="store_true", help="deterministic rules only")
@@ -98,6 +101,10 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
 
     c = load(Path(a.campaign))
+    if a.arch:
+        c["arch"] = a.arch
+    if a.target:
+        c["target"] = None if a.target == "none" else a.target
     libs = [lib for lib in c["libraries"] if not a.only or lib["name"] in a.only.split(",")]
     preflight()
     target = None
@@ -115,18 +122,19 @@ def main(argv=None) -> int:
         if c["skip_ported"]:
             libs = [lib for lib in libs if lib["name"] not in ported]
 
-    out = Path(a.out)
+    out = Path(a.out) if a.out else ROOT / ("ports" if c["arch"] == "x86_64" else f"ports-{c['arch']}")
     for i, lib in enumerate(libs, 1):
         print(f"\n=== [{i}/{len(libs)}] {lib['name']} {lib['tag']} ===")
         t0 = time.time()
         try:
             agent.port(lib["url"], lib["tag"], out, arch=c["arch"], target=target if lib["tests"] else None,
-                       max_rounds=c["max_rounds"], use_llm=not a.no_model, extra_args=tuple(lib["args"]),
+                       max_rounds=c["max_rounds"], use_llm=not a.no_model,
+                       extra_args=tuple(lib["args"] + lib["arch_args"].get(c["arch"], [])),
                        name=lib["name"], note=lib["note"], subdir=lib["subdir"])
         except (subprocess.CalledProcessError, OSError, RuntimeError, ValueError) as e:
             print(f"    {lib['name']}: agent error: {e}")
             error_report(out, lib, c["arch"], str(e), (time.time() - t0) / 60)
-    subprocess.run([sys.executable, str(ROOT / "scripts" / "ports_csv.py"), str(out)], check=True)
+    subprocess.run([sys.executable, str(ROOT / "scripts" / "ports_csv.py")], check=True)
     return 0
 
 

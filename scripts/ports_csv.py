@@ -34,20 +34,21 @@ def rows(ports: Path) -> list[dict]:
 
 
 def readme_table(data: list[dict]) -> str:
-    lines = ["| Library | Version | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |",
-             "|---|---|---|---|---|---|---|"]
+    lines = ["| Library | Version | Arch | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |",
+             "|---|---|---|---|---|---|---|---|"]
     for r in data:
         tests = ("not run" if r["tests_total"] == "" else "none built" if r["tests_total"] == 0
                  else f"{r['tests_passed']}/{r['tests_total']}")
-        lines.append(f"| [{r['library']}](ports/{r['library']}/REPORT.md) | {r['version']} | {r['build_result']} "
+        folder = "ports" if r["arch"] == "x86_64" else f"ports-{r['arch']}"
+        lines.append(f"| [{r['library']}]({folder}/{r['library']}/REPORT.md) | {r['version']} | {r['arch']} | {r['build_result']} "
                      f"| {tests} | {r['patches']} ({r['patches_by_rule']} / {r['patches_by_model']}) "
                      f"| {r['minutes']} | {r.get('note', '')} |")
     return "\n".join(lines)
 
 
 def main():
-    ports = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "ports"
-    data = rows(ports)
+    dirs = [Path(sys.argv[1])] if len(sys.argv) > 1 else [ROOT / "ports", ROOT / "ports-aarch64le"]
+    data = [r for d in dirs for r in rows(d)]
     dest = ROOT / "results" / "ports.csv"
     with dest.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
@@ -58,10 +59,13 @@ def main():
     text = re.sub(r"(<!-- results:start -->\n).*?(\n<!-- results:end -->)",
                   lambda m: m[1] + readme_table(data) + m[2], text, flags=re.S)
     readme.write_text(text, encoding="utf-8", newline="\n")
-    built = sum(r["build_result"] == "built" for r in data)
-    tested = [r for r in data if r["tests_total"] != ""]
-    print(f"{len(data)} libraries, {built} built for QNX 8.0; tests ran for {len(tested)}: "
-          f"{sum(r['tests_passed'] for r in tested)}/{sum(r['tests_total'] for r in tested)} passed -> {dest}")
+    for arch in sorted({r["arch"] for r in data}):
+        rs = [r for r in data if r["arch"] == arch]
+        built = sum(r["build_result"] == "built" for r in rs)
+        tested = [r for r in rs if r["tests_total"] != ""]
+        print(f"{arch}: {len(rs)} libraries, {built} built for QNX 8.0; tests ran for {len(tested)}: "
+              f"{sum(r['tests_passed'] for r in tested)}/{sum(r['tests_total'] for r in tested)} passed")
+    print(f"-> {dest}")
 
 
 if __name__ == "__main__":

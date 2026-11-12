@@ -35,5 +35,5 @@ def test_readme_table_shows_not_run_instead_of_zero(tmp_path):
     report(tmp_path, "a")
     report(tmp_path, "b", tests_ran=False)
     table = ports_csv.readme_table(ports_csv.rows(tmp_path))
-    assert "| [a](ports/a/REPORT.md) | v1 | built | 3/4 | 2 (2 / 0) | 1.5 |" in table
+    assert "| [a](ports/a/REPORT.md) | v1 | x86_64 | built | 3/4 | 2 (2 / 0) | 1.5 |" in table
     assert "| not run |" in table
