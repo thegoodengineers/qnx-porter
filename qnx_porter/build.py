@@ -6,7 +6,7 @@ from pathlib import Path
 
 from . import qnx
 
-JOBS = str(os.cpu_count() or 2)
+JOBS = os.environ.get("QNX_PORTER_JOBS") or str(os.cpu_count() or 2)  # fewer on small-memory hosts (C++)
 
 
 def detect(src: Path) -> str:
