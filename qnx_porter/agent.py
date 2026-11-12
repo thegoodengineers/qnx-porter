@@ -228,6 +228,8 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
                           f"@@ -0,0 +1,{len(text.splitlines())} @@\n",
                           *[f"+{ln}\n" for ln in text.splitlines()]])
     job.flags.cflags += f.cflags
+    for k, v in f.settings.items():
+        setattr(job.flags, k, v)
     if f.late:
         job.flags.late += f.late
         if job.arch:  # cross builds: wrappers put these flags after the project's own

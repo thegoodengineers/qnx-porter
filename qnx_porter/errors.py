@@ -27,6 +27,7 @@ UNDEFINED_REF = re.compile(rf"undefined reference to {Q}(?P<symbol>[^'’`]+){Q}
 MULTIPLE_DEF = re.compile(rf"multiple definition of {Q}(?P<symbol>[^'\u2019`]+){Q}")
 MISSING_LIB = re.compile(r"cannot find -l(?P<lib>[\w+.-]+)")
 CMAKE_ERROR = re.compile(r"^CMake Error(?: at (?P<file>[^:]+):(?P<line>\d+))?")
+QCC_OPTION = re.compile(r"^cc: unknown option: '(?P<opt>[^']+)'")
 CONFIGURE_ERROR = re.compile(r"^configure: error: (?P<msg>.*)$")
 MESON_ERROR = re.compile(r"^(?P<file>[^\s:][^:]*):(?P<line>\d+):(?P<col>\d+): ERROR: (?P<msg>.*)$")
 
@@ -86,6 +87,8 @@ def parse(log: str) -> list[Diagnostic]:
         elif (m := CMAKE_ERROR.match(line)):
             body = " ".join(x.strip() for x in lines[i + 1:i + 6] if x.strip())
             add(Diagnostic("cmake_error", body or line, file=m["file"] or "", line=int(m["line"] or 0), raw=line))
+        elif (m := QCC_OPTION.match(line)):
+            add(Diagnostic("qcc_option", line.strip(), symbol=m["opt"], raw=line))
         elif (m := CONFIGURE_ERROR.match(line)):
             add(Diagnostic("configure_error", m["msg"], raw=line))
         elif (m := MESON_ERROR.match(line)):

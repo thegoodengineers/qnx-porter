@@ -116,6 +116,20 @@ def verdict(rc: int | None, out: str, props: dict) -> str:
 
 MISSING_EXEC = re.compile(r"exec (\S+): No such file or directory")
 
+# `cmake -E <cmd>` steps in test suites (copying fixtures, comparing outputs). The target has no cmake, so these
+# portable helpers run as the QNX shell commands that do the same; the log says so.
+CMAKE_E = {"copy": ["cp", "-f"], "copy_if_different": ["cp", "-f"], "remove": ["rm", "-f"], "rm": ["rm", "-rf"],
+           "make_directory": ["mkdir", "-p"], "compare_files": ["cmp", "-s"], "echo": ["echo"],
+           "touch": ["touch"], "true": ["true"], "false": ["false"]}
+
+
+def cmake_e(cmd: list[str]) -> list[str] | None:
+    """The QNX equivalent of a `cmake -E <helper> args` test command, or None if it is not one we translate."""
+    if len(cmd) >= 3 and Path(cmd[0]).name == "cmake" and cmd[1] == "-E" and cmd[2] in CMAKE_E:
+        args = [a for a in cmd[3:] if not (cmd[2] == "rm" and a in ("-f", "-r", "-rf", "-fr"))]
+        return CMAKE_E[cmd[2]] + args
+    return None
+
 
 def ctest_on_target(t: Target, build: Path, work: Path, emulator: str, same_path: bool, log_path: Path,
                     default_timeout: int = 300) -> dict:
@@ -179,7 +193,12 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
             lines.append(f"SKIP  {test['name']} (disabled or not built)\n")
             continue
         limit = int(min(float(props.get("TIMEOUT") or default_timeout), default_timeout))
+        shim = cmake_e(cmd)
+        if shim:
+            cmd = shim
         rc, out = _run_one(t, work, test["cwd"], cmd, same_path, test["env"], limit)
+        if shim:
+            out = f"(cmake -E helper run on QNX as: {' '.join(shim[:2])})\n" + out
         m = MISSING_EXEC.search(out) if rc == 127 else None
         if m and m.group(1) == cmd[0]:
             interp = Path(cmd[0]).name

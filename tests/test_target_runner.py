@@ -81,3 +81,13 @@ def test_missing_interpreters_bash_retries_with_ksh_python_is_not_runnable(tmp_p
     assert any("exec timeout -s KILL 300 ksh /w/run.sh" in c for c in sent)
     log = (tmp_path / "t.log").read_text()
     assert "N/A   spectest (needs python3.10 on the target)" in log and "run with ksh" in log
+
+
+def test_cmake_e_helpers_run_as_qnx_shell_commands():
+    # libjpeg-turbo 3.0.4: 8 `cmake -E copy_if_different` steps feed 410 dependent tests.
+    from qnx_porter.target import cmake_e
+    assert cmake_e(["/usr/bin/cmake", "-E", "copy_if_different", "a.ppm", "b.ppm"]) == ["cp", "-f", "a.ppm", "b.ppm"]
+    assert cmake_e(["/usr/bin/cmake", "-E", "compare_files", "x", "y"]) == ["cmp", "-s", "x", "y"]
+    assert cmake_e(["/usr/bin/cmake", "-E", "rm", "-f", "z"]) == ["rm", "-rf", "z"]
+    assert cmake_e(["/usr/bin/cmake", "-E", "tar", "cf", "z"]) is None
+    assert cmake_e(["/w/build/test1"]) is None

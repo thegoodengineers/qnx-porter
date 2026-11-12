@@ -273,3 +273,22 @@ def test_strict_cxx_mode_hides_posix_stat(tmp_path):
            "'stat::stat(const std::__2::basic_string<char>::value_type*, stat*)'\n")
     [f] = run(tmp_path, {"os-inl.h": "#include <sys/stat.h>\n"}, log)
     assert f.rule == "qnx-source" and f.cflags == ["-D_QNX_SOURCE"]
+
+
+def test_wcswidth_is_missing_from_qnx_libc(tmp_path):
+    # Real ld output from porting flac 1.4.3 (QNX 8.0 libc exports wcwidth, not wcswidth).
+    [f] = run(tmp_path, {}, "utils.c:223:(.text+0x166): undefined reference to `wcswidth'\n")
+    assert f.rule == "wcswidth-compat" and "#define wcswidth qnx_porter_wcswidth" in f.compat["qnx-wcswidth.h"]
+    if CC:
+        (tmp_path / "h.h").write_text(f.compat["qnx-wcswidth.h"])
+        (tmp_path / "w.c").write_text('#include <stdio.h>\nint main(void) { return wcswidth(L"abc", 3) != 3; }\n')
+        exe = tmp_path / "w"
+        assert subprocess.run([CC, "-include", str(tmp_path / "h.h"), str(tmp_path / "w.c"), "-o", str(exe)]).returncode == 0
+        assert subprocess.run([str(exe)]).returncode == 0
+
+
+def test_qcc_rejects_sysroot_from_a_project_script(tmp_path):
+    # Real output from porting libpng 1.6.44: its genout.cmake passes --sysroot to the compiler.
+    log = "cc: unknown option: '--sysroot=/home/u/qnx800/target/qnx'\nCMake Error at scripts/cmake/genout.cmake:87 (message):\n  Failed to generate\n"
+    planned = run(tmp_path, {}, log)
+    assert planned[0].rule == "qcc-sysroot" and planned[0].settings == {"omit_sysroot": True}
