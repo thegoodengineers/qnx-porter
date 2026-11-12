@@ -10,15 +10,29 @@
   "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
   "build_result": "built",
   "rounds": 1,
-  "tests_passed": 0,
+  "tests_passed": 1,
   "tests_total": 1,
   "tests_ran": true,
-  "patches_kept": 0,
-  "patches_by_rule": 0,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
   "patches_by_model": 0,
-  "patches": [],
+  "patches": [
+    {
+      "number": 1,
+      "rule": "printf-null",
+      "source": "rule",
+      "reason": "Crash on QNX: snprintf() at tests/tests.c:99 formats a NULL pointer with %s (backtrace: strlen <- snprintf). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it undefined. Each %s argument of that call now goes through qnx_porter_str(), which prints \"(null)\" like glibc.",
+      "error": "Memory fault (SIGSEGV) in strlen <- printf on QNX",
+      "files": [
+        "tests/tests.c"
+      ],
+      "path": "patches/0001-printf-null-tests-c.patch",
+      "kept": true
+    }
+  ],
   "blocked_on": [],
-  "minutes": 0.4,
+  "minutes": 1.1,
   "note": "",
-  "finished": "2026-11-11T16:21:10+00:00"
+  "crashes": [],
+  "finished": "2026-11-12T02:00:46+00:00"
 }

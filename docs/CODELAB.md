@@ -110,8 +110,11 @@ The log has five stages:
    `CMAKE_CROSSCOMPILING_EMULATOR`.
 5. **report**: `ports/json-c/REPORT.md`.
 
-Our run ended with `24/25 tests passed`. The one failure, `test_json_patch`, is a real "Memory fault" on
-QNX that we have not diagnosed yet: look at the bottom of `ports/json-c/logs/tests.log`.
+Our run printed `24/25 tests passed`, then `fix 0001 [printf-null] Crash on QNX: printf() at
+tests/test_json_patch.c:31 ...` and `after crash fixes: 25/25 tests passed`. The test had crashed on QNX
+("Memory fault"); the agent copied the core dump from the target, read it with the SDP's gdb
+(`logs/crashes.log`), saw `strlen <- printf`, and found the cause: the test prints a NULL string with `%s`,
+which glibc prints as `(null)` and QNX's libc does not. See [LINUX_ISMS.md](LINUX_ISMS.md) row 14g.
 
 Open the toolchain the tool generated:
 ```bash

@@ -1,0 +1,20 @@
+target: QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+=== [1/2] json-c json-c-0.18-20240915 ===
+[1/5] fetch https://github.com/json-c/json-c.git @ json-c-0.18-20240915
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      24/25 tests passed
+      fix 0001 [printf-null] Crash on QNX: printf() at tests/test_json_patch.c:31 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C lea
+      after crash fixes: 25/25 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/json-c/REPORT.md
+=== [2/2] libconfig v1.7.3 ===
+[1/5] fetch https://github.com/hyperrealm/libconfig.git @ v1.7.3
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+      fix 0001 [printf-null] Crash on QNX: snprintf() at tests/tests.c:99 formats a NULL pointer with %s (backtrace: strlen <- snprintf). glibc prints "(null)" for that, QNX's libc faults; C leaves it
+      after crash fixes: 1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libconfig/REPORT.md
+10 libraries, 10 built for QNX 8.0; tests ran for 9: 376/381 passed -> /home/chirag/qnx-porter/results/ports.csv

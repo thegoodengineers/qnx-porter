@@ -6,14 +6,14 @@
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |
-| Library's own tests | 24/25 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
-| Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 0.5 min |
+| Library's own tests | 25/25 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
+| Patches kept | 1 (1 by rule, 0 by model) |
+| Time | 1.4 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |
 |---|---|---|---|---|---|
-| - | - | - | - | - | no changes needed |
+| [0001](patches/0001-printf-null-test-json-patch-c.patch) | printf-null | rule | kept | tests/test_json_patch.c | Crash on QNX: printf() at tests/test_json_patch.c:31 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C leaves it undefined. Each %s argument of that call now goes through qnx_porter_str(), which prints "(null)" like glibc. |
 
 
 
