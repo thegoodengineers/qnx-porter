@@ -1,0 +1,124 @@
+# One core call per library, timed on the QNX target by qnx_porter/rt_bench.py.
+# include_dirs are relative to the library's source tree, or to its build tree when they start with "build".
+# Available in every harness: static unsigned char in[1024] (filled, compressible), out[4096].
+# `call` must return 0 on success.
+
+_json: &json_doc 'static const char DOC[] = "{\"id\":42,\"name\":\"brake-controller\",\"rate_hz\":1000,\"limits\":[0.5,1.25,3.75],\"enabled\":true,\"tags\":{\"bus\":\"can0\",\"node\":7}}";'
+
+json-c:
+  what: parse a 120-byte JSON document and free it
+  include_dirs: [".", "build"]
+  includes: '#include "json.h"'
+  globals: *json_doc
+  call: 'struct json_object *o = json_tokener_parse(DOC); if (!o) return 1; json_object_put(o); return 0;'
+
+yyjson:
+  what: parse a 120-byte JSON document and free it
+  include_dirs: ["src"]
+  includes: '#include "yyjson.h"'
+  globals: *json_doc
+  call: 'yyjson_doc *d = yyjson_read(DOC, sizeof DOC - 1, 0); if (!d) return 1; yyjson_doc_free(d); return 0;'
+
+cJSON:
+  what: parse a 120-byte JSON document and free it
+  include_dirs: ["."]
+  includes: '#include "cJSON.h"'
+  globals: *json_doc
+  call: 'cJSON *j = cJSON_Parse(DOC); if (!j) return 1; cJSON_Delete(j); return 0;'
+
+mbedtls:
+  what: SHA-256 of 1 KB
+  include_dirs: ["include"]
+  includes: '#include "mbedtls/sha256.h"'
+  call: 'return mbedtls_sha256(in, sizeof in, out, 0);'
+
+libsodium:
+  what: BLAKE2b (crypto_generichash) of 1 KB
+  include_dirs: ["src/libsodium/include", "build/src/libsodium/include"]
+  includes: '#include <sodium.h>'
+  setup: 'if (sodium_init() < 0) return 1;'
+  call: 'return crypto_generichash(out, 32, in, sizeof in, NULL, 0);'
+
+zlib:
+  what: compress 1 KB (default level)
+  include_dirs: [".", "build"]
+  includes: '#include "zlib.h"'
+  call: 'uLongf ol = sizeof out; return compress(out, &ol, in, sizeof in) != Z_OK;'
+
+lz4:
+  what: LZ4 compress 1 KB
+  include_dirs: ["lib"]
+  includes: '#include "lz4.h"'
+  call: 'return LZ4_compress_default((const char *)in, (char *)out, sizeof in, sizeof out) <= 0;'
+
+zstd:
+  what: zstd level 1 compress 1 KB
+  include_dirs: ["lib"]
+  includes: '#include "zstd.h"'
+  call: 'return ZSTD_isError(ZSTD_compress(out, sizeof out, in, sizeof in, 1)) != 0;'
+
+miniz:
+  what: deflate 1 KB (mz_compress)
+  include_dirs: [".", "build"]
+  includes: '#include "miniz.h"'
+  call: 'mz_ulong ol = sizeof out; return mz_compress(out, &ol, in, sizeof in) != MZ_OK;'
+
+xxHash:
+  what: XXH64 of 1 KB
+  include_dirs: ["."]
+  includes: '#include "xxhash.h"'
+  globals: 'static volatile XXH64_hash_t sink;'
+  call: 'sink = XXH64(in, sizeof in, 0); return 0;'
+
+BLAKE3:
+  what: BLAKE3 of 1 KB
+  include_dirs: ["c"]
+  includes: '#include "blake3.h"'
+  call: 'blake3_hasher h; blake3_hasher_init(&h); blake3_hasher_update(&h, in, sizeof in); blake3_hasher_finalize(&h, out, 32); return 0;'
+
+cglm:
+  what: 4x4 matrix multiply
+  include_dirs: ["include"]
+  includes: '#include <cglm/cglm.h>'
+  globals: 'static mat4 a = GLM_MAT4_IDENTITY_INIT, b = GLM_MAT4_IDENTITY_INIT, c;'
+  call: 'b[3][0] += 0.001f; glm_mat4_mul(a, b, c); return c[3][0] < 0.0f;'
+
+expat:
+  what: parse a 150-byte XML document
+  include_dirs: ["expat/lib", "build"]
+  includes: '#include "expat.h"'
+  globals: 'static const char XML[] = "<frame id=\"42\" bus=\"can0\"><signal name=\"speed\" unit=\"km/h\">87.5</signal><signal name=\"rpm\">2400</signal></frame>";'
+  call: 'XML_Parser p = XML_ParserCreate(NULL); if (!p) return 1; int ok = XML_Parse(p, XML, sizeof XML - 1, 1); XML_ParserFree(p); return ok != XML_STATUS_OK;'
+
+pcre2:
+  what: match a precompiled regex against a 60-byte line
+  include_dirs: ["build", "src"]
+  cflags: ["-DPCRE2_CODE_UNIT_WIDTH=8", "-DPCRE2_STATIC"]
+  includes: '#include "pcre2.h"'
+  globals: |
+    static pcre2_code *re; static pcre2_match_data *md;
+    static const char LINE[] = "2026-11-12T09:15:02 can0 id=0x1f4 len=8 data=11 22 33 44";
+  setup: 'int e; PCRE2_SIZE o; re = pcre2_compile((PCRE2_SPTR)"id=0x([0-9a-f]+) len=(\\d)", PCRE2_ZERO_TERMINATED, 0, &e, &o, NULL); if (!re) return 1; md = pcre2_match_data_create_from_pattern(re, NULL); if (!md) return 1;'
+  call: 'return pcre2_match(re, (PCRE2_SPTR)LINE, sizeof LINE - 1, 0, 0, md, NULL) < 0;'
+
+msgpack-c:
+  what: pack a 5-field map into a buffer and free it
+  include_dirs: ["include", "build/include", "build"]
+  includes: '#include <msgpack.h>'
+  call: |
+    msgpack_sbuffer sb; msgpack_packer pk; msgpack_sbuffer_init(&sb); msgpack_packer_init(&pk, &sb, msgpack_sbuffer_write);
+    msgpack_pack_map(&pk, 5); msgpack_pack_str(&pk, 2); msgpack_pack_str_body(&pk, "id", 2); msgpack_pack_int(&pk, 42);
+    msgpack_pack_str(&pk, 4); msgpack_pack_str_body(&pk, "rate", 4); msgpack_pack_int(&pk, 1000);
+    msgpack_pack_str(&pk, 3); msgpack_pack_str_body(&pk, "bus", 3); msgpack_pack_str(&pk, 4); msgpack_pack_str_body(&pk, "can0", 4);
+    msgpack_pack_str(&pk, 2); msgpack_pack_str_body(&pk, "on", 2); msgpack_pack_true(&pk);
+    msgpack_pack_str(&pk, 1); msgpack_pack_str_body(&pk, "k", 1); msgpack_pack_double(&pk, 1.25);
+    int bad = sb.size == 0; msgpack_sbuffer_destroy(&sb); return bad;
+
+inih:
+  what: parse a 5-line INI text
+  include_dirs: ["."]
+  includes: '#include "ini.h"'
+  globals: |
+    static const char INI[] = "[can]\nbus=can0\nbitrate=500000\n[node]\nid=7\n";
+    static int handler(void *u, const char *s, const char *n, const char *v) { (void)u; (void)s; (void)n; (void)v; return 1; }
+  call: 'return ini_parse_string(INI, handler, NULL) != 0;'
