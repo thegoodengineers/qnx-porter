@@ -1,0 +1,39 @@
+{
+  "library": "json-c",
+  "url": "https://github.com/json-c/json-c.git",
+  "version": "json-c-0.18-20240915",
+  "commit": "41a55cfcedb54d9c1874f2f0eb07b504091d7e37",
+  "build_system": "cmake",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "build_result": "built",
+  "rounds": 1,
+  "tests_passed": 25,
+  "tests_total": 25,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "printf-null",
+      "source": "rule",
+      "reason": "Crash on QNX: printf() at tests/test_json_patch.c:31 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it undefined. Each %s argument of that call now goes through qnx_porter_str(), which prints \"(null)\" like glibc.",
+      "error": "Memory fault (SIGSEGV) in strlen <- printf on QNX",
+      "files": [
+        "tests/test_json_patch.c"
+      ],
+      "path": "patches/0001-printf-null-test-json-patch-c.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 8.1,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T11:10:53+00:00"
+}

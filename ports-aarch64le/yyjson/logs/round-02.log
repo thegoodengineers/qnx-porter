@@ -1,0 +1,82 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/yyjson/work/src -B /home/chirag/qnx-porter/ports-aarch64le/yyjson/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/yyjson/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/yyjson/work/qnx-run -DYYJSON_BUILD_TESTS=ON
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Add test: test_allocator
+-- Add test: test_err_code
+-- Add test: test_json_merge_patch
+-- Add test: test_json_mut_val
+-- Add test: test_json_patch
+-- Add test: test_json_pointer
+-- Add test: test_json_reader
+-- Add test: test_json_val
+-- Add test: test_json_writer
+-- Add test: test_number
+-- Add test: test_roundtrip
+-- Add test: test_string
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/yyjson/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/yyjson/work/build -j 2 -- -k
+[  3%] Building C object CMakeFiles/yyjson_test_utils.dir/test/util/yy_test_utils.c.o
+[  6%] Building C object CMakeFiles/yyjson.dir/src/yyjson.c.o
+[ 10%] Building C object CMakeFiles/yyjson_test_utils.dir/test/util/goo_double_conv.c.o
+[ 13%] Linking C static library libyyjson_test_utils.a
+[ 13%] Built target yyjson_test_utils
+[ 17%] Linking C static library libyyjson.a
+[ 17%] Built target yyjson
+[ 24%] Building C object CMakeFiles/test_allocator.dir/test/test_allocator.c.o
+[ 24%] Building C object CMakeFiles/test_err_code.dir/test/test_err_code.c.o
+[ 27%] Linking C executable test_allocator
+[ 27%] Built target test_allocator
+[ 31%] Building C object CMakeFiles/test_json_merge_patch.dir/test/test_json_merge_patch.c.o
+[ 34%] Linking C executable test_json_merge_patch
+[ 34%] Built target test_json_merge_patch
+[ 37%] Building C object CMakeFiles/test_json_mut_val.dir/test/test_json_mut_val.c.o
+[ 41%] Linking C executable test_err_code
+[ 41%] Built target test_err_code
+[ 44%] Building C object CMakeFiles/test_json_patch.dir/test/test_json_patch.c.o
+[ 48%] Linking C executable test_json_patch
+[ 48%] Built target test_json_patch
+[ 51%] Building C object CMakeFiles/test_json_pointer.dir/test/test_json_pointer.c.o
+[ 55%] Linking C executable test_json_pointer
+[ 55%] Built target test_json_pointer
+[ 58%] Building C object CMakeFiles/test_json_reader.dir/test/test_json_reader.c.o
+[ 62%] Linking C executable test_json_reader
+[ 62%] Built target test_json_reader
+[ 65%] Building C object CMakeFiles/test_json_val.dir/test/test_json_val.c.o
+[ 68%] Linking C executable test_json_val
+[ 68%] Built target test_json_val
+[ 72%] Building C object CMakeFiles/test_json_writer.dir/test/test_json_writer.c.o
+[ 75%] Linking C executable test_json_writer
+[ 75%] Built target test_json_writer
+[ 79%] Building C object CMakeFiles/test_number.dir/test/test_number.c.o
+[ 82%] Linking C executable test_number
+[ 82%] Built target test_number
+[ 86%] Building C object CMakeFiles/test_roundtrip.dir/test/test_roundtrip.c.o
+[ 89%] Linking C executable test_roundtrip
+[ 89%] Built target test_roundtrip
+[ 93%] Building C object CMakeFiles/test_string.dir/test/test_string.c.o
+[ 96%] Linking C executable test_string
+[ 96%] Built target test_string
+[100%] Linking C executable test_json_mut_val
+[100%] Built target test_json_mut_val

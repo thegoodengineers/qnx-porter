@@ -1,0 +1,12 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/build); every test command runs on root@172.31.1.12 over ssh
+FAIL  pugixml::test (exit 7)
+    Test xpath_xalan_string_8 failed: "string(98.7654321012345)" does not evaluate to "98.7654321012345" in context c at /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src/tests/test_xpath_xalan_2.cpp:298
+    Test xpath_string_string failed: "string(0.5678)" does not evaluate to "0.5678" in context c at /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src/tests/test_xpath_functions.cpp:284
+    Test xpath_long_numbers_stringize failed: test_xpath_string_prefix(c, str_dbl_max, str_dbl_max, 15) is false at /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src/tests/test_xpath.cpp:255
+    Test xpath_long_numbers_parse failed: str_dbl_max does not evaluate to std::numeric_limits<double>::max() in context c at /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src/tests/test_xpath.cpp:226
+    Test dom_fp_roundtrip_double failed: fp_equal(doc.text().as_double(), value) is false at /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src/tests/test_dom_modify.cpp:1884
+    Test dom_fp_double_custom_precision failed: fp_equal(node.text().as_double(), std::numeric_limits<double>::max()) is false at /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src/tests/test_dom_modify.cpp:1830
+    Test dom_fp_roundtrip_min_max_double failed: fp_equal(node.text().as_double(), std::numeric_limits<double>::max()) is false at /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src/tests/test_dom_modify.cpp:1805
+    FAILURE: 7 out of 962 tests failed.
+
+0/1 tests passed on the QNX target

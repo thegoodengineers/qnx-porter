@@ -1,0 +1,28 @@
+Subject: [qnx-porter 0001] printf-null
+Source: deterministic rule
+Reason: Crash on QNX: printf() at tests/test_iter.c:330 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C leaves it undefined. Each %s argument of that call now goes through qnx_porter_str(), which prints "(null)" like glibc.
+Error: Memory fault (SIGSEGV) in strlen <- printf on QNX
+---
+diff --git a/tests/test_iter.c b/tests/test_iter.c
+index 1820d95..acf591b 100644
+--- a/tests/test_iter.c
++++ b/tests/test_iter.c
+@@ -8,6 +8,9 @@
+ #include <capstone/platform.h>
+ #include <capstone/capstone.h>
+ 
++/* qnx-porter: glibc prints "(null)" for a NULL %s argument; QNX's libc faults (it is undefined C). */
++static const char *qnx_porter_str(const char *s) { return s ? s : "(null)"; }
++
+ struct platform {
+ 	cs_arch arch;
+ 	cs_mode mode;
+@@ -327,7 +330,7 @@ struct platform platforms[] = {
+ 			if (detail->groups_count > 0) {
+ 				printf("\tThis instruction belongs to groups: ");
+ 				for (n = 0; n < detail->groups_count; n++) {
+-					printf("%s ", cs_group_name(handle, detail->groups[n]));
++					printf("%s ", qnx_porter_str(cs_group_name(handle, detail->groups[n])));
+ 				}
+ 				printf("\n");
+ 			}

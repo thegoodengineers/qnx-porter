@@ -1,0 +1,19 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  aes_calc_128 (exit 0)
+PASS  aes_calc_256 (exit 0)
+PASS  sha1_driver (exit 0)
+PASS  datatypes_driver (exit 0)
+PASS  cipher_driver (exit 0)
+PASS  kernel_driver (exit 0)
+FAIL  rdbx_driver (exit 139)
+FAIL  replay_driver (exit 1)
+    testing anti-replay database (srtp_rdb_t)...
+    rdb_check_add_unordered failed at index 2147483702
+    failed
+PASS  roc_driver (exit 0)
+PASS  srtp_driver (exit 0)
+PASS  test_srtp (exit 0)
+FAIL  rtpw_test (exit None)
+    timed out after 300 s
+
+9/12 tests passed on the QNX target

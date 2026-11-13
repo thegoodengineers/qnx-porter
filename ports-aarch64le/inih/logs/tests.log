@@ -1,0 +1,3 @@
+$ meson introspect --tests /home/chirag/qnx-porter/ports-aarch64le/inih/work/build; every test command runs on root@172.31.1.12 over ssh
+
+0/0 tests passed on the QNX target

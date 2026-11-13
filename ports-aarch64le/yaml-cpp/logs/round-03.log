@@ -1,0 +1,111 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src -B /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/qnx-run -DYAML_CPP_BUILD_TESTS=ON
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Python: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/build -j 2 -- -k
+Consolidate compiler generated dependencies of target gtest
+[  1%] Building CXX object CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilder.cpp.o
+[  4%] Built target gtest
+Consolidate compiler generated dependencies of target gmock
+[  8%] Built target gmock
+Consolidate compiler generated dependencies of target gtest_main
+[ 11%] Built target gtest_main
+[ 13%] Building CXX object CMakeFiles/yaml-cpp.dir/src/contrib/graphbuilderadapter.cpp.o
+[ 14%] Building CXX object CMakeFiles/yaml-cpp.dir/src/binary.cpp.o
+[ 16%] Building CXX object CMakeFiles/yaml-cpp.dir/src/convert.cpp.o
+[ 18%] Building CXX object CMakeFiles/yaml-cpp.dir/src/depthguard.cpp.o
+Consolidate compiler generated dependencies of target gmock_main
+[ 21%] Built target gmock_main
+[ 22%] Building CXX object CMakeFiles/yaml-cpp.dir/src/directives.cpp.o
+[ 24%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emit.cpp.o
+[ 26%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emitfromevents.cpp.o
+[ 27%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emitter.cpp.o
+[ 29%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emitterstate.cpp.o
+[ 31%] Building CXX object CMakeFiles/yaml-cpp.dir/src/emitterutils.cpp.o
+[ 32%] Building CXX object CMakeFiles/yaml-cpp.dir/src/exceptions.cpp.o
+[ 34%] Building CXX object CMakeFiles/yaml-cpp.dir/src/exp.cpp.o
+[ 36%] Building CXX object CMakeFiles/yaml-cpp.dir/src/memory.cpp.o
+[ 37%] Building CXX object CMakeFiles/yaml-cpp.dir/src/node.cpp.o
+[ 39%] Building CXX object CMakeFiles/yaml-cpp.dir/src/node_data.cpp.o
+[ 40%] Building CXX object CMakeFiles/yaml-cpp.dir/src/nodebuilder.cpp.o
+[ 42%] Building CXX object CMakeFiles/yaml-cpp.dir/src/nodeevents.cpp.o
+[ 44%] Building CXX object CMakeFiles/yaml-cpp.dir/src/null.cpp.o
+[ 45%] Building CXX object CMakeFiles/yaml-cpp.dir/src/ostream_wrapper.cpp.o
+[ 47%] Building CXX object CMakeFiles/yaml-cpp.dir/src/parse.cpp.o
+[ 49%] Building CXX object CMakeFiles/yaml-cpp.dir/src/parser.cpp.o
+[ 50%] Building CXX object CMakeFiles/yaml-cpp.dir/src/regex_yaml.cpp.o
+[ 52%] Building CXX object CMakeFiles/yaml-cpp.dir/src/scanner.cpp.o
+[ 54%] Building CXX object CMakeFiles/yaml-cpp.dir/src/scanscalar.cpp.o
+[ 55%] Building CXX object CMakeFiles/yaml-cpp.dir/src/scantag.cpp.o
+[ 57%] Building CXX object CMakeFiles/yaml-cpp.dir/src/scantoken.cpp.o
+[ 59%] Building CXX object CMakeFiles/yaml-cpp.dir/src/simplekey.cpp.o
+[ 60%] Building CXX object CMakeFiles/yaml-cpp.dir/src/singledocparser.cpp.o
+[ 62%] Building CXX object CMakeFiles/yaml-cpp.dir/src/stream.cpp.o
+[ 63%] Building CXX object CMakeFiles/yaml-cpp.dir/src/tag.cpp.o
+[ 65%] Linking CXX static library libyaml-cpp.a
+[ 65%] Built target yaml-cpp
+Consolidate compiler generated dependencies of target yaml-cpp-sandbox
+[ 67%] Linking CXX executable sandbox
+Consolidate compiler generated dependencies of target yaml-cpp-tests
+[ 68%] Linking CXX executable yaml-cpp-tests
+[ 70%] Built target yaml-cpp-sandbox
+Consolidate compiler generated dependencies of target yaml-cpp-parse
+[ 72%] Linking CXX executable parse
+[ 73%] Built target yaml-cpp-parse
+Consolidate compiler generated dependencies of target yaml-cpp-read
+[ 75%] Linking CXX executable read
+[ 77%] Built target yaml-cpp-read
+[100%] Built target yaml-cpp-tests
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated

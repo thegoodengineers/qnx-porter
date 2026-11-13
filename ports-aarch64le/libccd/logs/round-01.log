@@ -1,0 +1,67 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libccd/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libccd/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libccd/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libccd/work/qnx-run -DBUILD_TESTING=ON
+-- The C compiler identification is QCC 12.2.0
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test COMPILER_SUPPORTS_VISIBILITY
+-- Performing Test COMPILER_SUPPORTS_VISIBILITY - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libccd/work/build
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libccd/work/build -j 2 -- -k
+[  7%] Building C object src/testsuites/cu/CMakeFiles/cu.dir/cu.c.o
+[  7%] Building C object src/CMakeFiles/ccd.dir/ccd.c.o
+[ 11%] Linking C static library libcu.a
+[ 11%] Built target cu
+[ 14%] Building C object src/CMakeFiles/ccd.dir/mpr.c.o
+[ 18%] Building C object src/CMakeFiles/ccd.dir/polytope.c.o
+[ 22%] Building C object src/CMakeFiles/ccd.dir/support.c.o
+[ 25%] Building C object src/CMakeFiles/ccd.dir/vec3.c.o
+[ 29%] Linking C static library libccd.a
+[ 29%] Built target ccd
+[ 33%] Building C object src/testsuites/CMakeFiles/bench.dir/bench.c.o
+[ 37%] Building C object src/testsuites/CMakeFiles/main.dir/main.c.o
+[ 40%] Building C object src/testsuites/CMakeFiles/main.dir/common.c.o
+[ 44%] Building C object src/testsuites/CMakeFiles/main.dir/support.c.o
+[ 48%] Building C object src/testsuites/CMakeFiles/bench.dir/support.c.o
+[ 51%] Building C object src/testsuites/CMakeFiles/main.dir/vec3.c.o
+[ 55%] Linking C executable bench
+[ 55%] Built target bench
+[ 59%] Building C object src/testsuites/CMakeFiles/bench2.dir/bench2.c.o
+[ 62%] Building C object src/testsuites/CMakeFiles/bench2.dir/support.c.o
+[ 66%] Linking C executable bench2
+[ 66%] Built target bench2
+[ 70%] Building C object src/testsuites/CMakeFiles/main.dir/polytope.c.o
+[ 74%] Building C object src/testsuites/CMakeFiles/main.dir/boxbox.c.o
+[ 77%] Building C object src/testsuites/CMakeFiles/main.dir/spheresphere.c.o
+[ 81%] Building C object src/testsuites/CMakeFiles/main.dir/cylcyl.c.o
+[ 85%] Building C object src/testsuites/CMakeFiles/main.dir/boxcyl.c.o
+[ 88%] Building C object src/testsuites/CMakeFiles/main.dir/mpr_boxbox.c.o
+[ 92%] Building C object src/testsuites/CMakeFiles/main.dir/mpr_cylcyl.c.o
+[ 96%] Building C object src/testsuites/CMakeFiles/main.dir/mpr_boxcyl.c.o
+[100%] Linking C executable main
+[100%] Built target main
+/home/chirag/qnx-porter/ports-aarch64le/libccd/work/src/src/testsuites/bench.c:1: warning: "CU_ENABLE_TIMER" redefined
+    1 | #define CU_ENABLE_TIMER
+      | 
+<command-line>: note: this is the location of the previous definition
+/home/chirag/qnx-porter/ports-aarch64le/libccd/work/src/src/testsuites/bench2.c:1: warning: "CU_ENABLE_TIMER" redefined
+    1 | #define CU_ENABLE_TIMER
+      | 
+<command-line>: note: this is the location of the previous definition

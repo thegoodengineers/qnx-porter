@@ -1,0 +1,47 @@
+{
+  "library": "opus",
+  "url": "https://github.com/xiph/opus.git",
+  "version": "v1.5.2",
+  "commit": "ddbe48383984d56acd9e1ab6a090c54ca6b735a6",
+  "build_system": "cmake",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "build_result": "built",
+  "rounds": 1,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ran": true,
+  "patches_kept": 0,
+  "patches_by_rule": 0,
+  "patches_by_model": 0,
+  "patches": [],
+  "blocked_on": [],
+  "minutes": 3.5,
+  "note": "",
+  "tests_not_runnable": [
+    {
+      "name": "test_opus_decode",
+      "needs": "cmake"
+    },
+    {
+      "name": "test_opus_padding",
+      "needs": "cmake"
+    },
+    {
+      "name": "test_opus_api",
+      "needs": "cmake"
+    },
+    {
+      "name": "test_opus_encode",
+      "needs": "cmake"
+    },
+    {
+      "name": "test_opus_extensions",
+      "needs": "cmake"
+    }
+  ],
+  "crashes": [],
+  "finished": "2026-11-13T05:19:49+00:00"
+}

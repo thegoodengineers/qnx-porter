@@ -1,0 +1,15 @@
+Subject: [qnx-porter 0001] link-libsocket
+Source: deterministic rule
+Reason: `__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+Error: /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/src/library/x509_crt.c:2867:(.text+0x860): undefined reference to `__inet_pton'
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -19,5 +19,5 @@
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none
+ # Libraries the agent adds go at the end of every link line, after the objects that need them.
+-set(CMAKE_C_STANDARD_LIBRARIES "")
+-set(CMAKE_CXX_STANDARD_LIBRARIES "")
++set(CMAKE_C_STANDARD_LIBRARIES "-lsocket")
++set(CMAKE_CXX_STANDARD_LIBRARIES "-lsocket")

@@ -185,6 +185,35 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
   1.102.0, `-Zbuild-std` and `qcc` as linker. A hello world, plus 12 of 12 std checks (threads, channels,
   fs, time, TCP/UDP loopback, `process::Command`, env, unwinding), ran on the QNX 8.0 x86_64 target.
 
+## 12–13 Nov 2026: aarch64 on QEMU, 61 libraries
+- [Verified] QNX 8.0 aarch64 on QEMU `virt`, fully emulated: 57 of 61 built, the same 57 as x86_64.
+  1314 of 1350 tests passed, in the 33 libraries whose suites ran at least one test
+  (`results/runs/campaign-aarch64-2.log`; `campaign-aarch64-1.log` is the first attempt, which stopped).
+- [Verified] Three aarch64-only build or crash differences, each now a rule with a test:
+  - **Word size (cmocka):** `cmocka.h` guesses 64-bit only from glibc's `__WORDSIZE` or `__x86_64__`. On
+    aarch64 it assumed 32 bits and redefined `uintptr_t` as `unsigned int`. Rule `wordsize-64` fixes it, and
+    cmocka passes 46/46.
+  - **Unsigned char (yaml-cpp):** plain `char` is unsigned on aarch64, so a test's `{-58}` in a `char` array
+    is a narrowing error there. Rule `signed-char` adds `-fsigned-char`.
+  - **strlen name (json-c):** QNX's aarch64 libc names its strlen frame `__generic_strlen`. The `printf-null`
+    crash triage now recognises it, and json-c goes from 24/25 to 25/25 on aarch64 too.
+- [Verified] Under host overload, ssh to the emulated target timed out ("Connection timed out during banner
+  exchange"). Running the SBOM scan and builds beside it caused that. libjpeg-turbo, flac and nng lost tests
+  that way. Re-run on a quiet host:
+  - libjpeg-turbo 574/574 (564/574 under load);
+  - nng 80/86;
+  - flac 6/10; two of its tests hit the 300 s cap on the emulated CPU.
+
+  Lesson: an emulated target needs the machine to itself.
+- [Verified] Earlier in the run, the target stopped answering, and a DNS outage made 60 of 61 clones fail in
+  seconds. Since then, the campaign retries clones when the network is down, restarts a target that stops
+  answering (`--restart-target`), and continues with `--resume`. A sleeping laptop also pauses WSL and QEMU:
+  12 hours were lost overnight before the sleep setting was changed.
+- Differences from x86_64 that are not explained yet:
+  - libsrtp 9/12 (8/12 on x86_64);
+  - libjpeg-turbo registers 574 tests on aarch64 against 590 on x86_64;
+  - nng 80/86 against 82/86.
+
 ## Still to do
 1. Offer the two test fixes upstream (json-c, libconfig): `printf("%s", NULL)` in their tests is undefined C.
 2. Runs with the language model on for the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).

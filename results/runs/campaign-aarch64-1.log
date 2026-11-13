@@ -1,0 +1,67 @@
+code: 2eda65b
+target: QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le
+
+=== [1/61] json-c json-c-0.18-20240915 ===
+[1/5] fetch https://github.com/json-c/json-c.git @ json-c-0.18-20240915
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      24/25 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/json-c/REPORT.md
+
+=== [2/61] yyjson 0.10.0 ===
+[1/5] fetch https://github.com/ibireme/yyjson.git @ 0.10.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 14 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/yyjson/work/src/test/test_json_writer.c:15:(.text+0x150): undefined reference to `__isinf'
+      fix 0001 [link-libm] `__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      12/12 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/yyjson/REPORT.md
+
+=== [3/61] cmocka cmocka-1.1.7 ===
+[1/5] fetch https://gitlab.com/cmocka/cmocka.git @ cmocka-1.1.7
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/include/cmocka.h:137:28: error: conflicting types for 'uintptr_t'; have 'unsigned int'
+      no rule or model fix left for: /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/include/cmocka.h:137:28: error: conflicting types for 'uintptr_t'; have 'unsigned int'
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/cmocka/REPORT.md
+
+=== [4/61] libcbor v0.11.0 ===
+[1/5] fetch https://github.com/PJK/libcbor.git @ v0.11.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libcbor/REPORT.md
+
+=== [5/61] mbedtls v3.6.2 ===
+[1/5] fetch https://github.com/Mbed-TLS/mbedtls.git @ v3.6.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 23 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/src/library/x509_crt.c:2867:(.text+0x860): undefined reference to `__inet_pton'
+      fix 0001 [link-libsocket] `__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+Traceback (most recent call last):
+  File "/home/chirag/qnx-porter/scripts/run_campaign.py", line 146, in <module>
+    sys.exit(main())
+  File "/home/chirag/qnx-porter/scripts/run_campaign.py", line 134, in main
+    agent.port(lib["url"], lib["tag"], out, arch=c["arch"], target=target if lib["tests"] else None,
+  File "/home/chirag/qnx-porter/qnx_porter/agent.py", line 125, in port
+    tests_passed, tests_total, crashes, not_runnable = _run_tests(job, target, src, bdir, work, env, logs)
+  File "/home/chirag/qnx-porter/qnx_porter/agent.py", line 184, in _run_tests
+    same = target.sync([src, bdir, work / "stubs"] if (work / "stubs").exists() else [src, bdir])
+  File "/home/chirag/qnx-porter/qnx_porter/target.py", line 51, in sync
+    self.ssh(f"mkdir -p {root} && tar -C {root} -xf -", stdin=tar.stdout, check=True, timeout=1800)
+  File "/home/chirag/qnx-porter/qnx_porter/target.py", line 38, in ssh
+    return subprocess.run(["ssh", *SSH_OPTS, "-p", str(self.port), self.host, command], **kw)
+  File "/usr/lib/python3.10/subprocess.py", line 505, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.10/subprocess.py", line 1154, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.10/subprocess.py", line 2047, in _communicate
+    self.wait(timeout=self._remaining_time(endtime))
+  File "/usr/lib/python3.10/subprocess.py", line 1209, in wait
+    return self._wait(timeout=timeout)
+  File "/usr/lib/python3.10/subprocess.py", line 1951, in _wait
+    raise TimeoutExpired(self.args, timeout)
+subprocess.TimeoutExpired: Command '['ssh', '-o', 'BatchMode=yes', '-o', 'StrictHostKeyChecking=no', '-o', 'UserKnownHostsFile=/dev/null', '-o', 'LogLevel=ERROR', '-o', 'ConnectTimeout=15', '-p', '22', 'root@172.31.1.12', 'mkdir -p /data/qnx-porter && tar -C /data/qnx-porter -xf -']' timed out after 1799.9999823819999 seconds

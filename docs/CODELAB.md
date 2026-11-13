@@ -325,6 +325,24 @@ python3 scripts/run_campaign.py --only xxHash,BLAKE3,libtommath,wolfssl,libsrtp,
 ```
 That is what the `=== re-run of ...` sections at the end of `campaign-7.log` are.
 
+Since then the campaign also helps itself:
+- `git clone` retries after 1, 5 and 15 minutes when the error says the network is down. A wrong tag still fails at once.
+- `--resume` skips every library that already has a report other than `error`, so a stopped run continues
+  where it stopped. From `results/runs/campaign-aarch64-2.log`:
+  ```
+  resume: 1 libraries already have a report in /home/chirag/qnx-porter/ports-aarch64le; 60 to go
+  ```
+- `--restart-target CMD` checks, before each library, that the target answers ssh. If it does not, the
+  campaign runs `CMD` (for example `QNX_TARGET_ARCH=aarch64le scripts/qemu_target.sh restart`) and waits for
+  the target to come back. If it stays down, the campaign stops cleanly and tells you to re-run with `--resume`.
+
+For an overnight run on the emulated aarch64 target, use both:
+```bash
+python3 scripts/run_campaign.py --arch aarch64le --target root@172.31.1.12 --resume \
+  --restart-target "QNX_TARGET_ARCH=aarch64le scripts/qemu_target.sh restart"
+```
+Keep the machine from sleeping: a sleeping laptop pauses WSL, QEMU and the run with it.
+
 **oss.qnx.com does not answer.** The campaign keeps the last saved answer and continues:
 ```
 oss.qnx.com check failed (The read operation timed out); using the last saved list in results/oss_listed.json

@@ -1,0 +1,27 @@
+diff --git a/tests/test_json_patch.c b/tests/test_json_patch.c
+index eeb791c..f1811e6 100644
+--- a/tests/test_json_patch.c
++++ b/tests/test_json_patch.c
+@@ -12,6 +12,9 @@
+ #include "json.h"
+ #include "snprintf_compat.h"
+ 
++/* qnx-porter: glibc prints "(null)" for a NULL %s argument; QNX's libc faults (it is undefined C). */
++static const char *qnx_porter_str(const char *s) { return s ? s : "(null)"; }
++
+ #ifndef PATH_MAX
+ #define PATH_MAX 256
+ #endif
+@@ -29,9 +32,9 @@ void test_json_patch_op(struct json_object *jo)
+ 	int ret;
+ 
+ 	printf("Testing '%s', doc '%s' patch '%s' : ",
+-		comment ? comment : error_s,
+-		json_object_get_string(doc),
+-		json_object_get_string(patch));
++		qnx_porter_str(comment ? comment : error_s),
++		qnx_porter_str(json_object_get_string(doc)),
++		qnx_porter_str(json_object_get_string(patch)));
+ 	if (!error && !have_expected) {
+ 		printf("BAD TEST - no expected or error conditions in test: %s\n", json_object_to_json_string(jo));
+ 		assert(0);

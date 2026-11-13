@@ -1,0 +1,11 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/libxml2/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  runtest (exit 0)
+PASS  runsuite (exit 0)
+FAIL  testapi (exit 139)
+PASS  testchar (exit 0)
+PASS  testdict (exit 0)
+PASS  testparser (exit 0)
+PASS  testrecurse (exit 0)
+PASS  testThreads (exit 0)
+
+7/8 tests passed on the QNX target

@@ -1,0 +1,351 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/nng/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  nng.core.aio_test (exit 0)
+PASS  nng.core.buf_size_test (exit 0)
+PASS  nng.core.errors_test (exit 0)
+PASS  nng.core.id_test (exit 0)
+PASS  nng.core.init_test (exit 0)
+PASS  nng.core.list_test (exit 0)
+PASS  nng.core.log_test (exit 0)
+PASS  nng.core.message_test (exit 0)
+PASS  nng.core.reconnect_test (exit 0)
+PASS  nng.core.sock_test (exit 0)
+FAIL  nng.core.sockaddr_test (exit 1)
+    Test nng_sockaddr_ipc:
+      sockaddr_test.c:27: Check strcmp(nng_str_sockaddr(&sa, addr, sizeof(addr)), "/tmp/something") == 0... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.001970 secs
+    
+    Test nng_sockaddr_abstract:
+      sockaddr_test.c:39: Check strcmp(nng_str_sockaddr(&sa, addr, sizeof(addr)), "abstract[something]") == 0... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.000307 secs
+    
+    Test nng_sockaddr_inproc:
+      ERROR: Test interrupted by SIGSEGV.
+    
+    Test nng_sockaddr_in:
+      sockaddr_test.c:64: Check strcmp(nng_str_sockaddr(&sa, addr, sizeof(addr)), "127.0.0.1:80") == 0... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.000943 secs
+    
+    Test nng_sockaddr_in6:
+      ERROR: Test interrupted by SIGSEGV.
+    
+    Test nng_sockaddr_in6 v4 mapped:
+      ERROR: Test interrupted by SIGSEGV.
+    
+    Test nng_sockaddr_in6 link local:
+      ERROR: Test interrupted by SIGSEGV.
+    
+    Test nng_sockaddr_in6 zero:
+      ERROR: Test interrupted by SIGSEGV.
+    
+    Test nng_sockaddr_in6 subnet:
+      ERROR: Test interrupted by SIGSEGV.
+    
+    Test nng_sockaddr_zt:
+      ERROR: Test interrupted by SIGSEGV.
+    
+    Summary:
+      Count of all unit tests:       10
+      Count of run unit tests:       10
+      Count of failed unit tests:     7
+      Count of skipped unit tests:    0
+    FAILED: 7 of 10 unit tests have failed.
+PASS  nng.core.stats_test (exit 0)
+PASS  nng.core.url_test (exit 0)
+PASS  nng.platform.platform_test (exit 0)
+PASS  nng.platform.resolver_test (exit 0)
+FAIL  nng.platform.udp_test (exit 1)
+        NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+      udp_test.c:198: Check nng_udp_open(&u1, &sa1) succeeds... ok
+      udp_test.c:199: Check nng_udp_sockname(u1, &sa1) succeeds... ok
+      udp_test.c:201: Check nng_aio_alloc(&aio1, NULL, NULL) succeeds... ok
+      udp_test.c:205: Check nng_aio_set_iov(aio1, 1, &iov1) succeeds... ok
+      udp_test.c:210: Check nng_aio_result(aio1) fails with Address invalid... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.018856 secs
+    
+    Test udp send ipc address:
+        INFO: NNG-TRAN: Registered transport: inproc
+        INFO: NNG-TRAN: Registered transport: ipc
+        INFO: NNG-TRAN: Registered transport: unix
+        INFO: NNG-TRAN: Registered transport: tcp
+        INFO: NNG-TRAN: Registered transport: tcp4
+        INFO: NNG-TRAN: Registered transport: tcp6
+        INFO: NNG-TRAN: Registered transport: tls+tcp
+        INFO: NNG-TRAN: Registered transport: tls+tcp4
+        INFO: NNG-TRAN: Registered transport: tls+tcp6
+        INFO: NNG-TRAN: Registered transport: ws
+        INFO: NNG-TRAN: Registered transport: ws4
+        INFO: NNG-TRAN: Registered transport: ws6
+        INFO: NNG-TRAN: Registered transport: wss
+        INFO: NNG-TRAN: Registered transport: wss4
+        INFO: NNG-TRAN: Registered transport: wss6
+        INFO: NNG-TRAN: Registered transport: socket
+        NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+      udp_test.c:237: Check nng_udp_open(&u1, &sa1) succeeds... ok
+      udp_test.c:238: Check nng_udp_sockname(u1, &sa1) succeeds... ok
+      udp_test.c:240: Check nng_aio_alloc(&aio1, NULL, NULL) succeeds... ok
+      udp_test.c  ERROR: Test interrupted by SIGABRT.
+    
+    Test udp bogus bind:
+      ERROR: Test interrupted by SIGABRT.
+    
+    Test udp duplicate bind:
+        INFO: NNG-TRAN: Registered transport: inproc
+        INFO: NNG-TRAN: Registered transport: ipc
+        INFO: NNG-TRAN: Registered transport: unix
+        INFO: NNG-TRAN: Registered transport: tcp
+        INFO: NNG-TRAN: Registered transport: tcp4
+        INFO: NNG-TRAN: Registered transport: tcp6
+        INFO: NNG-TRAN: Registered transport: tls+tcp
+        INFO: NNG-TRAN: Registered transport: tls+tcp4
+        INFO: NNG-TRAN: Registered transport: tls+tcp6
+        INFO: NNG-TRAN: Registered transport: ws
+        INFO: NNG-TRAN: Registered transport: ws4
+        INFO: NNG-TRAN: Registered transport: ws6
+        INFO: NNG-TRAN: Registered transport: wss
+        INFO: NNG-TRAN: Registered transport: wss4
+        INFO: NNG-TRAN: Registered transport: wss6
+        INFO: NNG-TRAN: Registered transport: socket
+        NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+      udp_test.c:285: Check nng_udp_open(&u1, &sa) succeeds... ok
+      udp_test.c:286: Check nng_udp_sockname(u1, &sa) succeeds... ok
+      udp_test.c:287: Check nng_udp_open(&u2, &sa) fails with Address in use... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.025115 secs
+    
+    Test udp multicast membership:
+        INFO: NNG-TRAN: Registered transport: inproc
+        INFO: NNG-TRAN: Registered transport: ipc
+        INFO: NNG-TRAN: Registered transport: unix
+        INFO: NNG-TRAN: Registered transport: tcp
+        INFO: NNG-TRAN: Registered transport: tcp4
+        INFO: NNG-TRAN: Registered transport: tcp6
+        INFO: NNG-TRAN: Registered transport: tls+tcp
+        INFO: NNG-TRAN: Registered transport: tls+tcp4
+        INFO: NNG-TRAN: Registered transport: tls+tcp6
+        INFO: NNG-TRAN: Registered transport: ws
+        INFO: NNG-TRAN: Registered transport: ws4
+        INFO: NNG-TRAN: Registered transport: ws6
+        INFO: NNG-TRAN: Registered transport: wss
+        INFO: NNG-TRAN: Registered transport: wss4
+        INFO: NNG-TRAN: Registered transport: wss6
+        INFO: NNG-TRAN: Registered transport: socket
+        NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+      udp_test.c:304: Check nng_udp_open(&u1, &sa) succeeds... ok
+      udp_test.c:305: Check nng_udp_sockname(u1, &sa) succeeds... ok
+      udp_test.c:306: Check nng_udp_multicast_membership(u1, &mc, true) succeeds... ok
+      udp_test.c:307: Check nng_udp_multicast_membership(u1, &mc, false) succeeds... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.024266 secs
+    
+    Test udp multicast send recv:
+        INFO: NNG-TRAN: Registered transport: inproc
+        INFO: NNG-TRAN: Registered transport: ipc
+        INFO: NNG-TRAN: Registered transport: unix
+        INFO: NNG-TRAN: Registered transport: tcp
+        INFO: NNG-TRAN: Registered transport: tcp4
+        INFO: NNG-TRAN: Registered transport: tcp6
+        INFO: NNG-TRAN: Registered transport: tls+tcp
+        INFO: NNG-TRAN: Registered transport: tls+tcp4
+        INFO: NNG-TRAN: Registered transport: tls+tcp6
+        INFO: NNG-TRAN: Registered transport: ws
+        INFO: NNG-TRAN: Registered transport: ws4
+        INFO: NNG-TRAN: Registered transport: ws6
+        INFO: NNG-TRAN: Registered transport: wss
+        INFO: NNG-TRAN: Registered transport: wss4
+        INFO: NNG-TRAN: Registered transport: wss6
+        INFO: NNG-TRAN: Registered transport: socket
+        NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+      udp_test.c:336: Check nng_udp_open(&u1, &sa1) succeeds... ok
+      udp_test.c:337: Check nng_udp_sockname(u1, &sa1) succeeds... ok
+      udp_test.c:338: Check nng_udp_open(&u2, &sa2) succeeds... ok
+      udp_test.c:339: Check nng_udp_sockname(u2, &sa2) succeeds... ok
+      udp_test.c:340: Check nng_udp_multicast_membership(u1, &mc, true) succeeds... ok
+      udp_test.c:341: Check nng_udp_multicast_membership(u2, &mc, true) succeeds... ok
+      udp_test.c:342: Check nng_aio_alloc(&aio1, NULL, NULL) succeeds... ok
+      udp_test.c:343: Check nng_aio_alloc(&aio2, NULL, NULL) succeeds... ok
+      udp_test.c:347: Check nng_aio_set_iov(aio1, 1, &iov1) succeeds... ok
+      udp_test.c:348: Check nng_aio_set_input(aio1, 0, &sa2) succeeds... ok
+      udp_test.c:352: Check nng_aio_set_iov(aio2, 1, &iov2) succeeds... ok
+      udp_test.c:353: Check nng_aio_set_input(aio2, 0, &ra2) succeeds... ok
+      udp_test.c:359: Check nng_aio_result(aio1) succeeds... ok
+      udp_test.c:360: Check nng_aio_result(aio2) succeeds... ok
+      udp_test.c:362: Check multi == multi... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.026330 secs
+    
+    Test udp send v6 from v4:
+        INFO: NNG-TRAN: Registered transport: inproc
+        INFO: NNG-TRAN: Registered transport: ipc
+        INFO: NNG-TRAN: Registered transport: unix
+        INFO: NNG-TRAN: Registered transport: tcp
+        INFO: NNG-TRAN: Registered transport: tcp4
+        INFO: NNG-TRAN: Registered transport: tcp6
+        INFO: NNG-TRAN: Registered transport: tls+tcp
+        INFO: NNG-TRAN: Registered transport: tls+tcp4
+        INFO: NNG-TRAN: Registered transport: tls+tcp6
+        INFO: NNG-TRAN: Registered transport: ws
+        INFO: NNG-TRAN: Registered transport: ws4
+        INFO: NNG-TRAN: Registered transport: ws6
+        INFO: NNG-TRAN: Registered transport: wss
+        INFO: NNG-TRAN: Registered transport: wss4
+        INFO: NNG-TRAN: Registered transport: wss6
+        INFO: NNG-TRAN: Registered transport: socket
+        NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+      udp_test.c:386: Check nng_aio_alloc(&aio1, NULL, NULL) succeeds... ok
+      udp_test.c:387: Check nng_udp_open(&u1, &sa) succeeds... ok
+      udp_test.c:401: Check (rv == NNG_EADDRINVAL) || (rv == NNG_ENOTSUP) || (rv == NNG_EUNREACHABLE)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.023448 secs
+    
+    Summary:
+      Count of all unit tests:        9
+      Count of run unit tests:        9
+      Count of failed unit tests:     2
+      Count of skipped unit tests:    0
+    FAILED: 2 of 9 unit tests have failed.
+PASS  nng.platform.posix_ipcwinsec_test (exit 0)
+PASS  nng.sp.protocol.bus0.bus_test (exit 0)
+PASS  nng.sp.protocol.pair0.pair0_test (exit 0)
+PASS  nng.sp.protocol.pair1.pair1_test (exit 0)
+PASS  nng.sp.protocol.pair1.pair1_poly_test (exit 0)
+PASS  nng.sp.protocol.pipeline0.pull_test (exit 0)
+PASS  nng.sp.protocol.pipeline0.push_test (exit 0)
+PASS  nng.sp.protocol.pubsub0.pub_test (exit 0)
+PASS  nng.sp.protocol.pubsub0.sub_test (exit 0)
+PASS  nng.sp.protocol.pubsub0.xsub_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.req_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.rep_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.xrep_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.xreq_test (exit 0)
+PASS  nng.sp.protocol.survey0.respond_test (exit 0)
+PASS  nng.sp.protocol.survey0.survey_test (exit 0)
+PASS  nng.sp.protocol.survey0.xrespond_test (exit 0)
+PASS  nng.sp.protocol.survey0.xsurvey_test (exit 0)
+PASS  nng.sp.transport.socket.sockfd_test (exit 0)
+PASS  nng.sp.transport.ipc.ipc_test (exit 0)
+PASS  nng.sp.transport.tcp.tcp_test (exit 0)
+PASS  nng.sp.transport.ws.ws_test (exit 0)
+PASS  nng.supplemental.base64_test (exit 0)
+PASS  nng.supplemental.sha1_test (exit 0)
+PASS  nng.supplemental.idhash_test (exit 0)
+PASS  nng.supplemental.wssfile_test (exit 0)
+PASS  nng.supplemental.websocket_test (exit 0)
+PASS  nng.inproc_lat (exit 0)
+PASS  nng.inproc_thr (exit 0)
+PASS  nng.compat.compat.nanomsg.compat_msg_test (exit 0)
+PASS  nng.compat.compat.nanomsg.compat_tcp_test (exit 0)
+PASS  nng.device (exit 0)
+PASS  nng.files (exit 0)
+FAIL  nng.httpclient (exit 2)
+    === RUN: HTTP Client
+    
+      Given a TCP connection to example.com ✔✔✔✘
+      Given a client ✔✔✔
+        One off exchange works ✔✔✘✔✔✔
+        Connection reuse works ✔✔✔✘✔✔✔
+      Client times out ⚠
+      Given a client (chunked) ✔✔✔
+        One off exchange works ✔✔✘✔✔✔
+    
+    
+    Failures:
+    
+      * Assertion Failed (Given a TCP connection to example.com)
+      File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
+      Line: 37
+      Test: nng_aio_result(aio) == 0
+      
+      * Assertion Failed (One off exchange works)
+      File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
+      Line: 37
+      Test: nng_aio_result(aio) == 0
+      
+      * Assertion Failed (Connection reuse works)
+      File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
+      Line: 37
+      Test: nng_aio_result(aio) == 0
+      
+      * Assertion Failed (One off exchange works)
+      File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
+      Line: 37
+      Test: nng_aio_result(aio) == 0
+      
+    
+    
+    29 assertions thus far (one or more sections skipped)
+    
+    --- FAIL: HTTP Client (0.42s)
+    FAIL
+    FAIL    /home/chirag/qnx-porter/ports-aarch64le/nng/work/build/tests/httpclient   0.430s
+PASS  nng.httpserver (exit 0)
+FAIL  nng.inproc (exit None)
+    === RUN: Inproc Transport
+    
+      Given transport ✔✔✔✔
+        Scheme is correct ✔✔✔✔✔✔
+        Connection refused works ✔✔✔✔✔✔✔✔
+        Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
+        Listen and accept ✔✔✔✔✔✔✔✔✔
+        Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
+        Send and recv large data ✔
+    killed on the target after 5 s
+FAIL  nng.ipc (exit None)
+    === RUN: IPC Transport
+    
+      Given transport ✔✔✔✔
+        Scheme is correct ✔✔✔✔✔✔
+        Connection refused works ✔✔✔✔✔✔✔✔
+        Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
+        Listen and accept ✔✔✔✔✔✔✔✔✔
+        Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
+        Send and recv large data ✔
+    killed on the target after 5 s
+PASS  nng.ipcsupp (exit 0)
+PASS  nng.multistress (exit 0)
+PASS  nng.nonblock (exit 0)
+PASS  nng.options (exit 0)
+PASS  nng.pipe (exit 0)
+PASS  nng.pollfd (exit 0)
+PASS  nng.scalability (exit 0)
+PASS  nng.synch (exit 0)
+PASS  nng.tls (exit 0)
+PASS  nng.tcpsupp (exit 0)
+PASS  nng.tcp (exit 0)
+PASS  nng.tcp6 (exit 0)
+FAIL  nng.ws (exit None)
+    === RUN: WebSocket Transport
+    
+      Given transport ✔✔✔✔
+        Scheme is correct ✔✔✔✔✔✔
+        Connection refused works ✔✔✔✔✔✔✔✔
+        Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
+        Listen and accept ✔✔✔✔✔✔✔✔✔
+        Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
+        Send and recv large data ✔
+    killed on the target after 30 s
+PASS  nng.wss (exit 0)
+PASS  nng.reqctx (exit 0)
+PASS  nng.reqstress (exit 0)
+PASS  nng.compat_block (exit 0)
+PASS  nng.compat_bug777 (exit 0)
+PASS  nng.compat_bus (exit 0)
+PASS  nng.compat_cmsg (exit 0)
+PASS  nng.compat_msg (exit 0)
+PASS  nng.compat_iovec (exit 0)
+PASS  nng.compat_device (exit 0)
+PASS  nng.compat_pair (exit 0)
+PASS  nng.compat_pipeline (exit 0)
+PASS  nng.compat_poll (exit 0)
+PASS  nng.compat_reqrep (exit 0)
+PASS  nng.compat_survey (exit 0)
+PASS  nng.compat_reqttl (exit 0)
+PASS  nng.compat_shutdown (exit 0)
+PASS  nng.compat_surveyttl (exit 0)
+PASS  nng.compat_options (exit 0)
+PASS  nng.cplusplus_pair (exit 0)
+
+80/86 tests passed on the QNX target

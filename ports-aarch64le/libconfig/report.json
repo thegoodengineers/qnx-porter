@@ -1,0 +1,39 @@
+{
+  "library": "libconfig",
+  "url": "https://github.com/hyperrealm/libconfig.git",
+  "version": "v1.7.3",
+  "commit": "525922a6b49ca19235cdf307376e7c9c539d1b93",
+  "build_system": "cmake",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "build_result": "built",
+  "rounds": 1,
+  "tests_passed": 1,
+  "tests_total": 1,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "printf-null",
+      "source": "rule",
+      "reason": "Crash on QNX: snprintf() at tests/tests.c:99 formats a NULL pointer with %s (backtrace: strlen <- snprintf). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it undefined. Each %s argument of that call now goes through qnx_porter_str(), which prints \"(null)\" like glibc.",
+      "error": "Memory fault (SIGSEGV) in strlen <- printf on QNX",
+      "files": [
+        "tests/tests.c"
+      ],
+      "path": "patches/0001-printf-null-tests-c.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 3.9,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T12:47:42+00:00"
+}
