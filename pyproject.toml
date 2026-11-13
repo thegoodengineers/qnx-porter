@@ -1,11 +1,37 @@
 [project]
 name = "qnx-porter"
-version = "0.1.0"
-description = "An agent that ports open-source C/C++ libraries to QNX 8.0 and proves each port with the library's own tests"
+dynamic = ["version"]  # from qnx_porter/__init__.py __version__
+description = "Port open-source C/C++ libraries to QNX 8.0 and prove each port by running the library's own tests on a QNX target"
 readme = "README.md"
-license = {text = "Apache-2.0"}
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [{name = "The Good Engineers"}]
 requires-python = ">=3.10"
 dependencies = []
+keywords = ["qnx", "qnx8", "porting", "cross-compile", "embedded", "rtos", "cmake", "meson", "autotools",
+            "c", "c++"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: C",
+    "Programming Language :: C++",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Embedded Systems",
+]
+
+[project.urls]
+Homepage = "https://github.com/thegoodengineers/qnx-porter"
+Source = "https://github.com/thegoodengineers/qnx-porter"
+Documentation = "https://github.com/thegoodengineers/qnx-porter/blob/main/SETUP.md"
+Issues = "https://github.com/thegoodengineers/qnx-porter/issues"
 
 [project.optional-dependencies]
 test = ["pytest>=8", "pyyaml>=5.4"]
@@ -15,14 +41,17 @@ campaign = ["pyyaml>=5.4"]
 qnx-porter = "qnx_porter.cli:main"
 
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]  # 77: SPDX `license` string and `license-files` (PEP 639)
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["qnx_porter"]
+packages = ["qnx_porter", "qnx_porter.brokenlib"]  # brokenlib holds data only; listed so setuptools ships it
+
+[tool.setuptools.dynamic]
+version = {attr = "qnx_porter.__version__"}
 
 [tool.setuptools.package-data]
-qnx_porter = ["brokenlib/*"]
+qnx_porter = ["brokenlib/**"]  # the deliberately broken library `qnx-porter selftest` ports
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

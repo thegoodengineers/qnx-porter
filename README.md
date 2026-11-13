@@ -286,6 +286,7 @@ Error: x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
   ([results/candidates_check.csv](results/candidates_check.csv)).
 
 ## Quick start
+Install: `python3 -m pip install --user qnx-porter` (from PyPI), or from a clone as below.
 ```bash
 python3 -m pip install --user --upgrade pip   # Ubuntu 22.04's pip 22 cannot do editable installs
 python3 -m pip install --user -e ".[test]"
