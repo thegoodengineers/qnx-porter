@@ -8,9 +8,9 @@ block, sleep or lock on the path you call. `scripts/rt_report.py` answers two qu
 2. **How long does one core call take on QNX, and how much worse does it get under load?** A benchmark built with
    `qcc` and run on the QNX target (`qnx_porter/rt_bench.py`, calls in `bench/specs.yaml`).
 
-No latency figure is recorded in this repository yet. `results/rt_scan.csv` is the output of the static scan;
-`results/rt.csv` and `results/rt/<arch>/<lib>.json` appear only after a run on a target, and only those files are a
-source for any latency number.
+The results of the run on the x86_64 QEMU target are in [RT_RESULTS.md](RT_RESULTS.md). `results/rt_scan.csv` is
+the output of the static scan; `results/rt.csv` and `results/rt/<arch>/<lib>.json` are written by a run on a target,
+and only those files are a source for any latency number.
 
 ## Part 1: static hazard scan
 

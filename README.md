@@ -2,11 +2,63 @@
 
 [![tests](https://github.com/thegoodengineers/qnx-porter/actions/workflows/test.yml/badge.svg)](https://github.com/thegoodengineers/qnx-porter/actions/workflows/test.yml)
 
-**Point it at an open-source C/C++ library. It builds the library for QNX 8.0, fixes what breaks,
-and proves the port by running the library's own tests on a QNX 8.0 target.**
+**qnx-porter cross-compiles an open-source C/C++ library or Rust crate for QNX 8.0 with the SDP's `qcc`, fixes
+what breaks with one reviewable patch per change, and counts the port only when the library's own tests pass on
+a QNX 8.0 target.**
 
 Built for the [QNX Global Hackathon](https://qnx.devpost.com/) (Developer Tooling & Host Tools) by
 Chirag, Bhumika, Ayush and Abhijeet (The Good Engineers).
+
+## Results at a glance
+Every target is QNX 8.0 in QEMU: x86_64 under KVM, and aarch64 on QEMU `virt` (emulated). No hardware was used.
+Each line links the generated file its numbers come from.
+- **C/C++ libraries, x86_64 and aarch64 on QEMU:** how many built, and how many of their own tests passed on
+  QNX 8.0, is the [headline](#for-judges-start-here), written by `scripts/ports_csv.py`. Every library, test
+  count and patch: [Results](#results-on-qnx-80) and [`results/ports.csv`](results/ports.csv).
+- **The language-model step, measured** ([docs/MODEL_STEP.md](docs/MODEL_STEP.md)): no rule could build libuv
+  or libwebsockets at their 2024 pins; with the model step, "2 of the 2 libraries the rules could not build now
+  build. Model patches kept: 2, reverted: 0." The model's libuv fix makes the same two changes as upstream
+  libuv's own QNX change, [PR #4801](https://github.com/libuv/libuv/pull/4801), which the model never saw.
+- **Rust crates** ([docs/rust/CRATES.md](docs/rust/CRATES.md)): x86_64, 21 of 22 crates built and 2751 of 2764
+  of their own tests passed; aarch64 on QEMU `virt`, 21 of 22 built and 2721 of 2733 passed.
+- **Real-time** ([docs/RT_RESULTS.md](docs/RT_RESULTS.md)): a static hazard scan of every library, and the
+  latency of one call for 14 libraries at SCHED_FIFO priority 60: idle, under load, and under load with the
+  measuring thread isolated by a QNX runmask. zlib, the one library where isolation at least halved loaded p99,
+  went from 139.248 to 24.535 us. Measured in QEMU on a laptop: it ranks libraries, it guarantees no latency.
+- **Against QNX's own ports** ([comparison](docs/related/qnx-ports-comparison.md)): library by library against
+  QNX's hand-made qnx-ports recipes: where qnx-porter found the same QNX change on its own, and where QNX fixed
+  what our run only reported.
+- **Recipes for QNX's build-files** ([recipes/BUILD_CHECK.md](recipes/BUILD_CHECK.md)): generated in
+  qnx-ports/build-files layout for CMake ports QNX does not have, each built with QNX's recursive make.
+- **SBOM and licences** ([docs/LICENCES.md](docs/LICENCES.md)): an SPDX SBOM per port with our `qnx.patch` and
+  its hash ([example](ports/mbedtls/sbom.spdx.json)), and a copyleft flag per library.
+- **Codelab** ([web page](https://thegoodengineers.github.io/qnx-porter/codelab-port-a-library.html),
+  [source](docs/codelab/port-a-library.md)): port a CMake C library to QNX 8.0 and run its own tests in QEMU.
+- **Install:** `python3 -m pip install --user qnx-porter`. **Website:**
+  [thegoodengineers.github.io/qnx-porter](https://thegoodengineers.github.io/qnx-porter/).
+
+Not done: no real hardware; the upstream reports and pull requests are drafted, not sent. Everything else that
+is missing, with numbers: [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
+
+## For judges, start here
+- **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
+  Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.
+- **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
+- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->aarch64le: 57 of 61 libraries built for QNX 8.0; 1314 of 1350 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 27 patches, 27 by rules (29 of the 31 libraries oss.qnx.com does not list built); x86_64: 57 of 61 libraries built for QNX 8.0; 1332 of 1366 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 25 patches, 25 by rules (29 of the 31 libraries oss.qnx.com does not list built).<!-- headline:end -->
+  See [Results](#results-on-qnx-80).
+- **Results:** [`results/ports.csv`](results/ports.csv), written by `scripts/ports_csv.py` from each
+  port's own `ports/<library>/report.json`. No number in this README or the video comes from anywhere else.
+- **Every patch the agent made:** `ports/<library>/patches/*.patch`, each with the rule, the reason and
+  the exact compiler error it answers. `ports/<library>/REPORT.md` is the summary.
+- **Which libraries QNX already ships:** the `on_oss_qnx_com` column of `results/ports.csv` (the campaign
+  queries all of oss.qnx.com on every run). The first ten candidates were chosen as new to QNX:
+  [`results/candidates_check.csv`](results/candidates_check.csv), written by `scripts/check_candidates.py`.
+- **Checked against QNX's own hand-made ports:** 21 of our libraries also have a recipe in
+  [qnx-ports](https://github.com/qnx-ports). [docs/related/qnx-ports-comparison.md](docs/related/qnx-ports-comparison.md)
+  compares them library by library. It covers where we found the same QNX change, where QNX fixed something our
+  run only reported, and where the two sides differ.
+- Setup: [SETUP.md](SETUP.md). Tutorial: [docs/CODELAB.md](docs/CODELAB.md).
+- Codelab: [Port a CMake C library to QNX 8.0 and run its own tests on a QEMU target](docs/codelab/port-a-library.md) ([web page](https://thegoodengineers.github.io/qnx-porter/codelab-port-a-library.html)).
 
 ## Why it matters
 - QNX 8.0 is free for non-commercial use, but most open-source C/C++ libraries have never been built
@@ -53,26 +105,6 @@ The two meet in three places:
   ([recipes/build-files/](recipes/build-files/)).
 - The draft pull request text is in [docs/upstream/](docs/upstream/qnx-ports-build-files-PR.md). It has not
   been sent.
-
-## For judges, start here
-- **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
-  Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.
-- **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
-- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->aarch64le: 57 of 61 libraries built for QNX 8.0; 1314 of 1350 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 27 patches, 27 by rules (29 of the 31 libraries oss.qnx.com does not list built); x86_64: 57 of 61 libraries built for QNX 8.0; 1332 of 1366 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 25 patches, 25 by rules (29 of the 31 libraries oss.qnx.com does not list built).<!-- headline:end -->
-  See [Results](#results-on-qnx-80).
-- **Results:** [`results/ports.csv`](results/ports.csv), written by `scripts/ports_csv.py` from each
-  port's own `ports/<library>/report.json`. No number in this README or the video comes from anywhere else.
-- **Every patch the agent made:** `ports/<library>/patches/*.patch`, each with the rule, the reason and
-  the exact compiler error it answers. `ports/<library>/REPORT.md` is the summary.
-- **Which libraries QNX already ships:** the `on_oss_qnx_com` column of `results/ports.csv` (the campaign
-  queries all of oss.qnx.com on every run). The first ten candidates were chosen as new to QNX:
-  [`results/candidates_check.csv`](results/candidates_check.csv), written by `scripts/check_candidates.py`.
-- **Checked against QNX's own hand-made ports:** 21 of our libraries also have a recipe in
-  [qnx-ports](https://github.com/qnx-ports). [docs/related/qnx-ports-comparison.md](docs/related/qnx-ports-comparison.md)
-  compares them library by library. It covers where we found the same QNX change, where QNX fixed something our
-  run only reported, and where the two sides differ.
-- Setup: [SETUP.md](SETUP.md). Tutorial: [docs/CODELAB.md](docs/CODELAB.md).
-- Codelab: [Port a CMake C library to QNX 8.0 and run its own tests on a QEMU target](docs/codelab/port-a-library.md) ([web page](https://thegoodengineers.github.io/qnx-porter/codelab-port-a-library.html)).
 
 ## Results on QNX 8.0
 61 libraries, ported by `scripts/run_campaign.py` with QNX SDP 8.0 (build 141, qcc 12.2.0) for two
@@ -231,7 +263,8 @@ reproducers are in [docs/qnx-reports/](docs/qnx-reports/):
   broker (paho), cmake on the target (libpng's tests are CMake scripts).
 - **Did not build** (4): libgpiod and can-utils use Linux-only kernel interfaces, as expected. libuv
   (`struct qtime_entry` has no `nsec` in QNX 8.0) and libwebsockets (`TCPCTL_KEEPCNT`) stop on errors no rule
-  covers yet. QNX's own ports of these two libraries change exactly those lines.
+  covers yet. QNX's own ports of these two libraries change exactly those lines. With the language-model step
+  on, both build: [docs/MODEL_STEP.md](docs/MODEL_STEP.md).
 
 **How we got here** (each line is the summary the campaign script printed; logs in [`results/runs/`](results/runs/)):
 
@@ -309,9 +342,11 @@ All 35 patterns, where each QNX fact comes from, and the test for each:
 is never rewritten by a rule; it goes to the model with a QNX-specific hint, or is reported as blocked.
 
 **The model is optional and checked.** Set `QNX_PORTER_API_KEY` and `QNX_PORTER_MODEL` (any
-OpenAI-compatible endpoint, set with `QNX_PORTER_BASE_URL`). It must answer with a unified diff and
+chat-completions endpoint, set with `QNX_PORTER_BASE_URL`). It must answer with a unified diff and
 a one-sentence reason. The diff must pass `git apply --check`; after the rebuild, if the error it targeted
-is still there or the error count grew, the agent reverts it and marks it `reverted` in the report.
+is still there or the error count grew, the agent reverts it and marks it `reverted` in the report. What it
+did on the libraries the rules could not build, and how its fixes compare with upstream's own QNX changes:
+[docs/MODEL_STEP.md](docs/MODEL_STEP.md).
 
 ## Evidence of QNX use
 The path from "a git URL" to "tests passed on QNX 8.0", function by function:
@@ -321,12 +356,18 @@ The path from "a git URL" to "tests passed on QNX 8.0", function by function:
 | 1. Find the SDP | sources `~/qnx800/qnxsdp-env.sh` to get `QNX_HOST` and `QNX_TARGET` | [`qnx.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/qnx.py) `sdp_env()` |
 | 2. Check it | runs `qcc -V` and looks for `gcc_ntox86_64`; checks the `x86_64-pc-nto-qnx8.0.0-gcc` drivers | `qnx.py` `doctor()` (CLI: `qnx-porter doctor`) |
 | 3. Write the QNX toolchain | CMake: `CMAKE_SYSTEM_NAME QNX`, `CMAKE_C_COMPILER $QNX_HOST/usr/bin/qcc`, `CMAKE_C_COMPILER_TARGET gcc_ntox86_64`, `CMAKE_SYSROOT $QNX_TARGET`. Meson: a cross file with `system = 'qnx'`. Autotools: `--host=x86_64-pc-nto-qnx8.0.0` | `qnx.py` `cmake_toolchain()`, `meson_cross()`, `gnu_env()`, `ARCHES`; saved per port as `ports/<library>/qnx-toolchain.cmake` |
-| 4. Invoke qcc | the configure and build commands that drive qcc through that toolchain; output goes to `ports/<library>/logs/round-NN.log` | [`build.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/build.py) `Job.steps()` builds the commands, `run()` executes them; called from [`agent.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/agent.py) `port()` |
-| 5. Fix what QNX rejects | 35 Linux-isms and the QNX 8.0 answer to each (libsocket, libfsnotify, libc-provided pthread/rt/dl, `MAP_ANON`, `pthread_setname_np`, `<process.h>`, `_QNX_SOURCE`, ...), sourced from QNX's 8.0 documentation | [`fixes.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/fixes.py) `_rule()`, [`linuxisms.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/linuxisms.py); sources per fact in [docs/LINUX_ISMS.md](docs/LINUX_ISMS.md) |
-| 6. Start the QNX target | QEMU image made by QNX's `mkqnximage --type=qemu --arch=x86_64` from the SDP | [SETUP.md](SETUP.md) step 4 |
-| 7. Run tests on QNX | copies the build to the target (`tar` over ssh), then ctest / meson test / make check run every test binary on QNX through a generated wrapper (`CMAKE_CROSSCOMPILING_EMULATOR`, meson `exe_wrapper`, automake `LOG_COMPILER`) | [`target.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/target.py) `Target.sync()`, `write_wrapper()`, `remote_command()`, `main()`; output `ports/<library>/logs/tests.log` |
-| 8. Record the target | `uname -a` from the QNX target in every report | `target.py` `Target.uname()`; `ports/<library>/report.json` field `target` |
-| 9. One command for all of it | stops early if `qcc` or the target is missing | [`scripts/run_campaign.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/scripts/run_campaign.py) `preflight()`, `check_target()` |
+| 4. aarch64 | the same toolchain with `qcc -Vgcc_ntoaarch64le` and the `aarch64-unknown-nto-qnx8.0.0` triplet | `qnx.py` `ARCHES["aarch64le"]`; saved per port as [`ports-aarch64le/<library>/qnx-toolchain.cmake`](ports-aarch64le/zlib/qnx-toolchain.cmake); the target's `uname -a` (`QEMU_virt aarch64le`) is in each `report.json` |
+| 5. Invoke qcc | the configure and build commands that drive qcc through that toolchain; output goes to `ports/<library>/logs/round-NN.log` | [`build.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/build.py) `Job.steps()` builds the commands, `run()` executes them; called from [`agent.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/agent.py) `port()` |
+| 6. Fix what QNX rejects | 35 Linux-isms and the QNX 8.0 answer to each (libsocket, libfsnotify, libc-provided pthread/rt/dl, `MAP_ANON`, `pthread_setname_np`, `<process.h>`, `_QNX_SOURCE`, ...), sourced from QNX's 8.0 documentation | [`fixes.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/fixes.py) `_rule()`, [`linuxisms.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/linuxisms.py); sources per fact in [docs/LINUX_ISMS.md](docs/LINUX_ISMS.md) |
+| 7. Start the QNX target | QEMU image made by QNX's `mkqnximage --type=qemu --arch=x86_64` (or `aarch64le`) from the SDP | [SETUP.md](SETUP.md) step 4; [`scripts/qemu_target.sh`](scripts/qemu_target.sh) |
+| 8. Run tests on QNX | copies the build to the target (`tar` over ssh), then ctest / meson test / make check run every test binary on QNX through a generated wrapper (`CMAKE_CROSSCOMPILING_EMULATOR`, meson `exe_wrapper`, automake `LOG_COMPILER`) | [`target.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/qnx_porter/target.py) `Target.sync()`, `write_wrapper()`, `remote_command()`, `main()`; output `ports/<library>/logs/tests.log` |
+| 9. QNX path-space links | the build tree appears on the target at its host path through QNX's `ln -sP`, so generated test scripts with absolute paths run unchanged | [`target.py`](qnx_porter/target.py) `link_command()`, called from `Target.sync()` |
+| 10. Run as another user | suites that refuse root (libuv) run through QNX's `on -u <user>` (`run_as` in [`campaign.yaml`](campaign.yaml)); QNX's `timeout -s KILL` caps each test | `target.py` `remote_command()`; output [`ports-model/libuv/logs/tests.log`](ports-model/libuv/logs/tests.log) |
+| 11. Crash triage | copies core dumps from the target (written by QNX's `dumper` in the `mkqnximage` image) and reads them with the SDP's own gdb (`x86_64-nto-qnx8.0.0-gdb`, `aarch64-nto-qnx8.0.0-gdb`) against the QNX target libraries | [`crash.py`](qnx_porter/crash.py) `collect()`, `backtrace()`, `printf_null()`; output [`ports/json-c/logs/crashes.log`](ports/json-c/logs/crashes.log) |
+| 12. Record the target | `uname -a` from the QNX target in every report | `target.py` `Target.uname()`; `ports/<library>/report.json` field `target` |
+| 13. One command for all of it | stops early if `qcc` or the target is missing | [`scripts/run_campaign.py`](https://github.com/thegoodengineers/qnx-porter/blob/main/scripts/run_campaign.py) `preflight()`, `check_target()` |
+| 14. Real-time harness | a C harness built with `qcc`, run on the target: `SCHED_FIFO` priority 60 (`pthread_setschedparam`), CPU isolation with `ThreadCtl(_NTO_TCTL_RUNMASK)`, timing with `ClockCycles()` and `SYSPAGE_ENTRY(qtime)->cycles_per_sec` | [`rt_bench.py`](qnx_porter/rt_bench.py) `BENCH_C`, `compile_bench()`, `run_bench()`; output `results/rt/x86_64/<library>.json`, summarised in [docs/RT_RESULTS.md](docs/RT_RESULTS.md) |
+| 15. Rust crates | cargo builds `std` with `-Zbuild-std` for `x86_64-pc-qnx` / `aarch64-unknown-qnx` and uses the SDP's `qcc` / `q++` for C code | [`crate.py`](qnx_porter/crate.py) `cargo_env()`, `build_tests()`, `run_tests()`; output `ports-rust*/<crate>/logs/tests.log` |
 
 Real output from our runs (11 Nov 2026):
 ```
@@ -381,6 +422,7 @@ Build and run requirements: **QNX SDP 8.0**, target **x86_64 QEMU** or **aarch64
 works, but we tested only these two), toolchain **qcc / GCC from SDP 8.0**, host **Ubuntu 22.04/24.04 or WSL2**. Details: [SETUP.md](SETUP.md).
 
 ## Known limits
+The full list, with numbers: [docs/LIMITATIONS.md](docs/LIMITATIONS.md). In short:
 - Linux host only (WSL2 on Windows), because QNX's QEMU tooling is Ubuntu-only.
 - Tests that need a network peer or root-only devices are counted as they run; nothing is excluded by hand.
 - A rule never rewrites Linux-only code (epoll, inotify, ...). That is the model's job, or a person's.
