@@ -1,0 +1,39 @@
+{
+  "library": "cmocka",
+  "url": "https://gitlab.com/cmocka/cmocka.git",
+  "version": "cmocka-1.1.7",
+  "commit": "a01cc69ee9536f90e57c61a198f2d1944d3d4313",
+  "build_system": "cmake",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "build_result": "built",
+  "rounds": 2,
+  "tests_passed": 46,
+  "tests_total": 46,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "wordsize-64",
+      "source": "rule",
+      "reason": "The library guesses the word size from glibc's __WORDSIZE, else from __x86_64__, else assumes 32 bits (cmocka.h), and so redefines (u)intptr_t as a 32-bit type on aarch64. QNX 8.0's x86_64 and aarch64le targets are both LP64 and QNX's headers never define __WORDSIZE, so define it as 64.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/include/cmocka.h:137:28: error: conflicting types for 'uintptr_t'; have 'unsigned int'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-wordsize-64.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 2.6,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T11:50:06+00:00"
+}

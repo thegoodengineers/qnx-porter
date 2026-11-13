@@ -73,7 +73,7 @@ def frames(bt: str) -> list[tuple[str, str, int]]:
 def printf_null(bt: str, src: Path, in_tree) -> tuple[str, str, str] | None:
     """(rel path, reason, new text) if the crash is a NULL %s in a printf-family call in the library's code."""
     fr = frames(bt)
-    if not fr or fr[0][0] not in ("strlen", "strnlen"):
+    if not fr or not fr[0][0].endswith(("strlen", "strnlen")):  # aarch64 libc: __generic_strlen
         return None
     for i, (func, _, _) in enumerate(fr[:6]):
         if func in PRINTF_FMT_ARG:

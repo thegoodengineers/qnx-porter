@@ -1,0 +1,32 @@
+{
+  "library": "libgpiod",
+  "url": "https://github.com/brgl/libgpiod.git",
+  "version": "v2.2.4",
+  "commit": "328d48b8cc90159825fa902c9d29bd6c554b10fe",
+  "build_system": "autotools",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "",
+  "build_result": "failed",
+  "rounds": 1,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ran": false,
+  "patches_kept": 0,
+  "patches_by_rule": 0,
+  "patches_by_model": 0,
+  "patches": [],
+  "blocked_on": [
+    {
+      "kind": "configure_error",
+      "error": "configure: error: linux/const.h header not found (needed to build the library)",
+      "hint": ""
+    }
+  ],
+  "minutes": 0.2,
+  "note": "Linux GPIO character-device API: expected not to port",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T14:35:51+00:00"
+}

@@ -1,0 +1,51 @@
+{
+  "library": "yaml-cpp",
+  "url": "https://github.com/jbeder/yaml-cpp.git",
+  "version": "0.8.0",
+  "commit": "f7320141120f720aecc4c32be25586e7da9eb978",
+  "build_system": "cmake",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "build_result": "built",
+  "rounds": 3,
+  "tests_passed": 0,
+  "tests_total": 1,
+  "tests_ran": true,
+  "patches_kept": 2,
+  "patches_by_rule": 2,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "signed-char",
+      "source": "rule",
+      "reason": "Plain char is unsigned on aarch64 (the Arm ABI) and signed on x86_64; the code puts a negative constant in a char, which is fine on x86_64 and a narrowing error on aarch64. -fsigned-char keeps the x86_64 meaning the code was written for, without editing it.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src/test/binary_test.cpp:11:38: error: narrowing conversion of '-58' from 'int' to 'char' [-Wnarrowing]",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-signed-char.patch",
+      "kept": true
+    },
+    {
+      "number": 2,
+      "rule": "link-libregex",
+      "source": "rule",
+      "reason": "`regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:717:(.text+0xafb0): undefined reference to `regfree'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0002-link-libregex.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 20.7,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-13T06:39:28+00:00"
+}

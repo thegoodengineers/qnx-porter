@@ -59,6 +59,11 @@ SOCKET_SYMBOLS = {"socket", "bind", "connect", "listen", "accept", "accept4", "s
 # lists "Library: libc" for pthread_*, clock_gettime, timer_create, shm_open, mq_open and dlopen).
 IN_LIBC = {"pthread", "rt", "dl"}
 
+# a library typedef of (u)intptr_t that disagrees with QNX's <stdint.h> (cmocka on aarch64le)
+# a negative constant put in a plain char: an error only where char is unsigned (yaml-cpp's tests on aarch64le)
+UNSIGNED_CHAR = re.compile(r"narrowing conversion of ['‘’`]-\d+['‘’`] from ['‘’`]int['‘’`] to ['‘’`]char['‘’`]")
+WORDSIZE_GUESS = re.compile(r"conflicting types for ['‘’`]u?intptr_t['‘’`]; have ['‘’`](?:unsigned )?int['‘’`]")
+
 # QNX 8.0 moved inotify_* out of libc into libfsnotify ("Migrating to QNX OS 8.0", C and C++ applications).
 WCSWIDTH_HEADER = """/* qnx-porter: POSIX wcswidth() on top of QNX 8.0's wcwidth() */
 #include <stddef.h>
@@ -228,6 +233,16 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                    "as the sum of wcwidth() over the first n characters of s, or -1 if any is not printable; a "
                    "small header (-included in every compile) implements exactly that on top of QNX's wcwidth().",
                    d, cflags=["-D_QNX_PORTER_WCSWIDTH"], compat={"qnx-wcswidth.h": WCSWIDTH_HEADER})
+    if WORDSIZE_GUESS.search(d.message) and not _defined(flags, "__WORDSIZE"):
+        return Fix("wordsize-64", "The library guesses the word size from glibc's __WORDSIZE, else from __x86_64__, "
+                   "else assumes 32 bits (cmocka.h), and so redefines (u)intptr_t as a 32-bit type on aarch64. "
+                   "QNX 8.0's x86_64 and aarch64le targets are both LP64 and QNX's headers never define "
+                   "__WORDSIZE, so define it as 64.", d, cflags=["-D__WORDSIZE=64"])
+    if UNSIGNED_CHAR.search(d.message) and "-fsigned-char" not in flags.cflags:
+        return Fix("signed-char", "Plain char is unsigned on aarch64 (the Arm ABI) and signed on x86_64; the code "
+                   "puts a negative constant in a char, which is fine on x86_64 and a narrowing error on aarch64. "
+                   "-fsigned-char keeps the x86_64 meaning the code was written for, without editing it.",
+                   d, cflags=["-fsigned-char"])
     if d.kind == "qcc_option" and d.symbol.startswith("--sysroot") and not flags.omit_sysroot:
         return Fix("qcc-sysroot", "The project's own build script passes --sysroot to the compiler, which qcc does "
                    "not accept. qcc already finds the SDP sysroot through QNX_TARGET, so the toolchain stops "

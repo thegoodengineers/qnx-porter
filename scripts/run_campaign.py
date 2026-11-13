@@ -83,6 +83,28 @@ def default_branch(url: str) -> str:
     return m.group(1) if m else ""
 
 
+def finished(report: Path) -> bool:
+    try:
+        return json.loads(report.read_text(encoding="utf-8")).get("build_result") not in (None, "error")
+    except (OSError, ValueError):
+        return False
+
+
+def alive(target: Target, restart: str | None) -> bool:
+    """True if the target answers over ssh, restarting it once with `restart` if it does not."""
+    if target.uname():
+        return True
+    if not restart:
+        return False
+    print(f"    the QNX target does not answer; restarting it: {restart}", flush=True)
+    subprocess.run(restart, shell=True)
+    for _ in range(30):  # a QEMU boot takes a while, an emulated aarch64 one longer
+        if target.uname():
+            return True
+        time.sleep(20)
+    return False
+
+
 def error_report(out: Path, lib: dict, arch: str, err: str, minutes: float) -> None:
     """A report.json for a library the agent could not even start on, so the CSV still shows it."""
     d = out / lib["name"]
@@ -108,6 +130,11 @@ def main(argv=None) -> int:
     ap.add_argument("--skip-oss-check", action="store_true", help="do not re-check oss.qnx.com first")
     ap.add_argument("--head", action="store_true",
                     help="port each library's upstream default branch (HEAD) instead of its pinned tag")
+    ap.add_argument("--resume", action="store_true",
+                    help="skip libraries that already have a report in the output folder (not 'error' ones)")
+    ap.add_argument("--restart-target", metavar="CMD",
+                    help="shell command that restarts a QNX target that stopped answering, e.g. "
+                         "'QNX_TARGET_ARCH=aarch64le scripts/qemu_target.sh restart'")
     a = ap.parse_args(argv)
 
     c = load(Path(a.campaign))
@@ -140,15 +167,23 @@ def main(argv=None) -> int:
             libs = [lib for lib in libs if lib["name"] not in ported]
 
     out = Path(a.out) if a.out else ROOT / ("ports" if c["arch"] == "x86_64" else f"ports-{c['arch']}")
+    if a.resume:
+        done = [lib["name"] for lib in libs if finished(out / lib["name"] / "report.json")]
+        libs = [lib for lib in libs if lib["name"] not in done]
+        print(f"resume: {len(done)} libraries already have a report in {out}; {len(libs)} to go")
     for i, lib in enumerate(libs, 1):
         print(f"\n=== [{i}/{len(libs)}] {lib['name']} {lib['tag']} ===")
         t0 = time.time()
+        if target and lib["tests"] and not alive(target, a.restart_target):
+            print("the QNX target does not answer and could not be restarted: stopping here; "
+                  "re-run with --resume to continue from this library")
+            break
         try:
             agent.port(lib["url"], lib["tag"], out, arch=c["arch"], target=target if lib["tests"] else None,
                        max_rounds=c["max_rounds"], use_llm=not a.no_model,
                        extra_args=tuple(lib["args"] + lib["arch_args"].get(c["arch"], [])),
                        name=lib["name"], note=lib["note"], subdir=lib["subdir"])
-        except (subprocess.CalledProcessError, OSError, RuntimeError, ValueError) as e:
+        except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError, RuntimeError, ValueError) as e:
             print(f"    {lib['name']}: agent error: {e}")
             error_report(out, lib, c["arch"], str(e), (time.time() - t0) / 60)
     subprocess.run([sys.executable, str(ROOT / "scripts" / "ports_csv.py")], check=True)

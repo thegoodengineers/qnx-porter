@@ -1,0 +1,11 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/expat/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  runtests (exit 0)
+    (run with ksh: the target has no bash)
+    Expat version: expat_2.6.4
+    100%: Checks: 4392, Failed: 0
+PASS  runtests_cxx (exit 0)
+    (run with ksh: the target has no bash)
+    Expat version: expat_2.6.4
+    100%: Checks: 4392, Failed: 0
+
+2/2 tests passed on the QNX target

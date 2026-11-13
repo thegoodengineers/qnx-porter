@@ -1,0 +1,39 @@
+{
+  "library": "flac",
+  "url": "https://github.com/xiph/flac.git",
+  "version": "1.4.3",
+  "commit": "28e4f0528c76b296c561e922ba67d43751990599",
+  "build_system": "cmake",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "build_result": "built",
+  "rounds": 2,
+  "tests_passed": 6,
+  "tests_total": 10,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "wcswidth-compat",
+      "source": "rule",
+      "reason": "QNX 8.0's libc has wcwidth() but no wcswidth(). POSIX defines wcswidth(s, n) as the sum of wcwidth() over the first n characters of s, or -1 if any is not printable; a small header (-included in every compile) implements exactly that on top of QNX's wcwidth().",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/flac/work/src/src/flac/utils.c:223:(.text+0x184): undefined reference to `wcswidth'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-wcswidth-compat.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 20.8,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-13T10:37:10+00:00"
+}

@@ -38,7 +38,11 @@ class Target:
         return subprocess.run(["ssh", *SSH_OPTS, "-p", str(self.port), self.host, command], **kw)
 
     def uname(self) -> str:
-        r = self.ssh("uname -a", capture_output=True, text=True, timeout=60)
+        """The target's `uname -a`, or "" if it does not answer within a minute."""
+        try:
+            r = self.ssh("uname -a", capture_output=True, text=True, timeout=60)
+        except subprocess.TimeoutExpired:
+            return ""
         return r.stdout.strip() if r.returncode == 0 else ""
 
     def sync(self, paths: list[Path]) -> bool:

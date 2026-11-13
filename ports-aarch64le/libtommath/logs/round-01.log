@@ -1,0 +1,173 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libtommath/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libtommath/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Use -git suffix
+-- CPack: packages will be generated under /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build/packages/ubuntu/jammy/
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build -j 2 -- -k
+[  1%] Building C object CMakeFiles/libtommath.dir/bn_deprecated.c.o
+[  1%] Building C object CMakeFiles/libtommath.dir/bn_cutoffs.c.o
+[  1%] Building C object CMakeFiles/libtommath.dir/bn_mp_2expt.c.o
+[  2%] Building C object CMakeFiles/libtommath.dir/bn_mp_abs.c.o
+[  3%] Building C object CMakeFiles/libtommath.dir/bn_mp_add.c.o
+[  3%] Building C object CMakeFiles/libtommath.dir/bn_mp_add_d.c.o
+[  4%] Building C object CMakeFiles/libtommath.dir/bn_mp_addmod.c.o
+[  5%] Building C object CMakeFiles/libtommath.dir/bn_mp_and.c.o
+[  5%] Building C object CMakeFiles/libtommath.dir/bn_mp_clamp.c.o
+[  6%] Building C object CMakeFiles/libtommath.dir/bn_mp_clear.c.o
+[  6%] Building C object CMakeFiles/libtommath.dir/bn_mp_clear_multi.c.o
+[  7%] Building C object CMakeFiles/libtommath.dir/bn_mp_cmp.c.o
+[  8%] Building C object CMakeFiles/libtommath.dir/bn_mp_cmp_d.c.o
+[  8%] Building C object CMakeFiles/libtommath.dir/bn_mp_cmp_mag.c.o
+[  9%] Building C object CMakeFiles/libtommath.dir/bn_mp_cnt_lsb.c.o
+[ 10%] Building C object CMakeFiles/libtommath.dir/bn_mp_complement.c.o
+[ 10%] Building C object CMakeFiles/libtommath.dir/bn_mp_copy.c.o
+[ 11%] Building C object CMakeFiles/libtommath.dir/bn_mp_count_bits.c.o
+[ 12%] Building C object CMakeFiles/libtommath.dir/bn_mp_decr.c.o
+[ 12%] Building C object CMakeFiles/libtommath.dir/bn_mp_div.c.o
+[ 13%] Building C object CMakeFiles/libtommath.dir/bn_mp_div_2.c.o
+[ 13%] Building C object CMakeFiles/libtommath.dir/bn_mp_div_2d.c.o
+[ 14%] Building C object CMakeFiles/libtommath.dir/bn_mp_div_d.c.o
+[ 15%] Building C object CMakeFiles/libtommath.dir/bn_mp_dr_is_modulus.c.o
+[ 15%] Building C object CMakeFiles/libtommath.dir/bn_mp_dr_reduce.c.o
+[ 16%] Building C object CMakeFiles/libtommath.dir/bn_mp_dr_setup.c.o
+[ 17%] Building C object CMakeFiles/libtommath.dir/bn_mp_error_to_string.c.o
+[ 17%] Building C object CMakeFiles/libtommath.dir/bn_mp_exch.c.o
+[ 18%] Building C object CMakeFiles/libtommath.dir/bn_mp_expt_n.c.o
+[ 18%] Building C object CMakeFiles/libtommath.dir/bn_mp_exptmod.c.o
+[ 19%] Building C object CMakeFiles/libtommath.dir/bn_mp_exteuclid.c.o
+[ 20%] Building C object CMakeFiles/libtommath.dir/bn_mp_fread.c.o
+[ 20%] Building C object CMakeFiles/libtommath.dir/bn_mp_from_sbin.c.o
+[ 21%] Building C object CMakeFiles/libtommath.dir/bn_mp_from_ubin.c.o
+[ 22%] Building C object CMakeFiles/libtommath.dir/bn_mp_fwrite.c.o
+[ 22%] Building C object CMakeFiles/libtommath.dir/bn_mp_gcd.c.o
+[ 23%] Building C object CMakeFiles/libtommath.dir/bn_mp_get_double.c.o
+[ 24%] Building C object CMakeFiles/libtommath.dir/bn_mp_get_i32.c.o
+[ 24%] Building C object CMakeFiles/libtommath.dir/bn_mp_get_i64.c.o
+[ 25%] Building C object CMakeFiles/libtommath.dir/bn_mp_get_l.c.o
+[ 25%] Building C object CMakeFiles/libtommath.dir/bn_mp_get_mag_u32.c.o
+[ 26%] Building C object CMakeFiles/libtommath.dir/bn_mp_get_mag_u64.c.o
+[ 27%] Building C object CMakeFiles/libtommath.dir/bn_mp_get_mag_ul.c.o
+[ 27%] Building C object CMakeFiles/libtommath.dir/bn_mp_grow.c.o
+[ 28%] Building C object CMakeFiles/libtommath.dir/bn_mp_incr.c.o
+[ 29%] Building C object CMakeFiles/libtommath.dir/bn_mp_init.c.o
+[ 29%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_copy.c.o
+[ 30%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_i32.c.o
+[ 31%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_i64.c.o
+[ 31%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_l.c.o
+[ 32%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_multi.c.o
+[ 32%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_set.c.o
+[ 33%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_size.c.o
+[ 34%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_u32.c.o
+[ 34%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_u64.c.o
+[ 35%] Building C object CMakeFiles/libtommath.dir/bn_mp_init_ul.c.o
+[ 36%] Building C object CMakeFiles/libtommath.dir/bn_mp_invmod.c.o
+[ 36%] Building C object CMakeFiles/libtommath.dir/bn_mp_is_square.c.o
+[ 37%] Building C object CMakeFiles/libtommath.dir/bn_mp_iseven.c.o
+[ 37%] Building C object CMakeFiles/libtommath.dir/bn_mp_isodd.c.o
+[ 38%] Building C object CMakeFiles/libtommath.dir/bn_mp_kronecker.c.o
+[ 39%] Building C object CMakeFiles/libtommath.dir/bn_mp_lcm.c.o
+[ 39%] Building C object CMakeFiles/libtommath.dir/bn_mp_log_n.c.o
+[ 40%] Building C object CMakeFiles/libtommath.dir/bn_mp_lshd.c.o
+[ 41%] Building C object CMakeFiles/libtommath.dir/bn_mp_mod.c.o
+[ 41%] Building C object CMakeFiles/libtommath.dir/bn_mp_mod_2d.c.o
+[ 42%] Building C object CMakeFiles/libtommath.dir/bn_mp_mod_d.c.o
+[ 43%] Building C object CMakeFiles/libtommath.dir/bn_mp_montgomery_calc_normalization.c.o
+[ 43%] Building C object CMakeFiles/libtommath.dir/bn_mp_montgomery_reduce.c.o
+[ 44%] Building C object CMakeFiles/libtommath.dir/bn_mp_montgomery_setup.c.o
+[ 44%] Building C object CMakeFiles/libtommath.dir/bn_mp_mul.c.o
+[ 45%] Building C object CMakeFiles/libtommath.dir/bn_mp_mul_2.c.o
+[ 46%] Building C object CMakeFiles/libtommath.dir/bn_mp_mul_2d.c.o
+[ 46%] Building C object CMakeFiles/libtommath.dir/bn_mp_mul_d.c.o
+[ 47%] Building C object CMakeFiles/libtommath.dir/bn_mp_mulmod.c.o
+[ 48%] Building C object CMakeFiles/libtommath.dir/bn_mp_neg.c.o
+[ 48%] Building C object CMakeFiles/libtommath.dir/bn_mp_or.c.o
+[ 49%] Building C object CMakeFiles/libtommath.dir/bn_mp_pack.c.o
+[ 50%] Building C object CMakeFiles/libtommath.dir/bn_mp_pack_count.c.o
+[ 50%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_fermat.c.o
+[ 51%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_frobenius_underwood.c.o
+[ 51%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_is_prime.c.o
+[ 52%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_miller_rabin.c.o
+[ 53%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_next_prime.c.o
+[ 53%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_rabin_miller_trials.c.o
+[ 54%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_rand.c.o
+[ 55%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_strong_lucas_selfridge.c.o
+[ 55%] Building C object CMakeFiles/libtommath.dir/bn_mp_radix_size.c.o
+[ 56%] Building C object CMakeFiles/libtommath.dir/bn_mp_radix_smap.c.o
+[ 56%] Building C object CMakeFiles/libtommath.dir/bn_mp_rand.c.o
+[ 57%] Building C object CMakeFiles/libtommath.dir/bn_mp_read_radix.c.o
+[ 58%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce.c.o
+[ 58%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce_2k.c.o
+[ 59%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce_2k_l.c.o
+[ 60%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce_2k_setup.c.o
+[ 60%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce_2k_setup_l.c.o
+[ 61%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce_is_2k.c.o
+[ 62%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce_is_2k_l.c.o
+[ 62%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce_setup.c.o
+[ 63%] Building C object CMakeFiles/libtommath.dir/bn_mp_root_n.c.o
+[ 63%] Building C object CMakeFiles/libtommath.dir/bn_mp_rshd.c.o
+[ 65%] Building C object CMakeFiles/libtommath.dir/bn_mp_set.c.o
+[ 65%] Building C object CMakeFiles/libtommath.dir/bn_mp_sbin_size.c.o
+[ 65%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_double.c.o
+[ 66%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_i32.c.o
+[ 67%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_i64.c.o
+[ 67%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_l.c.o
+[ 68%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_u64.c.o
+[ 68%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_u32.c.o
+[ 69%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_ul.c.o
+[ 70%] Building C object CMakeFiles/libtommath.dir/bn_mp_shrink.c.o
+[ 70%] Building C object CMakeFiles/libtommath.dir/bn_mp_signed_rsh.c.o
+[ 71%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqr.c.o
+[ 72%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqrt.c.o
+[ 72%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqrmod.c.o
+[ 73%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqrtmod_prime.c.o
+[ 74%] Building C object CMakeFiles/libtommath.dir/bn_mp_sub.c.o
+[ 74%] Building C object CMakeFiles/libtommath.dir/bn_mp_sub_d.c.o
+[ 75%] Building C object CMakeFiles/libtommath.dir/bn_mp_submod.c.o
+[ 75%] Building C object CMakeFiles/libtommath.dir/bn_mp_to_radix.c.o
+[ 76%] Building C object CMakeFiles/libtommath.dir/bn_mp_to_sbin.c.o
+[ 77%] Building C object CMakeFiles/libtommath.dir/bn_mp_to_ubin.c.o
+[ 77%] Building C object CMakeFiles/libtommath.dir/bn_mp_ubin_size.c.o
+[ 78%] Building C object CMakeFiles/libtommath.dir/bn_mp_unpack.c.o
+[ 79%] Building C object CMakeFiles/libtommath.dir/bn_mp_xor.c.o
+[ 79%] Building C object CMakeFiles/libtommath.dir/bn_mp_zero.c.o
+[ 80%] Building C object CMakeFiles/libtommath.dir/bn_prime_tab.c.o
+[ 81%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_add.c.o
+[ 81%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_balance_mul.c.o
+[ 82%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_div_3.c.o
+[ 82%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_exptmod.c.o
+[ 83%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_exptmod_fast.c.o
+[ 84%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_get_bit.c.o
+[ 84%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_invmod_fast.c.o
+[ 85%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_invmod_slow.c.o
+[ 86%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_karatsuba_mul.c.o
+[ 86%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_karatsuba_sqr.c.o
+[ 87%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_log.c.o
+[ 87%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_log_2expt.c.o
+[ 88%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_log_d.c.o
+[ 89%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_montgomery_reduce_fast.c.o
+[ 89%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_mul_digs.c.o
+[ 90%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_mul_digs_fast.c.o
+[ 91%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_mul_high_digs.c.o
+[ 91%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_mul_high_digs_fast.c.o
+[ 92%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_prime_is_divisible.c.o
+[ 93%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_rand_jenkins.c.o
+[ 93%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_rand_platform.c.o
+[ 94%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_reverse.c.o
+[ 94%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_sqr.c.o
+[ 95%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_sqr_fast.c.o
+[ 96%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_sub.c.o
+[ 96%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_toom_mul.c.o
+[ 97%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_toom_sqr.c.o
+[ 98%] Linking C static library libtommath.a
+[ 98%] Built target libtommath
+[ 99%] Building C object demo/CMakeFiles/test-ltm.dir/shared.c.o
+[ 99%] Building C object demo/CMakeFiles/test-ltm.dir/test.c.o
+[100%] Linking C executable test-ltm
+[100%] Built target test-ltm

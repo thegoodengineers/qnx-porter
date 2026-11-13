@@ -1,0 +1,55 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmark/work/src -B /home/chirag/qnx-porter/ports-aarch64le/cmark/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/cmark/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/cmark/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/cmark/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/cmark/work/build -j 2 -- -k
+[  3%] Building C object src/CMakeFiles/cmark.dir/blocks.c.o
+[  7%] Building C object src/CMakeFiles/cmark.dir/buffer.c.o
+[ 11%] Building C object src/CMakeFiles/cmark.dir/cmark.c.o
+[ 15%] Building C object src/CMakeFiles/cmark.dir/cmark_ctype.c.o
+[ 19%] Building C object src/CMakeFiles/cmark.dir/commonmark.c.o
+[ 23%] Building C object src/CMakeFiles/cmark.dir/houdini_href_e.c.o
+[ 26%] Building C object src/CMakeFiles/cmark.dir/houdini_html_e.c.o
+[ 30%] Building C object src/CMakeFiles/cmark.dir/houdini_html_u.c.o
+[ 34%] Building C object src/CMakeFiles/cmark.dir/html.c.o
+[ 38%] Building C object src/CMakeFiles/cmark.dir/inlines.c.o
+[ 42%] Building C object src/CMakeFiles/cmark.dir/iterator.c.o
+[ 46%] Building C object src/CMakeFiles/cmark.dir/latex.c.o
+[ 50%] Building C object src/CMakeFiles/cmark.dir/man.c.o
+[ 53%] Building C object src/CMakeFiles/cmark.dir/node.c.o
+[ 57%] Building C object src/CMakeFiles/cmark.dir/references.c.o
+[ 61%] Building C object src/CMakeFiles/cmark.dir/render.c.o
+[ 65%] Building C object src/CMakeFiles/cmark.dir/scanners.c.o
+[ 69%] Building C object src/CMakeFiles/cmark.dir/utf8.c.o
+[ 73%] Building C object src/CMakeFiles/cmark.dir/xml.c.o
+[ 76%] Linking C static library libcmark.a
+[ 76%] Built target cmark
+[ 80%] Building C object src/CMakeFiles/cmark_exe.dir/main.c.o
+[ 84%] Building CXX object api_test/CMakeFiles/api_test.dir/cplusplus.cpp.o
+[ 88%] Building C object api_test/CMakeFiles/api_test.dir/harness.c.o
+[ 92%] Linking C executable cmark
+[ 96%] Building C object api_test/CMakeFiles/api_test.dir/main.c.o
+[ 96%] Built target cmark_exe
+[100%] Linking CXX executable api_test
+[100%] Built target api_test
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated

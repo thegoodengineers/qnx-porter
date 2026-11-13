@@ -1,0 +1,613 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/flac/work/build); every test command runs on root@172.31.1.12 over ssh
+FAIL  libFLAC (exit 1)
+    testing FLAC__metadata_object_vorbiscomment_resize_comments(shrink to 0)...OK
+    testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_resize_comments(shrink to 0)...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on beginning of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on middle of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on end of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on end of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on end of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+    testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+    testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+    testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+    testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+    testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+    testing FLAC__metadata_object_vorbiscomment_replace_comment(first, copy)...OK
+    testing FLAC__metadata_object_vorbiscomment_replace_comment(all, copy)...OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_delete()... OK
+    testing FLAC__metadata_object_vorbiscomment_delete_comment() on middle of array...OK
+    testing FLAC__metadata_object_vorbiscomment_delete_comment() on end of array...OK
+    testing FLAC__metadata_object_vorbiscomment_delete_comment() on beginning of array...OK
+    testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_remove_entry_matching("blah")...OK
+    testing FLAC__metadata_object_vorbiscomment_remove_entry_matching("rem0")...OK
+    testing FLAC__metadata_object_vorbiscomment_remove_entries_matching("blah")...OK
+    testing FLAC__metadata_object_vorbiscomment_remove_entries_matching("rem0")...OK
+    testing FLAC__metadata_object_vorbiscomment_set_comment(copy)...OK
+    testing FLAC__metadata_object_vorbiscomment_set_vendor_string(copy)...OK
+    testing FLAC__metadata_object_delete()... OK
+    testing FLAC__metadata_object_new()... OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_vorbiscomment_append_comment(own) on empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_append_comment(own) on non-empty array...OK
+    testing FLAC__metadata_object_delete()... OK
+    testing FLAC__metadata_object_new()... OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on beginning of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on middle of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on end of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on end of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on end of non-empty array...OK
+    testing FLAC__metadata_object_vorbiscomment_replace_comment(first, own)...OK
+    testing FLAC__metadata_object_vorbiscomment_replace_comment(all, own)...OK
+    testing FLAC__metadata_object_vorbiscomment_delete_comment() on middle of array...OK
+    testing FLAC__metadata_object_vorbiscomment_delete_comment() on end of array...OK
+    testing FLAC__metadata_object_vorbiscomment_delete_comment() on beginning of array...OK
+    testing FLAC__metadata_object_vorbiscomment_set_comment(own)...OK
+    testing FLAC__metadata_object_vorbiscomment_set_vendor_string(own)...OK
+    testing FLAC__metadata_object_delete()... OK
+    testing CUESHEET
+    testing FLAC__metadata_object_cuesheet_track_new()... OK
+    testing FLAC__metadata_object_cuesheet_track_clone()... OK
+    testing FLAC__metadata_object_cuesheet_track_delete()... OK
+    testing FLAC__metadata_object_new()... OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_cuesheet_resize_tracks(grow to 2)...OK
+    testing FLAC__metadata_object_cuesheet_resize_tracks(shrink to 1)...OK
+    testing FLAC__metadata_object_cuesheet_resize_tracks(shrink to 0)...OK
+    testing FLAC__metadata_object_cuesheet_insert_track(copy) on empty array...OK
+    testing FLAC__metadata_object_cuesheet_insert_track(copy) on beginning of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_insert_track(copy) on middle of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_insert_track(copy) on end of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_insert_blank_track() on end of non-empty array...OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_delete()... OK
+    testing FLAC__metadata_object_cuesheet_delete_track() on end of array...OK
+    testing FLAC__metadata_object_cuesheet_delete_track() on middle of array...OK
+    testing FLAC__metadata_object_cuesheet_delete_track() on end of array...OK
+    testing FLAC__metadata_object_cuesheet_delete_track() on beginning of array...OK
+    testing FLAC__metadata_object_cuesheet_set_track(copy)...OK
+    testing FLAC__metadata_object_cuesheet_track_resize_indices(grow to 2)...OK
+    testing FLAC__metadata_object_cuesheet_track_resize_indices(shrink to 1)...OK
+    testing FLAC__metadata_object_cuesheet_track_resize_indices(shrink to 0)...OK
+    testing FLAC__metadata_object_cuesheet_track_insert_index() on empty array...OK
+    testing FLAC__metadata_object_cuesheet_track_insert_index() on beginning of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_track_insert_index() on middle of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_track_insert_index() on end of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_track_insert_blank_index() on end of non-empty array...OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_delete()... OK
+    testing FLAC__metadata_object_cuesheet_track_delete_index() on end of array...OK
+    testing FLAC__metadata_object_cuesheet_track_delete_index() on middle of array...OK
+    testing FLAC__metadata_object_cuesheet_track_delete_index() on end of array...OK
+    testing FLAC__metadata_object_cuesheet_track_delete_index() on beginning of array...OK
+    testing FLAC__metadata_object_delete()... OK
+    testing FLAC__metadata_object_new()... OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_cuesheet_insert_track(own) on empty array...OK
+    testing FLAC__metadata_object_cuesheet_insert_track(own) on beginning of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_insert_track(own) on middle of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_insert_track(own) on end of non-empty array...OK
+    testing FLAC__metadata_object_cuesheet_delete_track() on middle of array...OK
+    testing FLAC__metadata_object_cuesheet_delete_track() on end of array...OK
+    testing FLAC__metadata_object_cuesheet_delete_track() on beginning of array...OK
+    testing FLAC__metadata_object_cuesheet_set_track(own)...OK
+    testing FLAC__metadata_object_cuesheet_is_legal()...returned false as expected, violation="CD-DA cue sheet must have a lead-in length of at least 2 seconds" OK
+    testing FLAC__metadata_object_delete()... OK
+    testing PICTURE
+    testing FLAC__metadata_object_new()... OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_picture_set_mime_type(copy)...OK
+    testing FLAC__metadata_object_picture_is_legal()...returned false as expected, violation="MIME type string must contain only printable ASCII characters (0x20-0x7e)" OK
+    testing FLAC__metadata_object_picture_set_mime_type(copy)...OK
+    testing FLAC__metadata_object_picture_is_legal()...OK
+    testing FLAC__metadata_object_picture_set_description(copy)...OK
+    testing FLAC__metadata_object_picture_is_legal()...returned false as expected, violation="description string must be valid UTF-8" OK
+    testing FLAC__metadata_object_picture_set_description(copy)...OK
+    testing FLAC__metadata_object_picture_is_legal()...OK
+    testing FLAC__metadata_object_picture_set_data(copy)...OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_delete()... OK
+    testing FLAC__metadata_object_picture_set_mime_type(own)...OK
+    testing FLAC__metadata_object_picture_is_legal()...returned false as expected, violation="MIME type string must contain only printable ASCII characters (0x20-0x7e)" OK
+    testing FLAC__metadata_object_picture_set_mime_type(own)...OK
+    testing FLAC__metadata_object_picture_is_legal()...OK
+    testing FLAC__metadata_object_picture_set_description(own)...OK
+    testing FLAC__metadata_object_picture_is_legal()...returned false as expected, violation="description string must be valid UTF-8" OK
+    testing FLAC__metadata_object_picture_set_description(own)...OK
+    testing FLAC__metadata_object_picture_is_legal()...OK
+    testing FLAC__metadata_object_picture_set_data(own)...OK
+    testing FLAC__metadata_object_clone()... OK
+    testing FLAC__metadata_object_delete()... OK
+    testing FLAC__metadata_object_delete()... OK
+    
+    +++ libFLAC unit test: metadata manipulation
+    
+    
+    
+    ++++++ testing level 0 interface
+    generating FLAC file for test
+    	testing 'metadata.flac'... 0... 1... 2... 3... 4... content... PASSED
+    testing FLAC__metadata_get_streaminfo()... OK
+    testing FLAC__metadata_get_tags()... OK
+    testing FLAC__metadata_get_cuesheet()... OK
+    testing FLAC__metadata_get_picture()... OK
+    
+    
+    ++++++ testing level 1 interface
+    simple iterator on read-only file
+    generating FLAC file for test
+    	testing 'metadata.flac'... 0... 1... 2... content... PASSED
+    is writable = 1
+    ERROR: iterator claims file is writable when tester thinks it should not be; are you running as root?
+    
+    ERROR during test_libFLAC
+FAIL  libFLAC++ (exit 1)
+    testing VorbisComment::set_comment()... +
+            VorbisComment::get_comment()... OK
+    testing VorbisComment::delete_comment()... +
+            VorbisComment::get_comment()... OK
+    testing FLAC::Metadata::clone(const FLAC::Metadata::Prototype *)... OK
+    testing VorbisComment::~VorbisComment()... OK
+    PASSED
+    
+    testing class FLAC::Metadata::CueSheet::Track
+    testing Track::Track()... OK
+    testing Track::get_track()... OK
+    testing Track::Track(const ::FLAC__StreamMetadata_CueSheet_Track*)... OK
+    testing Track::~Track()... OK
+    testing Track::Track(const Track &track)... OK
+    testing Track::~Track()... OK
+    testing Track::operator=(const Track &track)... OK
+    testing Track::get_offset()... OK
+    testing Track::get_number()... OK
+    testing Track::get_isrc()... OK
+    testing Track::get_type()... OK
+    testing Track::get_pre_emphasis()... OK
+    testing Track::get_num_indices()... OK
+    testing Track::set_offset()... OK
+    testing Track::set_number()... OK
+    testing Track::set_isrc()... OK
+    testing Track::set_type()... OK
+    testing Track::set_pre_emphasis()... OK
+    PASSED
+    
+    testing class FLAC::Metadata::CueSheet
+    testing CueSheet::CueSheet()... OK
+    testing CueSheet::CueSheet(const CueSheet &)... +
+            CueSheet::operator!=(const CueSheet &)... OK
+    testing CueSheet::~CueSheet()... OK
+    testing CueSheet::CueSheet(const ::FLAC__StreamMetadata &)... +
+            CueSheet::operator!=(const ::FLAC__StreamMetadata &)... OK
+    testing CueSheet::CueSheet(const ::FLAC__StreamMetadata *)... +
+            CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing CueSheet::CueSheet(const ::FLAC__StreamMetadata *, copy=true)... +
+            CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing CueSheet::CueSheet(const ::FLAC__StreamMetadata *, copy=false)... +
+            CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing CueSheet::assign(const ::FLAC__StreamMetadata *, copy=true)... +
+            CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing CueSheet::assign(const ::FLAC__StreamMetadata *, copy=false)... +
+            CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing CueSheet::operator=(const CueSheet &)... +
+            CueSheet::operator==(const CueSheet &)... OK
+    testing CueSheet::operator=(const ::FLAC__StreamMetadata &)... +
+            CueSheet::operator==(const ::FLAC__StreamMetadata &)... OK
+    testing CueSheet::operator=(const ::FLAC__StreamMetadata *)... +
+            CueSheet::operator==(const ::FLAC__StreamMetadata *)... OK
+    testing CueSheet::get_media_catalog_number()... OK
+    testing CueSheet::get_lead_in()... OK
+    testing CueSheet::get_is_cd()... OK
+    testing CueSheet::get_num_tracks()... OK
+    testing CueSheet::set_media_catalog_number()... OK
+    testing CueSheet::set_lead_in()... OK
+    testing CueSheet::set_is_cd()... OK
+    testing CueSheet::insert_track()... +
+            CueSheet::get_track()... OK
+    testing CueSheet::insert_track()... +
+            CueSheet::get_track()... OK
+    testing CueSheet::insert_index(0)... +
+            CueSheet::get_track()... +
+            CueSheet::Track::get_index()... OK
+    testing CueSheet::Track::set_index()... OK
+    testing CueSheet::set_index()... OK
+    testing CueSheet::delete_index()... OK
+    testing CueSheet::set_track()... +
+            CueSheet::get_track()... OK
+    testing CueSheet::delete_track()... OK
+    testing FLAC::Metadata::clone(const FLAC::Metadata::Prototype *)... OK
+    testing CueSheet::~CueSheet()... OK
+    PASSED
+    
+    testing class FLAC::Metadata::Picture
+    testing Picture::Picture()... OK
+    testing Picture::Picture(const Picture &)... +
+            Picture::operator!=(const Picture &)... OK
+    testing Picture::~Picture()... OK
+    testing Picture::Picture(const ::FLAC__StreamMetadata &)... +
+            Picture::operator!=(const ::FLAC__StreamMetadata &)... OK
+    testing Picture::Picture(const ::FLAC__StreamMetadata *)... +
+            Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing Picture::Picture(const ::FLAC__StreamMetadata *, copy=true)... +
+            Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing Picture::Picture(const ::FLAC__StreamMetadata *, copy=false)... +
+            Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing Picture::assign(const ::FLAC__StreamMetadata *, copy=true)... +
+            Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing Picture::assign(const ::FLAC__StreamMetadata *, copy=false)... +
+            Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+    testing Picture::operator=(const Picture &)... +
+            Picture::operator==(const Picture &)... OK
+    testing Picture::operator=(const ::FLAC__StreamMetadata &)... +
+            Picture::operator==(const ::FLAC__StreamMetadata &)... OK
+    testing Picture::operator=(const ::FLAC__StreamMetadata *)... +
+            Picture::operator==(const ::FLAC__StreamMetadata *)... OK
+    testing Picture::get_type()... OK
+    testing Picture::set_type()... +
+            Picture::get_type()... OK
+    testing Picture::set_mime_type()... OK
+    testing Picture::get_mime_type()... OK
+    testing Picture::set_description()... OK
+    testing Picture::get_description()... OK
+    testing Picture::get_width()... OK
+    testing Picture::set_width()... +
+            Picture::get_width()... OK
+    testing Picture::get_height()... OK
+    testing Picture::set_height()... +
+            Picture::get_height()... OK
+    testing Picture::get_depth()... OK
+    testing Picture::set_depth()... +
+            Picture::get_depth()... OK
+    testing Picture::get_colors()... OK
+    testing Picture::set_colors()... +
+            Picture::get_colors()... OK
+    testing Picture::get_data_length()... OK
+    testing Picture::set_data()... OK
+    testing Picture::get_data()... OK
+    testing FLAC::Metadata::clone(const FLAC::Metadata::Prototype *)... OK
+    testing Picture::~Picture()... OK
+    PASSED
+    
+    
+    +++ libFLAC++ unit test: metadata manipulation
+    
+    
+    
+    ++++++ testing level 0 interface
+    generating FLAC file for test
+    	testing 'metadata.flac'... 0... 1... 2... 3... 4... content... PASSED
+    testing FLAC::Metadata::get_streaminfo()... OK
+    testing FLAC::Metadata::get_tags(VorbisComment *&)... OK
+    testing FLAC::Metadata::get_tags(VorbisComment &)... OK
+    testing FLAC::Metadata::get_cuesheet(CueSheet *&)... OK
+    testing FLAC::Metadata::get_cuesheet(CueSheet &)... OK
+    testing FLAC::Metadata::get_picture(Picture *&)... OK
+    testing FLAC::Metadata::get_picture(Picture &)... OK
+    
+    
+    ++++++ testing level 1 interface
+    simple iterator on read-only file
+    generating FLAC file for test
+    	testing 'metadata.flac'... 0... 1... 2... content... PASSED
+    is writable = 1
+    ERROR: iterator claims file is writable when tester thinks it should not be; are you running as root?
+    
+    ERROR during test_libFLAC++
+PASS  grabbag (exit 0)
+PASS  generate_streams (exit 0)
+FAIL  flac (exit None)
+    round-trip test (rt-4-16-unsigned-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-signed-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-signed-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-signed-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-unsigned-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-unsigned-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-unsigned-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-signed-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-signed-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-signed-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-unsigned-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-unsigned-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-unsigned-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-signed-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-signed-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-signed-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-unsigned-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-unsigned-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-unsigned-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-signed-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-signed-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-signed-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-unsigned-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-unsigned-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-unsigned-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-signed-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-signed-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-signed-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-unsigned-1.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-unsigned-111.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-unsigned-4777.raw) encode...  decode...  compare...  OK
+    round-trip test (rt-1-12-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-12-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-12-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-16-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-16-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-16-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-20-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-20-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-20-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-24-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-24-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-24-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-8-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-8-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-8-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-12-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-12-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-12-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-16-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-16-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-16-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-20-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-20-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-20-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-24-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-24-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-24-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-8-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-8-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-2-8-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-12-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-12-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-12-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-16-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-16-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-16-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-20-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-20-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-20-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-12-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-12-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-12-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-20-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-20-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-20-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-1.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-111.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-4777.wav) encode...  decode...  compare...  OK
+    round-trip test (rt-1-12-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-12-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-12-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-16-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-16-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-16-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-20-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-20-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-20-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-24-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-24-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-24-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-8-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-8-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-1-8-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-12-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-12-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-12-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-16-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-16-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-16-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-20-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-20-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-20-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-24-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-24-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-24-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-8-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-8-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-2-8-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-12-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-12-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-12-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-16-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-16-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-16-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-20-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-20-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-20-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-24-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-4-8-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-12-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-12-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-12-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-16-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-20-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-20-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-20-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-1.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-111.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-24-4777.w64) encode...  decode...  compare...  OK
+    round-trip test (rt-8-8-1.w64) encode...  
+    killed on the target after 300 s
+PASS  metaflac (exit 0)
+PASS  replaygain (exit 0)
+PASS  seeking (exit 0)
+FAIL  streams (exit None)
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=18 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=18 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=18 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=18 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=18 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=18 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=18 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=19 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=20 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=21 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=22 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=23 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=24 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=25 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=26 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=27 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=28 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=29 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=30 ): encode... decode... compare... OK
+    noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=30 ): encode... decode... 
+    killed on the target after 300 s
+PASS  compression (exit 0)
+
+6/10 tests passed on the QNX target

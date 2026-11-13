@@ -1,0 +1,890 @@
+code: f0e26f4
+target: QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le
+
+=== [1/61] json-c json-c-0.18-20240915 ===
+[1/5] fetch https://github.com/json-c/json-c.git @ json-c-0.18-20240915
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      24/25 tests passed
+      fix 0001 [printf-null] Crash on QNX: printf() at tests/test_json_patch.c:31 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C lea
+      after crash fixes: 25/25 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/json-c/REPORT.md
+
+=== [2/61] yyjson 0.10.0 ===
+[1/5] fetch https://github.com/ibireme/yyjson.git @ 0.10.0
+fatal: unable to access 'https://github.com/ibireme/yyjson.git/': Could not resolve host: github.com
+    yyjson: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '0.10.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/ibireme/yyjson.git', '/home/chirag/qnx-porter/ports-aarch64le/yyjson/work/src']' returned non-zero exit status 128.
+
+=== [3/61] cmocka cmocka-1.1.7 ===
+[1/5] fetch https://gitlab.com/cmocka/cmocka.git @ cmocka-1.1.7
+fatal: unable to access 'https://gitlab.com/cmocka/cmocka.git/': Could not resolve host: gitlab.com
+    cmocka: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'cmocka-1.1.7', '--recurse-submodules', '--shallow-submodules', 'https://gitlab.com/cmocka/cmocka.git', '/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src']' returned non-zero exit status 128.
+
+=== [4/61] libcbor v0.11.0 ===
+[1/5] fetch https://github.com/PJK/libcbor.git @ v0.11.0
+fatal: unable to access 'https://github.com/PJK/libcbor.git/': Could not resolve host: github.com
+    libcbor: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v0.11.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/PJK/libcbor.git', '/home/chirag/qnx-porter/ports-aarch64le/libcbor/work/src']' returned non-zero exit status 128.
+
+=== [5/61] mbedtls v3.6.2 ===
+[1/5] fetch https://github.com/Mbed-TLS/mbedtls.git @ v3.6.2
+fatal: unable to access 'https://github.com/Mbed-TLS/mbedtls.git/': Could not resolve host: github.com
+    mbedtls: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v3.6.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/Mbed-TLS/mbedtls.git', '/home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/src']' returned non-zero exit status 128.
+
+=== [6/61] libsodium 1.0.20-RELEASE ===
+[1/5] fetch https://github.com/jedisct1/libsodium.git @ 1.0.20-RELEASE
+fatal: unable to access 'https://github.com/jedisct1/libsodium.git/': Could not resolve host: github.com
+    libsodium: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '1.0.20-RELEASE', '--recurse-submodules', '--shallow-submodules', 'https://github.com/jedisct1/libsodium.git', '/home/chirag/qnx-porter/ports-aarch64le/libsodium/work/src']' returned non-zero exit status 128.
+
+=== [7/61] libmodbus v3.1.11 ===
+[1/5] fetch https://github.com/stephane/libmodbus.git @ v3.1.11
+fatal: unable to access 'https://github.com/stephane/libmodbus.git/': Could not resolve host: github.com
+    libmodbus: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v3.1.11', '--recurse-submodules', '--shallow-submodules', 'https://github.com/stephane/libmodbus.git', '/home/chirag/qnx-porter/ports-aarch64le/libmodbus/work/src']' returned non-zero exit status 128.
+
+=== [8/61] nng v1.9.0 ===
+[1/5] fetch https://github.com/nanomsg/nng.git @ v1.9.0
+fatal: unable to access 'https://github.com/nanomsg/nng.git/': Could not resolve host: github.com
+    nng: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.9.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/nanomsg/nng.git', '/home/chirag/qnx-porter/ports-aarch64le/nng/work/src']' returned non-zero exit status 128.
+
+=== [9/61] libconfig v1.7.3 ===
+[1/5] fetch https://github.com/hyperrealm/libconfig.git @ v1.7.3
+fatal: unable to access 'https://github.com/hyperrealm/libconfig.git/': Could not resolve host: github.com
+    libconfig: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.7.3', '--recurse-submodules', '--shallow-submodules', 'https://github.com/hyperrealm/libconfig.git', '/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src']' returned non-zero exit status 128.
+
+=== [10/61] paho.mqtt.c v1.3.14 ===
+[1/5] fetch https://github.com/eclipse/paho.mqtt.c.git @ v1.3.14
+fatal: unable to access 'https://github.com/eclipse/paho.mqtt.c.git/': Could not resolve host: github.com
+    paho.mqtt.c: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.3.14', '--recurse-submodules', '--shallow-submodules', 'https://github.com/eclipse/paho.mqtt.c.git', '/home/chirag/qnx-porter/ports-aarch64le/paho.mqtt.c/work/src']' returned non-zero exit status 128.
+
+=== [11/61] cJSON v1.7.18 ===
+[1/5] fetch https://github.com/DaveGamble/cJSON.git @ v1.7.18
+fatal: unable to access 'https://github.com/DaveGamble/cJSON.git/': Could not resolve host: github.com
+    cJSON: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.7.18', '--recurse-submodules', '--shallow-submodules', 'https://github.com/DaveGamble/cJSON.git', '/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src']' returned non-zero exit status 128.
+
+=== [12/61] jansson v2.14 ===
+[1/5] fetch https://github.com/akheron/jansson.git @ v2.14
+fatal: unable to access 'https://github.com/akheron/jansson.git/': Could not resolve host: github.com
+    jansson: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v2.14', '--recurse-submodules', '--shallow-submodules', 'https://github.com/akheron/jansson.git', '/home/chirag/qnx-porter/ports-aarch64le/jansson/work/src']' returned non-zero exit status 128.
+
+=== [13/61] libyaml 0.2.5 ===
+[1/5] fetch https://github.com/yaml/libyaml.git @ 0.2.5
+fatal: unable to access 'https://github.com/yaml/libyaml.git/': Could not resolve host: github.com
+    libyaml: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '0.2.5', '--recurse-submodules', '--shallow-submodules', 'https://github.com/yaml/libyaml.git', '/home/chirag/qnx-porter/ports-aarch64le/libyaml/work/src']' returned non-zero exit status 128.
+
+=== [14/61] msgpack-c c-6.1.0 ===
+[1/5] fetch https://github.com/msgpack/msgpack-c.git @ c-6.1.0
+fatal: unable to access 'https://github.com/msgpack/msgpack-c.git/': Could not resolve host: github.com
+    msgpack-c: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'c-6.1.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/msgpack/msgpack-c.git', '/home/chirag/qnx-porter/ports-aarch64le/msgpack-c/work/src']' returned non-zero exit status 128.
+
+=== [15/61] tinycbor v0.6.0 ===
+[1/5] fetch https://github.com/intel/tinycbor.git @ v0.6.0
+fatal: unable to access 'https://github.com/intel/tinycbor.git/': Could not resolve host: github.com
+    tinycbor: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v0.6.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/intel/tinycbor.git', '/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src']' returned non-zero exit status 128.
+
+=== [16/61] nanopb 0.4.9 ===
+[1/5] fetch https://github.com/nanopb/nanopb.git @ 0.4.9
+fatal: unable to access 'https://github.com/nanopb/nanopb.git/': Could not resolve host: github.com
+    nanopb: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '0.4.9', '--recurse-submodules', '--shallow-submodules', 'https://github.com/nanopb/nanopb.git', '/home/chirag/qnx-porter/ports-aarch64le/nanopb/work/src']' returned non-zero exit status 128.
+
+=== [17/61] flatcc v0.6.1 ===
+[1/5] fetch https://github.com/dvidelabs/flatcc.git @ v0.6.1
+fatal: unable to access 'https://github.com/dvidelabs/flatcc.git/': Could not resolve host: github.com
+    flatcc: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v0.6.1', '--recurse-submodules', '--shallow-submodules', 'https://github.com/dvidelabs/flatcc.git', '/home/chirag/qnx-porter/ports-aarch64le/flatcc/work/src']' returned non-zero exit status 128.
+
+=== [18/61] pugixml v1.14 ===
+[1/5] fetch https://github.com/zeux/pugixml.git @ v1.14
+fatal: unable to access 'https://github.com/zeux/pugixml.git/': Could not resolve host: github.com
+    pugixml: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.14', '--recurse-submodules', '--shallow-submodules', 'https://github.com/zeux/pugixml.git', '/home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src']' returned non-zero exit status 128.
+
+=== [19/61] tinyxml2 10.0.0 ===
+[1/5] fetch https://github.com/leethomason/tinyxml2.git @ 10.0.0
+fatal: unable to access 'https://github.com/leethomason/tinyxml2.git/': Could not resolve host: github.com
+    tinyxml2: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '10.0.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/leethomason/tinyxml2.git', '/home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/src']' returned non-zero exit status 128.
+
+=== [20/61] expat R_2_6_4 ===
+[1/5] fetch https://github.com/libexpat/libexpat.git @ R_2_6_4
+fatal: unable to access 'https://github.com/libexpat/libexpat.git/': Could not resolve host: github.com
+    expat: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'R_2_6_4', '--recurse-submodules', '--shallow-submodules', 'https://github.com/libexpat/libexpat.git', '/home/chirag/qnx-porter/ports-aarch64le/expat/work/src']' returned non-zero exit status 128.
+
+=== [21/61] libxml2 v2.13.5 ===
+[1/5] fetch https://github.com/GNOME/libxml2.git @ v2.13.5
+fatal: unable to access 'https://github.com/GNOME/libxml2.git/': Could not resolve host: github.com
+    libxml2: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v2.13.5', '--recurse-submodules', '--shallow-submodules', 'https://github.com/GNOME/libxml2.git', '/home/chirag/qnx-porter/ports-aarch64le/libxml2/work/src']' returned non-zero exit status 128.
+
+=== [22/61] inih r58 ===
+[1/5] fetch https://github.com/benhoyt/inih.git @ r58
+fatal: unable to access 'https://github.com/benhoyt/inih.git/': Could not resolve host: github.com
+    inih: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'r58', '--recurse-submodules', '--shallow-submodules', 'https://github.com/benhoyt/inih.git', '/home/chirag/qnx-porter/ports-aarch64le/inih/work/src']' returned non-zero exit status 128.
+
+=== [23/61] cmark 0.31.1 ===
+[1/5] fetch https://github.com/commonmark/cmark.git @ 0.31.1
+fatal: unable to access 'https://github.com/commonmark/cmark.git/': Could not resolve host: github.com
+    cmark: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '0.31.1', '--recurse-submodules', '--shallow-submodules', 'https://github.com/commonmark/cmark.git', '/home/chirag/qnx-porter/ports-aarch64le/cmark/work/src']' returned non-zero exit status 128.
+
+=== [24/61] zlib v1.3.1 ===
+[1/5] fetch https://github.com/madler/zlib.git @ v1.3.1
+fatal: unable to access 'https://github.com/madler/zlib.git/': Could not resolve host: github.com
+    zlib: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.3.1', '--recurse-submodules', '--shallow-submodules', 'https://github.com/madler/zlib.git', '/home/chirag/qnx-porter/ports-aarch64le/zlib/work/src']' returned non-zero exit status 128.
+
+=== [25/61] lz4 v1.10.0 ===
+[1/5] fetch https://github.com/lz4/lz4.git @ v1.10.0
+fatal: unable to access 'https://github.com/lz4/lz4.git/': Could not resolve host: github.com
+    lz4: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.10.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/lz4/lz4.git', '/home/chirag/qnx-porter/ports-aarch64le/lz4/work/src']' returned non-zero exit status 128.
+
+=== [26/61] zstd v1.5.6 ===
+[1/5] fetch https://github.com/facebook/zstd.git @ v1.5.6
+fatal: unable to access 'https://github.com/facebook/zstd.git/': Could not resolve host: github.com
+    zstd: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.5.6', '--recurse-submodules', '--shallow-submodules', 'https://github.com/facebook/zstd.git', '/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src']' returned non-zero exit status 128.
+
+=== [27/61] miniz 3.0.2 ===
+[1/5] fetch https://github.com/richgel999/miniz.git @ 3.0.2
+fatal: unable to access 'https://github.com/richgel999/miniz.git/': Could not resolve host: github.com
+    miniz: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '3.0.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/richgel999/miniz.git', '/home/chirag/qnx-porter/ports-aarch64le/miniz/work/src']' returned non-zero exit status 128.
+
+=== [28/61] libdeflate v1.22 ===
+[1/5] fetch https://github.com/ebiggers/libdeflate.git @ v1.22
+fatal: unable to access 'https://github.com/ebiggers/libdeflate.git/': Could not resolve host: github.com
+    libdeflate: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.22', '--recurse-submodules', '--shallow-submodules', 'https://github.com/ebiggers/libdeflate.git', '/home/chirag/qnx-porter/ports-aarch64le/libdeflate/work/src']' returned non-zero exit status 128.
+
+=== [29/61] xxHash v0.8.2 ===
+[1/5] fetch https://github.com/Cyan4973/xxHash.git @ v0.8.2
+fatal: unable to access 'https://github.com/Cyan4973/xxHash.git/': Could not resolve host: github.com
+    xxHash: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v0.8.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/Cyan4973/xxHash.git', '/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/src']' returned non-zero exit status 128.
+
+=== [30/61] BLAKE3 1.5.4 ===
+[1/5] fetch https://github.com/BLAKE3-team/BLAKE3.git @ 1.5.4
+fatal: unable to access 'https://github.com/BLAKE3-team/BLAKE3.git/': Could not resolve host: github.com
+    BLAKE3: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '1.5.4', '--recurse-submodules', '--shallow-submodules', 'https://github.com/BLAKE3-team/BLAKE3.git', '/home/chirag/qnx-porter/ports-aarch64le/BLAKE3/work/src']' returned non-zero exit status 128.
+
+=== [31/61] libtommath v1.3.0 ===
+[1/5] fetch https://github.com/libtom/libtommath.git @ v1.3.0
+fatal: unable to access 'https://github.com/libtom/libtommath.git/': Could not resolve host: github.com
+    libtommath: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.3.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/libtom/libtommath.git', '/home/chirag/qnx-porter/ports-aarch64le/libtommath/work/src']' returned non-zero exit status 128.
+
+=== [32/61] wolfssl v5.7.4-stable ===
+[1/5] fetch https://github.com/wolfSSL/wolfssl.git @ v5.7.4-stable
+fatal: unable to access 'https://github.com/wolfSSL/wolfssl.git/': Could not resolve host: github.com
+    wolfssl: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v5.7.4-stable', '--recurse-submodules', '--shallow-submodules', 'https://github.com/wolfSSL/wolfssl.git', '/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/src']' returned non-zero exit status 128.
+
+=== [33/61] libsrtp v2.6.0 ===
+[1/5] fetch https://github.com/cisco/libsrtp.git @ v2.6.0
+fatal: unable to access 'https://github.com/cisco/libsrtp.git/': Could not resolve host: github.com
+    libsrtp: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v2.6.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/cisco/libsrtp.git', '/home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/src']' returned non-zero exit status 128.
+
+=== [34/61] libuv v1.49.2 ===
+[1/5] fetch https://github.com/libuv/libuv.git @ v1.49.2
+fatal: unable to access 'https://github.com/libuv/libuv.git/': Could not resolve host: github.com
+    libuv: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.49.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/libuv/libuv.git', '/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src']' returned non-zero exit status 128.
+
+=== [35/61] libevent release-2.1.12-stable ===
+[1/5] fetch https://github.com/libevent/libevent.git @ release-2.1.12-stable
+fatal: unable to access 'https://github.com/libevent/libevent.git/': Could not resolve host: github.com
+    libevent: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'release-2.1.12-stable', '--recurse-submodules', '--shallow-submodules', 'https://github.com/libevent/libevent.git', '/home/chirag/qnx-porter/ports-aarch64le/libevent/work/src']' returned non-zero exit status 128.
+
+=== [36/61] c-ares v1.34.3 ===
+[1/5] fetch https://github.com/c-ares/c-ares.git @ v1.34.3
+fatal: unable to access 'https://github.com/c-ares/c-ares.git/': Could not resolve host: github.com
+    c-ares: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.34.3', '--recurse-submodules', '--shallow-submodules', 'https://github.com/c-ares/c-ares.git', '/home/chirag/qnx-porter/ports-aarch64le/c-ares/work/src']' returned non-zero exit status 128.
+
+=== [37/61] libcoap v4.3.5 ===
+[1/5] fetch https://github.com/obgm/libcoap.git @ v4.3.5
+fatal: unable to access 'https://github.com/obgm/libcoap.git/': Could not resolve host: github.com
+    libcoap: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v4.3.5', '--recurse-submodules', '--shallow-submodules', 'https://github.com/obgm/libcoap.git', '/home/chirag/qnx-porter/ports-aarch64le/libcoap/work/src']' returned non-zero exit status 128.
+
+=== [38/61] mosquitto v2.0.20 ===
+[1/5] fetch https://github.com/eclipse/mosquitto.git @ v2.0.20
+fatal: unable to access 'https://github.com/eclipse/mosquitto.git/': Could not resolve host: github.com
+    mosquitto: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v2.0.20', '--recurse-submodules', '--shallow-submodules', 'https://github.com/eclipse/mosquitto.git', '/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src']' returned non-zero exit status 128.
+
+=== [39/61] libwebsockets v4.3.3 ===
+[1/5] fetch https://github.com/warmcat/libwebsockets.git @ v4.3.3
+fatal: unable to access 'https://github.com/warmcat/libwebsockets.git/': Could not resolve host: github.com
+    libwebsockets: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v4.3.3', '--recurse-submodules', '--shallow-submodules', 'https://github.com/warmcat/libwebsockets.git', '/home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/src']' returned non-zero exit status 128.
+
+=== [40/61] open62541 v1.4.6 ===
+[1/5] fetch https://github.com/open62541/open62541.git @ v1.4.6
+fatal: unable to access 'https://github.com/open62541/open62541.git/': Could not resolve host: github.com
+    open62541: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.4.6', '--recurse-submodules', '--shallow-submodules', 'https://github.com/open62541/open62541.git', '/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src']' returned non-zero exit status 128.
+
+=== [41/61] Micro-CDR v2.0.1 ===
+[1/5] fetch https://github.com/eProsima/Micro-CDR.git @ v2.0.1
+fatal: unable to access 'https://github.com/eProsima/Micro-CDR.git/': Could not resolve host: github.com
+    Micro-CDR: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v2.0.1', '--recurse-submodules', '--shallow-submodules', 'https://github.com/eProsima/Micro-CDR.git', '/home/chirag/qnx-porter/ports-aarch64le/Micro-CDR/work/src']' returned non-zero exit status 128.
+
+=== [42/61] libgpiod v2.2.4 ===
+[1/5] fetch https://github.com/brgl/libgpiod.git @ v2.2.4
+fatal: unable to access 'https://github.com/brgl/libgpiod.git/': Could not resolve host: github.com
+    libgpiod: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v2.2.4', '--recurse-submodules', '--shallow-submodules', 'https://github.com/brgl/libgpiod.git', '/home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/src']' returned non-zero exit status 128.
+
+=== [43/61] can-utils v2023.03 ===
+[1/5] fetch https://github.com/linux-can/can-utils.git @ v2023.03
+fatal: unable to access 'https://github.com/linux-can/can-utils.git/': Could not resolve host: github.com
+    can-utils: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v2023.03', '--recurse-submodules', '--shallow-submodules', 'https://github.com/linux-can/can-utils.git', '/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src']' returned non-zero exit status 128.
+
+=== [44/61] fmt 11.0.2 ===
+[1/5] fetch https://github.com/fmtlib/fmt.git @ 11.0.2
+fatal: unable to access 'https://github.com/fmtlib/fmt.git/': Could not resolve host: github.com
+    fmt: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '11.0.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/fmtlib/fmt.git', '/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src']' returned non-zero exit status 128.
+
+=== [45/61] spdlog v1.15.0 ===
+[1/5] fetch https://github.com/gabime/spdlog.git @ v1.15.0
+fatal: unable to access 'https://github.com/gabime/spdlog.git/': Could not resolve host: github.com
+    spdlog: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.15.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/gabime/spdlog.git', '/home/chirag/qnx-porter/ports-aarch64le/spdlog/work/src']' returned non-zero exit status 128.
+
+=== [46/61] googletest v1.15.2 ===
+[1/5] fetch https://github.com/google/googletest.git @ v1.15.2
+fatal: unable to access 'https://github.com/google/googletest.git/': Could not resolve host: github.com
+    googletest: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.15.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/google/googletest.git', '/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src']' returned non-zero exit status 128.
+
+=== [47/61] yaml-cpp 0.8.0 ===
+[1/5] fetch https://github.com/jbeder/yaml-cpp.git @ 0.8.0
+fatal: unable to access 'https://github.com/jbeder/yaml-cpp.git/': Could not resolve host: github.com
+    yaml-cpp: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '0.8.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/jbeder/yaml-cpp.git', '/home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src']' returned non-zero exit status 128.
+
+=== [48/61] tomlplusplus v3.4.0 ===
+[1/5] fetch https://github.com/marzer/tomlplusplus.git @ v3.4.0
+fatal: unable to access 'https://github.com/marzer/tomlplusplus.git/': Could not resolve host: github.com
+    tomlplusplus: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v3.4.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/marzer/tomlplusplus.git', '/home/chirag/qnx-porter/ports-aarch64le/tomlplusplus/work/src']' returned non-zero exit status 128.
+
+=== [49/61] benchmark v1.9.1 ===
+[1/5] fetch https://github.com/google/benchmark.git @ v1.9.1
+fatal: unable to access 'https://github.com/google/benchmark.git/': Could not resolve host: github.com
+    benchmark: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.9.1', '--recurse-submodules', '--shallow-submodules', 'https://github.com/google/benchmark.git', '/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src']' returned non-zero exit status 128.
+
+=== [50/61] libjpeg-turbo 3.0.4 ===
+[1/5] fetch https://github.com/libjpeg-turbo/libjpeg-turbo.git @ 3.0.4
+fatal: unable to access 'https://github.com/libjpeg-turbo/libjpeg-turbo.git/': Could not resolve host: github.com
+    libjpeg-turbo: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '3.0.4', '--recurse-submodules', '--shallow-submodules', 'https://github.com/libjpeg-turbo/libjpeg-turbo.git', '/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src']' returned non-zero exit status 128.
+
+=== [51/61] libpng v1.6.44 ===
+[1/5] fetch https://github.com/pnggroup/libpng.git @ v1.6.44
+fatal: unable to access 'https://github.com/pnggroup/libpng.git/': Could not resolve host: github.com
+    libpng: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.6.44', '--recurse-submodules', '--shallow-submodules', 'https://github.com/pnggroup/libpng.git', '/home/chirag/qnx-porter/ports-aarch64le/libpng/work/src']' returned non-zero exit status 128.
+
+=== [52/61] opus v1.5.2 ===
+[1/5] fetch https://github.com/xiph/opus.git @ v1.5.2
+fatal: unable to access 'https://github.com/xiph/opus.git/': Could not resolve host: github.com
+    opus: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.5.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/xiph/opus.git', '/home/chirag/qnx-porter/ports-aarch64le/opus/work/src']' returned non-zero exit status 128.
+
+=== [53/61] libogg v1.3.5 ===
+[1/5] fetch https://github.com/xiph/ogg.git @ v1.3.5
+fatal: unable to access 'https://github.com/xiph/ogg.git/': Could not resolve host: github.com
+    libogg: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v1.3.5', '--recurse-submodules', '--shallow-submodules', 'https://github.com/xiph/ogg.git', '/home/chirag/qnx-porter/ports-aarch64le/libogg/work/src']' returned non-zero exit status 128.
+
+=== [54/61] flac 1.4.3 ===
+[1/5] fetch https://github.com/xiph/flac.git @ 1.4.3
+fatal: unable to access 'https://github.com/xiph/flac.git/': Could not resolve host: github.com
+    flac: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '1.4.3', '--recurse-submodules', '--shallow-submodules', 'https://github.com/xiph/flac.git', '/home/chirag/qnx-porter/ports-aarch64le/flac/work/src']' returned non-zero exit status 128.
+
+=== [55/61] libsamplerate 0.2.2 ===
+[1/5] fetch https://github.com/libsndfile/libsamplerate.git @ 0.2.2
+fatal: unable to access 'https://github.com/libsndfile/libsamplerate.git/': Could not resolve host: github.com
+    libsamplerate: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '0.2.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/libsndfile/libsamplerate.git', '/home/chirag/qnx-porter/ports-aarch64le/libsamplerate/work/src']' returned non-zero exit status 128.
+
+=== [56/61] cglm v0.9.4 ===
+[1/5] fetch https://github.com/recp/cglm.git @ v0.9.4
+fatal: unable to access 'https://github.com/recp/cglm.git/': Could not resolve host: github.com
+    cglm: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v0.9.4', '--recurse-submodules', '--shallow-submodules', 'https://github.com/recp/cglm.git', '/home/chirag/qnx-porter/ports-aarch64le/cglm/work/src']' returned non-zero exit status 128.
+
+=== [57/61] libccd v2.1 ===
+[1/5] fetch https://github.com/danfis/libccd.git @ v2.1
+fatal: unable to access 'https://github.com/danfis/libccd.git/': Could not resolve host: github.com
+    libccd: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'v2.1', '--recurse-submodules', '--shallow-submodules', 'https://github.com/danfis/libccd.git', '/home/chirag/qnx-porter/ports-aarch64le/libccd/work/src']' returned non-zero exit status 128.
+
+=== [58/61] kissfft 131.1.0 ===
+[1/5] fetch https://github.com/mborgerding/kissfft.git @ 131.1.0
+fatal: unable to access 'https://github.com/mborgerding/kissfft.git/': Could not resolve host: github.com
+    kissfft: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '131.1.0', '--recurse-submodules', '--shallow-submodules', 'https://github.com/mborgerding/kissfft.git', '/home/chirag/qnx-porter/ports-aarch64le/kissfft/work/src']' returned non-zero exit status 128.
+
+=== [59/61] capstone 5.0.3 ===
+[1/5] fetch https://github.com/capstone-engine/capstone.git @ 5.0.3
+fatal: unable to access 'https://github.com/capstone-engine/capstone.git/': Could not resolve host: github.com
+    capstone: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', '5.0.3', '--recurse-submodules', '--shallow-submodules', 'https://github.com/capstone-engine/capstone.git', '/home/chirag/qnx-porter/ports-aarch64le/capstone/work/src']' returned non-zero exit status 128.
+
+=== [60/61] pcre2 pcre2-10.44 ===
+[1/5] fetch https://github.com/PCRE2Project/pcre2.git @ pcre2-10.44
+fatal: unable to access 'https://github.com/PCRE2Project/pcre2.git/': Could not resolve host: github.com
+    pcre2: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'pcre2-10.44', '--recurse-submodules', '--shallow-submodules', 'https://github.com/PCRE2Project/pcre2.git', '/home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src']' returned non-zero exit status 128.
+
+=== [61/61] sqlite version-3.47.2 ===
+[1/5] fetch https://github.com/sqlite/sqlite.git @ version-3.47.2
+fatal: unable to access 'https://github.com/sqlite/sqlite.git/': Could not resolve host: github.com
+    sqlite: agent error: Command '['git', '-c', 'advice.detachedHead=false', 'clone', '-q', '--depth', '1', '--branch', 'version-3.47.2', '--recurse-submodules', '--shallow-submodules', 'https://github.com/sqlite/sqlite.git', '/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src']' returned non-zero exit status 128.
+aarch64le: 61 libraries, 1 built for QNX 8.0; tests ran for 1 (at least one test each): 25/25 passed
+x86_64: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1332/1366 passed
+-> /home/chirag/qnx-porter/results/ports.csv
+=== resumed, code: 94a1c9b
+target: QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le
+resume: 1 libraries already have a report in /home/chirag/qnx-porter/ports-aarch64le; 60 to go
+
+=== [1/60] yyjson 0.10.0 ===
+[1/5] fetch https://github.com/ibireme/yyjson.git @ 0.10.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 14 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/yyjson/work/src/test/test_json_writer.c:15:(.text+0x150): undefined reference to `__isinf'
+      fix 0001 [link-libm] `__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      12/12 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/yyjson/REPORT.md
+
+=== [2/60] cmocka cmocka-1.1.7 ===
+[1/5] fetch https://gitlab.com/cmocka/cmocka.git @ cmocka-1.1.7
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/include/cmocka.h:137:28: error: conflicting types for 'uintptr_t'; have 'unsigned int'
+      fix 0001 [wordsize-64] The library guesses the word size from glibc's __WORDSIZE, else from __x86_64__, else assumes 32 bits (cmocka.h), and so redefines (u)intptr_t as a 32-bit type on aarch64.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      46/46 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/cmocka/REPORT.md
+
+=== [3/60] libcbor v0.11.0 ===
+[1/5] fetch https://github.com/PJK/libcbor.git @ v0.11.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libcbor/REPORT.md
+
+=== [4/60] mbedtls v3.6.2 ===
+[1/5] fetch https://github.com/Mbed-TLS/mbedtls.git @ v3.6.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 23 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/src/library/x509_crt.c:2867:(.text+0x860): undefined reference to `__inet_pton'
+      fix 0001 [link-libsocket] `__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      130/130 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/mbedtls/REPORT.md
+
+=== [5/60] libsodium 1.0.20-RELEASE ===
+[1/5] fetch https://github.com/jedisct1/libsodium.git @ 1.0.20-RELEASE
+[2/5] build system: autotools; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      80/80 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libsodium/REPORT.md
+
+=== [6/60] libmodbus v3.1.11 ===
+[1/5] fetch https://github.com/stephane/libmodbus.git @ v3.1.11
+[2/5] build system: autotools; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libmodbus/REPORT.md
+
+=== [7/60] nng v1.9.0 ===
+[1/5] fetch https://github.com/nanomsg/nng.git @ v1.9.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+      fix 0001 [header-alias] <sys/errno.h> is a glibc alias QNX 8.0 does not ship; POSIX's <errno.h> declares the same things, and QNX has it.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      79/86 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/nng/REPORT.md
+
+=== [8/60] libconfig v1.7.3 ===
+[1/5] fetch https://github.com/hyperrealm/libconfig.git @ v1.7.3
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/1 tests passed
+      fix 0001 [printf-null] Crash on QNX: snprintf() at tests/tests.c:99 formats a NULL pointer with %s (backtrace: strlen <- snprintf). glibc prints "(null)" for that, QNX's libc faults; C leaves it
+      after crash fixes: 1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libconfig/REPORT.md
+
+=== [9/60] paho.mqtt.c v1.3.14 ===
+[1/5] fetch https://github.com/eclipse/paho.mqtt.c.git @ v1.3.14
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers
+      fix 0001 [bool-typedef] src/MQTTPacket.h defines its own `bool`, but on QNX 8.0 <sys/socket.h> already includes <stdbool.h> (via io-sock/types_fbsd.h), so `bool` is taken. The typedef is skipped
+      round 2: 33 error(s); first: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'
+      fix 0002 [link-libsocket] `recv` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+      fix 0003 [endian-netbyte] `be32toh` comes from glibc's <endian.h>, which QNX 8.0 does not have. QNX has the same names as BSD macros in <net/netbyte.h>; a small header (-included in every compil
+[3/5] build OK after 3 round(s)
+[4/5] tests skipped: build only: the test suite needs an MQTT broker on the target
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/paho.mqtt.c/REPORT.md
+
+=== [10/60] cJSON v1.7.18 ===
+[1/5] fetch https://github.com/DaveGamble/cJSON.git @ v1.7.18
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      19/19 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/cJSON/REPORT.md
+
+=== [11/60] jansson v2.14 ===
+[1/5] fetch https://github.com/akheron/jansson.git @ v2.14
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/jansson/work/src/src/value.c:926:(.text+0xa88): undefined reference to `__isinf'
+      fix 0001 [link-libm] `__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      209/213 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/jansson/REPORT.md
+
+=== [12/60] libyaml 0.2.5 ===
+[1/5] fetch https://github.com/yaml/libyaml.git @ 0.2.5
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      2/2 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libyaml/REPORT.md
+
+=== [13/60] msgpack-c c-6.1.0 ===
+[1/5] fetch https://github.com/msgpack/msgpack-c.git @ c-6.1.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/msgpack-c/REPORT.md
+
+=== [14/60] tinycbor v0.6.0 ===
+[1/5] fetch https://github.com/intel/tinycbor.git @ v0.6.0
+[2/5] build system: make; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests skipped: no test runner for make
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/tinycbor/REPORT.md
+
+=== [15/60] nanopb 0.4.9 ===
+[1/5] fetch https://github.com/nanopb/nanopb.git @ 0.4.9
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests skipped: build only: its tests use scons and protoc
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/nanopb/REPORT.md
+
+=== [16/60] flatcc v0.6.1 ===
+[1/5] fetch https://github.com/dvidelabs/flatcc.git @ v0.6.1
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests skipped: build only: its tests run the just-built flatcc compiler on the build host
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/flatcc/REPORT.md
+
+=== [17/60] pugixml v1.14 ===
+[1/5] fetch https://github.com/zeux/pugixml.git @ v1.14
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/pugixml/REPORT.md
+
+=== [18/60] tinyxml2 10.0.0 ===
+[1/5] fetch https://github.com/leethomason/tinyxml2.git @ 10.0.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/1 tests passed
+      fix 0001 [printf-null] Crash on QNX: printf() at xmltest.cpp:54 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C leaves it undef
+      after crash fixes: 1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/tinyxml2/REPORT.md
+
+=== [19/60] expat R_2_6_4 ===
+[1/5] fetch https://github.com/libexpat/libexpat.git @ R_2_6_4
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      2/2 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/expat/REPORT.md
+
+=== [20/60] libxml2 v2.13.5 ===
+[1/5] fetch https://github.com/GNOME/libxml2.git @ v2.13.5
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      7/8 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libxml2/REPORT.md
+
+=== [21/60] inih r58 ===
+[1/5] fetch https://github.com/benhoyt/inih.git @ r58
+[2/5] build system: meson; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/inih/REPORT.md
+
+=== [22/60] cmark 0.31.1 ===
+[1/5] fetch https://github.com/commonmark/cmark.git @ 0.31.1
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/cmark/REPORT.md
+
+=== [23/60] zlib v1.3.1 ===
+[1/5] fetch https://github.com/madler/zlib.git @ v1.3.1
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      2/2 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/zlib/REPORT.md
+
+=== [24/60] lz4 v1.10.0 ===
+[1/5] fetch https://github.com/lz4/lz4.git @ v1.10.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/lz4/REPORT.md
+
+=== [25/60] zstd v1.5.6 ===
+[1/5] fetch https://github.com/facebook/zstd.git @ v1.5.6
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      1/4 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/zstd/REPORT.md
+
+=== [26/60] miniz 3.0.2 ===
+[1/5] fetch https://github.com/richgel999/miniz.git @ 3.0.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/miniz/REPORT.md
+
+=== [27/60] libdeflate v1.22 ===
+[1/5] fetch https://github.com/ebiggers/libdeflate.git @ v1.22
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libdeflate/REPORT.md
+
+=== [28/60] xxHash v0.8.2 ===
+[1/5] fetch https://github.com/Cyan4973/xxHash.git @ v0.8.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/xxHash/REPORT.md
+
+=== [29/60] BLAKE3 1.5.4 ===
+[1/5] fetch https://github.com/BLAKE3-team/BLAKE3.git @ 1.5.4
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/BLAKE3/REPORT.md
+
+=== [30/60] libtommath v1.3.0 ===
+[1/5] fetch https://github.com/libtom/libtommath.git @ v1.3.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libtommath/REPORT.md
+
+=== [31/60] wolfssl v5.7.4-stable ===
+[1/5] fetch https://github.com/wolfSSL/wolfssl.git @ v5.7.4-stable
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/src/src/tls.c:1078:50: error: writing 16 bytes into a region of size 0 [-Werror=stringop-overflow=]
+      fix 0001 [no-werror] Warning -Wstringop-overflow= is promoted to an error by the project's -Werror. Keep it a warning (still printed in the build log) instead of editing the library's code; QNX'
+      round 2: 4 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/src/src/wolfio.c:1152:(.text+0x18): undefined reference to `recv'
+      fix 0002 [link-libsocket] `recv` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 3 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/wolfssl/REPORT.md
+
+=== [32/60] libsrtp v2.6.0 ===
+[1/5] fetch https://github.com/cisco/libsrtp.git @ v2.6.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 34 error(s); first: /builds/workspace/QNXOS_800/build_aarch64/lib/libpcap/build/nto-aarch64-le/../../dist/pcap.c:900:(.text+0xdc0): undefined reference to `socket'
+      fix 0001 [link-libsocket] `socket` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      9/12 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libsrtp/REPORT.md
+
+=== [33/60] libuv v1.49.2 ===
+[1/5] fetch https://github.com/libuv/libuv.git @ v1.49.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:117:19: error: 'struct qtime_entry' has no member named 'nsec'
+      no rule or model fix left for: /home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:117:19: error: 'struct qtime_entry' has no member named 'nsec'
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libuv/REPORT.md
+
+=== [34/60] libevent release-2.1.12-stable ===
+[1/5] fetch https://github.com/libevent/libevent.git @ release-2.1.12-stable
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/signal.c:257:24: error: 'SA_RESTART' undeclared (first use in this function); did you mean 'ERESTART'?
+      fix 0001 [sa-restart] QNX 8.0's <signal.h> lists SA_RESTART as not supported yet. Defining it as 0 lets the code build; system calls interrupted by a signal then return EINTR instead of restarti
+      round 2: 79 error(s); first: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: lib/libevent_extra-2.1.so.7.0.1: undefined reference to `setsockopt'
+      fix 0002 [link-libsocket] `setsockopt` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 3 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      20/24 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libevent/REPORT.md
+
+=== [35/60] c-ares v1.34.3 ===
+[1/5] fetch https://github.com/c-ares/c-ares.git @ v1.34.3
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/c-ares/REPORT.md
+
+=== [36/60] libcoap v4.3.5 ===
+[1/5] fetch https://github.com/obgm/libcoap.git @ v4.3.5
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 76 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/libcoap/work/src/src/coap_address.c:211:(.text+0x338): undefined reference to `getifaddrs'
+      fix 0001 [link-libsocket] `getifaddrs` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libcoap/REPORT.md
+
+=== [37/60] mosquitto v2.0.20 ===
+[1/5] fetch https://github.com/eclipse/mosquitto.git @ v2.0.20
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 64 error(s); first: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `connect'
+      fix 0001 [link-libsocket] `connect` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/REPORT.md
+
+=== [38/60] libwebsockets v4.3.3 ===
+[1/5] fetch https://github.com/warmcat/libwebsockets.git @ v4.3.3
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 6 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/src/lib/plat/unix/./private-lib-plat-unix.h:67: error: "BYTE_ORDER" redefined [-Werror]
+      fix 0001 [no-werror] A warning that has no -W switch of its own (here: "BYTE_ORDER" redefined [-Werror]) is made an error by the project's -Werror. The only way to keep it a warning is -Wno-erro
+      round 2: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/src/lib/plat/unix/./private-lib-plat-unix.h:141:24: error: 'TCPCTL_KEEPCNT' undeclared (first use in this f
+      no rule or model fix left for: /home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/src/lib/plat/unix/./private-lib-plat-unix.h:141:24: error: 'TCPCTL_KEEPCNT' undeclared (first use in 
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libwebsockets/REPORT.md
+
+=== [39/60] open62541 v1.4.6 ===
+[1/5] fetch https://github.com/open62541/open62541.git @ v1.4.6
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/open62541/REPORT.md
+
+=== [40/60] Micro-CDR v2.0.1 ===
+[1/5] fetch https://github.com/eProsima/Micro-CDR.git @ v2.0.1
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/Micro-CDR/REPORT.md
+
+=== [41/60] libgpiod v2.2.4 ===
+[1/5] fetch https://github.com/brgl/libgpiod.git @ v2.2.4
+[2/5] build system: autotools; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: configure: error: linux/const.h header not found (needed to build the library)
+      no rule or model fix left for: configure: error: linux/const.h header not found (needed to build the library)
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libgpiod/REPORT.md
+
+=== [42/60] can-utils v2023.03 ===
+[1/5] fetch https://github.com/linux-can/can-utils.git @ v2023.03
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 6 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: fatal error: endian.h: No such file or directory
+      no rule or model fix left for: /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: fatal error: endian.h: No such file or directory
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/can-utils/REPORT.md
+
+=== [43/60] fmt 11.0.2 ===
+[1/5] fetch https://github.com/fmtlib/fmt.git @ 11.0.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 6 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/gtest/gmock-gtest-all.cc:11045:(.text+0xb3c0): undefined reference to `regfree'
+      fix 0001 [link-libregex] `regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      17/20 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/fmt/REPORT.md
+
+=== [44/60] spdlog v1.15.0 ===
+[1/5] fetch https://github.com/gabime/spdlog.git @ v1.15.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 5 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/spdlog/work/src/include/spdlog/details/os-inl.h:188:45: error: no matching function for call to 'stat::stat(const std::__2::ba
+      fix 0001 [qnx-source] C++ sees only `struct stat`, not the POSIX function `stat()`: in strict -std=c++NN mode QNX's headers hide POSIX extensions (here sys/stat.h declares stat() only under __EX
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/spdlog/REPORT.md
+
+=== [45/60] googletest v1.15.2 ===
+[1/5] fetch https://github.com/google/googletest.git @ v1.15.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 9 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:689:(.text+0x7190): undefined reference to `regfree'
+      fix 0001 [link-libregex] `regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      25/27 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/googletest/REPORT.md
+
+=== [46/60] yaml-cpp 0.8.0 ===
+[1/5] fetch https://github.com/jbeder/yaml-cpp.git @ 0.8.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src/test/binary_test.cpp:11:38: error: narrowing conversion of '-58' from 'int' to 'char' [-Wnarrowing]
+      no rule or model fix left for: /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src/test/binary_test.cpp:11:38: error: narrowing conversion of '-58' from 'int' to 'char' [-Wnarrowing]
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/REPORT.md
+
+=== [47/60] tomlplusplus v3.4.0 ===
+[1/5] fetch https://github.com/marzer/tomlplusplus.git @ v3.4.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/tomlplusplus/REPORT.md
+
+=== [48/60] benchmark v1.9.1 ===
+[1/5] fetch https://github.com/google/benchmark.git @ v1.9.1
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (uname failed)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/benchmark/REPORT.md
+
+=== [49/60] libjpeg-turbo 3.0.4 ===
+[1/5] fetch https://github.com/libjpeg-turbo/libjpeg-turbo.git @ 3.0.4
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      564/574 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/REPORT.md
+
+=== [50/60] libpng v1.6.44 ===
+[1/5] fetch https://github.com/pnggroup/libpng.git @ v1.6.44
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 3 error(s); first: cc: unknown option: '--sysroot=/home/chirag/qnx800/target/qnx'
+      fix 0001 [qcc-sysroot] The project's own build script passes --sysroot to the compiler, which qcc does not accept. qcc already finds the SDP sysroot through QNX_TARGET, so the toolchain stops se
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libpng/REPORT.md
+
+=== [51/60] opus v1.5.2 ===
+[1/5] fetch https://github.com/xiph/opus.git @ v1.5.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/opus/REPORT.md
+
+=== [52/60] libogg v1.3.5 ===
+[1/5] fetch https://github.com/xiph/ogg.git @ v1.3.5
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      2/2 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libogg/REPORT.md
+
+=== [53/60] flac 1.4.3 ===
+[1/5] fetch https://github.com/xiph/flac.git @ 1.4.3
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/flac/work/src/src/flac/utils.c:223:(.text+0x184): undefined reference to `wcswidth'
+      fix 0001 [wcswidth-compat] QNX 8.0's libc has wcwidth() but no wcswidth(). POSIX defines wcswidth(s, n) as the sum of wcwidth() over the first n characters of s, or -1 if any is not printable; a
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      5/10 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/flac/REPORT.md
+
+=== [54/60] libsamplerate 0.2.2 ===
+[1/5] fetch https://github.com/libsndfile/libsamplerate.git @ 0.2.2
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      12/13 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libsamplerate/REPORT.md
+
+=== [55/60] cglm v0.9.4 ===
+[1/5] fetch https://github.com/recp/cglm.git @ v0.9.4
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/cglm/REPORT.md
+
+=== [56/60] libccd v2.1 ===
+[1/5] fetch https://github.com/danfis/libccd.git @ v2.1
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      3/3 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libccd/REPORT.md
+
+=== [57/60] kissfft 131.1.0 ===
+[1/5] fetch https://github.com/mborgerding/kissfft.git @ 131.1.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/kissfft/REPORT.md
+
+=== [58/60] capstone 5.0.3 ===
+[1/5] fetch https://github.com/capstone-engine/capstone.git @ 5.0.3
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      23/24 tests passed
+      fix 0001 [printf-null] Crash on QNX: printf() at tests/test_iter.c:330 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C leaves i
+      after crash fixes: 24/24 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/capstone/REPORT.md
+
+=== [59/60] pcre2 pcre2-10.44 ===
+[1/5] fetch https://github.com/PCRE2Project/pcre2.git @ pcre2-10.44
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      1/3 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/pcre2/REPORT.md
+
+=== [60/60] sqlite version-3.47.2 ===
+[1/5] fetch https://github.com/sqlite/sqlite.git @ version-3.47.2
+[2/5] build system: autotools; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests skipped: build only: its test suite needs Tcl on the target
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/sqlite/REPORT.md
+aarch64le: 61 libraries, 56 built for QNX 8.0; tests ran for 32 (at least one test each): 1302/1349 passed
+x86_64: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1332/1366 passed
+-> /home/chirag/qnx-porter/results/ports.csv
+
+=== re-run of yaml-cpp, code:  (signed-char rule) ===
+target: QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le
+
+=== [1/1] yaml-cpp 0.8.0 ===
+[1/5] fetch https://github.com/jbeder/yaml-cpp.git @ 0.8.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src/test/binary_test.cpp:11:38: error: narrowing conversion of '-58' from 'int' to 'char' [-Wnarrowing]
+      fix 0001 [signed-char] Plain char is unsigned on aarch64 (the Arm ABI) and signed on x86_64; the code puts a negative constant in a char, which is fine on x86_64 and a narrowing error on aarch64
+      round 2: 6 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:717:(.text+0xafb0): undefined reference to `regfree'
+      fix 0002 [link-libregex] `regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.
+[3/5] build OK after 3 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/REPORT.md
+aarch64le: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1302/1350 passed
+x86_64: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1332/1366 passed
+-> /home/chirag/qnx-porter/results/ports.csv
+
+=== re-run of libjpeg-turbo, flac and nng on a quiet host, code:  (their first run hit ssh timeouts while the host was overloaded) ===
+target: QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le
+
+=== [1/3] nng v1.9.0 ===
+[1/5] fetch https://github.com/nanomsg/nng.git @ v1.9.0
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+      fix 0001 [header-alias] <sys/errno.h> is a glibc alias QNX 8.0 does not ship; POSIX's <errno.h> declares the same things, and QNX has it.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      80/86 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/nng/REPORT.md
+
+=== [2/3] libjpeg-turbo 3.0.4 ===
+[1/5] fetch https://github.com/libjpeg-turbo/libjpeg-turbo.git @ 3.0.4
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      574/574 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/REPORT.md
+
+=== [3/3] flac 1.4.3 ===
+[1/5] fetch https://github.com/xiph/flac.git @ 1.4.3
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/flac/work/src/src/flac/utils.c:223:(.text+0x184): undefined reference to `wcswidth'
+      fix 0001 [wcswidth-compat] QNX 8.0's libc has wcwidth() but no wcswidth(). POSIX defines wcswidth(s, n) as the sum of wcwidth() over the first n characters of s, or -1 if any is not printable; a
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.12:22 (QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le)
+      6/10 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/flac/REPORT.md
+aarch64le: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1314/1350 passed
+x86_64: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1332/1366 passed
+-> /home/chirag/qnx-porter/results/ports.csv

@@ -1,0 +1,30 @@
+Subject: [qnx-porter 0001] printf-null
+Source: deterministic rule
+Reason: Crash on QNX: snprintf() at tests/tests.c:99 formats a NULL pointer with %s (backtrace: strlen <- snprintf). glibc prints "(null)" for that, QNX's libc faults; C leaves it undefined. Each %s argument of that call now goes through qnx_porter_str(), which prints "(null)" like glibc.
+Error: Memory fault (SIGSEGV) in strlen <- printf on QNX
+---
+diff --git a/tests/tests.c b/tests/tests.c
+index c12a0c6..77dfea6 100644
+--- a/tests/tests.c
++++ b/tests/tests.c
+@@ -31,6 +31,9 @@
+ #include <libconfig.h>
+ #include <tinytest.h>
+ 
++/* qnx-porter: glibc prints "(null)" for a NULL %s argument; QNX's libc faults (it is undefined C). */
++static const char *qnx_porter_str(const char *s) { return s ? s : "(null)"; }
++
+ /* ------------------------------------------------------------------------- */
+ 
+ static void parse_and_compare(const char *input_file, const char *output_file)
+@@ -97,8 +100,8 @@ static void parse_string_and_compare_error(const char *input_text,
+   snprintf(expected_error, sizeof(expected_error), "(null):%s", parse_error);
+ 
+   snprintf(actual_error, sizeof(actual_error), "%s:%d %s\n",
+-           config_error_file(&cfg), config_error_line(&cfg),
+-           config_error_text(&cfg));
++           qnx_porter_str(config_error_file(&cfg)), config_error_line(&cfg),
++           qnx_porter_str(config_error_text(&cfg)));
+ 
+   config_destroy(&cfg);
+ 
