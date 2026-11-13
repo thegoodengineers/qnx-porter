@@ -9,3 +9,4 @@ site/_out/
 dist/
 ports-rust*/*/work/
 ports-rust*/.cargo-target-*/
+ports-model/*/work/

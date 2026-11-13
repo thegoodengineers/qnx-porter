@@ -91,3 +91,12 @@ def test_cmake_e_helpers_run_as_qnx_shell_commands():
     assert cmake_e(["/usr/bin/cmake", "-E", "rm", "-f", "z"]) == ["rm", "-rf", "z"]
     assert cmake_e(["/usr/bin/cmake", "-E", "tar", "cf", "z"]) is None
     assert cmake_e(["/w/build/test1"]) is None
+
+
+def test_tap_subtests_are_counted_and_every_failure_named():
+    from qnx_porter.target import tap_summary
+    out = ("1..4\nok 1 - fs_open\nnot ok 2 - udp_connect\n# exit code 1\n"
+           "ok 3 - tcp_connect_timeout # SKIP Network unreachable.\nok 4 - timer\n")
+    s = tap_summary(out)
+    assert "2 ok, 1 not ok, 1 skipped" in s and "not ok: udp_connect" in s
+    assert tap_summary("PASS\n") == ""

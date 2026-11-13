@@ -1,0 +1,23 @@
+diff --git a/lib/plat/unix/private-lib-plat-unix.h b/lib/plat/unix/private-lib-plat-unix.h
+index 1aa9e80..73cdcfb 100644
+--- a/lib/plat/unix/private-lib-plat-unix.h
++++ b/lib/plat/unix/private-lib-plat-unix.h
+@@ -134,11 +134,17 @@ typedef pthread_mutex_t lws_mutex_t;
+ #include <sys/syslog.h>
+ #endif
+ 
+-#ifdef __QNX__
++#if defined(__QNX__) && (!defined(TCP_KEEPINTVL) || !defined(TCP_KEEPIDLE) || !defined(TCP_KEEPCNT))
+ # include "netinet/tcp_var.h"
++# if !defined(TCP_KEEPINTVL)
+ # define TCP_KEEPINTVL TCPCTL_KEEPINTVL
++# endif
++# if !defined(TCP_KEEPIDLE)
+ # define TCP_KEEPIDLE  TCPCTL_KEEPIDLE
++# endif
++# if !defined(TCP_KEEPCNT)
+ # define TCP_KEEPCNT   TCPCTL_KEEPCNT
++# endif
+ #endif
+ 
+ #define LWS_ERRNO errno

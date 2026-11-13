@@ -1,0 +1,35 @@
+Subject: [qnx-porter 0001] model-fix
+Source: language model, checked by rebuilding
+Reason: QNX 8.0's struct qtime_entry has no nsec field, so uv_uptime now uses clock_gettime(CLOCK_MONOTONIC); syspage_entry in QNX 8.0 has no new_cpuinfo member, so the cpuinfo member the compiler suggests is used instead, matching the existing _SYSPAGE_ELEMENT_SIZE(_syspage_ptr, cpuinfo) call.
+Error: /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/src/unix/qnx.c:117:19: error: 'struct qtime_entry' has no member named 'nsec'
+---
+diff --git a/src/unix/qnx.c b/src/unix/qnx.c
+index 57ea9df..18b68d8 100644
+--- a/src/unix/qnx.c
++++ b/src/unix/qnx.c
+@@ -112,16 +112,22 @@ int uv_resident_set_memory(size_t* rss) {
+ }
+ 
+ 
++#include <time.h>
++
+ int uv_uptime(double* uptime) {
+-  struct qtime_entry* qtime = _SYSPAGE_ENTRY(_syspage_ptr, qtime);
+-  *uptime = (qtime->nsec / 1000000000.0);
++  struct timespec ts;
++
++  if (clock_gettime(CLOCK_MONOTONIC, &ts) == -1)
++    return UV__ERR(errno);
++
++  *uptime = (double) ts.tv_sec + (double) ts.tv_nsec / 1000000000.0;
+   return 0;
+ }
+ 
+ 
+ int uv_cpu_info(uv_cpu_info_t** cpu_infos, int* count) {
+   struct cpuinfo_entry* cpuinfo =
+-    (struct cpuinfo_entry*)_SYSPAGE_ENTRY(_syspage_ptr, new_cpuinfo);
++    (struct cpuinfo_entry*)_SYSPAGE_ENTRY(_syspage_ptr, cpuinfo);
+   size_t cpuinfo_size = _SYSPAGE_ELEMENT_SIZE(_syspage_ptr, cpuinfo);
+   struct strings_entry* strings = _SYSPAGE_ENTRY(_syspage_ptr, strings);
+   int num_cpus = _syspage_ptr->num_cpu;

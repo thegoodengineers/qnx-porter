@@ -1,0 +1,307 @@
+$ ctest --show-only=json-v1 (in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/build); every test command runs on root@172.31.1.11 over ssh
+FAIL  uv_test (exit 46); its own subtests (TAP): 384 ok, 46 not ok, 9 skipped
+      not ok: platform_output, embed, fork_fs_events_child, fork_fs_events_file_parent_child, fs_chown, fs_event_close_in_callback, fs_event_close_with_pending_delete_event, fs_event_close_with_pending_event, fs_event_getpath, fs_event_immediate_close, fs_event_no_callback_after_close, fs_event_no_callback_on_close, fs_event_ref, fs_event_start_and_close, fs_event_stop_in_cb, fs_event_watch_delete_dir, fs_event_watch_dir, fs_event_watch_file, fs_event_watch_file_current_dir, fs_event_watch_file_exact_path, fs_event_watch_file_twice, fs_event_watch_invalid_path, fs_futime, fs_lutime, fs_read_bufs, fs_read_dir, fs_statfs, fs_utime, fs_utime_round, fs_write_multiple_bufs, kill, pipe_bind_error_addrnotavail, pipe_connect_to_file, pipe_getsockname, poll_bad_fdtype, poll_duplex, poll_unidirectional, process_priority, process_title, process_title_threadsafe, udp_connect, udp_connect6, udp_dual_stack, udp_mmsg, udp_multicast_join, udp_multicast_join6
+    ok 313 - tcp_connect_error_after_write
+    ok 314 - tcp_connect_error_fault
+    ok 315 - tcp_connect_timeout # SKIP Network unreachable.
+    ok 316 - tcp_create_early
+    ok 317 - tcp_create_early_accept
+    ok 318 - tcp_create_early_bad_bind
+    ok 319 - tcp_create_early_bad_domain
+    ok 320 - tcp_flags
+    ok 321 - tcp_listen_without_bind
+    ok 322 - tcp_local_connect_timeout
+    ok 323 - tcp_oob
+    ok 324 - tcp_open
+    ok 325 - tcp_open_bound
+    ok 326 - tcp_open_connected
+    ok 327 - tcp_open_twice
+    ok 328 - tcp_ping_pong
+    ok 329 - tcp_ping_pong_vec
+    ok 330 - tcp_read_stop
+    ok 331 - tcp_read_stop_start
+    ok 332 - tcp_ref
+    ok 333 - tcp_ref2
+    ok 334 - tcp_ref2b
+    ok 335 - tcp_ref3
+    ok 336 - tcp_ref4
+    ok 337 - tcp_reuseport
+    ok 338 - tcp_rst
+    ok 339 - tcp_shutdown_after_write
+    ok 340 - tcp_try_write
+    ok 341 - tcp_try_write_error
+    ok 342 - tcp_unexpected_read
+    ok 343 - tcp_write_after_connect
+    ok 344 - tcp_write_fail
+    ok 345 - tcp_write_in_a_row
+    ok 346 - tcp_write_queue_order
+    ok 347 - tcp_write_ready
+    ok 348 - tcp_write_to_half_open_connection
+    ok 349 - tcp_writealot
+    ok 350 - test_macros
+    ok 351 - thread_affinity
+    ok 352 - thread_create
+    ok 353 - thread_equal
+    ok 354 - thread_local_storage
+    ok 355 - thread_mutex
+    ok 356 - thread_mutex_recursive
+    ok 357 - thread_priority
+    ok 358 - thread_rwlock
+    ok 359 - thread_rwlock_trylock
+    ok 360 - thread_stack_size
+    ok 361 - thread_stack_size_explicit
+    ok 362 - threadpool_cancel_fs
+    ok 363 - threadpool_cancel_getaddrinfo
+    ok 364 - threadpool_cancel_getnameinfo
+    ok 365 - threadpool_cancel_random
+    ok 366 - threadpool_cancel_single
+    ok 367 - threadpool_cancel_when_busy
+    ok 368 - threadpool_cancel_work
+    ok 369 - threadpool_multiple_event_loops
+    ok 370 - threadpool_queue_work_einval
+    ok 371 - threadpool_queue_work_simple
+    ok 372 - timer
+    ok 373 - timer_again
+    ok 374 - timer_early_check
+    ok 375 - timer_from_check
+    ok 376 - timer_huge_repeat
+    ok 377 - timer_huge_timeout
+    ok 378 - timer_init
+    ok 379 - timer_is_closing
+    ok 380 - timer_no_double_call_nowait
+    ok 381 - timer_no_double_call_once
+    ok 382 - timer_no_run_on_unref
+    ok 383 - timer_null_callback
+    ok 384 - timer_order
+    ok 385 - timer_ref
+    ok 386 - timer_ref2
+    ok 387 - timer_run_once
+    ok 388 - timer_start_twice
+    ok 389 - timer_zero_timeout
+    ok 390 - tmpdir
+    ok 391 - tty # SKIP Cannot open /dev/tty as read-only: No such device or address
+    ok 392 - tty_file
+    ok 393 - tty_pty
+    ok 394 - udp_alloc_cb_fail
+    ok 395 - udp_bind
+    ok 396 - udp_bind_reuseaddr
+    not ok 397 - udp_connect
+    # exit code 134
+    # Output from process `udp_connect`:
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-connect.c on line 134: `r == 0` (-247 == 0)
+    not ok 398 - udp_connect6
+    # exit code 134
+    # Output from process `udp_connect6`:
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-connect6.c on line 137: `r == 0` (-247 == 0)
+    ok 399 - udp_create_early
+    ok 400 - udp_create_early_bad_bind
+    ok 401 - udp_create_early_bad_domain
+    ok 402 - udp_dgram_too_big
+    not ok 403 - udp_dual_stack
+    # exit code 134
+    # Output from process `udp_dual_stack`:
+    # on [::]:41763
+    # to [127.0.0.1]:41763
+    # sending PING16405
+    # from [0.0.0.0]:58264
+    # recv_cb_called 0
+    # send_cb_called 1
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-ipv6.c on line 242: `1 == recv_cb_called` (1 == 0)
+    ok 404 - udp_ipv6_only
+    not ok 405 - udp_mmsg
+    # timeout
+    # Output from process `udp_mmsg`: (no output)
+    ok 406 - udp_multicast_interface
+    ok 407 - udp_multicast_interface6
+    not ok 408 - udp_multicast_join
+    # exit code 134
+    # Output from process `udp_multicast_join`:
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-multicast-join.c on line 64: `status == 0` (-251 == 0)
+    not ok 409 - udp_multicast_join6
+    # exit code 134
+    # Output from process `udp_multicast_join6`:
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-multicast-join6.c on line 193: `r == 0` (-249 == 0)
+    ok 410 - udp_multicast_ttl
+    ok 411 - udp_no_autobind
+    ok 412 - udp_open
+    ok 413 - udp_open_bound
+    ok 414 - udp_open_connect
+    ok 415 - udp_open_twice
+    ok 416 - udp_options
+    ok 417 - udp_options6
+    ok 418 - udp_recv_in_a_row
+    ok 419 - udp_ref
+    ok 420 - udp_ref2
+    ok 421 - udp_ref3
+    ok 422 - udp_reuseport
+    ok 423 - udp_send_and_recv
+    ok 424 - udp_send_hang_loop
+    ok 425 - udp_send_immediate
+    ok 426 - udp_send_unix
+    ok 427 - udp_send_unreachable
+    ok 428 - udp_sendmmsg_error
+    ok 429 - udp_try_send
+    ok 430 - uname
+    ok 431 - unref_in_prepare_cb
+    ok 432 - utf8_decode1
+    ok 433 - utf8_decode1_overrun
+    ok 434 - walk_handles
+    ok 435 - watcher_cross_stop # SKIP File descriptor limit too low.
+    ok 436 - we_get_signal
+    ok 437 - we_get_signal_one_shot
+    ok 438 - we_get_signals
+    ok 439 - we_get_signals_mixed
+FAIL  uv_test_a (exit 46); its own subtests (TAP): 384 ok, 46 not ok, 9 skipped
+      not ok: platform_output, embed, fork_fs_events_child, fork_fs_events_file_parent_child, fs_chown, fs_event_close_in_callback, fs_event_close_with_pending_delete_event, fs_event_close_with_pending_event, fs_event_getpath, fs_event_immediate_close, fs_event_no_callback_after_close, fs_event_no_callback_on_close, fs_event_ref, fs_event_start_and_close, fs_event_stop_in_cb, fs_event_watch_delete_dir, fs_event_watch_dir, fs_event_watch_file, fs_event_watch_file_current_dir, fs_event_watch_file_exact_path, fs_event_watch_file_twice, fs_event_watch_invalid_path, fs_futime, fs_lutime, fs_read_bufs, fs_read_dir, fs_statfs, fs_utime, fs_utime_round, fs_write_multiple_bufs, kill, pipe_bind_error_addrnotavail, pipe_connect_to_file, pipe_getsockname, poll_bad_fdtype, poll_duplex, poll_unidirectional, process_priority, process_title, process_title_threadsafe, udp_connect, udp_connect6, udp_dual_stack, udp_mmsg, udp_multicast_join, udp_multicast_join6
+    ok 313 - tcp_connect_error_after_write
+    ok 314 - tcp_connect_error_fault
+    ok 315 - tcp_connect_timeout # SKIP Network unreachable.
+    ok 316 - tcp_create_early
+    ok 317 - tcp_create_early_accept
+    ok 318 - tcp_create_early_bad_bind
+    ok 319 - tcp_create_early_bad_domain
+    ok 320 - tcp_flags
+    ok 321 - tcp_listen_without_bind
+    ok 322 - tcp_local_connect_timeout
+    ok 323 - tcp_oob
+    ok 324 - tcp_open
+    ok 325 - tcp_open_bound
+    ok 326 - tcp_open_connected
+    ok 327 - tcp_open_twice
+    ok 328 - tcp_ping_pong
+    ok 329 - tcp_ping_pong_vec
+    ok 330 - tcp_read_stop
+    ok 331 - tcp_read_stop_start
+    ok 332 - tcp_ref
+    ok 333 - tcp_ref2
+    ok 334 - tcp_ref2b
+    ok 335 - tcp_ref3
+    ok 336 - tcp_ref4
+    ok 337 - tcp_reuseport
+    ok 338 - tcp_rst
+    ok 339 - tcp_shutdown_after_write
+    ok 340 - tcp_try_write
+    ok 341 - tcp_try_write_error
+    ok 342 - tcp_unexpected_read
+    ok 343 - tcp_write_after_connect
+    ok 344 - tcp_write_fail
+    ok 345 - tcp_write_in_a_row
+    ok 346 - tcp_write_queue_order
+    ok 347 - tcp_write_ready
+    ok 348 - tcp_write_to_half_open_connection
+    ok 349 - tcp_writealot
+    ok 350 - test_macros
+    ok 351 - thread_affinity
+    ok 352 - thread_create
+    ok 353 - thread_equal
+    ok 354 - thread_local_storage
+    ok 355 - thread_mutex
+    ok 356 - thread_mutex_recursive
+    ok 357 - thread_priority
+    ok 358 - thread_rwlock
+    ok 359 - thread_rwlock_trylock
+    ok 360 - thread_stack_size
+    ok 361 - thread_stack_size_explicit
+    ok 362 - threadpool_cancel_fs
+    ok 363 - threadpool_cancel_getaddrinfo
+    ok 364 - threadpool_cancel_getnameinfo
+    ok 365 - threadpool_cancel_random
+    ok 366 - threadpool_cancel_single
+    ok 367 - threadpool_cancel_when_busy
+    ok 368 - threadpool_cancel_work
+    ok 369 - threadpool_multiple_event_loops
+    ok 370 - threadpool_queue_work_einval
+    ok 371 - threadpool_queue_work_simple
+    ok 372 - timer
+    ok 373 - timer_again
+    ok 374 - timer_early_check
+    ok 375 - timer_from_check
+    ok 376 - timer_huge_repeat
+    ok 377 - timer_huge_timeout
+    ok 378 - timer_init
+    ok 379 - timer_is_closing
+    ok 380 - timer_no_double_call_nowait
+    ok 381 - timer_no_double_call_once
+    ok 382 - timer_no_run_on_unref
+    ok 383 - timer_null_callback
+    ok 384 - timer_order
+    ok 385 - timer_ref
+    ok 386 - timer_ref2
+    ok 387 - timer_run_once
+    ok 388 - timer_start_twice
+    ok 389 - timer_zero_timeout
+    ok 390 - tmpdir
+    ok 391 - tty # SKIP Cannot open /dev/tty as read-only: No such device or address
+    ok 392 - tty_file
+    ok 393 - tty_pty
+    ok 394 - udp_alloc_cb_fail
+    ok 395 - udp_bind
+    ok 396 - udp_bind_reuseaddr
+    not ok 397 - udp_connect
+    # exit code 134
+    # Output from process `udp_connect`:
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-connect.c on line 134: `r == 0` (-247 == 0)
+    not ok 398 - udp_connect6
+    # exit code 134
+    # Output from process `udp_connect6`:
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-connect6.c on line 137: `r == 0` (-247 == 0)
+    ok 399 - udp_create_early
+    ok 400 - udp_create_early_bad_bind
+    ok 401 - udp_create_early_bad_domain
+    ok 402 - udp_dgram_too_big
+    not ok 403 - udp_dual_stack
+    # exit code 134
+    # Output from process `udp_dual_stack`:
+    # on [::]:41763
+    # to [127.0.0.1]:41763
+    # sending PING16405
+    # from [0.0.0.0]:44980
+    # recv_cb_called 0
+    # send_cb_called 1
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-ipv6.c on line 242: `1 == recv_cb_called` (1 == 0)
+    ok 404 - udp_ipv6_only
+    not ok 405 - udp_mmsg
+    # timeout
+    # Output from process `udp_mmsg`: (no output)
+    ok 406 - udp_multicast_interface
+    ok 407 - udp_multicast_interface6
+    not ok 408 - udp_multicast_join
+    # exit code 134
+    # Output from process `udp_multicast_join`:
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-multicast-join.c on line 64: `status == 0` (-251 == 0)
+    not ok 409 - udp_multicast_join6
+    # exit code 134
+    # Output from process `udp_multicast_join6`:
+    # Assertion failed in /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libuv/work/src/test/test-udp-multicast-join6.c on line 193: `r == 0` (-249 == 0)
+    ok 410 - udp_multicast_ttl
+    ok 411 - udp_no_autobind
+    ok 412 - udp_open
+    ok 413 - udp_open_bound
+    ok 414 - udp_open_connect
+    ok 415 - udp_open_twice
+    ok 416 - udp_options
+    ok 417 - udp_options6
+    ok 418 - udp_recv_in_a_row
+    ok 419 - udp_ref
+    ok 420 - udp_ref2
+    ok 421 - udp_ref3
+    ok 422 - udp_reuseport
+    ok 423 - udp_send_and_recv
+    ok 424 - udp_send_hang_loop
+    ok 425 - udp_send_immediate
+    ok 426 - udp_send_unix
+    ok 427 - udp_send_unreachable
+    ok 428 - udp_sendmmsg_error
+    ok 429 - udp_try_send
+    ok 430 - uname
+    ok 431 - unref_in_prepare_cb
+    ok 432 - utf8_decode1
+    ok 433 - utf8_decode1_overrun
+    ok 434 - walk_handles
+    ok 435 - watcher_cross_stop # SKIP File descriptor limit too low.
+    ok 436 - we_get_signal
+    ok 437 - we_get_signal_one_shot
+    ok 438 - we_get_signals
+    ok 439 - we_get_signals_mixed
+
+0/2 tests passed on the QNX target
