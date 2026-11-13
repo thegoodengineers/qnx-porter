@@ -381,6 +381,7 @@ Build and run requirements: **QNX SDP 8.0**, target **x86_64 QEMU** or **aarch64
 works, but we tested only these two), toolchain **qcc / GCC from SDP 8.0**, host **Ubuntu 22.04/24.04 or WSL2**. Details: [SETUP.md](SETUP.md).
 
 ## Known limits
+The full list, with numbers: [docs/LIMITATIONS.md](docs/LIMITATIONS.md). In short:
 - Linux host only (WSL2 on Windows), because QNX's QEMU tooling is Ubuntu-only.
 - Tests that need a network peer or root-only devices are counted as they run; nothing is excluded by hand.
 - A rule never rewrites Linux-only code (epoll, inotify, ...). That is the model's job, or a person's.
