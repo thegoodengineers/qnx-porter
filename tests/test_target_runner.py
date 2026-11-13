@@ -115,3 +115,28 @@ def test_leftover_test_processes_are_killed_before_the_tree_is_removed(tmp_path)
     fake = cmd.replace("/proc/[0-9]*", f"{tmp_path}/[0-9]*").replace("${d#/proc/}", "${d##*/}").replace("kill -9", "echo")
     out = subprocess.run(["sh", "-c", fake], capture_output=True, text=True).stdout.split()
     assert out == ["11"]
+
+
+def test_junit_matches_the_log_summary_for_every_committed_c_port():
+    import re
+    import xml.etree.ElementTree as ET
+    from pathlib import Path
+    logs = [p for d in ("ports", "ports-aarch64le") for p in (Path(__file__).parents[1] / d).glob("*/logs/tests.log")]
+    assert logs
+    for p in logs:
+        s = p.read_text(encoding="utf-8", errors="replace")
+        m = re.search(r"^(\d+)/(\d+) tests passed on the QNX target", s, re.M)
+        if not m:
+            continue
+        r = ET.fromstring(target.junit_from_log(s).encode())
+        tests, failures, skipped = (int(r.get(k)) for k in ("tests", "failures", "skipped"))
+        assert (tests - failures - skipped, failures) == (int(m[1]), int(m[2]) - int(m[1])), p
+
+
+def test_junit_failure_keeps_the_output_and_strips_control_characters():
+    import xml.etree.ElementTree as ET
+    log = "hdr\nPASS  a (exit 0)\nFAIL  b (exit 1)\n    boom\x01\nN/A   c (needs python3 on the target)\n"
+    r = ET.fromstring(target.junit_from_log(log).encode())
+    assert [c.get("name") for c in r] == ["a", "b", "c"]
+    assert r.find("testcase[@name='b']/failure").text == "boom\n"
+    assert r.find("testcase[@name='c']/skipped").get("message") == "needs python3 on the target"

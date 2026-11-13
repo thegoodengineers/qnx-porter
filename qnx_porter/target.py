@@ -254,7 +254,35 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
     lines.append(f"\n{passed}/{total} tests passed on the QNX target"
                  + (f"; {len(not_runnable)} not runnable there" if not_runnable else "") + "\n")
     log_path.write_text("".join(lines), encoding="utf-8")
+    log_path.with_name("tests.junit.xml").write_text(junit_from_log(log_path.read_text(encoding="utf-8")),
+                                                     encoding="utf-8")
     return {"passed": passed, "total": total, "not_runnable": not_runnable}
+
+
+RESULT_LINE = re.compile(r"^(PASS|FAIL|SKIP|N/A)\s+(\S+) \((.*)\)(.*)$")
+
+
+def junit_from_log(log: str, suite: str = "qnx-target") -> str:
+    """JUnit XML for the per-test lines run_tests() writes to tests.log, for CI dashboards and QNX's port
+    pipelines. A failure carries the test's output from the log; "N/A" (not runnable on the target) is skipped."""
+    import xml.etree.ElementTree as ET
+    root = ET.Element("testsuite", name=suite)
+    case = None
+    log = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f￾￿]", "", log)  # characters XML 1.0 cannot hold
+    for ln in log.splitlines():
+        m = RESULT_LINE.match(ln)
+        if m:
+            kind, name, why, rest = m.groups()
+            case = ET.SubElement(root, "testcase", name=name, classname=suite)
+            if kind == "FAIL":
+                ET.SubElement(case, "failure", message=f"{why}{rest}".strip()).text = ""
+            elif kind in ("SKIP", "N/A"):
+                ET.SubElement(case, "skipped", message=why)
+        elif case is not None and ln.startswith("    ") and case.find("failure") is not None:
+            case.find("failure").text += ln[4:] + "\n"
+    for k, tag in (("tests", "testcase"), ("failures", "testcase/failure"), ("skipped", "testcase/skipped")):
+        root.set(k, str(len(root.findall(tag))))
+    return ET.tostring(root, encoding="unicode", xml_declaration=True) + "\n"
 
 
 def write_wrapper(path: Path, t: Target, work: Path) -> str:

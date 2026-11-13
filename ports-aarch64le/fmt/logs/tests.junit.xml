@@ -1,0 +1,378 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="qnx-target" tests="20" failures="3" skipped="0"><testcase name="args-test" classname="qnx-target" /><testcase name="base-test" classname="qnx-target" /><testcase name="assert-test" classname="qnx-target" /><testcase name="chrono-test" classname="qnx-target"><failure message="exit 1">[==========] Running 33 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 33 tests from chrono_test
+[ RUN      ] chrono_test.format_tm
+[       OK ] chrono_test.format_tm (12190 ms)
+[ RUN      ] chrono_test.format_tm_future
+[       OK ] chrono_test.format_tm_future (1 ms)
+[ RUN      ] chrono_test.format_tm_past
+[       OK ] chrono_test.format_tm_past (2 ms)
+[ RUN      ] chrono_test.grow_buffer
+[       OK ] chrono_test.grow_buffer (1 ms)
+[ RUN      ] chrono_test.format_to_empty_container
+[       OK ] chrono_test.format_to_empty_container (0 ms)
+[ RUN      ] chrono_test.empty_result
+[       OK ] chrono_test.empty_result (0 ms)
+[ RUN      ] chrono_test.gmtime
+[       OK ] chrono_test.gmtime (0 ms)
+[ RUN      ] chrono_test.system_clock_time_point
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/chrono-test.cc:301: Failure
+Expected equality of these values:
+  sys_output
+    Which is: ""
+  fmt::format(fmt::runtime(fmt_spec), t1)
+    Which is: "11/12/26"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/chrono-test.cc:302: Failure
+Expected equality of these values:
+  sys_output
+    Which is: ""
+  fmt::format(fmt::runtime(fmt_spec), tm)
+    Which is: "11/12/26"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/chrono-test.cc:301: Failure
+Expected equality of these values:
+  sys_output
+    Which is: ""
+  fmt::format(fmt::runtime(fmt_spec), t1)
+    Which is: "14:36:12"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/chrono-test.cc:302: Failure
+Expected equality of these values:
+  sys_output
+    Which is: ""
+  fmt::format(fmt::runtime(fmt_spec), tm)
+    Which is: "14:36:12"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/chrono-test.cc:301: Failure
+Expected equality of these values:
+  sys_output
+    Which is: ""
+  fmt::format(fmt::runtime(fmt_spec), t1)
+    Which is: "Thu Nov 12 14:36:12 2026"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/chrono-test.cc:302: Failure
+Expected equality of these values:
+  sys_output
+    Which is: ""
+  fmt::format(fmt::runtime(fmt_spec), tm)
+    Which is: "Thu Nov 12 14:36:12 2026"
+[  FAILED  ] chrono_test.system_clock_time_point (37 ms)
+[ RUN      ] chrono_test.format_default
+[       OK ] chrono_test.format_default (8 ms)
+[ RUN      ] chrono_test.duration_align
+[       OK ] chrono_test.duration_align (4 ms)
+[ RUN      ] chrono_test.tm_align
+[       OK ] chrono_test.tm_align (1 ms)
+[ RUN      ] chrono_test.tp_align
+[       OK ] chrono_test.tp_align (2 ms)
+[ RUN      ] chrono_test.format_specs
+[       OK ] chrono_test.format_specs (4 ms)
+[ RUN      ] chrono_test.invalid_specs
+[       OK ] chrono_test.invalid_specs (13 ms)
+[ RUN      ] chrono_test.locale
+[       OK ] chrono_test.locale (5 ms)
+[ RUN      ] chrono_test.format_default_fp
+[       OK ] chrono_test.format_default_fp (3 ms)
+[ RUN      ] chrono_test.format_precision
+[       OK ] chrono_test.format_precision (2 ms)
+[ RUN      ] chrono_test.format_full_specs
+[       OK ] chrono_test.format_full_specs (1 ms)
+[ RUN      ] chrono_test.format_simple_q
+[       OK ] chrono_test.format_simple_q (3 ms)
+[ RUN      ] chrono_test.format_precision_q
+[       OK ] chrono_test.format_precision_q (1 ms)
+[ RUN      ] chrono_test.format_full_specs_q
+[       OK ] chrono_test.format_full_specs_q (1 ms)
+[ RUN      ] chrono_test.invalid_width_id
+[       OK ] chrono_test.invalid_width_id (1 ms)
+[ RUN      ] chrono_test.invalid_colons
+[       OK ] chrono_test.invalid_colons (1 ms)
+[ RUN      ] chrono_test.negative_durations
+[       OK ] chrono_test.negative_durations (11 ms)
+[ RUN      ] chrono_test.special_durations
+[       OK ] chrono_test.special_durations (4 ms)
+[ RUN      ] chrono_test.unsigned_duration
+[       OK ] chrono_test.unsigned_duration (0 ms)
+[ RUN      ] chrono_test.weekday
+[       OK ] chrono_test.weekday (2 ms)
+[ RUN      ] chrono_test.cpp20_duration_subsecond_support
+[       OK ] chrono_test.cpp20_duration_subsecond_support (13 ms)
+[ RUN      ] chrono_test.timestamp_ratios
+[       OK ] chrono_test.timestamp_ratios (5 ms)
+[ RUN      ] chrono_test.timestamp_sub_seconds
+[       OK ] chrono_test.timestamp_sub_seconds (8 ms)
+[ RUN      ] chrono_test.glibc_extensions
+[       OK ] chrono_test.glibc_extensions (5 ms)
+[ RUN      ] chrono_test.out_of_range
+[       OK ] chrono_test.out_of_range (1 ms)
+[ RUN      ] chrono_test.year_month_day
+[       OK ] chrono_test.year_month_day (4 ms)
+[----------] 33 tests from chrono_test (12381 ms total)
+
+[----------] Global test environment tear-down
+[==========] 33 tests from 1 test suite ran. (12393 ms total)
+[  PASSED  ] 32 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] chrono_test.system_clock_time_point
+
+ 1 FAILED TEST
+ja_JP.utf8 locale is missing.
+es_ES.UTF-8 locale is missing.
+es_ES.UTF-8 locale is missing.
+</failure></testcase><testcase name="color-test" classname="qnx-target" /><testcase name="gtest-extra-test" classname="qnx-target" /><testcase name="format-test" classname="qnx-target" /><testcase name="format-impl-test" classname="qnx-target" /><testcase name="ostream-test" classname="qnx-target" /><testcase name="compile-test" classname="qnx-target" /><testcase name="compile-fp-test" classname="qnx-target" /><testcase name="printf-test" classname="qnx-target"><failure message="exit 1">[==========] Running 37 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 37 tests from printf_test
+[ RUN      ] printf_test.no_args
+[       OK ] printf_test.no_args (5 ms)
+[ RUN      ] printf_test.escape
+[       OK ] printf_test.escape (3 ms)
+[ RUN      ] printf_test.positional_args
+[       OK ] printf_test.positional_args (4 ms)
+[ RUN      ] printf_test.automatic_arg_indexing
+[       OK ] printf_test.automatic_arg_indexing (1 ms)
+[ RUN      ] printf_test.number_is_too_big_in_arg_index
+[       OK ] printf_test.number_is_too_big_in_arg_index (10 ms)
+[ RUN      ] printf_test.switch_arg_indexing
+[       OK ] printf_test.switch_arg_indexing (4 ms)
+[ RUN      ] printf_test.invalid_arg_index
+[       OK ] printf_test.invalid_arg_index (2 ms)
+[ RUN      ] printf_test.default_align_right
+[       OK ] printf_test.default_align_right (3 ms)
+[ RUN      ] printf_test.zero_flag
+[       OK ] printf_test.zero_flag (6 ms)
+[ RUN      ] printf_test.plus_flag
+[       OK ] printf_test.plus_flag (16 ms)
+[ RUN      ] printf_test.minus_flag
+[       OK ] printf_test.minus_flag (3 ms)
+[ RUN      ] printf_test.space_flag
+[       OK ] printf_test.space_flag (2 ms)
+[ RUN      ] printf_test.hash_flag
+[       OK ] printf_test.hash_flag (17 ms)
+[ RUN      ] printf_test.width
+[       OK ] printf_test.width (3 ms)
+[ RUN      ] printf_test.dynamic_width
+[       OK ] printf_test.dynamic_width (2 ms)
+[ RUN      ] printf_test.int_precision
+[       OK ] printf_test.int_precision (2 ms)
+[ RUN      ] printf_test.float_precision
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/printf-test.cc:290: Failure
+Expected equality of these values:
+  buffer
+    Which is: "0x9.a52p+7"
+  test_sprintf("%.3a", 1234.5678)
+    Which is: "0x1.34ap+10"
+format: %.3a
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/printf-test.cc:290: Failure
+Expected equality of these values:
+  buffer
+    Which is: "0x9.a52p+7"
+  fmt::sprintf(make_positional("%.3a"), 1234.5678)
+    Which is: "0x1.34ap+10"
+[  FAILED  ] printf_test.float_precision (16 ms)
+[ RUN      ] printf_test.string_precision
+[       OK ] printf_test.string_precision (0 ms)
+[ RUN      ] printf_test.ignore_precision_for_non_numeric_arg
+[       OK ] printf_test.ignore_precision_for_non_numeric_arg (0 ms)
+[ RUN      ] printf_test.dynamic_precision
+[       OK ] printf_test.dynamic_precision (3 ms)
+[ RUN      ] printf_test.length
+[       OK ] printf_test.length (234 ms)
+[ RUN      ] printf_test.bool
+[       OK ] printf_test.bool (1 ms)
+[ RUN      ] printf_test.int
+[       OK ] printf_test.int (5 ms)
+[ RUN      ] printf_test.long_long
+[       OK ] printf_test.long_long (1 ms)
+[ RUN      ] printf_test.float
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/printf-test.cc:452: Failure
+Expected equality of these values:
+  buffer
+    Which is: "-0xc.453333333333p+5"
+  format("{:a}", -392.65)
+    Which is: "-0x1.88a6666666666p+8"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/printf-test.cc:454: Failure
+Expected equality of these values:
+  buffer
+    Which is: "-0XC.453333333333P+5"
+  format("{:A}", -392.65)
+    Which is: "-0X1.88A6666666666P+8"
+[  FAILED  ] printf_test.float (7 ms)
+[ RUN      ] printf_test.inf
+[       OK ] printf_test.inf (2 ms)
+[ RUN      ] printf_test.char
+[       OK ] printf_test.char (5 ms)
+[ RUN      ] printf_test.string
+[       OK ] printf_test.string (5 ms)
+[ RUN      ] printf_test.pointer
+[       OK ] printf_test.pointer (7 ms)
+[ RUN      ] printf_test.enum
+[       OK ] printf_test.enum (1 ms)
+[ RUN      ] printf_test.examples
+[       OK ] printf_test.examples (10 ms)
+[ RUN      ] printf_test.printf_error
+[       OK ] printf_test.printf_error (5 ms)
+[ RUN      ] printf_test.wide_string
+[       OK ] printf_test.wide_string (1 ms)
+[ RUN      ] printf_test.vprintf
+[       OK ] printf_test.vprintf (8 ms)
+[ RUN      ] printf_test.check_format_string_regression
+[       OK ] printf_test.check_format_string_regression (0 ms)
+[ RUN      ] printf_test.fixed_large_exponent
+[       OK ] printf_test.fixed_large_exponent (0 ms)
+[ RUN      ] printf_test.make_printf_args
+[       OK ] printf_test.make_printf_args (1 ms)
+[----------] 37 tests from printf_test (455 ms total)
+
+[----------] Global test environment tear-down
+[==========] 37 tests from 1 test suite ran. (467 ms total)
+[  PASSED  ] 35 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] printf_test.float_precision
+[  FAILED  ] printf_test.float
+
+ 2 FAILED TESTS
+</failure></testcase><testcase name="ranges-test" classname="qnx-target" /><testcase name="scan-test" classname="qnx-target" /><testcase name="std-test" classname="qnx-target" /><testcase name="unicode-test" classname="qnx-target" /><testcase name="xchar-test" classname="qnx-target"><failure message="exit 1">[==========] Running 37 tests from 9 test suites.
+[----------] Global test environment set-up.
+[----------] 1 test from has_to_string_view_test/0, where TypeParam = char
+[ RUN      ] has_to_string_view_test/0.has_to_string_view
+[       OK ] has_to_string_view_test/0.has_to_string_view (1 ms)
+[----------] 1 test from has_to_string_view_test/0 (3 ms total)
+
+[----------] 1 test from has_to_string_view_test/1, where TypeParam = wchar_t
+[ RUN      ] has_to_string_view_test/1.has_to_string_view
+[       OK ] has_to_string_view_test/1.has_to_string_view (0 ms)
+[----------] 1 test from has_to_string_view_test/1 (0 ms total)
+
+[----------] 1 test from has_to_string_view_test/2, where TypeParam = char16_t
+[ RUN      ] has_to_string_view_test/2.has_to_string_view
+[       OK ] has_to_string_view_test/2.has_to_string_view (0 ms)
+[----------] 1 test from has_to_string_view_test/2 (0 ms total)
+
+[----------] 1 test from has_to_string_view_test/3, where TypeParam = char32_t
+[ RUN      ] has_to_string_view_test/3.has_to_string_view
+[       OK ] has_to_string_view_test/3.has_to_string_view (0 ms)
+[----------] 1 test from has_to_string_view_test/3 (1 ms total)
+
+[----------] 21 tests from xchar_test
+[ RUN      ] xchar_test.format_explicitly_convertible_to_wstring_view
+[       OK ] xchar_test.format_explicitly_convertible_to_wstring_view (0 ms)
+[ RUN      ] xchar_test.format
+[       OK ] xchar_test.format (10 ms)
+[ RUN      ] xchar_test.is_formattable
+[       OK ] xchar_test.is_formattable (0 ms)
+[ RUN      ] xchar_test.compile_time_string
+[       OK ] xchar_test.compile_time_string (0 ms)
+[ RUN      ] xchar_test.format_custom_char
+[       OK ] xchar_test.format_custom_char (0 ms)
+[ RUN      ] xchar_test.format_to
+[       OK ] xchar_test.format_to (0 ms)
+[ RUN      ] xchar_test.compile_time_string_format_to
+[       OK ] xchar_test.compile_time_string_format_to (0 ms)
+[ RUN      ] xchar_test.vformat_to
+[       OK ] xchar_test.vformat_to (0 ms)
+[ RUN      ] xchar_test.format_as
+[       OK ] xchar_test.format_as (0 ms)
+[ RUN      ] xchar_test.named_arg_udl
+[       OK ] xchar_test.named_arg_udl (0 ms)
+[ RUN      ] xchar_test.print
+[       OK ] xchar_test.print (0 ms)
+[ RUN      ] xchar_test.join
+[       OK ] xchar_test.join (4 ms)
+[ RUN      ] xchar_test.enum
+[       OK ] xchar_test.enum (2 ms)
+[ RUN      ] xchar_test.streamed
+[       OK ] xchar_test.streamed (0 ms)
+[ RUN      ] xchar_test.sign_not_truncated
+[       OK ] xchar_test.sign_not_truncated (0 ms)
+[ RUN      ] xchar_test.chrono
+[       OK ] xchar_test.chrono (7 ms)
+[ RUN      ] xchar_test.color
+[       OK ] xchar_test.color (0 ms)
+[ RUN      ] xchar_test.ostream
+[       OK ] xchar_test.ostream (2 ms)
+[ RUN      ] xchar_test.format_map
+[       OK ] xchar_test.format_map (3 ms)
+[ RUN      ] xchar_test.escape_string
+[       OK ] xchar_test.escape_string (2 ms)
+[ RUN      ] xchar_test.to_wstring
+[       OK ] xchar_test.to_wstring (0 ms)
+[----------] 21 tests from xchar_test (57 ms total)
+
+[----------] 1 test from format_test
+[ RUN      ] format_test.wide_format_to_n
+[       OK ] format_test.wide_format_to_n (1 ms)
+[----------] 1 test from format_test (2 ms total)
+
+[----------] 1 test from chrono_test_wchar
+[ RUN      ] chrono_test_wchar.time_point
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/xchar-test.cc:366: Failure
+Expected equality of these values:
+  sys_output
+    Which is: L""
+  fmt::format(fmt::runtime(fmt_spec), t1)
+    Which is: L"11/12/26"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/xchar-test.cc:367: Failure
+Expected equality of these values:
+  sys_output
+    Which is: L""
+  fmt::format(fmt::runtime(fmt_spec), tm)
+    Which is: L"11/12/26"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/xchar-test.cc:366: Failure
+Expected equality of these values:
+  sys_output
+    Which is: L""
+  fmt::format(fmt::runtime(fmt_spec), t1)
+    Which is: L"14:36:32"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/xchar-test.cc:367: Failure
+Expected equality of these values:
+  sys_output
+    Which is: L""
+  fmt::format(fmt::runtime(fmt_spec), tm)
+    Which is: L"14:36:32"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/xchar-test.cc:366: Failure
+Expected equality of these values:
+  sys_output
+    Which is: L""
+  fmt::format(fmt::runtime(fmt_spec), t1)
+    Which is: L"Thu Nov 12 14:36:32 2026"
+/home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/test/xchar-test.cc:367: Failure
+Expected equality of these values:
+  sys_output
+    Which is: L""
+  fmt::format(fmt::runtime(fmt_spec), tm)
+    Which is: L"Thu Nov 12 14:36:32 2026"
+[  FAILED  ] chrono_test_wchar.time_point (46 ms)
+[----------] 1 test from chrono_test_wchar (47 ms total)
+
+[----------] 8 tests from locale_test
+[ RUN      ] locale_test.localized_double
+[       OK ] locale_test.localized_double (8 ms)
+[ RUN      ] locale_test.format
+[       OK ] locale_test.format (3 ms)
+[ RUN      ] locale_test.format_default_align
+[       OK ] locale_test.format_default_align (0 ms)
+[ RUN      ] locale_test.format_plus
+[       OK ] locale_test.format_plus (0 ms)
+[ RUN      ] locale_test.wformat
+[       OK ] locale_test.wformat (24 ms)
+[ RUN      ] locale_test.int_formatter
+[       OK ] locale_test.int_formatter (0 ms)
+[ RUN      ] locale_test.chrono_weekday
+[       OK ] locale_test.chrono_weekday (6 ms)
+[ RUN      ] locale_test.sign
+[       OK ] locale_test.sign (0 ms)
+[----------] 8 tests from locale_test (51 ms total)
+
+[----------] 2 tests from std_test_xchar
+[ RUN      ] std_test_xchar.complex
+[       OK ] std_test_xchar.complex (2 ms)
+[ RUN      ] std_test_xchar.optional
+[       OK ] std_test_xchar.optional (0 ms)
+[----------] 2 tests from std_test_xchar (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 37 tests from 9 test suites ran. (184 ms total)
+[  PASSED  ] 36 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] chrono_test_wchar.time_point
+
+ 1 FAILED TEST
+es_ES.UTF-8 locale is missing.
+</failure></testcase><testcase name="enforce-checks-test" classname="qnx-target" /><testcase name="posix-mock-test" classname="qnx-target" /><testcase name="os-test" classname="qnx-target" /></testsuite>
