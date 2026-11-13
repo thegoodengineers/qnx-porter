@@ -76,14 +76,13 @@ def find_printf_null_call(bt: str, src: Path, in_tree) -> tuple[str, str, int] |
     if not fr or not fr[0][0].endswith(("strlen", "strnlen")):  # aarch64 libc: __generic_strlen
         return None
     for i, (func, _, _) in enumerate(fr[:6]):
-        base_func = func.split("::")[-1]
-        if base_func in PRINTF_FMT_ARG:
+        if func in PRINTF_FMT_ARG:
             caller = next(((p, ln) for _, p, ln in fr[i + 1:] if p and in_tree(src, p)), None)
             if not caller:
                 return None
             rel = in_tree(src, caller[0])
             if rel:
-                return rel, base_func, caller[1]
+                return rel, func, caller[1]
     return None
 
 
@@ -169,11 +168,23 @@ def wrap_string_args_in_text(text: str, func: str, line: int, insert_helper: boo
     lines = text.splitlines(keepends=True)
     offset = sum(len(x) for x in lines[:max(line - 6, 0)])
     window_end = sum(len(x) for x in lines[:line])
-    calls = [m for m in re.finditer(rf"\b(?:std::)?{func}\s*\(", text[offset:window_end])]
+    line_start = sum(len(x) for x in lines[:line - 1])
+    calls = [m for m in re.finditer(rf"\b{func}\s*\(", text[offset:window_end])]
     if not calls:
         return None
+    line_calls = [c for c in calls if offset + c.start() >= line_start]
+    if line_calls:
+        candidates = line_calls
+    else:
+        last = calls[-1]
+        start = offset + last.end() - 1
+        end = _call_span(text, start)
+        if end is not None and end >= line_start:
+            candidates = [last]
+        else:
+            return None
     k = PRINTF_FMT_ARG[func]
-    for c in reversed(calls):
+    for c in reversed(candidates):
         start = offset + c.end() - 1
         end = _call_span(text, start)
         if end is None:
@@ -206,7 +217,7 @@ def wrap_string_args(path: Path, func: str, line: int) -> str | None:
 
 
 def wrap_multiple_calls_in_text(text: str, sites: list[tuple[str, int]]) -> tuple[str, list[tuple[str, int]]]:
-    """Wraps each (func, line) call in text, ordered bottom-to-top so offsets remain valid.
+    """Wraps each (func, line) call in text.
     Returns (updated_text, list_of_successfully_wrapped_sites)."""
     sorted_sites = sorted(sites, key=lambda x: (x[1], x[0]), reverse=True)
     wrapped = []
@@ -229,7 +240,9 @@ def triage_crashes(crashes: list[dict], src: Path, in_tree) -> list[tuple[str, s
         call = find_printf_null_call(c.get("backtrace", ""), src, in_tree)
         if call:
             rel, func, line = call
-            sites_by_file.setdefault(rel, []).append((func, line))
+            sites = sites_by_file.setdefault(rel, [])
+            if (func, line) not in sites:
+                sites.append((func, line))
 
     fixes = []
     for rel, sites in sites_by_file.items():
@@ -248,8 +261,10 @@ def triage_crashes(crashes: list[dict], src: Path, in_tree) -> list[tuple[str, s
                       "prints \"(null)\" like glibc.")
         else:
             calls_str = ", ".join(f"{f}() at {rel}:{ln}" for f, ln in sorted(wrapped, key=lambda x: x[1]))
+            funcs = sorted({f for f, _ in wrapped})
+            funcs_chain = ", ".join(funcs)
             reason = (f"Crash on QNX: calls ({calls_str}) format a NULL pointer with %s (backtrace: "
-                      f"strlen <- printf). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it "
+                      f"strlen <- {funcs_chain}). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it "
                       "undefined. Each %s argument of these calls now goes through qnx_porter_str(), which "
                       "prints \"(null)\" like glibc.")
         fixes.append((rel, reason, new_text))

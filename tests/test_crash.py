@@ -214,3 +214,62 @@ def test_syslog_and_cpp_std_printf_are_wrapped(tmp_path):
                 '}\n')
     wrapped_cpp = crash.wrap_string_args_in_text(cpp_code, "printf", 3)
     assert 'std::printf("Value: %s\\n", qnx_porter_str(s));' in wrapped_cpp
+
+
+def test_duplicate_crash_sites_do_not_patch_unrelated_calls():
+    code = ('#include <stdio.h>\n'
+            'void other(const char *u) { printf("other: %s\\n", u); }\n'
+            'void target(const char *v) {\n'
+            '    printf("target: %s\\n", v);\n'
+            '}\n')
+    new_text, wrapped = crash.wrap_multiple_calls_in_text(code, [("printf", 4), ("printf", 4)])
+    assert len(wrapped) == 1
+    assert wrapped == [("printf", 4)]
+    assert 'printf("target: %s\\n", qnx_porter_str(v));' in new_text
+    assert 'printf("other: %s\\n", u);' in new_text
+    assert 'qnx_porter_str(u)' not in new_text
+
+
+def test_non_literal_format_does_not_fall_back_to_unrelated_call():
+    code = ('#include <stdio.h>\n'
+            'void other(const char *u) { printf("other: %s\\n", u); }\n'
+            'void target(const char *fmt, const char *v) {\n'
+            '    printf(fmt, v);\n'
+            '}\n')
+    res = crash.wrap_string_args_in_text(code, "printf", 4)
+    assert res is None
+
+
+def test_call_without_percent_s_does_not_fall_back_to_unrelated_call():
+    code = ('#include <stdio.h>\n'
+            'void other(const char *u) { printf("other: %s\\n", u); }\n'
+            'void target(int num) {\n'
+            '    printf("number: %d\\n", num);\n'
+            '}\n')
+    res = crash.wrap_string_args_in_text(code, "printf", 4)
+    assert res is None
+
+
+def test_namespaced_calls_like_fmt_sprintf_and_logger_printf_not_matched(tmp_path):
+    src = setup(tmp_path, "tests/tests.c", LIBCONFIG_SRC)
+    bt_fmt = ("#0  strlen () at /lib/c/strlen.s:1\n"
+              "#1  0x1 in fmt::sprintf () at /fmt/core.h:10\n"
+              "#2  0x2 in check () at {}/tests/tests.c:7\n".format(src))
+    assert crash.find_printf_null_call(bt_fmt, src, in_tree) is None
+
+    bt_logger = ("#0  strlen () at /lib/c/strlen.s:1\n"
+                 "#1  0x1 in Logger::printf () at /log/logger.h:10\n"
+                 "#2  0x2 in check () at {}/tests/tests.c:7\n".format(src))
+    assert crash.find_printf_null_call(bt_logger, src, in_tree) is None
+
+
+def test_multi_crash_reason_dynamically_lists_functions(tmp_path):
+    src = setup(tmp_path, "tests/suite.c", MULTI_CRASH_SRC)
+    crashes = [
+        {"backtrace": MULTI_CRASH_BT1.replace("{src}", str(src))},
+        {"backtrace": MULTI_CRASH_BT2.replace("{src}", str(src))},
+    ]
+    fixes = crash.triage_crashes(crashes, src, in_tree)
+    assert len(fixes) == 1
+    rel, reason, _ = fixes[0]
+    assert "strlen <- printf, snprintf" in reason

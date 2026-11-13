@@ -159,6 +159,8 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                 break
 
             round_before = (tests_passed, tests_total, crashes, not_runnable)
+            prev_tests_log = (logs / "tests.log").read_bytes() if (logs / "tests.log").is_file() else None
+            prev_crashes_log = (logs / "crashes.log").read_bytes() if (logs / "crashes.log").is_file() else None
             round_first = len(applied)
             for rel, reason, text in crash_fixes:
                 patches.write_source(src / rel, text)
@@ -179,6 +181,14 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                     patches.revert_last(src)
                     p.kept = False
                 tests_passed, tests_total, crashes, not_runnable = round_before
+                if prev_tests_log is not None:
+                    (logs / "tests.log").write_bytes(prev_tests_log)
+                else:
+                    (logs / "tests.log").unlink(missing_ok=True)
+                if prev_crashes_log is not None:
+                    (logs / "crashes.log").write_bytes(prev_crashes_log)
+                else:
+                    (logs / "crashes.log").unlink(missing_ok=True)
                 log("      crash fixes did not help: reverted")
                 break
 

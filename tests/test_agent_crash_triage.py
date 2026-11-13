@@ -216,3 +216,56 @@ def test_agent_rebuild_failure_reverts_crash_fix(tmp_path: Path, monkeypatch):
     assert rep["patches_kept"] == 0
     final_file = tmp_path / "ports" / "testcrash" / "work" / "src" / "tests" / "suite.c"
     assert "qnx_porter_str" not in final_file.read_text()
+
+
+def test_agent_crash_round2_reverted_round1_kept(tmp_path: Path, monkeypatch):
+    monkeypatch.setattr(qnx, "sdp_env", lambda: {"QNX_HOST": "/mock/host", "QNX_TARGET": "/mock/target"})
+    repo = setup_repo(tmp_path)
+    mock_tgt = make_mock_target()
+
+    monkeypatch.setattr(build, "run", lambda steps, work, env, log: (True, "build success"))
+
+    call_count = 0
+
+    def mock_run_tests(job, tgt, src, bdir, work, env, logs):
+        nonlocal call_count
+        call_count += 1
+        src_path = str(src).replace("\\", "/")
+        if call_count == 1:
+            (logs / "tests.log").write_text("Round 1 tests failed: 0/2")
+            (logs / "crashes.log").write_text("crash 1 log")
+            return 0, 2, [{"binary": "testcrash", "backtrace": BT1_TPL.format(src=src_path)}], []
+        if call_count == 2:
+            # Round 1 succeeded! Tests improved from 0 to 1.
+            (logs / "tests.log").write_text("Round 1 re-test passed: 1/2")
+            (logs / "crashes.log").write_text("crash 2 log")
+            return 1, 2, [{"binary": "testcrash", "backtrace": BT2_REBUILT_TPL.format(src=src_path)}], []
+        # Round 2: crash 2 fix was applied, but tests did not improve (still 1/2)
+        (logs / "tests.log").write_text("Round 2 re-test did not improve: 1/2")
+        (logs / "crashes.log").write_text("crash 2 still present log")
+        return 1, 2, [{"binary": "testcrash", "backtrace": BT2_REBUILT_TPL.format(src=src_path)}], []
+
+    monkeypatch.setattr(agent, "_run_tests", mock_run_tests)
+
+    rep = agent.port(str(repo), "v1.0.0", tmp_path / "ports", target=mock_tgt, arch="x86_64",
+                     use_llm=False, name="testcrash", log=lambda *_: None)
+
+    assert rep["build_result"] == "built"
+    assert rep["tests_passed"] == 1
+    assert rep["tests_total"] == 2
+    assert rep["patches_kept"] == 1
+    assert len(rep["patches"]) == 2
+    assert rep["patches"][0]["kept"] is True
+    assert rep["patches"][1]["kept"] is False
+
+    # Round 1 patch stays, Round 2 patch reverted
+    final_file = tmp_path / "ports" / "testcrash" / "work" / "src" / "tests" / "suite.c"
+    src_text = final_file.read_text()
+    assert "qnx_porter_str(name)" in src_text
+    assert "qnx_porter_str(err)" not in src_text
+
+    # Disk logs restored to round 1's state
+    tests_log = (tmp_path / "ports" / "testcrash" / "logs" / "tests.log").read_text()
+    crashes_log = (tmp_path / "ports" / "testcrash" / "logs" / "crashes.log").read_text()
+    assert tests_log == "Round 1 re-test passed: 1/2"
+    assert crashes_log == "crash 2 log"

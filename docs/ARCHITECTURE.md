@@ -104,7 +104,10 @@ QNX target libraries; the backtraces go to `logs/crashes.log` and the report.
 
 **printf-null patch** (`crash.py` `triage_crashes()`, applied progressively in `agent.py`). The one crash fixed automatically:
 a backtrace through `strlen` from a printf-family call in the library's own code means a NULL `%s` argument,
-which glibc prints as `(null)` and QNX's libc faults on. Triage groups multiple crashes per file (wrapping all format call sites bottom-to-top) across crashing binaries and runs up to 3 progressive rounds if fixing one crash uncovers another. Each call's string arguments are wrapped in a helper that prints `(null)`, the library is rebuilt and the tests run again. Patches stay only if more tests pass; otherwise they are reverted.
+which glibc prints as `(null)` and QNX's libc faults on. Triage groups multiple crashes per file across crashing
+binaries, rewrites call sites in text with the format wrapper, and runs up to 3 progressive rounds if fixing one
+crash uncovers another. Each call's string arguments are wrapped in a helper that prints `(null)`, the library is
+rebuilt and the tests run again. Patches stay only if more tests pass; otherwise they are reverted.
 
 **Port folder** (`qnx_porter/agent.py`, `render()`). `ports/<library>/` (or `ports-<arch>/<library>/`) gets
 `REPORT.md`, `report.json`, `patches/`, `qnx.patch`, the toolchain file, any compat headers, and every log.
