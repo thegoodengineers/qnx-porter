@@ -100,3 +100,18 @@ def test_tap_subtests_are_counted_and_every_failure_named():
     s = tap_summary(out)
     assert "2 ok, 1 not ok, 1 skipped" in s and "not ok: udp_connect" in s
     assert tap_summary("PASS\n") == ""
+
+
+def test_leftover_test_processes_are_killed_before_the_tree_is_removed(tmp_path):
+    # libuv's runner spawns children that outlive QNX's `timeout -s KILL`; they slowed every later library.
+    import subprocess
+    from qnx_porter.target import kill_leftovers_command
+    cmd = kill_leftovers_command(["home/u/ports/nng/work/src", "home/u/ports/nng/work/build"])
+    assert '/proc/[0-9]*' in cmd and 'exefile' in cmd and 'kill -9' in cmd
+    # the shell is valid and matches only processes under those trees (fake /proc layout, echo instead of kill)
+    for pid, exe in (("11", "/data/qnx-porter/home/u/ports/nng/work/build/uv_test"), ("12", "/proc/boot/sh")):
+        (tmp_path / pid).mkdir()
+        (tmp_path / pid / "exefile").write_text(exe)
+    fake = cmd.replace("/proc/[0-9]*", f"{tmp_path}/[0-9]*").replace("${d#/proc/}", "${d##*/}").replace("kill -9", "echo")
+    out = subprocess.run(["sh", "-c", fake], capture_output=True, text=True).stdout.split()
+    assert out == ["11"]

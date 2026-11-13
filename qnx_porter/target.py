@@ -65,8 +65,17 @@ class Target:
         """Delete copied trees from the target once their tests are done. The QEMU image's /data has a
         fixed number of inodes (mkqnximage --data-inodes), and source trees are many small files."""
         rel = [str(p.resolve()).lstrip("/") for p in paths]
-        self.ssh("rm -rf " + " ".join(shlex.quote(self.root + "/" + r) for r in rel), capture_output=True,
-                 timeout=600)
+        self.ssh(kill_leftovers_command(rel) + "; rm -rf " + " ".join(shlex.quote(self.root + "/" + r) for r in rel),
+                 capture_output=True, timeout=600)
+
+
+def kill_leftovers_command(rel: list[str]) -> str:
+    """Shell that kills every target process whose executable lives under one of these trees. QNX's
+    `timeout -s KILL` ends only the test process itself; children it spawned (libuv's test runner starts many)
+    outlived it and slowed every library tested after it. /proc/<pid>/exefile names each process's binary."""
+    pats = "|".join(f"*{shlex.quote(r)}*" for r in rel)
+    return ('for d in /proc/[0-9]*; do e=$(cat "$d/exefile" 2>/dev/null) || continue; '
+            f'case "$e" in {pats}) kill -9 "${{d#/proc/}}" 2>/dev/null;; esac; done')
 
 
 def link_command(root: str, rel: list[str]) -> str:
