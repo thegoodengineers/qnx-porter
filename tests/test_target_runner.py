@@ -115,3 +115,126 @@ def test_leftover_test_processes_are_killed_before_the_tree_is_removed(tmp_path)
     fake = cmd.replace("/proc/[0-9]*", f"{tmp_path}/[0-9]*").replace("${d#/proc/}", "${d##*/}").replace("kill -9", "echo")
     out = subprocess.run(["sh", "-c", fake], capture_output=True, text=True).stdout.split()
     assert out == ["11"]
+
+
+def test_sync_shims_stages_scripts_and_echo_link():
+    t = Target.parse("root@q", root="/custom/root")
+    sent = []
+
+    def fake_ssh(self, command, **kw):
+        sent.append(command)
+        return subprocess.CompletedProcess(command, 0, "", "")
+
+    t.ssh = fake_ssh.__get__(t, Target)
+    assert t.sync_shims() is True
+    assert t.shims is True
+    assert len(sent) == 1
+    cmd = sent[0]
+    assert "mkdir -p /custom/root/shims" in cmd
+    assert "cat <<'EOF' > /custom/root/shims/killall" in cmd
+    assert "chmod 755 /custom/root/shims/killall" in cmd
+    assert "cat <<'EOF' > /custom/root/shims/ps" in cmd
+    assert "chmod 755 /custom/root/shims/ps" in cmd
+    assert "ln -sP /proc/boot/echo /bin/echo" in cmd
+    assert "[ -e /bin/echo ]" in cmd
+
+
+def test_sync_shims_sets_ownership_when_run_as():
+    t = Target.parse("root@q", root="/data/qnx-porter")
+    t.run_as = "qnxuser"
+    sent = []
+
+    def fake_ssh(self, command, **kw):
+        sent.append(command)
+        return subprocess.CompletedProcess(command, 0, "", "")
+
+    t.ssh = fake_ssh.__get__(t, Target)
+    t.sync_shims()
+    cmd = sent[0]
+    assert "chown -R qnxuser /data/qnx-porter/shims" in cmd
+
+
+def test_remote_command_injects_shims_path():
+    t = Target.parse("root@q", root="/data/qnx-porter")
+    argv = ["/home/u/w/src/tests/test1.test"]
+
+    # When shims=False, no PATH injection
+    cmd_noshims = remote_command(t, "/home/u/w", "/home/u/w/build", argv, True, shims=False)
+    assert cmd_noshims == "cd /home/u/w/build && exec /home/u/w/src/tests/test1.test"
+
+    # When shims=True, PATH is injected with unquoted $PATH so target shell expands it
+    cmd_shims = remote_command(t, "/home/u/w", "/home/u/w/build", argv, True, shims=True)
+    assert cmd_shims == ("cd /home/u/w/build && exec env PATH=/data/qnx-porter/shims:$PATH "
+                         "/home/u/w/src/tests/test1.test")
+
+    # When env already has PATH, prepends shims directory
+    cmd_env_path = remote_command(t, "/home/u/w", "/home/u/w/build", argv, True,
+                                  env=["PATH=/custom/bin:/bin"], shims=True)
+    assert cmd_env_path == ("cd /home/u/w/build && exec env PATH=/data/qnx-porter/shims:/custom/bin:/bin "
+                            "/home/u/w/src/tests/test1.test")
+
+    # When t.shims=True and shims=None, automatically injects PATH
+    t.shims = True
+    cmd_auto = remote_command(t, "/home/u/w", "/home/u/w/build", argv, True)
+    assert "env PATH=/data/qnx-porter/shims:$PATH" in cmd_auto
+
+
+def test_run_one_activates_shims_when_marker_or_target_active(tmp_path, monkeypatch):
+    t = Target.parse("root@q", root="/data/qnx-porter")
+    sent = []
+
+    def fake_ssh(self, command, **kw):
+        sent.append(command)
+        return subprocess.CompletedProcess(command, 0, "ok", "")
+
+    monkeypatch.setattr(Target, "ssh", fake_ssh)
+
+    # Without marker and without t.shims, no PATH injected
+    target._run_one(t, tmp_path, str(tmp_path), ["/w/test"], True, [], 300)
+    assert "PATH=" not in sent[0]
+
+    # With .qnx-shims marker in work dir, PATH is injected
+    (tmp_path / target.SHIMS_MARK).write_text("")
+    target._run_one(t, tmp_path, str(tmp_path), ["/w/test"], True, [], 300)
+    assert "PATH=/data/qnx-porter/shims:$PATH" in sent[1]
+
+
+def test_target_sync_calls_sync_shims_and_writes_marker(tmp_path, monkeypatch):
+    t = Target.parse("root@q", root="/data/qnx-porter")
+    work = tmp_path / "work"
+    src, bdir = work / "src", work / "build"
+    src.mkdir(parents=True)
+    bdir.mkdir(parents=True)
+
+    sent = []
+
+    def fake_ssh(self, command, **kw):
+        sent.append(command)
+        return subprocess.CompletedProcess(command, 0, "", "")
+
+    monkeypatch.setattr(Target, "ssh", fake_ssh)
+    monkeypatch.setattr(target.subprocess, "Popen",
+                        lambda *a, **k: SimpleNamespace(stdout=None, wait=lambda: 0))
+
+    ok = t.sync([src, bdir])
+    assert ok is True
+    assert t.shims is True
+    assert (work / target.SHIMS_MARK).exists()
+    assert any("mkdir -p /data/qnx-porter/shims" in c for c in sent)
+
+
+def test_killall_and_ps_shim_scripts_semantics():
+    from qnx_porter.target import KILLALL_SHIM, PS_SHIM
+
+    # killall shim validates: force slaying (-f), basename stripping (${1##*/}), signals, and quiet (-Q)
+    assert "slay" in KILLALL_SHIM
+    assert 'slay_args="-f"' in KILLALL_SHIM
+    assert 'name="${1##*/}"' in KILLALL_SHIM
+    assert "-s $sig" in KILLALL_SHIM
+    assert "-Q" in KILLALL_SHIM
+
+    # ps shim validates: pidin execution, -p filtering, and stripping full-system list options
+    assert "pidin" in PS_SHIM
+    assert "exec pidin -p" in PS_SHIM
+    assert "exec pidin" in PS_SHIM
+    assert "-ef" in PS_SHIM and "aux" in PS_SHIM

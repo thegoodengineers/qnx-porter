@@ -22,6 +22,116 @@ from pathlib import Path
 SSH_OPTS = ["-o", "BatchMode=yes", "-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null",
             "-o", "LogLevel=ERROR", "-o", "ConnectTimeout=15"]
 
+SHIMS_MARK = ".qnx-shims"  # written in the work folder when runtime shims are staged
+
+KILLALL_SHIM = """#!/bin/sh
+# QNX compatibility shim: killall -> slay
+sig=""
+quiet=0
+targets=""
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -s|--signal)
+            sig="$2"
+            shift 2
+            ;;
+        -[0-9]*)
+            sig="${1#-}"
+            shift
+            ;;
+        -SIG*|-sig*)
+            sig="${1#-SIG}"
+            sig="${sig#-sig}"
+            shift
+            ;;
+        -q|--quiet)
+            quiet=1
+            shift
+            ;;
+        -e|--exact|-w|--wait|-v|--verbose)
+            shift
+            ;;
+        --)
+            shift
+            while [ $# -gt 0 ]; do
+                name="${1##*/}"
+                targets="$targets $name"
+                shift
+            done
+            break
+            ;;
+        -*)
+            shift
+            ;;
+        *)
+            name="${1##*/}"
+            targets="$targets $name"
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$targets" ]; then
+    exit 0
+fi
+
+slay_args="-f"
+[ "$quiet" = 1 ] && slay_args="$slay_args -Q"
+[ -n "$sig" ] && slay_args="$slay_args -s $sig"
+
+rc=0
+for t in $targets; do
+    if [ "$quiet" = 1 ]; then
+        slay $slay_args "$t" >/dev/null 2>&1 || true
+    else
+        slay $slay_args "$t" || rc=$?
+    fi
+done
+exit $rc
+"""
+
+PS_SHIM = """#!/bin/sh
+# QNX compatibility shim: ps -> pidin
+pid=""
+name=""
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -p|--pid)
+            pid="$2"
+            shift 2
+            ;;
+        -C)
+            name="$2"
+            shift 2
+            ;;
+        -ef|-e|-A|aux|ax|a|x|-a|-x)
+            shift
+            ;;
+        -o|-O|--format)
+            shift 2
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
+
+if [ -n "$pid" ]; then
+    exec pidin -p "$pid"
+elif [ -n "$name" ]; then
+    exec pidin -p "$name"
+else
+    exec pidin
+fi
+"""
+
+RUNTIME_SHIMS = {
+    "killall": KILLALL_SHIM,
+    "ps": PS_SHIM,
+}
+
 
 @dataclass
 class Target:
@@ -30,6 +140,7 @@ class Target:
     root: str = "/data/qnx-porter"  # where the trees are copied on the target
     # run the tests as this target user (QNX `on -u`), for suites that refuse root (libuv); "" = the ssh user
     run_as: str = ""
+    shims: bool = False  # True when runtime compatibility shims are active
 
     @classmethod
     def parse(cls, spec: str, root: str = "/data/qnx-porter") -> "Target":
@@ -47,7 +158,23 @@ class Target:
             return ""
         return r.stdout.strip() if r.returncode == 0 else ""
 
-    def sync(self, paths: list[Path]) -> bool:
+    def sync_shims(self) -> bool:
+        """Install target runtime compatibility shims (killall, ps) under root/shims, and set up
+        system compatibility links like /bin/echo if missing."""
+        shim_dir = f"{self.root}/shims"
+        lines = [f"mkdir -p {shlex.quote(shim_dir)}"]
+        for name, text in RUNTIME_SHIMS.items():
+            dest = shlex.quote(f"{shim_dir}/{name}")
+            lines.append(f"cat <<'EOF' > {dest}\n{text}EOF\nchmod 755 {dest}")
+        if self.run_as:
+            lines.append(f"chown -R {shlex.quote(self.run_as)} {shlex.quote(shim_dir)}")
+        lines.append("[ -e /bin/echo ] || { [ -x /proc/boot/echo ] && ln -sP /proc/boot/echo /bin/echo 2>/dev/null; } || true")
+        cmd = "\n".join(lines)
+        r = self.ssh(cmd, capture_output=True, timeout=60)
+        self.shims = (r.returncode == 0)
+        return self.shims
+
+    def sync(self, paths: list[Path], work: Path | None = None) -> bool:
         """Copy host directories to root+path on the target (tar over ssh). True if they are also visible
         at their host paths, through a QNX path-space link from /<top> to root/<top>."""
         rel = [str(p.resolve()).lstrip("/") for p in paths]
@@ -59,6 +186,10 @@ class Target:
         if self.run_as:  # the tests write into their trees, so that user must own them
             owner = shlex.quote(self.run_as)
             self.ssh(" && ".join(f"chown -R {owner} {shlex.quote(self.root + '/' + r)}" for r in rel), timeout=600)
+        self.sync_shims()
+        w = work or (paths[0].parent if paths else None)
+        if w and w.is_dir():
+            (w / SHIMS_MARK).write_text("")
         return self.ssh(link_command(self.root, rel), capture_output=True, timeout=60).returncode == 0
 
     def remove(self, paths: list[Path]) -> None:
@@ -89,7 +220,7 @@ def link_command(root: str, rel: list[str]) -> str:
 
 
 def remote_command(t: Target, work: str, cwd: str, argv: list[str], same_path: bool = False,
-                   env: list[str] = (), limit: int = 0) -> str:
+                   env: list[str] = (), limit: int = 0, shims: bool | None = None) -> str:
     """The shell command that runs argv on the target. Unless the trees are visible at their host paths,
     host paths under `work` are moved under t.root. With a limit, QNX's own `timeout` kills the test on
     the target, so a hung test cannot outlive its ssh session."""
@@ -97,7 +228,23 @@ def remote_command(t: Target, work: str, cwd: str, argv: list[str], same_path: b
         return a.replace(work, t.root + work) if (work in a and not same_path) else a
     prefix = f"timeout -s KILL {limit} " if limit else ""
     prefix += f"on -u {shlex.quote(t.run_as)} " if t.run_as else ""
-    prefix += ("env " + " ".join(shlex.quote(move(e)) for e in env) + " ") if env else ""
+    use_shims = getattr(t, "shims", False) if shims is None else shims
+    env_list = list(env)
+    if use_shims:
+        shim_dir = f"{t.root}/shims"
+        has_path = False
+        new_env = []
+        for e in env_list:
+            if e.startswith("PATH="):
+                new_env.append(f"PATH={shim_dir}:{e[5:]}")
+                has_path = True
+            else:
+                new_env.append(e)
+        if not has_path:
+            new_env.insert(0, f"PATH={shim_dir}:$PATH")
+        env_list = new_env
+    prefix += ("env " + " ".join(e if e.startswith("PATH=") and "$PATH" in e else shlex.quote(move(e))
+                                for e in env_list) + " ") if env_list else ""
     return f"cd {shlex.quote(move(cwd))} && exec {prefix}{' '.join(shlex.quote(move(a)) for a in argv)}"
 
 
@@ -184,8 +331,9 @@ def meson_on_target(t: Target, build: Path, work: Path, same_path: bool, log_pat
 
 
 def _run_one(t: Target, work: Path, cwd: str, cmd: list[str], same_path: bool, env: list[str], limit: int):
+    shims = (work / SHIMS_MARK).exists() or getattr(t, "shims", False)
     try:
-        r = t.ssh(remote_command(t, str(work), cwd, cmd, same_path, env, limit), capture_output=True,
+        r = t.ssh(remote_command(t, str(work), cwd, cmd, same_path, env, limit, shims=shims), capture_output=True,
                   text=True, errors="replace", timeout=limit + 60)
         rc, out = r.returncode, r.stdout + r.stderr
         if rc == 137:
@@ -298,7 +446,8 @@ def main() -> int:
     a = ap.parse_args()
     t = Target.parse(a.target, a.root)
     same = (Path(a.work) / SAME_PATH_MARK).exists()
-    return t.ssh(remote_command(t, a.work, os.getcwd(), a.argv, same)).returncode
+    shims = (Path(a.work) / SHIMS_MARK).exists()
+    return t.ssh(remote_command(t, a.work, os.getcwd(), a.argv, same, shims=shims)).returncode
 
 
 if __name__ == "__main__":
