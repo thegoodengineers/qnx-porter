@@ -124,3 +124,93 @@ def test_aarch64_libc_strlen_has_another_name(tmp_path):
     src = setup(tmp_path, "tests/test_json_patch.c", JSONC_SRC)
     bt = JSONC_BT.replace("{src}", str(src)).replace("#0  strlen ()", "#0  __generic_strlen ()")
     assert "__generic_strlen" in bt and crash.printf_null(bt, src, in_tree) is not None
+
+
+MULTI_CRASH_SRC = """#include <stdio.h>
+#include <syslog.h>
+
+void test_one(const char *name)
+{
+    printf("Item name: %s\\n", name);
+}
+
+void test_two(const char *err)
+{
+    char buf[128];
+    snprintf(buf, sizeof(buf), "Error: %s\\n", err);
+}
+"""
+
+MULTI_CRASH_BT1 = """#0  strlen () at /builds/workspace/QNXOS_805/build_x86_64/lib/c/public/private/x86_64/strlen.si:65
+#1  0x00000018fee3408d in _Putfld () at /builds/workspace/QNXOS_805/build_x86_64/lib/c/stdio/xputfld.c:261
+#2  0x00000018fee33378 in _Printf () at /builds/workspace/QNXOS_805/build_x86_64/lib/c/stdio/xprintf.c:603
+#3  0x00000018fee2e37d in printf () at /builds/workspace/QNXOS_805/build_x86_64/lib/c/stdio/printf.c:37
+#4  0x0000004959988eb1 in test_one (name=0x0) at {src}/tests/suite.c:6
+"""
+
+MULTI_CRASH_BT2 = """#0  strlen () at /builds/workspace/QNXOS_805/build_x86_64/lib/c/public/private/x86_64/strlen.si:65
+#1  0x00000018fee3408d in _Putfld () at /builds/workspace/QNXOS_805/build_x86_64/lib/c/stdio/xputfld.c:261
+#2  0x00000018fee33378 in _Printf () at /builds/workspace/QNXOS_805/build_x86_64/lib/c/stdio/xprintf.c:603
+#3  0x00000018fee2e37d in snprintf () at /builds/workspace/QNXOS_805/build_x86_64/lib/c/stdio/snprintf.c:71
+#4  0x0000004959988eb1 in test_two (err=0x0) at {src}/tests/suite.c:12
+"""
+
+
+def test_multiple_crashes_in_same_file_are_both_wrapped(tmp_path):
+    src = setup(tmp_path, "tests/suite.c", MULTI_CRASH_SRC)
+    crashes = [
+        {"backtrace": MULTI_CRASH_BT1.replace("{src}", str(src))},
+        {"backtrace": MULTI_CRASH_BT2.replace("{src}", str(src))},
+    ]
+    fixes = crash.triage_crashes(crashes, src, in_tree)
+    assert len(fixes) == 1
+    rel, reason, new = fixes[0]
+    assert rel == "tests/suite.c"
+    assert "calls (" in reason and "printf()" in reason and "snprintf()" in reason
+    assert "qnx_porter_str(name)" in new
+    assert "qnx_porter_str(err)" in new
+    assert new.count("static const char *qnx_porter_str") == 1
+
+
+def test_triage_crashes_across_multiple_files_and_skips_non_printf(tmp_path):
+    src = setup(tmp_path, "tests/a.c", MULTI_CRASH_SRC)
+    setup(tmp_path, "tests/b.c", LIBCONFIG_SRC)
+    crashes = [
+        {"backtrace": MULTI_CRASH_BT1.replace("{src}", str(src)).replace("tests/suite.c", "tests/a.c")},
+        {"backtrace": MULTI_CRASH_BT1.replace("{src}", str(src)).replace("tests/suite.c", "tests/a.c")},  # duplicate
+        {"backtrace": LIBCONFIG_BT.replace("{src}", str(src)).replace("tests/tests.c", "tests/b.c")},
+        {"backtrace": "#0  abort () at /lib/c/abort.c:1\n#1  0x1 in f () at /some/other.c:2\n"},  # non-printf crash
+    ]
+    fixes = crash.triage_crashes(crashes, src, in_tree)
+    assert len(fixes) == 2
+    files = {f[0] for f in fixes}
+    assert files == {"tests/a.c", "tests/b.c"}
+    a_fix = next(f for f in fixes if f[0] == "tests/a.c")
+    assert a_fix[2].count("qnx_porter_str(name)") == 1
+
+
+def test_multiple_calls_on_same_line(tmp_path):
+    text = ('#include <stdio.h>\n'
+            'void f(const char *a, const char *b) {\n'
+            '    printf("a=%s ", a); printf("b=%s\\n", b);\n'
+            '}\n')
+    new_text, wrapped = crash.wrap_multiple_calls_in_text(text, [("printf", 3), ("printf", 3)])
+    assert len(wrapped) == 2
+    assert 'printf("a=%s ", qnx_porter_str(a)); printf("b=%s\\n", qnx_porter_str(b));' in new_text
+    assert new_text.count("static const char *qnx_porter_str") == 1
+
+
+def test_syslog_and_cpp_std_printf_are_wrapped(tmp_path):
+    syslog_code = ('#include <syslog.h>\n'
+                   'void log_msg(const char *m) {\n'
+                   '    syslog(3, "Alert: %s\\n", m);\n'
+                   '}\n')
+    wrapped_syslog = crash.wrap_string_args_in_text(syslog_code, "syslog", 3)
+    assert 'syslog(3, "Alert: %s\\n", qnx_porter_str(m));' in wrapped_syslog
+
+    cpp_code = ('#include <cstdio>\n'
+                'void print_cpp(const char *s) {\n'
+                '    std::printf("Value: %s\\n", s);\n'
+                '}\n')
+    wrapped_cpp = crash.wrap_string_args_in_text(cpp_code, "printf", 3)
+    assert 'std::printf("Value: %s\\n", qnx_porter_str(s));' in wrapped_cpp

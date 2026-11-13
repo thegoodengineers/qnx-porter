@@ -149,28 +149,41 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         tests_passed, tests_total, crashes, not_runnable = _run_tests(job, target, src, bdir, work, env, logs)
         log(f"      {tests_passed}/{tests_total} tests passed")
         # A crash the backtrace explains mechanically gets a patch; it stays only if the re-run is better.
-        crash_fixes = []
-        for c in crashes:
-            if (r := crash.printf_null(c["backtrace"], src, fixes.in_tree)) and r[0] not in {f[0] for f in crash_fixes}:
-                crash_fixes.append(r)
-        if crash_fixes:
-            before = (tests_passed, tests_total, crashes, not_runnable)
-            first = len(applied)
+        # Progressive triage handles multiple crashes per run and up to 3 rounds if fixing one crash uncovers another.
+        MAX_CRASH_ROUNDS = 3
+        for crash_round in range(1, MAX_CRASH_ROUNDS + 1):
+            if not crashes:
+                break
+            crash_fixes = crash.triage_crashes(crashes, src, fixes.in_tree)
+            if not crash_fixes:
+                break
+
+            round_before = (tests_passed, tests_total, crashes, not_runnable)
+            round_first = len(applied)
             for rel, reason, text in crash_fixes:
                 patches.write_source(src / rel, text)
                 applied.append(patches.commit_source(src, out, len(applied) + 1, "printf-null", "rule", reason,
                                                      "Memory fault (SIGSEGV) in strlen <- printf on QNX", [rel]))
                 log(f"      fix {len(applied):04d} [printf-null] {reason}"[:200])
-            rebuilt, _ = build.run(job.steps(tests=True), work, env, logs / "rebuild-after-crash-fix.log")
+
+            rebuild_log = (logs / "rebuild-after-crash-fix.log" if crash_round == 1
+                           else logs / f"rebuild-after-crash-fix-{crash_round}.log")
+            rebuilt, _ = build.run(job.steps(tests=True), work, env, rebuild_log)
             if rebuilt:
                 tests_passed, tests_total, crashes, not_runnable = _run_tests(job, target, src, bdir, work, env, logs)
-                log(f"      after crash fixes: {tests_passed}/{tests_total} tests passed")
-            if not rebuilt or tests_passed <= before[0]:
-                for p in applied[first:]:
+                round_msg = f" (round {crash_round})" if crash_round > 1 else ""
+                log(f"      after crash fixes{round_msg}: {tests_passed}/{tests_total} tests passed")
+
+            if not rebuilt or tests_passed <= round_before[0]:
+                for p in applied[round_first:]:
                     patches.revert_last(src)
                     p.kept = False
-                tests_passed, tests_total, crashes, not_runnable = before
+                tests_passed, tests_total, crashes, not_runnable = round_before
                 log("      crash fixes did not help: reverted")
+                break
+
+            if tests_total > 0 and tests_passed == tests_total:
+                break
     elif ok:
         log("[4/5] tests skipped: " + (note or ("no --target given" if not target
                                                  else "no test runner for " + system)))
