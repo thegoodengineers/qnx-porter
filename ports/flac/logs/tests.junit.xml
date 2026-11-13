@@ -1,0 +1,452 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="qnx-target" tests="10" failures="3" skipped="0"><testcase name="libFLAC" classname="qnx-target"><failure message="exit 1">testing FLAC__metadata_object_vorbiscomment_resize_comments(shrink to 0)...OK
+testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on empty array...OK
+testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_resize_comments(shrink to 0)...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on beginning of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on middle of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on end of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on end of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(copy) on end of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+testing FLAC__metadata_object_vorbiscomment_find_entry_from()...OK
+testing FLAC__metadata_object_vorbiscomment_replace_comment(first, copy)...OK
+testing FLAC__metadata_object_vorbiscomment_replace_comment(all, copy)...OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_delete()... OK
+testing FLAC__metadata_object_vorbiscomment_delete_comment() on middle of array...OK
+testing FLAC__metadata_object_vorbiscomment_delete_comment() on end of array...OK
+testing FLAC__metadata_object_vorbiscomment_delete_comment() on beginning of array...OK
+testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_append_comment(copy) on non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_remove_entry_matching("blah")...OK
+testing FLAC__metadata_object_vorbiscomment_remove_entry_matching("rem0")...OK
+testing FLAC__metadata_object_vorbiscomment_remove_entries_matching("blah")...OK
+testing FLAC__metadata_object_vorbiscomment_remove_entries_matching("rem0")...OK
+testing FLAC__metadata_object_vorbiscomment_set_comment(copy)...OK
+testing FLAC__metadata_object_vorbiscomment_set_vendor_string(copy)...OK
+testing FLAC__metadata_object_delete()... OK
+testing FLAC__metadata_object_new()... OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_vorbiscomment_append_comment(own) on empty array...OK
+testing FLAC__metadata_object_vorbiscomment_append_comment(own) on non-empty array...OK
+testing FLAC__metadata_object_delete()... OK
+testing FLAC__metadata_object_new()... OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on beginning of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on middle of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on end of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on end of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_insert_comment(own) on end of non-empty array...OK
+testing FLAC__metadata_object_vorbiscomment_replace_comment(first, own)...OK
+testing FLAC__metadata_object_vorbiscomment_replace_comment(all, own)...OK
+testing FLAC__metadata_object_vorbiscomment_delete_comment() on middle of array...OK
+testing FLAC__metadata_object_vorbiscomment_delete_comment() on end of array...OK
+testing FLAC__metadata_object_vorbiscomment_delete_comment() on beginning of array...OK
+testing FLAC__metadata_object_vorbiscomment_set_comment(own)...OK
+testing FLAC__metadata_object_vorbiscomment_set_vendor_string(own)...OK
+testing FLAC__metadata_object_delete()... OK
+testing CUESHEET
+testing FLAC__metadata_object_cuesheet_track_new()... OK
+testing FLAC__metadata_object_cuesheet_track_clone()... OK
+testing FLAC__metadata_object_cuesheet_track_delete()... OK
+testing FLAC__metadata_object_new()... OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_cuesheet_resize_tracks(grow to 2)...OK
+testing FLAC__metadata_object_cuesheet_resize_tracks(shrink to 1)...OK
+testing FLAC__metadata_object_cuesheet_resize_tracks(shrink to 0)...OK
+testing FLAC__metadata_object_cuesheet_insert_track(copy) on empty array...OK
+testing FLAC__metadata_object_cuesheet_insert_track(copy) on beginning of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_insert_track(copy) on middle of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_insert_track(copy) on end of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_insert_blank_track() on end of non-empty array...OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_delete()... OK
+testing FLAC__metadata_object_cuesheet_delete_track() on end of array...OK
+testing FLAC__metadata_object_cuesheet_delete_track() on middle of array...OK
+testing FLAC__metadata_object_cuesheet_delete_track() on end of array...OK
+testing FLAC__metadata_object_cuesheet_delete_track() on beginning of array...OK
+testing FLAC__metadata_object_cuesheet_set_track(copy)...OK
+testing FLAC__metadata_object_cuesheet_track_resize_indices(grow to 2)...OK
+testing FLAC__metadata_object_cuesheet_track_resize_indices(shrink to 1)...OK
+testing FLAC__metadata_object_cuesheet_track_resize_indices(shrink to 0)...OK
+testing FLAC__metadata_object_cuesheet_track_insert_index() on empty array...OK
+testing FLAC__metadata_object_cuesheet_track_insert_index() on beginning of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_track_insert_index() on middle of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_track_insert_index() on end of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_track_insert_blank_index() on end of non-empty array...OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_delete()... OK
+testing FLAC__metadata_object_cuesheet_track_delete_index() on end of array...OK
+testing FLAC__metadata_object_cuesheet_track_delete_index() on middle of array...OK
+testing FLAC__metadata_object_cuesheet_track_delete_index() on end of array...OK
+testing FLAC__metadata_object_cuesheet_track_delete_index() on beginning of array...OK
+testing FLAC__metadata_object_delete()... OK
+testing FLAC__metadata_object_new()... OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_cuesheet_insert_track(own) on empty array...OK
+testing FLAC__metadata_object_cuesheet_insert_track(own) on beginning of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_insert_track(own) on middle of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_insert_track(own) on end of non-empty array...OK
+testing FLAC__metadata_object_cuesheet_delete_track() on middle of array...OK
+testing FLAC__metadata_object_cuesheet_delete_track() on end of array...OK
+testing FLAC__metadata_object_cuesheet_delete_track() on beginning of array...OK
+testing FLAC__metadata_object_cuesheet_set_track(own)...OK
+testing FLAC__metadata_object_cuesheet_is_legal()...returned false as expected, violation="CD-DA cue sheet must have a lead-in length of at least 2 seconds" OK
+testing FLAC__metadata_object_delete()... OK
+testing PICTURE
+testing FLAC__metadata_object_new()... OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_picture_set_mime_type(copy)...OK
+testing FLAC__metadata_object_picture_is_legal()...returned false as expected, violation="MIME type string must contain only printable ASCII characters (0x20-0x7e)" OK
+testing FLAC__metadata_object_picture_set_mime_type(copy)...OK
+testing FLAC__metadata_object_picture_is_legal()...OK
+testing FLAC__metadata_object_picture_set_description(copy)...OK
+testing FLAC__metadata_object_picture_is_legal()...returned false as expected, violation="description string must be valid UTF-8" OK
+testing FLAC__metadata_object_picture_set_description(copy)...OK
+testing FLAC__metadata_object_picture_is_legal()...OK
+testing FLAC__metadata_object_picture_set_data(copy)...OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_delete()... OK
+testing FLAC__metadata_object_picture_set_mime_type(own)...OK
+testing FLAC__metadata_object_picture_is_legal()...returned false as expected, violation="MIME type string must contain only printable ASCII characters (0x20-0x7e)" OK
+testing FLAC__metadata_object_picture_set_mime_type(own)...OK
+testing FLAC__metadata_object_picture_is_legal()...OK
+testing FLAC__metadata_object_picture_set_description(own)...OK
+testing FLAC__metadata_object_picture_is_legal()...returned false as expected, violation="description string must be valid UTF-8" OK
+testing FLAC__metadata_object_picture_set_description(own)...OK
+testing FLAC__metadata_object_picture_is_legal()...OK
+testing FLAC__metadata_object_picture_set_data(own)...OK
+testing FLAC__metadata_object_clone()... OK
+testing FLAC__metadata_object_delete()... OK
+testing FLAC__metadata_object_delete()... OK
+
++++ libFLAC unit test: metadata manipulation
+
+
+
+++++++ testing level 0 interface
+generating FLAC file for test
+	testing 'metadata.flac'... 0... 1... 2... 3... 4... content... PASSED
+testing FLAC__metadata_get_streaminfo()... OK
+testing FLAC__metadata_get_tags()... OK
+testing FLAC__metadata_get_cuesheet()... OK
+testing FLAC__metadata_get_picture()... OK
+
+
+++++++ testing level 1 interface
+simple iterator on read-only file
+generating FLAC file for test
+	testing 'metadata.flac'... 0... 1... 2... content... PASSED
+is writable = 1
+ERROR: iterator claims file is writable when tester thinks it should not be; are you running as root?
+
+ERROR during test_libFLAC
+</failure></testcase><testcase name="libFLAC++" classname="qnx-target"><failure message="exit 1">testing VorbisComment::set_comment()... +
+        VorbisComment::get_comment()... OK
+testing VorbisComment::delete_comment()... +
+        VorbisComment::get_comment()... OK
+testing FLAC::Metadata::clone(const FLAC::Metadata::Prototype *)... OK
+testing VorbisComment::~VorbisComment()... OK
+PASSED
+
+testing class FLAC::Metadata::CueSheet::Track
+testing Track::Track()... OK
+testing Track::get_track()... OK
+testing Track::Track(const ::FLAC__StreamMetadata_CueSheet_Track*)... OK
+testing Track::~Track()... OK
+testing Track::Track(const Track &amp;track)... OK
+testing Track::~Track()... OK
+testing Track::operator=(const Track &amp;track)... OK
+testing Track::get_offset()... OK
+testing Track::get_number()... OK
+testing Track::get_isrc()... OK
+testing Track::get_type()... OK
+testing Track::get_pre_emphasis()... OK
+testing Track::get_num_indices()... OK
+testing Track::set_offset()... OK
+testing Track::set_number()... OK
+testing Track::set_isrc()... OK
+testing Track::set_type()... OK
+testing Track::set_pre_emphasis()... OK
+PASSED
+
+testing class FLAC::Metadata::CueSheet
+testing CueSheet::CueSheet()... OK
+testing CueSheet::CueSheet(const CueSheet &amp;)... +
+        CueSheet::operator!=(const CueSheet &amp;)... OK
+testing CueSheet::~CueSheet()... OK
+testing CueSheet::CueSheet(const ::FLAC__StreamMetadata &amp;)... +
+        CueSheet::operator!=(const ::FLAC__StreamMetadata &amp;)... OK
+testing CueSheet::CueSheet(const ::FLAC__StreamMetadata *)... +
+        CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing CueSheet::CueSheet(const ::FLAC__StreamMetadata *, copy=true)... +
+        CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing CueSheet::CueSheet(const ::FLAC__StreamMetadata *, copy=false)... +
+        CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing CueSheet::assign(const ::FLAC__StreamMetadata *, copy=true)... +
+        CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing CueSheet::assign(const ::FLAC__StreamMetadata *, copy=false)... +
+        CueSheet::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing CueSheet::operator=(const CueSheet &amp;)... +
+        CueSheet::operator==(const CueSheet &amp;)... OK
+testing CueSheet::operator=(const ::FLAC__StreamMetadata &amp;)... +
+        CueSheet::operator==(const ::FLAC__StreamMetadata &amp;)... OK
+testing CueSheet::operator=(const ::FLAC__StreamMetadata *)... +
+        CueSheet::operator==(const ::FLAC__StreamMetadata *)... OK
+testing CueSheet::get_media_catalog_number()... OK
+testing CueSheet::get_lead_in()... OK
+testing CueSheet::get_is_cd()... OK
+testing CueSheet::get_num_tracks()... OK
+testing CueSheet::set_media_catalog_number()... OK
+testing CueSheet::set_lead_in()... OK
+testing CueSheet::set_is_cd()... OK
+testing CueSheet::insert_track()... +
+        CueSheet::get_track()... OK
+testing CueSheet::insert_track()... +
+        CueSheet::get_track()... OK
+testing CueSheet::insert_index(0)... +
+        CueSheet::get_track()... +
+        CueSheet::Track::get_index()... OK
+testing CueSheet::Track::set_index()... OK
+testing CueSheet::set_index()... OK
+testing CueSheet::delete_index()... OK
+testing CueSheet::set_track()... +
+        CueSheet::get_track()... OK
+testing CueSheet::delete_track()... OK
+testing FLAC::Metadata::clone(const FLAC::Metadata::Prototype *)... OK
+testing CueSheet::~CueSheet()... OK
+PASSED
+
+testing class FLAC::Metadata::Picture
+testing Picture::Picture()... OK
+testing Picture::Picture(const Picture &amp;)... +
+        Picture::operator!=(const Picture &amp;)... OK
+testing Picture::~Picture()... OK
+testing Picture::Picture(const ::FLAC__StreamMetadata &amp;)... +
+        Picture::operator!=(const ::FLAC__StreamMetadata &amp;)... OK
+testing Picture::Picture(const ::FLAC__StreamMetadata *)... +
+        Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing Picture::Picture(const ::FLAC__StreamMetadata *, copy=true)... +
+        Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing Picture::Picture(const ::FLAC__StreamMetadata *, copy=false)... +
+        Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing Picture::assign(const ::FLAC__StreamMetadata *, copy=true)... +
+        Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing Picture::assign(const ::FLAC__StreamMetadata *, copy=false)... +
+        Picture::operator!=(const ::FLAC__StreamMetadata *)... OK
+testing Picture::operator=(const Picture &amp;)... +
+        Picture::operator==(const Picture &amp;)... OK
+testing Picture::operator=(const ::FLAC__StreamMetadata &amp;)... +
+        Picture::operator==(const ::FLAC__StreamMetadata &amp;)... OK
+testing Picture::operator=(const ::FLAC__StreamMetadata *)... +
+        Picture::operator==(const ::FLAC__StreamMetadata *)... OK
+testing Picture::get_type()... OK
+testing Picture::set_type()... +
+        Picture::get_type()... OK
+testing Picture::set_mime_type()... OK
+testing Picture::get_mime_type()... OK
+testing Picture::set_description()... OK
+testing Picture::get_description()... OK
+testing Picture::get_width()... OK
+testing Picture::set_width()... +
+        Picture::get_width()... OK
+testing Picture::get_height()... OK
+testing Picture::set_height()... +
+        Picture::get_height()... OK
+testing Picture::get_depth()... OK
+testing Picture::set_depth()... +
+        Picture::get_depth()... OK
+testing Picture::get_colors()... OK
+testing Picture::set_colors()... +
+        Picture::get_colors()... OK
+testing Picture::get_data_length()... OK
+testing Picture::set_data()... OK
+testing Picture::get_data()... OK
+testing FLAC::Metadata::clone(const FLAC::Metadata::Prototype *)... OK
+testing Picture::~Picture()... OK
+PASSED
+
+
++++ libFLAC++ unit test: metadata manipulation
+
+
+
+++++++ testing level 0 interface
+generating FLAC file for test
+	testing 'metadata.flac'... 0... 1... 2... 3... 4... content... PASSED
+testing FLAC::Metadata::get_streaminfo()... OK
+testing FLAC::Metadata::get_tags(VorbisComment *&amp;)... OK
+testing FLAC::Metadata::get_tags(VorbisComment &amp;)... OK
+testing FLAC::Metadata::get_cuesheet(CueSheet *&amp;)... OK
+testing FLAC::Metadata::get_cuesheet(CueSheet &amp;)... OK
+testing FLAC::Metadata::get_picture(Picture *&amp;)... OK
+testing FLAC::Metadata::get_picture(Picture &amp;)... OK
+
+
+++++++ testing level 1 interface
+simple iterator on read-only file
+generating FLAC file for test
+	testing 'metadata.flac'... 0... 1... 2... content... PASSED
+is writable = 1
+ERROR: iterator claims file is writable when tester thinks it should not be; are you running as root?
+
+ERROR during test_libFLAC++
+</failure></testcase><testcase name="grabbag" classname="qnx-target" /><testcase name="generate_streams" classname="qnx-target" /><testcase name="flac" classname="qnx-target" /><testcase name="metaflac" classname="qnx-target" /><testcase name="replaygain" classname="qnx-target" /><testcase name="seeking" classname="qnx-target" /><testcase name="streams" classname="qnx-target"><failure message="exit None">sine16-14 (--channels=2 --bps=16 -2 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -2 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -4  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -4 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -4 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -5  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -5 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -5 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -6  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -6 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -6 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -8  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -8 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-14 (--channels=2 --bps=16 -8 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0  ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0 -p ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0 -e ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1  ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1 -p ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1 -e ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2  ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2 -p ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2 -e ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4  ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4 -p ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4 -e ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5  ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5 -p ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5 -e ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6  ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6 -p ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6 -e ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8  ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8 -p ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8 -e ): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -0 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -1 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -2 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -4 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -5 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -6 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-15 (--channels=2 --bps=16 -8 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0  ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0 -p ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0 -e ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1  ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1 -p ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1 -e ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2  ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2 -p ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2 -e ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4  ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4 -p ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4 -e ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5  ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5 -p ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5 -e ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6  ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6 -p ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6 -e ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8  ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8 -p ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8 -e ): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8  --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8 -p --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8 -e --disable-verbatim-subframes --disable-constant-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -0 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -1 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -2 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -4 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -5 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -6 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8  --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8 -p --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-16 (--channels=2 --bps=16 -8 -e --disable-verbatim-subframes --disable-constant-subframes --disable-fixed-subframes): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -0  ): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -0 -p ): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -0 -e ): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -1  ): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -1 -p ): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -1 -e ): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -2  ): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -2 -p ): encode... decode... compare... OK
+sine16-17 (--channels=2 --bps=16 -2 -e ): encode... 
+killed on the target after 300 s
+</failure></testcase><testcase name="compression" classname="qnx-target" /></testsuite>

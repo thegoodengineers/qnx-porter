@@ -18,7 +18,7 @@ def rows(ports: Path) -> list[dict]:
     listed_file = ROOT / "results" / "oss_listed.json"  # written by run_campaign.py from oss.qnx.com
     listed = set(json.loads(listed_file.read_text())) if listed_file.exists() else None
     out = []
-    for f in sorted(ports.glob("*/report.json")):
+    for f in sorted(ports.glob("*/report.json"), key=lambda p: p.parent.name):  # case-sensitive on every OS
         r = json.loads(f.read_text(encoding="utf-8"))
         if r["arch"] == "host":
             continue  # self-tests with the host compiler are not QNX ports
@@ -78,6 +78,12 @@ def main():
     text = re.sub(r"(<!-- headline:start -->).*?(<!-- headline:end -->)",
                   lambda m: m[1] + headline(data) + m[2], text, flags=re.S)
     readme.write_text(text, encoding="utf-8", newline="\n")
+    sys.path.insert(0, str(ROOT))
+    from qnx_porter.target import RESULT_LINE, junit_from_log
+    for log in (p for d in dirs for p in d.glob("*/logs/tests.log")):  # JUnit beside every per-test log
+        text = log.read_text(encoding="utf-8", errors="replace")
+        if any(RESULT_LINE.match(ln) for ln in text.splitlines()):
+            log.with_name("tests.junit.xml").write_text(junit_from_log(text), encoding="utf-8", newline="\n")
     print(summary(data))
     print(f"-> {dest}")
 
