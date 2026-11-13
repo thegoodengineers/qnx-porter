@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "libuv-v1.49.2-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libuv-e1095c7a4373ce00cd8874d8e820de5afb25776e",
+  "creationInfo": {
+    "created": "2026-11-13T04:58:49Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-libuv",
+      "name": "libuv",
+      "versionInfo": "v1.49.2",
+      "downloadLocation": "git+https://github.com/libuv/libuv.git@e1095c7a4373ce00cd8874d8e820de5afb25776e",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "BSD-2-Clause AND CC-BY-4.0 AND ISC AND MIT",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over LICENSE, LICENSE-docs, LICENSE-extra, README.md: BSD-2-Clause AND CC-BY-4.0 AND ISC AND MIT. Per-file detections: LICENSE: MIT; LICENSE-docs: CC-BY-4.0; LICENSE-extra: MIT AND (BSD-2-Clause AND ISC); README.md: MIT AND CC-BY-4.0."
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/libuv/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-libuv"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-libuv"
+    }
+  ]
+}

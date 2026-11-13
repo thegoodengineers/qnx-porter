@@ -1,0 +1,66 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "libjpeg-turbo-3.0.4-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libjpeg-turbo-f29eda648547b36aa594c4116c7764a6c8a079b9",
+  "creationInfo": {
+    "created": "2026-11-13T04:58:31Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-libjpeg-turbo",
+      "name": "libjpeg-turbo",
+      "versionInfo": "3.0.4",
+      "downloadLocation": "git+https://github.com/libjpeg-turbo/libjpeg-turbo.git@f29eda648547b36aa594c4116c7764a6c8a079b9",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "BSD-3-Clause AND IJG AND LicenseRef-scancode-ijg-2020 AND Zlib",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over LICENSE.md, README.ijg, README.md, java/README, release/License.rtf, release/ReadMe.txt: BSD-3-Clause AND IJG AND LicenseRef-scancode-ijg-2020 AND Zlib. Per-file detections: LICENSE.md: (BSD-3-Clause AND IJG AND Zlib) AND IJG AND (Zlib AND BSD-3-Clause) AND (BSD-3-Clause AND (BSD-3-Clause AND IJG AND Zlib)) AND (BSD-3-Clause AND Zlib) AND Zlib AND BSD-3-Clause; README.ijg: IJG AND LicenseRef-scancode-ijg-2020; java/README: BSD-3-Clause; release/License.rtf: BSD-3-Clause."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-ijg-2020",
+      "name": "Independent JPEG Group License 2020",
+      "extractedText": "In plain English:\n\nWe don't promise that this software works. (But if you find any bugs, please let us know!)\n\nYou can use this software for whatever you want. You don't have to pay us.\n\nYou may not pretend that you wrote this software. If you use it in a program, you must\nacknowledge somewhere in your documentation that you've used the IJG code.\n\nIn legalese:\n\nThe authors make NO WARRANTY or representation, either express or implied,\nwith respect to this software, its quality, accuracy, merchantability, or\nfitness for a particular purpose. This software is provided \"AS IS\", and you,\nits user, assume the entire risk as to its quality and accuracy.\n\nThis software is copyright (C) 1991-2020, Thomas G. Lane, Guido Vollbeding.\nAll Rights Reserved except as specified below.\n\nPermission is hereby granted to use, copy, modify, and distribute this\nsoftware (or portions thereof) for any purpose, without fee, subject to these\nconditions:\n(1) If any part of the source code for this software is distributed, then this\nREADME file must be included, with this copyright and no-warranty notice\nunaltered; and any additions, deletions, or changes to the original files\nmust be clearly indicated in accompanying documentation.\n(2) If only executable code is distributed, then the accompanying\ndocumentation must state that \"this software is based in part on the work of\nthe Independent JPEG Group\".\n(3) Permission for use of this software is granted only if the user accepts\nfull responsibility for any undesirable consequences; the authors accept\nNO LIABILITY for damages of any kind.\n\nThese conditions apply to any software derived from or based on the IJG code,\nnot just to the unmodified library. If you use our work, you ought to\nacknowledge us.\n\nPermission is NOT granted for the use of any IJG author's name or company name\nin advertising or publicity relating to this software or products derived from\nit. This software may be referred to only as \"the Independent JPEG Group's\nsoftware\".\n\nWe specifically permit and encourage the use of this software as the basis of\ncommercial products, provided that all warranty or liability claims are\nassumed by the product vendor.",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/ijg-2020.LICENSE"
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/libjpeg-turbo/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-libjpeg-turbo"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-libjpeg-turbo"
+    }
+  ]
+}

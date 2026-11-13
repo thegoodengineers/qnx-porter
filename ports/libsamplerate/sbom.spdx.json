@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "libsamplerate-0.2.2-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libsamplerate-c96f5e3de9c4488f4e6c97f59f5245f22fda22f7",
+  "creationInfo": {
+    "created": "2026-11-13T04:58:40Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-libsamplerate",
+      "name": "libsamplerate",
+      "versionInfo": "0.2.2",
+      "downloadLocation": "git+https://github.com/libsndfile/libsamplerate.git@c96f5e3de9c4488f4e6c97f59f5245f22fda22f7",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "BSD-2-Clause",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over COPYING, Octave/Readme.md, README.md, docs/license.md: BSD-2-Clause. Per-file detections: COPYING: BSD-2-Clause; docs/license.md: GPL-3.0-or-later AND BSD-2-Clause."
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/libsamplerate/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-libsamplerate"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-libsamplerate"
+    }
+  ]
+}

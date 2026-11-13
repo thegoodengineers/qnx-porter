@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "libxml2-v2.13.5-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libxml2-de918d45e1b2276a28a4cd32bcf556bef65284e4",
+  "creationInfo": {
+    "created": "2026-11-13T04:59:32Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-libxml2",
+      "name": "libxml2",
+      "versionInfo": "v2.13.5",
+      "downloadLocation": "git+https://github.com/GNOME/libxml2.git@de918d45e1b2276a28a4cd32bcf556bef65284e4",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over Copyright, README.md, README.zOS, fuzz/README.md, os400/README400, python/README, win32/Readme.txt: MIT. Per-file detections: Copyright: MIT; README.md: MIT."
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/libxml2/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-libxml2"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-libxml2"
+    }
+  ]
+}
