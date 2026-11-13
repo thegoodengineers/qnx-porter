@@ -230,7 +230,7 @@ Say a library calls `getopt()` without `#include <unistd.h>` and the build fails
 The bar for a rule: it acts only on what the compiler or linker printed, and the fix never needs judgement.
 If it does, it belongs to the model or a person.
 
-## 8. Port the whole campaign with one command
+## 8. Port the whole campaign with one command (10 min)
 **[host]**
 ```bash
 python3 scripts/run_campaign.py
