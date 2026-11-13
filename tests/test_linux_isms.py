@@ -302,3 +302,10 @@ def test_library_guessing_a_32_bit_word_size_on_aarch64(tmp_path):
            "stdint.h:38:33: note: previous declaration of 'uintptr_t' with type 'uintptr_t' {aka 'long unsigned int'}\n")
     [f] = run(tmp_path, {"cmocka.h": "typedef unsigned int uintptr_t;\n"}, log)
     assert f.rule == "wordsize-64" and f.cflags == ["-D__WORDSIZE=64"]
+
+
+def test_negative_constant_in_plain_char_on_aarch64(tmp_path):
+    # Real g++ error from yaml-cpp 0.8.0's tests for aarch64le, where plain char is unsigned.
+    log = ("binary_test.cpp:11:38: error: narrowing conversion of '-58' from 'int' to 'char' [-Wnarrowing]\n")
+    [f] = run(tmp_path, {"binary_test.cpp": "char c[] = {-58};\n"}, log)
+    assert f.rule == "signed-char" and f.cflags == ["-fsigned-char"]
