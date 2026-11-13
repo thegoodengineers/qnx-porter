@@ -9,6 +9,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 FIELDS = ["library", "version", "build_system", "arch", "build_result", "tests_passed", "tests_total",
           "patches", "patches_by_rule", "patches_by_model", "rounds", "minutes", "target", "finished", "note",
           "on_oss_qnx_com", "tests_not_runnable"]
@@ -64,7 +65,8 @@ def headline(data: list[dict]) -> str:
 
 
 def main():
-    dirs = [Path(sys.argv[1])] if len(sys.argv) > 1 else [ROOT / "ports", ROOT / "ports-aarch64le"]
+    arg_dirs = [Path(a) for a in sys.argv[1:] if not a.startswith("--")]
+    dirs = arg_dirs if arg_dirs else [ROOT / "ports", ROOT / "ports-aarch64le"]
     data = [r for d in dirs for r in rows(d)]
     dest = ROOT / "results" / "ports.csv"
     with dest.open("w", newline="", encoding="utf-8") as f:
@@ -86,6 +88,16 @@ def main():
             log.with_name("tests.junit.xml").write_text(junit_from_log(text), encoding="utf-8", newline="\n")
     print(summary(data))
     print(f"-> {dest}")
+    if "--intelligence" in sys.argv:
+        from qnx_porter import intelligence
+        for d in dirs:
+            if d.exists():
+                reports = [json.loads(p.read_text(encoding="utf-8")) for p in d.glob("*/report.json")]
+                arch = reports[0].get("arch", "x86_64") if reports else "x86_64"
+                json_name = f"campaign_intelligence{'_' + arch if arch != 'x86_64' else ''}.json"
+                intel_dest = ROOT / "results" / json_name
+                intelligence.save_campaign_intelligence(d, intel_dest, arch=arch)
+                print(f"-> {intel_dest}")
 
 
 def summary(data: list[dict]) -> str:

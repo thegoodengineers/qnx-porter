@@ -9,7 +9,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import build, crash, errors, fixes, llm, patches, qnx
+from . import build, crash, errors, fixes, intelligence, llm, patches, qnx
 from .target import SAME_PATH_MARK, Target, ctest_on_target, meson_on_target, parse_results, write_wrapper
 
 MODEL_TRIES = 2  # model attempts per error before the agent reports it as blocked
@@ -192,6 +192,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         "crashes": [{"binary": Path(c["binary"]).name, "backtrace": c["backtrace"]} for c in crashes],
         "finished": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
+    report["failure_intelligence"] = intelligence.analyze_report(report, logs).to_dict()
     (out / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     (out / job.toolchain_path().name).write_text(job.toolchain_text(), encoding="utf-8")
     if (work / "qnx-compat").is_dir():  # headers the toolchain -includes, kept with the port
@@ -316,6 +317,19 @@ def render(r: dict, job: build.Job) -> str:
     tests = (f"{r['tests_passed']}/{r['tests_total']} passed on `{r['target']}`" if r["tests_ran"]
              else "not run")
     where = f"on QNX 8.0 ({r['arch']})" if r["arch"] != "host" else "(self-test with the host compiler, not QNX)"
+    fi = r.get("failure_intelligence")
+    fi_block = ""
+    if fi and fi.get("overall_status") not in ("passed", "built_untested"):
+        confidence_str = f" [confidence: {fi.get('confidence', 'medium')}]" if fi.get('confidence') else ""
+        hyp_str = f"\n- **Hypothesis**: {fi.get('hypothesis')}" if fi.get('hypothesis') else ""
+        ev_str = f"\n- **Evidence**: `{fi.get('evidence')[:160]}`" if fi.get('evidence') else ""
+        fi_block = (f"\n\n## Failure Intelligence\n"
+                    f"- **Classification**: `{fi.get('primary_category')}` ({fi.get('primary_actionability')}){confidence_str}\n"
+                    f"- **Signature**: `{fi.get('primary_signature')}`\n"
+                    f"- **Analysis**: {fi.get('summary')}"
+                    f"{hyp_str}"
+                    f"{ev_str}\n"
+                    f"- **Suggested Action**: {fi.get('suggested_action')}")
     return f"""# {r['library']} {r['version']} {where}
 
 | | |
@@ -339,5 +353,5 @@ All kept source changes in one file: `qnx.patch` (apply to the upstream tag with
 Build logs for every round: `logs/`.
 
 ## Still failing
-{blocked if r['build_result'] == 'failed' else '- nothing'}
+{blocked if r['build_result'] == 'failed' else '- nothing'}{fi_block}
 {crashes}"""

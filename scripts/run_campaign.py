@@ -116,13 +116,16 @@ def error_report(out: Path, lib: dict, arch: str, err: str, minutes: float) -> N
     """A report.json for a library the agent could not even start on, so the CSV still shows it."""
     d = out / lib["name"]
     d.mkdir(parents=True, exist_ok=True)
-    (d / "report.json").write_text(json.dumps({
+    report = {
         "library": lib["name"], "url": lib["url"], "version": lib["tag"], "commit": "", "build_system": "",
         "arch": arch, "sdp": "QNX SDP 8.0", "target": "", "build_result": "error", "rounds": 0,
         "tests_passed": 0, "tests_total": 0, "tests_ran": False, "patches_kept": 0, "patches_by_rule": 0,
         "patches_by_model": 0, "patches": [], "blocked_on": [{"kind": "error", "error": err[-2000:], "hint": ""}],
         "minutes": round(minutes, 1), "finished": datetime.now(timezone.utc).isoformat(timespec="seconds"),
-    }, indent=2), encoding="utf-8")
+    }
+    from qnx_porter import intelligence
+    report["failure_intelligence"] = intelligence.analyze_report(report).to_dict()
+    (d / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
 
 
 def main(argv=None) -> int:
