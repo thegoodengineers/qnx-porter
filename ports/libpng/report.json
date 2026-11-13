@@ -1,8 +1,8 @@
 {
   "library": "libpng",
   "url": "https://github.com/pnggroup/libpng.git",
-  "version": "v1.6.44",
-  "commit": "f5e92d76973a7a53f517579bc95d61483bf108c0",
+  "version": "v1.6.59",
+  "commit": "cd952f49f95bb27154ae77dbb103032d95f6e580",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -31,11 +31,20 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 0.5,
+  "minutes": 0.6,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [
     {
       "name": "pngtest",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngtest-png-3",
+      "needs": "cmake"
+    },
+    {
+      "name": "pnggetset",
       "needs": "cmake"
     },
     {
@@ -127,6 +136,18 @@
       "needs": "cmake"
     },
     {
+      "name": "pngstest-large-stride",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-negative-stride",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-negative-stride-extra",
+      "needs": "cmake"
+    },
+    {
       "name": "pngunknown-discard",
       "needs": "cmake"
     },
@@ -164,5 +185,5 @@
     }
   ],
   "crashes": [],
-  "finished": "2026-11-12T08:54:08+00:00"
+  "finished": "2026-11-13T17:29:45+00:00"
 }

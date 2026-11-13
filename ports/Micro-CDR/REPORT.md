@@ -1,8 +1,8 @@
-# Micro-CDR v2.0.1 on QNX 8.0 (x86_64)
+# Micro-CDR v2.0.2 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/eProsima/Micro-CDR.git at `v2.0.1` (`3d1b17703c7c`) |
+| Upstream | https://github.com/eProsima/Micro-CDR.git at `v2.0.2` (`99672492c5ef`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

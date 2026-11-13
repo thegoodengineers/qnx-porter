@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "zstd-v1.5.6-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/zstd-794ea1b0afca0f020f4e57b6732332231fb23c70",
+  "name": "zstd-v1.5.7-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/zstd-f8745da6ff1ad1e7bab384bd1f9d742439278e99",
   "creationInfo": {
-    "created": "2026-11-13T05:02:36Z",
+    "created": "2026-11-13T19:03:26Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-zstd",
       "name": "zstd",
-      "versionInfo": "v1.5.6",
-      "downloadLocation": "git+https://github.com/facebook/zstd.git@794ea1b0afca0f020f4e57b6732332231fb23c70",
+      "versionInfo": "v1.5.7",
+      "downloadLocation": "git+https://github.com/facebook/zstd.git@f8745da6ff1ad1e7bab384bd1f9d742439278e99",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "BSD-3-Clause OR GPL-2.0-only",

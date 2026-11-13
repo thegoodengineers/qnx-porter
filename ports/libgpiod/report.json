@@ -1,9 +1,9 @@
 {
   "library": "libgpiod",
   "url": "https://github.com/brgl/libgpiod.git",
-  "version": "v2.2.4",
-  "commit": "328d48b8cc90159825fa902c9d29bd6c554b10fe",
-  "build_system": "autotools",
+  "version": "v2.3.2",
+  "commit": "3435867dd1469c8058924267b4f869058d3c4e52",
+  "build_system": "meson",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
@@ -19,14 +19,15 @@
   "patches": [],
   "blocked_on": [
     {
-      "kind": "configure_error",
-      "error": "configure: error: linux/const.h header not found (needed to build the library)",
+      "kind": "error",
+      "error": "src/meson.build:4:0: ERROR: Meson version is 0.61.2 but project requires >= 0.64.0",
       "hint": ""
     }
   ],
-  "minutes": 0.3,
+  "minutes": 0.0,
   "note": "Linux GPIO character-device API: expected not to port",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T08:25:17+00:00"
+  "finished": "2026-11-13T16:48:18+00:00"
 }

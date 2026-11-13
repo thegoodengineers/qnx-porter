@@ -1,0 +1,142 @@
+$ cmake -S /home/chirag/qnx-porter/ports/spdlog/work/src -B /home/chirag/qnx-porter/ports/spdlog/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/spdlog/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/spdlog/work/qnx-run -DSPDLOG_BUILD_EXAMPLE=OFF
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Build spdlog: 1.15.0
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Build type: Release
+-- Generating install
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/spdlog/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+    CMAKE_CROSSCOMPILING_EMULATOR
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/spdlog/work/build -j 2 -- -k
+[ 12%] Building CXX object CMakeFiles/spdlog.dir/src/spdlog.cpp.o
+[ 25%] Building CXX object CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o
+[ 37%] Building CXX object CMakeFiles/spdlog.dir/src/color_sinks.cpp.o
+[ 50%] Building CXX object CMakeFiles/spdlog.dir/src/file_sinks.cpp.o
+[ 62%] Building CXX object CMakeFiles/spdlog.dir/src/async.cpp.o
+[ 75%] Building CXX object CMakeFiles/spdlog.dir/src/cfg.cpp.o
+[ 87%] Building CXX object CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.o
+[100%] Linking CXX static library libspdlog.a
+[100%] Built target spdlog
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+In file included from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/construct_at.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__string/constexpr_c_functions.h:14,
+                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__algorithm/copy_move_common.h:18,
+                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__algorithm/copy.h:12,
+                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/algorithm:1794,
+                 from /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format-inl.h:12,
+                 from /home/chirag/qnx-porter/ports/spdlog/work/src/src/bundled_fmtlib_format.cpp:11:
+In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
+    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
+    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
+    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39:
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
+  273 |   return ::operator new(__args...);
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]':
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
+  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+      |                                                                  ^~~~~~~~
+In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
+    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
+    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = wchar_t]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
+    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = wchar_t; long unsigned int SIZE = 500; Allocator = std::__2::allocator<wchar_t>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39:
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
+  273 |   return ::operator new(__args...);
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = wchar_t; long unsigned int SIZE = 500; Allocator = std::__2::allocator<wchar_t>]':
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
+  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+      |                                                                  ^~~~~~~~
+In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
+    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
+    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
+    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = int; long unsigned int SIZE = 500; Allocator = std::__2::allocator<int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39:
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
+  273 |   return ::operator new(__args...);
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = int; long unsigned int SIZE = 500; Allocator = std::__2::allocator<int>]':
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
+  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+      |                                                                  ^~~~~~~~
+In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
+    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
+    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
+    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39,
+    inlined from 'void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:918:35,
+    inlined from 'void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:909:16,
+    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:924:63,
+    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:900:17,
+    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:908:9,
+    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2929:69,
+    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2919:13,
+    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2907:24,
+    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:3017:29:
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
+  273 |   return ::operator new(__args...);
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
+  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+      |                                                                  ^~~~~~~~
+In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
+    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
+    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
+    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39,
+    inlined from 'void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:918:35,
+    inlined from 'void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:909:16,
+    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:924:63,
+    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:900:17,
+    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:908:9,
+    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2929:69,
+    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2919:13,
+    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2907:24,
+    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:3020:27:
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
+  273 |   return ::operator new(__args...);
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
+  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+      |                                                                  ^~~~~~~~
+In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
+    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
+    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
+    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39,
+    inlined from 'void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:918:35,
+    inlined from 'void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:909:16,
+    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:924:63,
+    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:900:17,
+    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:908:9,
+    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2929:69,
+    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2919:13,
+    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2907:24,
+    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:3034:29:
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
+  273 |   return ::operator new(__args...);
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
+  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+      |                                                                  ^~~~~~~~

@@ -1,8 +1,8 @@
 {
   "library": "nanopb",
   "url": "https://github.com/nanopb/nanopb.git",
-  "version": "0.4.9",
-  "commit": "98bf4db69897b53434f3d0ba72e0a3ab1a902824",
+  "version": "0.4.9.3",
+  "commit": "93550bb52a6216a7396d0a168a42b3a88223d811",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -20,7 +20,8 @@
   "blocked_on": [],
   "minutes": 0.0,
   "note": "build only: its tests use scons and protoc",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T07:49:45+00:00"
+  "finished": "2026-11-13T15:57:36+00:00"
 }

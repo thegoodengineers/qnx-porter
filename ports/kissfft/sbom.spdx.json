@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "kissfft-131.1.0-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/kissfft-8f47a67f595a6641c566087bf5277034be64f24d",
+  "name": "kissfft-131.2.0-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/kissfft-7bce4153c6bc8aba2db0e889e576f9d00505cbe1",
   "creationInfo": {
-    "created": "2026-11-13T04:56:59Z",
+    "created": "2026-11-13T19:01:14Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-kissfft",
       "name": "kissfft",
-      "versionInfo": "131.1.0",
-      "downloadLocation": "git+https://github.com/mborgerding/kissfft.git@8f47a67f595a6641c566087bf5277034be64f24d",
+      "versionInfo": "131.2.0",
+      "downloadLocation": "git+https://github.com/mborgerding/kissfft.git@7bce4153c6bc8aba2db0e889e576f9d00505cbe1",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "LicenseRef-scancode-unknown-license-reference AND (BSD-3-Clause AND GPL-1.0-or-later AND LicenseRef-scancode-unknown-license-reference)",

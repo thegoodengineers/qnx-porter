@@ -1,7 +1,7 @@
 Subject: [qnx-porter 0001] link-libregex
 Source: deterministic rule
 Reason: `regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.
-Error: /home/chirag/qnx-porter/ports/fmt/work/src/test/gtest/gmock-gtest-all.cc:11045:(.text+0xbb65): undefined reference to `regfree'
+Error: /home/chirag/qnx-porter/ports/fmt/work/src/test/gtest/gmock-gtest-all.cc:11045:(.text+0xbc05): undefined reference to `regfree'
 ---
 --- a/qnx-toolchain.cmake
 +++ b/qnx-toolchain.cmake

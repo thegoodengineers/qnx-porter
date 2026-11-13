@@ -48,6 +48,11 @@ $ cmake -S /home/chirag/qnx-porter/ports/flac/work/src -B /home/chirag/qnx-porte
 -- Performing Test HAVE_WEFFCXX_FLAG - Success
 -- Performing Test HAVE_STACK_PROTECTOR_FLAG
 -- Performing Test HAVE_STACK_PROTECTOR_FLAG - Success
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
 -- Looking for cpuid.h
 -- Looking for cpuid.h - found
 -- Looking for sys/param.h
@@ -63,16 +68,16 @@ $ cmake -S /home/chirag/qnx-porter/ports/flac/work/src -B /home/chirag/qnx-porte
 -- Found Intl: /home/chirag/qnx800/target/qnx/x86_64/usr/lib/libintl.so  
 -- Looking for sys/ioctl.h
 -- Looking for sys/ioctl.h - found
+-- Looking for sys/time.h
+-- Looking for sys/time.h - found
 -- Looking for termios.h
 -- Looking for termios.h - found
--- Looking for clock_gettime
--- Looking for clock_gettime - found
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/flac/work/build
 $ cmake --build /home/chirag/qnx-porter/ports/flac/work/build -j 2 -- -k
-[  1%] Building C object src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/replaygain_analysis.c.o
 [  0%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/bitmath.c.o
+[  1%] Building C object src/share/replaygain_analysis/CMakeFiles/replaygain_analysis.dir/replaygain_analysis.c.o
 [  2%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/bitreader.c.o
 [  3%] Linking C static library libreplaygain_analysis.a
 [  3%] Built target replaygain_analysis
@@ -81,123 +86,119 @@ $ cmake --build /home/chirag/qnx-porter/ports/flac/work/build -j 2 -- -k
 [  5%] Built target replaygain_synthesis
 [  6%] Building C object src/share/getopt/CMakeFiles/getopt.dir/getopt.c.o
 [  7%] Building C object src/share/getopt/CMakeFiles/getopt.dir/getopt1.c.o
-[  7%] Linking C static library libgetopt.a
-[  7%] Built target getopt
-[  8%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/bitwriter.c.o
-[  9%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/cpu.c.o
-[ 10%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/crc.c.o
-[ 11%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed.c.o
-[ 11%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_sse2.c.o
-[ 12%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_ssse3.c.o
-[ 13%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_sse42.c.o
-[ 14%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_avx2.c.o
-[ 15%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/float.c.o
-[ 16%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/format.c.o
-[ 16%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc.c.o
-[ 17%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_neon.c.o
-[ 18%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_sse2.c.o
-[ 19%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_sse41.c.o
-[ 20%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_avx2.c.o
-[ 21%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_fma.c.o
-[ 21%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/md5.c.o
-[ 22%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/memory.c.o
-[ 23%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/metadata_iterators.c.o
-[ 24%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/metadata_object.c.o
-[ 25%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_decoder.c.o
-[ 26%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder.c.o
-[ 27%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_sse2.c.o
-[ 27%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_ssse3.c.o
-[ 28%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_avx2.c.o
-[ 29%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_framing.c.o
-[ 30%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/window.c.o
-[ 31%] Linking C static library libFLAC.a
-[ 31%] Built target FLAC
-[ 33%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/alloc.c.o
-[ 33%] Building CXX object src/libFLAC++/CMakeFiles/FLAC++.dir/metadata.cpp.o
-[ 34%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/cuesheet.c.o
-[ 35%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/file.c.o
-[ 36%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/picture.c.o
+[  8%] Linking C static library libgetopt.a
+[  8%] Built target getopt
+[  9%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/bitwriter.c.o
+[ 10%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/cpu.c.o
+[ 11%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/crc.c.o
+[ 12%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed.c.o
+[ 13%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_sse2.c.o
+[ 13%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_ssse3.c.o
+[ 14%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_sse42.c.o
+[ 15%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/fixed_intrin_avx2.c.o
+[ 16%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/float.c.o
+[ 17%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/format.c.o
+[ 18%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc.c.o
+[ 19%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_neon.c.o
+[ 19%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_sse2.c.o
+[ 20%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_sse41.c.o
+[ 21%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_avx2.c.o
+[ 22%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/lpc_intrin_fma.c.o
+[ 23%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/md5.c.o
+[ 24%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/memory.c.o
+[ 25%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/metadata_iterators.c.o
+[ 25%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/metadata_object.c.o
+[ 26%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_decoder.c.o
+[ 27%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder.c.o
+[ 28%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_sse2.c.o
+[ 29%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_ssse3.c.o
+[ 30%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_intrin_avx2.c.o
+[ 31%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/stream_encoder_framing.c.o
+[ 32%] Building C object src/libFLAC/CMakeFiles/FLAC.dir/window.c.o
+[ 32%] Linking C static library libFLAC.a
+[ 32%] Built target FLAC
+[ 34%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/alloc.c.o
+[ 34%] Building CXX object src/libFLAC++/CMakeFiles/FLAC++.dir/metadata.cpp.o
+[ 35%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/cuesheet.c.o
+[ 36%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/file.c.o
+[ 37%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/picture.c.o
 [ 37%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/replaygain.c.o
-[ 37%] Building CXX object src/libFLAC++/CMakeFiles/FLAC++.dir/stream_decoder.cpp.o
-[ 37%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/seektable.c.o
-[ 38%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/snprintf.c.o
-[ 39%] Linking C static library libgrabbag.a
-[ 39%] Built target grabbag
-[ 39%] Building C object src/test_libs_common/CMakeFiles/test_libs_common.dir/file_utils_flac.c.o
-[ 40%] Building C object src/test_libs_common/CMakeFiles/test_libs_common.dir/metadata_utils.c.o
-[ 41%] Linking C static library libtest_libs_common.a
-[ 41%] Built target test_libs_common
-[ 42%] Building C object src/test_grabbag/cuesheet/CMakeFiles/test_cuesheet.dir/main.c.o
-[ 42%] Linking C executable test_cuesheet
-[ 42%] Built target test_cuesheet
-[ 43%] Building C object src/test_grabbag/picture/CMakeFiles/test_picture.dir/main.c.o
-[ 44%] Building CXX object src/libFLAC++/CMakeFiles/FLAC++.dir/stream_encoder.cpp.o
-[ 45%] Linking C executable test_picture
-[ 45%] Built target test_picture
-[ 46%] Building C object src/test_seeking/CMakeFiles/test_seeking.dir/main.c.o
-[ 46%] Linking C executable test_seeking
-[ 46%] Built target test_seeking
-[ 47%] Building C object src/test_streams/CMakeFiles/test_streams.dir/main.c.o
-[ 48%] Linking CXX static library libFLAC++.a
-[ 48%] Built target FLAC++
-[ 49%] Building C object microbench/CMakeFiles/benchmark_residual.dir/benchmark_residual.c.o
-[ 50%] Building C object microbench/CMakeFiles/benchmark_residual.dir/util.c.o
-[ 51%] Linking C executable test_streams
-[ 51%] Built target test_streams
-[ 51%] Building C object examples/c/decode/file/CMakeFiles/decode_file.dir/main.c.o
-[ 52%] Linking C executable benchmark_residual
-[ 52%] Built target benchmark_residual
-[ 53%] Building C object examples/c/encode/file/CMakeFiles/encode_file.dir/main.c.o
+[ 38%] Building CXX object src/libFLAC++/CMakeFiles/FLAC++.dir/stream_decoder.cpp.o
+[ 39%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/seektable.c.o
+[ 40%] Building C object src/share/grabbag/CMakeFiles/grabbag.dir/snprintf.c.o
+[ 41%] Linking C static library libgrabbag.a
+[ 41%] Built target grabbag
+[ 42%] Building C object src/test_libs_common/CMakeFiles/test_libs_common.dir/file_utils_flac.c.o
+[ 43%] Building C object src/test_libs_common/CMakeFiles/test_libs_common.dir/metadata_utils.c.o
+[ 44%] Linking C static library libtest_libs_common.a
+[ 44%] Built target test_libs_common
+[ 45%] Building C object src/test_grabbag/cuesheet/CMakeFiles/test_cuesheet.dir/main.c.o
+[ 46%] Linking C executable test_cuesheet
+[ 46%] Built target test_cuesheet
+[ 47%] Building C object src/test_grabbag/picture/CMakeFiles/test_picture.dir/main.c.o
+[ 48%] Building CXX object src/libFLAC++/CMakeFiles/FLAC++.dir/stream_encoder.cpp.o
+[ 49%] Linking C executable test_picture
+[ 49%] Built target test_picture
+[ 49%] Building C object src/test_seeking/CMakeFiles/test_seeking.dir/main.c.o
+[ 50%] Linking C executable test_seeking
+[ 50%] Built target test_seeking
+[ 51%] Building C object src/test_streams/CMakeFiles/test_streams.dir/main.c.o
+[ 52%] Linking CXX static library libFLAC++.a
+[ 52%] Built target FLAC++
+[ 53%] Building C object examples/c/decode/file/CMakeFiles/decode_file.dir/main.c.o
 [ 54%] Linking C executable decode_file
-[ 54%] Built target decode_file
-[ 56%] Linking C executable encode_file
+[ 55%] Linking C executable test_streams
+[ 55%] Built target test_streams
+[ 55%] Built target decode_file
+[ 56%] Building C object examples/c/encode/file/CMakeFiles/encode_file.dir/main.c.o
 [ 56%] Building CXX object examples/cpp/decode/file/CMakeFiles/decode_file_cxx.dir/main.cpp.o
-[ 56%] Built target encode_file
-[ 56%] Building CXX object examples/cpp/encode/file/CMakeFiles/encode_file_cxx.dir/main.cpp.o
-[ 57%] Linking CXX executable decode_file_cxx
-[ 57%] Built target decode_file_cxx
-[ 58%] Building C object src/share/utf8/CMakeFiles/utf8.dir/charset.c.o
-[ 59%] Building C object src/share/utf8/CMakeFiles/utf8.dir/iconvert.c.o
-[ 60%] Linking CXX executable encode_file_cxx
-[ 60%] Built target encode_file_cxx
-[ 61%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/bitreader.c.o
-[ 62%] Building C object src/share/utf8/CMakeFiles/utf8.dir/utf8.c.o
-[ 63%] Linking C static library libutf8.a
-[ 63%] Built target utf8
-[ 64%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/bitwriter.c.o
+[ 57%] Linking C executable encode_file
+[ 57%] Built target encode_file
+[ 58%] Building CXX object examples/cpp/encode/file/CMakeFiles/encode_file_cxx.dir/main.cpp.o
+[ 59%] Linking CXX executable decode_file_cxx
+[ 59%] Built target decode_file_cxx
+[ 60%] Building C object src/share/utf8/CMakeFiles/utf8.dir/charset.c.o
+[ 61%] Building C object src/share/utf8/CMakeFiles/utf8.dir/iconvert.c.o
+[ 62%] Linking CXX executable encode_file_cxx
+[ 63%] Building C object src/share/utf8/CMakeFiles/utf8.dir/utf8.c.o
+[ 63%] Built target encode_file_cxx
+[ 64%] Linking C static library libutf8.a
+[ 64%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/bitreader.c.o
+[ 64%] Built target utf8
 [ 65%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/decoders.cpp.o
-[ 66%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/crc.c.o
-[ 67%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/decoders.c.o
-[ 68%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/encoders.c.o
-[ 68%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/endswap.c.o
-[ 68%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/encoders.cpp.o
-[ 69%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/format.c.o
-[ 70%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/main.c.o
-[ 71%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/metadata.c.o
-[ 72%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/metadata_manip.c.o
-[ 73%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/metadata_object.c.o
-[ 74%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/main.cpp.o
-[ 75%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/metadata.cpp.o
-[ 76%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/metadata_manip.cpp.o
-[ 76%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/md5.c.o
-[ 77%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/__/libFLAC/bitreader.c.o
-[ 78%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/__/libFLAC/bitwriter.c.o
-[ 79%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/metadata_object.cpp.o
-[ 80%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/__/libFLAC/crc.c.o
-[ 81%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/__/libFLAC/md5.c.o
-[ 82%] Linking C executable test_libFLAC
+[ 66%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/bitwriter.c.o
+[ 67%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/crc.c.o
+[ 68%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/decoders.c.o
+[ 69%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/encoders.c.o
+[ 70%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/encoders.cpp.o
+[ 71%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/endswap.c.o
+[ 72%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/format.c.o
+[ 73%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/main.c.o
+[ 73%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/metadata.c.o
+[ 74%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/metadata_manip.c.o
+[ 75%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/main.cpp.o
+[ 76%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/metadata.cpp.o
+[ 77%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/metadata_manip.cpp.o
+[ 78%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/metadata_object.c.o
+[ 79%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/md5.c.o
+[ 80%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/__/libFLAC/bitreader.c.o
+[ 80%] Building CXX object src/test_libFLAC++/CMakeFiles/test_libFLAC++.dir/metadata_object.cpp.o
+[ 81%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/__/libFLAC/bitwriter.c.o
+[ 82%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/__/libFLAC/crc.c.o
+[ 82%] Building C object src/test_libFLAC/CMakeFiles/test_libFLAC.dir/__/libFLAC/md5.c.o
 [ 83%] Linking CXX executable test_libFLAC++
-[ 83%] Built target test_libFLAC
+[ 83%] Built target test_libFLAC++
 [ 84%] Building C object src/flac/CMakeFiles/flacapp.dir/analyze.c.o
-[ 84%] Built target test_libFLAC++
-[ 85%] Building C object src/metaflac/CMakeFiles/metaflac.dir/main.c.o
-[ 86%] Building C object src/metaflac/CMakeFiles/metaflac.dir/operations.c.o
-[ 87%] Building C object src/flac/CMakeFiles/flacapp.dir/decode.c.o
+[ 85%] Linking C executable test_libFLAC
+[ 85%] Built target test_libFLAC
+[ 86%] Building C object src/metaflac/CMakeFiles/metaflac.dir/main.c.o
+[ 86%] Building C object src/flac/CMakeFiles/flacapp.dir/decode.c.o
+[ 87%] Building C object src/metaflac/CMakeFiles/metaflac.dir/operations.c.o
 [ 88%] Building C object src/metaflac/CMakeFiles/metaflac.dir/operations_shorthand_cuesheet.c.o
 [ 88%] Building C object src/metaflac/CMakeFiles/metaflac.dir/operations_shorthand_picture.c.o
 [ 89%] Building C object src/metaflac/CMakeFiles/metaflac.dir/operations_shorthand_seektable.c.o
-[ 90%] Building C object src/metaflac/CMakeFiles/metaflac.dir/operations_shorthand_streaminfo.c.o
-[ 91%] Building C object src/flac/CMakeFiles/flacapp.dir/encode.c.o
+[ 90%] Building C object src/flac/CMakeFiles/flacapp.dir/encode.c.o
+[ 91%] Building C object src/metaflac/CMakeFiles/metaflac.dir/operations_shorthand_streaminfo.c.o
 [ 92%] Building C object src/metaflac/CMakeFiles/metaflac.dir/operations_shorthand_vorbiscomment.c.o
 [ 93%] Building C object src/metaflac/CMakeFiles/metaflac.dir/options.c.o
 [ 94%] Building C object src/metaflac/CMakeFiles/metaflac.dir/usage.c.o
@@ -206,9 +207,9 @@ $ cmake --build /home/chirag/qnx-porter/ports/flac/work/build -j 2 -- -k
 [ 95%] Built target metaflac
 [ 96%] Building C object src/flac/CMakeFiles/flacapp.dir/foreign_metadata.c.o
 [ 97%] Building C object src/flac/CMakeFiles/flacapp.dir/main.c.o
-[ 97%] Building C object src/flac/CMakeFiles/flacapp.dir/local_string_utils.c.o
-[ 98%] Building C object src/flac/CMakeFiles/flacapp.dir/utils.c.o
-[ 99%] Building C object src/flac/CMakeFiles/flacapp.dir/vorbiscomment.c.o
+[ 98%] Building C object src/flac/CMakeFiles/flacapp.dir/local_string_utils.c.o
+[ 99%] Building C object src/flac/CMakeFiles/flacapp.dir/utils.c.o
+[100%] Building C object src/flac/CMakeFiles/flacapp.dir/vorbiscomment.c.o
 [100%] Linking C executable flac
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
@@ -231,10 +232,11 @@ cc: warning - lang-c++ is deprecated
       |               wcwidth
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: CMakeFiles/flacapp.dir/utils.c.o: in function `strlen_console':
 /home/chirag/qnx-porter/ports/flac/work/src/src/flac/utils.c:223:(.text+0x166): undefined reference to `wcswidth'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/flac/work/src/src/flac/utils.c:223:(.text+0x302): undefined reference to `wcswidth'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/flac/work/src/src/flac/utils.c:223:(.text+0x312): undefined reference to `wcswidth'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/flac/work/src/src/flac/utils.c:223:(.text+0x482): undefined reference to `wcswidth'
 gmake[2]: *** [src/flac/CMakeFiles/flacapp.dir/build.make:218: src/flac/flac] Error 1
 gmake[2]: Target 'src/flac/CMakeFiles/flacapp.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:711: src/flac/CMakeFiles/flacapp.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:693: src/flac/CMakeFiles/flacapp.dir/all] Error 2
 gmake[1]: Target 'all' not remade because of errors.
 gmake: *** [Makefile:146: all] Error 2
 gmake: Target 'default_target' not remade because of errors.

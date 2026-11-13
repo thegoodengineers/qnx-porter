@@ -1,8 +1,8 @@
-# flatcc v0.6.1 on QNX 8.0 (x86_64)
+# flatcc v0.6.4 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/dvidelabs/flatcc.git at `v0.6.1` (`d17e324e7e59`) |
+| Upstream | https://github.com/dvidelabs/flatcc.git at `v0.6.4` (`fec0275c0d0c`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

@@ -1,14 +1,14 @@
-# json-c json-c-0.18-20240915 on QNX 8.0 (x86_64)
+# json-c json-c-0.19-20260627 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/json-c/json-c.git at `json-c-0.18-20240915` (`41a55cfcedb5`) |
+| Upstream | https://github.com/json-c/json-c.git at `json-c-0.19-20260627` (`aa716cd8d663`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |
-| Library's own tests | 25/25 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
+| Library's own tests | 28/28 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 0.8 min |
+| Time | 1.3 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

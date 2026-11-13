@@ -38,7 +38,7 @@ On Linux (glibc, WSL Ubuntu 22.04):
 ## Effect seen
 fmt 11.0.2 compares its own chrono formatting with the C library's for every conversion. On QNX 8.0,
 `chrono-test` and `xchar-test` fail only on `%Ex`, `%EX` and `%Ec` (6 + 6 assertions), because the C++
-`std::time_put` facet calls the C library and gets an empty string (`ports/fmt/logs/tests.log`).
+`std::time_put` facet calls the C library and gets an empty string (`ports-2024/fmt/logs/tests.log`).
 
 ## Workaround until fixed
 Use `%x`, `%X` and `%c` directly; in the "C" locale they are what the `E` forms must produce.

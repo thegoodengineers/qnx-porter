@@ -3,16 +3,18 @@ checking build system type... x86_64-pc-linux-gnu
 checking host system type... x86_64-pc-nto-qnx
 checking target system type... x86_64-pc-nto-qnx
 checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
 checking whether build environment is sane... yes
 checking for x86_64-pc-nto-qnx8.0.0-strip... x86_64-pc-nto-qnx8.0.0-strip
 checking for a race-free mkdir -p... /usr/bin/mkdir -p
 checking for gawk... gawk
 checking whether make sets $(MAKE)... yes
 checking whether make supports nested variables... yes
+checking xargs -n works... yes
 checking whether UID '1000' is supported by ustar format... yes
 checking whether GID '1000' is supported by ustar format... yes
 checking how to create a ustar tar archive... gnutar
-checking whether make supports nested variables... (cached) yes
 checking whether to enable maintainer-specific portions of Makefiles... no
 checking for x86_64-pc-nto-qnx8.0.0-gcc... /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc
 checking whether the C compiler works... yes
@@ -22,6 +24,7 @@ checking whether we are cross compiling... yes
 checking for suffix of object files... o
 checking whether the compiler supports GNU C... yes
 checking whether /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc accepts -g... yes
+checking for /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc option to enable C23 features... unsupported
 checking for /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc option to enable C11 features... none needed
 checking whether /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc understands -c and -o together... yes
 checking whether make supports the include directive... yes (GNU style)
@@ -40,6 +43,7 @@ checking for wchar.h... yes
 checking for minix/config.h... no
 checking whether it is safe to define __EXTENSIONS__... yes
 checking whether _XOPEN_SOURCE should be defined... no
+checking if we are using FilC... no
 checking for a sed that does not truncate output... /usr/bin/sed
 checking how to run the C preprocessor... /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc -E
 checking for egrep -e... /usr/bin/grep -E
@@ -98,7 +102,7 @@ checking whether segmentation violations can be caught... unknown
 checking whether SIGABRT can be caught... unknown
 checking for thread local storage (TLS) class... _Thread_local
 thread local storage is supported
-checking whether C compiler accepts -ftls-model=local-dynamic... yes
+checking whether C compiler accepts -ftls-model=global-dynamic... yes
 checking how to print strings... printf
 checking for a sed that does not truncate output... (cached) /usr/bin/sed
 checking for grep that handles long lines and -e... /usr/bin/grep
@@ -113,17 +117,16 @@ checking the maximum length of command line arguments... 1572864
 checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-nto-qnx format... func_convert_file_noop
 checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
 checking for /home/chirag/qnx800/host/linux/x86_64/usr/bin/ntox86_64-ld option to reload object files... -r
-checking for x86_64-pc-nto-qnx8.0.0-file... no
 checking for file... file
 checking for x86_64-pc-nto-qnx8.0.0-objdump... x86_64-pc-nto-qnx8.0.0-objdump
 checking how to recognize dependent libraries... pass_all
 checking for x86_64-pc-nto-qnx8.0.0-dlltool... no
 checking for dlltool... no
 checking how to associate runtime and link libraries... printf %s\n
+checking for x86_64-pc-nto-qnx8.0.0-ranlib... /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ranlib
 checking for x86_64-pc-nto-qnx8.0.0-ar... /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ar
 checking for archiver @FILE support... @
 checking for x86_64-pc-nto-qnx8.0.0-strip... (cached) x86_64-pc-nto-qnx8.0.0-strip
-checking for x86_64-pc-nto-qnx8.0.0-ranlib... /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ranlib
 checking command to parse /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-nm -B output from /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc object... ok
 checking for sysroot... no
 checking for a working dd... /usr/bin/dd
@@ -146,6 +149,7 @@ checking whether stripping libraries is possible... yes
 checking if libtool supports shared libraries... yes
 checking whether to build shared libraries... no
 checking whether to build static libraries... yes
+checking if we are using CompCert... no
 checking for x86_64-pc-nto-qnx8.0.0-ar... (cached) /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ar
 checking for ARM64 target... no
 checking whether C compiler accepts -mmmx... yes
@@ -188,6 +192,7 @@ checking for intrin.h... no
 checking for sys/auxv.h... yes
 checking for CommonCrypto/CommonRandom.h... no
 checking for cet.h... yes
+checking for threads.h... yes
 checking if _xgetbv() is available... no
 checking for inline... inline
 checking whether byte ordering is bigendian... (cached) no
@@ -275,8 +280,11 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/
   CC       crypto_sign/ed25519/ref10/libsodium_la-obsolete.lo
   CC       crypto_aead/aegis128l/libaesni_la-aegis128l_aesni.lo
   CC       crypto_aead/aegis256/libaesni_la-aegis256_aesni.lo
+  CC       crypto_ipcrypt/libaesni_la-ipcrypt_aesni.lo
   CC       crypto_aead/aegis128l/libarmcrypto_la-aegis128l_armcrypto.lo
   CC       crypto_aead/aegis256/libarmcrypto_la-aegis256_armcrypto.lo
+  CC       crypto_ipcrypt/libarmcrypto_la-ipcrypt_armcrypto.lo
+  CC       crypto_pwhash/argon2/libarmcrypto_la-argon2-fill-block-neon.lo
   CC       crypto_generichash/blake2b/ref/libssse3_la-blake2b-compress-ssse3.lo
   CC       crypto_pwhash/argon2/libssse3_la-argon2-fill-block-ssse3.lo
   CC       crypto_generichash/blake2b/ref/libsse41_la-blake2b-compress-sse41.lo
@@ -303,6 +311,9 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/
   CC       crypto_core/hchacha20/libsodium_la-core_hchacha20.lo
   CC       crypto_core/hsalsa20/ref2/libsodium_la-core_hsalsa20_ref2.lo
   CC       crypto_core/hsalsa20/libsodium_la-core_hsalsa20.lo
+  CC       crypto_core/keccak1600/libsodium_la-keccak1600.lo
+  CC       crypto_core/keccak1600/ref/libsodium_la-keccak1600_ref.lo
+  CC       crypto_core/keccak1600/armsha3/libsodium_la-keccak1600_armsha3.lo
   CC       crypto_core/salsa/ref/libsodium_la-core_salsa_ref.lo
   CC       crypto_core/softaes/libsodium_la-softaes.lo
   CC       crypto_generichash/libsodium_la-crypto_generichash.lo
@@ -315,10 +326,17 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/
   CC       crypto_hash/sha256/cp/libsodium_la-hash_sha256_cp.lo
   CC       crypto_hash/sha512/libsodium_la-hash_sha512.lo
   CC       crypto_hash/sha512/cp/libsodium_la-hash_sha512_cp.lo
+  CC       crypto_hash/sha3/libsodium_la-hash_sha3.lo
+  CC       crypto_ipcrypt/libsodium_la-crypto_ipcrypt.lo
+  CC       crypto_ipcrypt/libsodium_la-ipcrypt_soft.lo
   CC       crypto_kdf/blake2b/libsodium_la-kdf_blake2b.lo
   CC       crypto_kdf/libsodium_la-crypto_kdf.lo
   CC       crypto_kdf/hkdf/libsodium_la-kdf_hkdf_sha256.lo
   CC       crypto_kdf/hkdf/libsodium_la-kdf_hkdf_sha512.lo
+  CC       crypto_kem/libsodium_la-crypto_kem.lo
+  CC       crypto_kem/mlkem768/libsodium_la-kem_mlkem768.lo
+  CC       crypto_kem/mlkem768/ref/libsodium_la-kem_mlkem768_ref.lo
+  CC       crypto_kem/xwing/libsodium_la-kem_xwing.lo
   CC       crypto_kx/libsodium_la-crypto_kx.lo
   CC       crypto_onetimeauth/libsodium_la-crypto_onetimeauth.lo
   CC       crypto_onetimeauth/poly1305/libsodium_la-onetimeauth_poly1305.lo
@@ -326,6 +344,7 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/
   CC       crypto_pwhash/argon2/libsodium_la-argon2-core.lo
   CC       crypto_pwhash/argon2/libsodium_la-argon2-encoding.lo
   CC       crypto_pwhash/argon2/libsodium_la-argon2-fill-block-ref.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-fill-block-wasm32.lo
   CC       crypto_pwhash/argon2/libsodium_la-argon2.lo
   CC       crypto_pwhash/argon2/libsodium_la-blake2b-long.lo
   CC       crypto_pwhash/argon2/libsodium_la-pwhash_argon2i.lo
@@ -352,6 +371,14 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/
   CC       crypto_stream/salsa20/libsodium_la-stream_salsa20.lo
   CC       crypto_stream/xsalsa20/libsodium_la-stream_xsalsa20.lo
   CC       crypto_verify/libsodium_la-verify.lo
+  CC       crypto_xof/shake128/libsodium_la-xof_shake128.lo
+  CC       crypto_xof/shake128/ref/libsodium_la-shake128_ref.lo
+  CC       crypto_xof/shake256/libsodium_la-xof_shake256.lo
+  CC       crypto_xof/shake256/ref/libsodium_la-shake256_ref.lo
+  CC       crypto_xof/turboshake128/libsodium_la-xof_turboshake128.lo
+  CC       crypto_xof/turboshake128/ref/libsodium_la-turboshake128_ref.lo
+  CC       crypto_xof/turboshake256/libsodium_la-xof_turboshake256.lo
+  CC       crypto_xof/turboshake256/ref/libsodium_la-turboshake256_ref.lo
   CC       randombytes/libsodium_la-randombytes.lo
   CC       sodium/libsodium_la-codecs.lo
   CC       sodium/libsodium_la-core.lo

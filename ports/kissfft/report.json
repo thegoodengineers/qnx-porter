@@ -1,8 +1,8 @@
 {
   "library": "kissfft",
   "url": "https://github.com/mborgerding/kissfft.git",
-  "version": "131.1.0",
-  "commit": "8f47a67f595a6641c566087bf5277034be64f24d",
+  "version": "131.2.0",
+  "commit": "7bce4153c6bc8aba2db0e889e576f9d00505cbe1",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -20,7 +20,8 @@
   "blocked_on": [],
   "minutes": 0.1,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T09:04:39+00:00"
+  "finished": "2026-11-13T17:40:54+00:00"
 }

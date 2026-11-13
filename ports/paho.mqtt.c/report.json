@@ -1,63 +1,40 @@
 {
   "library": "paho.mqtt.c",
   "url": "https://github.com/eclipse/paho.mqtt.c.git",
-  "version": "v1.3.14",
-  "commit": "2150ba29d9df24ad1733c460eb099f292af84ee5",
+  "version": "v1.3.16",
+  "commit": "4a939ddb01eea581a32fd6f0adcfee51b91d2601",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
   "target": "",
   "build_result": "built",
-  "rounds": 3,
+  "rounds": 2,
   "tests_passed": 0,
   "tests_total": 0,
   "tests_ran": false,
-  "patches_kept": 3,
-  "patches_by_rule": 3,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
   "patches_by_model": 0,
   "patches": [
     {
       "number": 1,
-      "rule": "bool-typedef",
-      "source": "rule",
-      "reason": "src/MQTTPacket.h defines its own `bool`, but on QNX 8.0 <sys/socket.h> already includes <stdbool.h> (via io-sock/types_fbsd.h), so `bool` is taken. The typedef is skipped when stdbool's bool is visible. Note: bool is then _Bool, not unsigned int, in those files.",
-      "error": "/home/chirag/qnx-porter/ports/paho.mqtt.c/work/src/src/MQTTPacket.h:31:22: error: two or more data types in declaration specifiers",
-      "files": [
-        "src/MQTTPacket.h"
-      ],
-      "path": "patches/0001-bool-typedef-mqttpacket-h.patch",
-      "kept": true
-    },
-    {
-      "number": 2,
-      "rule": "link-libsocket",
-      "source": "rule",
-      "reason": "`recv` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
-      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `recv'",
-      "files": [
-        "qnx-toolchain.cmake"
-      ],
-      "path": "patches/0002-link-libsocket.patch",
-      "kept": true
-    },
-    {
-      "number": 3,
       "rule": "endian-netbyte",
       "source": "rule",
       "reason": "`be32toh` comes from glibc's <endian.h>, which QNX 8.0 does not have. QNX has the same names as BSD macros in <net/netbyte.h>; a small header (-included in every compile) includes it and defines any name strict POSIX flags hid, from QNX's __NET_BE*/__NET_LE* helpers.",
-      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.14: undefined reference to `be32toh'",
+      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.16: undefined reference to `be32toh'",
       "files": [
         "qnx-toolchain.cmake"
       ],
-      "path": "patches/0003-endian-netbyte.patch",
+      "path": "patches/0001-endian-netbyte.patch",
       "kept": true
     }
   ],
   "blocked_on": [],
-  "minutes": 0.4,
+  "minutes": 0.3,
   "note": "build only: the test suite needs an MQTT broker on the target",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T07:47:38+00:00"
+  "finished": "2026-11-13T15:55:35+00:00"
 }

@@ -3,7 +3,7 @@
 - **Upstream:** https://github.com/hyperrealm/libconfig
 - **Patch:** [`0001-tests-do-not-pass-NULL-to-s-in-parse_string_and_comp.patch`](0001-tests-do-not-pass-NULL-to-s-in-parse_string_and_comp.patch),
   made with `git format-patch` against tag `v1.7.3` (`525922a6b49c`, the tag in `campaign.yaml`). Source:
-  the port's kept patch [`ports/libconfig/patches/0001-printf-null-tests-c.patch`](../../../ports/libconfig/patches/0001-printf-null-tests-c.patch).
+  the port's kept patch [`ports-2024/libconfig/patches/0001-printf-null-tests-c.patch`](../../../ports-2024/libconfig/patches/0001-printf-null-tests-c.patch).
 - **Upstream today:** `master` at `a82aa4dd3baf` (13 Nov 2026) still passes `config_error_file(&cfg)` straight
   to `"%s:%d %s\n"` in `parse_string_and_compare_error()` (`tests/tests.c:100-102`), and the patch applies to
   it unchanged (`git apply --check`).
@@ -19,7 +19,7 @@ style (for example `str_or_null()`); that is a rename only, but it is not the ex
 
 ## Verification, from our logs
 Without the patch, the test binary crashed on the QNX 8.0 x86_64 target; the core's backtrace
-(`ports/libconfig/logs/crashes.log`):
+(`ports-2024/libconfig/logs/crashes.log`):
 ```
 #3  ... in snprintf (s=s@entry=0x57bf4b1a00 "testdata", size=size@entry=128, fmt=fmt@entry=0x14b0135cae "%s:%d %s\n") at .../lib/c/stdio/snprintf.c:71
 #4  ... in parse_string_and_compare_error (parse_error=0x57bf4b1980 "2 syntax error\n", input_text=... "x\n") at .../tests/tests.c:99

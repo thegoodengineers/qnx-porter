@@ -1,7 +1,7 @@
 $ cmake -S /home/chirag/qnx-porter/ports/opus/work/src -B /home/chirag/qnx-porter/ports/opus/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/opus/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/opus/work/qnx-run -DOPUS_BUILD_TESTING=ON
 -- Found Git: /usr/bin/git (found version "2.34.1") 
--- Opus package version from git repo: 1.5.2
--- Opus project version: 1.5.2
+-- Opus package version from git repo: 1.6.1
+-- Opus project version: 1.6.1
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -20,6 +20,8 @@ $ cmake -S /home/chirag/qnx-porter/ports/opus/work/src -B /home/chirag/qnx-porte
 -- Looking for lrintf - found
 -- Looking for lrint
 -- Looking for lrint - found
+-- Looking for elf_aux_info
+-- Looking for elf_aux_info - not found
 -- Performing Test CPU_INFO_BY_ASM_SUPPORTED
 -- Performing Test CPU_INFO_BY_ASM_SUPPORTED -- success
 -- Looking for cpuid.h
@@ -124,12 +126,12 @@ $ cmake --build /home/chirag/qnx-porter/ports/opus/work/build -j 2 -- -k
 [  7%] Building C object CMakeFiles/opus.dir/src/mlp.c.o
 [  8%] Building C object CMakeFiles/opus.dir/src/mlp_data.c.o
 [  9%] Building C object CMakeFiles/opus.dir/silk/CNG.c.o
+[  9%] Building C object CMakeFiles/opus.dir/silk/code_signs.c.o
 [ 10%] Building C object CMakeFiles/opus.dir/silk/init_decoder.c.o
-[ 10%] Building C object CMakeFiles/opus.dir/silk/code_signs.c.o
 [ 10%] Building C object CMakeFiles/opus.dir/silk/decode_core.c.o
 [ 11%] Building C object CMakeFiles/opus.dir/silk/decode_frame.c.o
 [ 12%] Building C object CMakeFiles/opus.dir/silk/decode_parameters.c.o
-[ 13%] Building C object CMakeFiles/opus.dir/silk/decode_indices.c.o
+[ 12%] Building C object CMakeFiles/opus.dir/silk/decode_indices.c.o
 [ 13%] Building C object CMakeFiles/opus.dir/silk/decode_pulses.c.o
 [ 14%] Building C object CMakeFiles/opus.dir/silk/decoder_set_fs.c.o
 [ 14%] Building C object CMakeFiles/opus.dir/silk/dec_API.c.o
@@ -171,8 +173,8 @@ $ cmake --build /home/chirag/qnx-porter/ports/opus/work/build -j 2 -- -k
 [ 36%] Building C object CMakeFiles/opus.dir/silk/ana_filt_bank_1.c.o
 [ 37%] Building C object CMakeFiles/opus.dir/silk/biquad_alt.c.o
 [ 37%] Building C object CMakeFiles/opus.dir/silk/bwexpander_32.c.o
+[ 38%] Building C object CMakeFiles/opus.dir/silk/bwexpander.c.o
 [ 39%] Building C object CMakeFiles/opus.dir/silk/debug.c.o
-[ 39%] Building C object CMakeFiles/opus.dir/silk/bwexpander.c.o
 [ 39%] Building C object CMakeFiles/opus.dir/silk/decode_pitch.c.o
 [ 40%] Building C object CMakeFiles/opus.dir/silk/inner_prod_aligned.c.o
 [ 40%] Building C object CMakeFiles/opus.dir/silk/lin2log.c.o
@@ -263,7 +265,7 @@ $ cmake --build /home/chirag/qnx-porter/ports/opus/work/build -j 2 -- -k
 [ 92%] Building C object CMakeFiles/opus.dir/silk/float/x86/inner_product_FLP_avx2.c.o
 [ 93%] Linking C static library libopus.a
 [ 93%] Built target opus
-[ 94%] Building C object CMakeFiles/test_opus_padding.dir/tests/test_opus_padding.c.o
+[ 95%] Building C object CMakeFiles/test_opus_padding.dir/tests/test_opus_padding.c.o
 [ 95%] Building C object CMakeFiles/test_opus_decode.dir/tests/test_opus_decode.c.o
 [ 96%] Linking C executable test_opus_padding
 [ 96%] Built target test_opus_padding
@@ -272,10 +274,10 @@ $ cmake --build /home/chirag/qnx-porter/ports/opus/work/build -j 2 -- -k
 [ 96%] Built target test_opus_decode
 [ 97%] Building C object CMakeFiles/test_opus_encode.dir/tests/test_opus_encode.c.o
 [ 98%] Linking C executable test_opus_api
+[ 98%] Building C object CMakeFiles/test_opus_encode.dir/tests/opus_encode_regressions.c.o
 [ 98%] Built target test_opus_api
 [ 99%] Building C object CMakeFiles/test_opus_extensions.dir/tests/test_opus_extensions.c.o
-[ 99%] Building C object CMakeFiles/test_opus_encode.dir/tests/opus_encode_regressions.c.o
 [100%] Linking C executable test_opus_encode
+[100%] Built target test_opus_encode
 [100%] Linking C executable test_opus_extensions
 [100%] Built target test_opus_extensions
-[100%] Built target test_opus_encode

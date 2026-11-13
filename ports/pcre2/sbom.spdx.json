@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "pcre2-pcre2-10.44-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/pcre2-6ae58beca071f13ccfed31d03b3f479ab520639b",
+  "name": "pcre2-pcre2-10.49-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/pcre2-6f9d7c1373262c541324a16a358785b33ef116cf",
   "creationInfo": {
-    "created": "2026-11-13T05:00:43Z",
+    "created": "2026-11-13T19:02:59Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,13 +15,21 @@
     {
       "SPDXID": "SPDXRef-Package-pcre2",
       "name": "pcre2",
-      "versionInfo": "pcre2-10.44",
-      "downloadLocation": "git+https://github.com/PCRE2Project/pcre2.git@6ae58beca071f13ccfed31d03b3f479ab520639b",
+      "versionInfo": "pcre2-10.49",
+      "downloadLocation": "git+https://github.com/PCRE2Project/pcre2.git@6f9d7c1373262c541324a16a358785b33ef116cf",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "NOASSERTION",
+      "licenseDeclared": "LicenseRef-scancode-pcre",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over COPYING, LICENCE, README, README.md, cmake/COPYING-CMAKE-SCRIPTS, maint/README: BSD-3-Clause AND LicenseRef-scancode-public-domain AND PCRE2-exception (not a valid SPDX expression, so licenseDeclared is NOASSERTION). Per-file detections: COPYING: BSD-3-Clause AND LicenseRef-scancode-public-domain AND PCRE2-exception; LICENCE: BSD-3-Clause AND LicenseRef-scancode-public-domain AND (BSD-3-Clause AND PCRE2-exception); README: GPL-1.0-or-later AND BSD-3-Clause; cmake/COPYING-CMAKE-SCRIPTS: BSD-3-Clause."
+      "licenseComments": "ScanCode summary declared licence over COPYING, LICENCE.md, README, README.md, cmake/COPYING-CMAKE-SCRIPTS, maint/README: LicenseRef-scancode-pcre. Per-file detections: COPYING: LicenseRef-scancode-pcre; LICENCE.md: BSD-3-Clause WITH PCRE2-exception AND BSD-3-Clause AND LicenseRef-scancode-public-domain AND BSD-2-Clause AND (BSD-3-Clause AND PCRE2-exception); README: GPL-1.0-or-later AND BSD-3-Clause; README.md: BSD-3-Clause AND (BSD-3-Clause AND LicenseRef-scancode-unknown-license-reference); cmake/COPYING-CMAKE-SCRIPTS: BSD-3-Clause."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-pcre",
+      "name": "PCRE License",
+      "extractedText": "PCRE LICENCE \n------------ \n\nPCRE is a library of functions to support regular expressions whose\nsyntax and semantics are as close as possible to those of the Perl 5\nlanguage.\n\nWritten by: Philip Hazel <ph10@cam.ac.uk>\nUniversity of Cambridge Computing Service, Cambridge, England. \nPhone: +44 1223 334714.\nCopyright (c) 1997-2001 University of Cambridge\n\nPermission is granted to anyone to use this software for any purpose on\nany computer system, and to redistribute it freely, subject to the\nfollowing restrictions:\n\n1. This software is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n2. The origin of this software must not be misrepresented, either by\nexplicit claim or by omission. In practice, this means that if you use\nPCRE in software which you distribute to others, commercially or\notherwise, you must put a sentence like this\n\"Regular expression support is provided by the PCRE library package,\nwhich is open source software, written by Philip Hazel, and copyright by\nthe University of Cambridge, England\" \n\nsomewhere reasonably visible in your documentation and in any relevant\nfiles or online help data or similar.\n\nA reference to the ftp site for the source, that is, to\nftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/ \nshould also be given in the documentation.\n\n3. Altered versions must be plainly marked as such, and must not be\nmisrepresented as being the original software.\n\n4. If PCRE is embedded in any software that is released under the GNU\nGeneral Purpose Licence (GPL), or Lesser General Purpose Licence (LGPL),\nthen the terms of that licence shall supersede any condition above with\nwhich it is incompatible.\n\nThe documentation for PCRE, supplied in the \"doc\" directory, is\ndistributed under the same terms as the software itself.\n\nEnd PCRE LICENCE\n",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/pcre.LICENSE"
     }
   ],
   "files": [

@@ -1,0 +1,167 @@
+$ cmake -S /home/chirag/qnx-porter/ports/libsrtp/work/src -B /home/chirag/qnx-porter/ports/libsrtp/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/libsrtp/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/libsrtp/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Looking for arpa/inet.h
+-- Looking for arpa/inet.h - found
+-- Looking for byteswap.h
+-- Looking for byteswap.h - not found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for machine/types.h
+-- Looking for machine/types.h - not found
+-- Looking for netinet/in.h
+-- Looking for netinet/in.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - found
+-- Looking for sys/int_types.h
+-- Looking for sys/int_types.h - not found
+-- Looking for sys/socket.h
+-- Looking for sys/socket.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Looking for windows.h
+-- Looking for windows.h - not found
+-- Looking for winsock2.h
+-- Looking for winsock2.h - not found
+-- Looking for sigaction
+-- Looking for sigaction - found
+-- Looking for inet_aton
+-- Looking for inet_aton - found
+-- Looking for inet_pton
+-- Looking for inet_pton - found
+-- Looking for usleep
+-- Looking for usleep - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of uint8_t
+-- Check size of uint8_t - done
+-- Check size of uint16_t
+-- Check size of uint16_t - done
+-- Check size of uint32_t
+-- Check size of uint32_t - done
+-- Check size of uint64_t
+-- Check size of uint64_t - done
+-- Check size of int32_t
+-- Check size of int32_t - done
+-- Check size of unsigned long
+-- Check size of unsigned long - done
+-- Check size of unsigned long long
+-- Check size of unsigned long long - done
+-- Performing Test HAVE_INLINE
+-- Performing Test HAVE_INLINE - Success
+-- Warnings Active for: srtp2
+-- Warnings as Errors: ON
+-- Found PCAP: pcap  
+-- Warnings Active for: aes_calc
+-- Warnings as Errors: ON
+-- Warnings Active for: sha1_driver
+-- Warnings as Errors: ON
+-- Warnings Active for: datatypes_driver
+-- Warnings as Errors: ON
+-- Warnings Active for: cipher_driver
+-- Warnings as Errors: ON
+-- Warnings Active for: kernel_driver
+-- Warnings as Errors: ON
+-- Warnings Active for: rdbx_driver
+-- Warnings as Errors: ON
+-- Warnings Active for: replay_driver
+-- Warnings as Errors: ON
+-- Warnings Active for: roc_driver
+-- Warnings as Errors: ON
+-- Warnings Active for: srtp_driver
+-- Warnings as Errors: ON
+-- Warnings Active for: test_srtp
+-- Warnings as Errors: ON
+-- Warnings Active for: rtpw
+-- Warnings as Errors: ON
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/libsrtp/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/libsrtp/work/build -j 2 -- -k
+[  3%] Building C object CMakeFiles/srtp2.dir/srtp/srtp.c.o
+[  3%] Building C object CMakeFiles/srtp2.dir/crypto/cipher/cipher.c.o
+[  5%] Building C object CMakeFiles/srtp2.dir/crypto/cipher/cipher_test_cases.c.o
+[  6%] Building C object CMakeFiles/srtp2.dir/crypto/cipher/null_cipher.c.o
+[  8%] Building C object CMakeFiles/srtp2.dir/crypto/cipher/aes.c.o
+[ 10%] Building C object CMakeFiles/srtp2.dir/crypto/cipher/aes_icm.c.o
+[ 11%] Building C object CMakeFiles/srtp2.dir/crypto/hash/auth.c.o
+[ 13%] Building C object CMakeFiles/srtp2.dir/crypto/hash/auth_test_cases.c.o
+[ 15%] Building C object CMakeFiles/srtp2.dir/crypto/hash/null_auth.c.o
+[ 16%] Building C object CMakeFiles/srtp2.dir/crypto/hash/hmac.c.o
+[ 18%] Building C object CMakeFiles/srtp2.dir/crypto/hash/sha1.c.o
+[ 20%] Building C object CMakeFiles/srtp2.dir/crypto/kernel/alloc.c.o
+[ 21%] Building C object CMakeFiles/srtp2.dir/crypto/kernel/crypto_kernel.c.o
+[ 23%] Building C object CMakeFiles/srtp2.dir/crypto/kernel/err.c.o
+[ 25%] Building C object CMakeFiles/srtp2.dir/crypto/kernel/key.c.o
+[ 26%] Building C object CMakeFiles/srtp2.dir/crypto/math/datatypes.c.o
+[ 28%] Building C object CMakeFiles/srtp2.dir/crypto/replay/rdb.c.o
+[ 30%] Building C object CMakeFiles/srtp2.dir/crypto/replay/rdbx.c.o
+[ 31%] Linking C static library libsrtp2.a
+[ 31%] Built target srtp2
+[ 35%] Building C object CMakeFiles/aes_calc.dir/crypto/test/aes_calc.c.o
+[ 33%] Building C object CMakeFiles/rtp_decoder.dir/test/rtp_decoder.c.o
+[ 36%] Building C object CMakeFiles/aes_calc.dir/test/getopt_s.c.o
+[ 38%] Building C object CMakeFiles/aes_calc.dir/test/util.c.o
+[ 40%] Linking C executable aes_calc
+[ 40%] Built target aes_calc
+[ 41%] Building C object CMakeFiles/rtp_decoder.dir/test/getopt_s.c.o
+[ 43%] Building C object CMakeFiles/sha1_driver.dir/crypto/test/sha1_driver.c.o
+[ 45%] Building C object CMakeFiles/rtp_decoder.dir/test/util.c.o
+[ 46%] Linking C executable rtp_decoder
+[ 48%] Building C object CMakeFiles/sha1_driver.dir/test/util.c.o
+[ 50%] Linking C executable sha1_driver
+[ 50%] Built target rtp_decoder
+[ 51%] Building C object CMakeFiles/datatypes_driver.dir/crypto/test/datatypes_driver.c.o
+[ 51%] Built target sha1_driver
+[ 53%] Building C object CMakeFiles/cipher_driver.dir/crypto/test/cipher_driver.c.o
+[ 55%] Building C object CMakeFiles/datatypes_driver.dir/test/util.c.o
+[ 56%] Linking C executable datatypes_driver
+[ 56%] Built target datatypes_driver
+[ 58%] Building C object CMakeFiles/kernel_driver.dir/crypto/test/kernel_driver.c.o
+[ 60%] Building C object CMakeFiles/cipher_driver.dir/test/getopt_s.c.o
+[ 61%] Linking C executable cipher_driver
+[ 63%] Building C object CMakeFiles/kernel_driver.dir/test/getopt_s.c.o
+[ 63%] Built target cipher_driver
+[ 65%] Linking C executable kernel_driver
+[ 66%] Building C object CMakeFiles/rdbx_driver.dir/test/rdbx_driver.c.o
+[ 66%] Built target kernel_driver
+[ 68%] Building C object CMakeFiles/rdbx_driver.dir/test/getopt_s.c.o
+[ 70%] Building C object CMakeFiles/rdbx_driver.dir/test/ut_sim.c.o
+[ 71%] Linking C executable rdbx_driver
+[ 73%] Building C object CMakeFiles/replay_driver.dir/test/replay_driver.c.o
+[ 73%] Built target rdbx_driver
+[ 75%] Building C object CMakeFiles/roc_driver.dir/test/roc_driver.c.o
+[ 76%] Building C object CMakeFiles/replay_driver.dir/test/ut_sim.c.o
+[ 78%] Building C object CMakeFiles/roc_driver.dir/test/ut_sim.c.o
+[ 80%] Linking C executable replay_driver
+[ 81%] Linking C executable roc_driver
+[ 81%] Built target replay_driver
+[ 81%] Built target roc_driver
+[ 85%] Building C object CMakeFiles/test_srtp.dir/test/test_srtp.c.o
+[ 85%] Building C object CMakeFiles/srtp_driver.dir/test/srtp_driver.c.o
+[ 86%] Building C object CMakeFiles/srtp_driver.dir/test/util.c.o
+[ 88%] Building C object CMakeFiles/srtp_driver.dir/test/getopt_s.c.o
+[ 90%] Linking C executable srtp_driver
+[ 90%] Built target srtp_driver
+[ 91%] Building C object CMakeFiles/rtpw.dir/test/rtpw.c.o
+[ 93%] Building C object CMakeFiles/rtpw.dir/test/rtp.c.o
+[ 95%] Linking C executable test_srtp
+[ 95%] Built target test_srtp
+[ 96%] Building C object CMakeFiles/rtpw.dir/test/util.c.o
+[ 98%] Building C object CMakeFiles/rtpw.dir/test/getopt_s.c.o
+[100%] Linking C executable rtpw
+[100%] Built target rtpw

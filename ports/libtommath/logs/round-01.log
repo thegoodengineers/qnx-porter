@@ -11,8 +11,8 @@ $ cmake -S /home/chirag/qnx-porter/ports/libtommath/work/src -B /home/chirag/qnx
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/libtommath/work/build
 $ cmake --build /home/chirag/qnx-porter/ports/libtommath/work/build -j 2 -- -k
+[  0%] Building C object CMakeFiles/libtommath.dir/bn_cutoffs.c.o
 [  1%] Building C object CMakeFiles/libtommath.dir/bn_deprecated.c.o
-[  1%] Building C object CMakeFiles/libtommath.dir/bn_cutoffs.c.o
 [  1%] Building C object CMakeFiles/libtommath.dir/bn_mp_2expt.c.o
 [  2%] Building C object CMakeFiles/libtommath.dir/bn_mp_abs.c.o
 [  3%] Building C object CMakeFiles/libtommath.dir/bn_mp_add.c.o
@@ -23,8 +23,8 @@ $ cmake --build /home/chirag/qnx-porter/ports/libtommath/work/build -j 2 -- -k
 [  6%] Building C object CMakeFiles/libtommath.dir/bn_mp_clear.c.o
 [  6%] Building C object CMakeFiles/libtommath.dir/bn_mp_clear_multi.c.o
 [  7%] Building C object CMakeFiles/libtommath.dir/bn_mp_cmp.c.o
-[  8%] Building C object CMakeFiles/libtommath.dir/bn_mp_cmp_mag.c.o
 [  8%] Building C object CMakeFiles/libtommath.dir/bn_mp_cmp_d.c.o
+[  8%] Building C object CMakeFiles/libtommath.dir/bn_mp_cmp_mag.c.o
 [  9%] Building C object CMakeFiles/libtommath.dir/bn_mp_cnt_lsb.c.o
 [ 10%] Building C object CMakeFiles/libtommath.dir/bn_mp_complement.c.o
 [ 10%] Building C object CMakeFiles/libtommath.dir/bn_mp_copy.c.o
@@ -86,8 +86,8 @@ $ cmake --build /home/chirag/qnx-porter/ports/libtommath/work/build -j 2 -- -k
 [ 46%] Building C object CMakeFiles/libtommath.dir/bn_mp_mul_2d.c.o
 [ 46%] Building C object CMakeFiles/libtommath.dir/bn_mp_mul_d.c.o
 [ 47%] Building C object CMakeFiles/libtommath.dir/bn_mp_mulmod.c.o
+[ 47%] Building C object CMakeFiles/libtommath.dir/bn_mp_or.c.o
 [ 48%] Building C object CMakeFiles/libtommath.dir/bn_mp_neg.c.o
-[ 48%] Building C object CMakeFiles/libtommath.dir/bn_mp_or.c.o
 [ 49%] Building C object CMakeFiles/libtommath.dir/bn_mp_pack.c.o
 [ 50%] Building C object CMakeFiles/libtommath.dir/bn_mp_pack_count.c.o
 [ 50%] Building C object CMakeFiles/libtommath.dir/bn_mp_prime_fermat.c.o
@@ -138,8 +138,8 @@ $ cmake --build /home/chirag/qnx-porter/ports/libtommath/work/build -j 2 -- -k
 [ 79%] Building C object CMakeFiles/libtommath.dir/bn_mp_xor.c.o
 [ 79%] Building C object CMakeFiles/libtommath.dir/bn_mp_zero.c.o
 [ 80%] Building C object CMakeFiles/libtommath.dir/bn_prime_tab.c.o
+[ 80%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_balance_mul.c.o
 [ 81%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_add.c.o
-[ 81%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_balance_mul.c.o
 [ 82%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_div_3.c.o
 [ 82%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_exptmod.c.o
 [ 83%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_exptmod_fast.c.o
@@ -159,15 +159,15 @@ $ cmake --build /home/chirag/qnx-porter/ports/libtommath/work/build -j 2 -- -k
 [ 92%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_prime_is_divisible.c.o
 [ 93%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_rand_jenkins.c.o
 [ 93%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_rand_platform.c.o
-[ 93%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_sqr.c.o
 [ 94%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_reverse.c.o
+[ 94%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_sqr.c.o
 [ 95%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_sqr_fast.c.o
 [ 96%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_sub.c.o
+[ 96%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_toom_mul.c.o
 [ 97%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_toom_sqr.c.o
-[ 97%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_toom_mul.c.o
 [ 98%] Linking C static library libtommath.a
 [ 98%] Built target libtommath
-[ 98%] Building C object demo/CMakeFiles/test-ltm.dir/shared.c.o
 [ 99%] Building C object demo/CMakeFiles/test-ltm.dir/test.c.o
+[ 99%] Building C object demo/CMakeFiles/test-ltm.dir/shared.c.o
 [100%] Linking C executable test-ltm
 [100%] Built target test-ltm

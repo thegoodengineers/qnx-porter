@@ -1,28 +1,48 @@
 {
   "library": "can-utils",
   "url": "https://github.com/linux-can/can-utils.git",
-  "version": "v2023.03",
-  "commit": "cfe41963f3425e9adb01a70cfaddedf5e5982720",
+  "version": "v2025.01",
+  "commit": "01083a64ebf28cc716efe2d2fd51c141042ae34b",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
   "target": "",
   "build_result": "failed",
-  "rounds": 1,
+  "rounds": 2,
   "tests_passed": 0,
   "tests_total": 0,
   "tests_ran": false,
-  "patches_kept": 0,
-  "patches_by_rule": 0,
+  "patches_kept": 2,
+  "patches_by_rule": 2,
   "patches_by_model": 0,
-  "patches": [],
-  "blocked_on": [
+  "patches": [
     {
-      "kind": "missing_header",
+      "number": 1,
+      "rule": "endian-compat",
+      "source": "rule",
+      "reason": "<endian.h> does not exist on QNX 8.0. QNX provides BSD byte-order conversion macros in <net/netbyte.h> (__NET_BE*/__NET_LE*); a generated compatibility <endian.h> header in the include search path maps glibc names and byte-order constants to QNX's definitions.",
       "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: fatal error: endian.h: No such file or directory",
-      "hint": "QNX 8.0 has no <endian.h>: use <gulliver.h> (ENDIAN_LE32 etc.) or GCC's __BYTE_ORDER__"
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-endian-compat.patch",
+      "kept": true
     },
+    {
+      "number": 2,
+      "rule": "guard-linux-header",
+      "source": "rule",
+      "reason": "<endian.h> does not exist on QNX 8.0 and isobusfs/isobusfs_cmn.h uses nothing from it, so the include is kept for Linux and skipped on QNX.",
+      "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/isobusfs/isobusfs_cmn.h:8:10: fatal error: endian.h: No such file or directory",
+      "files": [
+        "isobusfs/isobusfs_cmn.h"
+      ],
+      "path": "patches/0002-guard-linux-header-isobusfs-cmn-h.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [
     {
       "kind": "missing_header",
       "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can/netlink.h:22:10: fatal error: linux/types.h: No such file or directory",
@@ -31,6 +51,11 @@
     {
       "kind": "missing_header",
       "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory",
+      "hint": "<linux/types.h> is a Linux kernel header and does not exist on QNX"
+    },
+    {
+      "kind": "missing_header",
+      "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/errqueue.h:5:10: fatal error: linux/types.h: No such file or directory",
       "hint": "<linux/types.h> is a Linux kernel header and does not exist on QNX"
     },
     {
@@ -51,7 +76,8 @@
   ],
   "minutes": 0.1,
   "note": "Linux SocketCAN tools: expected not to port",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T08:25:21+00:00"
+  "finished": "2026-11-13T16:48:22+00:00"
 }

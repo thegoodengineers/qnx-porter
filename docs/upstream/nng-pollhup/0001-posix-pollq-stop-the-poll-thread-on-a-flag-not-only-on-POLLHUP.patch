@@ -1,0 +1,44 @@
+From c318e4f3be821071ec96121c54c73add5229ca49 Mon Sep 17 00:00:00 2001
+From: Chirag <118997601+Chirag6722@users.noreply.github.com>
+Date: Sat, 14 Nov 2026 00:14:23 +0530
+Subject: [PATCH] posix pollq: stop the poll thread on a flag, not only on
+ POLLHUP
+
+nni_poll_pq_destroy() wakes the poll thread and closes the write end of its waker pipe, and the thread leaves its loop when poll() reports POLLHUP on the read end. QNX 8.0 reports POLLIN, never POLLHUP, for a pipe whose writer has closed, so the thread spins and nng_fini() never returns: every test hangs at exit.
+
+Set pq->closed under the lock before waking the thread, and have the thread stop when it sees it. The POLLHUP path stays for platforms that report it.
+---
+ src/platform/posix/posix_pollq_poll.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/platform/posix/posix_pollq_poll.c b/src/platform/posix/posix_pollq_poll.c
+index 874c62d..508773f 100644
+--- a/src/platform/posix/posix_pollq_poll.c
++++ b/src/platform/posix/posix_pollq_poll.c
+@@ -234,6 +234,13 @@ nni_poll_thr(void *arg)
+ 			// process adds first
+ 			nni_mtx_lock(&pq->mtx);
+ 			nni_plat_pipe_clear(pq->wakerfd);
++			if (pq->closed) {
++				// Not every platform reports POLLHUP on the
++				// waker once its write end is closed (QNX
++				// reports POLLIN only), so stop on the flag.
++				nni_mtx_unlock(&pq->mtx);
++				break;
++			}
+ 			while ((pfd = nni_list_first(&pq->addq)) != NULL) {
+ 				nni_list_remove(&pq->addq, pfd);
+ 				nni_list_append(&pq->pollq, pfd);
+@@ -268,6 +275,9 @@ static void
+ nni_poll_pq_destroy(nni_posix_pollq *pq)
+ {
+ 	if (pq->init) {
++		nni_mtx_lock(&pq->mtx);
++		pq->closed = true;
++		nni_mtx_unlock(&pq->mtx);
+ 		nni_plat_pipe_raise(pq->wakewfd);
+ 
+ 		(void) close(pq->wakewfd);
+-- 
+2.34.1
+

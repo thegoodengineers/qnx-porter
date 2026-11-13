@@ -1,0 +1,72 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "libcoap-v4.3.5-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libcoap-7cf7465b784baded4de183290c547d582becfd28",
+  "creationInfo": {
+    "created": "2026-11-13T04:57:07Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-libcoap",
+      "name": "libcoap",
+      "versionInfo": "v4.3.5",
+      "downloadLocation": "git+https://github.com/obgm/libcoap.git@7cf7465b784baded4de183290c547d582becfd28",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "Apache-2.0 AND BSD-1-Clause AND BSD-3-Clause AND BSD-2-Clause AND GPL-2.0-only AND LicenseRef-scancode-ietf AND LGPL-2.1-only AND OpenSSL AND LicenseRef-scancode-public-domain",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over COPYING, LICENSE, README.md, examples/README.etsi_iot: Apache-2.0 AND BSD-1-Clause AND BSD-3-Clause AND BSD-2-Clause AND GPL-2.0-only AND LicenseRef-scancode-ietf AND LGPL-2.1-only AND OpenSSL AND LicenseRef-scancode-public-domain. Per-file detections: COPYING: BSD-2-Clause AND LicenseRef-scancode-public-domain; LICENSE: BSD-2-Clause AND LicenseRef-scancode-public-domain AND (BSD-3-Clause AND BSD-1-Clause) AND BSD-3-Clause AND OpenSSL AND LGPL-2.1-only AND Apache-2.0 AND GPL-2.0-only AND LicenseRef-scancode-ietf; README.md: BSD-2-Clause AND LicenseRef-scancode-public-domain."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-ietf",
+      "name": "Internet Engineering Task Force License",
+      "extractedText": "This document and translations of it may be copied and furnished to\nothers, and derivative works that comment on or otherwise explain it\nor assist in its implementation may be prepared, copied, published\nand distributed, in whole or in part, without restriction of any\nkind, provided that the above copyright notice and this paragraph are\nincluded on all such copies and derivative works.  However, this\ndocument itself may not be modified in any way, such as by removing\nthe copyright notice or references to the Internet Society or other\nInternet organizations, except as needed for the purpose of\ndeveloping Internet standards in which case the procedures for\ncopyrights defined in the Internet Standards process must be\nfollowed, or as required to translate it into languages other than\nEnglish.\n\nThe limited permissions granted above are perpetual and will not be\nrevoked by the Internet Society or its successors or assigns.\n\nThis document and the information contained herein is provided on an\n\"AS IS\" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING\nTASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING\nBUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION\nHEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF\nMERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/ietf.LICENSE"
+    },
+    {
+      "licenseId": "LicenseRef-scancode-public-domain",
+      "name": "Public Domain",
+      "extractedText": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/public-domain.LICENSE",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/public-domain.LICENSE"
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/libcoap/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-libcoap"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-libcoap"
+    }
+  ]
+}

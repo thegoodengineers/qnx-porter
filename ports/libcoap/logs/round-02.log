@@ -120,7 +120,7 @@ $ cmake -S /home/chirag/qnx-porter/ports/libcoap/work/src -B /home/chirag/qnx-po
 -- PACKAGE VERSION..................4.3.5
 -- PACKAGE SOURCE...................5c01e27-dirty
 -- LIBRARY API VERSION..............3
--- LIBRARY ABI VERSION..............3.2.0
+-- LIBRARY ABI VERSION..............3.2.2
 -- ENABLE_DTLS:.....................OFF
 -- ENABLE_TCP:......................ON
 -- ENABLE_IPV4:.....................ON
@@ -136,6 +136,7 @@ $ cmake -S /home/chirag/qnx-porter/ports/libcoap/work/src -B /home/chirag/qnx-po
 -- ENABLE_THREAD_RECURSIVE_CHECK....OFF
 -- ENABLE_DOCS:.....................OFF
 -- ENABLE_EXAMPLES:.................ON
+-- ENABLE_SANITIZER:................OFF
 -- DTLS_BACKEND:....................default
 -- WITH_GNUTLS:.....................OFF
 -- WITH_TINYDTLS:...................OFF
@@ -169,8 +170,8 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports/libcoap/work/build -j 2 -- -k
-[  2%] Building C object CMakeFiles/coap-3.dir/src/coap_asn1.c.o
-[  4%] Building C object CMakeFiles/coap-3.dir/src/coap_address.c.o
+[  2%] Building C object CMakeFiles/coap-3.dir/src/coap_address.c.o
+[  4%] Building C object CMakeFiles/coap-3.dir/src/coap_asn1.c.o
 [  6%] Building C object CMakeFiles/coap-3.dir/src/coap_async.c.o
 [  8%] Building C object CMakeFiles/coap-3.dir/src/coap_block.c.o
 [ 10%] Building C object CMakeFiles/coap-3.dir/src/coap_cache.c.o
@@ -207,7 +208,7 @@ $ cmake --build /home/chirag/qnx-porter/ports/libcoap/work/build -j 2 -- -k
 [ 73%] Building C object CMakeFiles/coap-3.dir/src/oscore/oscore_crypto.c.o
 [ 75%] Linking C static library libcoap-3.a
 [ 75%] Built target coap-3
-[ 77%] Building C object CMakeFiles/coap-rd.dir/examples/coap-rd.c.o
+[ 79%] Building C object CMakeFiles/coap-rd.dir/examples/coap-rd.c.o
 [ 79%] Building C object CMakeFiles/coap-client.dir/examples/coap-client.c.o
 [ 81%] Linking C executable coap-rd
 [ 81%] Built target coap-rd
@@ -218,10 +219,10 @@ $ cmake --build /home/chirag/qnx-porter/ports/libcoap/work/build -j 2 -- -k
 [ 89%] Linking C executable etsi_iot_01
 [ 89%] Built target etsi_iot_01
 [ 91%] Building C object CMakeFiles/tiny.dir/examples/tiny.c.o
-[ 93%] Linking C executable tiny
-[ 95%] Linking C executable coap-server
+[ 93%] Linking C executable coap-server
+[ 95%] Linking C executable tiny
+[ 95%] Built target coap-server
 [ 95%] Built target tiny
 [ 97%] Building C object CMakeFiles/oscore-interop-server.dir/examples/oscore-interop-server.c.o
-[ 97%] Built target coap-server
 [100%] Linking C executable oscore-interop-server
 [100%] Built target oscore-interop-server

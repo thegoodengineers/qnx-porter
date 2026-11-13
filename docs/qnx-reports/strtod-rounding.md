@@ -35,8 +35,8 @@ C17 7.22.1.3 lets an implementation be off by one ULP for decimal strings with m
 `DECIMAL_DIG`, but `%.17g` output has 17 digits, which is within that bound for IEEE double, so the value must
 round-trip. Text formats (JSON, XML, YAML, CSV, configuration files) depend on this: a value written and read
 back changes. In our campaign, 7 of pugixml 1.14's 962 tests and 4 of jansson 2.14's 213 tests fail on QNX
-for this reason alone, and 1 of yaml-cpp 0.8.0's tests (`ports/pugixml/logs/tests.log`,
-`ports/jansson/logs/tests.log`, `ports/yaml-cpp/logs/tests.log`).
+for this reason alone, and 1 of yaml-cpp 0.8.0's tests (`ports-2024/pugixml/logs/tests.log`,
+`ports-2024/jansson/logs/tests.log`, `ports-2024/yaml-cpp/logs/tests.log`).
 
 ## A second library: jansson 2.14
 4 of jansson's 213 tests fail on QNX 8.0 (`valid/real-exponent`, `valid/real-subnormal-number` and their
@@ -55,7 +55,7 @@ jansson's expected outputs are `1.2299999999999999e47` and `1.8011670033376514e-
 ## A third library: yaml-cpp 0.8.0
 yaml-cpp's `NodeTest.FloatingPrecisionDouble` writes `0.123456789` to a node and reads it back through a C++
 stream, which parses with `strtod()`. On QNX 8.0 the value read back differs from the one written; it is
-the only one of the suite's tests that fails (`ports/yaml-cpp/logs/tests.log`). The same check in a few lines
+the only one of the suite's tests that fails (`ports-2024/yaml-cpp/logs/tests.log`). The same check in a few lines
 (stream, `strtod()`, `sscanf()`), built with `q++` and run on the target, prints
 `stream_ok=0 strtod_ok=0 sscanf_ok=1`.
 

@@ -1,8 +1,8 @@
-# pugixml v1.14 on QNX 8.0 (x86_64)
+# pugixml v1.16 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/zeux/pugixml.git at `v1.14` (`db78afc2b7d8`) |
+| Upstream | https://github.com/zeux/pugixml.git at `v1.16` (`c8033ce9d039`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

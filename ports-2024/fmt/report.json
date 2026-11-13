@@ -1,0 +1,39 @@
+{
+  "library": "fmt",
+  "url": "https://github.com/fmtlib/fmt.git",
+  "version": "11.0.2",
+  "commit": "0c9fce2ffefecfdce794e1859584e25877b7b592",
+  "build_system": "cmake",
+  "arch": "x86_64",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
+  "build_result": "built",
+  "rounds": 2,
+  "tests_passed": 17,
+  "tests_total": 20,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "link-libregex",
+      "source": "rule",
+      "reason": "`regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.",
+      "error": "/home/chirag/qnx-porter/ports/fmt/work/src/test/gtest/gmock-gtest-all.cc:11045:(.text+0xbb65): undefined reference to `regfree'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-link-libregex.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 6.9,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T08:32:15+00:00"
+}

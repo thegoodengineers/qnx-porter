@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "can-utils-v2023.03-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/can-utils-cfe41963f3425e9adb01a70cfaddedf5e5982720",
+  "name": "can-utils-v2025.01-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/can-utils-01083a64ebf28cc716efe2d2fd51c141042ae34b",
   "creationInfo": {
-    "created": "2026-11-13T04:54:46Z",
+    "created": "2026-11-13T19:00:51Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-can-utils",
       "name": "can-utils",
-      "versionInfo": "v2023.03",
-      "downloadLocation": "git+https://github.com/linux-can/can-utils.git@cfe41963f3425e9adb01a70cfaddedf5e5982720",
+      "versionInfo": "v2025.01",
+      "downloadLocation": "git+https://github.com/linux-can/can-utils.git@01083a64ebf28cc716efe2d2fd51c141042ae34b",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
@@ -31,16 +31,16 @@
       "checksums": [
         {
           "algorithm": "SHA1",
-          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          "checksumValue": "d8d8a08292f2626c1e85c93af371b747db19bd9c"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          "checksumValue": "1c7fdaba70707cf2339b61c4732f0f848ada5623242d86f893ca205fd9e5d76f"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION",
-      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+      "comment": "QNX 8.0 port changes, apply with git apply"
     }
   ],
   "relationships": [

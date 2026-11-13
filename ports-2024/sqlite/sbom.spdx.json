@@ -1,0 +1,66 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "sqlite-version-3.47.2-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/sqlite-262de1bebb0647eb6fa6a2b0434111c7d831a14d",
+  "creationInfo": {
+    "created": "2026-11-13T05:00:48Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-sqlite",
+      "name": "sqlite",
+      "versionInfo": "version-3.47.2",
+      "downloadLocation": "git+https://github.com/sqlite/sqlite.git@262de1bebb0647eb6fa6a2b0434111c7d831a14d",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "blessing AND LicenseRef-scancode-public-domain",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over LICENSE.md, README.md, autoconf/README.first, autoconf/README.txt, ext/README.md: blessing AND LicenseRef-scancode-public-domain. Per-file detections: LICENSE.md: blessing; README.md: LicenseRef-scancode-public-domain."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-public-domain",
+      "name": "Public Domain",
+      "extractedText": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/public-domain.LICENSE",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/public-domain.LICENSE"
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/sqlite/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-sqlite"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-sqlite"
+    }
+  ]
+}

@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "miniz-3.0.2-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/miniz-293d4db1b7d0ffee9756d035b9ac6f7431ef8492",
+  "name": "miniz-3.1.2-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/miniz-77d0dce8627735138c51770d1799a1ef48f2117d",
   "creationInfo": {
-    "created": "2026-11-13T05:00:09Z",
+    "created": "2026-11-13T19:02:30Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-miniz",
       "name": "miniz",
-      "versionInfo": "3.0.2",
-      "downloadLocation": "git+https://github.com/richgel999/miniz.git@293d4db1b7d0ffee9756d035b9ac6f7431ef8492",
+      "versionInfo": "3.1.2",
+      "downloadLocation": "git+https://github.com/richgel999/miniz.git@77d0dce8627735138c51770d1799a1ef48f2117d",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "MIT AND LicenseRef-scancode-public-domain",

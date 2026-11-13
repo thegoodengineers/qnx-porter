@@ -7,9 +7,9 @@ libtoolize: copying file 'm4/ltoptions.m4'
 libtoolize: copying file 'm4/ltsugar.m4'
 libtoolize: copying file 'm4/ltversion.m4'
 libtoolize: copying file 'm4/lt~obsolete.m4'
-configure.ac:33: installing 'build-aux/compile'
-configure.ac:56: installing 'build-aux/config.guess'
-configure.ac:56: installing 'build-aux/config.sub'
+configure.ac:37: installing 'build-aux/compile'
+configure.ac:60: installing 'build-aux/config.guess'
+configure.ac:60: installing 'build-aux/config.sub'
 configure.ac:32: installing 'build-aux/install-sh'
 configure.ac:32: installing 'build-aux/missing'
 src/Makefile.am: installing 'build-aux/depcomp'
@@ -155,6 +155,7 @@ checking for uint8_t... yes
 checking for winsock2.h... no
 checking whether TIOCSRS485 is declared... no
 checking whether TIOCM_RTS is declared... yes
+checking for struct termios2... no
 checking that generated files are newer than configure... done
 configure: creating ./config.status
 config.status: creating Makefile
@@ -168,7 +169,7 @@ config.status: creating tests/unit-test.h
 config.status: executing depfiles commands
 config.status: executing libtool commands
 
-        libmodbus 3.1.11
+        libmodbus 3.2.0
         ===============
 
         prefix:                 /usr/local
@@ -177,7 +178,7 @@ config.status: executing libtool commands
         includedir:             ${prefix}/include
 
         compiler:               /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc
-        cflags:                 -O2 -Wall -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wpointer-arith -Wsign-compare -Wchar-subscripts -Wstrict-prototypes -Wshadow -Wformat-security
+        cflags:                 -O2 -Wall -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wpointer-arith -Wsign-compare -Wchar-subscripts -Wstrict-prototypes -Wshadow -Wformat-security -O2 -g
         ldflags:                -L/home/chirag/qnx-porter/ports/libmodbus/work/stubs
 
         tests:                  yes
@@ -201,6 +202,8 @@ make  all-am
   CC       random-test-client.o
   CC       unit-test-server.o
   CC       unit-test-client.o
+  CC       proxy-test-server.o
+  CC       proxy-test-client.o
   CC       version.o
   CCLD     bandwidth-server-one
   CCLD     bandwidth-server-many-up
@@ -209,5 +212,7 @@ make  all-am
   CCLD     random-test-client
   CCLD     unit-test-server
   CCLD     unit-test-client
+  CCLD     proxy-test-server
+  CCLD     proxy-test-client
   CCLD     version
 make: Leaving directory '/home/chirag/qnx-porter/ports/libmodbus/work/build'

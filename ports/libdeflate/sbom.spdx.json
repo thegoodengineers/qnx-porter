@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "libdeflate-v1.22-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libdeflate-2335c047e91cac6fd04cb0fd2769380395149f15",
+  "name": "libdeflate-v1.26-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libdeflate-92e6a0db9fa848d742f9eb286c92afc60f2c3dda",
   "creationInfo": {
-    "created": "2026-11-13T04:57:26Z",
+    "created": "2026-11-13T19:01:21Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-libdeflate",
       "name": "libdeflate",
-      "versionInfo": "v1.22",
-      "downloadLocation": "git+https://github.com/ebiggers/libdeflate.git@2335c047e91cac6fd04cb0fd2769380395149f15",
+      "versionInfo": "v1.26",
+      "downloadLocation": "git+https://github.com/ebiggers/libdeflate.git@92e6a0db9fa848d742f9eb286c92afc60f2c3dda",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "MIT",

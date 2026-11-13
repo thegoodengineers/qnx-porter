@@ -22,7 +22,7 @@ $ cmake -S /home/chirag/qnx-porter/ports/cmark/work/src -B /home/chirag/qnx-port
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/cmark/work/build
 $ cmake --build /home/chirag/qnx-porter/ports/cmark/work/build -j 2 -- -k
-[  7%] Building C object src/CMakeFiles/cmark.dir/blocks.c.o
+[  3%] Building C object src/CMakeFiles/cmark.dir/blocks.c.o
 [  7%] Building C object src/CMakeFiles/cmark.dir/buffer.c.o
 [ 11%] Building C object src/CMakeFiles/cmark.dir/cmark.c.o
 [ 15%] Building C object src/CMakeFiles/cmark.dir/cmark_ctype.c.o
@@ -43,12 +43,12 @@ $ cmake --build /home/chirag/qnx-porter/ports/cmark/work/build -j 2 -- -k
 [ 73%] Building C object src/CMakeFiles/cmark.dir/xml.c.o
 [ 76%] Linking C static library libcmark.a
 [ 76%] Built target cmark
-[ 80%] Building C object src/CMakeFiles/cmark_exe.dir/main.c.o
+[ 84%] Building C object src/CMakeFiles/cmark_exe.dir/main.c.o
 [ 84%] Building CXX object api_test/CMakeFiles/api_test.dir/cplusplus.cpp.o
 [ 88%] Building C object api_test/CMakeFiles/api_test.dir/harness.c.o
 [ 92%] Linking C executable cmark
+[ 92%] Built target cmark_exe
 [ 96%] Building C object api_test/CMakeFiles/api_test.dir/main.c.o
-[ 96%] Built target cmark_exe
 [100%] Linking CXX executable api_test
 [100%] Built target api_test
 cc: warning - lang-c++ is deprecated

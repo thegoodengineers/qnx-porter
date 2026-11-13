@@ -1,8 +1,8 @@
 {
   "library": "cJSON",
   "url": "https://github.com/DaveGamble/cJSON.git",
-  "version": "v1.7.18",
-  "commit": "acc76239bee01d8e9c858ae2cab296704e52d916",
+  "version": "v1.7.19",
+  "commit": "c859b25da02955fef659d658b8f324b5cde87be3",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -13,14 +13,28 @@
   "tests_passed": 19,
   "tests_total": 19,
   "tests_ran": true,
-  "patches_kept": 0,
-  "patches_by_rule": 0,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
   "patches_by_model": 0,
-  "patches": [],
+  "patches": [
+    {
+      "number": 1,
+      "rule": "main-stack",
+      "source": "rule",
+      "reason": "Crash on QNX: cJSON_Duplicate_rec() calls itself until the stack runs out (the backtrace is cJSON_Duplicate_rec <- cJSON_Duplicate_rec <- ...). A QNX main thread gets about 464 KiB of stack unless the program is linked with qcc -N; a Linux one usually has 8 MiB. Every program is now linked with -N8M, which writes an 8 MiB stack size into its QNX ELF note.",
+      "error": "Memory fault (SIGSEGV) in cJSON_Duplicate_rec, deep recursion",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-main-stack.patch",
+      "kept": true
+    }
+  ],
   "blocked_on": [],
-  "minutes": 0.5,
+  "minutes": 0.8,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T07:48:10+00:00"
+  "finished": "2026-11-13T18:56:37+00:00"
 }

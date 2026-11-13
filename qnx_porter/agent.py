@@ -12,6 +12,7 @@ from pathlib import Path
 from . import build, crash, errors, fixes, llm, patches, qnx
 from .target import SAME_PATH_MARK, Target, ctest_on_target, meson_on_target, parse_results, write_wrapper
 
+STACK_FLAG = "-N8M"  # qcc: main-thread stack size, written into the QNX ELF note (see crash.deep_recursion)
 MODEL_TRIES = 2  # model attempts per error before the agent reports it as blocked
 LLM_KINDS = ("error", "implicit_decl", "undeclared", "missing_header", "cmake_error", "werror", "hash_error")
 
@@ -103,12 +104,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     blocked: list[dict] = []
     ok, rounds = False, 0
     for rounds in range(1, max_rounds + 1):
-        tc = job.toolchain_path()
-        if tc.exists() and tc.read_text(encoding="utf-8") != job.toolchain_text():
-            # CMake reads CMAKE_*_INIT only into a fresh cache: a flag fix is invisible until it is wiped.
-            (bdir / "CMakeCache.txt").unlink(missing_ok=True)
-            shutil.rmtree(bdir / "CMakeFiles", ignore_errors=True)
-        tc.write_text(job.toolchain_text(), encoding="utf-8")
+        _fresh_toolchain(job, bdir)
         ok, text = build.run(job.steps(tests=True), work, env, logs / f"round-{rounds:02d}.log")
         diags = [] if ok else errors.parse(text) or [errors.Diagnostic("error", _tail(text))]
         if pending:
@@ -166,7 +162,17 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         for c in crashes:
             if (r := crash.printf_null(c["backtrace"], src, fixes.in_tree)) and r[0] not in {f[0] for f in crash_fixes}:
                 crash_fixes.append(r)
-        if crash_fixes:
+        deep = next((fn for c in crashes if (fn := crash.deep_recursion(c["backtrace"]))), None)
+        stack_fix = None
+        if deep and STACK_FLAG not in job.flags.ldflags:
+            stack_fix = fixes.Fix(
+                "main-stack", f"Crash on QNX: {deep}() calls itself until the stack runs out (the backtrace is "
+                f"{deep} <- {deep} <- ...). A QNX main thread gets about 464 KiB of stack unless the program is "
+                "linked with qcc -N; a Linux one usually has 8 MiB. Every program is now linked with "
+                f"{STACK_FLAG}, which writes an 8 MiB stack size into its QNX ELF note.",
+                errors.Diagnostic("crash", f"Memory fault (SIGSEGV) in {deep}, deep recursion"),
+                ldflags=[STACK_FLAG])
+        if crash_fixes or stack_fix:
             before = (tests_passed, tests_total, crashes, not_runnable)
             first = len(applied)
             for rel, reason, text in crash_fixes:
@@ -174,13 +180,21 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                 applied.append(patches.commit_source(src, out, len(applied) + 1, "printf-null", "rule", reason,
                                                      "Memory fault (SIGSEGV) in strlen <- printf on QNX", [rel]))
                 log(f"      fix {len(applied):04d} [printf-null] {reason}"[:200])
+            if stack_fix:
+                applied.append(_apply(stack_fix, len(applied) + 1, src, out, job, work))
+                _fresh_toolchain(job, bdir)
+                log(f"      fix {len(applied):04d} [main-stack] {stack_fix.reason}"[:200])
             rebuilt, _ = build.run(job.steps(tests=True), work, env, logs / "rebuild-after-crash-fix.log")
             if rebuilt:
                 tests_passed, tests_total, crashes, not_runnable = _run_tests(job, target, src, bdir, work, env, logs)
                 log(f"      after crash fixes: {tests_passed}/{tests_total} tests passed")
             if not rebuilt or tests_passed <= before[0]:
                 for p in applied[first:]:
-                    patches.revert_last(src)
+                    if p.rule == "main-stack":  # a flag, not a commit in the source tree
+                        job.flags.ldflags.remove(STACK_FLAG)
+                        _fresh_toolchain(job, bdir)
+                    else:
+                        patches.revert_last(src)
                     p.kept = False
                 tests_passed, tests_total, crashes, not_runnable = before
                 log("      crash fixes did not help: reverted")
@@ -227,8 +241,8 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
     crash.clear_cores(target)
     not_runnable = []
     if job.system in ("cmake", "meson"):
-        r = (ctest_on_target(target, bdir, work, job.emulator, same, logs / "tests.log") if job.system == "cmake"
-             else meson_on_target(target, bdir, work, same, logs / "tests.log"))
+        r = (ctest_on_target(target, bdir, work, job.emulator, same, logs / "tests.log", target.test_timeout)
+             if job.system == "cmake" else meson_on_target(target, bdir, work, same, logs / "tests.log", target.test_timeout))
         passed, total, not_runnable = r["passed"], r["total"], r["not_runnable"]
     else:
         _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
@@ -244,6 +258,15 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
             f"=== {c['binary']}\n{c['backtrace'] or '(no backtrace: binary not found on the host)'}\n\n"
             for c in crashes), encoding="utf-8")
     return passed, total, crashes, not_runnable
+
+
+def _fresh_toolchain(job: build.Job, bdir: Path) -> None:
+    """Write the toolchain file; if a flag changed, wipe CMake's cache, which reads CMAKE_*_INIT only when fresh."""
+    tc = job.toolchain_path()
+    if tc.exists() and tc.read_text(encoding="utf-8") != job.toolchain_text():
+        (bdir / "CMakeCache.txt").unlink(missing_ok=True)
+        shutil.rmtree(bdir / "CMakeFiles", ignore_errors=True)
+    tc.write_text(job.toolchain_text(), encoding="utf-8")
 
 
 def _install_prefix(build_dir: Path) -> str:

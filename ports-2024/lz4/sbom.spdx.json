@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "lz4-v1.10.0-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/lz4-ebb370ca83af193212df4dcbadcc5d87bc0de2f0",
+  "creationInfo": {
+    "created": "2026-11-13T04:59:39Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-lz4",
+      "name": "lz4",
+      "versionInfo": "v1.10.0",
+      "downloadLocation": "git+https://github.com/lz4/lz4.git@ebb370ca83af193212df4dcbadcc5d87bc0de2f0",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "BSD-2-Clause AND GPL-2.0-or-later",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over LICENSE, README.md, build/README.md, examples/COPYING, examples/README.md, lib/LICENSE, lib/README.md, programs/COPYING, programs/README.md, tests/COPYING, tests/README.md: BSD-2-Clause AND GPL-2.0-or-later. Per-file detections: LICENSE: BSD-2-Clause AND GPL-2.0-or-later; README.md: BSD-2-Clause; examples/COPYING: GPL-2.0-or-later AND GPL-2.0-only; examples/README.md: GPL-2.0-only; lib/LICENSE: BSD-2-Clause; lib/README.md: BSD-3-Clause AND BSD-2-Clause; programs/COPYING: GPL-2.0-or-later AND GPL-2.0-only; programs/README.md: GPL-2.0-or-later AND GPL-2.0-only; tests/COPYING: GPL-2.0-or-later AND GPL-2.0-only; tests/README.md: GPL-2.0-or-later AND GPL-2.0-only."
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/lz4/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-lz4"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-lz4"
+    }
+  ]
+}

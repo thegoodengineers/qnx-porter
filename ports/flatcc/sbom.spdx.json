@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "flatcc-v0.6.1-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/flatcc-d17e324e7e595272da486c5b9b20e848b78ba9ba",
+  "name": "flatcc-v0.6.4-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/flatcc-fec0275c0d0c5b6f495ab48d51fcde521d72b5fc",
   "creationInfo": {
-    "created": "2026-11-13T04:55:24Z",
+    "created": "2026-11-13T19:01:04Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-flatcc",
       "name": "flatcc",
-      "versionInfo": "v0.6.1",
-      "downloadLocation": "git+https://github.com/dvidelabs/flatcc.git@d17e324e7e595272da486c5b9b20e848b78ba9ba",
+      "versionInfo": "v0.6.4",
+      "downloadLocation": "git+https://github.com/dvidelabs/flatcc.git@fec0275c0d0c5b6f495ab48d51fcde521d72b5fc",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "((MIT AND BSD-3-Clause) AND Apache-2.0) AND Apache-2.0",

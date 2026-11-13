@@ -1,19 +1,19 @@
-# yaml-cpp 0.8.0 on QNX 8.0 (x86_64)
+# yaml-cpp yaml-cpp-0.9.0 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/jbeder/yaml-cpp.git at `0.8.0` (`f7320141120f`) |
+| Upstream | https://github.com/jbeder/yaml-cpp.git at `yaml-cpp-0.9.0` (`56e3bb550c91`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
-| Build | **built** after 2 round(s) |
+| Build | **built** after 1 round(s) |
 | Library's own tests | 0/1 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
-| Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 5.0 min |
+| Patches kept | 0 (0 by rule, 0 by model) |
+| Time | 7.1 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |
 |---|---|---|---|---|---|
-| [0001](patches/0001-link-libregex.patch) | link-libregex | rule | kept | qnx-toolchain.cmake | `regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex. |
+| - | - | - | - | - | no changes needed |
 
 
 

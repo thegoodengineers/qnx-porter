@@ -148,13 +148,13 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
   of fixing from backtraces; a person (or the model, given the backtrace) has to find the caller.
 - [Not investigated yet] libevent `main/fork`: after a forked child exits, the parent's event loop never
   sees its own `SIGUSR1`, and the test's alarm ends it. pcre2 test 8 (internal code sizes) ends in SIGSEGV
-  inside recursive `compile_regex()` (core dump in `ports/pcre2/logs/crashes.log`); deep recursion suggests
+  inside recursive `compile_regex()` (core dump in `ports-2024/pcre2/logs/crashes.log`); deep recursion suggests
   the stack, but that is not confirmed.
 - [Verified cause, environment] pcre2grep's "script callouts" test runs `/bin/echo`; our QEMU image has
   `echo` only as `/proc/boot/echo` (a toybox link), so the callout lines are missing from the output.
 - [Verified cause, environment] zstd: `zstreamtest` sets `hashLog = 29` (a hash table of about 2 GiB) and
   gets "Allocation error : not enough memory" on our 2 GiB QEMU target; `fuzzer` reached about 7,000 of 30,000
-  iterations before the runner's time cap (`ports/zstd/logs/tests.log`). Neither is a porting problem; a larger target would tell more.
+  iterations before the runner's time cap (`ports-2024/zstd/logs/tests.log`). Neither is a porting problem; a larger target would tell more.
 - Expected not to port, and reported as such: libgpiod (Linux GPIO character device) and can-utils (SocketCAN).
 
 ## 12 Nov 2026: the final 61-library run, and a check against QNX's own ports

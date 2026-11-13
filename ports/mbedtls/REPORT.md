@@ -1,14 +1,14 @@
-# mbedtls v3.6.2 on QNX 8.0 (x86_64)
+# mbedtls v4.2.0 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/Mbed-TLS/mbedtls.git at `v3.6.2` (`107ea89daaef`) |
+| Upstream | https://github.com/Mbed-TLS/mbedtls.git at `v4.2.0` (`ece41aa84d78`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 2 round(s) |
-| Library's own tests | 130/130 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
+| Library's own tests | 148/148 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 4.6 min |
+| Time | 12.5 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

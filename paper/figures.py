@@ -64,7 +64,7 @@ def tests_per_library(ports):
         vals = [by[lib][arch][0] / by[lib][arch][1] if arch in by[lib] else 0 for lib in libs]
         ax.barh(ys, vals, height=h * 0.9, color=col, label=ARCH[arch], edgecolor="white", linewidth=0.5)
     for k, lib in enumerate(libs):  # one label per library: passed/total, x86_64 first when they differ
-        v = [f"{p}/{t}" for p, t in (by[lib].get(a) for a in ("x86_64", "aarch64le")) if t]
+        v = [f"{p}/{t}" for p, t in (by[lib].get(a, (0, 0)) for a in ("x86_64", "aarch64le")) if t]
         ax.text(1.01, k, v[0] if len(set(v)) == 1 else " | ".join(v), va="center", fontsize=6, color=INK2)
     ax.set_yticks(range(len(libs)), libs, fontsize=7)
     ax.invert_yaxis()

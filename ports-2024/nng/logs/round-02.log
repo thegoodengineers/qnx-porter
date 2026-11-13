@@ -1,0 +1,329 @@
+$ cmake -S /home/chirag/qnx-porter/ports/nng/work/src -B /home/chirag/qnx-porter/ports/nng/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/nng/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/nng/work/qnx-run -DNNG_TESTS=ON
+-- Configuring for NNG version 1.8.0
+-- Building static libs.
+-- Test zt disabled (unconfigured)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/nng/work/build
+$ cmake --build /home/chirag/qnx-porter/ports/nng/work/build -j 2 -- -k
+Consolidate compiler generated dependencies of target nng
+Consolidate compiler generated dependencies of target nng_testing
+[  1%] Building C object CMakeFiles/nng.dir/src/platform/posix/posix_udp.c.o
+[  1%] Building C object CMakeFiles/nng_testing.dir/src/platform/posix/posix_udp.c.o
+[  1%] Linking C static library libnng.a
+[  1%] Linking C static library libnng_testing.a
+[ 22%] Built target nng
+[ 45%] Built target nng_testing
+[ 45%] Building C object src/tools/perf/CMakeFiles/remote_lat.dir/perf.c.o
+[ 45%] Building C object src/tools/perf/CMakeFiles/local_lat.dir/perf.c.o
+[ 46%] Linking C executable remote_lat
+[ 47%] Linking C executable local_lat
+[ 47%] Built target remote_lat
+[ 47%] Built target local_lat
+[ 47%] Building C object src/tools/perf/CMakeFiles/remote_thr.dir/perf.c.o
+[ 47%] Building C object src/tools/perf/CMakeFiles/local_thr.dir/perf.c.o
+[ 47%] Linking C executable local_thr
+[ 47%] Linking C executable remote_thr
+[ 47%] Built target remote_thr
+[ 47%] Built target local_thr
+[ 47%] Building C object src/tools/perf/CMakeFiles/inproc_thr.dir/perf.c.o
+[ 47%] Building C object src/tools/perf/CMakeFiles/inproc_lat.dir/perf.c.o
+[ 47%] Linking C executable inproc_lat
+[ 48%] Linking C executable inproc_thr
+[ 48%] Built target inproc_thr
+[ 48%] Built target inproc_lat
+[ 48%] Building C object src/tools/perf/CMakeFiles/pubdrop.dir/pubdrop.c.o
+[ 48%] Building C object src/compat/nanomsg/CMakeFiles/compat_msg_test.dir/compat_msg_test.c.o
+[ 49%] Linking C executable pubdrop
+[ 49%] Built target pubdrop
+[ 49%] Building C object src/compat/nanomsg/CMakeFiles/compat_tcp_test.dir/compat_tcp_test.c.o
+[ 49%] Linking C executable compat_msg_test
+[ 49%] Built target compat_msg_test
+[ 49%] Building C object tests/CMakeFiles/device.dir/device.c.o
+[ 49%] Building C object tests/CMakeFiles/device.dir/convey.c.o
+[ 49%] Linking C executable compat_tcp_test
+[ 50%] Linking C executable device
+[ 50%] Built target compat_tcp_test
+[ 50%] Building C object tests/CMakeFiles/files.dir/files.c.o
+[ 50%] Built target device
+[ 50%] Building C object tests/CMakeFiles/httpclient.dir/httpclient.c.o
+[ 51%] Building C object tests/CMakeFiles/files.dir/convey.c.o
+[ 51%] Linking C executable files
+[ 51%] Built target files
+[ 51%] Building C object tests/CMakeFiles/httpserver.dir/httpserver.c.o
+[ 51%] Building C object tests/CMakeFiles/httpclient.dir/convey.c.o
+[ 52%] Linking C executable httpclient
+[ 52%] Built target httpclient
+[ 52%] Building C object tests/CMakeFiles/inproc.dir/inproc.c.o
+[ 52%] Building C object tests/CMakeFiles/inproc.dir/convey.c.o
+[ 52%] Building C object tests/CMakeFiles/httpserver.dir/convey.c.o
+[ 53%] Linking C executable inproc
+[ 53%] Built target inproc
+[ 53%] Building C object tests/CMakeFiles/ipc.dir/ipc.c.o
+[ 53%] Linking C executable httpserver
+[ 53%] Built target httpserver
+[ 53%] Building C object tests/CMakeFiles/ipcsupp.dir/ipcsupp.c.o
+[ 53%] Building C object tests/CMakeFiles/ipc.dir/convey.c.o
+[ 53%] Building C object tests/CMakeFiles/ipcsupp.dir/convey.c.o
+[ 53%] Linking C executable ipc
+[ 54%] Linking C executable ipcsupp
+[ 54%] Built target ipc
+[ 54%] Built target ipcsupp
+[ 54%] Building C object tests/CMakeFiles/multistress.dir/multistress.c.o
+[ 55%] Building C object tests/CMakeFiles/nonblock.dir/nonblock.c.o
+[ 55%] Building C object tests/CMakeFiles/nonblock.dir/convey.c.o
+[ 55%] Linking C executable nonblock
+[ 55%] Building C object tests/CMakeFiles/multistress.dir/convey.c.o
+[ 55%] Built target nonblock
+[ 55%] Building C object tests/CMakeFiles/options.dir/options.c.o
+[ 56%] Building C object tests/CMakeFiles/options.dir/convey.c.o
+[ 57%] Linking C executable multistress
+[ 57%] Built target multistress
+[ 57%] Building C object tests/CMakeFiles/pipe.dir/pipe.c.o
+[ 57%] Linking C executable options
+[ 57%] Built target options
+[ 58%] Building C object tests/CMakeFiles/pollfd.dir/pollfd.c.o
+[ 59%] Building C object tests/CMakeFiles/pipe.dir/convey.c.o
+[ 59%] Building C object tests/CMakeFiles/pollfd.dir/convey.c.o
+[ 59%] Linking C executable pipe
+[ 59%] Linking C executable pollfd
+[ 59%] Built target pipe
+[ 59%] Building C object tests/CMakeFiles/scalability.dir/scalability.c.o
+[ 59%] Built target pollfd
+[ 59%] Building C object tests/CMakeFiles/synch.dir/synch.c.o
+[ 59%] Building C object tests/CMakeFiles/scalability.dir/convey.c.o
+[ 59%] Building C object tests/CMakeFiles/synch.dir/convey.c.o
+[ 59%] Linking C executable scalability
+[ 60%] Linking C executable synch
+[ 60%] Built target scalability
+[ 61%] Building C object tests/CMakeFiles/tls.dir/tls.c.o
+[ 61%] Built target synch
+[ 61%] Building C object tests/CMakeFiles/tcpsupp.dir/tcpsupp.c.o
+[ 61%] Building C object tests/CMakeFiles/tcpsupp.dir/convey.c.o
+[ 61%] Linking C executable tcpsupp
+[ 61%] Built target tcpsupp
+[ 61%] Building C object tests/CMakeFiles/tcp.dir/tcp.c.o
+[ 61%] Building C object tests/CMakeFiles/tls.dir/convey.c.o
+[ 61%] Linking C executable tls
+[ 61%] Building C object tests/CMakeFiles/tcp.dir/convey.c.o
+[ 61%] Built target tls
+[ 62%] Building C object tests/CMakeFiles/tcp6.dir/tcp6.c.o
+[ 62%] Linking C executable tcp
+[ 62%] Built target tcp
+[ 62%] Building C object tests/CMakeFiles/ws.dir/ws.c.o
+[ 62%] Building C object tests/CMakeFiles/tcp6.dir/convey.c.o
+[ 62%] Linking C executable tcp6
+[ 62%] Building C object tests/CMakeFiles/ws.dir/convey.c.o
+[ 62%] Built target tcp6
+[ 62%] Building C object tests/CMakeFiles/wss.dir/wss.c.o
+[ 62%] Linking C executable ws
+[ 62%] Built target ws
+[ 62%] Building C object tests/CMakeFiles/reqctx.dir/reqctx.c.o
+[ 62%] Building C object tests/CMakeFiles/wss.dir/convey.c.o
+[ 63%] Building C object tests/CMakeFiles/reqctx.dir/convey.c.o
+[ 64%] Linking C executable wss
+[ 64%] Linking C executable reqctx
+[ 64%] Built target wss
+[ 64%] Building C object tests/CMakeFiles/reqstress.dir/reqstress.c.o
+[ 64%] Built target reqctx
+[ 65%] Building C object tests/CMakeFiles/compat_block.dir/compat_block.c.o
+[ 65%] Building C object tests/CMakeFiles/compat_block.dir/compat_testutil.c.o
+[ 65%] Linking C executable compat_block
+[ 65%] Building C object tests/CMakeFiles/reqstress.dir/convey.c.o
+[ 65%] Built target compat_block
+[ 65%] Building C object tests/CMakeFiles/compat_bug777.dir/compat_bug777.c.o
+[ 66%] Building C object tests/CMakeFiles/compat_bug777.dir/compat_testutil.c.o
+[ 67%] Linking C executable reqstress
+[ 67%] Linking C executable compat_bug777
+[ 67%] Built target reqstress
+[ 67%] Built target compat_bug777
+[ 67%] Building C object tests/CMakeFiles/compat_bus.dir/compat_bus.c.o
+[ 67%] Building C object tests/CMakeFiles/compat_cmsg.dir/compat_cmsg.c.o
+[ 67%] Building C object tests/CMakeFiles/compat_bus.dir/compat_testutil.c.o
+[ 67%] Building C object tests/CMakeFiles/compat_cmsg.dir/compat_testutil.c.o
+[ 68%] Linking C executable compat_bus
+[ 68%] Linking C executable compat_cmsg
+[ 68%] Built target compat_bus
+[ 68%] Built target compat_cmsg
+[ 68%] Building C object tests/CMakeFiles/compat_msg.dir/compat_msg.c.o
+[ 68%] Building C object tests/CMakeFiles/compat_iovec.dir/compat_iovec.c.o
+[ 69%] Building C object tests/CMakeFiles/compat_iovec.dir/compat_testutil.c.o
+[ 69%] Building C object tests/CMakeFiles/compat_msg.dir/compat_testutil.c.o
+[ 69%] Linking C executable compat_iovec
+[ 70%] Linking C executable compat_msg
+[ 70%] Built target compat_iovec
+[ 71%] Building C object tests/CMakeFiles/compat_device.dir/compat_device.c.o
+[ 71%] Built target compat_msg
+[ 71%] Building C object tests/CMakeFiles/compat_pair.dir/compat_pair.c.o
+[ 71%] Building C object tests/CMakeFiles/compat_pair.dir/compat_testutil.c.o
+[ 71%] Building C object tests/CMakeFiles/compat_device.dir/compat_testutil.c.o
+[ 72%] Linking C executable compat_pair
+[ 72%] Linking C executable compat_device
+[ 72%] Built target compat_pair
+[ 72%] Built target compat_device
+[ 72%] Building C object tests/CMakeFiles/compat_pipeline.dir/compat_pipeline.c.o
+[ 73%] Building C object tests/CMakeFiles/compat_poll.dir/compat_poll.c.o
+[ 73%] Building C object tests/CMakeFiles/compat_pipeline.dir/compat_testutil.c.o
+[ 73%] Building C object tests/CMakeFiles/compat_poll.dir/compat_testutil.c.o
+[ 73%] Linking C executable compat_pipeline
+[ 73%] Linking C executable compat_poll
+[ 73%] Built target compat_pipeline
+[ 73%] Building C object tests/CMakeFiles/compat_reqrep.dir/compat_reqrep.c.o
+[ 73%] Built target compat_poll
+[ 74%] Building C object tests/CMakeFiles/compat_survey.dir/compat_survey.c.o
+[ 75%] Building C object tests/CMakeFiles/compat_reqrep.dir/compat_testutil.c.o
+[ 75%] Building C object tests/CMakeFiles/compat_survey.dir/compat_testutil.c.o
+[ 75%] Linking C executable compat_reqrep
+[ 75%] Linking C executable compat_survey
+[ 75%] Built target compat_reqrep
+[ 75%] Building C object tests/CMakeFiles/compat_reqttl.dir/compat_reqttl.c.o
+[ 75%] Built target compat_survey
+[ 75%] Building C object tests/CMakeFiles/compat_shutdown.dir/compat_shutdown.c.o
+[ 75%] Building C object tests/CMakeFiles/compat_reqttl.dir/compat_testutil.c.o
+[ 75%] Building C object tests/CMakeFiles/compat_shutdown.dir/compat_testutil.c.o
+[ 76%] Linking C executable compat_reqttl
+[ 76%] Linking C executable compat_shutdown
+[ 76%] Built target compat_reqttl
+[ 76%] Building C object tests/CMakeFiles/compat_surveyttl.dir/compat_surveyttl.c.o
+[ 76%] Built target compat_shutdown
+[ 76%] Building C object tests/CMakeFiles/compat_options.dir/compat_options.c.o
+[ 77%] Building C object tests/CMakeFiles/compat_surveyttl.dir/compat_testutil.c.o
+[ 78%] Building C object tests/CMakeFiles/compat_options.dir/convey.c.o
+[ 78%] Linking C executable compat_surveyttl
+[ 78%] Built target compat_surveyttl
+[ 79%] Building CXX object tests/CMakeFiles/cplusplus_pair.dir/cplusplus_pair.cc.o
+[ 79%] Linking C executable compat_options
+[ 79%] Linking CXX executable cplusplus_pair
+[ 79%] Built target compat_options
+[ 79%] Building C object src/core/CMakeFiles/aio_test.dir/aio_test.c.o
+[ 79%] Built target cplusplus_pair
+[ 80%] Building C object src/core/CMakeFiles/buf_size_test.dir/buf_size_test.c.o
+[ 80%] Linking C executable buf_size_test
+[ 80%] Linking C executable aio_test
+[ 80%] Built target buf_size_test
+[ 80%] Building C object src/core/CMakeFiles/errors_test.dir/errors_test.c.o
+[ 80%] Built target aio_test
+[ 81%] Building C object src/core/CMakeFiles/id_test.dir/id_test.c.o
+[ 81%] Linking C executable errors_test
+[ 81%] Built target errors_test
+[ 82%] Building C object src/core/CMakeFiles/init_test.dir/init_test.c.o
+[ 82%] Linking C executable id_test
+[ 82%] Built target id_test
+[ 82%] Building C object src/core/CMakeFiles/list_test.dir/list_test.c.o
+[ 82%] Linking C executable init_test
+[ 82%] Built target init_test
+[ 82%] Building C object src/core/CMakeFiles/log_test.dir/log_test.c.o
+[ 82%] Linking C executable list_test
+[ 82%] Built target list_test
+[ 83%] Building C object src/core/CMakeFiles/message_test.dir/message_test.c.o
+[ 83%] Linking C executable log_test
+[ 83%] Built target log_test
+[ 83%] Building C object src/core/CMakeFiles/reconnect_test.dir/reconnect_test.c.o
+[ 83%] Linking C executable reconnect_test
+[ 83%] Linking C executable message_test
+[ 83%] Built target reconnect_test
+[ 83%] Building C object src/core/CMakeFiles/sock_test.dir/sock_test.c.o
+[ 83%] Built target message_test
+[ 84%] Building C object src/core/CMakeFiles/sockaddr_test.dir/sockaddr_test.c.o
+[ 84%] Linking C executable sockaddr_test
+[ 84%] Built target sockaddr_test
+[ 85%] Building C object src/core/CMakeFiles/stats_test.dir/stats_test.c.o
+[ 85%] Linking C executable sock_test
+[ 85%] Built target sock_test
+[ 85%] Building C object src/core/CMakeFiles/url_test.dir/url_test.c.o
+[ 85%] Linking C executable stats_test
+[ 85%] Built target stats_test
+[ 85%] Building C object src/platform/CMakeFiles/platform_test.dir/platform_test.c.o
+[ 85%] Linking C executable platform_test
+[ 85%] Linking C executable url_test
+[ 85%] Built target platform_test
+[ 85%] Building C object src/platform/CMakeFiles/resolver_test.dir/resolver_test.c.o
+[ 85%] Built target url_test
+[ 85%] Building C object src/platform/CMakeFiles/udp_test.dir/udp_test.c.o
+[ 85%] Linking C executable resolver_test
+[ 85%] Built target resolver_test
+[ 85%] Building C object src/platform/posix/CMakeFiles/posix_ipcwinsec_test.dir/posix_ipcwinsec_test.c.o
+[ 86%] Linking C executable udp_test
+[ 86%] Built target udp_test
+[ 86%] Building C object src/sp/protocol/bus0/CMakeFiles/bus_test.dir/bus_test.c.o
+[ 87%] Linking C executable posix_ipcwinsec_test
+[ 87%] Built target posix_ipcwinsec_test
+[ 87%] Building C object src/sp/protocol/pair0/CMakeFiles/pair0_test.dir/pair0_test.c.o
+[ 87%] Linking C executable bus_test
+[ 87%] Built target bus_test
+[ 87%] Building C object src/sp/protocol/pair1/CMakeFiles/pair1_test.dir/pair1_test.c.o
+[ 87%] Linking C executable pair0_test
+[ 87%] Built target pair0_test
+[ 88%] Building C object src/sp/protocol/pair1/CMakeFiles/pair1_poly_test.dir/pair1_poly_test.c.o
+[ 88%] Linking C executable pair1_test
+[ 88%] Built target pair1_test
+[ 88%] Building C object src/sp/protocol/pipeline0/CMakeFiles/pull_test.dir/pull_test.c.o
+[ 88%] Linking C executable pair1_poly_test
+[ 88%] Built target pair1_poly_test
+[ 88%] Building C object src/sp/protocol/pipeline0/CMakeFiles/push_test.dir/push_test.c.o
+[ 88%] Linking C executable pull_test
+[ 88%] Built target pull_test
+[ 88%] Building C object src/sp/protocol/pubsub0/CMakeFiles/pub_test.dir/pub_test.c.o
+[ 89%] Linking C executable push_test
+[ 89%] Built target push_test
+[ 89%] Building C object src/sp/protocol/pubsub0/CMakeFiles/sub_test.dir/sub_test.c.o
+[ 89%] Linking C executable pub_test
+[ 89%] Built target pub_test
+[ 89%] Building C object src/sp/protocol/pubsub0/CMakeFiles/xsub_test.dir/xsub_test.c.o
+[ 89%] Linking C executable sub_test
+[ 89%] Linking C executable xsub_test
+[ 89%] Built target sub_test
+[ 89%] Building C object src/sp/protocol/reqrep0/CMakeFiles/req_test.dir/req_test.c.o
+[ 89%] Built target xsub_test
+[ 89%] Building C object src/sp/protocol/reqrep0/CMakeFiles/rep_test.dir/rep_test.c.o
+[ 90%] Linking C executable rep_test
+[ 90%] Linking C executable req_test
+[ 90%] Built target rep_test
+[ 90%] Building C object src/sp/protocol/reqrep0/CMakeFiles/xrep_test.dir/xrep_test.c.o
+[ 90%] Built target req_test
+[ 90%] Building C object src/sp/protocol/reqrep0/CMakeFiles/xreq_test.dir/xreq_test.c.o
+[ 91%] Linking C executable xrep_test
+[ 91%] Linking C executable xreq_test
+[ 91%] Built target xrep_test
+[ 91%] Building C object src/sp/protocol/survey0/CMakeFiles/respond_test.dir/respond_test.c.o
+[ 91%] Built target xreq_test
+[ 92%] Building C object src/sp/protocol/survey0/CMakeFiles/survey_test.dir/survey_test.c.o
+[ 93%] Linking C executable respond_test
+[ 93%] Linking C executable survey_test
+[ 93%] Built target respond_test
+[ 93%] Building C object src/sp/protocol/survey0/CMakeFiles/xrespond_test.dir/xrespond_test.c.o
+[ 93%] Built target survey_test
+[ 93%] Building C object src/sp/protocol/survey0/CMakeFiles/xsurvey_test.dir/xsurvey_test.c.o
+[ 94%] Linking C executable xsurvey_test
+[ 95%] Linking C executable xrespond_test
+[ 95%] Built target xsurvey_test
+[ 95%] Built target xrespond_test
+[ 95%] Building C object src/sp/transport/socket/CMakeFiles/sockfd_test.dir/sockfd_test.c.o
+[ 96%] Building C object src/sp/transport/ipc/CMakeFiles/ipc_test.dir/ipc_test.c.o
+[ 96%] Linking C executable ipc_test
+[ 96%] Built target ipc_test
+[ 96%] Building C object src/sp/transport/tcp/CMakeFiles/tcp_test.dir/tcp_test.c.o
+[ 96%] Linking C executable sockfd_test
+[ 96%] Built target sockfd_test
+[ 97%] Building C object src/sp/transport/ws/CMakeFiles/ws_test.dir/ws_test.c.o
+[ 98%] Linking C executable tcp_test
+[ 98%] Linking C executable ws_test
+[ 98%] Built target tcp_test
+[ 98%] Building C object src/supplemental/base64/CMakeFiles/base64_test.dir/base64_test.c.o
+[ 98%] Built target ws_test
+[ 99%] Building C object src/supplemental/sha1/CMakeFiles/sha1_test.dir/sha1_test.c.o
+[ 99%] Linking C executable sha1_test
+[ 99%] Linking C executable base64_test
+[ 99%] Built target sha1_test
+[ 99%] Built target base64_test
+[ 99%] Building C object src/supplemental/util/CMakeFiles/idhash_test.dir/idhash_test.c.o
+[ 99%] Building C object src/supplemental/websocket/CMakeFiles/wssfile_test.dir/wssfile_test.c.o
+[ 99%] Linking C executable wssfile_test
+[ 99%] Built target wssfile_test
+[ 99%] Building C object src/supplemental/websocket/CMakeFiles/websocket_test.dir/websocket_test.c.o
+[ 99%] Linking C executable idhash_test
+[ 99%] Built target idhash_test
+[100%] Linking C executable websocket_test
+[100%] Built target websocket_test
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated

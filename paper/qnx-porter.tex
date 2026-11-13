@@ -294,10 +294,12 @@ because of the architecture (Section~\ref{sec:findings-arm}).
 
 What the failing tests are, from the logs and from reproduction outside the campaign: QNX C-library behaviour
 (Section~\ref{sec:findings}); \texttt{printf("\%s", NULL)} in places the \texttt{printf-null} rule cannot rewrite
-(inside libxml2's generic error code, and in nng behind a tail call that hides the caller in the backtrace);
-and things the test image lacks: \texttt{killall} (libmodbus), \texttt{/bin/echo} (pcre2grep), internet access
-(nng), enough memory for one zstd test, a \texttt{locale} command (pcre2). None of the failures was excluded
-by hand.
+(inside libxml2's generic error code, and in nng 1.9 behind a tail call that hides the caller in the
+backtrace); nng 2.1's poller, which waits for a \texttt{POLLHUP} that QNX does not report
+(Section~\ref{sec:findings-pollhup}); output that differs from glibc's but is allowed by C (benchmark's tie
+rounding, fmt's \texttt{\%a}); and things the test image lacks: \texttt{killall} (libmodbus),
+\texttt{/bin/echo} (pcre2grep), internet access (nng 1.9), the \texttt{en\_US.UTF-8} locale (benchmark),
+enough memory for one zstd test, a \texttt{locale} command (pcre2). None of the failures was excluded by hand.
 
 \paragraph{How the numbers got here} Table~\ref{tab:runs} lists every x86\_64 campaign run as the campaign script
 summarised it in \texttt{results/runs/}. The first \N{small-runs} runs used \N{run1-libs} libraries. Most of the change between runs
@@ -488,7 +490,8 @@ truncates the last printed decimal where glibc rounds it.
 In the C locale, QNX 8.0's \texttt{strftime()} and \texttt{wcsftime()} return 0 for these three conversions.
 POSIX requires a modified conversion to behave as the unmodified one when the locale has no alternative
 format~\cite{posixstrftime}, and QNX's own 8.0 documentation says the same~\cite{qnxstrftime}. fmt's chrono tests
-fail on exactly these (\N{strftime-assertions} assertions). A third fmt failure, \texttt{\%a} printing a
+fail on exactly these (\N{strftime-assertions} assertions) at fmt 11.0.2, the 2024 pin; fmt 12.2.1's chrono tests
+pass on x86\_64. A third fmt failure, \texttt{\%a} printing a
 different leading hexadecimal digit, is not a bug: C leaves that digit unspecified, and the test assumes glibc's.
 
 \subsection{\texttt{fchdir()} needs \texttt{O\_DIRECTORY}}\label{sec:findings-fchdir}
@@ -509,6 +512,22 @@ A short program prints \texttt{[(null)]} with glibc and dies with a memory fault
 undefined, so neither libc is wrong; the tests that do it are glibc-only. json-c's own expected output even
 contains \texttt{(null)}. This is the crash class the \texttt{printf-null} rule repairs. Several projects have
 since fixed it upstream independently (\texttt{docs/upstream/README.md}).
+
+\subsection{\texttt{poll()} reports no \texttt{POLLHUP} when a pipe's writer closes}\label{sec:findings-pollhup}
+On QNX 8.0, once the last write end of a pipe is closed, \texttt{poll()} on the read end reports \texttt{POLLIN}
+and never \texttt{POLLHUP}, also after \texttt{read()} returns end of file; Linux reports \texttt{POLLHUP}, and
+POSIX describes it for exactly this case. nng 2.1.0's poll thread stops only on that \texttt{POLLHUP}, so
+\texttt{nng\_fini()} never returns and 61 of its 64 tests reached the time limit. We found it from
+\texttt{pidin} thread states and a core dump read with the SDP's gdb, then reduced it to a short program
+(\texttt{docs/qnx-reports/pipe-pollhup.md}). A two-hunk nng fix, drafted and not sent, takes the suite to 60 of 64
+on QNX and keeps all 74 tests passing on Linux.
+
+\subsection{The main thread's stack}\label{sec:findings-stack}
+A QNX process's main thread gets about 464~KiB of stack unless the program is linked with \texttt{qcc -N};
+\texttt{ulimit -s} reports unlimited and does not change it (\texttt{scripts/stack\_probe.c}; 7472~KiB with
+\texttt{-N8M}). Linux usually gives 8~MiB. cJSON 1.7.19's \texttt{misc\_tests} overflowed it at recursion depth
+6540. Crash triage now recognises a backtrace that is one function calling itself and relinks with
+\texttt{-N8M} (rule \texttt{main-stack}), kept because the re-run passed 19 of 19.
 
 \subsection{aarch64-specific differences}\label{sec:findings-arm}
 These differences appeared only on aarch64 on QEMU, and each is now a rule or a triage change with a test:

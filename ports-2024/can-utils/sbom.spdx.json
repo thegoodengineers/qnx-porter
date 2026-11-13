@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "can-utils-v2023.03-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/can-utils-cfe41963f3425e9adb01a70cfaddedf5e5982720",
+  "creationInfo": {
+    "created": "2026-11-13T04:54:46Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-can-utils",
+      "name": "can-utils",
+      "versionInfo": "v2023.03",
+      "downloadLocation": "git+https://github.com/linux-can/can-utils.git@cfe41963f3425e9adb01a70cfaddedf5e5982720",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over LICENSES/BSD-3-Clause, LICENSES/GPL-2.0-only.txt, LICENSES/Linux-syscall-note.txt, README.md: NOASSERTION. Per-file detections: LICENSES/BSD-3-Clause: BSD-3-Clause; LICENSES/GPL-2.0-only.txt: GPL-2.0-only; LICENSES/Linux-syscall-note.txt: Linux-syscall-note."
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/can-utils/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-can-utils"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-can-utils"
+    }
+  ]
+}

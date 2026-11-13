@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "flac-1.4.3-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/flac-28e4f0528c76b296c561e922ba67d43751990599",
+  "creationInfo": {
+    "created": "2026-11-13T04:55:19Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-flac",
+      "name": "flac",
+      "versionInfo": "1.4.3",
+      "downloadLocation": "git+https://github.com/xiph/flac.git@28e4f0528c76b296c561e922ba67d43751990599",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "(BSD-3-Clause AND LGPL-2.1-only AND GPL-2.0-only AND GFDL-1.2-only) AND (BSD-3-Clause AND GPL-1.0-or-later) AND GFDL-1.1-or-later",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over COPYING.FDL, COPYING.GPL, COPYING.LGPL, COPYING.Xiph, README.md, examples/README, oss-fuzz/Readme.md: (BSD-3-Clause AND LGPL-2.1-only AND GPL-2.0-only AND GFDL-1.2-only) AND (BSD-3-Clause AND GPL-1.0-or-later) AND GFDL-1.1-or-later. Per-file detections: COPYING.FDL: GFDL-1.2-only; COPYING.GPL: GPL-2.0-only; COPYING.LGPL: LGPL-2.1-only; COPYING.Xiph: BSD-3-Clause; README.md: (BSD-3-Clause AND LGPL-2.1-only AND GPL-2.0-only AND GFDL-1.2-only) AND (BSD-3-Clause AND GPL-1.0-or-later) AND GFDL-1.1-or-later; oss-fuzz/Readme.md: (Apache-2.0 AND Vim) AND MIT."
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/flac/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-flac"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-flac"
+    }
+  ]
+}

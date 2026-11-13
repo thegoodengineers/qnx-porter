@@ -16,14 +16,14 @@ nothing to do with libsrtp. A Fisher-Yates shuffle with the same test random sou
 to do. The library code (`srtp_rdbx_*`, `bitvector_*`) is not touched.
 
 ## Verification, from our logs
-Without the patch, libsrtp 2.6.0's tests on the QNX 8.0 x86_64 target (`ports/libsrtp/logs/tests.log`):
+Without the patch, libsrtp 2.6.0's tests on the QNX 8.0 x86_64 target (`ports-2024/libsrtp/logs/tests.log`):
 ```
 FAIL  rdbx_driver (exit 139)
 FAIL  replay_driver (exit 1)
 FAIL  roc_driver (exit 139)
 8/12 tests passed on the QNX target
 ```
-`roc_driver`'s core (`ports/libsrtp/logs/crashes.log`) shows the test's own pointer overwritten:
+`roc_driver`'s core (`ports-2024/libsrtp/logs/crashes.log`) shows the test's own pointer overwritten:
 ```
 #0  0x00000043e59fce5e in ut_next_index (utc=utc@entry=0xa3fcd98000000000) at .../test/ut_sim.c:81
 ```

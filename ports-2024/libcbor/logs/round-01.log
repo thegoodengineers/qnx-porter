@@ -1,0 +1,120 @@
+$ cmake -S /home/chirag/qnx-porter/ports/libcbor/work/src -B /home/chirag/qnx-porter/ports/libcbor/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/libcbor/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/libcbor/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of size_t
+-- Check size of size_t - done
+-- LTO is not enabled
+-- Looking for ldexp
+-- Looking for ldexp - not found
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/libcbor/work/build
+$ cmake --build /home/chirag/qnx-porter/ports/libcbor/work/build -j 2 -- -k
+[  3%] Building C object src/CMakeFiles/cbor.dir/cbor.c.o
+[  6%] Building C object src/CMakeFiles/cbor.dir/allocators.c.o
+[  9%] Building C object src/CMakeFiles/cbor.dir/cbor/streaming.c.o
+[ 12%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/encoders.c.o
+[ 15%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/builder_callbacks.c.o
+[ 18%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/loaders.c.o
+[ 21%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/memory_utils.c.o
+[ 24%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/stack.c.o
+[ 27%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/unicode.c.o
+[ 30%] Building C object src/CMakeFiles/cbor.dir/cbor/encoding.c.o
+[ 33%] Building C object src/CMakeFiles/cbor.dir/cbor/serialization.c.o
+[ 36%] Building C object src/CMakeFiles/cbor.dir/cbor/arrays.c.o
+[ 39%] Building C object src/CMakeFiles/cbor.dir/cbor/common.c.o
+[ 42%] Building C object src/CMakeFiles/cbor.dir/cbor/floats_ctrls.c.o
+[ 45%] Building C object src/CMakeFiles/cbor.dir/cbor/bytestrings.c.o
+[ 48%] Building C object src/CMakeFiles/cbor.dir/cbor/callbacks.c.o
+[ 51%] Building C object src/CMakeFiles/cbor.dir/cbor/strings.c.o
+[ 54%] Building C object src/CMakeFiles/cbor.dir/cbor/maps.c.o
+[ 57%] Building C object src/CMakeFiles/cbor.dir/cbor/tags.c.o
+[ 60%] Building C object src/CMakeFiles/cbor.dir/cbor/ints.c.o
+[ 63%] Linking C static library libcbor.a
+[ 63%] Built target cbor
+[ 69%] Building C object examples/CMakeFiles/create_items.dir/create_items.c.o
+[ 69%] Building C object examples/CMakeFiles/readfile.dir/readfile.c.o
+[ 72%] Linking C executable create_items
+[ 75%] Linking C executable readfile
+[ 75%] Built target create_items
+[ 75%] Built target readfile
+[ 78%] Building C object examples/CMakeFiles/streaming_parser.dir/streaming_parser.c.o
+[ 81%] Building C object examples/CMakeFiles/streaming_array.dir/streaming_array.c.o
+[ 84%] Linking C executable streaming_parser
+[ 87%] Linking C executable streaming_array
+[ 87%] Built target streaming_parser
+[ 87%] Built target streaming_array
+[ 90%] Building C object examples/CMakeFiles/sort.dir/sort.c.o
+[ 93%] Building C object examples/CMakeFiles/hello.dir/hello.c.o
+[100%] Linking C executable hello
+[100%] Linking C executable sort
+[100%] Built target hello
+[100%] Built target sort
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:12: warning: ignoring '#pragma clang diagnostic' [-Wunknown-pragmas]
+   12 | #pragma clang diagnostic push
+      | 
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c: In function 'cbor_copy':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:287:1: warning: control reaches end of non-void function [-Wreturn-type]
+  287 | }
+      | ^
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c: In function '_cbor_copy_float_ctrl':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:152:1: warning: control reaches end of non-void function [-Wreturn-type]
+  152 | }
+      | ^
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c: In function '_cbor_copy_int':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:137:10: warning: 'res' may be used uninitialized [-Wmaybe-uninitialized]
+  137 |   return res;
+      |          ^~~
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:119:16: note: 'res' was declared here
+  119 |   cbor_item_t *res;
+      |                ^~~
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialize':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:41:1: warning: control reaches end of non-void function [-Wreturn-type]
+   41 | }
+      | ^
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialized_size':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:152:1: warning: control reaches end of non-void function [-Wreturn-type]
+  152 | }
+      | ^
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialize_uint':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:188:1: warning: control reaches end of non-void function [-Wreturn-type]
+  188 | }
+      | ^
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialize_negint':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:204:1: warning: control reaches end of non-void function [-Wreturn-type]
+  204 | }
+      | ^
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialize_float_ctrl':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:368:1: warning: control reaches end of non-void function [-Wreturn-type]
+  368 | }
+      | ^
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/floats_ctrls.c: In function 'cbor_float_get_float':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/floats_ctrls.c:59:1: warning: control reaches end of non-void function [-Wreturn-type]
+   59 | }
+      | ^
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/ints.c: In function 'cbor_get_int':
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/ints.c:52:1: warning: control reaches end of non-void function [-Wreturn-type]
+   52 | }
+      | ^

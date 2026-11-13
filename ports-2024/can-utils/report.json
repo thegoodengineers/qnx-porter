@@ -1,0 +1,57 @@
+{
+  "library": "can-utils",
+  "url": "https://github.com/linux-can/can-utils.git",
+  "version": "v2023.03",
+  "commit": "cfe41963f3425e9adb01a70cfaddedf5e5982720",
+  "build_system": "cmake",
+  "arch": "x86_64",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "",
+  "build_result": "failed",
+  "rounds": 1,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ran": false,
+  "patches_kept": 0,
+  "patches_by_rule": 0,
+  "patches_by_model": 0,
+  "patches": [],
+  "blocked_on": [
+    {
+      "kind": "missing_header",
+      "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: fatal error: endian.h: No such file or directory",
+      "hint": "QNX 8.0 has no <endian.h>: use <gulliver.h> (ENDIAN_LE32 etc.) or GCC's __BYTE_ORDER__"
+    },
+    {
+      "kind": "missing_header",
+      "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can/netlink.h:22:10: fatal error: linux/types.h: No such file or directory",
+      "hint": "<linux/types.h> is a Linux kernel header and does not exist on QNX"
+    },
+    {
+      "kind": "missing_header",
+      "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory",
+      "hint": "<linux/types.h> is a Linux kernel header and does not exist on QNX"
+    },
+    {
+      "kind": "missing_header",
+      "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can/gw.h:48:10: fatal error: linux/types.h: No such file or directory",
+      "hint": "<linux/types.h> is a Linux kernel header and does not exist on QNX"
+    },
+    {
+      "kind": "missing_header",
+      "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/slcan_attach.c:47:10: fatal error: linux/sockios.h: No such file or directory",
+      "hint": "<linux/sockios.h> is a Linux kernel header and does not exist on QNX"
+    },
+    {
+      "kind": "missing_header",
+      "error": "/home/chirag/qnx-porter/ports/can-utils/work/src/slcand.c:27:10: fatal error: linux/serial.h: No such file or directory",
+      "hint": "<linux/serial.h> is a Linux kernel header and does not exist on QNX"
+    }
+  ],
+  "minutes": 0.1,
+  "note": "Linux SocketCAN tools: expected not to port",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T08:25:21+00:00"
+}

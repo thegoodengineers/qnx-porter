@@ -1,0 +1,43 @@
+{
+  "library": "cmark",
+  "url": "https://github.com/commonmark/cmark.git",
+  "version": "0.31.1",
+  "commit": "bb3678d7a73cb02d35c8876ecd097072636200a8",
+  "build_system": "cmake",
+  "arch": "x86_64",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
+  "build_result": "built",
+  "rounds": 1,
+  "tests_passed": 1,
+  "tests_total": 1,
+  "tests_ran": true,
+  "patches_kept": 0,
+  "patches_by_rule": 0,
+  "patches_by_model": 0,
+  "patches": [],
+  "blocked_on": [],
+  "minutes": 0.3,
+  "note": "",
+  "tests_not_runnable": [
+    {
+      "name": "html_normalization",
+      "needs": "python3.10"
+    },
+    {
+      "name": "spectest_executable",
+      "needs": "python3.10"
+    },
+    {
+      "name": "smartpuncttest_executable",
+      "needs": "python3.10"
+    },
+    {
+      "name": "regressiontest_executable",
+      "needs": "python3.10"
+    }
+  ],
+  "crashes": [],
+  "finished": "2026-11-12T07:56:32+00:00"
+}

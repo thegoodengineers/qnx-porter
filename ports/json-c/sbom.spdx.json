@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "json-c-json-c-0.18-20240915-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/json-c-41a55cfcedb54d9c1874f2f0eb07b504091d7e37",
+  "name": "json-c-json-c-0.19-20260627-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/json-c-aa716cd8d663c976b99b0f30f102ee1d8ef63146",
   "creationInfo": {
-    "created": "2026-11-13T05:08:56Z",
+    "created": "2026-11-13T19:01:12Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-json-c",
       "name": "json-c",
-      "versionInfo": "json-c-0.18-20240915",
-      "downloadLocation": "git+https://github.com/json-c/json-c.git@41a55cfcedb54d9c1874f2f0eb07b504091d7e37",
+      "versionInfo": "json-c-0.19-20260627",
+      "downloadLocation": "git+https://github.com/json-c/json-c.git@aa716cd8d663c976b99b0f30f102ee1d8ef63146",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "MIT AND LicenseRef-scancode-unknown-license-reference",

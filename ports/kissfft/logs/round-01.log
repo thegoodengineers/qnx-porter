@@ -25,8 +25,8 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports/kissfft/work/build -j 2 -- -k
-[ 33%] Building C object CMakeFiles/kissfft.dir/kfc.c.o
 [ 33%] Building C object CMakeFiles/kissfft.dir/kiss_fft.c.o
+[ 33%] Building C object CMakeFiles/kissfft.dir/kfc.c.o
 [ 50%] Building C object CMakeFiles/kissfft.dir/kiss_fftnd.c.o
 [ 66%] Building C object CMakeFiles/kissfft.dir/kiss_fftndr.c.o
 [ 83%] Building C object CMakeFiles/kissfft.dir/kiss_fftr.c.o

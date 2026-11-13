@@ -58,19 +58,19 @@ def test_link_rules(tmp_path):
 
 
 def test_link_libsocket_symbols_from_batch_logs(tmp_path):
-    # Real ld output from ports/libcoap/logs/round-01.log (data symbol in6addr_any)
+    # Real ld output from ports-2024/libcoap/logs/round-01.log (data symbol in6addr_any)
     log_coap = ("/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:839:(.text+0x12df): "
                 "undefined reference to `in6addr_any'\n")
     [f1] = fixes.plan(parse(log_coap), tmp_path, Flags(), set())
     assert f1.rule == "link-libsocket" and f1.libs == ["-lsocket"]
 
-    # Real ld output from ports/libsrtp/logs/round-01.log (renamed symbol __inet_addr)
+    # Real ld output from ports-2024/libsrtp/logs/round-01.log (renamed symbol __inet_addr)
     log_srtp = ("/home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw.c:309:(.text.startup+0x2cb): "
                 "undefined reference to `__inet_addr'\n")
     [f2] = fixes.plan(parse(log_srtp), tmp_path, Flags(), set())
     assert f2.rule == "link-libsocket" and f2.libs == ["-lsocket"]
 
-    # Real ld output from ports/libevent/logs/round-02.log (renamed symbol __inet_ntoa)
+    # Real ld output from ports-2024/libevent/logs/round-02.log (renamed symbol __inet_ntoa)
     log_event = ("/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: "
                  "lib/libevent_extra-2.1.so.7.0.1: undefined reference to `__inet_ntoa'\n")
     [f3] = fixes.plan(parse(log_event), tmp_path, Flags(), set())
@@ -175,7 +175,7 @@ def test_an_edit_of_a_crlf_file_changes_only_the_edited_lines(tmp_path):
 
 
 def test_can_utils_endian_missing_header_fires_endian_compat_rule(tmp_path):
-    # Real error from ports/can-utils/report.json
+    # Real error from ports-2024/can-utils/report.json
     log = ("/home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: "
            "fatal error: endian.h: No such file or directory\n")
     src = "#include <endian.h>\nuint32_t to_be(uint32_t val) { return htobe32(val); }\n"
@@ -250,3 +250,24 @@ def test_dso_missing_form_of_undefined_reference_links_libsocket(tmp_path):
     [d] = [x for x in errors.parse(log) if x.kind == "undefined_ref"]
     assert d.symbol == "getsockopt"
     assert [f.rule for f in fixes.plan([d], tmp_path, Flags(), set())] == ["link-libsocket"]
+
+
+def test_bsd_list_macro_gets_sys_queue_h(tmp_path):
+    # open62541 v1.5.10 eventloop_posix.h: its own queue.h is skipped on __QNX__
+    from qnx_porter import errors
+    (tmp_path / "e.h").write_text("#include <errno.h>\n\nstruct s {\n    LIST_ENTRY(s) next;\n};\n")
+    [d] = errors.parse(f"{tmp_path}/e.h:4:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'")
+    [f] = fixes.plan([d], tmp_path, Flags(), set())
+    assert f.rule == "add-include" and "#include <sys/queue.h>" in f.edits["e.h"]
+
+
+def test_deep_recursion_backtrace_names_the_function():
+    # cJSON v1.7.19 misc_tests on x86_64 QNX: SIGSEGV in malloc at recursion depth 6540
+    from qnx_porter import crash
+    bt = ("#0  0x18a08fb92f in mspace_malloc (msp=0x1, bytes=64) at /b/malloc.c:1673\n"
+          "#1  0x18a08fd150 in malloc (bytes=64) at /b/ptmalloc3.c:139\n"
+          "#2  0x5e8d04d5de in cJSON_New_Item (hooks=0x5) at /s/cJSON.c:243\n"
+          + "".join(f"#{i}  0x5e8d04d6c7 in cJSON_Duplicate_rec (item=<optimized out>, depth={6540 - i}, "
+                    "recurse=1) at /s/cJSON.c:2824\n" for i in range(3, 12)))
+    assert crash.deep_recursion(bt) == "cJSON_Duplicate_rec"
+    assert crash.deep_recursion("#0  0x1 in strlen (s=0x0) at a.c:1\n#1  0x2 in printf (f=0x1) at b.c:2\n") is None

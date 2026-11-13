@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <testsuite name="qnx-target" tests="24" failures="4" skipped="0"><testcase name="test-changelist__SELECT" classname="qnx-target" /><testcase name="test-eof__SELECT" classname="qnx-target" /><testcase name="test-closed__SELECT" classname="qnx-target" /><testcase name="test-fdleak__SELECT" classname="qnx-target" /><testcase name="test-init__SELECT" classname="qnx-target" /><testcase name="test-time__SELECT" classname="qnx-target" /><testcase name="test-weof__SELECT" classname="qnx-target" /><testcase name="test-dumpevents__SELECT" classname="qnx-target" /><testcase name="regress__SELECT" classname="qnx-target"><failure message="exit 1">[Lost connection!] 
   [fork FAILED]
-1/300 TESTS FAILED. (47 skipped)
+1/303 TESTS FAILED. (47 skipped)
 </failure></testcase><testcase name="regress__SELECT_debug" classname="qnx-target"><failure message="exit 1">[Lost connection!] 
   [fork FAILED]
-1/300 TESTS FAILED. (47 skipped)
+1/303 TESTS FAILED. (47 skipped)
 </failure></testcase><testcase name="test-changelist__POLL" classname="qnx-target" /><testcase name="test-eof__POLL" classname="qnx-target" /><testcase name="test-closed__POLL" classname="qnx-target" /><testcase name="test-fdleak__POLL" classname="qnx-target" /><testcase name="test-init__POLL" classname="qnx-target" /><testcase name="test-time__POLL" classname="qnx-target" /><testcase name="test-weof__POLL" classname="qnx-target" /><testcase name="test-dumpevents__POLL" classname="qnx-target" /><testcase name="regress__POLL" classname="qnx-target"><failure message="exit 1">[Lost connection!] 
   [fork FAILED]
-1/301 TESTS FAILED. (46 skipped)
+1/304 TESTS FAILED. (46 skipped)
 </failure></testcase><testcase name="regress__POLL_debug" classname="qnx-target"><failure message="exit 1">[Lost connection!] 
   [fork FAILED]
-1/301 TESTS FAILED. (46 skipped)
+1/304 TESTS FAILED. (46 skipped)
 </failure></testcase><testcase name="test-ratelim__group_lim" classname="qnx-target" /><testcase name="test-ratelim__con_lim" classname="qnx-target" /><testcase name="test-ratelim__group_con_lim" classname="qnx-target" /><testcase name="test-ratelim__group_con_lim_drain" classname="qnx-target" /></testsuite>

@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "open62541-v1.4.6-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/open62541-50ae40d3c98a5ff0458ee2b5ae92bea53e11af4e",
+  "name": "open62541-v1.5.10-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/open62541-93c3bdfc9ea4718b503c6cbf57876237addd0f2c",
   "creationInfo": {
-    "created": "2026-11-13T05:00:28Z",
+    "created": "2026-11-13T19:02:38Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,13 +15,13 @@
     {
       "SPDXID": "SPDXRef-Package-open62541",
       "name": "open62541",
-      "versionInfo": "v1.4.6",
-      "downloadLocation": "git+https://github.com/open62541/open62541.git@50ae40d3c98a5ff0458ee2b5ae92bea53e11af4e",
+      "versionInfo": "v1.5.10",
+      "downloadLocation": "git+https://github.com/open62541/open62541.git@93c3bdfc9ea4718b503c6cbf57876237addd0f2c",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "MPL-2.0 AND (MPL-2.0 AND LicenseRef-scancode-public-domain AND CC0-1.0)",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over LICENSE, LICENSE-CC0, README.md, arch/Readme.md, deps/README.md: MPL-2.0 AND (MPL-2.0 AND LicenseRef-scancode-public-domain AND CC0-1.0). Per-file detections: LICENSE: MPL-2.0; LICENSE-CC0: CC0-1.0; README.md: MPL-2.0 AND (MPL-2.0 AND LicenseRef-scancode-public-domain AND CC0-1.0); deps/README.md: MPL-2.0 AND BSD-3-Clause AND (BSD-3-Clause AND Apache-2.0 AND MPL-2.0)."
+      "licenseComments": "ScanCode summary declared licence over LICENSE, LICENSE-CC0, README.md, arch/README.md, deps/README.md, plugins/README.md: MPL-2.0 AND (MPL-2.0 AND LicenseRef-scancode-public-domain AND CC0-1.0). Per-file detections: LICENSE: MPL-2.0; LICENSE-CC0: CC0-1.0; README.md: MPL-2.0 AND (MPL-2.0 AND LicenseRef-scancode-public-domain AND CC0-1.0); deps/README.md: MPL-2.0 AND BSD-3-Clause AND (BSD-3-Clause AND Apache-2.0 AND MPL-2.0); plugins/README.md: (MPL-2.0 AND LicenseRef-scancode-public-domain AND CC0-1.0) AND MPL-2.0."
     }
   ],
   "hasExtractedLicensingInfos": [
@@ -39,16 +39,16 @@
       "checksums": [
         {
           "algorithm": "SHA1",
-          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          "checksumValue": "2242e0cbce5401115e5475debb09a3ec501cdf15"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          "checksumValue": "2b2c8d001d1be453bc6d20f133933a966e21799d8d56402bfcbeee24dc222412"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION",
-      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+      "comment": "QNX 8.0 port changes, apply with git apply"
     }
   ],
   "relationships": [

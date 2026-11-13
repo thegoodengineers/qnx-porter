@@ -1,0 +1,635 @@
+$ cmake -S /home/chirag/qnx-porter/ports/cmocka/work/src -B /home/chirag/qnx-porter/ports/cmocka/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/cmocka/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/cmocka/work/qnx-run -DUNIT_TESTING=ON
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test REQUIRED_FLAGS_WERROR
+-- Performing Test REQUIRED_FLAGS_WERROR - Success
+-- Performing Test WITH_STD_C99_FLAG
+-- Performing Test WITH_STD_C99_FLAG - Success
+-- Performing Test WITH_WPEDANTIC_FLAG
+-- Performing Test WITH_WPEDANTIC_FLAG - Success
+-- Performing Test WITH_WALL_FLAG
+-- Performing Test WITH_WALL_FLAG - Success
+-- Performing Test WITH_WSHADOW_FLAG
+-- Performing Test WITH_WSHADOW_FLAG - Success
+-- Performing Test WITH_WMISSING_PROTOTYPES_FLAG
+-- Performing Test WITH_WMISSING_PROTOTYPES_FLAG - Success
+-- Performing Test WITH_WCAST_ALIGN_FLAG
+-- Performing Test WITH_WCAST_ALIGN_FLAG - Success
+-- Performing Test WITH_WCAST_QUAL_FLAG
+-- Performing Test WITH_WCAST_QUAL_FLAG - Success
+-- Performing Test WITH_WERROR_ADDRESS_FLAG
+-- Performing Test WITH_WERROR_ADDRESS_FLAG - Success
+-- Performing Test WITH_WSTRICT_PROTOTYPES_FLAG
+-- Performing Test WITH_WSTRICT_PROTOTYPES_FLAG - Success
+-- Performing Test WITH_WERROR_STRICT_PROTOTYPES_FLAG
+-- Performing Test WITH_WERROR_STRICT_PROTOTYPES_FLAG - Success
+-- Performing Test WITH_WWRITE_STRINGS_FLAG
+-- Performing Test WITH_WWRITE_STRINGS_FLAG - Success
+-- Performing Test WITH_WERROR_WRITE_STRINGS_FLAG
+-- Performing Test WITH_WERROR_WRITE_STRINGS_FLAG - Success
+-- Performing Test WITH_WIMPLICIT_FUNCTION_DECLARATION_FLAG
+-- Performing Test WITH_WIMPLICIT_FUNCTION_DECLARATION_FLAG - Success
+-- Performing Test WITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG
+-- Performing Test WITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG - Success
+-- Performing Test WITH_WPOINTER_ARITH_FLAG
+-- Performing Test WITH_WPOINTER_ARITH_FLAG - Success
+-- Performing Test WITH_WERROR_POINTER_ARITH_FLAG
+-- Performing Test WITH_WERROR_POINTER_ARITH_FLAG - Success
+-- Performing Test WITH_WRETURN_TYPE_FLAG
+-- Performing Test WITH_WRETURN_TYPE_FLAG - Success
+-- Performing Test WITH_WERROR_RETURN_TYPE_FLAG
+-- Performing Test WITH_WERROR_RETURN_TYPE_FLAG - Success
+-- Performing Test WITH_WUNINITIALIZED_FLAG
+-- Performing Test WITH_WUNINITIALIZED_FLAG - Success
+-- Performing Test WITH_WERROR_UNINITIALIZED_FLAG
+-- Performing Test WITH_WERROR_UNINITIALIZED_FLAG - Success
+-- Performing Test WITH_WIMPLICIT_FALLTHROUGH_FLAG
+-- Performing Test WITH_WIMPLICIT_FALLTHROUGH_FLAG - Success
+-- Performing Test WITH_WERROR_STRICT_OVERFLOW_FLAG
+-- Performing Test WITH_WERROR_STRICT_OVERFLOW_FLAG - Success
+-- Performing Test WITH_WSTRICT_OVERFLOW_2_FLAG
+-- Performing Test WITH_WSTRICT_OVERFLOW_2_FLAG - Success
+-- Performing Test WITH_WNO_FORMAT_ZERO_LENGTH_FLAG
+-- Performing Test WITH_WNO_FORMAT_ZERO_LENGTH_FLAG - Success
+-- Performing Test WITH_WMISSING_FIELD_INITIALIZERS_FLAG
+-- Performing Test WITH_WMISSING_FIELD_INITIALIZERS_FLAG - Success
+-- Performing Test WITH_WOLD_STYLE_DEFINITION_FLAG
+-- Performing Test WITH_WOLD_STYLE_DEFINITION_FLAG - Success
+-- Performing Test WITH_WERROR_OLD_STYLE_DEFINITION_FLAG
+-- Performing Test WITH_WERROR_OLD_STYLE_DEFINITION_FLAG - Success
+-- Performing Test WITH_WIMPLICIT_INT_FLAG
+-- Performing Test WITH_WIMPLICIT_INT_FLAG - Success
+-- Performing Test WITH_WERROR_IMPLICIT_INT_FLAG
+-- Performing Test WITH_WERROR_IMPLICIT_INT_FLAG - Success
+-- Performing Test WITH_WINT_CONVERSION_FLAG
+-- Performing Test WITH_WINT_CONVERSION_FLAG - Success
+-- Performing Test WITH_WERROR_INT_CONVERSION_FLAG
+-- Performing Test WITH_WERROR_INT_CONVERSION_FLAG - Success
+-- Performing Test WITH_WFLOAT_CONVERSION_FLAG
+-- Performing Test WITH_WFLOAT_CONVERSION_FLAG - Success
+-- Performing Test WITH_WERROR_FLOAT_CONVERSION_FLAG
+-- Performing Test WITH_WERROR_FLOAT_CONVERSION_FLAG - Success
+-- Performing Test REQUIRED_FLAGS_WFORMAT
+-- Performing Test REQUIRED_FLAGS_WFORMAT - Success
+-- Performing Test WITH_WFORMAT_SECURITY_FLAG
+-- Performing Test WITH_WFORMAT_SECURITY_FLAG - Success
+-- Performing Test WITH_WERROR_FORMAT_SECURITY_FLAG
+-- Performing Test WITH_WERROR_FORMAT_SECURITY_FLAG - Success
+-- Performing Test WITH_FNO_COMMON_FLAG
+-- Performing Test WITH_FNO_COMMON_FLAG - Success
+-- Performing Test WITH_STACK_PROTECTOR_STRONG
+-- Performing Test WITH_STACK_PROTECTOR_STRONG - Success
+-- Performing Test WITH_STACK_CLASH_PROTECTION
+-- Performing Test WITH_STACK_CLASH_PROTECTION - Success
+-- Looking for assert.h
+-- Looking for assert.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for io.h
+-- Looking for io.h - not found
+-- Looking for malloc.h
+-- Looking for malloc.h - found
+-- Looking for memory.h
+-- Looking for memory.h - found
+-- Looking for setjmp.h
+-- Looking for setjmp.h - found
+-- Looking for signal.h
+-- Looking for signal.h - found
+-- Looking for stdarg.h
+-- Looking for stdarg.h - found
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdio.h
+-- Looking for stdio.h - found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - found
+-- Looking for string.h
+-- Looking for string.h - found
+-- Looking for strings.h
+-- Looking for strings.h - found
+-- Looking for sys/stat.h
+-- Looking for sys/stat.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for time.h
+-- Looking for time.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Performing Test HAVE_STRUCT_TIMESPEC
+-- Performing Test HAVE_STRUCT_TIMESPEC - Success
+-- Check size of uintptr_t
+-- Check size of uintptr_t - done
+-- Looking for calloc
+-- Looking for calloc - found
+-- Looking for exit
+-- Looking for exit - found
+-- Looking for fprintf
+-- Looking for fprintf - found
+-- Looking for free
+-- Looking for free - found
+-- Looking for longjmp
+-- Looking for longjmp - found
+-- Looking for siglongjmp
+-- Looking for siglongjmp - found
+-- Looking for malloc
+-- Looking for malloc - found
+-- Looking for memcpy
+-- Looking for memcpy - found
+-- Looking for memset
+-- Looking for memset - found
+-- Looking for printf
+-- Looking for printf - found
+-- Looking for setjmp
+-- Looking for setjmp - found
+-- Looking for signal
+-- Looking for signal - found
+-- Looking for strsignal
+-- Looking for strsignal - found
+-- Looking for strcmp
+-- Looking for strcmp - found
+-- Looking for clock_gettime
+-- Looking for clock_gettime - found
+-- Performing Test HAVE_BUILTIN_ALIGN_DOWN
+-- Performing Test HAVE_BUILTIN_ALIGN_DOWN - Failed
+-- Looking for sprintf
+-- Looking for sprintf - found
+-- Looking for vsnprintf
+-- Looking for vsnprintf - found
+-- Performing Test HAVE_GCC_THREAD_LOCAL_STORAGE
+-- Performing Test HAVE_GCC_THREAD_LOCAL_STORAGE - Success
+-- Performing Test HAVE_CLOCK_REALTIME
+-- Performing Test HAVE_CLOCK_REALTIME - Success
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/cmocka/work/build
+$ cmake --build /home/chirag/qnx-porter/ports/cmocka/work/build -j 2 -- -k
+Consolidate compiler generated dependencies of target cmocka
+Consolidate compiler generated dependencies of target cmocka-static
+[  1%] Building C object src/CMakeFiles/cmocka-static.dir/cmocka.c.o
+[  1%] Building C object src/CMakeFiles/cmocka.dir/cmocka.c.o
+[  1%] Linking C static library libcmocka-static.a
+[  1%] Built target cmocka-static
+Consolidate compiler generated dependencies of target calculator
+[  2%] Building C object example/CMakeFiles/calculator.dir/calculator.c.o
+[  3%] Linking C static library libcmocka.a
+[  3%] Built target cmocka
+[  4%] Building C object tests/CMakeFiles/test_alloc.dir/test_alloc.c.o
+[  5%] Linking C executable calculator
+[  5%] Built target calculator
+[  5%] Building C object tests/CMakeFiles/test_buffer.dir/test_buffer.c.o
+[  5%] Linking C executable test_alloc
+[  5%] Built target test_alloc
+[  6%] Building C object tests/CMakeFiles/test_expect_check.dir/test_expect_check.c.o
+[  7%] Linking C executable test_expect_check
+[  7%] Built target test_expect_check
+[  7%] Building C object tests/CMakeFiles/test_expect_check_old_api.dir/test_expect_check_old_api.c.o
+[  8%] Linking C executable test_expect_check_old_api
+[  8%] Built target test_expect_check_old_api
+[  9%] Building C object tests/CMakeFiles/test_expect_check_old_api_fail.dir/test_expect_check_old_api_fail.c.o
+[  9%] Linking C executable test_expect_check_old_api_fail
+[  9%] Built target test_expect_check_old_api_fail
+[ 10%] Building C object tests/CMakeFiles/test_expect_check_new_api.dir/test_expect_check_new_api.c.o
+[ 10%] Linking C executable test_expect_check_new_api
+[ 10%] Built target test_expect_check_new_api
+[ 11%] Building C object tests/CMakeFiles/test_expect_check_new_api_fail.dir/test_expect_check_new_api_fail.c.o
+[ 12%] Linking C executable test_expect_check_new_api_fail
+[ 12%] Built target test_expect_check_new_api_fail
+[ 12%] Building C object tests/CMakeFiles/test_expect_u_int_in_set.dir/test_expect_u_int_in_set.c.o
+[ 13%] Linking C executable test_expect_u_int_in_set
+[ 13%] Built target test_expect_u_int_in_set
+[ 13%] Building C object tests/CMakeFiles/test_expect_u_int_not_in_set.dir/test_expect_u_int_not_in_set.c.o
+[ 14%] Linking C executable test_expect_u_int_not_in_set
+[ 14%] Built target test_expect_u_int_not_in_set
+[ 15%] Building C object tests/CMakeFiles/test_expect_value.dir/test_expect_value.c.o
+[ 15%] Linking C executable test_expect_value
+[ 15%] Built target test_expect_value
+[ 15%] Building C object tests/CMakeFiles/test_expect_check_fail.dir/test_expect_check_fail.c.o
+[ 16%] Linking C executable test_expect_check_fail
+[ 16%] Built target test_expect_check_fail
+[ 17%] Building C object tests/CMakeFiles/test_expect_in_range.dir/test_expect_in_range.c.o
+[ 18%] Linking C executable test_expect_in_range
+[ 18%] Built target test_expect_in_range
+[ 19%] Building C object tests/CMakeFiles/test_group_setup_assert.dir/test_group_setup_assert.c.o
+[ 20%] Linking C executable test_group_setup_assert
+[ 20%] Built target test_group_setup_assert
+[ 20%] Building C object tests/CMakeFiles/test_group_setup_fail.dir/test_group_setup_fail.c.o
+[ 21%] Linking C executable test_group_setup_fail
+[ 21%] Built target test_group_setup_fail
+[ 22%] Building C object tests/CMakeFiles/test_fixtures.dir/test_fixtures.c.o
+[ 23%] Linking C executable test_fixtures
+[ 23%] Built target test_fixtures
+[ 24%] Building C object tests/CMakeFiles/test_group_fixtures.dir/test_group_fixtures.c.o
+[ 25%] Linking C executable test_buffer
+[ 25%] Linking C executable test_group_fixtures
+[ 25%] Built target test_buffer
+[ 25%] Building C object tests/CMakeFiles/test_groups.dir/test_groups.c.o
+[ 25%] Built target test_group_fixtures
+[ 25%] Building C object tests/CMakeFiles/test_float_macros.dir/test_float_macros.c.o
+[ 26%] Linking C executable test_groups
+[ 27%] Linking C executable test_float_macros
+[ 27%] Built target test_groups
+[ 27%] Built target test_float_macros
+[ 28%] Building C object tests/CMakeFiles/test_double_macros.dir/test_double_macros.c.o
+[ 29%] Building C object tests/CMakeFiles/test_assert_double_float.dir/test_assert_double_float.c.o
+[ 29%] Linking C executable test_double_macros
+[ 30%] Linking C executable test_assert_double_float
+[ 30%] Built target test_double_macros
+[ 30%] Built target test_assert_double_float
+[ 30%] Building C object tests/CMakeFiles/test_assert_double_float_fail.dir/test_assert_double_float_fail.c.o
+[ 31%] Building C object tests/CMakeFiles/test_assert_true.dir/test_assert_true.c.o
+[ 32%] Linking C executable test_assert_double_float_fail
+[ 32%] Linking C executable test_assert_true
+[ 32%] Built target test_assert_double_float_fail
+[ 32%] Built target test_assert_true
+[ 33%] Building C object tests/CMakeFiles/test_assert_true_fail.dir/test_assert_true_fail.c.o
+[ 33%] Building C object tests/CMakeFiles/test_assert_false.dir/test_assert_false.c.o
+[ 34%] Linking C executable test_assert_true_fail
+[ 35%] Linking C executable test_assert_false
+[ 35%] Built target test_assert_true_fail
+[ 35%] Built target test_assert_false
+[ 36%] Building C object tests/CMakeFiles/test_assert_false_fail.dir/test_assert_false_fail.c.o
+[ 36%] Building C object tests/CMakeFiles/test_assert_macros.dir/test_assert_macros.c.o
+[ 36%] Linking C executable test_assert_false_fail
+[ 37%] Linking C executable test_assert_macros
+[ 37%] Built target test_assert_false_fail
+[ 38%] Building C object tests/CMakeFiles/test_assert_macros_fail.dir/test_assert_macros_fail.c.o
+[ 38%] Built target test_assert_macros
+[ 39%] Building C object tests/CMakeFiles/test_assert_memory.dir/test_assert_memory.c.o
+[ 39%] Linking C executable test_assert_macros_fail
+[ 40%] Linking C executable test_assert_memory
+[ 40%] Built target test_assert_macros_fail
+[ 40%] Building C object tests/CMakeFiles/test_assert_memory_fail.dir/test_assert_memory_fail.c.o
+[ 40%] Built target test_assert_memory
+[ 40%] Building C object tests/CMakeFiles/test_assert_ptr.dir/test_assert_ptr.c.o
+[ 41%] Linking C executable test_assert_memory_fail
+[ 42%] Linking C executable test_assert_ptr
+[ 42%] Built target test_assert_memory_fail
+[ 43%] Building C object tests/CMakeFiles/test_assert_ptr_fail.dir/test_assert_ptr_fail.c.o
+[ 43%] Built target test_assert_ptr
+[ 44%] Building C object tests/CMakeFiles/test_assert_ptr_msg.dir/test_assert_ptr_msg.c.o
+[ 44%] Linking C executable test_assert_ptr_fail
+[ 45%] Linking C executable test_assert_ptr_msg
+[ 45%] Built target test_assert_ptr_fail
+[ 45%] Building C object tests/CMakeFiles/test_assert_ptr_msg_fail.dir/test_assert_ptr_msg_fail.c.o
+[ 45%] Built target test_assert_ptr_msg
+[ 46%] Building C object tests/CMakeFiles/test_assert_funcptr.dir/test_assert_funcptr.c.o
+[ 47%] Linking C executable test_assert_ptr_msg_fail
+[ 48%] Linking C executable test_assert_funcptr
+[ 48%] Built target test_assert_ptr_msg_fail
+[ 48%] Building C object tests/CMakeFiles/test_assert_u_int.dir/test_assert_u_int.c.o
+[ 48%] Built target test_assert_funcptr
+[ 49%] Building C object tests/CMakeFiles/test_assert_u_int_fail.dir/test_assert_u_int_fail.c.o
+[ 50%] Linking C executable test_assert_u_int
+[ 50%] Linking C executable test_assert_u_int_fail
+[ 50%] Built target test_assert_u_int
+[ 51%] Building C object tests/CMakeFiles/test_assert_range.dir/test_assert_range.c.o
+[ 51%] Built target test_assert_u_int_fail
+[ 52%] Building C object tests/CMakeFiles/test_assert_range_fail.dir/test_assert_range_fail.c.o
+[ 52%] Linking C executable test_assert_range
+[ 53%] Linking C executable test_assert_range_fail
+[ 53%] Built target test_assert_range
+[ 53%] Building C object tests/CMakeFiles/test_assert_set.dir/test_assert_set.c.o
+[ 53%] Built target test_assert_range_fail
+[ 54%] Building C object tests/CMakeFiles/test_assert_set_fail.dir/test_assert_set_fail.c.o
+[ 54%] Linking C executable test_assert_set_fail
+[ 55%] Linking C executable test_assert_set
+[ 55%] Built target test_assert_set_fail
+[ 55%] Built target test_assert_set
+[ 56%] Building C object tests/CMakeFiles/test_basics.dir/test_basics.c.o
+[ 57%] Building C object tests/CMakeFiles/test_has_mock.dir/test_has_mock.c.o
+[ 58%] Linking C executable test_basics
+[ 58%] Built target test_basics
+[ 58%] Linking C executable test_has_mock
+[ 59%] Building C object tests/CMakeFiles/test_log.dir/test_log.c.o
+[ 59%] Built target test_has_mock
+[ 59%] Building C object tests/CMakeFiles/test_skip.dir/test_skip.c.o
+[ 60%] Linking C executable test_skip
+[ 60%] Built target test_skip
+[ 61%] Building C object tests/CMakeFiles/test_stop.dir/test_stop.c.o
+[ 62%] Linking C executable test_stop
+[ 62%] Built target test_stop
+[ 62%] Building C object tests/CMakeFiles/test_stop_fail.dir/test_stop_fail.c.o
+[ 63%] Linking C executable test_stop_fail
+[ 63%] Built target test_stop_fail
+[ 64%] Building C object tests/CMakeFiles/test_strmatch.dir/test_strmatch.c.o
+[ 65%] Linking C executable test_log
+[ 65%] Built target test_log
+[ 65%] Building C object tests/CMakeFiles/test_strreplace.dir/test_strreplace.c.o
+[ 66%] Linking C executable test_strmatch
+[ 66%] Built target test_strmatch
+[ 67%] Building C object tests/CMakeFiles/test_setup_fail.dir/test_setup_fail.c.o
+[ 68%] Linking C executable test_setup_fail
+[ 68%] Built target test_setup_fail
+[ 69%] Building C object tests/CMakeFiles/test_ordering.dir/test_ordering.c.o
+[ 69%] Linking C executable test_ordering
+[ 69%] Built target test_ordering
+[ 70%] Building C object tests/CMakeFiles/test_ordering_fail.dir/test_ordering_fail.c.o
+[ 71%] Linking C executable test_ordering_fail
+[ 71%] Built target test_ordering_fail
+[ 71%] Building C object tests/CMakeFiles/test_returns.dir/test_returns.c.o
+[ 72%] Linking C executable test_returns
+[ 72%] Built target test_returns
+[ 73%] Building C object tests/CMakeFiles/test_returns_fail.dir/test_returns_fail.c.o
+[ 73%] Linking C executable test_returns_fail
+[ 73%] Built target test_returns_fail
+[ 73%] Building C object tests/CMakeFiles/test_set_parameter.dir/test_set_parameter.c.o
+[ 74%] Linking C executable test_set_parameter
+[ 74%] Built target test_set_parameter
+[ 75%] Building C object tests/CMakeFiles/test_set_parameter_fail.dir/test_set_parameter_fail.c.o
+[ 75%] Linking C executable test_set_parameter_fail
+[ 75%] Built target test_set_parameter_fail
+[ 76%] Building C object tests/CMakeFiles/test_set_errno.dir/test_set_errno.c.o
+[ 76%] Linking C executable test_set_errno
+[ 76%] Built target test_set_errno
+[ 77%] Building C object tests/CMakeFiles/test_set_errno_fail.dir/test_set_errno_fail.c.o
+[ 78%] Linking C executable test_set_errno_fail
+[ 78%] Built target test_set_errno_fail
+[ 79%] Building C object tests/CMakeFiles/test_string.dir/test_string.c.o
+[ 79%] Linking C executable test_string
+[ 79%] Built target test_string
+[ 80%] Building C object tests/CMakeFiles/test_wildcard.dir/test_wildcard.c.o
+[ 81%] Linking C executable test_wildcard
+[ 81%] Built target test_wildcard
+[ 82%] Building C object tests/CMakeFiles/test_skip_filter.dir/test_skip_filter.c.o
+[ 82%] Linking C executable test_skip_filter
+[ 82%] Built target test_skip_filter
+[ 83%] Building C object tests/CMakeFiles/test_skip_filter_env.dir/test_skip_filter_env.c.o
+[ 83%] Linking C executable test_skip_filter_env
+[ 83%] Built target test_skip_filter_env
+[ 84%] Linking C executable test_strreplace
+[ 84%] Building C object tests/CMakeFiles/test_mock_exit.dir/test_mock_exit.c.o
+[ 85%] Built target test_strreplace
+[ 85%] Linking C executable test_mock_exit
+[ 86%] Building C object tests/CMakeFiles/test_exception_handler.dir/test_exception_handler.c.o
+[ 86%] Built target test_mock_exit
+[ 87%] Building C object tests/CMakeFiles/test_tap14.dir/test_tap14.c.o
+[ 87%] Linking C executable test_exception_handler
+[ 87%] Built target test_exception_handler
+Consolidate compiler generated dependencies of target calculator_test
+[ 87%] Building C object example/CMakeFiles/calculator_test.dir/calculator.c.o
+[ 87%] Linking C executable test_tap14
+[ 87%] Built target test_tap14
+[ 88%] Building C object example/CMakeFiles/calculator_test.dir/calculator_test.c.o
+Consolidate compiler generated dependencies of target simple_test
+[ 88%] Building C object example/CMakeFiles/simple_test.dir/simple_test.c.o
+[ 89%] Linking C executable simple_test
+[ 89%] Built target simple_test
+Consolidate compiler generated dependencies of target assert_macro_test
+[ 90%] Linking C executable calculator_test
+[ 90%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro.c.o
+[ 90%] Built target calculator_test
+[ 91%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro_test.c.o
+Consolidate compiler generated dependencies of target assert_module_test
+[ 92%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module.c.o
+[ 93%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module_test.c.o
+[ 93%] Linking C executable assert_macro_test
+[ 93%] Linking C executable assert_module_test
+[ 93%] Built target assert_macro_test
+Consolidate compiler generated dependencies of target set_parameters_test
+[ 94%] Building C object example/CMakeFiles/set_parameters_test.dir/set_parameters.c.o
+[ 94%] Built target assert_module_test
+Consolidate compiler generated dependencies of target set_errno_tests
+[ 95%] Building C object example/CMakeFiles/set_errno_tests.dir/set_errno.c.o
+[ 96%] Linking C executable set_parameters_test
+[ 96%] Linking C executable set_errno_tests
+[ 96%] Built target set_parameters_test
+[ 96%] Built target set_errno_tests
+Consolidate compiler generated dependencies of target expect_check_data_example
+[ 97%] Building C object example/CMakeFiles/expect_check_data_example.dir/expect_check_data_example.c.o
+Consolidate compiler generated dependencies of target output_override_test
+[ 97%] Building C object example/CMakeFiles/output_override_test.dir/output_override_test.c.o
+[ 98%] Linking C executable output_override_test
+[ 99%] Linking C executable expect_check_data_example
+[ 99%] Built target output_override_test
+Consolidate compiler generated dependencies of target expect_check_data_advanced
+[100%] Building C object example/CMakeFiles/expect_check_data_advanced.dir/expect_check_data_advanced.c.o
+[100%] Built target expect_check_data_example
+[100%] Linking C executable expect_check_data_advanced
+[100%] Built target expect_check_data_advanced
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'mock_test_a':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:32:5: warning: 'cmocka_macro' is deprecated: check_expected: use check_expected_int or check_expected_uint instead [-Wdeprecated-declarations]
+   32 |     check_expected(value);
+      |     ^~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_integer':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:52:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+   52 |     expect_check(mock_test_a, value, custom_checker_old, 0);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:52:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+In file included from /home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:23:
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_integer_nonzero':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:60:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+   60 |     expect_check(mock_test_a, value, custom_checker_old, 42);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:60:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_count':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:68:5: warning: 'cmocka_macro' is deprecated: expect_check_count: use expect_check_data_count instead [-Wdeprecated-declarations]
+   68 |     expect_check_count(mock_test_a, value, custom_checker_old, 100, 2);
+      |     ^~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:68:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_count_multiple_values':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:77:5: warning: 'cmocka_macro' is deprecated: expect_check_count: use expect_check_data_count instead [-Wdeprecated-declarations]
+   77 |     expect_check_count(mock_test_a, value, custom_checker_old, 10, 3);
+      |     ^~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:77:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'custom_range_checker_old':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:86:5: warning: 'cmocka_macro' is deprecated: assert_in_range: use assert_int_in_range or assert_uint_in_range instead [-Wdeprecated-declarations]
+   86 |     assert_in_range(param, 0, max);
+      |     ^~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_range':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:94:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+   94 |     expect_check(mock_test_a, value, custom_range_checker_old, 100);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:94:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_range_edge_min':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:102:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+  102 |     expect_check(mock_test_a, value, custom_range_checker_old, 100);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:102:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_range_edge_max':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:110:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+  110 |     expect_check(mock_test_a, value, custom_range_checker_old, 100);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:110:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_pointer':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:128:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+  128 |     expect_check(mock_test_b,
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:128:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_pointer_null':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:139:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+  139 |     expect_check(mock_test_b,
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:139:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c: In function 'test_expect_check_old_api_not_equal':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:157:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+  157 |     expect_check(mock_test_a, value, custom_not_equal_checker_old, 0);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api.c:157:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c: In function 'mock_test_a':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:32:5: warning: 'cmocka_macro' is deprecated: check_expected: use check_expected_int or check_expected_uint instead [-Wdeprecated-declarations]
+   32 |     check_expected(value);
+      |     ^~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c: In function 'test_expect_check_old_api_fail_mismatch':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:51:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+   51 |     expect_check(mock_test_a, value, failing_checker_old, 0);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:51:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+In file included from /home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:23:
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c: In function 'test_expect_check_old_api_fail_missing_call':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:60:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+   60 |     expect_check(mock_test_a, value, failing_checker_old, 0);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:60:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c: In function 'test_expect_check_old_api_fail_extra_call':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:68:5: warning: 'cmocka_macro' is deprecated: expect_check_count: use expect_check_data_count instead [-Wdeprecated-declarations]
+   68 |     expect_check_count(mock_test_a, value, failing_checker_old, 0, 1);
+      |     ^~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:68:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c: In function 'test_expect_check_old_api_fail_wrong_count':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:78:5: warning: 'cmocka_macro' is deprecated: expect_check_count: use expect_check_data_count instead [-Wdeprecated-declarations]
+   78 |     expect_check_count(mock_test_a, value, failing_checker_old, 42, 3);
+      |     ^~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:78:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c: In function 'test_expect_check_old_api_fail_ptr_mismatch':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:99:5: warning: 'cmocka_macro' is deprecated: expect_check: use expect_check_data instead [-Wdeprecated-declarations]
+   99 |     expect_check(mock_test_b,
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_check_old_api_fail.c:99:5: warning: '_expect_check' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6728:6: note: declared here
+ 6728 | void _expect_check(
+      |      ^~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_in_range.c: In function 'test_expect_int_in_range':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_in_range.c:74:5: warning: 'cmocka_macro' is deprecated: expect_in_range: use expect_int_in_range or expect_uint_in_range instead [-Wdeprecated-declarations]
+   74 |     expect_in_range(mock_test_int, value, 0, 10);
+      |     ^~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_in_range.c:74:5: warning: 'cmocka_macro' is deprecated: expect_in_range_count: use expect_int_in_range_count or expect_uint_in_range_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_in_range.c:74:5: warning: '_expect_in_range' is deprecated [-Wdeprecated-declarations]
+In file included from /home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_in_range.c:3:
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6791:6: note: declared here
+ 6791 | void _expect_in_range(const char *const function,
+      |      ^~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_in_range.c: In function 'test_expect_int_in_range_count':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_in_range.c:82:5: warning: 'cmocka_macro' is deprecated: expect_in_range_count: use expect_int_in_range_count or expect_uint_in_range_count instead [-Wdeprecated-declarations]
+   82 |     expect_in_range_count(mock_test_int, value, 0, 10, 4);
+      |     ^~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_expect_in_range.c:82:5: warning: '_expect_in_range' is deprecated [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/include/cmocka.h:6791:6: note: declared here
+ 6791 | void _expect_in_range(const char *const function,
+      |      ^~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_has_mock.c: In function 'test_has_mock_with_will_return_always':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_has_mock.c:74:5: warning: 'cmocka_macro' is deprecated: will_return_always: use will_return_int_always or will_return_uint_always instead [-Wdeprecated-declarations]
+   74 |     will_return_always(get_repeating_value, value);
+      |     ^~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_has_mock.c:74:5: warning: 'cmocka_macro' is deprecated: will_return_count: use will_return_int_count or will_return_uint_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_has_mock.c: In function 'test_has_mock_with_will_return_count':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_has_mock.c:89:5: warning: 'cmocka_macro' is deprecated: will_return_count: use will_return_int_count or will_return_uint_count instead [-Wdeprecated-declarations]
+   89 |     will_return_count(get_value, value, 3);
+      |     ^~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_stop_fail.c: In function 'test_stop_fails_when_not_checked_values_exist':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_stop_fail.c:63:5: warning: 'cmocka_macro' is deprecated: expect_value: use expect_int_value or expect_uint_value instead [-Wdeprecated-declarations]
+   63 |     expect_value(mock_test_a_expected, value, 5);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_stop_fail.c:63:5: warning: 'cmocka_macro' is deprecated: expect_value_count: use expect_int_value_count or expect_uint_value_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_stop_fail.c:64:5: warning: 'cmocka_macro' is deprecated: expect_value: use expect_int_value or expect_uint_value instead [-Wdeprecated-declarations]
+   64 |     expect_value(mock_test_b_expected, value, 7);
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_stop_fail.c:64:5: warning: 'cmocka_macro' is deprecated: expect_value_count: use expect_int_value_count or expect_uint_value_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c: In function 'test_will_return_maybe_for_no_calls':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c:71:5: warning: 'cmocka_macro' is deprecated: will_return_maybe: use will_return_int_maybe or will_return_uint_maybe instead [-Wdeprecated-declarations]
+   71 |     will_return_maybe(mock_function, 32);
+      |     ^~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c:71:5: warning: 'cmocka_macro' is deprecated: will_return_count: use will_return_int_count or will_return_uint_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c: In function 'test_will_return_maybe_for_one_mock_call':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c:81:5: warning: 'cmocka_macro' is deprecated: will_return_maybe: use will_return_int_maybe or will_return_uint_maybe instead [-Wdeprecated-declarations]
+   81 |     will_return_maybe(mock_function, value);
+      |     ^~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c:81:5: warning: 'cmocka_macro' is deprecated: will_return_count: use will_return_int_count or will_return_uint_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c: In function 'test_will_return_maybe_for_more_than_one_call':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c:93:5: warning: 'cmocka_macro' is deprecated: will_return_maybe: use will_return_int_maybe or will_return_uint_maybe instead [-Wdeprecated-declarations]
+   93 |     will_return_maybe(mock_function, value);
+      |     ^~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns.c:93:5: warning: 'cmocka_macro' is deprecated: will_return_count: use will_return_int_count or will_return_uint_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns_fail.c: In function 'test_will_return_count_fails_for_unreturned_items':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns_fail.c:55:5: warning: 'cmocka_macro' is deprecated: will_return_count: use will_return_int_count or will_return_uint_count instead [-Wdeprecated-declarations]
+   55 |     will_return_count(mock_function, value, numberOfCalls);
+      |     ^~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns_fail.c: In function 'test_will_return_always_fails_for_no_calls':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns_fail.c:67:5: warning: 'cmocka_macro' is deprecated: will_return_always: use will_return_int_always or will_return_uint_always instead [-Wdeprecated-declarations]
+   67 |     will_return_always(mock_function, value);
+      |     ^~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_returns_fail.c:67:5: warning: 'cmocka_macro' is deprecated: will_return_count: use will_return_int_count or will_return_uint_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c: In function 'test_will_return_maybe_for_no_calls':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c:60:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_maybe: use will_set_parameter_int_maybe or will_set_parameter_uint_maybe instead [-Wdeprecated-declarations]
+   60 |     will_set_parameter_maybe(mock_function, result, 32);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c:60:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_count: use will_set_parameter_int_count or will_set_parameter_uint_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c: In function 'test_will_return_maybe_for_one_mock_call':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c:70:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_maybe: use will_set_parameter_int_maybe or will_set_parameter_uint_maybe instead [-Wdeprecated-declarations]
+   70 |     will_set_parameter_maybe(mock_function, result, value);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c:70:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_count: use will_set_parameter_int_count or will_set_parameter_uint_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c: In function 'test_will_return_maybe_for_more_than_one_call':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c:82:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_maybe: use will_set_parameter_int_maybe or will_set_parameter_uint_maybe instead [-Wdeprecated-declarations]
+   82 |     will_set_parameter_maybe(mock_function, result, value);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter.c:82:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_count: use will_set_parameter_int_count or will_set_parameter_uint_count instead [-Wdeprecated-declarations]
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter_fail.c: In function 'test_will_return_count_fails_for_unreturned_items':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter_fail.c:53:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_count: use will_set_parameter_int_count or will_set_parameter_uint_count instead [-Wdeprecated-declarations]
+   53 |     will_set_parameter_count(mock_function, result, value, numberOfCalls);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter_fail.c: In function 'test_will_return_always_fails_for_no_calls':
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter_fail.c:65:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_always: use will_set_parameter_int_always or will_set_parameter_uint_always instead [-Wdeprecated-declarations]
+   65 |     will_set_parameter_always(mock_function, result, value);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/cmocka/work/src/tests/test_set_parameter_fail.c:65:5: warning: 'cmocka_macro' is deprecated: will_set_parameter_count: use will_set_parameter_int_count or will_set_parameter_uint_count instead [-Wdeprecated-declarations]

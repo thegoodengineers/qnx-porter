@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "libmodbus-v3.1.11-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libmodbus-5190e5e141780ae481f24be16d7b39a5f3ad8f8f",
+  "name": "libmodbus-v3.2.0-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libmodbus-a9b025d12289855490b10d77461c99e001abfc0f",
   "creationInfo": {
-    "created": "2026-11-13T04:58:34Z",
+    "created": "2026-11-13T19:01:28Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,16 +15,22 @@
     {
       "SPDXID": "SPDXRef-Package-libmodbus",
       "name": "libmodbus",
-      "versionInfo": "v3.1.11",
-      "downloadLocation": "git+https://github.com/stephane/libmodbus.git@5190e5e141780ae481f24be16d7b39a5f3ad8f8f",
+      "versionInfo": "v3.2.0",
+      "downloadLocation": "git+https://github.com/stephane/libmodbus.git@a9b025d12289855490b10d77461c99e001abfc0f",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later",
+      "licenseDeclared": "(LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later) AND LicenseRef-scancode-generic-cla",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over COPYING.LESSER, README.md, tests/LICENSE, tests/README.md: LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later. Per-file detections: COPYING.LESSER: LGPL-2.1-only; README.md: LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later; tests/LICENSE: BSD-3-Clause; tests/README.md: BSD-3-Clause."
+      "licenseComments": "ScanCode summary declared licence over COPYING.LESSER, README.md, tests/LICENSE, tests/README.md: (LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later) AND LicenseRef-scancode-generic-cla. Per-file detections: COPYING.LESSER: LGPL-2.1-only; README.md: (LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later) AND LicenseRef-scancode-generic-cla; tests/LICENSE: BSD-3-Clause; tests/README.md: BSD-3-Clause."
     }
   ],
   "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-generic-cla",
+      "name": "Prior Generic Contributor License Agreement",
+      "extractedText": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/generic-cla.LICENSE",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/generic-cla.LICENSE"
+    },
     {
       "licenseId": "LicenseRef-scancode-unknown-license-reference",
       "name": "Unknown License file reference",

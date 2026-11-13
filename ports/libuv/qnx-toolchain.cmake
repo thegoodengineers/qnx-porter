@@ -7,8 +7,8 @@ set(CMAKE_C_COMPILER_TARGET gcc_ntox86_64)
 set(CMAKE_CXX_COMPILER "/home/chirag/qnx800/host/linux/x86_64/usr/bin/q++")
 set(CMAKE_CXX_COMPILER_TARGET gcc_ntox86_64_cxx)
 set(CMAKE_SYSROOT "/home/chirag/qnx800/target/qnx")
-set(CMAKE_FIND_ROOT_PATH "/home/chirag/qnx800/target/qnx" "/home/chirag/qnx800/target/qnx/x86_64" "/home/chirag/qnx-porter/ports/libuv/work/stubs")
-set(CMAKE_LIBRARY_PATH "/home/chirag/qnx-porter/ports/libuv/work/stubs")
+set(CMAKE_FIND_ROOT_PATH "/home/chirag/qnx800/target/qnx" "/home/chirag/qnx800/target/qnx/x86_64" "/home/chirag/qnx-porter/ports/libuv/work")
+set(CMAKE_LIBRARY_PATH "/stubs")
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
@@ -19,5 +19,5 @@ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/libuv/work/stub
 set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/libuv/work/stubs")
 # Flags after the project's own (appended by the compiler wrappers in -): none
 # Libraries the agent adds go at the end of every link line, after the objects that need them.
-set(CMAKE_C_STANDARD_LIBRARIES "")
-set(CMAKE_CXX_STANDARD_LIBRARIES "")
+set(CMAKE_C_STANDARD_LIBRARIES "-lm")
+set(CMAKE_CXX_STANDARD_LIBRARIES "-lm")

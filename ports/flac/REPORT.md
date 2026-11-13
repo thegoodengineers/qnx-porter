@@ -1,14 +1,14 @@
-# flac 1.4.3 on QNX 8.0 (x86_64)
+# flac 1.5.0 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/xiph/flac.git at `1.4.3` (`28e4f0528c76`) |
+| Upstream | https://github.com/xiph/flac.git at `1.5.0` (`1507800de4b7`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 2 round(s) |
 | Library's own tests | 7/10 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 8.7 min |
+| Time | 9.1 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

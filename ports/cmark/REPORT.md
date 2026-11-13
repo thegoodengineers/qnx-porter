@@ -1,8 +1,8 @@
-# cmark 0.31.1 on QNX 8.0 (x86_64)
+# cmark 0.31.2 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/commonmark/cmark.git at `0.31.1` (`bb3678d7a73c`) |
+| Upstream | https://github.com/commonmark/cmark.git at `0.31.2` (`eec0eeba6d31`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

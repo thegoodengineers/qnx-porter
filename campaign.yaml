@@ -51,6 +51,9 @@ libraries:
     url: https://github.com/nanomsg/nng.git
     tag: v2.1.0
     args: [-DNNG_TESTS=ON]
+    # every 2.1.0 test hangs in nng_fini() on QNX (docs/qnx-reports/pipe-pollhup.md), so a known hang
+    # costs 60 s per test, not 300 s; its passing tests finish in seconds
+    test_timeout: 60
 
   - name: libconfig             # configuration files; CMake
     url: https://github.com/hyperrealm/libconfig.git
@@ -75,7 +78,7 @@ libraries:
   - {name: flatcc, url: https://github.com/dvidelabs/flatcc.git, tag: v0.6.4, args: [-DFLATCC_TEST=OFF], tests: false, note: "build only: its tests run the just-built flatcc compiler on the build host"}
   - {name: pugixml, url: https://github.com/zeux/pugixml.git, tag: v1.16, args: [-DPUGIXML_BUILD_TESTS=ON]}
   - {name: tinyxml2, url: https://github.com/leethomason/tinyxml2.git, tag: 11.0.0}
-  - {name: expat, url: https://github.com/libexpat/libexpat.git, tag: R_2_10_0, subdir: expat, args: [-DEXPAT_BUILD_DOCS=OFF]}
+  - {name: expat, url: https://github.com/libexpat/libexpat.git, tag: R_2_10_0, subdir: expat, args: [-DEXPAT_BUILD_DOCS=OFF, -DEXPAT_DEV_URANDOM=ON], test_timeout: 900}  # R_2_10_0 defaults this OFF; the SDP's own expat_config.h defines XML_DEV_URANDOM, and its headers declare no getrandom, getentropy or arc4random
   - {name: libxml2, url: https://github.com/GNOME/libxml2.git, tag: v2.15.4, args: [-DLIBXML2_WITH_PYTHON=OFF, -DLIBXML2_WITH_ZLIB=OFF, -DLIBXML2_WITH_ICONV=OFF, -DLIBXML2_WITH_ICU=OFF]}
   - {name: inih, url: https://github.com/benhoyt/inih.git, tag: r63}
   - {name: cmark, url: https://github.com/commonmark/cmark.git, tag: 0.31.2}

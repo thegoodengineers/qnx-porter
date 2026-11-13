@@ -1,8 +1,8 @@
-# xxHash v0.8.2 on QNX 8.0 (x86_64)
+# xxHash v0.8.4 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/Cyan4973/xxHash.git at `v0.8.2` (`bbb27a5efb85`) |
+| Upstream | https://github.com/Cyan4973/xxHash.git at `v0.8.4` (`c87183a77d67`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

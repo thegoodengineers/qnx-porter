@@ -1,0 +1,17 @@
+Subject: [qnx-porter 0001] add-include
+Source: deterministic rule
+Reason: `LIST_ENTRY` is a BSD list macro from <sys/queue.h>, which QNX 8.0 ships; arch/posix/eventloop_posix.h uses it without including that header.
+Error: /home/chirag/qnx-porter/ports/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+---
+diff --git a/arch/posix/eventloop_posix.h b/arch/posix/eventloop_posix.h
+index 2a2c6ea..0276e62 100644
+--- a/arch/posix/eventloop_posix.h
++++ b/arch/posix/eventloop_posix.h
+@@ -17,6 +17,7 @@
+ #include "../common/timer.h"
+ #include "../common/eventloop_common.h"
+ #include "../../deps/mp_printf.h"
++#include <sys/queue.h>  /* qnx-porter: needed on QNX */
+ 
+ #if !defined(__QNX__)
+ # include "../deps/open62541_queue.h"

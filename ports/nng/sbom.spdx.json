@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "nng-v1.9.0-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/nng-29aff2bacc9e2cfa6dcc52155d2816582617f918",
+  "name": "nng-v2.1.0-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/nng-0912dcbd63f2f44324fa974e9fc9695c7621abb9",
   "creationInfo": {
-    "created": "2026-11-13T05:09:06Z",
+    "created": "2026-11-13T19:02:35Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,13 +15,13 @@
     {
       "SPDXID": "SPDXRef-Package-nng",
       "name": "nng",
-      "versionInfo": "v1.9.0",
-      "downloadLocation": "git+https://github.com/nanomsg/nng.git@29aff2bacc9e2cfa6dcc52155d2816582617f918",
+      "versionInfo": "v2.1.0",
+      "downloadLocation": "git+https://github.com/nanomsg/nng.git@0912dcbd63f2f44324fa974e9fc9695c7621abb9",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "MIT",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over LICENSE.txt, README.adoc, docs/LICENSE.adoc, docs/README.txt, etc/README.adoc, tests/README.adoc: MIT. Per-file detections: LICENSE.txt: MIT; README.adoc: MIT; docs/LICENSE.adoc: MIT; tests/README.adoc: MIT."
+      "licenseComments": "ScanCode summary declared licence over LICENSE.txt, README.md, docs/LICENSE.adoc, docs/README.txt, etc/README.adoc, tests/README.adoc: MIT. Per-file detections: LICENSE.txt: MIT; README.md: MIT; docs/LICENSE.adoc: MIT."
     }
   ],
   "files": [
@@ -31,11 +31,11 @@
       "checksums": [
         {
           "algorithm": "SHA1",
-          "checksumValue": "f32fe86844fa2fa920684d2517def4d703a6425d"
+          "checksumValue": "8d01e46ad58d712abe04601ee94e89f81d05c632"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "d1c3e0dd55a036afe934d2e6b61ef8a8439d55b1714e9c84fe5565d6182f0329"
+          "checksumValue": "4d29703df943b49d9f6293a5e14476fb0949bd5c46bb846ef758c60421b30142"
         }
       ],
       "licenseConcluded": "NOASSERTION",

@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "libcbor-v0.11.0-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libcbor-170bee2b82cdb7b2ed25af301f62cb6efdd40ec1",
+  "name": "libcbor-v0.14.0-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libcbor-6730c20ab487c0b4dc5fb3fea918937085355bac",
   "creationInfo": {
-    "created": "2026-11-13T04:57:01Z",
+    "created": "2026-11-13T19:01:15Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-libcbor",
       "name": "libcbor",
-      "versionInfo": "v0.11.0",
-      "downloadLocation": "git+https://github.com/PJK/libcbor.git@170bee2b82cdb7b2ed25af301f62cb6efdd40ec1",
+      "versionInfo": "v0.14.0",
+      "downloadLocation": "git+https://github.com/PJK/libcbor.git@6730c20ab487c0b4dc5fb3fea918937085355bac",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "MIT",

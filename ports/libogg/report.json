@@ -1,8 +1,8 @@
 {
   "library": "libogg",
   "url": "https://github.com/xiph/ogg.git",
-  "version": "v1.3.5",
-  "commit": "e1774cd77f471443541596e09078e78fdc342e4f",
+  "version": "v1.3.6",
+  "commit": "be05b13e98b048f0b5a0f5fa8ce514d56db5f822",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -20,7 +20,8 @@
   "blocked_on": [],
   "minutes": 0.2,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T08:54:49+00:00"
+  "finished": "2026-11-13T18:59:08+00:00"
 }

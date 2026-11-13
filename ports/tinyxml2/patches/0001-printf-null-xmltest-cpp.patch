@@ -4,7 +4,7 @@ Reason: Crash on QNX: printf() at xmltest.cpp:54 formats a NULL pointer with %s 
 Error: Memory fault (SIGSEGV) in strlen <- printf on QNX
 ---
 diff --git a/xmltest.cpp b/xmltest.cpp
-index ae97604..e0233d0 100755
+index f7408d1..aa3c41b 100644
 --- a/xmltest.cpp
 +++ b/xmltest.cpp
 @@ -21,6 +21,9 @@

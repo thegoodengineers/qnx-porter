@@ -1,0 +1,159 @@
+Test project /home/chirag/nng-linux/b-plain
+      Start  1: nng.core.aio_test
+      Start  2: nng.core.args_test
+ 1/74 Test  #2: nng.core.args_test .......................   Passed    0.37 sec
+      Start  3: nng.core.buf_size_test
+ 2/74 Test  #3: nng.core.buf_size_test ...................   Passed    0.02 sec
+      Start  4: nng.core.errors_test
+ 3/74 Test  #4: nng.core.errors_test .....................   Passed    0.19 sec
+      Start  5: nng.core.id_test
+ 4/74 Test  #5: nng.core.id_test .........................   Passed    0.22 sec
+      Start  6: nng.core.idhash_test
+ 5/74 Test  #6: nng.core.idhash_test .....................   Passed    0.29 sec
+      Start  7: nng.core.init_test
+ 6/74 Test  #1: nng.core.aio_test ........................   Passed    1.88 sec
+      Start  8: nng.core.list_test
+ 7/74 Test  #8: nng.core.list_test .......................   Passed    0.09 sec
+      Start  9: nng.core.log_test
+ 8/74 Test  #9: nng.core.log_test ........................   Passed    0.16 sec
+      Start 10: nng.core.message_test
+ 9/74 Test  #7: nng.core.init_test .......................   Passed    1.49 sec
+      Start 11: nng.core.reconnect_test
+10/74 Test #10: nng.core.message_test ....................   Passed    1.13 sec
+      Start 12: nng.core.sock_test
+11/74 Test #11: nng.core.reconnect_test ..................   Passed    1.13 sec
+      Start 13: nng.core.sockaddr_test
+12/74 Test #13: nng.core.sockaddr_test ...................   Passed    0.24 sec
+      Start 14: nng.core.synch_test
+13/74 Test #12: nng.core.sock_test .......................   Passed    0.75 sec
+      Start 15: nng.core.stats_test
+14/74 Test #15: nng.core.stats_test ......................   Passed    0.05 sec
+      Start 16: nng.core.url_test
+15/74 Test #14: nng.core.synch_test ......................   Passed    0.82 sec
+      Start 17: nng.platform.files_test
+16/74 Test #16: nng.core.url_test ........................   Passed    0.80 sec
+      Start 18: nng.platform.ipc_stream_test
+17/74 Test #17: nng.platform.files_test ..................   Passed    0.23 sec
+      Start 19: nng.platform.platform_test
+18/74 Test #19: nng.platform.platform_test ...............   Passed    0.80 sec
+      Start 20: nng.platform.resolver_test
+19/74 Test #20: nng.platform.resolver_test ...............   Passed    0.81 sec
+      Start 21: nng.platform.tcp_stream_test
+20/74 Test #18: nng.platform.ipc_stream_test .............   Passed    2.72 sec
+      Start 22: nng.platform.udp_test
+21/74 Test #22: nng.platform.udp_test ....................   Passed    0.43 sec
+      Start 23: nng.platform.posix_ipcwinsec_test
+22/74 Test #23: nng.platform.posix_ipcwinsec_test ........   Passed    0.03 sec
+      Start 24: nng.sp.pipe_test
+23/74 Test #21: nng.platform.tcp_stream_test .............   Passed    1.79 sec
+      Start 25: nng.sp.device_test
+24/74 Test #25: nng.sp.device_test .......................   Passed    0.18 sec
+      Start 26: nng.sp.multistress_test
+25/74 Test #24: nng.sp.pipe_test .........................   Passed    0.46 sec
+      Start 27: nng.sp.nonblock_test
+26/74 Test #27: nng.sp.nonblock_test .....................   Passed   15.03 sec
+      Start 28: nng.sp.scalability_test
+27/74 Test #28: nng.sp.scalability_test ..................   Passed    0.11 sec
+      Start 29: nng.sp.reconnect_stress_test
+28/74 Test #29: nng.sp.reconnect_stress_test .............   Passed   13.29 sec
+      Start 30: nng.sp.protocol.bus0.bus_test
+29/74 Test #30: nng.sp.protocol.bus0.bus_test ............   Passed    0.78 sec
+      Start 31: nng.sp.protocol.pair0.pair0_test
+30/74 Test #26: nng.sp.multistress_test ..................   Passed   30.07 sec
+      Start 32: nng.sp.protocol.pair1.pair1_test
+31/74 Test #31: nng.sp.protocol.pair0.pair0_test .........   Passed    1.53 sec
+      Start 33: nng.sp.protocol.pair1.pair1_poly_test
+32/74 Test #33: nng.sp.protocol.pair1.pair1_poly_test ....   Passed    1.12 sec
+      Start 34: nng.sp.protocol.pipeline0.pull_test
+33/74 Test #32: nng.sp.protocol.pair1.pair1_test .........   Passed    2.28 sec
+      Start 35: nng.sp.protocol.pipeline0.push_test
+34/74 Test #34: nng.sp.protocol.pipeline0.pull_test ......   Passed    0.74 sec
+      Start 36: nng.sp.protocol.pubsub0.pub_test
+35/74 Test #36: nng.sp.protocol.pubsub0.pub_test .........   Passed    0.39 sec
+      Start 37: nng.sp.protocol.pubsub0.sub_test
+36/74 Test #35: nng.sp.protocol.pipeline0.push_test ......   Passed    1.39 sec
+      Start 38: nng.sp.protocol.pubsub0.xsub_test
+37/74 Test #38: nng.sp.protocol.pubsub0.xsub_test ........   Passed    1.05 sec
+      Start 39: nng.sp.protocol.reqrep0.req_test
+38/74 Test #37: nng.sp.protocol.pubsub0.sub_test .........   Passed    1.96 sec
+      Start 40: nng.sp.protocol.reqrep0.rep_test
+39/74 Test #40: nng.sp.protocol.reqrep0.rep_test .........   Passed    1.48 sec
+      Start 41: nng.sp.protocol.reqrep0.xrep_test
+40/74 Test #41: nng.sp.protocol.reqrep0.xrep_test ........   Passed    1.11 sec
+      Start 42: nng.sp.protocol.reqrep0.xreq_test
+41/74 Test #42: nng.sp.protocol.reqrep0.xreq_test ........   Passed    1.16 sec
+      Start 43: nng.sp.protocol.reqrep0.reqstress_test
+42/74 Test #39: nng.sp.protocol.reqrep0.req_test .........   Passed    4.25 sec
+      Start 44: nng.sp.protocol.survey0.respond_test
+43/74 Test #44: nng.sp.protocol.survey0.respond_test .....   Passed    1.43 sec
+      Start 45: nng.sp.protocol.survey0.survey_test
+44/74 Test #45: nng.sp.protocol.survey0.survey_test ......   Passed    2.82 sec
+      Start 46: nng.sp.protocol.survey0.xrespond_test
+45/74 Test #46: nng.sp.protocol.survey0.xrespond_test ....   Passed    1.20 sec
+      Start 47: nng.sp.protocol.survey0.xsurvey_test
+46/74 Test #47: nng.sp.protocol.survey0.xsurvey_test .....   Passed    1.94 sec
+      Start 48: nng.sp.transport.socket.sockfd_test
+47/74 Test #48: nng.sp.transport.socket.sockfd_test ......   Passed    1.39 sec
+      Start 49: nng.sp.transport.inproc.inproc_test
+48/74 Test #49: nng.sp.transport.inproc.inproc_test ......   Passed   12.47 sec
+      Start 50: nng.sp.transport.ipc.ipc_test
+49/74 Test #50: nng.sp.transport.ipc.ipc_test ............   Passed    1.44 sec
+      Start 51: nng.sp.transport.tcp.tcp_test
+50/74 Test #43: nng.sp.protocol.reqrep0.reqstress_test ...   Passed   30.24 sec
+      Start 52: nng.sp.transport.udp.udp_tran_test
+51/74 Test #52: nng.sp.transport.udp.udp_tran_test .......***Failed   13.96 sec
+      Start 53: nng.sp.transport.udp.udp_wire_test
+52/74 Test #53: nng.sp.transport.udp.udp_wire_test .......   Passed   13.26 sec
+      Start 54: nng.sp.transport.ws.ws_test
+53/74 Test #51: nng.sp.transport.tcp.tcp_test ............   Passed   34.67 sec
+      Start 55: nng.supplemental.http_client_test
+54/74 Test #55: nng.supplemental.http_client_test ........   Passed    0.79 sec
+      Start 56: nng.supplemental.http_server_test
+55/74 Test #56: nng.supplemental.http_server_test ........   Passed    1.35 sec
+      Start 57: nng.supplemental.sha1_test
+56/74 Test #57: nng.supplemental.sha1_test ...............   Passed    0.01 sec
+      Start 58: nng.supplemental.base64_test
+57/74 Test #58: nng.supplemental.base64_test .............   Passed    0.00 sec
+      Start 59: nng.supplemental.wssfile_test
+58/74 Test #59: nng.supplemental.wssfile_test ............   Passed    0.00 sec
+      Start 60: nng.supplemental.websocket_test
+59/74 Test #60: nng.supplemental.websocket_test ..........   Passed    1.38 sec
+      Start 61: nng.nngcat_async
+60/74 Test #61: nng.nngcat_async .........................   Passed    4.05 sec
+      Start 62: nng.nngcat_ambiguous
+61/74 Test #62: nng.nngcat_ambiguous .....................   Passed    0.06 sec
+      Start 63: nng.nngcat_need_proto
+62/74 Test #63: nng.nngcat_need_proto ....................   Passed    0.03 sec
+      Start 64: nng.nngcat_dup_proto
+63/74 Test #64: nng.nngcat_dup_proto .....................   Passed    0.02 sec
+      Start 65: nng.nngcat_help
+64/74 Test #65: nng.nngcat_help ..........................   Passed    0.06 sec
+      Start 66: nng.nngcat_incompat
+65/74 Test #66: nng.nngcat_incompat ......................   Passed    0.12 sec
+      Start 67: nng.nngcat_pubsub
+66/74 Test #67: nng.nngcat_pubsub ........................   Passed    4.79 sec
+      Start 68: nng.nngcat_recvmaxsz
+67/74 Test #68: nng.nngcat_recvmaxsz .....................   Passed    2.27 sec
+      Start 69: nng.nngcat_unlimited
+68/74 Test #69: nng.nngcat_unlimited .....................   Passed    3.19 sec
+      Start 70: nng.nngcat_stdin_pipe
+69/74 Test #70: nng.nngcat_stdin_pipe ....................   Passed    2.27 sec
+      Start 71: nng.inproc_lat
+70/74 Test #71: nng.inproc_lat ...........................   Passed    2.89 sec
+      Start 72: nng.inproc_thr
+71/74 Test #72: nng.inproc_thr ...........................   Passed    0.63 sec
+      Start 73: nng.pubdrop
+72/74 Test #73: nng.pubdrop ..............................   Passed    3.17 sec
+      Start 74: nng.cplusplus_pair
+73/74 Test #74: nng.cplusplus_pair .......................   Passed    0.05 sec
+74/74 Test #54: nng.sp.transport.ws.ws_test ..............   Passed   28.92 sec
+
+99% tests passed, 1 tests failed out of 74
+
+Total Test time (real) = 133.83 sec
+
+The following tests FAILED:
+	 52 - nng.sp.transport.udp.udp_tran_test (Failed)
+Errors while running CTest
+Output from these tests are in: /home/chirag/nng-linux/b-plain/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.

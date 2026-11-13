@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "libpng-v1.6.44-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libpng-f5e92d76973a7a53f517579bc95d61483bf108c0",
+  "name": "libpng-v1.6.59-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libpng-cd952f49f95bb27154ae77dbb103032d95f6e580",
   "creationInfo": {
-    "created": "2026-11-13T04:58:38Z",
+    "created": "2026-11-13T19:01:31Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,13 +15,13 @@
     {
       "SPDXID": "SPDXRef-Package-libpng",
       "name": "libpng",
-      "versionInfo": "v1.6.44",
-      "downloadLocation": "git+https://github.com/pnggroup/libpng.git@f5e92d76973a7a53f517579bc95d61483bf108c0",
+      "versionInfo": "v1.6.59",
+      "downloadLocation": "git+https://github.com/pnggroup/libpng.git@cd952f49f95bb27154ae77dbb103032d95f6e580",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "Libpng AND (Libpng AND libpng-1.6.35)",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over LICENSE, README, ci/LICENSE_MIT.txt, contrib/README.txt, scripts/README.txt: Libpng AND (Libpng AND libpng-1.6.35). Per-file detections: LICENSE: Libpng AND (Libpng AND libpng-1.6.35); README: Libpng; ci/LICENSE_MIT.txt: MIT; contrib/README.txt: Libpng."
+      "licenseComments": "ScanCode summary declared licence over LICENSE, LICENSES/MIT-0.txt, LICENSES/MIT.txt, README, ci/README.md, contrib/README.txt, scripts/README.txt: Libpng AND (Libpng AND libpng-1.6.35). Per-file detections: LICENSE: Libpng AND (Libpng AND libpng-1.6.35); README: Libpng; ci/README.md: MIT; contrib/README.txt: Libpng; LICENSES/MIT-0.txt: MIT-0; LICENSES/MIT.txt: MIT."
     }
   ],
   "files": [

@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "nanopb-0.4.9-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/nanopb-98bf4db69897b53434f3d0ba72e0a3ab1a902824",
+  "name": "nanopb-0.4.9.3-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/nanopb-93550bb52a6216a7396d0a168a42b3a88223d811",
   "creationInfo": {
-    "created": "2026-11-13T05:00:15Z",
+    "created": "2026-11-13T19:02:34Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-nanopb",
       "name": "nanopb",
-      "versionInfo": "0.4.9",
-      "downloadLocation": "git+https://github.com/nanopb/nanopb.git@98bf4db69897b53434f3d0ba72e0a3ab1a902824",
+      "versionInfo": "0.4.9.3",
+      "downloadLocation": "git+https://github.com/nanopb/nanopb.git@93550bb52a6216a7396d0a168a42b3a88223d811",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "Zlib",

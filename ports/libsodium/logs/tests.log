@@ -32,7 +32,7 @@ Making check in test
 make[1]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/test'
 Making check in default
 make[2]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/test/default'
-make  aead_aegis128l aead_aegis256 aead_aes256gcm aead_aes256gcm2 aead_chacha20poly1305 aead_chacha20poly13052 aead_xchacha20poly1305 auth auth2 auth3 auth5 auth6 auth7 box box2 box7 box8 box_easy box_easy2 box_seal box_seed chacha20 codecs core1 core2 core3 core4 core5 core6 ed25519_convert generichash generichash2 generichash3 hash hash3 kdf keygen kx metamorphic misuse onetimeauth onetimeauth2 onetimeauth7 pwhash_argon2i pwhash_argon2id randombytes scalarmult scalarmult2 scalarmult5 scalarmult6 scalarmult7 scalarmult8 secretbox secretbox2 secretbox7 secretbox8 secretbox_easy secretbox_easy2 secretstream_xchacha20poly1305 shorthash sign sodium_core sodium_utils sodium_version stream stream2 stream3 stream4 verify1 sodium_utils2 sodium_utils3 core_ed25519 core_ristretto255 kdf_hkdf pwhash_scrypt pwhash_scrypt_ll scalarmult_ed25519 scalarmult_ristretto255 siphashx24 xchacha20
+make  aead_aegis128l aead_aegis256 aead_aes256gcm aead_aes256gcm2 aead_chacha20poly1305 aead_chacha20poly13052 aead_xchacha20poly1305 auth auth2 auth3 auth5 auth6 auth7 box box2 box7 box8 box_easy box_easy2 box_seal box_seed chacha20 codecs codecs2 codecs3 core_keccak1600 core1 core2 core3 core4 core5 core6 ed25519_convert generichash generichash2 generichash3 hash hash3 hash_sha3256 hash_sha3512 ipcrypt kdf kem kem_mlkem768 kem_xwing keygen kx metamorphic misuse onetimeauth onetimeauth2 onetimeauth7 pwhash_argon2i pwhash_argon2id pwhash_argon2id2 randombytes scalarmult scalarmult2 scalarmult5 scalarmult6 scalarmult7 scalarmult8 secretbox secretbox2 secretbox7 secretbox8 secretbox_easy secretbox_easy2 secretstream_xchacha20poly1305 shorthash sign sodium_core sodium_utils sodium_version stream stream2 stream3 stream4 verify1 xof_shake128 xof_shake256 xof_turboshake128 xof_turboshake256 xof2 sodium_utils2 sodium_utils3 sodium_utils4 core_ed25519 core_ristretto255 kdf_hkdf kdf_hkdf2 kdf_hkdf3 kdf_hkdf4 pwhash_scrypt stream5 stream6 pwhash_scrypt_ll scalarmult_ed25519 scalarmult_ristretto255 siphashx24 xchacha20
 make[3]: Entering directory '/home/chirag/qnx-porter/ports/libsodium/work/build/test/default'
 make[3]: 'aead_aegis128l' is up to date.
 make[3]: 'aead_aegis256' is up to date.
@@ -57,6 +57,9 @@ make[3]: 'box_seal' is up to date.
 make[3]: 'box_seed' is up to date.
 make[3]: 'chacha20' is up to date.
 make[3]: 'codecs' is up to date.
+make[3]: 'codecs2' is up to date.
+make[3]: 'codecs3' is up to date.
+make[3]: 'core_keccak1600' is up to date.
 make[3]: 'core1' is up to date.
 make[3]: 'core2' is up to date.
 make[3]: 'core3' is up to date.
@@ -69,7 +72,13 @@ make[3]: 'generichash2' is up to date.
 make[3]: 'generichash3' is up to date.
 make[3]: 'hash' is up to date.
 make[3]: 'hash3' is up to date.
+make[3]: 'hash_sha3256' is up to date.
+make[3]: 'hash_sha3512' is up to date.
+make[3]: 'ipcrypt' is up to date.
 make[3]: 'kdf' is up to date.
+make[3]: 'kem' is up to date.
+make[3]: 'kem_mlkem768' is up to date.
+make[3]: 'kem_xwing' is up to date.
 make[3]: 'keygen' is up to date.
 make[3]: 'kx' is up to date.
 make[3]: 'metamorphic' is up to date.
@@ -79,6 +88,7 @@ make[3]: 'onetimeauth2' is up to date.
 make[3]: 'onetimeauth7' is up to date.
 make[3]: 'pwhash_argon2i' is up to date.
 make[3]: 'pwhash_argon2id' is up to date.
+make[3]: 'pwhash_argon2id2' is up to date.
 make[3]: 'randombytes' is up to date.
 make[3]: 'scalarmult' is up to date.
 make[3]: 'scalarmult2' is up to date.
@@ -103,12 +113,23 @@ make[3]: 'stream2' is up to date.
 make[3]: 'stream3' is up to date.
 make[3]: 'stream4' is up to date.
 make[3]: 'verify1' is up to date.
+make[3]: 'xof_shake128' is up to date.
+make[3]: 'xof_shake256' is up to date.
+make[3]: 'xof_turboshake128' is up to date.
+make[3]: 'xof_turboshake256' is up to date.
+make[3]: 'xof2' is up to date.
 make[3]: 'sodium_utils2' is up to date.
 make[3]: 'sodium_utils3' is up to date.
+make[3]: 'sodium_utils4' is up to date.
 make[3]: 'core_ed25519' is up to date.
 make[3]: 'core_ristretto255' is up to date.
 make[3]: 'kdf_hkdf' is up to date.
+make[3]: 'kdf_hkdf2' is up to date.
+make[3]: 'kdf_hkdf3' is up to date.
+make[3]: 'kdf_hkdf4' is up to date.
 make[3]: 'pwhash_scrypt' is up to date.
+make[3]: 'stream5' is up to date.
+make[3]: 'stream6' is up to date.
 make[3]: 'pwhash_scrypt_ll' is up to date.
 make[3]: 'scalarmult_ed25519' is up to date.
 make[3]: 'scalarmult_ristretto255' is up to date.
@@ -141,6 +162,9 @@ PASS: box_seal
 PASS: box_seed
 PASS: chacha20
 PASS: codecs
+PASS: codecs2
+PASS: codecs3
+PASS: core_keccak1600
 PASS: core1
 PASS: core2
 PASS: core3
@@ -153,7 +177,13 @@ PASS: generichash2
 PASS: generichash3
 PASS: hash
 PASS: hash3
+PASS: hash_sha3256
+PASS: hash_sha3512
+PASS: ipcrypt
 PASS: kdf
+PASS: kem
+PASS: kem_mlkem768
+PASS: kem_xwing
 PASS: keygen
 PASS: kx
 PASS: metamorphic
@@ -163,6 +193,7 @@ PASS: onetimeauth2
 PASS: onetimeauth7
 PASS: pwhash_argon2i
 PASS: pwhash_argon2id
+PASS: pwhash_argon2id2
 PASS: randombytes
 PASS: scalarmult
 PASS: scalarmult2
@@ -187,22 +218,33 @@ PASS: stream2
 PASS: stream3
 PASS: stream4
 PASS: verify1
+PASS: xof_shake128
+PASS: xof_shake256
+PASS: xof_turboshake128
+PASS: xof_turboshake256
+PASS: xof2
 PASS: sodium_utils2
 PASS: sodium_utils3
+PASS: sodium_utils4
 PASS: core_ed25519
 PASS: core_ristretto255
 PASS: kdf_hkdf
+PASS: kdf_hkdf2
+PASS: kdf_hkdf3
+PASS: kdf_hkdf4
 PASS: pwhash_scrypt
+PASS: stream5
+PASS: stream6
 PASS: pwhash_scrypt_ll
 PASS: scalarmult_ed25519
 PASS: scalarmult_ristretto255
 PASS: siphashx24
 PASS: xchacha20
 ============================================================================
-Testsuite summary for libsodium 1.0.20
+Testsuite summary for libsodium 1.0.22
 ============================================================================
-# TOTAL: 80
-# PASS:  80
+# TOTAL: 101
+# PASS:  101
 # SKIP:  0
 # XFAIL: 0
 # FAIL:  0
@@ -290,6 +332,12 @@ PASS chacha20 (exit status: 0)
 --- test/default/codecs.log
 PASS codecs (exit status: 0)
 
+--- test/default/codecs2.log
+PASS codecs2 (exit status: 0)
+
+--- test/default/codecs3.log
+PASS codecs3 (exit status: 0)
+
 --- test/default/core1.log
 PASS core1 (exit status: 0)
 
@@ -310,6 +358,9 @@ PASS core6 (exit status: 0)
 
 --- test/default/core_ed25519.log
 PASS core_ed25519 (exit status: 0)
+
+--- test/default/core_keccak1600.log
+PASS core_keccak1600 (exit status: 0)
 
 --- test/default/core_ristretto255.log
 PASS core_ristretto255 (exit status: 0)
@@ -332,11 +383,38 @@ PASS hash (exit status: 0)
 --- test/default/hash3.log
 PASS hash3 (exit status: 0)
 
+--- test/default/hash_sha3256.log
+PASS hash_sha3256 (exit status: 0)
+
+--- test/default/hash_sha3512.log
+PASS hash_sha3512 (exit status: 0)
+
+--- test/default/ipcrypt.log
+PASS ipcrypt (exit status: 0)
+
 --- test/default/kdf.log
 PASS kdf (exit status: 0)
 
 --- test/default/kdf_hkdf.log
 PASS kdf_hkdf (exit status: 0)
+
+--- test/default/kdf_hkdf2.log
+PASS kdf_hkdf2 (exit status: 0)
+
+--- test/default/kdf_hkdf3.log
+PASS kdf_hkdf3 (exit status: 0)
+
+--- test/default/kdf_hkdf4.log
+PASS kdf_hkdf4 (exit status: 0)
+
+--- test/default/kem.log
+PASS kem (exit status: 0)
+
+--- test/default/kem_mlkem768.log
+PASS kem_mlkem768 (exit status: 0)
+
+--- test/default/kem_xwing.log
+PASS kem_xwing (exit status: 0)
 
 --- test/default/keygen.log
 PASS keygen (exit status: 0)
@@ -364,6 +442,9 @@ PASS pwhash_argon2i (exit status: 0)
 
 --- test/default/pwhash_argon2id.log
 PASS pwhash_argon2id (exit status: 0)
+
+--- test/default/pwhash_argon2id2.log
+PASS pwhash_argon2id2 (exit status: 0)
 
 --- test/default/pwhash_scrypt.log
 PASS pwhash_scrypt (exit status: 0)
@@ -440,6 +521,9 @@ PASS sodium_utils2 (exit status: 0)
 --- test/default/sodium_utils3.log
 PASS sodium_utils3 (exit status: 0)
 
+--- test/default/sodium_utils4.log
+PASS sodium_utils4 (exit status: 0)
+
 --- test/default/sodium_version.log
 PASS sodium_version (exit status: 0)
 
@@ -455,8 +539,29 @@ PASS stream3 (exit status: 0)
 --- test/default/stream4.log
 PASS stream4 (exit status: 0)
 
+--- test/default/stream5.log
+PASS stream5 (exit status: 0)
+
+--- test/default/stream6.log
+PASS stream6 (exit status: 0)
+
 --- test/default/verify1.log
 PASS verify1 (exit status: 0)
 
 --- test/default/xchacha20.log
 PASS xchacha20 (exit status: 0)
+
+--- test/default/xof2.log
+PASS xof2 (exit status: 0)
+
+--- test/default/xof_shake128.log
+PASS xof_shake128 (exit status: 0)
+
+--- test/default/xof_shake256.log
+PASS xof_shake256 (exit status: 0)
+
+--- test/default/xof_turboshake128.log
+PASS xof_turboshake128 (exit status: 0)
+
+--- test/default/xof_turboshake256.log
+PASS xof_turboshake256 (exit status: 0)

@@ -16,7 +16,7 @@ QNX 8.0 x86_64:  480 of 2000 qsort calls wrote outside the array
 Linux (glibc):   0 of 2000 qsort calls wrote outside the array
 ```
 
-## Effect seen (`ports/libsrtp/logs/tests.log`, `logs/crashes.log`)
+## Effect seen (`ports-2024/libsrtp/logs/tests.log`, `logs/crashes.log`)
 - `roc_driver`: SIGSEGV in `ut_next_index()` (test/ut_sim.c:81); the `ut_connection` pointer on the stack has
   been overwritten (`utc=0x3515583000000000`).
 - `rdbx_driver`: SIGSEGV in `bitvector_left_shift()` called from the test's `rdbx_check_add_unordered()`, fed

@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "paho.mqtt.c-v1.3.14-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/paho.mqtt.c-2150ba29d9df24ad1733c460eb099f292af84ee5",
+  "name": "paho.mqtt.c-v1.3.16-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/paho.mqtt.c-4a939ddb01eea581a32fd6f0adcfee51b91d2601",
   "creationInfo": {
-    "created": "2026-11-13T05:09:08Z",
+    "created": "2026-11-13T19:02:41Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-paho.mqtt.c",
       "name": "paho.mqtt.c",
-      "versionInfo": "v1.3.14",
-      "downloadLocation": "git+https://github.com/eclipse/paho.mqtt.c.git@2150ba29d9df24ad1733c460eb099f292af84ee5",
+      "versionInfo": "v1.3.16",
+      "downloadLocation": "git+https://github.com/eclipse/paho.mqtt.c.git@4a939ddb01eea581a32fd6f0adcfee51b91d2601",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "Apache-1.1 AND BSD-3-Clause AND CPL-1.0 AND LicenseRef-scancode-eclipse-sua-2011 AND EPL-2.0 AND LicenseRef-scancode-generic-export-compliance AND MPL-1.1",
@@ -45,16 +45,16 @@
       "checksums": [
         {
           "algorithm": "SHA1",
-          "checksumValue": "520278a45cc1ae6bba917279f8966381510d99dc"
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "1b7c37bf317864cd9eb7fbe6086367f608eb684f98d71b31907f80625b2a27f2"
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION",
-      "comment": "QNX 8.0 port changes, apply with git apply"
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
     }
   ],
   "relationships": [

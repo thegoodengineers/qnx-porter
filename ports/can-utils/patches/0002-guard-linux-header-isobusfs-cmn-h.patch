@@ -1,0 +1,19 @@
+Subject: [qnx-porter 0002] guard-linux-header
+Source: deterministic rule
+Reason: <endian.h> does not exist on QNX 8.0 and isobusfs/isobusfs_cmn.h uses nothing from it, so the include is kept for Linux and skipped on QNX.
+Error: /home/chirag/qnx-porter/ports/can-utils/work/src/isobusfs/isobusfs_cmn.h:8:10: fatal error: endian.h: No such file or directory
+---
+diff --git a/isobusfs/isobusfs_cmn.h b/isobusfs/isobusfs_cmn.h
+index 23fa582..7ad3762 100644
+--- a/isobusfs/isobusfs_cmn.h
++++ b/isobusfs/isobusfs_cmn.h
+@@ -5,7 +5,9 @@
+ #define _ISOBUSFS_H_
+ 
+ #include <stdint.h>
++#ifndef __QNX__  /* qnx-porter: <endian.h> is Linux-only */
+ #include <endian.h>
++#endif
+ #include <stdbool.h>
+ 
+ #include <linux/can.h>

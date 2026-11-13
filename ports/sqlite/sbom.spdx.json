@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "sqlite-version-3.47.2-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/sqlite-262de1bebb0647eb6fa6a2b0434111c7d831a14d",
+  "name": "sqlite-version-3.54.1-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/sqlite-57520227c95396ce39ba6ecaac8d475b78dd3964",
   "creationInfo": {
-    "created": "2026-11-13T05:00:48Z",
+    "created": "2026-11-13T19:03:05Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,13 +15,13 @@
     {
       "SPDXID": "SPDXRef-Package-sqlite",
       "name": "sqlite",
-      "versionInfo": "version-3.47.2",
-      "downloadLocation": "git+https://github.com/sqlite/sqlite.git@262de1bebb0647eb6fa6a2b0434111c7d831a14d",
+      "versionInfo": "version-3.54.1",
+      "downloadLocation": "git+https://github.com/sqlite/sqlite.git@57520227c95396ce39ba6ecaac8d475b78dd3964",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "blessing AND LicenseRef-scancode-public-domain",
+      "licenseDeclared": "LicenseRef-scancode-public-domain AND (LicenseRef-scancode-public-domain AND blessing) AND (LicenseRef-scancode-public-domain AND BSD-3-Clause) AND BSD-3-Clause",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over LICENSE.md, README.md, autoconf/README.first, autoconf/README.txt, ext/README.md: blessing AND LicenseRef-scancode-public-domain. Per-file detections: LICENSE.md: blessing; README.md: LicenseRef-scancode-public-domain."
+      "licenseComments": "ScanCode summary declared licence over LICENSE.md, README.md, autoconf/README.first, autoconf/README.txt, autosetup/LICENSE, autosetup/README.autosetup, autosetup/README.md, ext/README.md: LicenseRef-scancode-public-domain AND (LicenseRef-scancode-public-domain AND blessing) AND (LicenseRef-scancode-public-domain AND BSD-3-Clause) AND BSD-3-Clause. Per-file detections: LICENSE.md: LicenseRef-scancode-public-domain AND (LicenseRef-scancode-public-domain AND blessing) AND (LicenseRef-scancode-public-domain AND BSD-3-Clause) AND BSD-3-Clause; README.md: LicenseRef-scancode-public-domain; autosetup/LICENSE: BSD-2-Clause-Views."
     }
   ],
   "hasExtractedLicensingInfos": [

@@ -14,49 +14,51 @@ $ cmake --build /home/chirag/qnx-porter/ports/cglm/work/build -j 2 -- -k
 [  5%] Building C object CMakeFiles/cglm.dir/src/io.c.o
 [  7%] Building C object CMakeFiles/cglm.dir/src/quat.c.o
 [  9%] Building C object CMakeFiles/cglm.dir/src/cam.c.o
-[ 11%] Building C object CMakeFiles/cglm.dir/src/vec2.c.o
-[ 13%] Building C object CMakeFiles/cglm.dir/src/ivec2.c.o
-[ 15%] Building C object CMakeFiles/cglm.dir/src/vec3.c.o
+[ 10%] Building C object CMakeFiles/cglm.dir/src/vec2.c.o
+[ 12%] Building C object CMakeFiles/cglm.dir/src/ivec2.c.o
+[ 14%] Building C object CMakeFiles/cglm.dir/src/vec3.c.o
 [ 16%] Building C object CMakeFiles/cglm.dir/src/ivec3.c.o
 [ 18%] Building C object CMakeFiles/cglm.dir/src/vec4.c.o
 [ 20%] Building C object CMakeFiles/cglm.dir/src/ivec4.c.o
-[ 22%] Building C object CMakeFiles/cglm.dir/src/mat2.c.o
-[ 24%] Building C object CMakeFiles/cglm.dir/src/mat2x3.c.o
-[ 26%] Building C object CMakeFiles/cglm.dir/src/mat2x4.c.o
-[ 28%] Building C object CMakeFiles/cglm.dir/src/mat3.c.o
-[ 30%] Building C object CMakeFiles/cglm.dir/src/mat3x2.c.o
-[ 32%] Building C object CMakeFiles/cglm.dir/src/mat3x4.c.o
-[ 33%] Building C object CMakeFiles/cglm.dir/src/mat4.c.o
-[ 35%] Building C object CMakeFiles/cglm.dir/src/mat4x2.c.o
-[ 37%] Building C object CMakeFiles/cglm.dir/src/mat4x3.c.o
-[ 39%] Building C object CMakeFiles/cglm.dir/src/plane.c.o
+[ 21%] Building C object CMakeFiles/cglm.dir/src/mat2.c.o
+[ 23%] Building C object CMakeFiles/cglm.dir/src/mat2x3.c.o
+[ 25%] Building C object CMakeFiles/cglm.dir/src/mat2x4.c.o
+[ 27%] Building C object CMakeFiles/cglm.dir/src/mat3.c.o
+[ 29%] Building C object CMakeFiles/cglm.dir/src/mat3x2.c.o
+[ 30%] Building C object CMakeFiles/cglm.dir/src/mat3x4.c.o
+[ 32%] Building C object CMakeFiles/cglm.dir/src/mat4.c.o
+[ 34%] Building C object CMakeFiles/cglm.dir/src/mat4x2.c.o
+[ 36%] Building C object CMakeFiles/cglm.dir/src/mat4x3.c.o
+[ 38%] Building C object CMakeFiles/cglm.dir/src/plane.c.o
+[ 40%] Building C object CMakeFiles/cglm.dir/src/noise.c.o
 [ 41%] Building C object CMakeFiles/cglm.dir/src/frustum.c.o
 [ 43%] Building C object CMakeFiles/cglm.dir/src/box.c.o
-[ 45%] Building C object CMakeFiles/cglm.dir/src/project.c.o
-[ 47%] Building C object CMakeFiles/cglm.dir/src/sphere.c.o
-[ 49%] Building C object CMakeFiles/cglm.dir/src/ease.c.o
-[ 50%] Building C object CMakeFiles/cglm.dir/src/curve.c.o
-[ 52%] Building C object CMakeFiles/cglm.dir/src/bezier.c.o
-[ 54%] Building C object CMakeFiles/cglm.dir/src/ray.c.o
-[ 56%] Building C object CMakeFiles/cglm.dir/src/affine2d.c.o
-[ 58%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_lh_no.c.o
-[ 60%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_lh_zo.c.o
-[ 62%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_rh_no.c.o
-[ 64%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_rh_zo.c.o
-[ 66%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_lh_no.c.o
-[ 67%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_lh_zo.c.o
-[ 69%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_rh_no.c.o
-[ 71%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_rh_zo.c.o
-[ 73%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_lh_no.c.o
-[ 75%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_lh_zo.c.o
-[ 77%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_rh_no.c.o
-[ 79%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_rh_zo.c.o
+[ 45%] Building C object CMakeFiles/cglm.dir/src/aabb2d.c.o
+[ 47%] Building C object CMakeFiles/cglm.dir/src/project.c.o
+[ 49%] Building C object CMakeFiles/cglm.dir/src/sphere.c.o
+[ 50%] Building C object CMakeFiles/cglm.dir/src/ease.c.o
+[ 52%] Building C object CMakeFiles/cglm.dir/src/curve.c.o
+[ 54%] Building C object CMakeFiles/cglm.dir/src/bezier.c.o
+[ 56%] Building C object CMakeFiles/cglm.dir/src/ray.c.o
+[ 58%] Building C object CMakeFiles/cglm.dir/src/affine2d.c.o
+[ 60%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_lh_no.c.o
+[ 61%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_lh_zo.c.o
+[ 63%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_rh_no.c.o
+[ 65%] Building C object CMakeFiles/cglm.dir/src/clipspace/ortho_rh_zo.c.o
+[ 67%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_lh_no.c.o
+[ 69%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_lh_zo.c.o
+[ 70%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_rh_no.c.o
+[ 72%] Building C object CMakeFiles/cglm.dir/src/clipspace/persp_rh_zo.c.o
+[ 74%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_lh_no.c.o
+[ 76%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_lh_zo.c.o
+[ 78%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_rh_no.c.o
+[ 80%] Building C object CMakeFiles/cglm.dir/src/clipspace/view_rh_zo.c.o
 [ 81%] Building C object CMakeFiles/cglm.dir/src/clipspace/project_no.c.o
 [ 83%] Building C object CMakeFiles/cglm.dir/src/clipspace/project_zo.c.o
-[ 84%] Linking C shared library libcglm.so
-[ 84%] Built target cglm
-[ 88%] Building C object test/CMakeFiles/tests.dir/src/test_euler.c.o
-[ 88%] Building C object test/CMakeFiles/tests.dir/runner.c.o
+[ 85%] Linking C shared library libcglm.so
+[ 85%] Built target cglm
+[ 87%] Building C object test/CMakeFiles/tests.dir/runner.c.o
+[ 89%] Building C object test/CMakeFiles/tests.dir/src/test_euler.c.o
 [ 90%] Building C object test/CMakeFiles/tests.dir/src/test_bezier.c.o
 [ 92%] Building C object test/CMakeFiles/tests.dir/src/test_struct.c.o
 [ 94%] Building C object test/CMakeFiles/tests.dir/src/test_clamp.c.o
@@ -64,3 +66,35 @@ $ cmake --build /home/chirag/qnx-porter/ports/cglm/work/build -j 2 -- -k
 [ 98%] Building C object test/CMakeFiles/tests.dir/src/tests.c.o
 [100%] Linking C executable ../tests
 [100%] Built target tests
+In file included from /home/chirag/qnx-porter/ports/cglm/work/src/test/runner.c:8:
+/home/chirag/qnx-porter/ports/cglm/work/src/test/runner.c: In function 'main':
+/home/chirag/qnx-porter/ports/cglm/work/src/test/include/common.h:55:21: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'clock_t' {aka 'unsigned int'} [-Wformat=]
+   55 | #define YELLOW      "\033[33m"             /* Yellow */
+      |                     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports/cglm/work/src/test/runner.c:73:25: note: in expansion of macro 'YELLOW'
+   73 |         fprintf(stderr, YELLOW "%.2lus", elapsed);
+      |                         ^~~~~~
+/home/chirag/qnx-porter/ports/cglm/work/src/test/runner.c:73:37: note: format string is defined here
+   73 |         fprintf(stderr, YELLOW "%.2lus", elapsed);
+      |                                 ~~~~^
+      |                                     |
+      |                                     long unsigned int
+      |                                 %.2u
+/home/chirag/qnx-porter/ports/cglm/work/src/test/include/common.h:58:21: warning: '0' flag ignored with precision and '%u' gnu_printf format [-Wformat=]
+   58 | #define CYAN        "\033[36m"             /* Cyan */
+      |                     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports/cglm/work/src/test/runner.c:88:11: note: in expansion of macro 'CYAN'
+   88 |           CYAN "\ncglm test results (%0.2lus):\n" RESET
+      |           ^~~~
+/home/chirag/qnx-porter/ports/cglm/work/src/test/include/common.h:58:21: warning: format '%lu' expects argument of type 'long unsigned int', but argument 3 has type 'clock_t' {aka 'unsigned int'} [-Wformat=]
+   58 | #define CYAN        "\033[36m"             /* Cyan */
+      |                     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports/cglm/work/src/test/runner.c:88:11: note: in expansion of macro 'CYAN'
+   88 |           CYAN "\ncglm test results (%0.2lus):\n" RESET
+      |           ^~~~
+/home/chirag/qnx-porter/ports/cglm/work/src/test/runner.c:88:43: note: format string is defined here
+   88 |           CYAN "\ncglm test results (%0.2lus):\n" RESET
+      |                                      ~~~~~^
+      |                                           |
+      |                                           long unsigned int
+      |                                      %0.2u

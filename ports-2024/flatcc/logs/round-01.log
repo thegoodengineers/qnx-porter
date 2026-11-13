@@ -1,0 +1,1137 @@
+$ cmake -S /home/chirag/qnx-porter/ports/flatcc/work/src -B /home/chirag/qnx-porter/ports/flatcc/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/flatcc/work/qnx-toolchain.cmake -DFLATCC_TEST=OFF
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- dist install dir /home/chirag/qnx-porter/ports/flatcc/work/src
+-- lib install dir /home/chirag/qnx-porter/ports/flatcc/work/src/lib
+-- Setting older GNU C compiler options with FLATCC_PORTABLE
+-- Disabling C++ tests for GCC pre 4.7
+-- Configured C_FLAGS: -g -DFLATCC_REFLECTION=1 -Wall -Wextra -Wno-unused-function -DFLATCC_PORTABLE
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/flatcc/work/build
+CMake Deprecation Warning at CMakeLists.txt:5 (cmake_minimum_required):
+  Compatibility with CMake < 2.8.12 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+cc: no files to process
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/flatcc/work/build -j 2 -- -k
+[  5%] Building C object src/runtime/CMakeFiles/flatccrt.dir/builder.c.o
+[  5%] Building C object src/compiler/CMakeFiles/flatcc.dir/__/__/external/hash/cmetrohash64.c.o
+[  8%] Building C object src/compiler/CMakeFiles/flatcc.dir/__/__/external/hash/str_set.c.o
+[ 11%] Building C object src/compiler/CMakeFiles/flatcc.dir/__/__/external/hash/ptr_set.c.o
+[ 14%] Building C object src/compiler/CMakeFiles/flatcc.dir/hash_tables/symbol_table.c.o
+[ 17%] Building C object src/compiler/CMakeFiles/flatcc.dir/hash_tables/scope_table.c.o
+[ 20%] Building C object src/compiler/CMakeFiles/flatcc.dir/hash_tables/name_table.c.o
+[ 22%] Building C object src/compiler/CMakeFiles/flatcc.dir/hash_tables/schema_table.c.o
+[ 25%] Building C object src/runtime/CMakeFiles/flatccrt.dir/emitter.c.o
+[ 28%] Building C object src/runtime/CMakeFiles/flatccrt.dir/refmap.c.o
+[ 31%] Building C object src/compiler/CMakeFiles/flatcc.dir/hash_tables/value_set.c.o
+[ 34%] Building C object src/runtime/CMakeFiles/flatccrt.dir/verifier.c.o
+[ 37%] Building C object src/compiler/CMakeFiles/flatcc.dir/fileio.c.o
+[ 40%] Building C object src/compiler/CMakeFiles/flatcc.dir/parser.c.o
+[ 42%] Building C object src/runtime/CMakeFiles/flatccrt.dir/json_parser.c.o
+[ 45%] Building C object src/compiler/CMakeFiles/flatcc.dir/semantics.c.o
+[ 48%] Building C object src/runtime/CMakeFiles/flatccrt.dir/json_printer.c.o
+[ 51%] Building C object src/compiler/CMakeFiles/flatcc.dir/coerce.c.o
+[ 54%] Building C object src/compiler/CMakeFiles/flatcc.dir/flatcc.c.o
+[ 57%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_c.c.o
+[ 60%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_c_reader.c.o
+[ 62%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_c_sort.c.o
+[ 65%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_c_builder.c.o
+[ 68%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_c_verifier.c.o
+[ 71%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_c_sorter.c.o
+[ 74%] Linking C static library /home/chirag/qnx-porter/ports/flatcc/work/src/lib/libflatccrt.a
+[ 77%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_c_json_parser.c.o
+[ 77%] Built target flatccrt
+[ 80%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_c_json_printer.c.o
+[ 82%] Building C object src/compiler/CMakeFiles/flatcc.dir/__/runtime/builder.c.o
+[ 85%] Building C object src/compiler/CMakeFiles/flatcc.dir/__/runtime/emitter.c.o
+[ 88%] Building C object src/compiler/CMakeFiles/flatcc.dir/__/runtime/refmap.c.o
+[ 91%] Building C object src/compiler/CMakeFiles/flatcc.dir/codegen_schema.c.o
+[ 94%] Linking C static library /home/chirag/qnx-porter/ports/flatcc/work/src/lib/libflatcc.a
+[ 94%] Built target flatcc
+[ 97%] Building C object src/cli/CMakeFiles/flatcc_cli.dir/flatcc_cli.c.o
+[100%] Linking C executable /home/chirag/qnx-porter/ports/flatcc/work/src/bin/flatcc
+[100%] Built target flatcc_cli
+In file included from /home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:10,
+                 from /home/chirag/qnx-porter/ports/flatcc/work/src/src/compiler/codegen_schema.c:3:
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_char_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:668:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  668 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_char, char)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:668:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  668 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_char, char)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:668:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  668 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_char, char)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:668:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  668 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_char, char)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_char_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:668:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  668 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_char, char)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:668:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  668 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_char, char)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:668:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  668 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_char, char)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:668:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  668 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_char, char)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_uint8_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:669:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  669 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint8, uint8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:669:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  669 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint8, uint8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:669:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  669 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint8, uint8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:669:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  669 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint8, uint8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_uint8_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:669:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  669 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint8, uint8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:669:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  669 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint8, uint8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:669:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  669 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint8, uint8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:669:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  669 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint8, uint8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_int8_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:670:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  670 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int8, int8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:670:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  670 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int8, int8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:670:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  670 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int8, int8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:670:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  670 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int8, int8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_int8_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:670:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  670 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int8, int8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:670:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  670 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int8, int8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:670:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  670 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int8, int8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:670:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  670 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int8, int8_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_bool_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:671:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  671 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_bool, flatbuffers_bool_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:671:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  671 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_bool, flatbuffers_bool_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:671:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  671 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_bool, flatbuffers_bool_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:671:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  671 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_bool, flatbuffers_bool_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_bool_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:671:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  671 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_bool, flatbuffers_bool_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:671:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  671 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_bool, flatbuffers_bool_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:671:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  671 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_bool, flatbuffers_bool_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:671:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  671 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_bool, flatbuffers_bool_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_uint16_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:672:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  672 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint16, uint16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:672:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  672 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint16, uint16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:672:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  672 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint16, uint16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:672:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  672 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint16, uint16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_uint16_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:672:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  672 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint16, uint16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:672:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  672 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint16, uint16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:672:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  672 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint16, uint16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:672:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  672 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint16, uint16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_uint32_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:673:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  673 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint32, uint32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:673:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  673 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint32, uint32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:673:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  673 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint32, uint32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:673:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  673 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint32, uint32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_uint32_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:673:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  673 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint32, uint32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:673:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  673 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint32, uint32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:673:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  673 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint32, uint32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:673:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  673 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint32, uint32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_uint64_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:674:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  674 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint64, uint64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:674:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  674 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint64, uint64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:674:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  674 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint64, uint64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:674:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  674 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint64, uint64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_uint64_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:674:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  674 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint64, uint64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:674:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  674 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint64, uint64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:674:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  674 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint64, uint64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:674:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  674 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_uint64, uint64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_int16_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:675:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  675 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int16, int16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:675:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  675 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int16, int16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:675:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  675 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int16, int16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:675:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  675 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int16, int16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_int16_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:675:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  675 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int16, int16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:675:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  675 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int16, int16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:675:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  675 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int16, int16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:675:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  675 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int16, int16_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_int32_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:676:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  676 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int32, int32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:676:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  676 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int32, int32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:676:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  676 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int32, int32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:676:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  676 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int32, int32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_int32_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:676:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  676 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int32, int32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:676:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  676 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int32, int32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:676:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  676 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int32, int32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:676:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  676 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int32, int32_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_int64_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:677:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  677 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int64, int64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:677:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  677 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int64, int64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:677:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  677 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int64, int64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:677:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  677 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int64, int64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_int64_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:677:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  677 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int64, int64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:677:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  677 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int64, int64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:677:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  677 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int64, int64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:677:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  677 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_int64, int64_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_float_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:678:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  678 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_float, float)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:678:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  678 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_float, float)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:678:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  678 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_float, float)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:678:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  678 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_float, float)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_float_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:678:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  678 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_float, float)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:678:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  678 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_float, float)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:678:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  678 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_float, float)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:678:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  678 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_float, float)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_double_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:679:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  679 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_double, double)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:679:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  679 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_double, double)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:679:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  679 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_double, double)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:679:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  679 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_double, double)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h: In function 'flatbuffers_double_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:679:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  679 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_double, double)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:679:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  679 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_double, double)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:679:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  679 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_double, double)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:679:1: note: in expansion of macro '__flatbuffers_build_scalar'
+  679 | __flatbuffers_build_scalar(flatbuffers_, flatbuffers_double, double)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h: In function 'reflection_BaseType_array_copy_from_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:20:1: note: in expansion of macro '__flatbuffers_build_scalar'
+   20 | __flatbuffers_build_scalar(flatbuffers_, reflection_BaseType, reflection_BaseType_enum_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:20:1: note: in expansion of macro '__flatbuffers_build_scalar'
+   20 | __flatbuffers_build_scalar(flatbuffers_, reflection_BaseType, reflection_BaseType_enum_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:340:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  340 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:20:1: note: in expansion of macro '__flatbuffers_build_scalar'
+   20 | __flatbuffers_build_scalar(flatbuffers_, reflection_BaseType, reflection_BaseType_enum_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:341:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  341 |   for (i = 0; i < n; ++i) N ## _copy_from_pe(&p[i], &p2[i]); return p; }\
+      |                                                              ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:20:1: note: in expansion of macro '__flatbuffers_build_scalar'
+   20 | __flatbuffers_build_scalar(flatbuffers_, reflection_BaseType, reflection_BaseType_enum_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h: In function 'reflection_BaseType_array_copy_to_pe':
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:3: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |   ^~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:20:1: note: in expansion of macro '__flatbuffers_build_scalar'
+   20 | __flatbuffers_build_scalar(flatbuffers_, reflection_BaseType, reflection_BaseType_enum_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:20:1: note: in expansion of macro '__flatbuffers_build_scalar'
+   20 | __flatbuffers_build_scalar(flatbuffers_, reflection_BaseType, reflection_BaseType_enum_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: warning: this 'else' clause does not guard... [-Wmisleading-indentation]
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:343:69: note: in definition of macro '__flatbuffers_define_fixed_array_primitives'
+  343 | { size_t i; if (NS ## is_native_pe()) memcpy(p, p2, n * sizeof(T)); else\
+      |                                                                     ^~~~~
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                                      
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:20:1: note: in expansion of macro '__flatbuffers_build_scalar'
+   20 | __flatbuffers_build_scalar(flatbuffers_, reflection_BaseType, reflection_BaseType_enum_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:344:60: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'else'
+  344 |   for (i = 0; i < n; ++i) N ## _copy_to_pe(&p[i], &p2[i]); return p; }
+      |                                                            ^~~~~~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/flatbuffers_common_builder.h:360:1: note: in expansion of macro '__flatbuffers_define_fixed_array_primitives'
+  360 | __ ## NS ## define_fixed_array_primitives(NS, N, T)\
+      | ^~
+/home/chirag/qnx-porter/ports/flatcc/work/src/include/flatcc/reflection/reflection_builder.h:20:1: note: in expansion of macro '__flatbuffers_build_scalar'
+   20 | __flatbuffers_build_scalar(flatbuffers_, reflection_BaseType, reflection_BaseType_enum_t)
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~

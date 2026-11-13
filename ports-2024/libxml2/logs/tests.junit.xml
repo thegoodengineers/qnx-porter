@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="qnx-target" tests="8" failures="1" skipped="0"><testcase name="runtest" classname="qnx-target" /><testcase name="runsuite" classname="qnx-target" /><testcase name="testapi" classname="qnx-target"><failure message="exit 139" /></testcase><testcase name="testchar" classname="qnx-target" /><testcase name="testdict" classname="qnx-target" /><testcase name="testparser" classname="qnx-target" /><testcase name="testrecurse" classname="qnx-target" /><testcase name="testThreads" classname="qnx-target" /></testsuite>

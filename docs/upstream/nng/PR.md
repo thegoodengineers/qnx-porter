@@ -3,7 +3,7 @@
 - **Upstream:** https://github.com/nanomsg/nng
 - **Patch:** [`0001-posix_udp-include-errno.h-instead-of-sys-errno.h.patch`](0001-posix_udp-include-errno.h-instead-of-sys-errno.h.patch),
   made with `git format-patch` against tag `v1.9.0` (`29aff2bacc9e`, the tag in `campaign.yaml`). Source: the
-  port's kept patch [`ports/nng/patches/0001-header-alias-posix-udp-c.patch`](../../../ports/nng/patches/0001-header-alias-posix-udp-c.patch).
+  port's kept patch [`ports-2024/nng/patches/0001-header-alias-posix-udp-c.patch`](../../../ports-2024/nng/patches/0001-header-alias-posix-udp-c.patch).
   This one was not on the first list of candidates; `scripts/upstream.py` found it among the ports' kept patches.
 - **Upstream today:** `main` at `caf6f9f0b220` (13 Nov 2026) still has `#include <sys/errno.h>` at
   `src/platform/posix/posix_udp.c:14`, and now also `#include <errno.h>` at line 20 (inside
@@ -15,12 +15,12 @@ Portability. `<sys/errno.h>` is not a POSIX header: glibc ships it as an alias, 
 at all, and the build stops at this include. POSIX's `<errno.h>` declares everything the file uses.
 
 ## Verification, from our logs
-Without the patch, the QNX 8.0 build stopped here (`ports/nng/logs/round-01.log`):
+Without the patch, the QNX 8.0 build stopped here (`ports-2024/nng/logs/round-01.log`):
 ```
 .../src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
    14 | #include <sys/errno.h>
 ```
-With the patch, nng built and its tests ran on the QNX 8.0 x86_64 target (`ports/nng/logs/tests.log`):
+With the patch, nng built and its tests ran on the QNX 8.0 x86_64 target (`ports-2024/nng/logs/tests.log`):
 ```
 82/86 tests passed on the QNX target
 ```

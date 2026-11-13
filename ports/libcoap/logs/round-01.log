@@ -120,7 +120,7 @@ $ cmake -S /home/chirag/qnx-porter/ports/libcoap/work/src -B /home/chirag/qnx-po
 -- PACKAGE VERSION..................4.3.5
 -- PACKAGE SOURCE...................5c01e27-dirty
 -- LIBRARY API VERSION..............3
--- LIBRARY ABI VERSION..............3.2.0
+-- LIBRARY ABI VERSION..............3.2.2
 -- ENABLE_DTLS:.....................OFF
 -- ENABLE_TCP:......................ON
 -- ENABLE_IPV4:.....................ON
@@ -136,6 +136,7 @@ $ cmake -S /home/chirag/qnx-porter/ports/libcoap/work/src -B /home/chirag/qnx-po
 -- ENABLE_THREAD_RECURSIVE_CHECK....OFF
 -- ENABLE_DOCS:.....................OFF
 -- ENABLE_EXAMPLES:.................ON
+-- ENABLE_SANITIZER:................OFF
 -- DTLS_BACKEND:....................default
 -- WITH_GNUTLS:.....................OFF
 -- WITH_TINYDTLS:...................OFF
@@ -169,10 +170,10 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports/libcoap/work/build -j 2 -- -k
-[  4%] Building C object CMakeFiles/coap-3.dir/src/coap_address.c.o
 [  4%] Building C object CMakeFiles/coap-3.dir/src/coap_asn1.c.o
+[  4%] Building C object CMakeFiles/coap-3.dir/src/coap_address.c.o
 [  6%] Building C object CMakeFiles/coap-3.dir/src/coap_async.c.o
-[ 10%] Building C object CMakeFiles/coap-3.dir/src/coap_block.c.o
+[  8%] Building C object CMakeFiles/coap-3.dir/src/coap_block.c.o
 [ 10%] Building C object CMakeFiles/coap-3.dir/src/coap_cache.c.o
 [ 12%] Building C object CMakeFiles/coap-3.dir/src/coap_debug.c.o
 [ 14%] Building C object CMakeFiles/coap-3.dir/src/coap_dtls.c.o
@@ -190,8 +191,8 @@ $ cmake --build /home/chirag/qnx-porter/ports/libcoap/work/build -j 2 -- -k
 [ 38%] Building C object CMakeFiles/coap-3.dir/src/coap_pdu.c.o
 [ 40%] Building C object CMakeFiles/coap-3.dir/src/coap_prng.c.o
 [ 42%] Building C object CMakeFiles/coap-3.dir/src/coap_proxy.c.o
-[ 44%] Building C object CMakeFiles/coap-3.dir/src/coap_resource.c.o
-[ 46%] Building C object CMakeFiles/coap-3.dir/src/coap_session.c.o
+[ 44%] Building C object CMakeFiles/coap-3.dir/src/coap_session.c.o
+[ 46%] Building C object CMakeFiles/coap-3.dir/src/coap_resource.c.o
 [ 48%] Building C object CMakeFiles/coap-3.dir/src/coap_sha1.c.o
 [ 51%] Building C object CMakeFiles/coap-3.dir/src/coap_str.c.o
 [ 53%] Building C object CMakeFiles/coap-3.dir/src/coap_subscribe.c.o
@@ -207,7 +208,7 @@ $ cmake --build /home/chirag/qnx-porter/ports/libcoap/work/build -j 2 -- -k
 [ 73%] Building C object CMakeFiles/coap-3.dir/src/oscore/oscore_crypto.c.o
 [ 75%] Linking C static library libcoap-3.a
 [ 75%] Built target coap-3
-[ 79%] Building C object CMakeFiles/coap-rd.dir/examples/coap-rd.c.o
+[ 77%] Building C object CMakeFiles/coap-rd.dir/examples/coap-rd.c.o
 [ 79%] Building C object CMakeFiles/coap-client.dir/examples/coap-client.c.o
 [ 81%] Linking C executable coap-rd
 [ 83%] Building C object CMakeFiles/coap-server.dir/examples/coap-server.c.o
@@ -225,54 +226,54 @@ $ cmake --build /home/chirag/qnx-porter/ports/libcoap/work/build -j 2 -- -k
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:211:(.text+0x60f): undefined reference to `getifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:239:(.text+0x6c0): undefined reference to `freeifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `coap_resolve_address_info':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:547:(.text+0xb7a): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:643:(.text+0xbdd): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:550:(.text+0x10e5): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:552:(.text+0xb7a): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:648:(.text+0xbd6): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:555:(.text+0x1095): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `_coap_address_isany_impl':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:839:(.text+0x12df): undefined reference to `in6addr_any'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:844:(.text+0x12bf): undefined reference to `in6addr_any'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_debug.c.o): in function `coap_print_ip_addr':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_debug.c:445:(.text+0x9f3): undefined reference to `__inet_ntop'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_bind_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:118:(.text+0x64): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:134:(.text+0xab): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:180:(.text+0xf9): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:192:(.text+0x11a): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:150:(.text+0x1e1): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:155:(.text+0x206): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:161:(.text+0x228): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:141:(.text+0x24d): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:108:(.text+0x64): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:124:(.text+0xab): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:170:(.text+0xf9): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:182:(.text+0x11a): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:140:(.text+0x1e1): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:145:(.text+0x206): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:151:(.text+0x228): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:131:(.text+0x24d): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_connect_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:234:(.text+0x4a0): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:264:(.text+0x610): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:315:(.text+0x6c4): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:326:(.text+0x6db): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:341:(.text+0x77a): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:355:(.text+0x791): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:360:(.text+0x7ac): undefined reference to `getpeername'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:286:(.text+0x7e2): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:289:(.text+0x806): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:334:(.text+0x852): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:224:(.text+0x4a0): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:254:(.text+0x610): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:305:(.text+0x6c4): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:316:(.text+0x6db): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:331:(.text+0x77a): undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:345:(.text+0x791): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:350:(.text+0x7ac): undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:276:(.text+0x7e2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:279:(.text+0x806): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:324:(.text+0x852): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_write':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:628:(.text+0xb21): undefined reference to `send'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:618:(.text+0xb21): undefined reference to `send'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_read':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:683:(.text+0xc02): undefined reference to `recv'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:673:(.text+0xc02): undefined reference to `recv'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_send':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:838:(.text+0xd05): undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:991:(.text+0xd4f): undefined reference to `sendto'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:837:(.text+0xd05): undefined reference to `send'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:990:(.text+0xd4f): undefined reference to `sendto'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_recv':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1038:(.text+0xf07): undefined reference to `recv'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1119:(.text+0xf60): undefined reference to `recvfrom'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1225:(.text+0xfd3): undefined reference to `getsockname'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1037:(.text+0xf07): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1118:(.text+0xf60): undefined reference to `recvfrom'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1224:(.text+0xfd3): undefined reference to `getsockname'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_join_mcast_group_intf_lkd':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4596:(.text+0x92a9): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4761:(.text+0x93f0): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4794:(.text+0x9473): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4682:(.text+0x94d4): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4737:(.text+0x9592): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4599:(.text+0x9720): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4616:(.text+0x93c9): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4781:(.text+0x9510): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4814:(.text+0x9593): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4702:(.text+0x95f4): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4757:(.text+0x96b2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4619:(.text+0x9840): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_mcast_set_hops':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4823:(.text+0x980b): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4813:(.text+0x9838): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4843:(.text+0x992b): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4833:(.text+0x9958): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_connect_tcp1':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:60:(.text+0x70): undefined reference to `socket'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:123:(.text+0xf4): undefined reference to `connect'
@@ -295,7 +296,7 @@ $ cmake --build /home/chirag/qnx-porter/ports/libcoap/work/build -j 2 -- -k
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:277:(.text+0x6ef): undefined reference to `listen'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_accept_tcp':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:305:(.text+0x95b): undefined reference to `accept'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:313:(.text+0x970): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:319:(.text+0x970): undefined reference to `getsockname'
 gmake[2]: *** [CMakeFiles/coap-rd.dir/build.make:98: coap-rd] Error 1
 gmake[2]: Target 'CMakeFiles/coap-rd.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:147: CMakeFiles/coap-rd.dir/all] Error 2
@@ -305,54 +306,54 @@ gmake[1]: *** [CMakeFiles/Makefile2:147: CMakeFiles/coap-rd.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:211:(.text+0x60f): undefined reference to `getifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:239:(.text+0x6c0): undefined reference to `freeifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `coap_resolve_address_info':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:547:(.text+0xb7a): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:643:(.text+0xbdd): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:550:(.text+0x10e5): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:552:(.text+0xb7a): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:648:(.text+0xbd6): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:555:(.text+0x1095): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `_coap_address_isany_impl':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:839:(.text+0x12df): undefined reference to `in6addr_any'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:844:(.text+0x12bf): undefined reference to `in6addr_any'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_debug.c.o): in function `coap_print_ip_addr':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_debug.c:445:(.text+0x9f3): undefined reference to `__inet_ntop'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_bind_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:118:(.text+0x64): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:134:(.text+0xab): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:180:(.text+0xf9): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:192:(.text+0x11a): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:150:(.text+0x1e1): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:155:(.text+0x206): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:161:(.text+0x228): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:141:(.text+0x24d): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:108:(.text+0x64): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:124:(.text+0xab): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:170:(.text+0xf9): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:182:(.text+0x11a): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:140:(.text+0x1e1): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:145:(.text+0x206): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:151:(.text+0x228): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:131:(.text+0x24d): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_connect_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:234:(.text+0x4a0): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:264:(.text+0x610): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:315:(.text+0x6c4): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:326:(.text+0x6db): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:341:(.text+0x77a): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:355:(.text+0x791): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:360:(.text+0x7ac): undefined reference to `getpeername'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:286:(.text+0x7e2): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:289:(.text+0x806): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:334:(.text+0x852): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:224:(.text+0x4a0): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:254:(.text+0x610): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:305:(.text+0x6c4): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:316:(.text+0x6db): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:331:(.text+0x77a): undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:345:(.text+0x791): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:350:(.text+0x7ac): undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:276:(.text+0x7e2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:279:(.text+0x806): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:324:(.text+0x852): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_write':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:628:(.text+0xb21): undefined reference to `send'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:618:(.text+0xb21): undefined reference to `send'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_read':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:683:(.text+0xc02): undefined reference to `recv'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:673:(.text+0xc02): undefined reference to `recv'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_send':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:838:(.text+0xd05): undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:991:(.text+0xd4f): undefined reference to `sendto'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:837:(.text+0xd05): undefined reference to `send'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:990:(.text+0xd4f): undefined reference to `sendto'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_recv':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1038:(.text+0xf07): undefined reference to `recv'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1119:(.text+0xf60): undefined reference to `recvfrom'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1225:(.text+0xfd3): undefined reference to `getsockname'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1037:(.text+0xf07): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1118:(.text+0xf60): undefined reference to `recvfrom'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1224:(.text+0xfd3): undefined reference to `getsockname'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_join_mcast_group_intf_lkd':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4596:(.text+0x92a9): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4761:(.text+0x93f0): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4794:(.text+0x9473): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4682:(.text+0x94d4): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4737:(.text+0x9592): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4599:(.text+0x9720): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4616:(.text+0x93c9): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4781:(.text+0x9510): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4814:(.text+0x9593): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4702:(.text+0x95f4): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4757:(.text+0x96b2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4619:(.text+0x9840): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_mcast_set_hops':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4823:(.text+0x980b): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4813:(.text+0x9838): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4843:(.text+0x992b): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4833:(.text+0x9958): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_connect_tcp1':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:60:(.text+0x70): undefined reference to `socket'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:123:(.text+0xf4): undefined reference to `connect'
@@ -375,7 +376,7 @@ gmake[1]: *** [CMakeFiles/Makefile2:147: CMakeFiles/coap-rd.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:277:(.text+0x6ef): undefined reference to `listen'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_accept_tcp':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:305:(.text+0x95b): undefined reference to `accept'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:313:(.text+0x970): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:319:(.text+0x970): undefined reference to `getsockname'
 gmake[2]: *** [CMakeFiles/coap-client.dir/build.make:98: coap-client] Error 1
 gmake[2]: Target 'CMakeFiles/coap-client.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:121: CMakeFiles/coap-client.dir/all] Error 2
@@ -390,54 +391,54 @@ gmake[1]: *** [CMakeFiles/Makefile2:121: CMakeFiles/coap-client.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:211:(.text+0x60f): undefined reference to `getifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:239:(.text+0x6c0): undefined reference to `freeifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `coap_resolve_address_info':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:547:(.text+0xb7a): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:643:(.text+0xbdd): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:550:(.text+0x10e5): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:552:(.text+0xb7a): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:648:(.text+0xbd6): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:555:(.text+0x1095): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `_coap_address_isany_impl':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:839:(.text+0x12df): undefined reference to `in6addr_any'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:844:(.text+0x12bf): undefined reference to `in6addr_any'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_debug.c.o): in function `coap_print_ip_addr':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_debug.c:445:(.text+0x9f3): undefined reference to `__inet_ntop'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_bind_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:118:(.text+0x64): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:134:(.text+0xab): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:180:(.text+0xf9): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:192:(.text+0x11a): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:150:(.text+0x1e1): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:155:(.text+0x206): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:161:(.text+0x228): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:141:(.text+0x24d): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:108:(.text+0x64): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:124:(.text+0xab): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:170:(.text+0xf9): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:182:(.text+0x11a): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:140:(.text+0x1e1): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:145:(.text+0x206): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:151:(.text+0x228): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:131:(.text+0x24d): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_connect_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:234:(.text+0x4a0): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:264:(.text+0x610): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:315:(.text+0x6c4): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:326:(.text+0x6db): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:341:(.text+0x77a): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:355:(.text+0x791): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:360:(.text+0x7ac): undefined reference to `getpeername'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:286:(.text+0x7e2): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:289:(.text+0x806): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:334:(.text+0x852): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:224:(.text+0x4a0): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:254:(.text+0x610): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:305:(.text+0x6c4): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:316:(.text+0x6db): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:331:(.text+0x77a): undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:345:(.text+0x791): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:350:(.text+0x7ac): undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:276:(.text+0x7e2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:279:(.text+0x806): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:324:(.text+0x852): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_write':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:628:(.text+0xb21): undefined reference to `send'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:618:(.text+0xb21): undefined reference to `send'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_read':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:683:(.text+0xc02): undefined reference to `recv'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:673:(.text+0xc02): undefined reference to `recv'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_send':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:838:(.text+0xd05): undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:991:(.text+0xd4f): undefined reference to `sendto'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:837:(.text+0xd05): undefined reference to `send'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:990:(.text+0xd4f): undefined reference to `sendto'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_recv':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1038:(.text+0xf07): undefined reference to `recv'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1119:(.text+0xf60): undefined reference to `recvfrom'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1225:(.text+0xfd3): undefined reference to `getsockname'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1037:(.text+0xf07): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1118:(.text+0xf60): undefined reference to `recvfrom'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1224:(.text+0xfd3): undefined reference to `getsockname'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_join_mcast_group_intf_lkd':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4596:(.text+0x92a9): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4761:(.text+0x93f0): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4794:(.text+0x9473): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4682:(.text+0x94d4): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4737:(.text+0x9592): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4599:(.text+0x9720): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4616:(.text+0x93c9): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4781:(.text+0x9510): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4814:(.text+0x9593): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4702:(.text+0x95f4): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4757:(.text+0x96b2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4619:(.text+0x9840): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_mcast_set_hops':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4823:(.text+0x980b): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4813:(.text+0x9838): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4843:(.text+0x992b): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4833:(.text+0x9958): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_connect_tcp1':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:60:(.text+0x70): undefined reference to `socket'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:123:(.text+0xf4): undefined reference to `connect'
@@ -460,7 +461,7 @@ gmake[1]: *** [CMakeFiles/Makefile2:121: CMakeFiles/coap-client.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:277:(.text+0x6ef): undefined reference to `listen'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_accept_tcp':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:305:(.text+0x95b): undefined reference to `accept'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:313:(.text+0x970): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:319:(.text+0x970): undefined reference to `getsockname'
 gmake[2]: *** [CMakeFiles/etsi_iot_01.dir/build.make:98: etsi_iot_01] Error 1
 gmake[2]: Target 'CMakeFiles/etsi_iot_01.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:199: CMakeFiles/etsi_iot_01.dir/all] Error 2
@@ -475,23 +476,23 @@ gmake[1]: *** [CMakeFiles/Makefile2:199: CMakeFiles/etsi_iot_01.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:211:(.text+0x60f): undefined reference to `getifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:239:(.text+0x6c0): undefined reference to `freeifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `coap_resolve_address_info':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:547:(.text+0xb7a): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:643:(.text+0xbdd): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:550:(.text+0x10e5): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:552:(.text+0xb7a): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:648:(.text+0xbd6): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:555:(.text+0x1095): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `_coap_address_isany_impl':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:839:(.text+0x12df): undefined reference to `in6addr_any'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:844:(.text+0x12bf): undefined reference to `in6addr_any'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_debug.c.o): in function `coap_print_ip_addr':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_debug.c:445:(.text+0x9f3): undefined reference to `__inet_ntop'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_join_mcast_group_intf_lkd':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4596:(.text+0x92a9): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4761:(.text+0x93f0): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4794:(.text+0x9473): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4682:(.text+0x94d4): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4737:(.text+0x9592): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4599:(.text+0x9720): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4616:(.text+0x93c9): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4781:(.text+0x9510): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4814:(.text+0x9593): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4702:(.text+0x95f4): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4757:(.text+0x96b2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4619:(.text+0x9840): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_mcast_set_hops':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4823:(.text+0x980b): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4813:(.text+0x9838): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4843:(.text+0x992b): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4833:(.text+0x9958): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_connect_tcp1':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:60:(.text+0x70): undefined reference to `socket'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:123:(.text+0xf4): undefined reference to `connect'
@@ -514,38 +515,38 @@ gmake[1]: *** [CMakeFiles/Makefile2:199: CMakeFiles/etsi_iot_01.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:277:(.text+0x6ef): undefined reference to `listen'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_accept_tcp':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:305:(.text+0x95b): undefined reference to `accept'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:313:(.text+0x970): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:319:(.text+0x970): undefined reference to `getsockname'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_bind_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:118:(.text+0x64): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:134:(.text+0xab): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:180:(.text+0xf9): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:192:(.text+0x11a): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:150:(.text+0x1e1): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:155:(.text+0x206): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:161:(.text+0x228): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:141:(.text+0x24d): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:108:(.text+0x64): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:124:(.text+0xab): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:170:(.text+0xf9): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:182:(.text+0x11a): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:140:(.text+0x1e1): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:145:(.text+0x206): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:151:(.text+0x228): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:131:(.text+0x24d): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_connect_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:234:(.text+0x4a0): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:264:(.text+0x610): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:315:(.text+0x6c4): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:326:(.text+0x6db): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:341:(.text+0x77a): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:355:(.text+0x791): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:360:(.text+0x7ac): undefined reference to `getpeername'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:286:(.text+0x7e2): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:289:(.text+0x806): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:334:(.text+0x852): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:224:(.text+0x4a0): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:254:(.text+0x610): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:305:(.text+0x6c4): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:316:(.text+0x6db): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:331:(.text+0x77a): undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:345:(.text+0x791): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:350:(.text+0x7ac): undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:276:(.text+0x7e2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:279:(.text+0x806): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:324:(.text+0x852): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_write':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:628:(.text+0xb21): undefined reference to `send'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:618:(.text+0xb21): undefined reference to `send'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_read':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:683:(.text+0xc02): undefined reference to `recv'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:673:(.text+0xc02): undefined reference to `recv'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_send':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:838:(.text+0xd05): undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:991:(.text+0xd4f): undefined reference to `sendto'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:837:(.text+0xd05): undefined reference to `send'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:990:(.text+0xd4f): undefined reference to `sendto'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_recv':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1038:(.text+0xf07): undefined reference to `recv'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1119:(.text+0xf60): undefined reference to `recvfrom'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1225:(.text+0xfd3): undefined reference to `getsockname'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1037:(.text+0xf07): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1118:(.text+0xf60): undefined reference to `recvfrom'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1224:(.text+0xfd3): undefined reference to `getsockname'
 gmake[2]: *** [CMakeFiles/tiny.dir/build.make:98: tiny] Error 1
 gmake[2]: Target 'CMakeFiles/tiny.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:225: CMakeFiles/tiny.dir/all] Error 2
@@ -555,54 +556,54 @@ gmake[1]: *** [CMakeFiles/Makefile2:225: CMakeFiles/tiny.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:211:(.text+0x60f): undefined reference to `getifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:239:(.text+0x6c0): undefined reference to `freeifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `coap_resolve_address_info':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:547:(.text+0xb7a): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:643:(.text+0xbdd): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:550:(.text+0x10e5): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:552:(.text+0xb7a): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:648:(.text+0xbd6): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:555:(.text+0x1095): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `_coap_address_isany_impl':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:839:(.text+0x12df): undefined reference to `in6addr_any'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:844:(.text+0x12bf): undefined reference to `in6addr_any'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_debug.c.o): in function `coap_print_ip_addr':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_debug.c:445:(.text+0x9f3): undefined reference to `__inet_ntop'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_bind_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:118:(.text+0x64): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:134:(.text+0xab): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:180:(.text+0xf9): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:192:(.text+0x11a): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:150:(.text+0x1e1): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:155:(.text+0x206): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:161:(.text+0x228): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:141:(.text+0x24d): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:108:(.text+0x64): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:124:(.text+0xab): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:170:(.text+0xf9): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:182:(.text+0x11a): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:140:(.text+0x1e1): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:145:(.text+0x206): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:151:(.text+0x228): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:131:(.text+0x24d): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_connect_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:234:(.text+0x4a0): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:264:(.text+0x610): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:315:(.text+0x6c4): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:326:(.text+0x6db): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:341:(.text+0x77a): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:355:(.text+0x791): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:360:(.text+0x7ac): undefined reference to `getpeername'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:286:(.text+0x7e2): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:289:(.text+0x806): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:334:(.text+0x852): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:224:(.text+0x4a0): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:254:(.text+0x610): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:305:(.text+0x6c4): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:316:(.text+0x6db): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:331:(.text+0x77a): undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:345:(.text+0x791): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:350:(.text+0x7ac): undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:276:(.text+0x7e2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:279:(.text+0x806): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:324:(.text+0x852): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_write':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:628:(.text+0xb21): undefined reference to `send'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:618:(.text+0xb21): undefined reference to `send'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_read':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:683:(.text+0xc02): undefined reference to `recv'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:673:(.text+0xc02): undefined reference to `recv'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_send':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:838:(.text+0xd05): undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:991:(.text+0xd4f): undefined reference to `sendto'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:837:(.text+0xd05): undefined reference to `send'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:990:(.text+0xd4f): undefined reference to `sendto'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_recv':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1038:(.text+0xf07): undefined reference to `recv'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1119:(.text+0xf60): undefined reference to `recvfrom'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1225:(.text+0xfd3): undefined reference to `getsockname'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1037:(.text+0xf07): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1118:(.text+0xf60): undefined reference to `recvfrom'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1224:(.text+0xfd3): undefined reference to `getsockname'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_join_mcast_group_intf_lkd':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4596:(.text+0x92a9): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4761:(.text+0x93f0): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4794:(.text+0x9473): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4682:(.text+0x94d4): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4737:(.text+0x9592): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4599:(.text+0x9720): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4616:(.text+0x93c9): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4781:(.text+0x9510): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4814:(.text+0x9593): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4702:(.text+0x95f4): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4757:(.text+0x96b2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4619:(.text+0x9840): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_mcast_set_hops':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4823:(.text+0x980b): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4813:(.text+0x9838): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4843:(.text+0x992b): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4833:(.text+0x9958): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_connect_tcp1':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:60:(.text+0x70): undefined reference to `socket'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:123:(.text+0xf4): undefined reference to `connect'
@@ -625,7 +626,7 @@ gmake[1]: *** [CMakeFiles/Makefile2:225: CMakeFiles/tiny.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:277:(.text+0x6ef): undefined reference to `listen'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_accept_tcp':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:305:(.text+0x95b): undefined reference to `accept'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:313:(.text+0x970): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:319:(.text+0x970): undefined reference to `getsockname'
 gmake[2]: *** [CMakeFiles/coap-server.dir/build.make:98: coap-server] Error 1
 gmake[2]: Target 'CMakeFiles/coap-server.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:173: CMakeFiles/coap-server.dir/all] Error 2
@@ -633,61 +634,61 @@ gmake[1]: *** [CMakeFiles/Makefile2:173: CMakeFiles/coap-server.dir/all] Error 2
 /home/chirag/qnx-porter/ports/libcoap/work/src/examples/oscore-interop-server.c:450:(.text.startup+0x3ee): undefined reference to `getaddrinfo'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/examples/oscore-interop-server.c:489:(.text.startup+0x454): undefined reference to `freeaddrinfo'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/examples/oscore-interop-server.c:489:(.text.startup+0x4c9): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/examples/oscore-interop-server.c:452:(.text.startup+0xd96): undefined reference to `gai_strerror'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/examples/oscore-interop-server.c:452:(.text.startup+0xda3): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `coap_is_bcast':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:211:(.text+0x2c7): undefined reference to `getifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:239:(.text+0x378): undefined reference to `freeifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:211:(.text+0x60f): undefined reference to `getifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:239:(.text+0x6c0): undefined reference to `freeifaddrs'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `coap_resolve_address_info':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:547:(.text+0xb7a): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:643:(.text+0xbdd): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:550:(.text+0x10e5): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:552:(.text+0xb7a): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:648:(.text+0xbd6): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:555:(.text+0x1095): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_address.c.o): in function `_coap_address_isany_impl':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:839:(.text+0x12df): undefined reference to `in6addr_any'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:844:(.text+0x12bf): undefined reference to `in6addr_any'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_debug.c.o): in function `coap_print_ip_addr':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_debug.c:445:(.text+0x9f3): undefined reference to `__inet_ntop'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_bind_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:118:(.text+0x64): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:134:(.text+0xab): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:180:(.text+0xf9): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:192:(.text+0x11a): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:150:(.text+0x1e1): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:155:(.text+0x206): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:161:(.text+0x228): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:141:(.text+0x24d): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:108:(.text+0x64): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:124:(.text+0xab): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:170:(.text+0xf9): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:182:(.text+0x11a): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:140:(.text+0x1e1): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:145:(.text+0x206): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:151:(.text+0x228): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:131:(.text+0x24d): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_connect_udp':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:234:(.text+0x4a0): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:264:(.text+0x610): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:315:(.text+0x6c4): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:326:(.text+0x6db): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:341:(.text+0x77a): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:355:(.text+0x791): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:360:(.text+0x7ac): undefined reference to `getpeername'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:286:(.text+0x7e2): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:289:(.text+0x806): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:334:(.text+0x852): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:224:(.text+0x4a0): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:254:(.text+0x610): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:305:(.text+0x6c4): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:316:(.text+0x6db): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:331:(.text+0x77a): undefined reference to `connect'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:345:(.text+0x791): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:350:(.text+0x7ac): undefined reference to `getpeername'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:276:(.text+0x7e2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:279:(.text+0x806): undefined reference to `bind'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:324:(.text+0x852): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_write':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:628:(.text+0xb21): undefined reference to `send'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:618:(.text+0xb21): undefined reference to `send'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_read':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:683:(.text+0xc02): undefined reference to `recv'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:673:(.text+0xc02): undefined reference to `recv'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_send':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:838:(.text+0xd05): undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:991:(.text+0xd4f): undefined reference to `sendto'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:837:(.text+0xd05): undefined reference to `send'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:990:(.text+0xd4f): undefined reference to `sendto'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_io.c.o): in function `coap_socket_recv':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1038:(.text+0xf07): undefined reference to `recv'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1119:(.text+0xf60): undefined reference to `recvfrom'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1225:(.text+0xfd3): undefined reference to `getsockname'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1037:(.text+0xf07): undefined reference to `recv'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1118:(.text+0xf60): undefined reference to `recvfrom'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_io.c:1224:(.text+0xfd3): undefined reference to `getsockname'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_join_mcast_group_intf_lkd':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4596:(.text+0x92a9): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4761:(.text+0x93f0): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4794:(.text+0x9473): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4682:(.text+0x94d4): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4737:(.text+0x9592): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4599:(.text+0x9720): undefined reference to `gai_strerror'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4616:(.text+0x93c9): undefined reference to `getaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4781:(.text+0x9510): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4814:(.text+0x9593): undefined reference to `freeaddrinfo'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4702:(.text+0x95f4): undefined reference to `socket'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4757:(.text+0x96b2): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4619:(.text+0x9840): undefined reference to `gai_strerror'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_net.c.o): in function `coap_mcast_set_hops':
-/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4823:(.text+0x980b): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4813:(.text+0x9838): undefined reference to `setsockopt'
+/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4843:(.text+0x992b): undefined reference to `setsockopt'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_net.c:4833:(.text+0x9958): undefined reference to `setsockopt'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_connect_tcp1':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:60:(.text+0x70): undefined reference to `socket'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:123:(.text+0xf4): undefined reference to `connect'
@@ -710,7 +711,7 @@ gmake[1]: *** [CMakeFiles/Makefile2:173: CMakeFiles/coap-server.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:277:(.text+0x6ef): undefined reference to `listen'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: libcoap-3.a(coap_tcp.c.o): in function `coap_socket_accept_tcp':
 /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:305:(.text+0x95b): undefined reference to `accept'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:313:(.text+0x970): undefined reference to `getsockname'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_tcp.c:319:(.text+0x970): undefined reference to `getsockname'
 gmake[2]: *** [CMakeFiles/oscore-interop-server.dir/build.make:98: oscore-interop-server] Error 1
 gmake[2]: Target 'CMakeFiles/oscore-interop-server.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:251: CMakeFiles/oscore-interop-server.dir/all] Error 2

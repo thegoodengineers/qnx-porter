@@ -13,16 +13,7 @@ FAIL  replay_driver (exit 1)
 FAIL  roc_driver (exit 139)
 PASS  srtp_driver (exit 0)
 PASS  test_srtp (exit 0)
-FAIL  rtpw_test (exit 254)
-    /home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw_test.sh : starting rtpw receiver process... 
-    /home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw_test.sh : receiver PID = 392077334
-    Using libsrtp2 2.6.0 [0x2060000]
-    security services: confidentiality message authentication
-    set master key/salt to 2b2edc5034f61a72345ca5986d7bfd01/89aa6dc2ecab32fd9af74df6dfc6
-    1
-    /home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw_test.sh : error
-    ./rtpw: socket bind error
-    Address already in use
-    /home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw_test.sh[179]: ps: cannot execute - No such file or directory
+FAIL  rtpw_test (exit None)
+    timed out after 300 s
 
 8/12 tests passed on the QNX target
