@@ -69,6 +69,10 @@ def main(argv=None) -> int:
         print(f"    rules+model: {r['build_result']}, tests {tests(r)}, model patches kept "
               f"{rows[-1]['model_patches_kept']} / reverted {rows[-1]['model_patches_reverted']}", flush=True)
     dest = ROOT / "results" / "model_eval.csv"
+    if dest.exists():  # an --only run replaces its own libraries' rows and keeps the others
+        done = {r["library"] for r in rows}
+        rows = [r for r in csv.DictReader(dest.open(encoding="utf-8")) if r["library"] not in done] + rows
+        rows.sort(key=lambda r: r["library"].lower())
     with dest.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
