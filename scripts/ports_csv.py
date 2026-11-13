@@ -78,13 +78,20 @@ def main():
     text = re.sub(r"(<!-- headline:start -->).*?(<!-- headline:end -->)",
                   lambda m: m[1] + headline(data) + m[2], text, flags=re.S)
     readme.write_text(text, encoding="utf-8", newline="\n")
+    print(summary(data))
+    print(f"-> {dest}")
+
+
+def summary(data: list[dict]) -> str:
+    """One line per architecture; video/render.py reads these lines from the demo recording."""
+    lines = []
     for arch in sorted({r["arch"] for r in data}):
         rs = [r for r in data if r["arch"] == arch]
         built = sum(r["build_result"] == "built" for r in rs)
         tested = [r for r in rs if r["tests_total"] not in ("", 0)]  # same count as the headline
-        print(f"{arch}: {len(rs)} libraries, {built} built for QNX 8.0; tests ran for {len(tested)} (at least one test each): "
-              f"{sum(r['tests_passed'] for r in tested)}/{sum(r['tests_total'] for r in tested)} passed")
-    print(f"-> {dest}")
+        lines.append(f"{arch}: {len(rs)} libraries, {built} built for QNX 8.0; tests ran for {len(tested)} (at least one test each): "
+                     f"{sum(r['tests_passed'] for r in tested)}/{sum(r['tests_total'] for r in tested)} passed")
+    return "\n".join(lines)
 
 
 if __name__ == "__main__":
