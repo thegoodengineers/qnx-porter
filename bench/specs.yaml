@@ -6,21 +6,21 @@
 _json: &json_doc 'static const char DOC[] = "{\"id\":42,\"name\":\"brake-controller\",\"rate_hz\":1000,\"limits\":[0.5,1.25,3.75],\"enabled\":true,\"tags\":{\"bus\":\"can0\",\"node\":7}}";'
 
 json-c:
-  what: parse a 120-byte JSON document and free it
+  what: parse a 121-byte JSON document and free it
   include_dirs: [".", "build"]
   includes: '#include "json.h"'
   globals: *json_doc
   call: 'struct json_object *o = json_tokener_parse(DOC); if (!o) return 1; json_object_put(o); return 0;'
 
 yyjson:
-  what: parse a 120-byte JSON document and free it
+  what: parse a 121-byte JSON document and free it
   include_dirs: ["src"]
   includes: '#include "yyjson.h"'
   globals: *json_doc
   call: 'yyjson_doc *d = yyjson_read(DOC, sizeof DOC - 1, 0); if (!d) return 1; yyjson_doc_free(d); return 0;'
 
 cJSON:
-  what: parse a 120-byte JSON document and free it
+  what: parse a 121-byte JSON document and free it
   include_dirs: ["."]
   includes: '#include "cJSON.h"'
   globals: *json_doc
@@ -84,14 +84,14 @@ cglm:
   call: 'b[3][0] += 0.001f; glm_mat4_mul(a, b, c); return c[3][0] < 0.0f;'
 
 expat:
-  what: parse a 150-byte XML document
+  what: parse a 112-byte XML document
   include_dirs: ["expat/lib", "build"]
   includes: '#include "expat.h"'
   globals: 'static const char XML[] = "<frame id=\"42\" bus=\"can0\"><signal name=\"speed\" unit=\"km/h\">87.5</signal><signal name=\"rpm\">2400</signal></frame>";'
   call: 'XML_Parser p = XML_ParserCreate(NULL); if (!p) return 1; int ok = XML_Parse(p, XML, sizeof XML - 1, 1); XML_ParserFree(p); return ok != XML_STATUS_OK;'
 
 pcre2:
-  what: match a precompiled regex against a 60-byte line
+  what: match a precompiled regex against a 56-byte line
   include_dirs: ["build", "src"]
   cflags: ["-DPCRE2_CODE_UNIT_WIDTH=8", "-DPCRE2_STATIC"]
   includes: '#include "pcre2.h"'
