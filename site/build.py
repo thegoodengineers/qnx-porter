@@ -135,7 +135,7 @@ def page(title: str, body: str, current: str, depth: int = 0, desc: str = "") ->
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(desc or 'qnx-porter ports open-source C/C++ libraries to QNX 8.0 and proves each port on a QNX target.')}">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}"><link rel="stylesheet" href="{up}style.css"></head><body>
 <a class="skip" href="#main">Skip to content</a>

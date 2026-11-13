@@ -1,6 +1,7 @@
 /* qnx-porter site. One sticky rail, one reading column, hairline rules, one blue.
    Geist from Google Fonts with system fallbacks; no other request leaves the site, no trackers. */
 :root {
+  color-scheme: light;  /* the site is light only */
   --bg: #fff; --paper: #f4f4f6; --ink: #0b1015; --ink-2: #474c54; --muted: #5c6168;
   --rule: #0b10151a; --rule-solid: #e4e4e7; --tick: #9ec6f7;
   --blue: #0562ef; --btn: #0562ef; --btn-ink: #fffbf5; --blue-7: #0562ef12; --blue-11: #0562ef1c; --blue-soft: #e8f0fe;
@@ -10,15 +11,6 @@
   --mono: "Geist Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono", Menlo, Consolas, monospace;
   --rail-w: 208px; --rail-gap: 96px; --col-w: 760px;
   --ease: cubic-bezier(.23, 1, .32, 1);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0c1014; --paper: #161b21; --ink: #e7e9ec; --ink-2: #b7bcc3; --muted: #9aa0a8;
-    --rule: #ffffff1c; --rule-solid: #2a3038; --tick: #31588f;
-    --blue: #6aa6ff; --btn: #0562ef; --btn-ink: #fff; --blue-7: #6aa6ff1a; --blue-11: #6aa6ff2b; --blue-soft: #10243f;
-    --ok: #2fbf6c; --ok-ink: #4fd18a; --warn: #e0a326; --warn-ink: #e9b949; --bad-ink: #ff7b6e;
-    --dots: radial-gradient(#ffffff17 1px, transparent 1.2px) 0 0 / 14px 14px;
-  }
 }
 
 * { box-sizing: border-box; }
