@@ -106,6 +106,20 @@ The two meet in three places:
 - The draft pull request text is in [docs/upstream/](docs/upstream/qnx-ports-build-files-PR.md). It has not
   been sent.
 
+**QNX's agent skills.** QNX also publishes [qnx-agent-skills](https://github.com/qnx/qnx-agent-skills)
+([codelab](https://qnx.github.io/codelabs/qnx-agent-skills/index.html)): instructions that turn a general coding
+agent into a QNX 8.0 porting companion. It builds natively on a self-hosted QNX target with Alpine's `abuild`, and
+it packages the result as an `apk`. The two tools are complementary:
+
+| | qnx-agent-skills | qnx-porter |
+|---|---|---|
+| Where it builds | on the QNX target, with the target's own toolchain | on the host, cross-compiled with the SDP's `qcc`, as product teams build |
+| Who changes the source | the coding agent, guided by its skills | documented rules first; a language model only for errors no rule covers, and only if qcc and the target accept the change |
+| Tests | `abuild`'s check step | the library's own registered suite (ctest, meson, make check) runs test by test on the target; results go to `tests.log` and JUnit XML |
+| Output | an `apk`, a REPORT.md | patches with reasons, a toolchain file, a qnx-ports recipe, an SPDX SBOM, a REPORT.md |
+
+A port qnx-porter makes can be the starting point for an `APKBUILD`. We have not built that bridge.
+
 ## Results on QNX 8.0
 61 libraries, ported by `scripts/run_campaign.py` with QNX SDP 8.0 (build 141, qcc 12.2.0) for two
 architectures:
