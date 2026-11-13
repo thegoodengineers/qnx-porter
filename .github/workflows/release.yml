@@ -1,0 +1,46 @@
+name: release
+# Push a tag v<version> to publish that version to PyPI. Uses PyPI Trusted Publishing (OIDC):
+# no token is stored anywhere. One-time setup on pypi.org: docs/RELEASE.md.
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Tag matches qnx_porter.__version__
+        run: |
+          v=$(python -c "import qnx_porter; print(qnx_porter.__version__)")
+          test "${GITHUB_REF_NAME}" = "v$v" || { echo "tag ${GITHUB_REF_NAME} but __version__ is $v"; exit 1; }
+      - run: python -m pip install build twine
+      - run: python -m build
+      - run: python -m twine check --strict dist/*
+      - name: The wheel installs and its selftest passes (host cc and cmake, no QNX)
+        run: |
+          python -m venv /tmp/v && /tmp/v/bin/pip install dist/*.whl
+          cd "$RUNNER_TEMP" && /tmp/v/bin/qnx-porter --help && /tmp/v/bin/qnx-porter selftest
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/project/qnx-porter/
+    permissions:
+      id-token: write  # Trusted Publishing: PyPI accepts this job's OIDC token instead of an API token
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1

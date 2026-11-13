@@ -6,9 +6,12 @@ and the SDP also ships plain GNU-style drivers named <triplet>-gcc, which autoto
 import os
 import re
 import shlex
+import shutil
 import subprocess
+import sys
 import tempfile
 from dataclasses import dataclass, field
+from importlib import metadata
 from pathlib import Path
 
 
@@ -57,29 +60,86 @@ def sdp_env(environ=None) -> dict:
                      "(default ~/qnx800). See SETUP.md.")
 
 
-def doctor(env: dict) -> list[tuple[str, bool, str]]:
-    """Checks for `qnx-porter doctor`: (what, ok, detail)."""
-    host, target = env.get("QNX_HOST", ""), env.get("QNX_TARGET", "")
-    checks = [("QNX_HOST", Path(host).is_dir(), host), ("QNX_TARGET", Path(target).is_dir(), target)]
-    qcc = Path(host) / "usr" / "bin" / "qcc"
-    checks.append(("qcc", qcc.exists(), str(qcc)))
-    if qcc.exists():
-        r = subprocess.run([str(qcc), "-V"], capture_output=True, text=True, env=env)
-        checks.append(("qcc targets", "gcc_ntox86_64" in (r.stdout + r.stderr), (r.stdout + r.stderr).strip()[:300]))
-    for a in ARCHES.values():
-        gcc = Path(gnu_tool(env, a.triplet, "gcc"))
-        checks.append((f"{a.name} gcc", gcc.exists(), str(gcc)))
-    bad = sdp_damage(env)
-    checks.append(("SDP complete", not bad, "no empty compiler or libc files" if not bad else
-                   f"{len(bad)} key files are empty or missing, e.g. {bad[0]}: the install did not finish. "
-                   "Repair it in the QNX Software Center (SETUP.md step 3)."))
-    if qcc.exists() and not bad:
-        ok, out = compiles(env)
-        checks.append(("qcc builds hello", ok, out))
-    for tool_name in ("cmake", "make", "git", "ssh", "tar"):
-        p = subprocess.run(["bash", "-c", f"command -v {tool_name}"], capture_output=True, text=True).stdout.strip()
-        checks.append((tool_name, bool(p), p or "not on PATH"))
+SDP_FIX = "install SDP 8.0 to ~/qnx800, then `source ~/qnx800/qnxsdp-env.sh` (SETUP.md step 3)"
+# host tool -> the Ubuntu package that provides it (all in the apt line of SETUP.md step 2)
+HOST_TOOLS = {"cmake": "cmake", "make": "build-essential", "ninja": "ninja-build", "git": "git",
+              "ssh": "openssh-client", "tar": "tar"}
+
+
+def doctor(environ=None, target=None) -> list[tuple[str, bool, str, str]]:
+    """Checks for `qnx-porter doctor`: (what, ok, detail, fix). `fix` is one line naming the SETUP.md step.
+
+    Every check runs even when an earlier one fails, so one run lists everything that is missing."""
+    checks = []
+
+    def check(what, ok, detail, fix):
+        checks.append((what, bool(ok), " ".join(str(detail).split())[:300], "" if ok else fix))
+
+    try:
+        env = sdp_env(environ)
+    except (SystemExit, OSError, subprocess.CalledProcessError) as e:
+        env = None
+        check("SDP env", False, str(e) or "qnxsdp-env.sh failed", SDP_FIX)
+    if env is not None:
+        host, qnx_target = env.get("QNX_HOST", ""), env.get("QNX_TARGET", "")
+        check("QNX_HOST", host and Path(host).is_dir(), host or "not set", SDP_FIX)
+        check("QNX_TARGET", qnx_target and Path(qnx_target).is_dir(), qnx_target or "not set", SDP_FIX)
+        qcc = Path(host) / "usr" / "bin" / "qcc"
+        check("qcc", qcc.exists(), str(qcc), SDP_FIX)
+        if qcc.exists():
+            r = subprocess.run([str(qcc), "-V"], capture_output=True, text=True, env=env)
+            out = r.stdout + r.stderr
+            found = [t for t in sorted(set(re.findall(r"gcc_nto\w+", out))) if not t.endswith(("_cxx", "_gpp"))]
+            check("qcc targets", "gcc_ntox86_64" in found, " ".join(found) or out,
+                  "`qcc -V` must list gcc_ntox86_64; repair SDP 8.0 in the QNX Software Center (SETUP.md step 3)")
+        for a in ARCHES.values():
+            gcc = Path(gnu_tool(env, a.triplet, "gcc"))
+            check(f"{a.name} gcc", gcc.exists(), str(gcc),
+                  f"the SDP has no {a.triplet}-gcc driver; repair SDP 8.0 (SETUP.md step 3)")
+        bad = sdp_damage(env)
+        check("SDP complete", not bad, "no empty compiler or libc files" if not bad else
+              f"{len(bad)} key files are empty or missing, e.g. {bad[0]}",
+              "the install did not finish: repair it in the QNX Software Center (SETUP.md step 3)")
+        if qcc.exists() and not bad:
+            ok, out = compiles(env)
+            check("qcc builds hello", ok, out, "qcc cannot build a socket program; repair SDP 8.0 (SETUP.md step 3)")
+    for name, pkg in HOST_TOOLS.items():
+        p = shutil.which(name)
+        check(name, p, p or "not on PATH", f"sudo apt install -y {pkg} (SETUP.md step 2)")
+    check("python", sys.version_info >= (3, 10), sys.version.split()[0],
+          "qnx-porter needs Python 3.10 or newer (SETUP.md step 2)")
+    for req, found in python_requirements():
+        check(f"py {req}", found, "installed" if found else "missing",
+              'python3 -m pip install --user -e ".[test]" (SETUP.md step 5)')
+    if target is not None:
+        try:
+            uname, why = target.uname(), ""
+        except (OSError, subprocess.TimeoutExpired) as e:
+            uname, why = "", str(e)
+        check("QNX target", "QNX" in uname,
+              uname or why or f"{target.host}:{target.port} did not answer over ssh",
+              f"boot the target and check `ssh -p {target.port} {target.host} uname -a` (SETUP.md step 4)")
     return checks
+
+
+def python_requirements() -> list[tuple[str, bool]]:
+    """(name, installed) for each package qnx-porter declares as required (extras such as [test] excluded).
+    Read from the installed package's metadata, so this stays right when a dependency is added."""
+    try:
+        reqs = metadata.requires("qnx-porter") or []
+    except metadata.PackageNotFoundError:
+        return []  # running from a source checkout that was never installed
+    out = []
+    for r in reqs:
+        if "extra ==" in r:
+            continue
+        name = re.match(r"[A-Za-z0-9._-]+", r).group(0)
+        try:
+            metadata.version(name)
+            out.append((name, True))
+        except metadata.PackageNotFoundError:
+            out.append((name, False))
+    return out
 
 
 def tool(env: dict, name: str) -> str:

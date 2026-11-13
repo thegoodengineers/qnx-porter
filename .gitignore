@@ -6,3 +6,4 @@ build/
 .venv/
 ports-selftest/
 site/_out/
+dist/
