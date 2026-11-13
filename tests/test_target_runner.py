@@ -140,3 +140,15 @@ def test_junit_failure_keeps_the_output_and_strips_control_characters():
     assert [c.get("name") for c in r] == ["a", "b", "c"]
     assert r.find("testcase[@name='b']/failure").text == "boom\n"
     assert r.find("testcase[@name='c']/skipped").get("message") == "needs python3 on the target"
+
+
+def test_host_build_tools_are_not_runnable_and_never_sent(tmp_path, monkeypatch):
+    # zlib v1.4: after `cmake -B` (not runnable), `cmake --build .` and `ctest` ran in a folder never made: exit 1
+    tests = [{"name": "fp_build", "cmd": ["/usr/bin/cmake", "--build", "."], "cwd": "/w/x", "env": [], "props": {}},
+             {"name": "fp_test", "cmd": ["/usr/bin/ctest", "-C", "Release"], "cwd": "/w/x", "env": [], "props": {}},
+             {"name": "copy", "cmd": ["/usr/bin/cmake", "-E", "copy", "a", "b"], "cwd": "/w", "env": [], "props": {}}]
+    sent = []
+    monkeypatch.setattr(Target, "ssh", lambda self, c, **kw: sent.append(c) or subprocess.CompletedProcess(c, 0, "", ""))
+    r = target.run_tests(Target.parse("root@q"), tests, tmp_path, True, tmp_path / "t.log", "")
+    assert (r["passed"], r["total"]) == (1, 1) and len(sent) == 1
+    assert [x["needs"] for x in r["not_runnable"]] == ["cmake", "ctest"]

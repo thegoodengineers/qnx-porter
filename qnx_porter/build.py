@@ -55,6 +55,10 @@ class Job:
         if self.system == "cmake":
             cfg = ["cmake", "-S", s, "-B", b, "-DCMAKE_BUILD_TYPE=Release", "-DBUILD_SHARED_LIBS=OFF",
                    f"-DBUILD_TESTING={'ON' if tests else 'OFF'}"]
+            if tests:  # add_test() registers nothing without enable_testing(); libogg 1.3.6 dropped include(CTest)
+                inc = self.build.parent / "enable-testing.cmake"
+                inc.write_text("enable_testing()\n", encoding="utf-8")
+                cfg.append(f"-DCMAKE_PROJECT_INCLUDE={inc}")
             if self.arch:
                 cfg.append(f"-DCMAKE_TOOLCHAIN_FILE={tc}")
             else:

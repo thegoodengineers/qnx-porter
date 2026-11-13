@@ -262,6 +262,13 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                 return Fix("qnx-source", f"`{d.symbol}` is in <{header}>, which {rel} already includes, so a "
                            "strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions "
                            "in QNX's headers, as _GNU_SOURCE does on glibc.", d, cflags=["-D_QNX_SOURCE"])
+    # open62541 1.5 skips its bundled copy of these on __QNX__ but includes no system header for them
+    if d.kind == "error" and rel and (m := re.search(r"before .(\w*(?:LIST|TAILQ|CIRCLEQ)_(?:ENTRY|HEAD)).",
+                                                      d.message)):
+        new = add_include(src, rel, "sys/queue.h", d.line)
+        if new is not None:
+            return Fix("add-include", f"`{m[1]}` is a BSD list macro from <sys/queue.h>, which QNX 8.0 ships; "
+                       f"{rel} uses it without including that header.", d, edits={rel: new})
     if d.kind == "error" and "-D_QNX_SOURCE" not in flags.cflags and \
             (m := re.search(r"no matching function for call to .(\w+)::\1\(", d.message)) and m[1] in SYMBOL_HEADERS:
         return Fix("qnx-source", f"C++ sees only `struct {m[1]}`, not the POSIX function `{m[1]}()`: in strict "

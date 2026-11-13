@@ -134,6 +134,8 @@ def verdict(rc: int | None, out: str, props: dict) -> str:
 
 
 MISSING_EXEC = re.compile(r"exec (\S+): No such file or directory")
+# Host build tools a test may call (other than the `cmake -E` helpers below): the target has none of them.
+HOST_ONLY = {"cmake", "ctest", "cpack"}
 
 # `cmake -E <cmd>` steps in test suites (copying fixtures, comparing outputs). The target has no cmake, so these
 # portable helpers run as the QNX shell commands that do the same; the log says so.
@@ -231,6 +233,10 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
         shim = cmake_e(cmd)
         if shim:
             cmd = shim
+        elif Path(cmd[0]).name in HOST_ONLY:  # zlib's `cmake --build` / `ctest` steps, in a folder never made
+            not_runnable.append({"name": test["name"], "needs": Path(cmd[0]).name})
+            lines.append(f"N/A   {test['name']} (needs {Path(cmd[0]).name} on the target)\n")
+            continue
         rc, out = _run_one(t, work, test["cwd"], cmd, same_path, test["env"], limit)
         if shim:
             out = f"(cmake -E helper run on QNX as: {' '.join(shim[:2])})\n" + out

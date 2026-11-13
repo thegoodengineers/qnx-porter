@@ -91,6 +91,18 @@ def printf_null(bt: str, src: Path, in_tree) -> tuple[str, str, str] | None:
     return None
 
 
+def deep_recursion(bt: str) -> str | None:
+    """The function, if most frames of the (12-frame) backtrace are one function calling itself.
+
+    That is a stack overflow on QNX more often than on Linux: a QNX process's main thread gets about 464 KiB of
+    stack unless it is linked with `qcc -N` (scripts/stack_probe.c measured 464 KiB by default and 7472 KiB with
+    -N8M on the x86_64 target), where a Linux main thread usually has 8 MiB (ulimit -s 8192).
+    """
+    names = [f for f, _, _ in frames(bt)]
+    top = max(set(names), key=names.count) if names else None
+    return top if top and names.count(top) >= 8 else None
+
+
 def _call_span(text: str, start: int) -> int | None:
     """Index just past the ')' that closes the '(' at text[start], skipping strings and chars."""
     depth, i, quote = 0, start, ""

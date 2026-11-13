@@ -64,6 +64,10 @@ def test_cmake_steps_pass_toolchain_and_emulator(tmp_path):
     assert f"-DCMAKE_TOOLCHAIN_FILE={tmp_path / 'qnx-toolchain.cmake'}" in cfg
     assert "-DCMAKE_CROSSCOMPILING_EMULATOR=/w/qnx-run" in cfg and "-DBUILD_TESTING=ON" in cfg
     assert job.test_cmd()[0] == "ctest"
+    # libogg 1.3.6 calls add_test() without enable_testing(): the project include turns CTest on
+    inc = tmp_path / "enable-testing.cmake"
+    assert f"-DCMAKE_PROJECT_INCLUDE={inc}" in cfg and inc.read_text() == "enable_testing()\n"
+    assert not any("CMAKE_PROJECT_INCLUDE" in a for a in job.steps(tests=False)[0])
 
 
 def test_sdp_env_uses_existing_variables():
