@@ -23,7 +23,9 @@ UNDECLARED = re.compile(
     rf"|{Q}(?P<member>\w+){Q} is not a member of {Q}std{Q}"
 )
 WERROR = re.compile(r"\[-Werror(?:=(?P<flag>[\w=+-]+))?\]\s*$")  # bare [-Werror]: a warning with no switch
-UNDEFINED_REF = re.compile(rf"undefined reference to {Q}(?P<symbol>[^'’`]+){Q}")
+# also ld's "undefined reference to symbol 'getsockopt@@libsocket.so.4'" (a library linked only indirectly)
+UNDEFINED_REF = re.compile(rf"undefined reference to (?:symbol )?{Q}(?P<symbol>[^'’`@]+)(?:@[^'’`]*)?{Q}")
+LINK_WHERE = re.compile(r"^(?P<file>[^\s:][^:]*):(?P<line>\d+):\(")  # ld names the source line when built with -g
 MULTIPLE_DEF = re.compile(rf"multiple definition of {Q}(?P<symbol>[^'\u2019`]+){Q}")
 MISSING_LIB = re.compile(r"cannot find -l(?P<lib>[\w+.-]+)")
 CMAKE_ERROR = re.compile(r"^CMake Error(?: at (?P<file>[^:]+):(?P<line>\d+))?")
@@ -79,7 +81,9 @@ def parse(log: str) -> list[Diagnostic]:
             last = d
             continue
         if (m := UNDEFINED_REF.search(line)):
-            add(Diagnostic("undefined_ref", line.strip(), symbol=m["symbol"], raw=line))
+            w = LINK_WHERE.match(line)
+            add(Diagnostic("undefined_ref", line.strip(), symbol=m["symbol"], raw=line,
+                           file=w["file"] if w else "", line=int(w["line"]) if w else 0))
         elif (m := MULTIPLE_DEF.search(line)):
             add(Diagnostic("multiple_def", line.strip(), symbol=m["symbol"], raw=line))
         elif (m := MISSING_LIB.search(line)):

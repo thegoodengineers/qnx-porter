@@ -45,7 +45,7 @@ def clone(url: str, tag: str, src: Path, log=print, waits=(60, 300, 900)) -> Non
 
 def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target: Target | None = None,
          max_rounds: int = 15, use_llm: bool = True, extra_args: tuple[str, ...] = (), name: str = "",
-         log=print, note: str = "", subdir: str = "") -> dict:
+         log=print, note: str = "", subdir: str = "", deps: list[Path] = ()) -> dict:
     t0 = time.time()
     for k in llm.USAGE:
         llm.USAGE[k] = 0
@@ -79,6 +79,19 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         for lib in fixes.IN_LIBC:
             (work / "stubs" / f"lib{lib}.a").write_bytes(b"!<arch>\n")
         flags.stub_dir = str(work / "stubs")
+    if deps:  # earlier ports this one uses (a test framework, say), installed from their own build trees
+        shutil.rmtree(work / "deps", ignore_errors=True)
+        for d in deps:
+            if not (d / "CMakeCache.txt").exists():
+                raise ValueError(f"{d.parents[1].name} must be ported (with CMake) before {name} can use it")
+            # DESTDIR, not --prefix: some projects fix absolute install paths at configure time (cJSON)
+            ok, _ = build.run([["cmake", "--install", str(d)]], work, {**env, "DESTDIR": str(work / "deps")},
+                              logs / f"deps-{d.parents[1].name}.log")
+            if not ok:
+                raise RuntimeError(f"installing {d.parents[1].name} for {name} failed: see logs/deps-*.log")
+            log(f"      uses {d.parents[1].name}: installed from its QNX build into work/deps")
+        flags.deps_dir = str(work / "deps")
+        flags.deps_prefixes = sorted({_install_prefix(d) for d in deps})
     job = build.Job(build_src, bdir, system, a, env, flags, extra_args=tuple(extra_args))
     if target:
         job.emulator = write_wrapper(work / "qnx-run", target, work)
@@ -206,7 +219,8 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
     """Copy the trees to the target, run the library's tests there, and collect any core dumps."""
     if job.pretest_cmd():  # automake builds its test programs only in `make check`: build them first
         build.run([job.pretest_cmd()], work, env, logs / "tests-build.log")
-    same = target.sync([src, bdir, work / "stubs"] if (work / "stubs").exists() else [src, bdir])
+    trees = [src, bdir, *(p for p in (work / "stubs", work / "deps") if p.exists())]
+    same = target.sync(trees)
     (work / SAME_PATH_MARK).unlink(missing_ok=True)
     if same:
         (work / SAME_PATH_MARK).write_text("")
@@ -224,12 +238,19 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
             (logs / "tests.log").write_text(ttext, encoding="utf-8")
         passed, total = parse_results(job.system, ttext)
     crashes = crash.collect(target, bdir, env, job.arch.triplet, work / "cores") if job.arch else []
-    target.remove([src, bdir, work / "stubs"])
+    target.remove(trees)
     if crashes:
         (logs / "crashes.log").write_text("".join(
             f"=== {c['binary']}\n{c['backtrace'] or '(no backtrace: binary not found on the host)'}\n\n"
             for c in crashes), encoding="utf-8")
     return passed, total, crashes, not_runnable
+
+
+def _install_prefix(build_dir: Path) -> str:
+    """CMAKE_INSTALL_PREFIX of a configured CMake build (where DESTDIR puts its files, below DESTDIR)."""
+    cache = (build_dir / "CMakeCache.txt").read_text(errors="replace")
+    m = re.search(r"^CMAKE_INSTALL_PREFIX:\w+=(.*)$", cache, re.M)
+    return m[1].strip() if m else "/usr/local"
 
 
 def _tail(text: str) -> str:

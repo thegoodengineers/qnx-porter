@@ -43,6 +43,12 @@ def load(path: Path) -> dict:
         lib["note"] = str(lib.get("note", ""))
         lib["subdir"] = str(lib.get("subdir", ""))
         lib["run_as"] = str(lib.get("run_as", ""))
+        lib["uses"] = [str(u) for u in lib.get("uses", [])]
+    names = [lib["name"] for lib in libs]
+    for i, lib in enumerate(libs):
+        late = [u for u in lib["uses"] if u not in names[:i]]
+        if late:
+            raise SystemExit(f"{path}: {lib['name']} uses {', '.join(late)}, which must be listed before it")
     return {"target": c.get("target"), "target_dir": c.get("target_dir", "/data/qnx-porter"),
             "arch": c.get("arch", "x86_64"), "max_rounds": int(c.get("max_rounds", 15)), "libraries": libs,
             "skip_ported": bool(c.get("skip_ported", True))}
@@ -189,7 +195,8 @@ def main(argv=None) -> int:
             agent.port(lib["url"], lib["tag"], out, arch=c["arch"], target=for_library(target, lib) if lib["tests"] else None,
                        max_rounds=c["max_rounds"], use_llm=not a.no_model,
                        extra_args=tuple(lib["args"] + lib["arch_args"].get(c["arch"], [])),
-                       name=lib["name"], note=lib["note"], subdir=lib["subdir"])
+                       name=lib["name"], note=lib["note"], subdir=lib["subdir"],
+                       deps=[out / u / "work" / "build" for u in lib["uses"]])
         except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError, RuntimeError, ValueError) as e:
             print(f"    {lib['name']}: agent error: {e}")
             error_report(out, lib, c["arch"], str(e), (time.time() - t0) / 60)

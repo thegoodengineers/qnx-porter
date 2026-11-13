@@ -107,3 +107,10 @@ def test_an_interrupted_install_is_detected(tmp_path):
     assert qnx.sdp_damage(fake_sdp(tmp_path)) == []
     bad = qnx.sdp_damage(fake_sdp(tmp_path / "broken", empty_cc1=True))
     assert len(bad) == 1 and bad[0].endswith("cc1")
+
+
+def test_cmake_toolchain_finds_earlier_ports_in_deps_dir():
+    t = qnx.cmake_toolchain(qnx.ARCHES["x86_64"], ENV, qnx.Flags(stub_dir="/w/stubs", deps_dir="/w/deps",
+                                                                     deps_prefixes=["/usr/local"]))
+    assert '"/w/deps")' in t and 'list(APPEND CMAKE_PREFIX_PATH "/usr/local")' in t
+    assert "deps" not in qnx.cmake_toolchain(qnx.ARCHES["x86_64"], ENV, qnx.Flags())

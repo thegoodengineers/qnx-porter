@@ -50,6 +50,10 @@ SYMBOL_HEADERS = {
     **dict.fromkeys(["pthread_create", "pthread_mutex_t", "pthread_t"], "pthread.h"),
 }
 
+# Byte-order conversions are macros in QNX's headers only: the SDP's libc and libsocket export no such function
+# (checked with nm -D), so a call without the header is an undefined reference at link time.
+MACRO_ONLY = {"htons", "htonl", "ntohs", "ntohl"}
+
 # Network functions and data symbols (e.g. in6addr_any) live in libsocket on QNX, not in libc as on Linux.
 SOCKET_SYMBOLS = {"socket", "bind", "connect", "listen", "accept", "accept4", "setsockopt", "getsockopt",
                   "send", "recv", "sendto", "recvfrom", "sendmsg", "recvmsg", "shutdown", "getaddrinfo",
@@ -183,7 +187,18 @@ def add_include(src: Path, rel: str, header: str, before_line: int) -> str | Non
     lines = text.splitlines(keepends=True)
     if any(re.match(rf"\s*#\s*include\s*[<\"]{re.escape(header)}[>\"]", ln) for ln in lines):
         return None
-    incs = [i for i, ln in enumerate(lines) if INCLUDE.match(ln) and i < max(before_line - 1, 1)]
+    # Only includes at the shallowest #if nesting: one inside `#ifdef __ANDROID__` would be compiled out on QNX
+    # (mosquitto's db_dump.c). A header's include guard puts all of its includes at depth 1, which is fine.
+    depth, incs = 0, []
+    for i, ln in enumerate(lines[:max(before_line - 1, 1)]):
+        if re.match(r"\s*#\s*if", ln):
+            depth += 1
+        elif re.match(r"\s*#\s*endif", ln):
+            depth -= 1
+        elif INCLUDE.match(ln):
+            incs.append((depth, i))
+    top = min((d for d, _ in incs), default=0)
+    incs = [i for d, i in incs if d == top]
     at = incs[-1] + 1 if incs else _after_header_comment(lines)
     lines.insert(at, f"#include <{header}>  /* qnx-porter: needed on QNX */\n")
     return "".join(lines)
@@ -228,6 +243,12 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
     rel = in_tree(src, d.file) if d.file else None
     if rel and (f := _source_rule(d, src, rel)):
         return f
+    if d.kind == "undefined_ref" and rel and d.symbol in MACRO_ONLY:
+        new = add_include(src, rel, SYMBOL_HEADERS[d.symbol], d.line)
+        if new is not None:
+            return Fix("add-include", f"`{d.symbol}` is a macro in QNX's <{SYMBOL_HEADERS[d.symbol]}>, and neither "
+                       f"libc nor libsocket exports it as a function. {rel} did not include the header, so the "
+                       "compiler took it for an undeclared function, and the link failed.", d, edits={rel: new})
     if d.kind in ("implicit_decl", "undeclared") and rel:
         header = d.header or SYMBOL_HEADERS.get(d.symbol)
         how = "the compiler's own note names it" if d.header else "that is where QNX declares it"
