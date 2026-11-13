@@ -221,3 +221,32 @@ def test_agent_apply_adds_include_directory_for_compat_headers(tmp_path):
     assert ["-include", str(compat_dir / "endian.h")][0] in mock_job.flags.cflags
     assert "-D_QNX_PORTER_ENDIAN" in mock_job.flags.cflags
     assert patch.rule == "endian-compat"
+
+
+def test_byte_order_macro_at_link_time_gets_its_header(tmp_path):
+    # mosquitto 2.1.2 db_dump.c: ntohl without <arpa/inet.h> is only a warning, then a link error with file:line
+    from qnx_porter import errors
+    (tmp_path / "a.c").write_text(C_FILE)
+    [d] = errors.parse(f"{tmp_path}/a.c:3:(.text.startup+0x504): undefined reference to `ntohl'")
+    [f] = fixes.plan([d], tmp_path, Flags(), set())
+    assert f.rule == "add-include" and "#include <arpa/inet.h>" in f.edits["a.c"] and not f.libs
+    [d] = errors.parse(f"{tmp_path}/a.c:3:(.text+0x1): undefined reference to `socket'")
+    assert [x.rule for x in fixes.plan([d], tmp_path, Flags(), set())] == ["link-libsocket"]
+
+
+def test_include_is_not_added_inside_a_conditional_block(tmp_path):
+    (tmp_path / "a.c").write_text("#include <stdio.h>\n#include <string.h>\n#ifdef __ANDROID__\n"
+                                  "#include <sys/endian.h>\n#endif\n\nint f(void) { return ntohl(1); }\n")
+    text = fixes.add_include(tmp_path, "a.c", "arpa/inet.h", 7)
+    assert text.splitlines()[2] == "#include <arpa/inet.h>  /* qnx-porter: needed on QNX */"
+    (tmp_path / "g.h").write_text("#ifndef G_H\n#define G_H\n#include <stdio.h>\nint g(void);\n#endif\n")
+    assert fixes.add_include(tmp_path, "g.h", "x.h", 4).splitlines()[3].startswith("#include <x.h>")
+
+
+def test_dso_missing_form_of_undefined_reference_links_libsocket(tmp_path):
+    from qnx_porter import errors
+    log = ("ld: CMakeFiles/mosquitto.dir/bridge.c.o: undefined reference to symbol 'getsockopt@@libsocket.so.4'\n"
+           "ld: /q/x86_64/lib/libsocket.so.4: error adding symbols: DSO missing from command line\n")
+    [d] = [x for x in errors.parse(log) if x.kind == "undefined_ref"]
+    assert d.symbol == "getsockopt"
+    assert [f.rule for f in fixes.plan([d], tmp_path, Flags(), set())] == ["link-libsocket"]

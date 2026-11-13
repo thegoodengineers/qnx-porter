@@ -30,6 +30,8 @@ libraries:
   - name: libcbor               # CBOR, used in IoT and FIDO; CMake
     url: https://github.com/PJK/libcbor.git
     tag: v0.14.0
+    args: [-DWITH_TESTS=ON]
+    uses: [cmocka]                # its tests need cmocka: the QNX build of cmocka above, installed into work/deps
 
   - name: mbedtls               # TLS and crypto for embedded; CMake + ctest
     url: https://github.com/Mbed-TLS/mbedtls.git
@@ -60,11 +62,14 @@ libraries:
     tests: false                  # its 103 tests need an MQTT broker on localhost:1883, which the image lacks
     note: "build only: the test suite needs an MQTT broker on the target"
 
+  # googletest comes early: later libraries build their own tests against this QNX build of it (`uses`)
+  - {name: googletest, url: https://github.com/google/googletest.git, tag: v1.18.0, args: [-Dgtest_build_tests=ON]}
+
   # ---- serialization and data formats
   - {name: cJSON, url: https://github.com/DaveGamble/cJSON.git, tag: v1.7.19}
   - {name: jansson, url: https://github.com/akheron/jansson.git, tag: v2.15.1}
   - {name: libyaml, url: https://github.com/yaml/libyaml.git, tag: 0.2.5, args: [-DBUILD_TESTING=ON]}
-  - {name: msgpack-c, url: https://github.com/msgpack/msgpack-c.git, tag: c-7.0.2, args: [-DMSGPACK_BUILD_TESTS=OFF, -DMSGPACK_BUILD_EXAMPLES=OFF]}
+  - {name: msgpack-c, url: https://github.com/msgpack/msgpack-c.git, tag: c-7.0.2, args: [-DMSGPACK_BUILD_TESTS=ON, -DMSGPACK_BUILD_EXAMPLES=OFF], uses: [googletest]}
   - {name: tinycbor, url: https://github.com/intel/tinycbor.git, tag: v7.1}
   - {name: nanopb, url: https://github.com/nanopb/nanopb.git, tag: 0.4.9.3, tests: false, note: "build only: its tests use scons and protoc"}
   - {name: flatcc, url: https://github.com/dvidelabs/flatcc.git, tag: v0.6.4, args: [-DFLATCC_TEST=OFF], tests: false, note: "build only: its tests run the just-built flatcc compiler on the build host"}
@@ -89,9 +94,9 @@ libraries:
   # ---- networking, messaging, IoT, industrial
   - {name: libuv, url: https://github.com/libuv/libuv.git, tag: v1.53.0, args: [-DLIBUV_BUILD_TESTS=ON], run_as: qnxuser}
   - {name: libevent, url: https://github.com/libevent/libevent.git, tag: release-2.1.13-stable, args: [-DEVENT__DISABLE_OPENSSL=ON, -DEVENT__DISABLE_MBEDTLS=ON, -DEVENT__DISABLE_BENCHMARK=ON]}
-  - {name: c-ares, url: https://github.com/c-ares/c-ares.git, tag: v1.34.9}
+  - {name: c-ares, url: https://github.com/c-ares/c-ares.git, tag: v1.34.9, args: [-DCARES_BUILD_TESTS=ON], uses: [googletest]}
   - {name: libcoap, url: https://github.com/obgm/libcoap.git, tag: v4.3.5b, args: [-DENABLE_DTLS=OFF, -DENABLE_DOCS=OFF]}
-  - {name: mosquitto, url: https://github.com/eclipse/mosquitto.git, tag: v2.1.2, args: [-DWITH_TLS=OFF, -DWITH_WEBSOCKETS=OFF, -DWITH_DOCS=OFF]}
+  - {name: mosquitto, url: https://github.com/eclipse/mosquitto.git, tag: v2.1.2, args: [-DWITH_WEBSOCKETS=OFF, -DWITH_DOCS=OFF, -DWITH_TESTS=OFF], uses: [cJSON], note: "2.1 needs cJSON (our QNX port of it) and, on QNX, TLS: without it 2.1 has random bytes only from Linux getrandom(); OpenSSL from the SDP. Its tests need CUnit and a Python broker harness"}
   - {name: libwebsockets, url: https://github.com/warmcat/libwebsockets.git, tag: v5.1.0, args: [-DLWS_WITH_SSL=OFF, -DLWS_WITHOUT_TESTAPPS=ON]}
   - {name: open62541, url: https://github.com/open62541/open62541.git, tag: v1.5.10, args: [-DUA_ENABLE_ENCRYPTION=OFF]}
   - {name: Micro-CDR, url: https://github.com/eProsima/Micro-CDR.git, tag: v2.0.2}
@@ -100,7 +105,6 @@ libraries:
   # ---- C++ foundations
   - {name: fmt, url: https://github.com/fmtlib/fmt.git, tag: 12.2.1}
   - {name: spdlog, url: https://github.com/gabime/spdlog.git, tag: v1.17.0, args: [-DSPDLOG_BUILD_EXAMPLE=OFF, -DSPDLOG_BUILD_TESTS=ON]}
-  - {name: googletest, url: https://github.com/google/googletest.git, tag: v1.18.0, args: [-Dgtest_build_tests=ON]}
   - {name: yaml-cpp, url: https://github.com/jbeder/yaml-cpp.git, tag: yaml-cpp-0.9.0, args: [-DYAML_CPP_BUILD_TESTS=ON]}
   - {name: tomlplusplus, url: https://github.com/marzer/tomlplusplus.git, tag: v3.4.0}
   - {name: benchmark, url: https://github.com/google/benchmark.git, tag: v1.10.0, args: [-DBENCHMARK_ENABLE_TESTING=ON, -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON]}

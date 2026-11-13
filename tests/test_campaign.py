@@ -115,3 +115,14 @@ def test_tests_can_run_as_another_target_user():
     assert t.run_as == "qnxuser" and rc.for_library(Target("root@q"), {"run_as": ""}).run_as == ""
     cmd = remote_command(t, "/w", "/w/b", ["/w/b/uv_run_tests"], same_path=True, limit=300)
     assert "exec timeout -s KILL 300 on -u qnxuser /w/b/uv_run_tests" in cmd
+
+
+def test_uses_must_name_a_library_listed_before(tmp_path):
+    f = tmp_path / "c.yaml"
+    f.write_text("libraries:\n  - {name: a, url: https://x/a.git, tag: v1, uses: [b]}\n"
+                 "  - {name: b, url: https://x/b.git, tag: v1}\n")
+    with pytest.raises(SystemExit, match="a uses b, which must be listed before it"):
+        rc.load(f)
+    f.write_text("libraries:\n  - {name: b, url: https://x/b.git, tag: v1}\n"
+                 "  - {name: a, url: https://x/a.git, tag: v1, uses: [b]}\n")
+    assert rc.load(f)["libraries"][1]["uses"] == ["b"]
