@@ -1,8 +1,8 @@
 {
   "library": "libevent",
   "url": "https://github.com/libevent/libevent.git",
-  "version": "release-2.1.12-stable",
-  "commit": "5df3037d10556bfcb675bc73e516978b75fc7bc7",
+  "version": "release-2.1.13-stable",
+  "commit": "79ddfb460847999b807cba76d04e73891f29c6ee",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -34,7 +34,7 @@
       "rule": "link-libsocket",
       "source": "rule",
       "reason": "`setsockopt` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
-      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libevent_extra-2.1.so.7.0.1: undefined reference to `setsockopt'",
+      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libevent_extra-2.1.so.7.0.2: undefined reference to `setsockopt'",
       "files": [
         "qnx-toolchain.cmake"
       ],
@@ -43,9 +43,10 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 11.9,
+  "minutes": 10.2,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T08:19:55+00:00"
+  "finished": "2026-11-13T16:42:31+00:00"
 }

@@ -1,4 +1,5 @@
 $ cmake -S /home/chirag/qnx-porter/ports/json-c/work/src -B /home/chirag/qnx-porter/ports/json-c/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/json-c/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/json-c/work/qnx-run
+-- Building for QNX
 -- Wrote /home/chirag/qnx-porter/ports/json-c/work/build/config.h
 -- Wrote /home/chirag/qnx-porter/ports/json-c/work/build/json_config.h
 -- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
@@ -7,72 +8,68 @@ $ cmake -S /home/chirag/qnx-porter/ports/json-c/work/src -B /home/chirag/qnx-por
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/json-c/work/build
 Warning: doxygen not found, the 'doc' target will not be included
-CMake Deprecation Warning at apps/CMakeLists.txt:2 (cmake_minimum_required):
-  Compatibility with CMake < 2.8.12 will be removed from a future version of
-  CMake.
-
-  Update the VERSION argument <min> value or use a ...<max> suffix to tell
-  CMake that the project does not need compatibility with older versions.
-
-
 $ cmake --build /home/chirag/qnx-porter/ports/json-c/work/build -j 2 -- -k
 Consolidate compiler generated dependencies of target json-c
-[ 20%] Built target json-c
-Consolidate compiler generated dependencies of target test1Formatted
+[ 19%] Built target json-c
 Consolidate compiler generated dependencies of target test2Formatted
-[ 24%] Built target test1Formatted
-[ 28%] Built target test2Formatted
+Consolidate compiler generated dependencies of target test1Formatted
+[ 27%] Built target test2Formatted
+[ 27%] Built target test1Formatted
 Consolidate compiler generated dependencies of target test2
 Consolidate compiler generated dependencies of target test1
-[ 31%] Built target test1
-[ 34%] Built target test2
-Consolidate compiler generated dependencies of target testReplaceExisting
+[ 29%] Built target test2
+[ 32%] Built target test1
 Consolidate compiler generated dependencies of target test4
-[ 36%] Built target testReplaceExisting
-[ 39%] Built target test4
+Consolidate compiler generated dependencies of target testReplaceExisting
+[ 35%] Built target test4
+[ 37%] Built target testReplaceExisting
 Consolidate compiler generated dependencies of target test_cast
 Consolidate compiler generated dependencies of target test_charcase
-[ 43%] Built target test_cast
-[ 45%] Built target test_charcase
+[ 40%] Built target test_cast
+[ 42%] Built target test_charcase
 Consolidate compiler generated dependencies of target test_compare
 Consolidate compiler generated dependencies of target test_deep_copy
-[ 47%] Built target test_compare
-[ 50%] Built target test_deep_copy
+[ 46%] Built target test_compare
+[ 48%] Built target test_deep_copy
 Consolidate compiler generated dependencies of target test_double_serializer
-Consolidate compiler generated dependencies of target test_float
+Consolidate compiler generated dependencies of target test_deep_nesting
 [ 53%] Built target test_double_serializer
-[ 56%] Built target test_float
+[ 53%] Built target test_deep_nesting
+Consolidate compiler generated dependencies of target test_float
 Consolidate compiler generated dependencies of target test_int_add
-Consolidate compiler generated dependencies of target test_int_get
+[ 55%] Built target test_float
 [ 58%] Built target test_int_add
-[ 61%] Built target test_int_get
 Consolidate compiler generated dependencies of target test_locale
-Consolidate compiler generated dependencies of target test_null
-[ 64%] Built target test_null
-[ 67%] Built target test_locale
+Consolidate compiler generated dependencies of target test_int_get
+[ 61%] Built target test_int_get
+[ 63%] Built target test_locale
 Consolidate compiler generated dependencies of target test_parse
+Consolidate compiler generated dependencies of target test_null
+[ 66%] Built target test_parse
+[ 68%] Built target test_null
 Consolidate compiler generated dependencies of target test_parse_int64
-[ 71%] Built target test_parse_int64
-[ 72%] Built target test_parse
-Consolidate compiler generated dependencies of target test_set_serializer
 Consolidate compiler generated dependencies of target test_printbuf
-[ 75%] Built target test_set_serializer
-[ 78%] Built target test_printbuf
+[ 71%] Built target test_parse_int64
+[ 74%] Built target test_printbuf
+Consolidate compiler generated dependencies of target test_set_serializer
 Consolidate compiler generated dependencies of target test_set_value
+[ 76%] Built target test_set_serializer
+[ 79%] Built target test_set_value
 Consolidate compiler generated dependencies of target test_strerror
-[ 80%] Built target test_set_value
-[ 83%] Built target test_strerror
 Consolidate compiler generated dependencies of target test_util_file
+[ 81%] Built target test_strerror
+[ 84%] Built target test_util_file
 Consolidate compiler generated dependencies of target test_visit
-[ 86%] Built target test_util_file
-[ 89%] Built target test_visit
 Consolidate compiler generated dependencies of target test_object_iterator
+[ 87%] Built target test_visit
+[ 89%] Built target test_object_iterator
 Consolidate compiler generated dependencies of target test_json_pointer
-[ 91%] Built target test_object_iterator
-[ 94%] Built target test_json_pointer
+Consolidate compiler generated dependencies of target test_safe_json_pointer_set
+[ 92%] Built target test_json_pointer
+[ 94%] Built target test_safe_json_pointer_set
 Consolidate compiler generated dependencies of target test_json_patch
 Consolidate compiler generated dependencies of target json_parse
-[ 95%] Building C object tests/CMakeFiles/test_json_patch.dir/test_json_patch.c.o
+[ 96%] Building C object tests/CMakeFiles/test_json_patch.dir/test_json_patch.c.o
 [ 98%] Built target json_parse
 [100%] Linking C executable test_json_patch
 [100%] Built target test_json_patch

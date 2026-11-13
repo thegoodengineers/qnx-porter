@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "Micro-CDR-v2.0.1-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/Micro-CDR-3d1b17703c7cf4f22def2910bc845bdb5152d7b5",
+  "name": "Micro-CDR-v2.0.2-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/Micro-CDR-99672492c5ef9fc378a8835b0bce9b2f7fa41306",
   "creationInfo": {
-    "created": "2026-11-13T04:54:29Z",
+    "created": "2026-11-13T19:00:46Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-Micro-CDR",
       "name": "Micro-CDR",
-      "versionInfo": "v2.0.1",
-      "downloadLocation": "git+https://github.com/eProsima/Micro-CDR.git@3d1b17703c7cf4f22def2910bc845bdb5152d7b5",
+      "versionInfo": "v2.0.2",
+      "downloadLocation": "git+https://github.com/eProsima/Micro-CDR.git@99672492c5ef9fc378a8835b0bce9b2f7fa41306",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "Apache-2.0",

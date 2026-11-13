@@ -25,7 +25,7 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
 
 
 $ cmake --build /home/chirag/qnx-porter/ports/libccd/work/build -j 2 -- -k
-[  7%] Building C object src/CMakeFiles/ccd.dir/ccd.c.o
+[  3%] Building C object src/CMakeFiles/ccd.dir/ccd.c.o
 [  7%] Building C object src/testsuites/cu/CMakeFiles/cu.dir/cu.c.o
 [ 11%] Linking C static library libcu.a
 [ 11%] Built target cu
@@ -35,7 +35,7 @@ $ cmake --build /home/chirag/qnx-porter/ports/libccd/work/build -j 2 -- -k
 [ 25%] Building C object src/CMakeFiles/ccd.dir/vec3.c.o
 [ 29%] Linking C static library libccd.a
 [ 29%] Built target ccd
-[ 37%] Building C object src/testsuites/CMakeFiles/bench.dir/bench.c.o
+[ 33%] Building C object src/testsuites/CMakeFiles/bench.dir/bench.c.o
 [ 37%] Building C object src/testsuites/CMakeFiles/main.dir/main.c.o
 [ 40%] Building C object src/testsuites/CMakeFiles/main.dir/common.c.o
 [ 44%] Building C object src/testsuites/CMakeFiles/main.dir/support.c.o

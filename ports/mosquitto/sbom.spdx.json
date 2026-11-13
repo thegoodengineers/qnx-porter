@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "mosquitto-v2.0.20-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/mosquitto-a196c2b244f248072a6b3ac8fb3f00ce0ff63dea",
+  "name": "mosquitto-v2.1.2-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/mosquitto-99fa50f30e325609394c324c8ff71cfbbe95d8ab",
   "creationInfo": {
-    "created": "2026-11-13T05:00:13Z",
+    "created": "2026-11-13T19:02:33Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,13 +15,21 @@
     {
       "SPDXID": "SPDXRef-Package-mosquitto",
       "name": "mosquitto",
-      "versionInfo": "v2.0.20",
-      "downloadLocation": "git+https://github.com/eclipse/mosquitto.git@a196c2b244f248072a6b3ac8fb3f00ce0ff63dea",
+      "versionInfo": "v2.1.2",
+      "downloadLocation": "git+https://github.com/eclipse/mosquitto.git@99fa50f30e325609394c324c8ff71cfbbe95d8ab",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "LGPL-2.1-only",
+      "licenseDeclared": "Apache-2.0 AND BSD-3-Clause AND EPL-2.0 AND LicenseRef-scancode-generic-export-compliance AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over LICENSE.txt, NOTICE.md, README-compiling.md, README-letsencrypt.md, README-tests.md, README-windows.txt, README.md, docker/README.md, plugins/README.md, www/README.md: LGPL-2.1-only. Per-file detections: LICENSE.txt: EPL-2.0 AND BSD-3-Clause; NOTICE.md: (EPL-2.0 AND BSD-3-Clause AND (EPL-2.0 OR BSD-3-Clause)) AND MIT AND OpenSSL AND (BSD-3-Clause AND LicenseRef-scancode-generic-export-compliance); README-windows.txt: LGPL-2.1-only."
+      "licenseComments": "ScanCode summary declared licence over LICENSE.txt, NOTICE.md, README-compiling.md, README-letsencrypt.md, README-tests.md, README-windows.txt, README.md, dashboard/README.md, docker/README.md, plugins/README.md, www/README.md: Apache-2.0 AND BSD-3-Clause AND EPL-2.0 AND LicenseRef-scancode-generic-export-compliance AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT. Per-file detections: LICENSE.txt: EPL-2.0 AND BSD-3-Clause AND (EPL-2.0 OR BSD-3-Clause); NOTICE.md: (EPL-2.0 AND BSD-3-Clause AND (EPL-2.0 OR BSD-3-Clause)) AND MIT AND (MIT AND BSD-3-Clause) AND (MIT AND LGPL-2.0-or-later AND LGPL-2.1-or-later) AND Apache-2.0 AND (MIT AND BSD-3-Clause AND LicenseRef-scancode-generic-export-compliance)."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-generic-export-compliance",
+      "name": "Generic Export Compliance Notice",
+      "extractedText": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/generic-export-compliance.LICENSE",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/generic-export-compliance.LICENSE"
     }
   ],
   "files": [
@@ -31,16 +39,16 @@
       "checksums": [
         {
           "algorithm": "SHA1",
-          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          "checksumValue": "5349c386a8f53a3878541c10b147da581952ca8a"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          "checksumValue": "35f4f771689d19aa13ea362f33b32548399acc4c8af213f9e29c4551ccbbfa20"
         }
       ],
       "licenseConcluded": "NOASSERTION",
       "copyrightText": "NOASSERTION",
-      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+      "comment": "QNX 8.0 port changes, apply with git apply"
     }
   ],
   "relationships": [

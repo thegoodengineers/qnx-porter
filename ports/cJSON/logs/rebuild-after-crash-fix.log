@@ -1,0 +1,84 @@
+$ cmake -S /home/chirag/qnx-porter/ports/cJSON/work/src -B /home/chirag/qnx-porter/ports/cJSON/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports/cJSON/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/cJSON/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/cJSON/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test FLAG_SUPPORTED_fvisibilityhidden
+-- Performing Test FLAG_SUPPORTED_fvisibilityhidden - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/cJSON/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/cJSON/work/build -j 4 -- -k
+Consolidate compiler generated dependencies of target unity
+[  2%] Building C object CMakeFiles/cjson.dir/cJSON.c.o
+[  6%] Built target unity
+[  8%] Linking C static library libcjson.a
+[  8%] Built target cjson
+Consolidate compiler generated dependencies of target parse_examples
+Consolidate compiler generated dependencies of target parse_number
+Consolidate compiler generated dependencies of target parse_hex4
+[ 11%] Building C object CMakeFiles/cJSON_test.dir/test.c.o
+[ 13%] Linking C executable parse_examples
+[ 15%] Linking C executable parse_number
+[ 17%] Linking C executable parse_hex4
+[ 20%] Built target parse_number
+[ 22%] Built target parse_examples
+[ 24%] Built target parse_hex4
+Consolidate compiler generated dependencies of target parse_array
+Consolidate compiler generated dependencies of target parse_string
+Consolidate compiler generated dependencies of target parse_object
+[ 26%] Linking C executable parse_array
+[ 28%] Linking C executable parse_string
+[ 31%] Linking C executable parse_object
+[ 33%] Linking C executable cJSON_test
+[ 35%] Built target parse_string
+Consolidate compiler generated dependencies of target parse_value
+[ 37%] Built target parse_array
+[ 40%] Built target parse_object
+[ 40%] Built target cJSON_test
+[ 42%] Linking C executable parse_value
+Consolidate compiler generated dependencies of target print_string
+Consolidate compiler generated dependencies of target print_number
+Consolidate compiler generated dependencies of target print_array
+[ 44%] Linking C executable print_string
+[ 46%] Linking C executable print_number
+[ 48%] Linking C executable print_array
+[ 51%] Built target parse_value
+Consolidate compiler generated dependencies of target print_object
+[ 55%] Built target print_string
+[ 55%] Built target print_number
+[ 57%] Linking C executable print_object
+[ 60%] Built target print_array
+Consolidate compiler generated dependencies of target misc_tests
+Consolidate compiler generated dependencies of target print_value
+Consolidate compiler generated dependencies of target parse_with_opts
+[ 62%] Linking C executable misc_tests
+[ 64%] Linking C executable print_value
+[ 66%] Linking C executable parse_with_opts
+[ 68%] Built target print_object
+Consolidate compiler generated dependencies of target compare_tests
+[ 71%] Built target print_value
+[ 73%] Built target parse_with_opts
+[ 75%] Linking C executable compare_tests
+Consolidate compiler generated dependencies of target cjson_add
+[ 77%] Built target misc_tests
+Consolidate compiler generated dependencies of target readme_examples
+[ 80%] Linking C executable cjson_add
+Consolidate compiler generated dependencies of target minify_tests
+[ 82%] Linking C executable readme_examples
+[ 84%] Linking C executable minify_tests
+[ 86%] Built target compare_tests
+[ 88%] Built target cjson_add
+Consolidate compiler generated dependencies of target fuzz_main
+[ 91%] Built target readme_examples
+[ 93%] Linking C executable fuzz_main
+[ 95%] Built target minify_tests
+[100%] Built target fuzz_main

@@ -5,15 +5,15 @@ FAIL  googletest-death-test-test (exit 134)
     [----------] Global test environment set-up.
     [----------] 35 tests from TestForDeathTest
     [ RUN      ] TestForDeathTest.SingleStatement
-    [       OK ] TestForDeathTest.SingleStatement (12 ms)
+    [       OK ] TestForDeathTest.SingleStatement (15 ms)
     [ RUN      ] TestForDeathTest.SwitchStatement
-    [       OK ] TestForDeathTest.SwitchStatement (4 ms)
+    [       OK ] TestForDeathTest.SwitchStatement (7 ms)
     [ RUN      ] TestForDeathTest.StaticMemberFunctionFastStyle
-    [       OK ] TestForDeathTest.StaticMemberFunctionFastStyle (3 ms)
+    [       OK ] TestForDeathTest.StaticMemberFunctionFastStyle (6 ms)
     [ RUN      ] TestForDeathTest.MemberFunctionFastStyle
-    [       OK ] TestForDeathTest.MemberFunctionFastStyle (2 ms)
+    [       OK ] TestForDeathTest.MemberFunctionFastStyle (3 ms)
     [ RUN      ] TestForDeathTest.FastDeathTestInChangedDir
-    [       OK ] TestForDeathTest.FastDeathTestInChangedDir (4 ms)
+    [       OK ] TestForDeathTest.FastDeathTestInChangedDir (6 ms)
     [ RUN      ] TestForDeathTest.StaticMemberFunctionThreadsafeStyle
 PASS  gtest_environment_test (exit 0)
 PASS  googletest-filepath-test (exit 0)

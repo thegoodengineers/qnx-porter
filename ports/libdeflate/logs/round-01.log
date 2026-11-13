@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports/libdeflate/work/src -B /home/chirag/qnx-porter/ports/libdeflate/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/libdeflate/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/libdeflate/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports/libdeflate/work/src -B /home/chirag/qnx-porter/ports/libdeflate/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/libdeflate/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/libdeflate/work/qnx-run -DLIBDEFLATE_BUILD_TESTS=ON
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -33,6 +33,7 @@ $ cmake -S /home/chirag/qnx-porter/ports/libdeflate/work/src -B /home/chirag/qnx
 -- Looking for posix_madvise - found
 -- Performing Test HAVE_STAT_NANOSECOND_PRECISION
 -- Performing Test HAVE_STAT_NANOSECOND_PRECISION - Success
+-- Found ZLIB: /home/chirag/qnx800/target/qnx/x86_64/usr/lib/libz.so (found version "1.2.13") 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/libdeflate/work/build
@@ -42,37 +43,70 @@ CMake Warning:
     BUILD_TESTING
 
 
-$ cmake --build /home/chirag/qnx-porter/ports/libdeflate/work/build -j 2 -- -k
-[  3%] Building C object CMakeFiles/libdeflate_shared.dir/lib/arm/cpu_features.c.o
-[  6%] Building C object CMakeFiles/libdeflate_static.dir/lib/arm/cpu_features.c.o
-[ 13%] Building C object CMakeFiles/libdeflate_static.dir/lib/utils.c.o
-[ 13%] Building C object CMakeFiles/libdeflate_shared.dir/lib/utils.c.o
-[ 20%] Building C object CMakeFiles/libdeflate_shared.dir/lib/x86/cpu_features.c.o
-[ 20%] Building C object CMakeFiles/libdeflate_static.dir/lib/x86/cpu_features.c.o
-[ 24%] Building C object CMakeFiles/libdeflate_static.dir/lib/deflate_compress.c.o
-[ 27%] Building C object CMakeFiles/libdeflate_shared.dir/lib/deflate_compress.c.o
-[ 31%] Building C object CMakeFiles/libdeflate_shared.dir/lib/deflate_decompress.c.o
-[ 34%] Building C object CMakeFiles/libdeflate_static.dir/lib/deflate_decompress.c.o
-[ 37%] Building C object CMakeFiles/libdeflate_shared.dir/lib/adler32.c.o
-[ 41%] Building C object CMakeFiles/libdeflate_static.dir/lib/adler32.c.o
-[ 44%] Building C object CMakeFiles/libdeflate_static.dir/lib/zlib_compress.c.o
-[ 48%] Building C object CMakeFiles/libdeflate_shared.dir/lib/zlib_compress.c.o
-[ 51%] Building C object CMakeFiles/libdeflate_static.dir/lib/zlib_decompress.c.o
-[ 55%] Building C object CMakeFiles/libdeflate_shared.dir/lib/zlib_decompress.c.o
-[ 58%] Building C object CMakeFiles/libdeflate_static.dir/lib/crc32.c.o
-[ 62%] Building C object CMakeFiles/libdeflate_shared.dir/lib/crc32.c.o
-[ 68%] Building C object CMakeFiles/libdeflate_static.dir/lib/gzip_compress.c.o
-[ 68%] Building C object CMakeFiles/libdeflate_shared.dir/lib/gzip_compress.c.o
-[ 75%] Building C object CMakeFiles/libdeflate_static.dir/lib/gzip_decompress.c.o
-[ 75%] Building C object CMakeFiles/libdeflate_shared.dir/lib/gzip_decompress.c.o
-[ 79%] Linking C static library libdeflate.a
-[ 82%] Linking C shared library libdeflate.so
-[ 82%] Built target libdeflate_static
-[ 86%] Building C object programs/CMakeFiles/libdeflate_prog_utils.dir/prog_util.c.o
-[ 86%] Built target libdeflate_shared
-[ 89%] Building C object programs/CMakeFiles/libdeflate_prog_utils.dir/tgetopt.c.o
-[ 93%] Linking C static library libdeflate_prog_utils.a
-[ 93%] Built target libdeflate_prog_utils
-[ 96%] Building C object programs/CMakeFiles/libdeflate-gzip.dir/gzip.c.o
-[100%] Linking C executable libdeflate-gzip
-[100%] Built target libdeflate-gzip
+$ cmake --build /home/chirag/qnx-porter/ports/libdeflate/work/build -j 4 -- -k
+[  1%] Building C object CMakeFiles/libdeflate_shared.dir/lib/utils.c.o
+[  3%] Building C object CMakeFiles/libdeflate_static.dir/lib/arm/cpu_features.c.o
+[  5%] Building C object CMakeFiles/libdeflate_shared.dir/lib/arm/cpu_features.c.o
+[  7%] Building C object CMakeFiles/libdeflate_static.dir/lib/utils.c.o
+[  9%] Building C object CMakeFiles/libdeflate_static.dir/lib/x86/cpu_features.c.o
+[ 11%] Building C object CMakeFiles/libdeflate_shared.dir/lib/x86/cpu_features.c.o
+[ 13%] Building C object CMakeFiles/libdeflate_static.dir/lib/deflate_compress.c.o
+[ 15%] Building C object CMakeFiles/libdeflate_shared.dir/lib/deflate_compress.c.o
+[ 19%] Building C object CMakeFiles/libdeflate_static.dir/lib/adler32.c.o
+[ 19%] Building C object CMakeFiles/libdeflate_static.dir/lib/deflate_decompress.c.o
+[ 21%] Building C object CMakeFiles/libdeflate_shared.dir/lib/deflate_decompress.c.o
+[ 23%] Building C object CMakeFiles/libdeflate_shared.dir/lib/adler32.c.o
+[ 25%] Building C object CMakeFiles/libdeflate_static.dir/lib/zlib_compress.c.o
+[ 27%] Building C object CMakeFiles/libdeflate_static.dir/lib/zlib_decompress.c.o
+[ 29%] Building C object CMakeFiles/libdeflate_shared.dir/lib/zlib_compress.c.o
+[ 31%] Building C object CMakeFiles/libdeflate_shared.dir/lib/zlib_decompress.c.o
+[ 33%] Building C object CMakeFiles/libdeflate_static.dir/lib/crc32.c.o
+[ 35%] Building C object CMakeFiles/libdeflate_static.dir/lib/gzip_compress.c.o
+[ 37%] Building C object CMakeFiles/libdeflate_shared.dir/lib/gzip_compress.c.o
+[ 39%] Building C object CMakeFiles/libdeflate_shared.dir/lib/crc32.c.o
+[ 41%] Building C object CMakeFiles/libdeflate_static.dir/lib/gzip_decompress.c.o
+[ 43%] Building C object CMakeFiles/libdeflate_shared.dir/lib/gzip_decompress.c.o
+[ 45%] Linking C static library libdeflate.a
+[ 47%] Linking C shared library libdeflate.so
+[ 47%] Built target libdeflate_static
+[ 49%] Building C object programs/CMakeFiles/libdeflate_prog_utils.dir/prog_util.c.o
+[ 50%] Building C object programs/CMakeFiles/libdeflate_prog_utils.dir/tgetopt.c.o
+[ 50%] Built target libdeflate_shared
+[ 52%] Linking C static library libdeflate_prog_utils.a
+[ 52%] Built target libdeflate_prog_utils
+[ 54%] Building C object programs/CMakeFiles/libdeflate_test_utils.dir/test_util.c.o
+[ 56%] Building C object programs/CMakeFiles/libdeflate-gzip.dir/gzip.c.o
+[ 58%] Linking C static library libdeflate_test_utils.a
+[ 58%] Built target libdeflate_test_utils
+[ 60%] Building C object programs/CMakeFiles/checksum.dir/checksum.c.o
+[ 62%] Building C object programs/CMakeFiles/benchmark.dir/benchmark.c.o
+[ 64%] Building C object programs/CMakeFiles/test_checksums.dir/test_checksums.c.o
+[ 66%] Linking C executable libdeflate-gzip
+[ 68%] Linking C executable checksum
+[ 70%] Linking C executable test_checksums
+[ 70%] Built target libdeflate-gzip
+[ 70%] Built target checksum
+[ 72%] Building C object programs/CMakeFiles/test_custom_malloc.dir/test_custom_malloc.c.o
+[ 74%] Building C object programs/CMakeFiles/test_incomplete_codes.dir/test_incomplete_codes.c.o
+[ 74%] Built target test_checksums
+[ 76%] Building C object programs/CMakeFiles/test_invalid_streams.dir/test_invalid_streams.c.o
+[ 78%] Linking C executable benchmark
+[ 80%] Linking C executable test_custom_malloc
+[ 80%] Built target benchmark
+[ 82%] Linking C executable test_invalid_streams
+[ 84%] Building C object programs/CMakeFiles/test_litrunlen_overflow.dir/test_litrunlen_overflow.c.o
+[ 84%] Built target test_custom_malloc
+[ 84%] Built target test_invalid_streams
+[ 86%] Building C object programs/CMakeFiles/test_overread.dir/test_overread.c.o
+[ 88%] Building C object programs/CMakeFiles/test_slow_decompression.dir/test_slow_decompression.c.o
+[ 90%] Linking C executable test_incomplete_codes
+[ 92%] Linking C executable test_litrunlen_overflow
+[ 92%] Built target test_incomplete_codes
+[ 94%] Linking C executable test_overread
+[ 96%] Building C object programs/CMakeFiles/test_trailing_bytes.dir/test_trailing_bytes.c.o
+[ 96%] Built target test_litrunlen_overflow
+[ 96%] Built target test_overread
+[ 98%] Linking C executable test_slow_decompression
+[ 98%] Built target test_slow_decompression
+[100%] Linking C executable test_trailing_bytes
+[100%] Built target test_trailing_bytes

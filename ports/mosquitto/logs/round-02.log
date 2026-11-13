@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports/mosquitto/work/src -B /home/chirag/qnx-porter/ports/mosquitto/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/mosquitto/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/mosquitto/work/qnx-run -DWITH_TLS=OFF -DWITH_CJSON=OFF -DDOCUMENTATION=OFF
+$ cmake -S /home/chirag/qnx-porter/ports/mosquitto/work/src -B /home/chirag/qnx-porter/ports/mosquitto/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/mosquitto/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/mosquitto/work/qnx-run -DWITH_WEBSOCKETS=OFF -DWITH_DOCS=OFF -DWITH_TESTS=OFF
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
@@ -11,45 +11,178 @@ $ cmake -S /home/chirag/qnx-porter/ports/mosquitto/work/src -B /home/chirag/qnx-
 -- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+-- Found OpenSSL: /home/chirag/qnx800/target/qnx/x86_64/usr/lib/libcrypto.so (found version "3.0.20")  
 -- WITH_DLT = OFF
+-- Found cJSON: /home/chirag/qnx-porter/ports/mosquitto/work/deps/usr/local/include  
+-- Could NOT find argon2 (missing: ARGON2_INCLUDE_DIR ARGON2_LIBRARY) 
+-- Found LineEditing: /home/chirag/qnx800/target/qnx/x86_64/usr/lib/libreadline.so  
 -- Looking for pthread.h
 -- Looking for pthread.h - found
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
 -- Found Threads: TRUE  
--- Looking for getaddrinfo_a in anl
--- Looking for getaddrinfo_a in anl - not found
+-- Looking for include file sys/event.h
+-- Looking for include file sys/event.h - not found
+-- Found SQLite3: /home/chirag/qnx800/target/qnx/usr/include (found version "3.50.4") 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/mosquitto/work/build
+CMake Warning at CMakeLists.txt:124 (message):
+  LTO/IPO is not supported: CMake doesn't support IPO for current CXX
+  compiler
+
+
 CMake Warning:
   Manually-specified variables were not used by the project:
 
     BUILD_TESTING
 
 
-$ cmake --build /home/chirag/qnx-porter/ports/mosquitto/work/build -j 2 -- -k
+$ cmake --build /home/chirag/qnx-porter/ports/mosquitto/work/build -j 4 -- -k
+Consolidate compiler generated dependencies of target ctrl_shell_io
+Consolidate compiler generated dependencies of target ctrl_shell
+Consolidate compiler generated dependencies of target mosquitto_signal
+Consolidate compiler generated dependencies of target libmosquitto_common
+[  1%] Built target ctrl_shell_io
+[  3%] Built target ctrl_shell
+[  7%] Linking C executable mosquitto_signal
+[  8%] Built target libmosquitto_common
+Consolidate compiler generated dependencies of target mosquitto_db_dump
 Consolidate compiler generated dependencies of target libmosquitto
+[  8%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/db_dump.c.o
+[  8%] Linking C shared library libmosquitto.so
 Consolidate compiler generated dependencies of target mosquitto
-[  1%] Linking C shared library libmosquitto.so
-[  2%] Linking C executable mosquitto
-[ 32%] Built target libmosquitto
-Consolidate compiler generated dependencies of target mosquitto_message_timestamp
-[ 32%] Linking C shared module mosquitto_message_timestamp.so
-[ 84%] Built target mosquitto
-Consolidate compiler generated dependencies of target mosquitto_payload_modification
-[ 85%] Linking C shared module mosquitto_payload_modification.so
-[ 86%] Built target mosquitto_message_timestamp
+[  8%] Built target mosquitto_signal
+Consolidate compiler generated dependencies of target mosquitto_passwd
+[  9%] Linking C executable mosquitto
+[  9%] Linking C executable mosquitto_passwd
+[ 10%] Built target mosquitto_passwd
+[ 24%] Built target libmosquitto
 Consolidate compiler generated dependencies of target mosquittopp
-[ 87%] Linking CXX shared library libmosquittopp.so
-[ 88%] Built target mosquitto_payload_modification
 Consolidate compiler generated dependencies of target mosquitto_pub
-[ 88%] Linking C executable mosquitto_pub
-[ 89%] Built target mosquittopp
+[ 25%] Linking CXX shared library libmosquittopp.so
+[ 26%] Linking C executable mosquitto_pub
+[ 27%] Built target mosquitto_pub
+[ 27%] Built target mosquittopp
+[ 61%] Built target mosquitto
 Consolidate compiler generated dependencies of target mosquitto_sub
-[ 92%] Built target mosquitto_pub
-[ 93%] Linking C executable mosquitto_sub
 Consolidate compiler generated dependencies of target mosquitto_rr
-[ 94%] Linking C executable mosquitto_rr
-[ 96%] Built target mosquitto_sub
-[100%] Built target mosquitto_rr
+Consolidate compiler generated dependencies of target mosquitto_ctrl
+[ 61%] Linking C executable mosquitto_sub
+[ 62%] Linking C executable mosquitto_ctrl
+[ 63%] Linking C executable mosquitto_rr
+[ 64%] Built target mosquitto_sub
+[ 65%] Built target mosquitto_rr
+[ 68%] Built target mosquitto_ctrl
+[ 68%] Building C object plugins/acl-file/CMakeFiles/mosquitto_acl_file.dir/acl_check.c.o
+[ 68%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/acl.c.o
+[ 68%] Building C object plugins/examples/add-properties/CMakeFiles/mosquitto_add_properties.dir/mosquitto_add_properties.c.o
+[ 69%] Linking C shared module mosquitto_add_properties.so
+[ 69%] Built target mosquitto_add_properties
+[ 69%] Building C object plugins/acl-file/CMakeFiles/mosquitto_acl_file.dir/acl_parse.c.o
+[ 69%] Building C object plugins/examples/client-lifetime-stats/CMakeFiles/mosquitto_client_lifetime_stats.dir/mosquitto_client_lifetime_stats.c.o
+[ 70%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/auth.c.o
+[ 71%] Linking C executable mosquitto_db_dump
+[ 71%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/clients.c.o
+[ 74%] Built target mosquitto_db_dump
+[ 75%] Building C object plugins/acl-file/CMakeFiles/mosquitto_acl_file.dir/plugin.c.o
+[ 76%] Linking C shared module mosquitto_client_lifetime_stats.so
+[ 77%] Building C object plugins/examples/message-timestamp/CMakeFiles/mosquitto_message_timestamp.dir/mosquitto_message_timestamp.c.o
+[ 77%] Linking C shared module mosquitto_acl_file.so
+[ 77%] Built target mosquitto_client_lifetime_stats
+[ 77%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/clientlist.c.o
+[ 77%] Linking C shared module mosquitto_message_timestamp.so
+[ 77%] Built target mosquitto_acl_file
+[ 78%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/config.c.o
+[ 78%] Built target mosquitto_message_timestamp
+[ 78%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/config_init.c.o
+[ 78%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/control.c.o
+[ 79%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/default_acl.c.o
+[ 79%] Building C object plugins/examples/auth-by-env/CMakeFiles/mosquitto_auth_by_env.dir/mosquitto_auth_by_env.c.o
+[ 79%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/details.c.o
+[ 79%] Linking C shared module mosquitto_auth_by_env.so
+[ 80%] Building C object plugins/examples/auth-by-ip/CMakeFiles/mosquitto_auth_by_ip.dir/mosquitto_auth_by_ip.c.o
+[ 80%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/groups.c.o
+[ 80%] Built target mosquitto_auth_by_env
+[ 80%] Building C object plugins/examples/client-properties/CMakeFiles/mosquitto_client_properties.dir/mosquitto_client_properties.c.o
+[ 80%] Linking C shared module mosquitto_auth_by_ip.so
+[ 80%] Linking C shared module mosquitto_client_properties.so
+[ 80%] Built target mosquitto_auth_by_ip
+[ 80%] Built target mosquitto_client_properties
+[ 81%] Building C object plugins/examples/connection-state/CMakeFiles/mosquitto_connection_state.dir/mosquitto_connection_state.c.o
+[ 82%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/grouplist.c.o
+[ 82%] Linking C shared module mosquitto_connection_state.so
+[ 82%] Building C object plugins/examples/delayed-auth/CMakeFiles/mosquitto_delayed_auth.dir/mosquitto_delayed_auth.c.o
+[ 82%] Built target mosquitto_connection_state
+[ 82%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/__/__/common/json_help.c.o
+[ 83%] Building C object plugins/examples/deny-protocol-version/CMakeFiles/mosquitto_deny_protocol_version.dir/mosquitto_deny_protocol_version.c.o
+[ 83%] Linking C shared module mosquitto_deny_protocol_version.so
+[ 83%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/kicklist.c.o
+[ 83%] Built target mosquitto_deny_protocol_version
+[ 84%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/plugin.c.o
+[ 84%] Linking C shared module mosquitto_delayed_auth.so
+[ 84%] Building C object plugins/examples/force-retain/CMakeFiles/mosquitto_force_retain.dir/mosquitto_force_retain.c.o
+[ 84%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/roles.c.o
+[ 84%] Built target mosquitto_delayed_auth
+[ 84%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/rolelist.c.o
+[ 85%] Linking C shared module mosquitto_force_retain.so
+[ 85%] Built target mosquitto_force_retain
+[ 86%] Building C object plugins/dynamic-security/CMakeFiles/mosquitto_dynamic_security.dir/tick.c.o
+[ 86%] Building C object plugins/examples/limit-subscription-qos/CMakeFiles/mosquitto_limit_subscription_qos.dir/mosquitto_limit_subscription_qos.c.o
+[ 87%] Building C object plugins/examples/payload-ban/CMakeFiles/mosquitto_payload_ban.dir/mosquitto_payload_ban.c.o
+[ 87%] Linking C shared module mosquitto_limit_subscription_qos.so
+[ 87%] Built target mosquitto_limit_subscription_qos
+[ 87%] Building C object plugins/examples/payload-modification/CMakeFiles/mosquitto_payload_modification.dir/mosquitto_payload_modification.c.o
+[ 88%] Linking C shared module mosquitto_payload_modification.so
+[ 88%] Built target mosquitto_payload_modification
+[ 88%] Building C object plugins/examples/payload-size-stats/CMakeFiles/mosquitto_payload_size_stats.dir/mosquitto_payload_size_stats.c.o
+[ 88%] Building C object plugins/examples/plugin-event-stats/CMakeFiles/mosquitto_plugin_event_stats.dir/mosquitto_plugin_event_stats.c.o
+[ 88%] Linking C shared module mosquitto_payload_size_stats.so
+[ 88%] Linking C shared module mosquitto_plugin_event_stats.so
+[ 88%] Built target mosquitto_payload_size_stats
+[ 89%] Building C object plugins/examples/print-ip-on-publish/CMakeFiles/mosquitto_print_ip_on_publish.dir/mosquitto_print_ip_on_publish.c.o
+[ 89%] Built target mosquitto_plugin_event_stats
+[ 90%] Building C object plugins/examples/tick-interval/CMakeFiles/mosquitto_tick_interval.dir/mosquitto_tick_interval.c.o
+[ 90%] Linking C shared module mosquitto_payload_ban.so
+[ 90%] Linking C shared module mosquitto_print_ip_on_publish.so
+[ 90%] Built target mosquitto_payload_ban
+[ 90%] Linking C shared module mosquitto_tick_interval.so
+[ 90%] Building C object plugins/examples/topic-hierarchy-flatten/CMakeFiles/mosquitto_topic_hierarchy_flatten.dir/mosquitto_topic_hierarchy_flatten.c.o
+[ 90%] Built target mosquitto_print_ip_on_publish
+[ 91%] Building C object plugins/examples/topic-modification/CMakeFiles/mosquitto_topic_modification.dir/mosquitto_topic_modification.c.o
+[ 91%] Built target mosquitto_tick_interval
+[ 91%] Building C object plugins/examples/topic-jail/CMakeFiles/mosquitto_topic_jail.dir/mosquitto_topic_jail.c.o
+[ 92%] Linking C shared module mosquitto_topic_hierarchy_flatten.so
+[ 92%] Linking C shared module mosquitto_topic_modification.so
+[ 92%] Built target mosquitto_topic_hierarchy_flatten
+[ 92%] Built target mosquitto_topic_modification
+[ 92%] Building C object plugins/examples/wildcard-temp/CMakeFiles/mosquitto_wildcard_temp.dir/mosquitto_wildcard_temp.c.o
+[ 92%] Building C object plugins/password-file/CMakeFiles/mosquitto_password_file.dir/password_check.c.o
+[ 92%] Linking C shared module mosquitto_topic_jail.so
+[ 92%] Built target mosquitto_topic_jail
+[ 93%] Building C object plugins/password-file/CMakeFiles/mosquitto_password_file.dir/password_parse.c.o
+[ 94%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/base_msgs.c.o
+[ 94%] Linking C shared module mosquitto_dynamic_security.so
+[ 94%] Built target mosquitto_dynamic_security
+[ 94%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/clients.c.o
+[ 94%] Building C object plugins/sparkplug-aware/CMakeFiles/mosquitto_sparkplug_aware.dir/on_message.c.o
+[ 94%] Building C object plugins/sparkplug-aware/CMakeFiles/mosquitto_sparkplug_aware.dir/plugin.c.o
+[ 94%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/client_msgs.c.o
+[ 94%] Building C object plugins/password-file/CMakeFiles/mosquitto_password_file.dir/plugin.c.o
+[ 95%] Linking C shared module mosquitto_sparkplug_aware.so
+[ 96%] Linking C shared module mosquitto_wildcard_temp.so
+[ 96%] Built target mosquitto_sparkplug_aware
+[ 97%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/common.c.o
+[ 97%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/init.c.o
+[ 97%] Built target mosquitto_wildcard_temp
+[ 97%] Linking C shared module mosquitto_password_file.so
+[ 97%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/__/__/common/json_help.c.o
+[ 98%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/plugin.c.o
+[ 98%] Built target mosquitto_password_file
+[ 98%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/restore.c.o
+[ 98%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/retain_msgs.c.o
+[ 99%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/subscriptions.c.o
+[ 99%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/tick.c.o
+[ 99%] Building C object plugins/persist-sqlite/CMakeFiles/mosquitto_persist_sqlite.dir/will.c.o
+[100%] Linking C shared module mosquitto_persist_sqlite.so
+[100%] Built target mosquitto_persist_sqlite

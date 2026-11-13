@@ -2,14 +2,5 @@
 <testsuite name="qnx-target" tests="12" failures="4" skipped="0"><testcase name="aes_calc_128" classname="qnx-target" /><testcase name="aes_calc_256" classname="qnx-target" /><testcase name="sha1_driver" classname="qnx-target" /><testcase name="datatypes_driver" classname="qnx-target" /><testcase name="cipher_driver" classname="qnx-target" /><testcase name="kernel_driver" classname="qnx-target" /><testcase name="rdbx_driver" classname="qnx-target"><failure message="exit 139" /></testcase><testcase name="replay_driver" classname="qnx-target"><failure message="exit 1">testing anti-replay database (srtp_rdb_t)...
 rdb_check_add_unordered failed at index 150
 failed
-</failure></testcase><testcase name="roc_driver" classname="qnx-target"><failure message="exit 139" /></testcase><testcase name="srtp_driver" classname="qnx-target" /><testcase name="test_srtp" classname="qnx-target" /><testcase name="rtpw_test" classname="qnx-target"><failure message="exit 254">/home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw_test.sh : starting rtpw receiver process... 
-/home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw_test.sh : receiver PID = 392077334
-Using libsrtp2 2.6.0 [0x2060000]
-security services: confidentiality message authentication
-set master key/salt to 2b2edc5034f61a72345ca5986d7bfd01/89aa6dc2ecab32fd9af74df6dfc6
-1
-/home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw_test.sh : error
-./rtpw: socket bind error
-Address already in use
-/home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw_test.sh[179]: ps: cannot execute - No such file or directory
+</failure></testcase><testcase name="roc_driver" classname="qnx-target"><failure message="exit 139" /></testcase><testcase name="srtp_driver" classname="qnx-target" /><testcase name="test_srtp" classname="qnx-target" /><testcase name="rtpw_test" classname="qnx-target"><failure message="exit None">timed out after 300 s
 </failure></testcase></testsuite>

@@ -20,7 +20,8 @@
   "blocked_on": [],
   "minutes": 0.1,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T08:47:55+00:00"
+  "finished": "2026-11-13T17:20:35+00:00"
 }

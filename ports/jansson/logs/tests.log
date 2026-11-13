@@ -1,6 +1,7 @@
 $ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/jansson/work/build); every test command runs on root@172.31.1.11 over ssh
 PASS  test_array (exit 0)
 PASS  test_chaos (exit 0)
+PASS  test_chaos_realloc (exit 0)
 PASS  test_copy (exit 0)
 PASS  test_dump (exit 0)
 PASS  test_dump_callback (exit 0)
@@ -16,6 +17,7 @@ PASS  test_simple (exit 0)
 PASS  test_sprintf (exit 0)
 PASS  test_unpack (exit 0)
 PASS  test_memory_funcs (exit 0)
+PASS  test_memory_funcs_realloc (exit 0)
 PASS  encoding-flags__array (exit 0)
 PASS  encoding-flags__compact-array (exit 0)
 PASS  encoding-flags__compact-object (exit 0)
@@ -59,7 +61,15 @@ PASS  valid__real-capital-e-negative-exponent__strip (exit 0)
 PASS  valid__real-capital-e-positive-exponent (exit 0)
 PASS  valid__real-capital-e-positive-exponent__strip (exit 0)
 FAIL  valid__real-exponent (exit 1)
+    === Expected output ===
+    [1.23e47, 0.1, 0.3, 9.99]
+    === Actual output ===
+    [1.2300000000000002e47, 0.1, 0.30000000000000004, 9.99]
 FAIL  valid__real-exponent__strip (exit 1)
+    === Expected output ===
+    [1.23e47, 0.1, 0.3, 9.99]
+    === Actual output ===
+    [1.2300000000000002e47, 0.1, 0.30000000000000004, 9.99]
 PASS  valid__real-fraction-exponent (exit 0)
 PASS  valid__real-fraction-exponent__strip (exit 0)
 PASS  valid__real-negative-exponent (exit 0)
@@ -67,7 +77,15 @@ PASS  valid__real-negative-exponent__strip (exit 0)
 PASS  valid__real-positive-exponent (exit 0)
 PASS  valid__real-positive-exponent__strip (exit 0)
 FAIL  valid__real-subnormal-number (exit 1)
+    === Expected output ===
+    [1.8011670033376514e-308]
+    === Actual output ===
+    [1.801167003337651e-308]
 FAIL  valid__real-subnormal-number__strip (exit 1)
+    === Expected output ===
+    [1.8011670033376514e-308]
+    === Actual output ===
+    [1.801167003337651e-308]
 PASS  valid__real-underflow (exit 0)
 PASS  valid__real-underflow__strip (exit 0)
 PASS  valid__short-string (exit 0)
@@ -213,4 +231,4 @@ PASS  invalid-unicode__overlong-ascii-encoding (exit 0)
 PASS  invalid-unicode__restricted-utf-8 (exit 0)
 PASS  invalid-unicode__truncated-utf-8 (exit 0)
 
-209/213 tests passed on the QNX target
+211/215 tests passed on the QNX target

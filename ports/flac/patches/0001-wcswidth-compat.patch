@@ -11,8 +11,8 @@ Error: /home/chirag/qnx-porter/ports/flac/work/src/src/flac/utils.c:223:(.text+0
  # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
 -set(CMAKE_C_FLAGS_INIT "-g ")
 -set(CMAKE_CXX_FLAGS_INIT "-g ")
-+set(CMAKE_C_FLAGS_INIT "-g -include /home/chirag/qnx-porter/ports/flac/work/qnx-compat/qnx-wcswidth.h -D_QNX_PORTER_WCSWIDTH")
-+set(CMAKE_CXX_FLAGS_INIT "-g -include /home/chirag/qnx-porter/ports/flac/work/qnx-compat/qnx-wcswidth.h -D_QNX_PORTER_WCSWIDTH")
++set(CMAKE_C_FLAGS_INIT "-g -I/home/chirag/qnx-porter/ports/flac/work/qnx-compat -include /home/chirag/qnx-porter/ports/flac/work/qnx-compat/qnx-wcswidth.h -D_QNX_PORTER_WCSWIDTH")
++set(CMAKE_CXX_FLAGS_INIT "-g -I/home/chirag/qnx-porter/ports/flac/work/qnx-compat -include /home/chirag/qnx-porter/ports/flac/work/qnx-compat/qnx-wcswidth.h -D_QNX_PORTER_WCSWIDTH")
  set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/flac/work/stubs")
  set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/flac/work/stubs")
  # Flags after the project's own (appended by the compiler wrappers in -): none

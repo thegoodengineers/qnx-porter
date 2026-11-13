@@ -1,8 +1,8 @@
 {
   "library": "libmodbus",
   "url": "https://github.com/stephane/libmodbus.git",
-  "version": "v3.1.11",
-  "commit": "5190e5e141780ae481f24be16d7b39a5f3ad8f8f",
+  "version": "v3.2.0",
+  "commit": "a9b025d12289855490b10d77461c99e001abfc0f",
   "build_system": "autotools",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -18,9 +18,10 @@
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 1.0,
+  "minutes": 0.6,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T07:42:22+00:00"
+  "finished": "2026-11-13T11:42:42+00:00"
 }

@@ -1,8 +1,8 @@
 {
   "library": "flatcc",
   "url": "https://github.com/dvidelabs/flatcc.git",
-  "version": "v0.6.1",
-  "commit": "d17e324e7e595272da486c5b9b20e848b78ba9ba",
+  "version": "v0.6.4",
+  "commit": "fec0275c0d0c5b6f495ab48d51fcde521d72b5fc",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -20,7 +20,8 @@
   "blocked_on": [],
   "minutes": 0.2,
   "note": "build only: its tests run the just-built flatcc compiler on the build host",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T07:49:55+00:00"
+  "finished": "2026-11-13T15:57:47+00:00"
 }

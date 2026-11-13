@@ -1,0 +1,8 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/opus/work/build); every test command runs on root@172.31.1.11 over ssh
+N/A   test_opus_decode (needs cmake on the target)
+N/A   test_opus_padding (needs cmake on the target)
+N/A   test_opus_api (needs cmake on the target)
+N/A   test_opus_encode (needs cmake on the target)
+N/A   test_opus_extensions (needs cmake on the target)
+
+0/0 tests passed on the QNX target; 5 not runnable there

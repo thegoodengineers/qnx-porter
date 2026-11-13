@@ -1,14 +1,14 @@
-# c-ares v1.34.3 on QNX 8.0 (x86_64)
+# c-ares v1.34.9 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/c-ares/c-ares.git at `v1.34.3` (`c29e75d54c37`) |
+| Upstream | https://github.com/c-ares/c-ares.git at `v1.34.9` (`bc91829cce98`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |
-| Library's own tests | 0/0 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
+| Library's own tests | 2/3 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 0.5 min |
+| Time | 5.8 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

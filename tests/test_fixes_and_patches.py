@@ -58,19 +58,19 @@ def test_link_rules(tmp_path):
 
 
 def test_link_libsocket_symbols_from_batch_logs(tmp_path):
-    # Real ld output from ports/libcoap/logs/round-01.log (data symbol in6addr_any)
+    # Real ld output from ports-2024/libcoap/logs/round-01.log (data symbol in6addr_any)
     log_coap = ("/home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:839:(.text+0x12df): "
                 "undefined reference to `in6addr_any'\n")
     [f1] = fixes.plan(parse(log_coap), tmp_path, Flags(), set())
     assert f1.rule == "link-libsocket" and f1.libs == ["-lsocket"]
 
-    # Real ld output from ports/libsrtp/logs/round-01.log (renamed symbol __inet_addr)
+    # Real ld output from ports-2024/libsrtp/logs/round-01.log (renamed symbol __inet_addr)
     log_srtp = ("/home/chirag/qnx-porter/ports/libsrtp/work/src/test/rtpw.c:309:(.text.startup+0x2cb): "
                 "undefined reference to `__inet_addr'\n")
     [f2] = fixes.plan(parse(log_srtp), tmp_path, Flags(), set())
     assert f2.rule == "link-libsocket" and f2.libs == ["-lsocket"]
 
-    # Real ld output from ports/libevent/logs/round-02.log (renamed symbol __inet_ntoa)
+    # Real ld output from ports-2024/libevent/logs/round-02.log (renamed symbol __inet_ntoa)
     log_event = ("/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: "
                  "lib/libevent_extra-2.1.so.7.0.1: undefined reference to `__inet_ntoa'\n")
     [f3] = fixes.plan(parse(log_event), tmp_path, Flags(), set())
@@ -175,7 +175,7 @@ def test_an_edit_of_a_crlf_file_changes_only_the_edited_lines(tmp_path):
 
 
 def test_can_utils_endian_missing_header_fires_endian_compat_rule(tmp_path):
-    # Real error from ports/can-utils/report.json
+    # Real error from ports-2024/can-utils/report.json
     log = ("/home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: "
            "fatal error: endian.h: No such file or directory\n")
     src = "#include <endian.h>\nuint32_t to_be(uint32_t val) { return htobe32(val); }\n"

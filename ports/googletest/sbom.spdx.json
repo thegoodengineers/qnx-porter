@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "googletest-v1.15.2-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/googletest-b514bdc898e2951020cbdca1304b75f5950d1f59",
+  "name": "googletest-v1.18.0-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/googletest-063de7e9578f82b369302001269680b4b1553359",
   "creationInfo": {
-    "created": "2026-11-13T04:56:26Z",
+    "created": "2026-11-13T19:01:09Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-googletest",
       "name": "googletest",
-      "versionInfo": "v1.15.2",
-      "downloadLocation": "git+https://github.com/google/googletest.git@b514bdc898e2951020cbdca1304b75f5950d1f59",
+      "versionInfo": "v1.18.0",
+      "downloadLocation": "git+https://github.com/google/googletest.git@063de7e9578f82b369302001269680b4b1553359",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "BSD-3-Clause",

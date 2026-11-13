@@ -1,19 +1,19 @@
-# cmocka cmocka-1.1.7 on QNX 8.0 (x86_64)
+# cmocka cmocka-2.0.2 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://gitlab.com/cmocka/cmocka.git at `cmocka-1.1.7` (`a01cc69ee953`) |
+| Upstream | https://gitlab.com/cmocka/cmocka.git at `cmocka-2.0.2` (`fefa2b8a0231`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
-| Build | **built** after 1 round(s) |
-| Library's own tests | 46/46 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
-| Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 0.4 min |
+| Build | **built** after 2 round(s) |
+| Library's own tests | 88/89 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
+| Patches kept | 1 (1 by rule, 0 by model) |
+| Time | 2.7 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |
 |---|---|---|---|---|---|
-| - | - | - | - | - | no changes needed |
+| [0001](patches/0001-qnx-source.patch) | qnx-source | rule | kept | qnx-toolchain.cmake | `PATH_MAX` is in <limits.h>, which src/cmocka.c already includes, so a strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions in QNX's headers, as _GNU_SOURCE does on glibc. |
 
 
 

@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports/c-ares/work/src -B /home/chirag/qnx-porter/ports/c-ares/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/c-ares/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/c-ares/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports/c-ares/work/src -B /home/chirag/qnx-porter/ports/c-ares/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/c-ares/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/c-ares/work/qnx-run -DCARES_BUILD_TESTS=ON
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -229,6 +229,8 @@ $ cmake -S /home/chirag/qnx-porter/ports/c-ares/work/src -B /home/chirag/qnx-por
 -- Looking for CLOCK_MONOTONIC - found
 -- Performing Test HAVE_STRUCT_SOCKADDR_IN6_SIN6_SCOPE_ID
 -- Performing Test HAVE_STRUCT_SOCKADDR_IN6_SIN6_SCOPE_ID - Success
+-- Looking for strnlen
+-- Looking for strnlen - found
 -- Looking for memmem
 -- Looking for memmem - found
 -- Looking for closesocket
@@ -263,6 +265,8 @@ $ cmake -S /home/chirag/qnx-porter/ports/c-ares/work/src -B /home/chirag/qnx-por
 -- Looking for if_indextoname - found
 -- Looking for if_nametoindex
 -- Looking for if_nametoindex - found
+-- Looking for GetBestRoute2
+-- Looking for GetBestRoute2 - not found
 -- Looking for ConvertInterfaceIndexToLuid
 -- Looking for ConvertInterfaceIndexToLuid - not found
 -- Looking for ConvertInterfaceLuidToNameA
@@ -340,167 +344,302 @@ $ cmake -S /home/chirag/qnx-porter/ports/c-ares/work/src -B /home/chirag/qnx-por
 -- Looking for include file pthread_np.h - not found
 -- Looking for pthread_init
 -- Looking for pthread_init - not found
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found GTest: /home/chirag/qnx-porter/ports/c-ares/work/deps/usr/local/lib/cmake/GTest/GTestConfig.cmake (found version "1.18.0")  
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/c-ares/work/build
+GoogleTest found, cmake version too old to verify GMock, look for errors...
 CMake Warning:
   Manually-specified variables were not used by the project:
 
     BUILD_TESTING
 
 
-$ cmake --build /home/chirag/qnx-porter/ports/c-ares/work/build -j 2 -- -k
-[  1%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_addrinfo_localhost.c.o
-[  2%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_addrinfo2hostent.c.o
-[  3%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_android.c.o
-[  4%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_cancel.c.o
-[  5%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_close_sockets.c.o
-[  6%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_conn.c.o
-[  7%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_cookie.c.o
-[  8%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_data.c.o
-[  9%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_destroy.c.o
-[ 10%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_free_hostent.c.o
-[ 11%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_free_string.c.o
-[ 12%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_freeaddrinfo.c.o
-[ 13%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_getaddrinfo.c.o
-[ 14%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_getenv.c.o
-[ 15%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_gethostbyaddr.c.o
-[ 16%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_gethostbyname.c.o
-[ 17%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_getnameinfo.c.o
-[ 18%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_hosts_file.c.o
-[ 19%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_init.c.o
-[ 20%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_library_init.c.o
-[ 21%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_metrics.c.o
-[ 22%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_options.c.o
-[ 23%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_parse_into_addrinfo.c.o
-[ 24%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_process.c.o
-[ 25%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_qcache.c.o
-[ 26%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_query.c.o
-[ 27%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_search.c.o
-[ 28%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_send.c.o
-[ 29%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_set_socket_functions.c.o
-[ 30%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_socket.c.o
-[ 31%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sortaddrinfo.c.o
-[ 32%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_strerror.c.o
-[ 34%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sysconfig.c.o
-[ 35%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sysconfig_files.c.o
-[ 36%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sysconfig_mac.c.o
-[ 37%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sysconfig_win.c.o
-[ 38%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_timeout.c.o
-[ 39%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_update_servers.c.o
-[ 40%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_version.c.o
-[ 41%] Building C object src/lib/CMakeFiles/c-ares.dir/inet_net_pton.c.o
-[ 43%] Building C object src/lib/CMakeFiles/c-ares.dir/windows_port.c.o
-[ 43%] Building C object src/lib/CMakeFiles/c-ares.dir/inet_ntop.c.o
-[ 44%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_array.c.o
-[ 45%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable.c.o
-[ 46%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_asvp.c.o
-[ 47%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_dict.c.o
-[ 48%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_strvp.c.o
-[ 49%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_szvp.c.o
-[ 50%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_vpstr.c.o
-[ 51%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_vpvp.c.o
-[ 52%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_llist.c.o
-[ 53%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_slist.c.o
-[ 54%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_configchg.c.o
-[ 55%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_epoll.c.o
-[ 56%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_kqueue.c.o
-[ 57%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_poll.c.o
-[ 58%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_select.c.o
-[ 59%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_thread.c.o
-[ 60%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_wake_pipe.c.o
-[ 61%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_win32.c.o
-[ 63%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_expand_name.c.o
-[ 63%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_create_query.c.o
-[ 65%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_expand_string.c.o
-[ 65%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_fds.c.o
-[ 67%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_getsock.c.o
-[ 68%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_a_reply.c.o
-[ 69%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_aaaa_reply.c.o
-[ 70%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_caa_reply.c.o
-[ 71%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_mx_reply.c.o
-[ 72%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_naptr_reply.c.o
-[ 73%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_ns_reply.c.o
-[ 74%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_ptr_reply.c.o
-[ 75%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_soa_reply.c.o
-[ 76%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_srv_reply.c.o
-[ 77%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_txt_reply.c.o
-[ 78%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_uri_reply.c.o
-[ 79%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_mapping.c.o
-[ 80%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_multistring.c.o
-[ 81%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_name.c.o
-[ 82%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_parse.c.o
-[ 83%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_record.c.o
-[ 84%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_write.c.o
-[ 85%] Building C object src/lib/CMakeFiles/c-ares.dir/str/ares_buf.c.o
-[ 86%] Building C object src/lib/CMakeFiles/c-ares.dir/str/ares_str.c.o
-[ 87%] Building C object src/lib/CMakeFiles/c-ares.dir/str/ares_strsplit.c.o
-[ 88%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_iface_ips.c.o
-[ 89%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_threads.c.o
-[ 90%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_timeval.c.o
-[ 91%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_math.c.o
-[ 92%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_rand.c.o
-[ 93%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_uri.c.o
-[ 94%] Linking C shared library ../../lib/libcares.so
-[ 94%] Built target c-ares
-[ 96%] Building C object src/tools/CMakeFiles/ahost.dir/ares_getopt.c.o
-[ 96%] Building C object src/tools/CMakeFiles/ahost.dir/ahost.c.o
-[ 97%] Linking C executable ../../bin/ahost
-[ 97%] Built target ahost
-[ 98%] Building C object src/tools/CMakeFiles/adig.dir/adig.c.o
-[100%] Linking C executable ../../bin/adig
-[100%] Built target adig
+$ cmake --build /home/chirag/qnx-porter/ports/c-ares/work/build -j 4 -- -k
+[  1%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_android.c.o
+[  1%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_addrinfo2hostent.c.o
+[  2%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_addrinfo_localhost.c.o
+[  3%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_cancel.c.o
+[  3%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_close_sockets.c.o
+[  4%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_conn.c.o
+[  5%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_cookie.c.o
+[  6%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_data.c.o
+[  6%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_destroy.c.o
+[  7%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_free_hostent.c.o
+[  8%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_free_string.c.o
+[  9%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_freeaddrinfo.c.o
+[  9%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_getaddrinfo.c.o
+[ 10%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_getenv.c.o
+[ 11%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_gethostbyaddr.c.o
+[ 12%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_gethostbyname.c.o
+[ 12%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_getnameinfo.c.o
+[ 13%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_hosts_file.c.o
+[ 14%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_init.c.o
+[ 15%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_library_init.c.o
+[ 15%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_metrics.c.o
+[ 16%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_options.c.o
+[ 17%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_parse_into_addrinfo.c.o
+[ 18%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_process.c.o
+[ 18%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_qcache.c.o
+[ 19%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_query.c.o
+[ 20%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_search.c.o
+[ 21%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_send.c.o
+[ 21%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_set_socket_functions.c.o
+[ 22%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_socket.c.o
+[ 23%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sortaddrinfo.c.o
+[ 23%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_strerror.c.o
+[ 24%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sysconfig.c.o
+[ 25%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sysconfig_files.c.o
+[ 26%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sysconfig_mac.c.o
+[ 26%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_sysconfig_win.c.o
+[ 28%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_update_servers.c.o
+[ 28%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_timeout.c.o
+[ 29%] Building C object src/lib/CMakeFiles/c-ares.dir/ares_version.c.o
+[ 29%] Building C object src/lib/CMakeFiles/c-ares.dir/inet_net_pton.c.o
+[ 30%] Building C object src/lib/CMakeFiles/c-ares.dir/inet_ntop.c.o
+[ 31%] Building C object src/lib/CMakeFiles/c-ares.dir/windows_port.c.o
+[ 32%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_array.c.o
+[ 32%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable.c.o
+[ 33%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_asvp.c.o
+[ 34%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_dict.c.o
+[ 35%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_strvp.c.o
+[ 35%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_szvp.c.o
+[ 36%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_vpstr.c.o
+[ 37%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_htable_vpvp.c.o
+[ 38%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_llist.c.o
+[ 38%] Building C object src/lib/CMakeFiles/c-ares.dir/dsa/ares_slist.c.o
+[ 39%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_configchg.c.o
+[ 40%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_epoll.c.o
+[ 41%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_kqueue.c.o
+[ 41%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_poll.c.o
+[ 42%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_select.c.o
+[ 43%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_thread.c.o
+[ 44%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_wake_pipe.c.o
+[ 44%] Building C object src/lib/CMakeFiles/c-ares.dir/event/ares_event_win32.c.o
+[ 45%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_create_query.c.o
+[ 46%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_expand_name.c.o
+[ 47%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_expand_string.c.o
+[ 47%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_fds.c.o
+[ 48%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_getsock.c.o
+[ 49%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_a_reply.c.o
+[ 50%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_aaaa_reply.c.o
+[ 50%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_caa_reply.c.o
+[ 51%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_mx_reply.c.o
+[ 52%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_naptr_reply.c.o
+[ 53%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_ns_reply.c.o
+[ 53%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_ptr_reply.c.o
+[ 54%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_soa_reply.c.o
+[ 55%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_srv_reply.c.o
+[ 56%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_txt_reply.c.o
+[ 56%] Building C object src/lib/CMakeFiles/c-ares.dir/legacy/ares_parse_uri_reply.c.o
+[ 57%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_mapping.c.o
+[ 58%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_multistring.c.o
+[ 59%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_name.c.o
+[ 59%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_parse.c.o
+[ 60%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_record.c.o
+[ 61%] Building C object src/lib/CMakeFiles/c-ares.dir/record/ares_dns_write.c.o
+[ 62%] Building C object src/lib/CMakeFiles/c-ares.dir/str/ares_buf.c.o
+[ 62%] Building C object src/lib/CMakeFiles/c-ares.dir/str/ares_str.c.o
+[ 63%] Building C object src/lib/CMakeFiles/c-ares.dir/str/ares_strsplit.c.o
+[ 64%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_iface_ips.c.o
+[ 65%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_threads.c.o
+[ 65%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_timeval.c.o
+[ 66%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_math.c.o
+[ 67%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_rand.c.o
+[ 68%] Building C object src/lib/CMakeFiles/c-ares.dir/util/ares_uri.c.o
+[ 68%] Linking C shared library ../../lib/libcares.so
+[ 68%] Built target c-ares
+[ 69%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-main.cc.o
+[ 70%] Building C object test/CMakeFiles/aresfuzzname.dir/ares-test-fuzz-name.c.o
+[ 71%] Building C object src/tools/CMakeFiles/ahost.dir/ahost.c.o
+[ 71%] Building C object test/CMakeFiles/aresfuzz.dir/ares-test-fuzz.c.o
+[ 71%] Building C object test/CMakeFiles/aresfuzzname.dir/ares-fuzz.c.o
+[ 72%] Linking C executable ../bin/aresfuzzname
+[ 72%] Building C object src/tools/CMakeFiles/ahost.dir/ares_getopt.c.o
+[ 73%] Building C object test/CMakeFiles/aresfuzz.dir/ares-fuzz.c.o
+[ 73%] Built target aresfuzzname
+[ 74%] Building CXX object test/CMakeFiles/dnsdump.dir/dns-proto.cc.o
+[ 75%] Linking C executable ../../bin/ahost
+[ 76%] Linking C executable ../bin/aresfuzz
+[ 76%] Built target ahost
+[ 77%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-init.cc.o
+[ 77%] Built target aresfuzz
+[ 78%] Building CXX object test/CMakeFiles/dnsdump.dir/dns-dump.cc.o
+[ 78%] Building CXX object test/CMakeFiles/arestest.dir/ares-test.cc.o
+[ 79%] Linking CXX executable ../bin/dnsdump
+[ 79%] Built target dnsdump
+[ 79%] Building C object src/tools/CMakeFiles/adig.dir/adig.c.o
+[ 80%] Building C object test/CMakeFiles/ares_queryloop.dir/ares_queryloop.c.o
+[ 81%] Linking C executable ../bin/ares_queryloop
+[ 81%] Built target ares_queryloop
+[ 82%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-ns.cc.o
+[ 83%] Linking C executable ../../bin/adig
+[ 83%] Built target adig
+[ 84%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse.cc.o
+[ 85%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-a.cc.o
+[ 85%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-aaaa.cc.o
+[ 86%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-caa.cc.o
+[ 87%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-mx.cc.o
+[ 88%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-naptr.cc.o
+[ 88%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-ns.cc.o
+[ 89%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-ptr.cc.o
+[ 90%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-soa.cc.o
+[ 91%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-soa-any.cc.o
+[ 91%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-srv.cc.o
+[ 92%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-txt.cc.o
+[ 93%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-parse-uri.cc.o
+[ 94%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-misc.cc.o
+[ 94%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-live.cc.o
+[ 96%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-mock-ai.cc.o
+[ 96%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-mock.cc.o
+[ 97%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-mock-et.cc.o
+[ 97%] Building CXX object test/CMakeFiles/arestest.dir/ares-test-internal.cc.o
+[ 98%] Building CXX object test/CMakeFiles/arestest.dir/dns-proto.cc.o
+[ 99%] Building CXX object test/CMakeFiles/arestest.dir/dns-proto-test.cc.o
+[100%] Linking CXX executable ../bin/arestest
+[100%] Built target arestest
 /home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_record.c: In function 'ares_dns_rr_set_addr6':
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_record.c:1127:3: warning: writing 16 bytes into a region of size between 1 and 8 [-Wstringop-overflow=]
- 1127 |   memcpy(a, addr, sizeof(*a));
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_record.c:1138:3: warning: writing 16 bytes into a region of size between 1 and 8 [-Wstringop-overflow=]
+ 1138 |   memcpy(a, addr, sizeof(*a));
       |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
 In file included from /home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/ares_private.h:59,
                  from /home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_record.c:26:
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:101:18: note: destination object 'addr' of size 4
-  101 |   struct in_addr addr;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:105:18: note: destination object 'addr' of size 4
+  105 |   struct in_addr addr;
       |                  ^~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:142:18: note: destination object 'algorithm' of size 1
-  142 |   unsigned char  algorithm;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:146:18: note: destination object 'algorithm' of size 1
+  146 |   unsigned char  algorithm;
       |                  ^~~~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:147:18: note: destination object 'key_tag' of size 2
-  147 |   unsigned short key_tag;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:151:18: note: destination object 'key_tag' of size 2
+  151 |   unsigned short key_tag;
       |                  ^~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:116:16: note: destination object 'refresh' of size 4
-  116 |   unsigned int refresh;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:120:16: note: destination object 'refresh' of size 4
+  120 |   unsigned int refresh;
       |                ^~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:118:16: note: destination object 'expire' of size 4
-  118 |   unsigned int expire;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:122:16: note: destination object 'expire' of size 4
+  122 |   unsigned int expire;
       |                ^~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:170:18: note: destination object 'replacement' of size 8
-  170 |   char          *replacement;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:174:18: note: destination object 'replacement' of size 8
+  174 |   char          *replacement;
       |                  ^~~~~~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:114:16: note: destination object 'rname' of size 8
-  114 |   char        *rname;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:118:16: note: destination object 'rname' of size 8
+  118 |   char        *rname;
       |                ^~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:146:18: note: destination object 'inception' of size 4
-  146 |   unsigned int   inception;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:150:18: note: destination object 'inception' of size 4
+  150 |   unsigned int   inception;
       |                  ^~~~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:198:18: note: destination object 'params' of size 8
-  198 |   ares_array_t  *params; /*!< Type is ares_dns_optval_t */
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:202:18: note: destination object 'params' of size 8
+  202 |   ares_array_t  *params; /*!< Type is ares_dns_optval_t */
       |                  ^~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:119:16: note: destination object 'minimum' of size 4
-  119 |   unsigned int minimum;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:123:16: note: destination object 'minimum' of size 4
+  123 |   unsigned int minimum;
       |                ^~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:117:16: note: destination object 'retry' of size 4
-  117 |   unsigned int retry;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:121:16: note: destination object 'retry' of size 4
+  121 |   unsigned int retry;
       |                ^~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:143:18: note: destination object 'labels' of size 1
-  143 |   unsigned char  labels;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:147:18: note: destination object 'labels' of size 1
+  147 |   unsigned char  labels;
       |                  ^~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:148:18: note: destination object 'signers_name' of size 8
-  148 |   char          *signers_name;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:152:18: note: destination object 'signers_name' of size 8
+  152 |   char          *signers_name;
       |                  ^~~~~~~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:189:18: note: destination object 'selector' of size 1
-  189 |   unsigned char  selector;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:193:18: note: destination object 'selector' of size 1
+  193 |   unsigned char  selector;
       |                  ^~~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:144:18: note: destination object 'original_ttl' of size 4
-  144 |   unsigned int   original_ttl;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:148:18: note: destination object 'original_ttl' of size 4
+  148 |   unsigned int   original_ttl;
       |                  ^~~~~~~~~~~~
-/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:115:16: note: destination object 'serial' of size 4
-  115 |   unsigned int serial;
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/lib/record/ares_dns_private.h:119:16: note: destination object 'serial' of size 4
+  119 |   unsigned int serial;
       |                ^~~~~~
+cc: warning - lang-c++ is deprecated
+/home/chirag/qnx-porter/ports/c-ares/work/src/src/tools/ahost.c:51:12: warning: 'final_rv' defined but not used [-Wunused-variable]
+   51 | static int final_rv = RV_OK;
+      |            ^~~~~~~~
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+In file included from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/construct_at.h:23,
+                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator_traits.h:14,
+                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocate_at_least.h:13,
+                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/memory:925,
+                 from /home/chirag/qnx-porter/ports/c-ares/work/src/test/dns-proto.h:35,
+                 from /home/chirag/qnx-porter/ports/c-ares/work/src/test/ares-test.h:31,
+                 from /home/chirag/qnx-porter/ports/c-ares/work/src/test/ares-test-main.cc:29:
+In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
+    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
+    inlined from '_Tp* std::__2::allocator< <template-parameter-1-1> >::allocate(size_t) [with _Tp = int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
+    inlined from 'constexpr std::__2::__allocation_result<typename std::__2::allocator_traits<_Alloc>::pointer> std::__2::__allocate_at_least(_Alloc&, size_t) [with _Alloc = allocator<int>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocate_at_least.h:55:27,
+    inlined from 'void std::__2::vector<_Tp, _Alloc>::__vallocate(size_type) [with _Tp = int; _Allocator = std::__2::allocator<int>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/vector:741:49,
+    inlined from 'void std::__2::vector<_Tp, _Alloc>::__assign_with_size(_ForwardIterator, _Sentinel, difference_type) [with _ForwardIterator = int*; _Sentinel = int*; _Tp = int; _Allocator = std::__2::allocator<int>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/vector:1345:16,
+    inlined from 'void std::__2::vector<_Tp, _Alloc>::assign(_ForwardIterator, _ForwardIterator) [with _ForwardIterator = int*; typename std::__2::enable_if<(std::__2::__has_iterator_category_convertible_to<_InputIterator, std::__2::forward_iterator_tag, std::__2::__has_iterator_category<std::__2::iterator_traits<_InIter> >::value>::value && std::__2::is_constructible<_Tp, typename std::__2::iterator_traits<_InIter>::reference>::value), int>::type <anonymous> = 0; _Tp = int; _Allocator = std::__2::allocator<int>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/vector:1326:21,
+    inlined from 'std::__2::vector<_Tp, _Alloc>& std::__2::vector<_Tp, _Alloc>::operator=(const std::__2::vector<_Tp, _Alloc>&) [with _Tp = int; _Allocator = std::__2::allocator<int>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/vector:1297:11:
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
+  273 |   return ::operator new(__args...);
+      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'std::__2::vector<_Tp, _Alloc>& std::__2::vector<_Tp, _Alloc>::operator=(const std::__2::vector<_Tp, _Alloc>&) [with _Tp = int; _Allocator = std::__2::allocator<int>]':
+/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
+  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
+      |                                                                  ^~~~~~~~
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+/home/chirag/qnx-porter/ports/c-ares/work/src/test/ares-test-mock.cc: In member function 'virtual void ares::test::ReplyConnMultiMockTest_AnswerOnOtherServerConnectionDropped_Test::TestBody()':
+/home/chirag/qnx-porter/ports/c-ares/work/src/test/ares-test-mock.cc:5688:32: warning: 'std::__2::decay_t<_Tp> testing::InvokeWithoutArgs(FunctionImpl&&) [with FunctionImpl = ares::test::ReplyConnMultiMockTest_AnswerOnOtherServerConnectionDropped_Test::TestBody()::<lambda()>; std::__2::decay_t<_Tp> = std::__2::decay_t<ares::test::ReplyConnMultiMockTest_AnswerOnOtherServerConnectionDropped_Test::TestBody()::<lambda()> >]' is deprecated: Actions can now be implicitly constructed from zero-argument callables. No need to create wrapper objects using InvokeWithoutArgs(). [-Wdeprecated-declarations]
+ 5688 |     .WillOnce(InvokeWithoutArgs([&]() {
+      |               ~~~~~~~~~~~~~~~~~^~~~~~~~
+ 5689 |       servers_[0]->SendUnsolicited(&forged, qid);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 5690 |       servers_[1]->SetReplyData(std::vector<byte>());
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 5691 |     }));
+      |     ~~                          
+In file included from /home/chirag/qnx-porter/ports/c-ares/work/deps/usr/local/include/gmock/gmock.h:56,
+                 from /home/chirag/qnx-porter/ports/c-ares/work/src/test/ares-test.h:36,
+                 from /home/chirag/qnx-porter/ports/c-ares/work/src/test/ares-test-mock.cc:26:
+/home/chirag/qnx-porter/ports/c-ares/work/deps/usr/local/include/gmock/gmock-actions.h:2059:28: note: declared here
+ 2059 | std::decay_t<FunctionImpl> InvokeWithoutArgs(FunctionImpl&& function_impl) {
+      |                            ^~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/c-ares/work/src/test/ares-test-mock.cc: In member function 'virtual void ares::test::ReplyConnCookieMultiMockTest_CookielessAnswerOnOtherServerDropped_Test::TestBody()':
+/home/chirag/qnx-porter/ports/c-ares/work/src/test/ares-test-mock.cc:5761:32: warning: 'std::__2::decay_t<_Tp> testing::InvokeWithoutArgs(FunctionImpl&&) [with FunctionImpl = ares::test::ReplyConnCookieMultiMockTest_CookielessAnswerOnOtherServerDropped_Test::TestBody()::<lambda()>; std::__2::decay_t<_Tp> = std::__2::decay_t<ares::test::ReplyConnCookieMultiMockTest_CookielessAnswerOnOtherServerDropped_Test::TestBody()::<lambda()> >]' is deprecated: Actions can now be implicitly constructed from zero-argument callables. No need to create wrapper objects using InvokeWithoutArgs(). [-Wdeprecated-declarations]
+ 5761 |     .WillOnce(InvokeWithoutArgs([&]() {
+      |               ~~~~~~~~~~~~~~~~~^~~~~~~~
+ 5762 |       servers_[0]->SendUnsolicited(&forged, qid);
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 5763 |       servers_[1]->SetReplyData(std::vector<byte>());
+      |       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 5764 |     }));
+      |     ~~                          
+/home/chirag/qnx-porter/ports/c-ares/work/deps/usr/local/include/gmock/gmock-actions.h:2059:28: note: declared here
+ 2059 | std::decay_t<FunctionImpl> InvokeWithoutArgs(FunctionImpl&& function_impl) {
+      |                            ^~~~~~~~~~~~~~~~~
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: CMakeFiles/arestest.dir/ares-test.cc.o: in function `ares::test::TempNam(char const*, char const*)':
+ares-test.cc:(.text+0x675): warning: The 'tempnam' function is dangerous. Use 'mkstemp' instead.

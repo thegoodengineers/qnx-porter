@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "tinycbor-v0.6.0-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/tinycbor-d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7",
+  "name": "tinycbor-v7.1-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/tinycbor-da6421f2b5b91e3468c0af7265117427ea73f19e",
   "creationInfo": {
-    "created": "2026-11-13T05:00:48Z",
+    "created": "2026-11-13T19:03:05Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-tinycbor",
       "name": "tinycbor",
-      "versionInfo": "v0.6.0",
-      "downloadLocation": "git+https://github.com/intel/tinycbor.git@d393c16f3eb30d0c47e6f9d92db62272f0ec4dc7",
+      "versionInfo": "v7.1",
+      "downloadLocation": "git+https://github.com/intel/tinycbor.git@da6421f2b5b91e3468c0af7265117427ea73f19e",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "MIT",

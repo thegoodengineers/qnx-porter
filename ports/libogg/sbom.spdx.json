@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "libogg-v1.3.5-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libogg-e1774cd77f471443541596e09078e78fdc342e4f",
+  "name": "libogg-v1.3.6-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libogg-be05b13e98b048f0b5a0f5fa8ce514d56db5f822",
   "creationInfo": {
-    "created": "2026-11-13T04:58:35Z",
+    "created": "2026-11-13T19:01:29Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-libogg",
       "name": "libogg",
-      "versionInfo": "v1.3.5",
-      "downloadLocation": "git+https://github.com/xiph/ogg.git@e1774cd77f471443541596e09078e78fdc342e4f",
+      "versionInfo": "v1.3.6",
+      "downloadLocation": "git+https://github.com/xiph/ogg.git@be05b13e98b048f0b5a0f5fa8ce514d56db5f822",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "BSD-3-Clause",

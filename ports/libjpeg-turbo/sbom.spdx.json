@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "libjpeg-turbo-3.0.4-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libjpeg-turbo-f29eda648547b36aa594c4116c7764a6c8a079b9",
+  "name": "libjpeg-turbo-3.2.1-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libjpeg-turbo-7b4993786d856cbccabfc0ed2f923ba000e326cc",
   "creationInfo": {
-    "created": "2026-11-13T04:58:31Z",
+    "created": "2026-11-13T19:01:28Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,13 +15,13 @@
     {
       "SPDXID": "SPDXRef-Package-libjpeg-turbo",
       "name": "libjpeg-turbo",
-      "versionInfo": "3.0.4",
-      "downloadLocation": "git+https://github.com/libjpeg-turbo/libjpeg-turbo.git@f29eda648547b36aa594c4116c7764a6c8a079b9",
+      "versionInfo": "3.2.1",
+      "downloadLocation": "git+https://github.com/libjpeg-turbo/libjpeg-turbo.git@7b4993786d856cbccabfc0ed2f923ba000e326cc",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "BSD-3-Clause AND IJG AND LicenseRef-scancode-ijg-2020 AND Zlib",
+      "licenseDeclared": "BSD-3-Clause AND BSD-2-Clause AND IJG AND LicenseRef-scancode-ijg-2020 AND libpng-2.0 AND Zlib",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over LICENSE.md, README.ijg, README.md, java/README, release/License.rtf, release/ReadMe.txt: BSD-3-Clause AND IJG AND LicenseRef-scancode-ijg-2020 AND Zlib. Per-file detections: LICENSE.md: (BSD-3-Clause AND IJG AND Zlib) AND IJG AND (Zlib AND BSD-3-Clause) AND (BSD-3-Clause AND (BSD-3-Clause AND IJG AND Zlib)) AND (BSD-3-Clause AND Zlib) AND Zlib AND BSD-3-Clause; README.ijg: IJG AND LicenseRef-scancode-ijg-2020; java/README: BSD-3-Clause; release/License.rtf: BSD-3-Clause."
+      "licenseComments": "ScanCode summary declared licence over LICENSE.md, README.ijg, README.md, jna/README.md, release/License.rtf, release/ReadMe.txt, simd/README.md, testimages/LICENSE.txt: BSD-3-Clause AND BSD-2-Clause AND IJG AND LicenseRef-scancode-ijg-2020 AND libpng-2.0 AND Zlib. Per-file detections: LICENSE.md: (BSD-3-Clause AND IJG AND Zlib) AND IJG AND BSD-3-Clause AND (BSD-3-Clause AND Zlib) AND libpng-2.0 AND (BSD-2-Clause AND BSD-3-Clause AND (BSD-3-Clause AND IJG AND Zlib)); README.ijg: IJG AND LicenseRef-scancode-ijg-2020; jna/README.md: Apache-2.0 AND LGPL-2.0-only AND LGPL-2.1-or-later; release/License.rtf: BSD-3-Clause; testimages/LICENSE.txt: MIT AND BSD-3-Clause."
     }
   ],
   "hasExtractedLicensingInfos": [

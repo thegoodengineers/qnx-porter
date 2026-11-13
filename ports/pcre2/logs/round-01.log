@@ -1,4 +1,5 @@
 $ cmake -S /home/chirag/qnx-porter/ports/pcre2/work/src -B /home/chirag/qnx-porter/ports/pcre2/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/pcre2/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/pcre2/work/qnx-run
+-- Using CMake version 3.22.1 (/usr/bin/cmake)
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -9,8 +10,12 @@ $ cmake -S /home/chirag/qnx-porter/ports/pcre2/work/src -B /home/chirag/qnx-port
 -- Looking for BZ2_bzCompressInit
 -- Looking for BZ2_bzCompressInit - found
 -- Found ZLIB: /home/chirag/qnx800/target/qnx/x86_64/usr/lib/libz.so (found version "1.2.13") 
--- Found Readline: /home/chirag/qnx800/target/qnx/usr/include
--- Could not find OPTIONAL package Editline
+-- Looking for readline
+-- Looking for readline - found
+-- Found Readline: /home/chirag/qnx800/target/qnx/x86_64/usr/lib/libreadline.so  
+-- Could NOT find Editline (missing: EDITLINE_INCLUDE_DIR) 
+-- Looking for assert.h
+-- Looking for assert.h - found
 -- Looking for dirent.h
 -- Looking for dirent.h - found
 -- Looking for sys/stat.h
@@ -21,68 +26,89 @@ $ cmake -S /home/chirag/qnx-porter/ports/pcre2/work/src -B /home/chirag/qnx-port
 -- Looking for unistd.h - found
 -- Looking for windows.h
 -- Looking for windows.h - not found
--- Looking for bcopy
--- Looking for bcopy - not found
+-- Detecting platform feature test macros
+-- Detecting platform feature test macros - none
+-- Looking for mkostemp
+-- Looking for mkostemp - found
 -- Looking for memfd_create
 -- Looking for memfd_create - not found
--- Looking for memmove
--- Looking for memmove - found
 -- Looking for secure_getenv
 -- Looking for secure_getenv - not found
--- Looking for strerror
--- Looking for strerror - found
+-- Looking for setrlimit
+-- Looking for setrlimit - found
 -- Performing Test HAVE_REALPATH
 -- Performing Test HAVE_REALPATH - Success
--- Performing Test HAVE_BUILTIN_MUL_OVERFLOW
--- Performing Test HAVE_BUILTIN_MUL_OVERFLOW - Success
+-- Performing Test HAVE_WERROR
+-- Performing Test HAVE_WERROR - Success
 -- Performing Test HAVE_ATTRIBUTE_UNINITIALIZED
 -- Performing Test HAVE_ATTRIBUTE_UNINITIALIZED - Success
 -- Performing Test HAVE_VISIBILITY
 -- Performing Test HAVE_VISIBILITY - Success
+-- Performing Test HAVE_BUILTIN_ASSUME
+-- Performing Test HAVE_BUILTIN_ASSUME - Failed
+-- Performing Test HAVE_BUILTIN_MUL_OVERFLOW
+-- Performing Test HAVE_BUILTIN_MUL_OVERFLOW - Success
+-- Performing Test HAVE_BUILTIN_UNREACHABLE
+-- Performing Test HAVE_BUILTIN_UNREACHABLE - Success
+-- Detecting linker version script support
+-- Performing Test HAVE_VSCRIPT_GNU
+-- Performing Test HAVE_VSCRIPT_GNU - Success
+-- Performing Test HAVE_VSCRIPT_BROKEN
+-- Performing Test HAVE_VSCRIPT_BROKEN - Failed
+-- Detecting linker version script support - yes (--version-script)
+-- Detecting if version scripts work without wildcard
+-- Performing Test HAVE_VSCRIPT_NO_STAR
+-- Performing Test HAVE_VSCRIPT_NO_STAR - Success
+-- Detecting if version scripts work without wildcard - TRUE
 -- Performing Test INTEL_CET_ENABLED
 -- Performing Test INTEL_CET_ENABLED - Failed
 -- 
 -- 
--- PCRE2-10.44 configuration summary:
+-- PCRE2-10.49 configuration summary:
 -- 
---   Install prefix .................. : /usr/local
---   C compiler ...................... : /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc
---   C compiler flags ................ : -g -O3 -DNDEBUG -O3 -DNDEBUG
+--   Install prefix .................... : /usr/local
+--   C compiler ........................ : /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc
+--   C compiler flags .................. : -g -O3 -DNDEBUG -O3 -DNDEBUG
 -- 
---   Build 8 bit PCRE2 library ....... : ON
---   Build 16 bit PCRE2 library ...... : OFF
---   Build 32 bit PCRE2 library ...... : OFF
---   Enable JIT compiling support .... : OFF
---   Use SELinux allocator in JIT .... : IGNORE
---   Enable Unicode support .......... : ON
---   Newline char/sequence ........... : LF
---   \R matches only ANYCRLF ......... : OFF
---   \C is disabled .................. : OFF
---   EBCDIC coding ................... : OFF
---   EBCDIC coding with NL=0x25 ...... : OFF
---   Rebuild char tables ............. : OFF
---   Internal link size .............. : 2
---   Maximum variable lookbehind ..... : 255
---   Parentheses nest limit .......... : 250
---   Heap limit ...................... : 20000000
---   Match limit ..................... : 10000000
---   Match depth limit ............... : MATCH_LIMIT
---   Build shared libs ............... : OFF
---   Build static libs ............... : ON
---      with PIC enabled ............. : OFF
---   Build pcre2grep ................. : ON
---   Enable JIT in pcre2grep ......... : ON
---   Enable callouts in pcre2grep .... : ON
---   Enable callout fork in pcre2grep. : ON
---   Buffer size for pcre2grep ....... : 20480
---   Build tests (implies pcre2test .. : ON
+--   Build type ........................ : Release
+--   Build 8 bit pcre2 library ......... : ON
+--   Build 16 bit pcre2 library ........ : OFF
+--   Build 32 bit pcre2 library ........ : OFF
+--   Include debugging code ............ : IfDebugBuild
+--   Enable JIT compiling support ...... : OFF
+--   Use SELinux allocator in JIT ...... : IGNORE
+--   Enable Unicode support ............ : ON
+--   Newline char/sequence ............. : LF
+--   \R matches only ANYCRLF ........... : OFF
+--   \C is disabled .................... : OFF
+--   EBCDIC coding ..................... : OFF
+--   EBCDIC code for NL ................ : n/a
+--   EBCDIC coding ignoring compiler ... : OFF
+--   Rebuild char tables ............... : OFF
+--   Internal link size ................ : 2
+--   Maximum variable lookbehind ....... : 255
+--   Nested parentheses limit .......... : 250
+--   Heap limit ........................ : 20000000
+--   Match limit ....................... : 10000000
+--   Match depth limit ................. : MATCH_LIMIT
+--   Build shared libs ................. : OFF
+--       with symbol versioning ........ : ON
+--   Build static libs ................. : ON
+--       with PIC enabled .............. : OFF
+--   Build pcre2grep ................... : ON
+--   Enable JIT in pcre2grep ........... : ON
+--   Enable callouts in pcre2grep ...... : ON
+--   Enable callout fork in pcre2grep .. : ON
+--   Initial buffer size for pcre2grep . : 20480
+--   Maximum buffer size for pcre2grep . : 1048576
+--   Build tests (implies pcre2test .... : ON
 --                and pcre2grep)
---   Link pcre2grep with libz ........ : ON
---   Link pcre2grep with libbz2 ...... : ON
---   Link pcre2test with libeditline . : Library not found
---   Link pcre2test with libreadline . : ON
---   Support Valgrind .................: OFF
---   Use %zu and %td ..................: AUTO
+--   Link pcre2grep with libz .......... : ON
+--   Link pcre2grep with libbz2 ........ : ON
+--   Link pcre2test with libeditline ... : Library not found
+--   Link pcre2test with libreadline ... : ON
+--   Enable Valgrind support ........... : OFF
+--   Use %zu and %td ................... : AUTO
 -- 
 -- Configuring done
 -- Generating done
@@ -94,44 +120,47 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports/pcre2/work/build -j 2 -- -k
-[  2%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_auto_possess.c.o
-[  5%] Building C object CMakeFiles/pcre2-8-static.dir/pcre2_chartables.c.o
-[  8%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_chkdint.c.o
+[  2%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_chartables.c.o
+[  5%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_auto_possess.c.o
+[  7%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_chkdint.c.o
 [ 10%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_compile.c.o
-[ 13%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_config.c.o
-[ 16%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_context.c.o
-[ 18%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_convert.c.o
-[ 21%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_dfa_match.c.o
-[ 24%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_error.c.o
-[ 27%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_extuni.c.o
-[ 29%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_find_bracket.c.o
-[ 32%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_jit_compile.c.o
-[ 35%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_maketables.c.o
-[ 37%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_match.c.o
-[ 40%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_match_data.c.o
-[ 43%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_newline.c.o
-[ 45%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_ord2utf.c.o
-[ 48%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_pattern_info.c.o
-[ 51%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_script_run.c.o
-[ 54%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_serialize.c.o
-[ 56%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_string_utils.c.o
-[ 59%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_study.c.o
-[ 62%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_substitute.c.o
-[ 64%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_substring.c.o
-[ 67%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_tables.c.o
-[ 70%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_ucd.c.o
-[ 72%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_valid_utf.c.o
-[ 75%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_xclass.c.o
-[ 78%] Linking C static library libpcre2-8.a
-[ 78%] Built target pcre2-8-static
-[ 81%] Building C object CMakeFiles/pcre2-posix-static.dir/src/pcre2posix.c.o
-[ 83%] Linking C static library libpcre2-posix.a
-[ 83%] Built target pcre2-posix-static
-[ 89%] Building C object CMakeFiles/pcre2grep.dir/src/pcre2grep.c.o
-[ 89%] Building C object CMakeFiles/pcre2test.dir/src/pcre2test.c.o
-[ 91%] Linking C executable pcre2grep
-[ 91%] Built target pcre2grep
-[ 94%] Building C object CMakeFiles/pcre2posix_test.dir/src/pcre2posix_test.c.o
+[ 12%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_compile_cgroup.c.o
+[ 15%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_compile_class.c.o
+[ 17%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_config.c.o
+[ 20%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_context.c.o
+[ 22%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_convert.c.o
+[ 25%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_dfa_match.c.o
+[ 27%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_error.c.o
+[ 30%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_extuni.c.o
+[ 32%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_find_bracket.c.o
+[ 35%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_jit_compile.c.o
+[ 37%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_maketables.c.o
+[ 40%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_match.c.o
+[ 42%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_match_data.c.o
+[ 45%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_match_next.c.o
+[ 47%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_newline.c.o
+[ 50%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_ord2utf.c.o
+[ 52%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_pattern_info.c.o
+[ 55%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_script_run.c.o
+[ 57%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_serialize.c.o
+[ 60%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_string_utils.c.o
+[ 62%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_study.c.o
+[ 65%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_substitute.c.o
+[ 67%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_substring.c.o
+[ 70%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_tables.c.o
+[ 72%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_ucd.c.o
+[ 75%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_valid_utf.c.o
+[ 77%] Building C object CMakeFiles/pcre2-8-static.dir/src/pcre2_xclass.c.o
+[ 80%] Linking C static library libpcre2-8.a
+[ 80%] Built target pcre2-8-static
+[ 82%] Building C object CMakeFiles/pcre2-posix-static.dir/src/pcre2posix.c.o
+[ 85%] Linking C static library libpcre2-posix.a
+[ 85%] Built target pcre2-posix-static
+[ 87%] Building C object CMakeFiles/pcre2grep.dir/src/pcre2grep.c.o
+[ 90%] Building C object CMakeFiles/pcre2test.dir/src/pcre2test.c.o
+[ 92%] Linking C executable pcre2grep
+[ 92%] Built target pcre2grep
+[ 95%] Building C object CMakeFiles/pcre2posix_test.dir/src/pcre2posix_test.c.o
 [ 97%] Linking C executable pcre2posix_test
 [ 97%] Built target pcre2posix_test
 [100%] Linking C executable pcre2test

@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "lz4-v1.10.0-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/lz4-ebb370ca83af193212df4dcbadcc5d87bc0de2f0",
+  "name": "lz4-v1.11.1-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/lz4-aa4647fad575d01a874aaaadcdbe8e6a40e072f5",
   "creationInfo": {
-    "created": "2026-11-13T04:59:39Z",
+    "created": "2026-11-13T19:02:27Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,13 +15,13 @@
     {
       "SPDXID": "SPDXRef-Package-lz4",
       "name": "lz4",
-      "versionInfo": "v1.10.0",
-      "downloadLocation": "git+https://github.com/lz4/lz4.git@ebb370ca83af193212df4dcbadcc5d87bc0de2f0",
+      "versionInfo": "v1.11.1",
+      "downloadLocation": "git+https://github.com/lz4/lz4.git@aa4647fad575d01a874aaaadcdbe8e6a40e072f5",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
-      "licenseDeclared": "BSD-2-Clause AND GPL-2.0-or-later",
+      "licenseDeclared": "BSD-2-Clause AND GPL-1.0-or-later AND GPL-2.0-or-later",
       "copyrightText": "NOASSERTION",
-      "licenseComments": "ScanCode summary declared licence over LICENSE, README.md, build/README.md, examples/COPYING, examples/README.md, lib/LICENSE, lib/README.md, programs/COPYING, programs/README.md, tests/COPYING, tests/README.md: BSD-2-Clause AND GPL-2.0-or-later. Per-file detections: LICENSE: BSD-2-Clause AND GPL-2.0-or-later; README.md: BSD-2-Clause; examples/COPYING: GPL-2.0-or-later AND GPL-2.0-only; examples/README.md: GPL-2.0-only; lib/LICENSE: BSD-2-Clause; lib/README.md: BSD-3-Clause AND BSD-2-Clause; programs/COPYING: GPL-2.0-or-later AND GPL-2.0-only; programs/README.md: GPL-2.0-or-later AND GPL-2.0-only; tests/COPYING: GPL-2.0-or-later AND GPL-2.0-only; tests/README.md: GPL-2.0-or-later AND GPL-2.0-only."
+      "licenseComments": "ScanCode summary declared licence over LICENSE, README.md, build/README.md, examples/COPYING, examples/README.md, lib/LICENSE, lib/README.md, programs/COPYING, programs/README.md, tests/README.md: BSD-2-Clause AND GPL-1.0-or-later AND GPL-2.0-or-later. Per-file detections: LICENSE: BSD-2-Clause AND GPL-2.0-or-later; README.md: BSD-2-Clause AND GPL-1.0-or-later AND GPL-2.0-or-later; examples/COPYING: GPL-2.0-or-later AND GPL-2.0-only; examples/README.md: GPL-2.0-only; lib/LICENSE: BSD-2-Clause; lib/README.md: BSD-3-Clause AND BSD-2-Clause; programs/COPYING: GPL-2.0-or-later AND GPL-2.0-only; programs/README.md: GPL-2.0-or-later AND GPL-2.0-only; tests/README.md: GPL-2.0-only."
     }
   ],
   "files": [

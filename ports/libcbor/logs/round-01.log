@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports/libcbor/work/src -B /home/chirag/qnx-porter/ports/libcbor/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/libcbor/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/libcbor/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports/libcbor/work/src -B /home/chirag/qnx-porter/ports/libcbor/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/libcbor/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/libcbor/work/qnx-run -DWITH_TESTS=ON
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
@@ -11,6 +11,10 @@ $ cmake -S /home/chirag/qnx-porter/ports/libcbor/work/src -B /home/chirag/qnx-po
 -- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+-- Performing Test HAS_NODISCARD_ATTRIBUTE
+-- Performing Test HAS_NODISCARD_ATTRIBUTE - Success
+-- [[nodiscard]] is supported.
+-- Switching to C23-like mode. To prevent this, pass -DCMAKE_C_STANDARD explicitly.
 -- Looking for sys/types.h
 -- Looking for sys/types.h - found
 -- Looking for stdint.h
@@ -19,7 +23,9 @@ $ cmake -S /home/chirag/qnx-porter/ports/libcbor/work/src -B /home/chirag/qnx-po
 -- Looking for stddef.h - found
 -- Check size of size_t
 -- Check size of size_t - done
--- LTO is not enabled
+-- Performing Test HAS_BUILTIN_UNREACHABLE
+-- Performing Test HAS_BUILTIN_UNREACHABLE - Success
+-- LTO is not supported
 -- Looking for ldexp
 -- Looking for ldexp - not found
 -- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
@@ -28,93 +34,287 @@ $ cmake -S /home/chirag/qnx-porter/ports/libcbor/work/src -B /home/chirag/qnx-po
 -- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
 -- Performing Test COMPILER_HAS_DEPRECATED_ATTR
 -- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+-- Found CMocka: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/lib/libcmocka.a  
+-- CMocka vars: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/lib/libcmocka.a /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/include
+-- Looking for execinfo.h
+-- Looking for execinfo.h - not found
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/libcbor/work/build
-$ cmake --build /home/chirag/qnx-porter/ports/libcbor/work/build -j 2 -- -k
-[  3%] Building C object src/CMakeFiles/cbor.dir/cbor.c.o
-[  6%] Building C object src/CMakeFiles/cbor.dir/allocators.c.o
-[  9%] Building C object src/CMakeFiles/cbor.dir/cbor/streaming.c.o
-[ 12%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/encoders.c.o
-[ 15%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/builder_callbacks.c.o
-[ 18%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/loaders.c.o
-[ 21%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/memory_utils.c.o
-[ 24%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/stack.c.o
-[ 27%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/unicode.c.o
-[ 30%] Building C object src/CMakeFiles/cbor.dir/cbor/encoding.c.o
-[ 33%] Building C object src/CMakeFiles/cbor.dir/cbor/serialization.c.o
-[ 36%] Building C object src/CMakeFiles/cbor.dir/cbor/arrays.c.o
-[ 39%] Building C object src/CMakeFiles/cbor.dir/cbor/common.c.o
-[ 42%] Building C object src/CMakeFiles/cbor.dir/cbor/floats_ctrls.c.o
-[ 45%] Building C object src/CMakeFiles/cbor.dir/cbor/bytestrings.c.o
-[ 48%] Building C object src/CMakeFiles/cbor.dir/cbor/callbacks.c.o
-[ 51%] Building C object src/CMakeFiles/cbor.dir/cbor/strings.c.o
-[ 54%] Building C object src/CMakeFiles/cbor.dir/cbor/maps.c.o
-[ 57%] Building C object src/CMakeFiles/cbor.dir/cbor/tags.c.o
-[ 60%] Building C object src/CMakeFiles/cbor.dir/cbor/ints.c.o
-[ 63%] Linking C static library libcbor.a
-[ 63%] Built target cbor
-[ 69%] Building C object examples/CMakeFiles/create_items.dir/create_items.c.o
-[ 69%] Building C object examples/CMakeFiles/readfile.dir/readfile.c.o
-[ 72%] Linking C executable create_items
-[ 75%] Linking C executable readfile
-[ 75%] Built target create_items
-[ 75%] Built target readfile
-[ 78%] Building C object examples/CMakeFiles/streaming_parser.dir/streaming_parser.c.o
-[ 81%] Building C object examples/CMakeFiles/streaming_array.dir/streaming_array.c.o
-[ 84%] Linking C executable streaming_parser
-[ 87%] Linking C executable streaming_array
-[ 87%] Built target streaming_parser
-[ 87%] Built target streaming_array
-[ 90%] Building C object examples/CMakeFiles/sort.dir/sort.c.o
-[ 93%] Building C object examples/CMakeFiles/hello.dir/hello.c.o
-[100%] Linking C executable hello
-[100%] Linking C executable sort
-[100%] Built target hello
-[100%] Built target sort
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:12: warning: ignoring '#pragma clang diagnostic' [-Wunknown-pragmas]
-   12 | #pragma clang diagnostic push
-      | 
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c: In function 'cbor_copy':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:287:1: warning: control reaches end of non-void function [-Wreturn-type]
-  287 | }
-      | ^
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c: In function '_cbor_copy_float_ctrl':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:152:1: warning: control reaches end of non-void function [-Wreturn-type]
-  152 | }
-      | ^
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c: In function '_cbor_copy_int':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:137:10: warning: 'res' may be used uninitialized [-Wmaybe-uninitialized]
-  137 |   return res;
-      |          ^~~
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.c:119:16: note: 'res' was declared here
-  119 |   cbor_item_t *res;
-      |                ^~~
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialize':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:41:1: warning: control reaches end of non-void function [-Wreturn-type]
-   41 | }
-      | ^
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialized_size':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:152:1: warning: control reaches end of non-void function [-Wreturn-type]
-  152 | }
-      | ^
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialize_uint':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:188:1: warning: control reaches end of non-void function [-Wreturn-type]
-  188 | }
-      | ^
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialize_negint':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:204:1: warning: control reaches end of non-void function [-Wreturn-type]
-  204 | }
-      | ^
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c: In function 'cbor_serialize_float_ctrl':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/serialization.c:368:1: warning: control reaches end of non-void function [-Wreturn-type]
-  368 | }
-      | ^
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/floats_ctrls.c: In function 'cbor_float_get_float':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/floats_ctrls.c:59:1: warning: control reaches end of non-void function [-Wreturn-type]
-   59 | }
-      | ^
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/ints.c: In function 'cbor_get_int':
-/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/ints.c:52:1: warning: control reaches end of non-void function [-Wreturn-type]
-   52 | }
-      | ^
+Adding test array_encoders_test
+Adding test array_test
+Adding test bad_inputs_test
+Adding test bytestring_encoders_test
+Adding test bytestring_test
+Adding test callbacks_test
+Adding test cbor_serialize_test
+Adding test cbor_stream_decode_test
+Adding test copy_test
+Adding test float_ctrl_encoders_test
+Adding test float_ctrl_test
+Adding test fuzz_test
+Adding test map_encoders_test
+Adding test map_get_test
+Adding test map_test
+Adding test memory_utils_test
+Adding test negint_encoders_test
+Adding test negint_test
+Adding test pretty_printer_test
+Adding test stack_over_limit_test
+Adding test string_encoders_test
+Adding test string_test
+Adding test structurally_equal_test
+Adding test tag_encoders_test
+Adding test tag_test
+Adding test uint_encoders_test
+Adding test uint_test
+Adding test unicode_test
+$ cmake --build /home/chirag/qnx-porter/ports/libcbor/work/build -j 4 -- -k
+[  1%] Building C object src/CMakeFiles/cbor.dir/cbor.c.o
+[  1%] Building C object src/CMakeFiles/cbor.dir/allocators.c.o
+[  1%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/encoders.c.o
+[  2%] Building C object src/CMakeFiles/cbor.dir/cbor/streaming.c.o
+[  3%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/builder_callbacks.c.o
+[  3%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/loaders.c.o
+[  4%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/memory_utils.c.o
+[  5%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/stack.c.o
+[  5%] Building C object src/CMakeFiles/cbor.dir/cbor/internal/unicode.c.o
+[  6%] Building C object src/CMakeFiles/cbor.dir/cbor/encoding.c.o
+[  6%] Building C object src/CMakeFiles/cbor.dir/cbor/serialization.c.o
+[  7%] Building C object src/CMakeFiles/cbor.dir/cbor/arrays.c.o
+[  7%] Building C object src/CMakeFiles/cbor.dir/cbor/common.c.o
+[  8%] Building C object src/CMakeFiles/cbor.dir/cbor/floats_ctrls.c.o
+[  8%] Building C object src/CMakeFiles/cbor.dir/cbor/bytestrings.c.o
+[  9%] Building C object src/CMakeFiles/cbor.dir/cbor/callbacks.c.o
+[ 10%] Building C object src/CMakeFiles/cbor.dir/cbor/strings.c.o
+[ 10%] Building C object src/CMakeFiles/cbor.dir/cbor/maps.c.o
+[ 11%] Building C object src/CMakeFiles/cbor.dir/cbor/tags.c.o
+[ 11%] Building C object src/CMakeFiles/cbor.dir/cbor/ints.c.o
+[ 12%] Linking C static library libcbor.a
+[ 12%] Built target cbor
+[ 12%] Building C object test/CMakeFiles/array_encoders_test.dir/array_encoders_test.c.o
+[ 12%] Building C object test/CMakeFiles/bytestring_encoders_test.dir/bytestring_encoders_test.c.o
+[ 13%] Building C object test/CMakeFiles/bad_inputs_test.dir/bad_inputs_test.c.o
+[ 14%] Building C object test/CMakeFiles/array_test.dir/array_test.c.o
+[ 15%] Building C object test/CMakeFiles/bytestring_encoders_test.dir/assertions.c.o
+[ 16%] Building C object test/CMakeFiles/array_encoders_test.dir/assertions.c.o
+[ 16%] Building C object test/CMakeFiles/bad_inputs_test.dir/assertions.c.o
+[ 16%] Building C object test/CMakeFiles/array_encoders_test.dir/stream_expectations.c.o
+[ 16%] Building C object test/CMakeFiles/bytestring_encoders_test.dir/stream_expectations.c.o
+[ 16%] Building C object test/CMakeFiles/array_test.dir/assertions.c.o
+[ 17%] Building C object test/CMakeFiles/bad_inputs_test.dir/stream_expectations.c.o
+[ 18%] Building C object test/CMakeFiles/array_test.dir/stream_expectations.c.o
+[ 19%] Building C object test/CMakeFiles/bytestring_encoders_test.dir/test_allocator.c.o
+[ 19%] Building C object test/CMakeFiles/bad_inputs_test.dir/test_allocator.c.o
+[ 20%] Building C object test/CMakeFiles/array_encoders_test.dir/test_allocator.c.o
+[ 21%] Linking C executable bad_inputs_test
+[ 21%] Building C object test/CMakeFiles/array_test.dir/test_allocator.c.o
+[ 21%] Linking C executable array_encoders_test
+[ 22%] Linking C executable bytestring_encoders_test
+[ 22%] Built target bad_inputs_test
+[ 23%] Linking C executable array_test
+[ 23%] Building C object test/CMakeFiles/bytestring_test.dir/bytestring_test.c.o
+[ 23%] Built target array_encoders_test
+[ 23%] Built target bytestring_encoders_test
+[ 24%] Building C object test/CMakeFiles/bytestring_test.dir/assertions.c.o
+[ 25%] Building C object test/CMakeFiles/callbacks_test.dir/callbacks_test.c.o
+[ 25%] Built target array_test
+[ 25%] Building C object test/CMakeFiles/cbor_serialize_test.dir/cbor_serialize_test.c.o
+[ 26%] Building C object test/CMakeFiles/cbor_serialize_test.dir/assertions.c.o
+[ 26%] Building C object test/CMakeFiles/bytestring_test.dir/stream_expectations.c.o
+[ 26%] Building C object test/CMakeFiles/cbor_stream_decode_test.dir/cbor_stream_decode_test.c.o
+[ 26%] Building C object test/CMakeFiles/callbacks_test.dir/assertions.c.o
+[ 27%] Building C object test/CMakeFiles/callbacks_test.dir/stream_expectations.c.o
+[ 28%] Building C object test/CMakeFiles/bytestring_test.dir/test_allocator.c.o
+[ 28%] Linking C executable bytestring_test
+[ 29%] Building C object test/CMakeFiles/cbor_serialize_test.dir/stream_expectations.c.o
+[ 30%] Building C object test/CMakeFiles/callbacks_test.dir/test_allocator.c.o
+[ 30%] Built target bytestring_test
+[ 31%] Building C object test/CMakeFiles/cbor_stream_decode_test.dir/assertions.c.o
+[ 32%] Building C object test/CMakeFiles/copy_test.dir/copy_test.c.o
+[ 32%] Linking C executable callbacks_test
+[ 32%] Built target callbacks_test
+[ 32%] Building C object test/CMakeFiles/cbor_stream_decode_test.dir/stream_expectations.c.o
+[ 32%] Building C object test/CMakeFiles/cbor_serialize_test.dir/test_allocator.c.o
+[ 33%] Building C object test/CMakeFiles/copy_test.dir/assertions.c.o
+[ 34%] Linking C executable cbor_serialize_test
+[ 34%] Built target cbor_serialize_test
+[ 35%] Building C object test/CMakeFiles/cbor_stream_decode_test.dir/test_allocator.c.o
+[ 36%] Building C object test/CMakeFiles/float_ctrl_encoders_test.dir/float_ctrl_encoders_test.c.o
+[ 36%] Building C object test/CMakeFiles/copy_test.dir/stream_expectations.c.o
+[ 36%] Linking C executable cbor_stream_decode_test
+[ 36%] Built target cbor_stream_decode_test
+[ 37%] Building C object test/CMakeFiles/float_ctrl_test.dir/float_ctrl_test.c.o
+[ 38%] Building C object test/CMakeFiles/float_ctrl_encoders_test.dir/assertions.c.o
+[ 39%] Building C object test/CMakeFiles/fuzz_test.dir/fuzz_test.c.o
+[ 39%] Building C object test/CMakeFiles/float_ctrl_encoders_test.dir/stream_expectations.c.o
+[ 39%] Building C object test/CMakeFiles/float_ctrl_test.dir/assertions.c.o
+[ 39%] Building C object test/CMakeFiles/fuzz_test.dir/assertions.c.o
+[ 40%] Building C object test/CMakeFiles/copy_test.dir/test_allocator.c.o
+[ 41%] Building C object test/CMakeFiles/float_ctrl_test.dir/stream_expectations.c.o
+[ 42%] Building C object test/CMakeFiles/fuzz_test.dir/stream_expectations.c.o
+[ 42%] Linking C executable copy_test
+[ 42%] Built target copy_test
+[ 42%] Building C object test/CMakeFiles/float_ctrl_test.dir/test_allocator.c.o
+[ 43%] Building C object test/CMakeFiles/float_ctrl_encoders_test.dir/test_allocator.c.o
+[ 43%] Building C object test/CMakeFiles/fuzz_test.dir/test_allocator.c.o
+[ 43%] Linking C executable float_ctrl_encoders_test
+[ 44%] Linking C executable float_ctrl_test
+[ 44%] Building C object test/CMakeFiles/map_encoders_test.dir/map_encoders_test.c.o
+[ 45%] Linking C executable fuzz_test
+[ 45%] Built target float_ctrl_encoders_test
+[ 45%] Built target float_ctrl_test
+[ 46%] Building C object test/CMakeFiles/map_encoders_test.dir/assertions.c.o
+[ 46%] Building C object test/CMakeFiles/map_get_test.dir/map_get_test.c.o
+[ 47%] Building C object test/CMakeFiles/map_encoders_test.dir/stream_expectations.c.o
+[ 47%] Built target fuzz_test
+[ 47%] Building C object test/CMakeFiles/map_encoders_test.dir/test_allocator.c.o
+[ 48%] Building C object test/CMakeFiles/map_get_test.dir/assertions.c.o
+[ 49%] Building C object test/CMakeFiles/map_test.dir/map_test.c.o
+[ 49%] Building C object test/CMakeFiles/map_get_test.dir/stream_expectations.c.o
+[ 50%] Building C object test/CMakeFiles/memory_utils_test.dir/memory_utils_test.c.o
+[ 50%] Building C object test/CMakeFiles/memory_utils_test.dir/assertions.c.o
+[ 51%] Linking C executable map_encoders_test
+[ 52%] Building C object test/CMakeFiles/map_test.dir/assertions.c.o
+[ 52%] Built target map_encoders_test
+[ 53%] Building C object test/CMakeFiles/memory_utils_test.dir/stream_expectations.c.o
+[ 54%] Building C object test/CMakeFiles/map_get_test.dir/test_allocator.c.o
+[ 54%] Building C object test/CMakeFiles/memory_utils_test.dir/test_allocator.c.o
+[ 54%] Building C object test/CMakeFiles/map_test.dir/stream_expectations.c.o
+[ 54%] Linking C executable map_get_test
+[ 54%] Built target map_get_test
+[ 54%] Building C object test/CMakeFiles/negint_test.dir/negint_test.c.o
+[ 54%] Building C object test/CMakeFiles/negint_encoders_test.dir/negint_encoders_test.c.o
+[ 55%] Building C object test/CMakeFiles/negint_test.dir/assertions.c.o
+[ 56%] Building C object test/CMakeFiles/negint_encoders_test.dir/assertions.c.o
+[ 57%] Linking C executable memory_utils_test
+[ 58%] Building C object test/CMakeFiles/map_test.dir/test_allocator.c.o
+[ 59%] Building C object test/CMakeFiles/negint_encoders_test.dir/stream_expectations.c.o
+[ 59%] Built target memory_utils_test
+[ 59%] Building C object test/CMakeFiles/negint_encoders_test.dir/test_allocator.c.o
+[ 59%] Building C object test/CMakeFiles/negint_test.dir/stream_expectations.c.o
+[ 59%] Linking C executable map_test
+[ 60%] Building C object test/CMakeFiles/pretty_printer_test.dir/pretty_printer_test.c.o
+[ 60%] Built target map_test
+[ 61%] Building C object test/CMakeFiles/negint_test.dir/test_allocator.c.o
+[ 62%] Building C object test/CMakeFiles/pretty_printer_test.dir/assertions.c.o
+[ 63%] Linking C executable negint_encoders_test
+[ 64%] Building C object test/CMakeFiles/stack_over_limit_test.dir/stack_over_limit_test.c.o
+[ 64%] Linking C executable negint_test
+[ 64%] Built target negint_encoders_test
+[ 64%] Building C object test/CMakeFiles/pretty_printer_test.dir/stream_expectations.c.o
+[ 65%] Building C object test/CMakeFiles/stack_over_limit_test.dir/assertions.c.o
+[ 66%] Building C object test/CMakeFiles/string_encoders_test.dir/string_encoders_test.c.o
+[ 66%] Built target negint_test
+[ 67%] Building C object test/CMakeFiles/string_encoders_test.dir/assertions.c.o
+[ 67%] Building C object test/CMakeFiles/stack_over_limit_test.dir/stream_expectations.c.o
+[ 68%] Building C object test/CMakeFiles/string_test.dir/string_test.c.o
+[ 68%] Building C object test/CMakeFiles/string_encoders_test.dir/stream_expectations.c.o
+[ 69%] Building C object test/CMakeFiles/pretty_printer_test.dir/test_allocator.c.o
+[ 69%] Building C object test/CMakeFiles/string_test.dir/assertions.c.o
+[ 70%] Building C object test/CMakeFiles/stack_over_limit_test.dir/test_allocator.c.o
+[ 70%] Linking C executable pretty_printer_test
+[ 71%] Building C object test/CMakeFiles/string_test.dir/stream_expectations.c.o
+[ 72%] Building C object test/CMakeFiles/string_encoders_test.dir/test_allocator.c.o
+[ 72%] Built target pretty_printer_test
+[ 72%] Linking C executable stack_over_limit_test
+[ 72%] Building C object test/CMakeFiles/structurally_equal_test.dir/structurally_equal_test.c.o
+[ 72%] Linking C executable string_encoders_test
+[ 72%] Built target stack_over_limit_test
+[ 72%] Built target string_encoders_test
+[ 72%] Building C object test/CMakeFiles/string_test.dir/test_allocator.c.o
+[ 73%] Building C object test/CMakeFiles/structurally_equal_test.dir/assertions.c.o
+[ 74%] Building C object test/CMakeFiles/structurally_equal_test.dir/stream_expectations.c.o
+[ 74%] Building C object test/CMakeFiles/structurally_equal_test.dir/test_allocator.c.o
+[ 75%] Linking C executable string_test
+[ 75%] Built target string_test
+[ 75%] Building C object test/CMakeFiles/tag_encoders_test.dir/tag_encoders_test.c.o
+[ 76%] Building C object test/CMakeFiles/tag_test.dir/tag_test.c.o
+[ 77%] Building C object test/CMakeFiles/tag_encoders_test.dir/assertions.c.o
+[ 77%] Building C object test/CMakeFiles/tag_encoders_test.dir/stream_expectations.c.o
+[ 78%] Linking C executable structurally_equal_test
+[ 79%] Building C object test/CMakeFiles/uint_encoders_test.dir/uint_encoders_test.c.o
+[ 80%] Building C object test/CMakeFiles/tag_test.dir/assertions.c.o
+[ 80%] Built target structurally_equal_test
+[ 81%] Building C object test/CMakeFiles/tag_encoders_test.dir/test_allocator.c.o
+[ 81%] Building C object test/CMakeFiles/uint_encoders_test.dir/assertions.c.o
+[ 81%] Building C object test/CMakeFiles/tag_test.dir/stream_expectations.c.o
+[ 83%] Building C object test/CMakeFiles/tag_test.dir/test_allocator.c.o
+[ 83%] Building C object test/CMakeFiles/uint_encoders_test.dir/stream_expectations.c.o
+[ 83%] Linking C executable tag_encoders_test
+[ 84%] Building C object test/CMakeFiles/uint_test.dir/uint_test.c.o
+[ 84%] Built target tag_encoders_test
+[ 84%] Building C object test/CMakeFiles/uint_encoders_test.dir/test_allocator.c.o
+[ 84%] Linking C executable tag_test
+[ 84%] Building C object test/CMakeFiles/uint_test.dir/assertions.c.o
+[ 85%] Building C object test/CMakeFiles/uint_test.dir/stream_expectations.c.o
+[ 86%] Linking C executable uint_encoders_test
+[ 86%] Built target tag_test
+[ 86%] Building C object test/CMakeFiles/unicode_test.dir/unicode_test.c.o
+[ 87%] Building C object test/CMakeFiles/unicode_test.dir/assertions.c.o
+[ 87%] Built target uint_encoders_test
+[ 87%] Building C object test/CMakeFiles/uint_test.dir/test_allocator.c.o
+[ 88%] Building CXX object test/CMakeFiles/cpp_linkage_test.dir/cpp_linkage_test.cpp.o
+[ 88%] Building C object test/CMakeFiles/unicode_test.dir/stream_expectations.c.o
+[ 89%] Building C object test/CMakeFiles/unicode_test.dir/test_allocator.c.o
+[ 90%] Building C object examples/CMakeFiles/readfile.dir/readfile.c.o
+[ 91%] Linking C executable uint_test
+[ 91%] Linking C executable readfile
+[ 91%] Built target uint_test
+[ 91%] Built target readfile
+[ 92%] Linking C executable unicode_test
+[ 93%] Building C object examples/CMakeFiles/create_items.dir/create_items.c.o
+[ 94%] Building C object examples/CMakeFiles/streaming_parser.dir/streaming_parser.c.o
+[ 94%] Built target unicode_test
+[ 94%] Linking C executable streaming_parser
+[ 94%] Linking C executable create_items
+[ 95%] Building C object examples/CMakeFiles/streaming_array.dir/streaming_array.c.o
+[ 95%] Built target streaming_parser
+[ 95%] Built target create_items
+[ 96%] Building C object examples/CMakeFiles/sort.dir/sort.c.o
+[ 96%] Building C object examples/CMakeFiles/hello.dir/hello.c.o
+[ 96%] Linking C executable streaming_array
+[ 97%] Linking C executable hello
+[ 97%] Built target streaming_array
+[ 97%] Linking C executable sort
+[ 97%] Building C object examples/CMakeFiles/cbor_sequence.dir/cbor_sequence.c.o
+[ 97%] Built target hello
+[ 97%] Built target sort
+[ 98%] Building C object examples/CMakeFiles/crash_course.dir/crash_course.c.o
+[ 99%] Building C object examples/CMakeFiles/capped_alloc.dir/capped_alloc.c.o
+[100%] Linking C executable cbor_sequence
+[100%] Linking C executable crash_course
+[100%] Built target cbor_sequence
+[100%] Linking C executable capped_alloc
+[100%] Built target crash_course
+[100%] Built target capped_alloc
+[100%] Linking CXX executable cpp_linkage_test
+[100%] Built target cpp_linkage_test
+/home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c: In function 'test_serialize_indef_bytestring_size_overflow':
+/home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c:197:3: warning: ignoring return value of 'cbor_bytestring_add_chunk', declared with attribute 'nodiscard' [-Wunused-result]
+  197 |   cbor_bytestring_add_chunk(item, cbor_move(chunk));
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.h:15,
+                 from /home/chirag/qnx-porter/ports/libcbor/work/src/test/assertions.h:9,
+                 from /home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c:20:
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/bytestrings.h:108:18: note: declared here
+  108 | CBOR_EXPORT bool cbor_bytestring_add_chunk(cbor_item_t* item,
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c: In function 'test_serialize_indef_string_size_overflow':
+/home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c:213:3: warning: ignoring return value of 'cbor_string_add_chunk', declared with attribute 'nodiscard' [-Wunused-result]
+  213 |   cbor_string_add_chunk(item, cbor_move(chunk));
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor.h:19:
+/home/chirag/qnx-porter/ports/libcbor/work/src/src/cbor/strings.h:126:34: note: declared here
+  126 | _CBOR_NODISCARD CBOR_EXPORT bool cbor_string_add_chunk(cbor_item_t* item,
+      |                                  ^~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c: In function 'test_serialize_indefinite_string':
+/home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c:298:3: warning: 'strncpy' output truncated before terminating nul copying 12 bytes from a string of the same length [-Wstringop-truncation]
+  298 |   strncpy((char*)data, "Hello world!", 12);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c: In function 'test_serialize_definite_string':
+/home/chirag/qnx-porter/ports/libcbor/work/src/test/cbor_serialize_test.c:253:3: warning: 'strncpy' output truncated before terminating nul copying 12 bytes from a string of the same length [-Wstringop-truncation]
+  253 |   strncpy((char*)data, "Hello world!", 12);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated

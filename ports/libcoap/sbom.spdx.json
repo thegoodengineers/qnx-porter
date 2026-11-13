@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "libcoap-v4.3.5-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libcoap-7cf7465b784baded4de183290c547d582becfd28",
+  "name": "libcoap-v4.3.5b-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libcoap-851533c3cf63d16984d370ce39d586ecb3694971",
   "creationInfo": {
-    "created": "2026-11-13T04:57:07Z",
+    "created": "2026-11-13T19:01:18Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-libcoap",
       "name": "libcoap",
-      "versionInfo": "v4.3.5",
-      "downloadLocation": "git+https://github.com/obgm/libcoap.git@7cf7465b784baded4de183290c547d582becfd28",
+      "versionInfo": "v4.3.5b",
+      "downloadLocation": "git+https://github.com/obgm/libcoap.git@851533c3cf63d16984d370ce39d586ecb3694971",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "Apache-2.0 AND BSD-1-Clause AND BSD-3-Clause AND BSD-2-Clause AND GPL-2.0-only AND LicenseRef-scancode-ietf AND LGPL-2.1-only AND OpenSSL AND LicenseRef-scancode-public-domain",

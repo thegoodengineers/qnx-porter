@@ -1,0 +1,66 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "json-c-json-c-0.18-20240915-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/json-c-41a55cfcedb54d9c1874f2f0eb07b504091d7e37",
+  "creationInfo": {
+    "created": "2026-11-13T05:08:56Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-json-c",
+      "name": "json-c",
+      "versionInfo": "json-c-0.18-20240915",
+      "downloadLocation": "git+https://github.com/json-c/json-c.git@41a55cfcedb54d9c1874f2f0eb07b504091d7e37",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "MIT AND LicenseRef-scancode-unknown-license-reference",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over COPYING, README, README.html, README.md, bench/README.bench.md, fuzz/README.md: MIT AND LicenseRef-scancode-unknown-license-reference. Per-file detections: COPYING: MIT; README.html: LicenseRef-scancode-unknown-license-reference."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-unknown-license-reference",
+      "name": "Unknown License file reference",
+      "extractedText": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/unknown-license-reference.LICENSE",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/unknown-license-reference.LICENSE"
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/json-c/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "ddcdd1d111fe64c8da3e50b3f1dd0090b8c0f657"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b9ea0b6653f6f82e30010bb94c7965862ee2685cfa9b752f8479a8d10b17576f"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-json-c"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-json-c"
+    }
+  ]
+}

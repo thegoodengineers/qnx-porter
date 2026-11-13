@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "libconfig-v1.7.3-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libconfig-525922a6b49ca19235cdf307376e7c9c539d1b93",
+  "name": "libconfig-v1.8.3-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libconfig-a211339ea575bb1253e3e24eee47089249f6bda1",
   "creationInfo": {
-    "created": "2026-11-13T05:09:01Z",
+    "created": "2026-11-13T19:01:20Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-libconfig",
       "name": "libconfig",
-      "versionInfo": "v1.7.3",
-      "downloadLocation": "git+https://github.com/hyperrealm/libconfig.git@525922a6b49ca19235cdf307376e7c9c539d1b93",
+      "versionInfo": "v1.8.3",
+      "downloadLocation": "git+https://github.com/hyperrealm/libconfig.git@a211339ea575bb1253e3e24eee47089249f6bda1",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "LGPL-2.1-only",
@@ -31,11 +31,11 @@
       "checksums": [
         {
           "algorithm": "SHA1",
-          "checksumValue": "67ff111b40015f0bef1d881835eb722d20754082"
+          "checksumValue": "80c645f2cfc8f976dfcfbb842736aeabe91663a2"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "9b0fa78001f9a3ff25b78969ccd9bcd7d7df576917b9c9b53f7c231d4a03b519"
+          "checksumValue": "83f88d264d3ba3bbcc4e0945828ac18c87d6a7cf50b55ffb97fea39b3f4e5470"
         }
       ],
       "licenseConcluded": "NOASSERTION",

@@ -1,14 +1,14 @@
-# opus v1.5.2 on QNX 8.0 (x86_64)
+# opus v1.6.1 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/xiph/opus.git at `v1.5.2` (`ddbe48383984`) |
+| Upstream | https://github.com/xiph/opus.git at `v1.6.1` (`22244de5a79b`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |
 | Library's own tests | 0/0 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 0.5 min |
+| Time | 0.6 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

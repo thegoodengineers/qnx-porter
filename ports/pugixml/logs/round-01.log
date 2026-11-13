@@ -12,8 +12,8 @@ $ cmake --build /home/chirag/qnx-porter/ports/pugixml/work/build -j 2 -- -k
 [  2%] Building CXX object CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o
 [  4%] Linking CXX static library libpugixml.a
 [  4%] Built target pugixml-static
-[  6%] Building CXX object CMakeFiles/pugixml-check.dir/tests/allocator.cpp.o
 [  9%] Building CXX object CMakeFiles/pugixml-check.dir/tests/main.cpp.o
+[  9%] Building CXX object CMakeFiles/pugixml-check.dir/tests/allocator.cpp.o
 [ 11%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test.cpp.o
 [ 13%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_compact.cpp.o
 [ 16%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_deprecated.cpp.o

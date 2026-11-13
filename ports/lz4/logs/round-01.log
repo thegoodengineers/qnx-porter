@@ -1,11 +1,16 @@
 $ cmake -S /home/chirag/qnx-porter/ports/lz4/work/src/build/cmake -B /home/chirag/qnx-porter/ports/lz4/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/lz4/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/lz4/work/qnx-run
--- Creating build script for LZ4 version: 1.10.0
+-- Creating build script for LZ4 version: 1.11.1
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
 -- Performing Test CFLAG_pedantic_errors
 -- Performing Test CFLAG_pedantic_errors - Success
 -- Performing Test CFLAG_Wall
@@ -28,6 +33,12 @@ $ cmake -S /home/chirag/qnx-porter/ports/lz4/work/src/build/cmake -B /home/chira
 -- Performing Test CFLAG_Wstrict_prototypes - Success
 -- Performing Test CFLAG_Wpointer_arith
 -- Performing Test CFLAG_Wpointer_arith - Success
+-- Performing Test CFLAG_JCC_QIntel_jcc_erratum
+-- Performing Test CFLAG_JCC_QIntel_jcc_erratum - Failed
+-- Performing Test CFLAG_JCC_mbranches_within_32B_boundaries
+-- Performing Test CFLAG_JCC_mbranches_within_32B_boundaries - Failed
+-- Performing Test CFLAG_JCC_Wa_mbranches_within_32B_boundaries
+-- Performing Test CFLAG_JCC_Wa_mbranches_within_32B_boundaries - Success
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/lz4/work/build
@@ -59,7 +70,7 @@ $ cmake --build /home/chirag/qnx-porter/ports/lz4/work/build -j 2 -- -k
 [ 85%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/xxhash.c.o
 [ 90%] Linking C executable lz4
 [ 90%] Built target lz4cli
-[100%] Creating symlink for lz4cat
+[ 95%] Creating symlink for lz4cat
 [100%] Creating symlink for unlz4
 [100%] Built target create_unlz4_symlink
 [100%] Built target create_lz4cat_symlink

@@ -1,0 +1,130 @@
+$ cmake -S /home/chirag/qnx-porter/ports/open62541/work/src -B /home/chirag/qnx-porter/ports/open62541/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/open62541/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/open62541/work/qnx-run -DUA_ENABLE_ENCRYPTION=OFF
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components:  Interpreter 
+-- Found Git: /usr/bin/git (found version "2.34.1") 
+-- open62541 Version: v1.4.6
+-- The selected architecture is: posix
+-- Could NOT find Sphinx (missing: SPHINX_EXECUTABLE) 
+-- Could NOT find LATEX (missing: LATEX_COMPILER) 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/open62541/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/open62541/work/build -j 2 -- -k
+[  1%] Generating src_generated/open62541/types_generated.c, src_generated/open62541/types_generated.h, src_generated/open62541/types_generated_handling.h
+[  1%] Generating src_generated/open62541/transport_generated.c, src_generated/open62541/transport_generated.h, src_generated/open62541/transport_generated_handling.h
+[  1%] Built target open62541-generator-transport
+[  1%] Built target open62541-generator-types
+[  3%] Generating src_generated/open62541/nodeids.h
+[  3%] Generating src_generated/open62541/namespace0_generated.c, src_generated/open62541/namespace0_generated.h
+INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.Reduced.xml
+[  5%] Generating src_generated/open62541/statuscodes.h, src_generated/open62541/statuscodes.c
+[  5%] Built target open62541-generator-statuscode
+INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.DiagnosticsMinimal.xml
+INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.EventsMinimal.xml
+INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.HistorizingMinimal.xml
+INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.PubSubMinimal.xml
+INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.Part8_Subset.xml
+INFO:__main__:Generating Code for Backend: open62541
+INFO:__main__:NodeSet generation code successfully printed
+[  5%] Built target open62541-generator-namespace
+[  5%] Built target open62541-code-generation
+[  5%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_log_stdout.c.o
+[  5%] Building C object CMakeFiles/open62541-object.dir/src/ua_types.c.o
+[  7%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_accesscontrol_default.c.o
+[  8%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_nodestore_ziptree.c.o
+[  8%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_nodestore_hashmap.c.o
+[ 10%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_config_default.c.o
+[ 12%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_encoding_binary.c.o
+[ 12%] Building C object CMakeFiles/open62541-plugins.dir/plugins/crypto/ua_pki_none.c.o
+[ 14%] Building C object CMakeFiles/open62541-plugins.dir/plugins/crypto/ua_securitypolicy_none.c.o
+[ 14%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_config_json.c.o
+[ 15%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_data_backend_memory.c.o
+[ 15%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/types_generated.c.o
+[ 17%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/transport_generated.c.o
+[ 19%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_data_gathering_default.c.o
+[ 21%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/statuscodes.c.o
+[ 21%] Building C object CMakeFiles/open62541-object.dir/src/ua_util.c.o
+[ 21%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_database_default.c.o
+[ 22%] Building C object CMakeFiles/open62541-object.dir/src/ua_securechannel.c.o
+[ 24%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_log_syslog.c.o
+[ 24%] Building C object CMakeFiles/open62541-plugins.dir/arch/posix/ua_clock.c.o
+[ 26%] Building C object CMakeFiles/open62541-plugins.dir/arch/win32/ua_clock.c.o
+[ 26%] Building C object CMakeFiles/open62541-object.dir/src/ua_securechannel_crypto.c.o
+[ 26%] Building C object CMakeFiles/open62541-plugins.dir/arch/common/ua_timer.c.o
+[ 28%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_session.c.o
+[ 29%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_common.c.o
+[ 31%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix.c.o
+[ 31%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_nodes.c.o
+[ 31%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_select.c.o
+[ 33%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_epoll.c.o
+[ 33%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_tcp.c.o
+[ 35%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server.c.o
+[ 36%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_udp.c.o
+[ 38%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_ns0.c.o
+[ 40%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_interrupt.c.o
+[ 43%] Built target open62541-plugins
+[ 43%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_ns0_diagnostics.c.o
+[ 45%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_config.c.o
+[ 45%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_binary.c.o
+[ 47%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_utils.c.o
+[ 47%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_async.c.o
+[ 49%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_view.c.o
+[ 50%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_method.c.o
+[ 50%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_session.c.o
+[ 52%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_attribute.c.o
+[ 52%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_discovery.c.o
+[ 54%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_subscription.c.o
+[ 56%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_monitoreditem.c.o
+[ 56%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_securechannel.c.o
+[ 57%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_nodemanagement.c.o
+[ 57%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_networkmessage.c.o
+[ 59%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_eventloop.c.o
+[ 59%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_connection.c.o
+[ 61%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_dataset.c.o
+[ 63%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_writer.c.o
+[ 63%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_writergroup.c.o
+[ 64%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_reader.c.o
+[ 64%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_readergroup.c.o
+[ 66%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_manager.c.o
+[ 66%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_ns0.c.o
+[ 68%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_keystorage.c.o
+[ 70%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_securitygroup.c.o
+[ 70%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_config.c.o
+[ 71%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client.c.o
+[ 71%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_connect.c.o
+[ 73%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_discovery.c.o
+[ 73%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_highlevel.c.o
+[ 75%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_subscriptions.c.o
+[ 77%] Building C object CMakeFiles/open62541-object.dir/deps/libc_time.c.o
+[ 77%] Building C object CMakeFiles/open62541-object.dir/deps/pcg_basic.c.o
+[ 78%] Building C object CMakeFiles/open62541-object.dir/deps/base64.c.o
+[ 78%] Building C object CMakeFiles/open62541-object.dir/deps/dtoa.c.o
+[ 80%] Building C object CMakeFiles/open62541-object.dir/deps/mp_printf.c.o
+[ 82%] Building C object CMakeFiles/open62541-object.dir/deps/itoa.c.o
+[ 82%] Building C object CMakeFiles/open62541-object.dir/deps/ziptree.c.o
+[ 84%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/namespace0_generated.c.o
+[ 84%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_lex.c.o
+[ 85%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_networkmessage_json.c.o
+[ 85%] Building C object CMakeFiles/open62541-object.dir/deps/cj5.c.o
+[ 87%] Building C object CMakeFiles/open62541-object.dir/deps/parse_num.c.o
+[ 89%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_encoding_json.c.o
+[ 89%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription.c.o
+[ 91%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_monitoreditem.c.o
+[ 91%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_datachange.c.o
+[ 92%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_events.c.o
+[ 92%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_events_filter.c.o
+[ 94%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_discovery.c.o
+[100%] Built target open62541-object
+[100%] Linking C static library bin/libopen62541.a
+[100%] Built target open62541

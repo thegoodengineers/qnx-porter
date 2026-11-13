@@ -49,7 +49,7 @@ is missing, with numbers: [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
 - **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
   Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.
 - **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
-- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->aarch64le: 57 of 61 libraries built for QNX 8.0; 1314 of 1350 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 27 patches, 27 by rules (29 of the 31 libraries oss.qnx.com does not list built); x86_64: 57 of 61 libraries built for QNX 8.0; 1332 of 1366 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 25 patches, 25 by rules (29 of the 31 libraries oss.qnx.com does not list built).<!-- headline:end -->
+- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->aarch64le: 57 of 61 libraries built for QNX 8.0; 1314 of 1350 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 27 patches, 27 by rules (29 of the 31 libraries oss.qnx.com does not list built); x86_64: 58 of 61 libraries built for QNX 8.0; 1563 of 1658 of their own tests passed on a QNX 8.0 target (43 libraries with tests that ran); 31 patches, 31 by rules (29 of the 31 libraries oss.qnx.com does not list built).<!-- headline:end -->
   See [Results](#results-on-qnx-80).
 - **Results:** [`results/ports.csv`](results/ports.csv), written by `scripts/ports_csv.py` from each
   port's own `ports/<library>/report.json`. No number in this README or the video comes from anywhere else.
@@ -89,9 +89,10 @@ The OS's own interfaces, such as the C library reference, resource managers and 
 [`libsqlite3-sys`](https://crates.io/crates/libsqlite3-sys). [`flate2`](https://crates.io/crates/flate2) can
 use zlib through [`libz-sys`](https://crates.io/crates/libz-sys). If the C library does not build for QNX,
 nothing above it does. All three are in our campaign:
-- zlib: built, 2/2 tests pass on QNX 8.0.
-- libsodium: built, 80/80 tests pass.
-- sqlite: built. Its test suite needs Tcl on the target, so it was not run.
+- zlib v1.4: built, 4/4 tests pass on QNX 8.0 x86_64 (12 more are CMake packaging checks that need cmake on
+  the target).
+- libsodium 1.0.22: built, 101/101 tests pass.
+- sqlite 3.54.1: built. Its test suite needs Tcl on the target, so it was not run.
 
 ([`results/ports.csv`](results/ports.csv)).
 
@@ -128,8 +129,13 @@ A port qnx-porter makes can be the starting point for an `APKBUILD`. We have not
 ## Results on QNX 8.0
 61 libraries, ported by `scripts/run_campaign.py` with QNX SDP 8.0 (build 141, qcc 12.2.0) for two
 architectures:
-- **x86_64:** on 12 Nov 2026, with tests on QNX 8.0 x86_64 in QEMU under KVM.
-- **aarch64le:** on 12–13 Nov 2026, with tests on QNX 8.0 aarch64 on QEMU `virt`, fully emulated.
+- **x86_64:** on 13 Nov 2026, at the newest release tag of each library ([`campaign.yaml`](campaign.yaml)),
+  with tests on QNX 8.0 x86_64 in QEMU under KVM. Log: [`results/runs/campaign-8.log`](results/runs/campaign-8.log).
+- **aarch64le:** on 12–13 Nov 2026, at the 2024 tags ([`campaign-2024.yaml`](campaign-2024.yaml)), with tests on
+  QNX 8.0 aarch64 on QEMU `virt`, fully emulated. The table's Version column says which tag each row is.
+
+The x86_64 results at the 2024 tags (run 7, 12 Nov 2026) are kept in [`ports-2024/`](ports-2024/): the codelab,
+the video and the upstream drafts quote them.
 
 Both targets were built with `mkqnximage`. Rules only, no language model. The
 libraries are infrastructure an embedded team reaches for: parsers (JSON, XML, YAML, CBOR, TOML), compression,
@@ -141,67 +147,67 @@ crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatt
 <!-- results:start -->
 | Library | Version | Arch | Build | Tests on QNX 8.0 | Patches (rule / model) | Minutes | Note |
 |---|---|---|---|---|---|---|---|
-| [BLAKE3](ports/BLAKE3/REPORT.md) | 1.5.4 | x86_64 | built | none built | 0 (0 / 0) | 0.1 | portable C: its CMake has SIMD flags only for compilers it knows, not qcc |
-| [Micro-CDR](ports/Micro-CDR/REPORT.md) | v2.0.1 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
-| [benchmark](ports/benchmark/REPORT.md) | v1.9.1 | x86_64 | built | none built | 0 (0 / 0) | 0.6 |  |
-| [c-ares](ports/c-ares/REPORT.md) | v1.34.3 | x86_64 | built | none built | 0 (0 / 0) | 0.5 |  |
-| [cJSON](ports/cJSON/REPORT.md) | v1.7.18 | x86_64 | built | 19/19 | 0 (0 / 0) | 0.5 |  |
-| [can-utils](ports/can-utils/REPORT.md) | v2023.03 | x86_64 | failed | not run | 0 (0 / 0) | 0.1 | Linux SocketCAN tools: expected not to port |
-| [capstone](ports/capstone/REPORT.md) | 5.0.3 | x86_64 | built | 24/24 | 1 (1 / 0) | 5.2 |  |
-| [cglm](ports/cglm/REPORT.md) | v0.9.4 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.5 |  |
-| [cmark](ports/cmark/REPORT.md) | 0.31.1 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.3 |  |
-| [cmocka](ports/cmocka/REPORT.md) | cmocka-1.1.7 | x86_64 | built | 46/46 | 0 (0 / 0) | 0.4 |  |
-| [expat](ports/expat/REPORT.md) | R_2_6_4 | x86_64 | built | 2/2 | 0 (0 / 0) | 2.5 |  |
-| [flac](ports/flac/REPORT.md) | 1.4.3 | x86_64 | built | 7/10 | 1 (1 / 0) | 8.7 |  |
-| [flatcc](ports/flatcc/REPORT.md) | v0.6.1 | x86_64 | built | not run | 0 (0 / 0) | 0.2 | build only: its tests run the just-built flatcc compiler on the build host |
-| [fmt](ports/fmt/REPORT.md) | 11.0.2 | x86_64 | built | 17/20 | 1 (1 / 0) | 6.9 |  |
-| [googletest](ports/googletest/REPORT.md) | v1.15.2 | x86_64 | built | 25/27 | 1 (1 / 0) | 9.8 |  |
-| [inih](ports/inih/REPORT.md) | r58 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
-| [jansson](ports/jansson/REPORT.md) | v2.14 | x86_64 | built | 209/213 | 1 (1 / 0) | 1.2 |  |
-| [json-c](ports/json-c/REPORT.md) | json-c-0.18-20240915 | x86_64 | built | 25/25 | 1 (1 / 0) | 0.8 |  |
-| [kissfft](ports/kissfft/REPORT.md) | 131.1.0 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
-| [libcbor](ports/libcbor/REPORT.md) | v0.11.0 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
+| [BLAKE3](ports/BLAKE3/REPORT.md) | 1.8.7 | x86_64 | built | none built | 0 (0 / 0) | 0.2 | portable C: its CMake has SIMD flags only for compilers it knows, not qcc |
+| [Micro-CDR](ports/Micro-CDR/REPORT.md) | v2.0.2 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
+| [benchmark](ports/benchmark/REPORT.md) | v1.10.0 | x86_64 | built | 85/87 | 0 (0 / 0) | 6.0 |  |
+| [c-ares](ports/c-ares/REPORT.md) | v1.34.9 | x86_64 | built | 2/3 | 0 (0 / 0) | 5.8 |  |
+| [cJSON](ports/cJSON/REPORT.md) | v1.7.19 | x86_64 | built | 19/19 | 1 (1 / 0) | 0.8 |  |
+| [can-utils](ports/can-utils/REPORT.md) | v2025.01 | x86_64 | failed | not run | 2 (2 / 0) | 0.1 | Linux SocketCAN tools: expected not to port |
+| [capstone](ports/capstone/REPORT.md) | 5.0.9 | x86_64 | built | 24/24 | 1 (1 / 0) | 4.1 |  |
+| [cglm](ports/cglm/REPORT.md) | v0.9.7 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.6 |  |
+| [cmark](ports/cmark/REPORT.md) | 0.31.2 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.3 |  |
+| [cmocka](ports/cmocka/REPORT.md) | cmocka-2.0.2 | x86_64 | built | 88/89 | 1 (1 / 0) | 2.7 |  |
+| [expat](ports/expat/REPORT.md) | R_2_10_0 | x86_64 | built | 1/1 | 0 (0 / 0) | 2.1 |  |
+| [flac](ports/flac/REPORT.md) | 1.5.0 | x86_64 | built | 7/10 | 1 (1 / 0) | 9.1 |  |
+| [flatcc](ports/flatcc/REPORT.md) | v0.6.4 | x86_64 | built | not run | 0 (0 / 0) | 0.2 | build only: its tests run the just-built flatcc compiler on the build host |
+| [fmt](ports/fmt/REPORT.md) | 12.2.1 | x86_64 | built | 20/21 | 1 (1 / 0) | 10.2 |  |
+| [googletest](ports/googletest/REPORT.md) | v1.18.0 | x86_64 | built | 25/27 | 1 (1 / 0) | 13.9 |  |
+| [inih](ports/inih/REPORT.md) | r63 | x86_64 | built | 17/17 | 0 (0 / 0) | 0.7 |  |
+| [jansson](ports/jansson/REPORT.md) | v2.15.1 | x86_64 | built | 211/215 | 1 (1 / 0) | 1.1 |  |
+| [json-c](ports/json-c/REPORT.md) | json-c-0.19-20260627 | x86_64 | built | 28/28 | 1 (1 / 0) | 1.3 |  |
+| [kissfft](ports/kissfft/REPORT.md) | 131.2.0 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
+| [libcbor](ports/libcbor/REPORT.md) | v0.14.0 | x86_64 | built | 28/28 | 0 (0 / 0) | 0.6 |  |
 | [libccd](ports/libccd/REPORT.md) | v2.1 | x86_64 | built | 3/3 | 0 (0 / 0) | 0.3 |  |
-| [libcoap](ports/libcoap/REPORT.md) | v4.3.5 | x86_64 | built | none built | 1 (1 / 0) | 0.7 |  |
-| [libconfig](ports/libconfig/REPORT.md) | v1.7.3 | x86_64 | built | 1/1 | 1 (1 / 0) | 0.5 |  |
-| [libdeflate](ports/libdeflate/REPORT.md) | v1.22 | x86_64 | built | none built | 0 (0 / 0) | 0.3 |  |
-| [libevent](ports/libevent/REPORT.md) | release-2.1.12-stable | x86_64 | built | 20/24 | 2 (2 / 0) | 11.9 |  |
-| [libgpiod](ports/libgpiod/REPORT.md) | v2.2.4 | x86_64 | failed | not run | 0 (0 / 0) | 0.3 | Linux GPIO character-device API: expected not to port |
-| [libjpeg-turbo](ports/libjpeg-turbo/REPORT.md) | 3.0.4 | x86_64 | built | 590/590 | 0 (0 / 0) | 5.1 |  |
-| [libmodbus](ports/libmodbus/REPORT.md) | v3.1.11 | x86_64 | built | 0/1 | 0 (0 / 0) | 1.0 |  |
-| [libogg](ports/libogg/REPORT.md) | v1.3.5 | x86_64 | built | 2/2 | 0 (0 / 0) | 0.2 |  |
-| [libpng](ports/libpng/REPORT.md) | v1.6.44 | x86_64 | built | none built | 1 (1 / 0) | 0.5 |  |
-| [libsamplerate](ports/libsamplerate/REPORT.md) | 0.2.2 | x86_64 | built | 12/13 | 0 (0 / 0) | 0.5 |  |
-| [libsodium](ports/libsodium/REPORT.md) | 1.0.20-RELEASE | x86_64 | built | 80/80 | 0 (0 / 0) | 6.0 |  |
-| [libsrtp](ports/libsrtp/REPORT.md) | v2.6.0 | x86_64 | built | 8/12 | 1 (1 / 0) | 0.8 |  |
-| [libtommath](ports/libtommath/REPORT.md) | v1.3.0 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.4 |  |
-| [libuv](ports/libuv/REPORT.md) | v1.49.2 | x86_64 | failed | not run | 0 (0 / 0) | 0.3 |  |
-| [libwebsockets](ports/libwebsockets/REPORT.md) | v4.3.3 | x86_64 | failed | not run | 1 (1 / 0) | 0.8 |  |
-| [libxml2](ports/libxml2/REPORT.md) | v2.13.5 | x86_64 | built | 7/8 | 0 (0 / 0) | 2.3 |  |
+| [libcoap](ports/libcoap/REPORT.md) | v4.3.5b | x86_64 | built | none built | 1 (1 / 0) | 0.8 |  |
+| [libconfig](ports/libconfig/REPORT.md) | v1.8.3 | x86_64 | built | 1/1 | 1 (1 / 0) | 0.5 |  |
+| [libdeflate](ports/libdeflate/REPORT.md) | v1.26 | x86_64 | built | 8/8 | 0 (0 / 0) | 0.4 |  |
+| [libevent](ports/libevent/REPORT.md) | release-2.1.13-stable | x86_64 | built | 20/24 | 2 (2 / 0) | 10.2 |  |
+| [libgpiod](ports/libgpiod/REPORT.md) | v2.3.2 | x86_64 | failed | not run | 0 (0 / 0) | 0.0 | Linux GPIO character-device API: expected not to port |
+| [libjpeg-turbo](ports/libjpeg-turbo/REPORT.md) | 3.2.1 | x86_64 | built | 662/662 | 0 (0 / 0) | 7.8 |  |
+| [libmodbus](ports/libmodbus/REPORT.md) | v3.2.0 | x86_64 | built | 0/1 | 0 (0 / 0) | 0.6 |  |
+| [libogg](ports/libogg/REPORT.md) | v1.3.6 | x86_64 | built | 2/2 | 0 (0 / 0) | 0.2 |  |
+| [libpng](ports/libpng/REPORT.md) | v1.6.59 | x86_64 | built | none built | 1 (1 / 0) | 0.6 |  |
+| [libsamplerate](ports/libsamplerate/REPORT.md) | 0.2.2 | x86_64 | built | 12/13 | 0 (0 / 0) | 0.4 |  |
+| [libsodium](ports/libsodium/REPORT.md) | 1.0.22-RELEASE | x86_64 | built | 101/101 | 0 (0 / 0) | 3.9 |  |
+| [libsrtp](ports/libsrtp/REPORT.md) | v2.8.1 | x86_64 | built | 8/12 | 1 (1 / 0) | 7.3 |  |
+| [libtommath](ports/libtommath/REPORT.md) | v1.3.0 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.6 |  |
+| [libuv](ports/libuv/REPORT.md) | v1.53.0 | x86_64 | built | 0/2 | 1 (1 / 0) | 5.3 |  |
+| [libwebsockets](ports/libwebsockets/REPORT.md) | v5.1.0 | x86_64 | failed | not run | 1 (1 / 0) | 2.6 |  |
+| [libxml2](ports/libxml2/REPORT.md) | v2.15.4 | x86_64 | built | 7/8 | 0 (0 / 0) | 2.6 |  |
 | [libyaml](ports/libyaml/REPORT.md) | 0.2.5 | x86_64 | built | 2/2 | 0 (0 / 0) | 0.2 |  |
-| [lz4](ports/lz4/REPORT.md) | v1.10.0 | x86_64 | built | none built | 0 (0 / 0) | 0.5 |  |
-| [mbedtls](ports/mbedtls/REPORT.md) | v3.6.2 | x86_64 | built | 130/130 | 1 (1 / 0) | 4.6 |  |
-| [miniz](ports/miniz/REPORT.md) | 3.0.2 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
-| [mosquitto](ports/mosquitto/REPORT.md) | v2.0.20 | x86_64 | built | none built | 1 (1 / 0) | 0.5 |  |
-| [msgpack-c](ports/msgpack-c/REPORT.md) | c-6.1.0 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
-| [nanopb](ports/nanopb/REPORT.md) | 0.4.9 | x86_64 | built | not run | 0 (0 / 0) | 0.0 | build only: its tests use scons and protoc |
-| [nng](ports/nng/REPORT.md) | v1.9.0 | x86_64 | built | 82/86 | 1 (1 / 0) | 4.3 |  |
-| [open62541](ports/open62541/REPORT.md) | v1.4.6 | x86_64 | built | none built | 0 (0 / 0) | 2.4 |  |
-| [opus](ports/opus/REPORT.md) | v1.5.2 | x86_64 | built | none built | 0 (0 / 0) | 0.5 |  |
-| [paho.mqtt.c](ports/paho.mqtt.c/REPORT.md) | v1.3.14 | x86_64 | built | not run | 3 (3 / 0) | 0.4 | build only: the test suite needs an MQTT broker on the target |
-| [pcre2](ports/pcre2/REPORT.md) | pcre2-10.44 | x86_64 | built | 1/3 | 0 (0 / 0) | 0.7 |  |
-| [pugixml](ports/pugixml/REPORT.md) | v1.14 | x86_64 | built | 0/1 | 0 (0 / 0) | 0.9 |  |
-| [spdlog](ports/spdlog/REPORT.md) | v1.15.0 | x86_64 | built | none built | 1 (1 / 0) | 0.7 |  |
-| [sqlite](ports/sqlite/REPORT.md) | version-3.47.2 | x86_64 | built | not run | 0 (0 / 0) | 2.7 | build only: its test suite needs Tcl on the target |
-| [tinycbor](ports/tinycbor/REPORT.md) | v0.6.0 | x86_64 | built | not run | 0 (0 / 0) | 0.0 |  |
-| [tinyxml2](ports/tinyxml2/REPORT.md) | 10.0.0 | x86_64 | built | 1/1 | 1 (1 / 0) | 0.4 |  |
+| [lz4](ports/lz4/REPORT.md) | v1.11.1 | x86_64 | built | none built | 0 (0 / 0) | 0.5 |  |
+| [mbedtls](ports/mbedtls/REPORT.md) | v4.2.0 | x86_64 | built | 148/148 | 1 (1 / 0) | 12.5 |  |
+| [miniz](ports/miniz/REPORT.md) | 3.1.2 | x86_64 | built | 1/1 | 0 (0 / 0) | 3.3 |  |
+| [mosquitto](ports/mosquitto/REPORT.md) | v2.1.2 | x86_64 | built | none built | 3 (3 / 0) | 0.9 | 2.1 needs cJSON (our QNX port of it) and, on QNX, TLS: without it 2.1 has random bytes only from Linux getrandom(); OpenSSL from the SDP. Its tests need CUnit and a Python broker harness |
+| [msgpack-c](ports/msgpack-c/REPORT.md) | c-7.0.2 | x86_64 | built | 5/5 | 0 (0 / 0) | 1.5 |  |
+| [nanopb](ports/nanopb/REPORT.md) | 0.4.9.3 | x86_64 | built | not run | 0 (0 / 0) | 0.0 | build only: its tests use scons and protoc |
+| [nng](ports/nng/REPORT.md) | v2.1.0 | x86_64 | built | 3/64 | 1 (1 / 0) | 188.2 |  |
+| [open62541](ports/open62541/REPORT.md) | v1.5.10 | x86_64 | built | none built | 2 (2 / 0) | 1.9 |  |
+| [opus](ports/opus/REPORT.md) | v1.6.1 | x86_64 | built | none built | 0 (0 / 0) | 0.6 |  |
+| [paho.mqtt.c](ports/paho.mqtt.c/REPORT.md) | v1.3.16 | x86_64 | built | not run | 1 (1 / 0) | 0.3 | build only: the test suite needs an MQTT broker on the target |
+| [pcre2](ports/pcre2/REPORT.md) | pcre2-10.49 | x86_64 | built | 1/3 | 0 (0 / 0) | 0.9 |  |
+| [pugixml](ports/pugixml/REPORT.md) | v1.16 | x86_64 | built | 0/1 | 0 (0 / 0) | 0.9 |  |
+| [spdlog](ports/spdlog/REPORT.md) | v1.17.0 | x86_64 | built | 1/1 | 1 (1 / 0) | 4.0 |  |
+| [sqlite](ports/sqlite/REPORT.md) | version-3.54.1 | x86_64 | built | not run | 0 (0 / 0) | 1.9 | build only: its test suite needs Tcl on the target |
+| [tinycbor](ports/tinycbor/REPORT.md) | v7.1 | x86_64 | built | 1/1 | 2 (2 / 0) | 0.3 |  |
+| [tinyxml2](ports/tinyxml2/REPORT.md) | 11.0.0 | x86_64 | built | 1/1 | 1 (1 / 0) | 0.8 |  |
 | [tomlplusplus](ports/tomlplusplus/REPORT.md) | v3.4.0 | x86_64 | built | none built | 0 (0 / 0) | 0.1 |  |
-| [wolfssl](ports/wolfssl/REPORT.md) | v5.7.4-stable | x86_64 | built | 1/1 | 2 (2 / 0) | 1.9 |  |
-| [xxHash](ports/xxHash/REPORT.md) | v0.8.2 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
-| [yaml-cpp](ports/yaml-cpp/REPORT.md) | 0.8.0 | x86_64 | built | 0/1 | 1 (1 / 0) | 5.0 |  |
-| [yyjson](ports/yyjson/REPORT.md) | 0.10.0 | x86_64 | built | 12/12 | 1 (1 / 0) | 1.5 |  |
-| [zlib](ports/zlib/REPORT.md) | v1.3.1 | x86_64 | built | 2/2 | 0 (0 / 0) | 0.3 |  |
-| [zstd](ports/zstd/REPORT.md) | v1.5.6 | x86_64 | built | 1/4 | 0 (0 / 0) | 9.2 |  |
+| [wolfssl](ports/wolfssl/REPORT.md) | v5.9.4-stable | x86_64 | built | 1/1 | 1 (1 / 0) | 2.5 |  |
+| [xxHash](ports/xxHash/REPORT.md) | v0.8.4 | x86_64 | built | none built | 0 (0 / 0) | 0.2 |  |
+| [yaml-cpp](ports/yaml-cpp/REPORT.md) | yaml-cpp-0.9.0 | x86_64 | built | 0/1 | 0 (0 / 0) | 7.1 |  |
+| [yyjson](ports/yyjson/REPORT.md) | 0.13.0 | x86_64 | built | 12/12 | 0 (0 / 0) | 2.0 |  |
+| [zlib](ports/zlib/REPORT.md) | v1.4 | x86_64 | built | 4/4 | 0 (0 / 0) | 0.3 |  |
+| [zstd](ports/zstd/REPORT.md) | v1.5.7 | x86_64 | built | 1/4 | 0 (0 / 0) | 10.0 |  |
 | [BLAKE3](ports-aarch64le/BLAKE3/REPORT.md) | 1.5.4 | aarch64le | built | none built | 0 (0 / 0) | 0.4 | portable C: its CMake has SIMD flags only for compilers it knows, not qcc |
 | [Micro-CDR](ports-aarch64le/Micro-CDR/REPORT.md) | v2.0.1 | aarch64le | built | none built | 0 (0 / 0) | 0.5 |  |
 | [benchmark](ports-aarch64le/benchmark/REPORT.md) | v1.9.1 | aarch64le | built | not run | 0 (0 / 0) | 6.5 |  |
@@ -270,22 +276,34 @@ crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatt
 reproducers are in [docs/qnx-reports/](docs/qnx-reports/):
 - **QNX C library behaviour** (draft reports, not sent):
   - `strtod()` is not correctly rounded (pugixml, jansson, yaml-cpp).
-  - `strftime()` writes nothing for `%Ex`/`%EX`/`%Ec` (fmt).
+  - `strftime()` writes nothing for `%Ex`/`%EX`/`%Ec` (fmt 11.0.2 at the 2024 tag; fmt 12.2.1's chrono tests pass).
   - `fchdir()` needs `O_DIRECTORY` (googletest's death tests). QNX documents this.
   - `qsort()` writes outside the array when the comparator is inconsistent (libsrtp's tests use a random
     comparator).
   - `poll()` reports no `POLLHUP` when a pipe's writer closes (nng 2.1's tests hang at exit; a drafted nng
     fix takes them from 3/64 to 60/64 on QNX).
+  - A process's main thread gets about 464 KiB of stack unless it is linked with `qcc -N`; Linux gives 8 MiB.
+    cJSON 1.7.19's deep-recursion test overflowed it. The agent read the backtrace from the core dump and
+    relinked with `-N8M` (rule `main-stack`): 19/19 ([`scripts/stack_probe.c`](scripts/stack_probe.c) measures it).
+  - `malloc()` commits memory at once: 1 GiB took 5 to 9 s on the target, where Linux returns at once. expat
+    2.10's suite needs 241 s on QNX, so it runs with a 900 s limit (`test_timeout` in `campaign.yaml`).
+- **Different but allowed output that a test compares with glibc's:** `printf("%a")` (fmt 12 expects
+  `0x1.34ap+10`, QNX prints `0x9.a52p+7`, both valid C), and an exact tie printed with three decimals
+  (benchmark expects `976.562` for 976.5625, QNX prints `976.563`).
 - **Undefined C that glibc tolerates:** `printf("%s", NULL)`. The agent reads the core dump and fixes it in
   json-c, libconfig, tinyxml2 and capstone (all now pass). It finds the same thing but cannot place the fix
   in libxml2 (library code) and nng (behind a tail call).
-- **What the test image lacks:** `killall` (libmodbus), `/bin/echo` (pcre2grep), internet access (nng),
+- **What the test image lacks:** `killall` (libmodbus), `/bin/echo` (pcre2grep), internet access (nng 1.9),
+  the `en_US.UTF-8` locale (benchmark),
   2 GiB of memory for one zstd test, a `locale` command (pcre2 skips those tests), Tcl (sqlite), an MQTT
   broker (paho), cmake on the target (libpng's tests are CMake scripts).
-- **Did not build** (4): libgpiod and can-utils use Linux-only kernel interfaces, as expected. libuv
-  (`struct qtime_entry` has no `nsec` in QNX 8.0) and libwebsockets (`TCPCTL_KEEPCNT`) stop on errors no rule
-  covers yet. QNX's own ports of these two libraries change exactly those lines. With the language-model step
-  on, both build: [docs/MODEL_STEP.md](docs/MODEL_STEP.md).
+- **Did not build** (3 on x86_64): libgpiod and can-utils use Linux-only kernel interfaces, as expected.
+  libwebsockets 5.1.0 defines its own `struct ifaddrs`, which clashes with QNX's `<ifaddrs.h>`. libuv 1.53.0
+  builds with rules only, because upstream added QNX 8.0 support
+  ([PR #4801](https://github.com/libuv/libuv/pull/4801)); 401 of its subtests pass on QNX and 31 fail, which we
+  have not looked into. At the 2024 tags libuv (`struct qtime_entry` has no `nsec` in QNX 8.0) and
+  libwebsockets (`TCPCTL_KEEPCNT`) did not build with rules; with the language-model step on, both built:
+  [docs/MODEL_STEP.md](docs/MODEL_STEP.md).
 
 **How we got here** (each line is the summary the campaign script printed; logs in [`results/runs/`](results/runs/)):
 
@@ -297,7 +315,8 @@ reproducers are in [docs/qnx-reports/](docs/qnx-reports/):
 | 4 | 10/10 | 372/381 | CMake pass regexes need DOTALL (cmocka re-run: 46/46) |
 | 5 (json-c, libconfig only) | 2/2 | 26/26 | crash triage from QNX core dumps + `printf-null` rule (both crashes were `printf("%s", NULL)`) |
 | 6 (61 libraries) | 50/61 | 1185/1345 | `cmake -E` test helpers run as QNX shell commands; rules `wcswidth-compat`, `qcc-sysroot`; a resolv.conf on the target |
-| 7 (61 libraries) | 57/61 | 1332/1366 | final run; re-runs into the same log: 6 libraries after a DNS outage, sqlite without editline, CRLF-safe and MSVC-safe `printf-null` patches, libccd once CMake could find the stub `librt` |
+| 7 (61 libraries) | 57/61 | 1332/1366 | final run at the 2024 tags (now in `ports-2024/`); re-runs into the same log: 6 libraries after a DNS outage, sqlite without editline, CRLF-safe and MSVC-safe `printf-null` patches, libccd once CMake could find the stub `librt` |
+| 8 (61 libraries, newest tags, x86_64) | 58/61 | 1563/1658 | first pass 55/61 and 1430/1529; re-runs into the same log after: test suites turned on for 9 libraries (`uses:` for googletest, cmocka, cJSON), rules `main-stack` and `<sys/queue.h>`, `enable_testing()` for libogg 1.3.6, cmake/ctest test steps counted as not runnable, expat's `/dev/urandom` and 900 s limit. nng 2.1.0 stays at 3/64: [docs/qnx-reports/pipe-pollhup.md](docs/qnx-reports/pipe-pollhup.md) |
 
 Runs 6 and 7 count tests the way the campaign script did on the day. Run 6 counted libraries whose suite
 registered no tests as "tests ran". Since run 7, the summary and the headline count only libraries with at
@@ -399,15 +418,15 @@ ok  SDP complete no empty compiler or libc files
 ok  qcc builds hello ok
 $ ssh root@172.31.1.11 uname -a          # the QEMU target
 QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
-$ tail -1 ports/mbedtls/logs/tests.log   # written by ctest_on_target()
-130/130 tests passed on the QNX target
+$ tail -1 ports/mbedtls/logs/tests.log   # written by ctest_on_target(); mbedtls v4.2.0
+148/148 tests passed on the QNX target
 ```
 The one patch mbedtls needed, as the agent wrote it ([`ports/mbedtls/patches/0001-link-libsocket.patch`](ports/mbedtls/patches/0001-link-libsocket.patch)):
 ```
 Subject: [qnx-porter 0001] link-libsocket
 Source: deterministic rule
 Reason: `__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
-Error: x509_crt.c:(.text+0x843): undefined reference to `__inet_pton'
+Error: x509_crt.c:2846:(.text+0x7d1): undefined reference to `__inet_pton'
 ```
 
 ## Why a real-time OS needs this tooling

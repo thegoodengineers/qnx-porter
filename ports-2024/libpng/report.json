@@ -1,0 +1,168 @@
+{
+  "library": "libpng",
+  "url": "https://github.com/pnggroup/libpng.git",
+  "version": "v1.6.44",
+  "commit": "f5e92d76973a7a53f517579bc95d61483bf108c0",
+  "build_system": "cmake",
+  "arch": "x86_64",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
+  "build_result": "built",
+  "rounds": 2,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "qcc-sysroot",
+      "source": "rule",
+      "reason": "The project's own build script passes --sysroot to the compiler, which qcc does not accept. qcc already finds the SDP sysroot through QNX_TARGET, so the toolchain stops setting CMAKE_SYSROOT (libraries are still found through CMAKE_FIND_ROOT_PATH).",
+      "error": "cc: unknown option: '--sysroot=/home/chirag/qnx800/target/qnx'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-qcc-sysroot.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 0.5,
+  "note": "",
+  "tests_not_runnable": [
+    {
+      "name": "pngtest",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-16-to-8",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-alpha-mode",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-background",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-expand16-alpha-mode",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-expand16-background",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-expand16-transform",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-sbit",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-threshold",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-gamma-transform",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-progressive-interlace-standard",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-progressive-size",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-progressive-standard",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-standard",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngvalid-transform",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-1.8-none",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-1.8-alpha",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-linear-none",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-linear-alpha",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-none-none",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-none-alpha",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-sRGB-none",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngstest-sRGB-alpha",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngunknown-discard",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngunknown-IDAT",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngunknown-if-safe",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngunknown-sAPI",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngunknown-save",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngunknown-sTER",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngunknown-vpAg",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngimage-quick",
+      "needs": "cmake"
+    },
+    {
+      "name": "pngimage-full",
+      "needs": "cmake"
+    }
+  ],
+  "crashes": [],
+  "finished": "2026-11-12T08:54:08+00:00"
+}

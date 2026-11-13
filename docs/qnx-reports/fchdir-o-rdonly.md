@@ -38,7 +38,7 @@ googletest has a QNX-only code path for "threadsafe" death tests (`ExecDeathTest
 `googletest/src/gtest-death-test.cc`): it saves the working directory with `open(".", O_RDONLY)`, calls QNX's
 `spawn()`, then restores it with `fchdir()`. On QNX 8.0 that `fchdir()` fails, the check aborts the test
 program, and `googletest-death-test-test` and `gtest_repeat_test` end with SIGABRT
-(`ports/googletest/logs/tests.log`, `logs/crashes.log`). The abort message, read from the core file with the
+(`ports-2024/googletest/logs/tests.log`, `logs/crashes.log`). The abort message, read from the core file with the
 SDP's gdb:
 
 ```

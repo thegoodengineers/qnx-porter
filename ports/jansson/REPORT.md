@@ -1,14 +1,14 @@
-# jansson v2.14 on QNX 8.0 (x86_64)
+# jansson v2.15.1 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/akheron/jansson.git at `v2.14` (`684e18c927e8`) |
+| Upstream | https://github.com/akheron/jansson.git at `v2.15.1` (`dbb5fb3636e1`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 2 round(s) |
-| Library's own tests | 209/213 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
+| Library's own tests | 211/215 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 1.2 min |
+| Time | 1.1 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

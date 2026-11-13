@@ -123,17 +123,20 @@ def campaign(n: dict) -> None:
     n["aarch-only-rules"] = names(set(rule_counts("aarch64le")) - set(rule_counts("x86_64")))
 
     # Which campaign file the published rows come from: the 2024 pins or the latest releases.
-    vers = {r["library"]: r["version"] for r in ports}
     old, new = campaign_tags("campaign-2024.yaml"), campaign_tags("campaign.yaml")
-    m_old = sum(vers.get(k) == v for k, v in old.items())
-    m_new = sum(vers.get(k) == v for k, v in new.items())
-    if m_old == len(vers):
-        n["campaign-file"] = "the 2024 release pins in campaign-2024.yaml"
-    elif m_new == len(vers):
-        n["campaign-file"] = "the latest upstream releases in campaign.yaml"
-    else:
-        n["campaign-file"] = (f"a mix of release tags ({m_old} libraries at their 2024 pins, "
-                              f"{m_new} at the latest releases in campaign.yaml)")
+
+    def tags(arch):
+        vers = {r["library"]: r["version"] for r in ports if r["arch"] == arch}
+        m_old = sum(vers.get(k) == v for k, v in old.items())
+        m_new = sum(vers.get(k) == v for k, v in new.items())
+        if m_old == len(vers):
+            return "the 2024 release pins in campaign-2024.yaml"
+        if m_new == len(vers):
+            return "the latest upstream releases in campaign.yaml"
+        return (f"a mix of release tags ({m_old} libraries at their 2024 pins, "
+                f"{m_new} at the latest releases in campaign.yaml)")
+    xt, at = tags("x86_64"), tags("aarch64le")
+    n["campaign-file"] = xt if xt == at else f"{xt} on x86_64 and {at} on aarch64"
     n["latest-differs"] = sum(old.get(k) != v for k, v in new.items())
     n["sdp-build"] = find(r"QNX SDP 8\.0 \(build (\d+), qcc ([\d.]+)\)", "README.md")
     n["qcc-version"] = find(r"QNX SDP 8\.0 \(build (\d+), qcc ([\d.]+)\)", "README.md", 2)

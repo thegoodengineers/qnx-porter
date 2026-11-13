@@ -1,8 +1,8 @@
 {
   "library": "libwebsockets",
   "url": "https://github.com/warmcat/libwebsockets.git",
-  "version": "v4.3.3",
-  "commit": "4415e84c095857629863804e941b9e1c2e9347ef",
+  "version": "v5.1.0",
+  "commit": "5f39aa483715b813f4d85a692fcb361b5d8d0c1b",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -19,27 +19,38 @@
   "patches": [
     {
       "number": 1,
-      "rule": "no-werror",
+      "rule": "sa-restart",
       "source": "rule",
-      "reason": "A warning that has no -W switch of its own (here: \"BYTE_ORDER\" redefined [-Werror]) is made an error by the project's -Werror. The only way to keep it a warning is -Wno-error; the warning is still printed in the build log.",
-      "error": "/home/chirag/qnx-porter/ports/libwebsockets/work/src/lib/plat/unix/./private-lib-plat-unix.h:67: error: \"BYTE_ORDER\" redefined [-Werror]",
+      "reason": "QNX 8.0's <signal.h> lists SA_RESTART as not supported yet. Defining it as 0 lets the code build; system calls interrupted by a signal then return EINTR instead of restarting, which the library's tests on QNX show it handles or not.",
+      "error": "/home/chirag/qnx-porter/ports/libwebsockets/work/src/lib/core-net/stub.c:723:31: error: 'SA_RESTART' undeclared (first use in this function); did you mean 'ERESTART'?",
       "files": [
         "qnx-toolchain.cmake"
       ],
-      "path": "patches/0001-no-werror.patch",
+      "path": "patches/0001-sa-restart.patch",
       "kept": true
     }
   ],
   "blocked_on": [
     {
-      "kind": "undeclared",
-      "error": "/home/chirag/qnx-porter/ports/libwebsockets/work/src/lib/plat/unix/./private-lib-plat-unix.h:141:24: error: 'TCPCTL_KEEPCNT' undeclared (first use in this function); did you mean 'TCPCTL_KEEPINIT'?",
+      "kind": "error",
+      "error": "/home/chirag/qnx800/target/qnx/usr/include/ifaddrs.h:32:8: error: redefinition of 'struct ifaddrs'",
+      "hint": ""
+    },
+    {
+      "kind": "error",
+      "error": "/home/chirag/qnx800/target/qnx/usr/include/ifaddrs.h:64:12: error: conflicting types for 'getifaddrs'; have 'int(struct ifaddrs **)'",
+      "hint": ""
+    },
+    {
+      "kind": "error",
+      "error": "/home/chirag/qnx800/target/qnx/usr/include/ifaddrs.h:65:13: error: conflicting types for 'freeifaddrs'; have 'void(struct ifaddrs *)'",
       "hint": ""
     }
   ],
-  "minutes": 0.8,
+  "minutes": 2.6,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T08:22:28+00:00"
+  "finished": "2026-11-13T16:46:40+00:00"
 }

@@ -10,64 +10,64 @@ Why this matters on QNX. QNX products are commonly shipped as one system image i
 
 | Library | Version | Detected licence (SPDX) | GPL family | LGPL | Copyleft note |
 |---|---|---|---|---|---|
-| benchmark | v1.9.1 | `Apache-2.0` | no | no |  |
-| BLAKE3 | 1.5.4 | `Apache-2.0 AND CC0-1.0 AND LLVM-exception AND LicenseRef-scancode-public-domain` | no | no |  |
-| c-ares | v1.34.3 | `MIT` | no | no |  |
-| can-utils | v2023.03 | `NOASSERTION` | no | no | no licence detected in the scanned files |
-| capstone | 5.0.3 | `NCSA AND BSD-3-Clause` | no | no |  |
-| cglm | v0.9.4 | `MIT` | no | no |  |
-| cJSON | v1.7.18 | `MIT` | no | no |  |
-| cmark | 0.31.1 | `BSD-2-Clause AND MIT AND CC-BY-SA-4.0` | no | no | documentation share-alike CC-BY-SA |
-| cmocka | cmocka-1.1.7 | `Apache-2.0` | no | no |  |
-| expat | R_2_6_4 | `MIT` | no | no |  |
-| flac | 1.4.3 | `(BSD-3-Clause AND LGPL-2.1-only AND GPL-2.0-only AND GFDL-1.2-only) AND (BSD-3-Clause AND GPL-1.0-or-later) AND GFDL-1.1-or-later` | yes | yes | strong copyleft GPL; weak copyleft LGPL; documentation copyleft GFDL |
-| flatcc | v0.6.1 | `((MIT AND BSD-3-Clause) AND Apache-2.0) AND Apache-2.0` | no | no |  |
-| fmt | 11.0.2 | `MIT AND fmt-exception AND Python-2.0` | no | no |  |
-| googletest | v1.15.2 | `BSD-3-Clause` | no | no |  |
-| inih | r58 | `BSD-3-Clause` | no | no |  |
-| jansson | v2.14 | `MIT` | no | no |  |
-| json-c | json-c-0.18-20240915 | `MIT AND LicenseRef-scancode-unknown-license-reference` | no | no |  |
-| kissfft | 131.1.0 | `LicenseRef-scancode-unknown-license-reference AND (BSD-3-Clause AND GPL-1.0-or-later AND LicenseRef-scancode-unknown-license-reference)` | yes | no | strong copyleft GPL |
-| libcbor | v0.11.0 | `MIT` | no | no |  |
+| benchmark | v1.10.0 | `Apache-2.0` | no | no |  |
+| BLAKE3 | 1.8.7 | `Apache-2.0 AND CC0-1.0 AND LLVM-exception AND LicenseRef-scancode-public-domain` | no | no |  |
+| c-ares | v1.34.9 | `MIT` | no | no |  |
+| can-utils | v2025.01 | `NOASSERTION` | no | no | no licence detected in the scanned files |
+| capstone | 5.0.9 | `NCSA AND BSD-3-Clause` | no | no |  |
+| cglm | v0.9.7 | `MIT` | no | no |  |
+| cJSON | v1.7.19 | `MIT` | no | no |  |
+| cmark | 0.31.2 | `BSD-2-Clause AND MIT AND CC-BY-SA-4.0` | no | no | documentation share-alike CC-BY-SA |
+| cmocka | cmocka-2.0.2 | `Apache-2.0` | no | no |  |
+| expat | R_2_10_0 | `MIT` | no | no |  |
+| flac | 1.5.0 | `(BSD-3-Clause AND LGPL-2.1-only AND GPL-2.0-only AND GFDL-1.3-only) AND (BSD-3-Clause AND GPL-1.0-or-later) AND GFDL-1.1-or-later` | yes | yes | strong copyleft GPL; weak copyleft LGPL; documentation copyleft GFDL |
+| flatcc | v0.6.4 | `((MIT AND BSD-3-Clause) AND Apache-2.0) AND Apache-2.0` | no | no |  |
+| fmt | 12.2.1 | `MIT` | no | no |  |
+| googletest | v1.18.0 | `BSD-3-Clause` | no | no |  |
+| inih | r63 | `BSD-3-Clause` | no | no |  |
+| jansson | v2.15.1 | `MIT AND dtoa` | no | no |  |
+| json-c | json-c-0.19-20260627 | `MIT AND LicenseRef-scancode-unknown-license-reference` | no | no |  |
+| kissfft | 131.2.0 | `LicenseRef-scancode-unknown-license-reference AND (BSD-3-Clause AND GPL-1.0-or-later AND LicenseRef-scancode-unknown-license-reference)` | yes | no | strong copyleft GPL |
+| libcbor | v0.14.0 | `MIT` | no | no |  |
 | libccd | v2.1 | `LGPL-2.0-or-later AND BSD-3-Clause` | no | yes | weak copyleft LGPL |
-| libcoap | v4.3.5 | `Apache-2.0 AND BSD-1-Clause AND BSD-3-Clause AND BSD-2-Clause AND GPL-2.0-only AND LicenseRef-scancode-ietf AND LGPL-2.1-only AND OpenSSL AND LicenseRef-scancode-public-domain` | yes | yes | strong copyleft GPL; weak copyleft LGPL |
-| libconfig | v1.7.3 | `LGPL-2.1-only` | no | yes | weak copyleft LGPL |
-| libdeflate | v1.22 | `MIT` | no | no |  |
-| libevent | release-2.1.12-stable | `BSD-3-Clause AND ISC AND (ISC AND MIT) AND MIT` | no | no |  |
-| libgpiod | v2.2.4 | `LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Linux-syscall-note AND Linux-syscall-note AND CC-BY-SA-4.0` | yes | yes | strong copyleft GPL; weak copyleft LGPL; documentation share-alike CC-BY-SA |
-| libjpeg-turbo | 3.0.4 | `BSD-3-Clause AND IJG AND LicenseRef-scancode-ijg-2020 AND Zlib` | no | no |  |
-| libmodbus | v3.1.11 | `LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later` | no | yes | weak copyleft LGPL |
-| libogg | v1.3.5 | `BSD-3-Clause` | no | no |  |
-| libpng | v1.6.44 | `Libpng AND (Libpng AND libpng-1.6.35)` | no | no |  |
+| libcoap | v4.3.5b | `Apache-2.0 AND BSD-1-Clause AND BSD-3-Clause AND BSD-2-Clause AND GPL-2.0-only AND LicenseRef-scancode-ietf AND LGPL-2.1-only AND OpenSSL AND LicenseRef-scancode-public-domain` | yes | yes | strong copyleft GPL; weak copyleft LGPL |
+| libconfig | v1.8.3 | `LGPL-2.1-only` | no | yes | weak copyleft LGPL |
+| libdeflate | v1.26 | `MIT` | no | no |  |
+| libevent | release-2.1.13-stable | `BSD-3-Clause AND ISC AND (ISC AND MIT) AND MIT` | no | no |  |
+| libgpiod | v2.3.2 | `LGPL-2.1-or-later AND GPL-2.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Linux-syscall-note AND Linux-syscall-note AND CC-BY-SA-4.0` | yes | yes | strong copyleft GPL; weak copyleft LGPL; documentation share-alike CC-BY-SA |
+| libjpeg-turbo | 3.2.1 | `BSD-3-Clause AND BSD-2-Clause AND IJG AND LicenseRef-scancode-ijg-2020 AND libpng-2.0 AND Zlib` | no | no |  |
+| libmodbus | v3.2.0 | `(LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later) AND LicenseRef-scancode-generic-cla` | no | yes | weak copyleft LGPL |
+| libogg | v1.3.6 | `BSD-3-Clause` | no | no |  |
+| libpng | v1.6.59 | `Libpng AND (Libpng AND libpng-1.6.35)` | no | no |  |
 | libsamplerate | 0.2.2 | `BSD-2-Clause` | no | no |  |
-| libsodium | 1.0.20-RELEASE | `ISC` | no | no |  |
-| libsrtp | v2.6.0 | `BSD-3-Clause` | no | no |  |
+| libsodium | 1.0.22-RELEASE | `ISC` | no | no |  |
+| libsrtp | v2.8.1 | `BSD-3-Clause` | no | no |  |
 | libtommath | v1.3.0 | `Unlicense` | no | no |  |
-| libuv | v1.49.2 | `BSD-2-Clause AND CC-BY-4.0 AND ISC AND MIT` | no | no |  |
-| libwebsockets | v4.3.3 | `MIT AND (BSD-3-Clause AND Zlib AND Apache-2.0 AND BSD-2-Clause) AND (LicenseRef-scancode-public-domain AND Beerware) AND LicenseRef-scancode-other-permissive AND BSD-2-Clause AND BSD-3-Clause AND Zlib AND (Apache-2.0 AND CC0-1.0)` | no | no |  |
-| libxml2 | v2.13.5 | `MIT` | no | no |  |
+| libuv | v1.53.0 | `BSD-2-Clause AND CC-BY-4.0 AND ISC AND MIT` | no | no |  |
+| libwebsockets | v5.1.0 | `MIT AND (BSD-3-Clause AND Zlib AND Apache-2.0 AND BSD-2-Clause) AND (LicenseRef-scancode-public-domain AND Beerware) AND LicenseRef-scancode-other-permissive AND BSD-2-Clause AND BSD-3-Clause AND Zlib AND (Apache-2.0 AND CC0-1.0) AND OFL-1.1` | no | no |  |
+| libxml2 | v2.15.4 | `MIT` | no | no |  |
 | libyaml | 0.2.5 | `MIT` | no | no |  |
-| lz4 | v1.10.0 | `BSD-2-Clause AND GPL-2.0-or-later` | yes | no | strong copyleft GPL |
-| mbedtls | v3.6.2 | `(Apache-2.0 AND GPL-2.0-or-later) AND Apache-2.0 AND GPL-2.0-only` | yes | no | strong copyleft GPL |
-| Micro-CDR | v2.0.1 | `Apache-2.0` | no | no |  |
-| miniz | 3.0.2 | `MIT AND LicenseRef-scancode-public-domain` | no | no |  |
-| mosquitto | v2.0.20 | `LGPL-2.1-only` | no | yes | weak copyleft LGPL |
-| msgpack-c | c-6.1.0 | `BSL-1.0` | no | no |  |
-| nanopb | 0.4.9 | `Zlib` | no | no |  |
-| nng | v1.9.0 | `MIT` | no | no |  |
-| open62541 | v1.4.6 | `MPL-2.0 AND (MPL-2.0 AND LicenseRef-scancode-public-domain AND CC0-1.0)` | no | no | weak copyleft MPL |
-| opus | v1.5.2 | `BSD-3-Clause AND LicenseRef-scancode-generic-cla AND LicenseRef-scancode-proprietary-license` | no | no |  |
-| paho.mqtt.c | v1.3.14 | `Apache-1.1 AND BSD-3-Clause AND CPL-1.0 AND LicenseRef-scancode-eclipse-sua-2011 AND EPL-2.0 AND LicenseRef-scancode-generic-export-compliance AND MPL-1.1` | no | no | weak copyleft MPL; weak copyleft EPL; weak copyleft CPL |
-| pcre2 | pcre2-10.44 | `BSD-3-Clause AND LicenseRef-scancode-public-domain AND PCRE2-exception` | no | no |  |
-| pugixml | v1.14 | `MIT AND (MIT AND LicenseRef-scancode-unknown-license-reference)` | no | no |  |
-| spdlog | v1.15.0 | `MIT` | no | no |  |
-| sqlite | version-3.47.2 | `blessing AND LicenseRef-scancode-public-domain` | no | no |  |
-| tinycbor | v0.6.0 | `MIT` | no | no |  |
-| tinyxml2 | 10.0.0 | `Zlib` | no | no |  |
+| lz4 | v1.11.1 | `BSD-2-Clause AND GPL-1.0-or-later AND GPL-2.0-or-later` | yes | no | strong copyleft GPL |
+| mbedtls | v4.2.0 | `(Apache-2.0 AND GPL-2.0-or-later) AND Apache-2.0 AND GPL-2.0-only` | yes | no | strong copyleft GPL |
+| Micro-CDR | v2.0.2 | `Apache-2.0` | no | no |  |
+| miniz | 3.1.2 | `MIT AND LicenseRef-scancode-public-domain` | no | no |  |
+| mosquitto | v2.1.2 | `Apache-2.0 AND BSD-3-Clause AND EPL-2.0 AND LicenseRef-scancode-generic-export-compliance AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT` | no | yes | weak copyleft LGPL; weak copyleft EPL |
+| msgpack-c | c-7.0.2 | `BSL-1.0` | no | no |  |
+| nanopb | 0.4.9.3 | `Zlib` | no | no |  |
+| nng | v2.1.0 | `MIT` | no | no |  |
+| open62541 | v1.5.10 | `MPL-2.0 AND (MPL-2.0 AND LicenseRef-scancode-public-domain AND CC0-1.0)` | no | no | weak copyleft MPL |
+| opus | v1.6.1 | `BSD-3-Clause AND LicenseRef-scancode-generic-cla AND LicenseRef-scancode-proprietary-license` | no | no |  |
+| paho.mqtt.c | v1.3.16 | `Apache-1.1 AND BSD-3-Clause AND CPL-1.0 AND LicenseRef-scancode-eclipse-sua-2011 AND EPL-2.0 AND LicenseRef-scancode-generic-export-compliance AND MPL-1.1` | no | no | weak copyleft MPL; weak copyleft EPL; weak copyleft CPL |
+| pcre2 | pcre2-10.49 | `LicenseRef-scancode-pcre` | no | no |  |
+| pugixml | v1.16 | `MIT AND (MIT AND LicenseRef-scancode-unknown-license-reference AND LicenseRef-scancode-public-domain) AND LicenseRef-scancode-public-domain` | no | no |  |
+| spdlog | v1.17.0 | `MIT` | no | no |  |
+| sqlite | version-3.54.1 | `LicenseRef-scancode-public-domain AND (LicenseRef-scancode-public-domain AND blessing) AND (LicenseRef-scancode-public-domain AND BSD-3-Clause) AND BSD-3-Clause` | no | no |  |
+| tinycbor | v7.1 | `MIT` | no | no |  |
+| tinyxml2 | 11.0.0 | `Zlib` | no | no |  |
 | tomlplusplus | v3.4.0 | `MIT` | no | no |  |
-| wolfssl | v5.7.4-stable | `GPL-2.0-only` | yes | no | strong copyleft GPL |
-| xxHash | v0.8.2 | `BSD-3-Clause AND BSD-2-Clause AND GPL-1.0-or-later` | yes | no | strong copyleft GPL |
-| yaml-cpp | 0.8.0 | `MIT` | no | no |  |
-| yyjson | 0.10.0 | `MIT` | no | no |  |
-| zlib | v1.3.1 | `Zlib` | no | no |  |
-| zstd | v1.5.6 | `BSD-3-Clause OR GPL-2.0-only` | yes | no | strong copyleft GPL; expression has OR choices |
+| wolfssl | v5.9.4-stable | `GPL-3.0-only` | yes | no | strong copyleft GPL |
+| xxHash | v0.8.4 | `BSD-2-Clause AND GPL-2.0-only` | yes | no | strong copyleft GPL |
+| yaml-cpp | yaml-cpp-0.9.0 | `MIT` | no | no |  |
+| yyjson | 0.13.0 | `MIT` | no | no |  |
+| zlib | v1.4 | `Zlib` | no | no |  |
+| zstd | v1.5.7 | `BSD-3-Clause OR GPL-2.0-only` | yes | no | strong copyleft GPL; expression has OR choices |

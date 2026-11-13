@@ -1,11 +1,11 @@
-$ cmake -S /home/chirag/qnx-porter/ports/spdlog/work/src -B /home/chirag/qnx-porter/ports/spdlog/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/spdlog/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/spdlog/work/qnx-run -DSPDLOG_BUILD_EXAMPLE=OFF
+$ cmake -S /home/chirag/qnx-porter/ports/spdlog/work/src -B /home/chirag/qnx-porter/ports/spdlog/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/spdlog/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/spdlog/work/qnx-run -DSPDLOG_BUILD_EXAMPLE=OFF -DSPDLOG_BUILD_TESTS=ON
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Build spdlog: 1.15.0
+-- Build spdlog: 1.17.0
 -- Looking for C++ include pthread.h
 -- Looking for C++ include pthread.h - found
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
@@ -16,31 +16,144 @@ $ cmake -S /home/chirag/qnx-porter/ports/spdlog/work/src -B /home/chirag/qnx-por
 -- Looking for pthread_create in pthread - found
 -- Found Threads: TRUE  
 -- Build type: Release
+-- Looking for fwrite_unlocked
+-- Looking for fwrite_unlocked - not found
+-- Generating tests
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+-- Checking for module 'libsystemd'
+--   No package 'libsystemd' found
+-- Bundled version of Catch will be downloaded and used.
 -- Generating install
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/spdlog/work/build
-CMake Warning:
-  Manually-specified variables were not used by the project:
-
-    BUILD_TESTING
-    CMAKE_CROSSCOMPILING_EMULATOR
-
-
-$ cmake --build /home/chirag/qnx-porter/ports/spdlog/work/build -j 2 -- -k
-[ 12%] Building CXX object CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o
-[ 25%] Building CXX object CMakeFiles/spdlog.dir/src/spdlog.cpp.o
-[ 37%] Building CXX object CMakeFiles/spdlog.dir/src/color_sinks.cpp.o
-[ 50%] Building CXX object CMakeFiles/spdlog.dir/src/file_sinks.cpp.o
-[ 62%] Building CXX object CMakeFiles/spdlog.dir/src/async.cpp.o
-[ 75%] Building CXX object CMakeFiles/spdlog.dir/src/cfg.cpp.o
-[ 87%] Building CXX object CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.o
+$ cmake --build /home/chirag/qnx-porter/ports/spdlog/work/build -j 4 -- -k
+[  1%] Building CXX object CMakeFiles/spdlog.dir/src/stdout_sinks.cpp.o
+[  1%] Building CXX object CMakeFiles/spdlog.dir/src/color_sinks.cpp.o
+[  2%] Building CXX object CMakeFiles/spdlog.dir/src/spdlog.cpp.o
+[  2%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/benchmark/catch_chronometer.cpp.o
+[  3%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_analyse.cpp.o
+[  4%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_benchmark_function.cpp.o
+[  4%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_run_for_at_least.cpp.o
+[  5%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/benchmark/detail/catch_stats.cpp.o
+[  6%] Building CXX object CMakeFiles/spdlog.dir/src/file_sinks.cpp.o
+[  7%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generator_exception.cpp.o
+[  8%] Building CXX object CMakeFiles/spdlog.dir/src/async.cpp.o
+[  8%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators.cpp.o
+[  8%] Building CXX object CMakeFiles/spdlog.dir/src/cfg.cpp.o
+[  9%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/generators/catch_generators_random.cpp.o
+[ 10%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_automake.cpp.o
+[ 10%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_common_base.cpp.o
+[ 11%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_compact.cpp.o
+[ 12%] Building CXX object CMakeFiles/spdlog.dir/src/bundled_fmtlib_format.cpp.o
+[ 13%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_console.cpp.o
+[ 14%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_cumulative_base.cpp.o
+[ 14%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_event_listener.cpp.o
+[ 15%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_helpers.cpp.o
+[ 16%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_json.cpp.o
+[ 16%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_junit.cpp.o
+[ 17%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_multi.cpp.o
+[ 18%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_registrars.cpp.o
+[ 18%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_sonarqube.cpp.o
+[ 19%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_streaming_base.cpp.o
+[ 20%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_tap.cpp.o
+[ 20%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_teamcity.cpp.o
+[ 21%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/reporters/catch_reporter_xml.cpp.o
+[ 22%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_capture.cpp.o
+[ 23%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_config.cpp.o
+[ 23%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_exception.cpp.o
+[ 24%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_generatortracker.cpp.o
+[ 25%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_registry_hub.cpp.o
+[ 25%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter.cpp.o
+[ 26%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_reporter_factory.cpp.o
+[ 27%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/interfaces/catch_interfaces_testcase.cpp.o
+[ 27%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_approx.cpp.o
+[ 28%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_assertion_result.cpp.o
+[ 29%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_config.cpp.o
+[ 30%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_get_random_seed.cpp.o
+[ 30%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_message.cpp.o
+[ 31%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_registry_hub.cpp.o
+[ 32%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_session.cpp.o
+[ 32%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_tag_alias_autoregistrar.cpp.o
+[ 33%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_test_case_info.cpp.o
+[ 34%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_test_spec.cpp.o
+[ 34%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_timer.cpp.o
+[ 35%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_tostring.cpp.o
+[ 36%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_totals.cpp.o
+[ 36%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_translate_exception.cpp.o
+[ 37%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/catch_version.cpp.o
+[ 38%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_assertion_handler.cpp.o
+[ 39%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_case_insensitive_comparisons.cpp.o
+[ 39%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_clara.cpp.o
+[ 40%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_commandline.cpp.o
+[ 41%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_console_colour.cpp.o
+[ 41%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_context.cpp.o
+[ 42%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debug_console.cpp.o
+[ 43%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_debugger.cpp.o
+[ 43%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_decomposer.cpp.o
+[ 44%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enforce.cpp.o
+[ 45%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_enum_values_registry.cpp.o
+[ 45%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_errno_guard.cpp.o
+[ 46%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_exception_translator_registry.cpp.o
+[ 47%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_fatal_condition_handler.cpp.o
+[ 48%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_floating_point_helpers.cpp.o
+[ 48%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_getenv.cpp.o
+[ 49%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_istream.cpp.o
+[ 50%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_jsonwriter.cpp.o
+[ 50%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_lazy_expr.cpp.o
+[ 51%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_leak_detector.cpp.o
+[ 52%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_list.cpp.o
+[ 52%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_message_info.cpp.o
+[ 53%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_output_redirect.cpp.o
+[ 54%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_parse_numbers.cpp.o
+[ 55%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_polyfills.cpp.o
+[ 55%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_number_generator.cpp.o
+[ 56%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_random_seed_generation.cpp.o
+[ 57%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_registry.cpp.o
+[ 57%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reporter_spec_parser.cpp.o
+[ 58%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_result_type.cpp.o
+[ 59%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_reusable_string_stream.cpp.o
+[ 59%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_run_context.cpp.o
+[ 60%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_section.cpp.o
+[ 61%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_singletons.cpp.o
+[ 61%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_source_line_info.cpp.o
+[ 62%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_startup_exception_registry.cpp.o
+[ 63%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stdstreams.cpp.o
+[ 64%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_string_manip.cpp.o
+[ 64%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_stringref.cpp.o
+[ 65%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_tag_alias_registry.cpp.o
+[ 66%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_info_hasher.cpp.o
+[ 66%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_registry_impl.cpp.o
+[ 67%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_case_tracker.cpp.o
+[ 68%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_failure_exception.cpp.o
+[ 68%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_registry.cpp.o
+[ 69%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_test_spec_parser.cpp.o
+[ 70%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_textflow.cpp.o
+[ 70%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_uncaught_exceptions.cpp.o
+[ 71%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_wildcard_pattern.cpp.o
+[ 72%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/internal/catch_xmlwriter.cpp.o
+[ 73%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers.cpp.o
+[ 73%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_container_properties.cpp.o
+[ 74%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_exception.cpp.o
+[ 75%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_floating_point.cpp.o
+[ 75%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_predicate.cpp.o
+[ 76%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_quantifiers.cpp.o
+[ 77%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_string.cpp.o
+[ 77%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/catch_matchers_templated.cpp.o
+[ 78%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2.dir/catch2/matchers/internal/catch_matchers_impl.cpp.o
+[ 79%] Linking CXX static library libCatch2.a
+[ 79%] Built target Catch2
+[ 80%] Building CXX object _deps/catch2-build/src/CMakeFiles/Catch2WithMain.dir/catch2/internal/catch_main.cpp.o
+[ 80%] Linking CXX static library libCatch2Main.a
+[ 80%] Built target Catch2WithMain
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 In file included from /home/chirag/qnx-porter/ports/spdlog/work/src/src/spdlog.cpp:13:
 /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h: In function 'bool spdlog::details::os::path_exists(const spdlog::filename_t&)':
-/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:188:45: error: no matching function for call to 'stat::stat(const std::__2::basic_string<char>::value_type*, stat*)'
-  188 |     return (::stat(filename.c_str(), &buffer) == 0);
+/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:187:45: error: no matching function for call to 'stat::stat(const std::__2::basic_string<char>::value_type*, stat*)'
+  187 |     return (::stat(filename.c_str(), &buffer) == 0);
       |                                             ^
 In file included from /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:20:
 /home/chirag/qnx800/target/qnx/usr/include/sys/stat.h:212:8: note: candidate: 'stat::stat()'
@@ -52,25 +165,26 @@ In file included from /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdl
 /home/chirag/qnx800/target/qnx/usr/include/sys/stat.h:212:8: note: candidate: 'constexpr stat::stat(stat&&)'
 /home/chirag/qnx800/target/qnx/usr/include/sys/stat.h:212:8: note:   candidate expects 1 argument, 2 provided
 /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h: In function 'size_t spdlog::details::os::filesize(FILE*)':
-/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:234:11: error: '::fstat' has not been declared; did you mean 'stat'?
-  234 |     if (::fstat(fd, &st) == 0) {
+/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:233:11: error: '::fstat' has not been declared; did you mean 'stat'?
+  233 |     if (::fstat(fd, &st) == 0) {
       |           ^~~~~
       |           stat
+cc: warning - lang-c++ is deprecated
 /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h: In function 'int spdlog::details::os::pid()':
-/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:395:43: error: '::getpid' has not been declared
-  395 |     return conditional_static_cast<int>(::getpid());
+/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:359:43: error: '::getpid' has not been declared
+  359 |     return conditional_static_cast<int>(::getpid());
       |                                           ^~~~~~
 /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h: In function 'bool spdlog::details::os::in_terminal(FILE*)':
-/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:436:14: error: '::isatty' has not been declared
-  436 |     return ::isatty(fileno(file)) != 0;
+/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:400:14: error: '::isatty' has not been declared
+  400 |     return ::isatty(fileno(file)) != 0;
       |              ^~~~~~
 /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h: In function 'bool spdlog::details::os::fsync(FILE*)':
-/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:588:14: error: '::fsync' has not been declared; did you mean 'spdlog::details::os::fsync'?
-  588 |     return ::fsync(fileno(fp)) == 0;
+/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:552:14: error: '::fsync' has not been declared; did you mean 'spdlog::details::os::fsync'?
+  552 |     return ::fsync(fileno(fp)) == 0;
       |              ^~~~~
       |              spdlog::details::os::fsync
-/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:584:20: note: 'spdlog::details::os::fsync' declared here
-  584 | SPDLOG_INLINE bool fsync(FILE *fp) {
+/home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:548:20: note: 'spdlog::details::os::fsync' declared here
+  548 | SPDLOG_INLINE bool fsync(FILE *fp) {
       |                    ^~~~~
 cc: warning - lang-c++ is deprecated
 gmake[2]: *** [CMakeFiles/spdlog.dir/build.make:76: CMakeFiles/spdlog.dir/src/spdlog.cpp.o] Error 1
@@ -78,109 +192,113 @@ cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
-In file included from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/construct_at.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__string/constexpr_c_functions.h:14,
-                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__algorithm/copy_move_common.h:18,
-                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__algorithm/copy.h:12,
-                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/algorithm:1794,
-                 from /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format-inl.h:12,
-                 from /home/chirag/qnx-porter/ports/spdlog/work/src/src/bundled_fmtlib_format.cpp:11:
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = wchar_t]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = wchar_t; long unsigned int SIZE = 500; Allocator = std::__2::allocator<wchar_t>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = wchar_t; long unsigned int SIZE = 500; Allocator = std::__2::allocator<wchar_t>]':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = int; long unsigned int SIZE = 500; Allocator = std::__2::allocator<int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = int; long unsigned int SIZE = 500; Allocator = std::__2::allocator<int>]':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39,
-    inlined from 'void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:918:35,
-    inlined from 'void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:909:16,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:924:63,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:900:17,
-    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:908:9,
-    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2929:69,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2919:13,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2907:24,
-    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:3017:29:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39,
-    inlined from 'void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:918:35,
-    inlined from 'void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:909:16,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:924:63,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:900:17,
-    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:908:9,
-    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2929:69,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2919:13,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2907:24,
-    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:3020:27:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:860:39,
-    inlined from 'void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:918:35,
-    inlined from 'void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/base.h:909:16,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:924:63,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:900:17,
-    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:908:9,
-    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2929:69,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2919:13,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:2907:24,
-    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/fmt/bundled/format.h:3034:29:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
 gmake[2]: Target 'CMakeFiles/spdlog.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:83: CMakeFiles/spdlog.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:134: CMakeFiles/spdlog.dir/all] Error 2
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
 gmake[1]: Target 'all' not remade because of errors.
-gmake: *** [Makefile:156: all] Error 2
+gmake: *** [Makefile:166: all] Error 2
 gmake: Target 'default_target' not remade because of errors.
 [exit 2]

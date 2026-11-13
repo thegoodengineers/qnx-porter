@@ -6,10 +6,10 @@ ROOT = Path(__file__).resolve().parents[1]
 CODELAB = ROOT / "docs" / "codelab" / "port-a-library.md"
 QNX_COPY = ROOT / "docs" / "codelab" / "qnx-codelabs-format" / "markdown" / "port-cmake-library-qnx" / \
     "port-cmake-library-qnx.md"
-LOGS = ["results/runs/campaign-7.log", "results/runs/campaign-aarch64-2.log", "ports/json-c/qnx-toolchain.cmake",
-        "ports/json-c/logs/round-01.log", "ports/json-c/logs/tests.log", "ports/json-c/logs/crashes.log",
+LOGS = ["results/runs/campaign-7.log", "results/runs/campaign-aarch64-2.log", "ports-2024/json-c/qnx-toolchain.cmake",
+        "ports-2024/json-c/logs/round-01.log", "ports-2024/json-c/logs/tests.log", "ports-2024/json-c/logs/crashes.log",
         "ports/json-c/patches/0001-printf-null-test-json-patch-c.patch",
-        "ports/mbedtls/patches/0001-link-libsocket.patch"]
+        "ports-2024/mbedtls/patches/0001-link-libsocket.patch"]
 
 
 def split(text: str) -> tuple[dict, str]:

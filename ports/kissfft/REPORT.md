@@ -1,8 +1,8 @@
-# kissfft 131.1.0 on QNX 8.0 (x86_64)
+# kissfft 131.2.0 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/mborgerding/kissfft.git at `131.1.0` (`8f47a67f595a`) |
+| Upstream | https://github.com/mborgerding/kissfft.git at `131.2.0` (`7bce4153c6bc`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

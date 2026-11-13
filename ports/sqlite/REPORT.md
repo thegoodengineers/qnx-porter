@@ -1,14 +1,14 @@
-# sqlite version-3.47.2 on QNX 8.0 (x86_64)
+# sqlite version-3.54.1 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/sqlite/sqlite.git at `version-3.47.2` (`262de1bebb06`) |
+| Upstream | https://github.com/sqlite/sqlite.git at `version-3.54.1` (`57520227c953`) |
 | Build system | autotools |
 | Toolchain | QNX SDP 8.0, `qnx-env.sh` in this folder |
 | Build | **built** after 1 round(s) |
 | Library's own tests | not run |
 | Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 2.7 min |
+| Time | 1.9 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

@@ -5,7 +5,7 @@ Source dir: /home/chirag/qnx-porter/ports/inih/work/src
 Build dir: /home/chirag/qnx-porter/ports/inih/work/build
 Build type: cross build
 Project name: inih
-Project version: 58
+Project version: 63
 C compiler for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc (gcc 12.2.0 "x86_64-pc-nto-qnx8.0.0-gcc (QNX8.0.0-rfe1c11236e8a392fdc575fe111bbc8aa4f10d82b-500) 12.2.0")
 C linker for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc ld.bfd 2.43.0
 C compiler for the build machine: cc (gcc 11.4.0 "cc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0")
@@ -16,13 +16,12 @@ Host machine cpu family: x86_64
 Host machine cpu: x86_64
 Target machine cpu family: x86_64
 Target machine cpu: x86_64
-C++ compiler for the build machine: c++ (gcc 11.4.0 "c++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0")
-C++ linker for the build machine: c++ ld.bfd 2.38
+Program runtest.sh found: YES (/home/chirag/qnx-porter/ports/inih/work/src/tests/runtest.sh)
 C++ compiler for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-g++ (gcc 12.2.0 "x86_64-pc-nto-qnx8.0.0-g++ (QNX8.0.0-rfe1c11236e8a392fdc575fe111bbc8aa4f10d82b-500) 12.2.0")
 C++ linker for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-g++ ld.bfd 2.43.0
-Build targets in project: 2
+Build targets in project: 19
 
-inih 58
+inih 63
 
   User defined options
     Cross files    : /home/chirag/qnx-porter/ports/inih/work/qnx-cross.ini
@@ -31,7 +30,59 @@ inih 58
 Found ninja-1.10.1 at /usr/bin/ninja
 $ meson compile -C /home/chirag/qnx-porter/ports/inih/work/build
 ninja: Entering directory `/home/chirag/qnx-porter/ports/inih/work/build'
-[1/4] Compiling C object libinih.a.p/ini.c.o
-[2/4] Linking static target libinih.a
-[3/4] Compiling C++ object libINIReader.a.p/cpp_INIReader.cpp.o
-[4/4] Linking static target libINIReader.a
+[1/56] Compiling C object tests/unittest_multi.p/unittest.c.o
+[2/56] Compiling C object tests/unittest_multi_max_line.p/.._ini.c.o
+[3/56] Compiling C object tests/unittest_multi.p/.._ini.c.o
+[4/56] Compiling C object tests/unittest_single.p/.._ini.c.o
+[5/56] Compiling C object tests/unittest_multi_max_line.p/unittest.c.o
+[6/56] Compiling C object tests/unittest_single.p/unittest.c.o
+[7/56] Compiling C object libinih.a.p/ini.c.o
+[8/56] Compiling C object tests/unittest_disallow_inline_comments.p/.._ini.c.o
+[9/56] Compiling C object tests/unittest_disallow_inline_comments.p/unittest.c.o
+[10/56] Linking static target libinih.a
+[11/56] Compiling C object tests/unittest_stop_on_first_error.p/unittest.c.o
+[12/56] Compiling C object tests/unittest_stop_on_first_error.p/.._ini.c.o
+[13/56] Linking target tests/unittest_multi_max_line
+[14/56] Linking target tests/unittest_multi
+[15/56] Compiling C object tests/unittest_handler_lineno.p/.._ini.c.o
+[16/56] Compiling C object tests/unittest_handler_lineno.p/unittest.c.o
+[17/56] Compiling C object tests/unittest_string.p/unittest_string.c.o
+[18/56] Compiling C object tests/unittest_string.p/.._ini.c.o
+[19/56] Linking target tests/unittest_single
+[20/56] Compiling C object tests/unittest_heap.p/unittest.c.o
+[21/56] Compiling C object tests/unittest_heap.p/.._ini.c.o
+[22/56] Linking target tests/unittest_disallow_inline_comments
+[23/56] Compiling C object tests/unittest_heap_max_line.p/.._ini.c.o
+[24/56] Compiling C object tests/unittest_heap_max_line.p/unittest.c.o
+[25/56] Linking target tests/unittest_stop_on_first_error
+[26/56] Linking target tests/unittest_string
+[27/56] Linking target tests/unittest_handler_lineno
+[28/56] Compiling C object tests/unittest_heap_realloc.p/.._ini.c.o
+[29/56] Compiling C object tests/unittest_heap_realloc.p/unittest.c.o
+[30/56] Compiling C object tests/unittest_heap_realloc_max_line.p/unittest.c.o
+[31/56] Compiling C object tests/unittest_heap_realloc_max_line.p/.._ini.c.o
+[32/56] Compiling C object tests/unittest_heap_string.p/.._ini.c.o
+[33/56] Compiling C object tests/unittest_heap_string.p/unittest_string.c.o
+[34/56] Linking target tests/unittest_heap
+[35/56] Compiling C object tests/unittest_call_handler_on_new_section.p/.._ini.c.o
+[36/56] Compiling C object tests/unittest_call_handler_on_new_section.p/unittest.c.o
+[37/56] Compiling C object tests/unittest_allow_no_value.p/.._ini.c.o
+[38/56] Linking target tests/unittest_heap_string
+[39/56] Linking target tests/unittest_heap_max_line
+[40/56] Linking target tests/unittest_heap_realloc
+[41/56] Compiling C object tests/unittest_allow_no_value.p/unittest.c.o
+[42/56] Compiling C object tests/unittest_alloc.p/unittest_alloc.c.o
+[43/56] Compiling C object tests/unittest_alloc.p/.._ini.c.o
+[44/56] Linking target tests/unittest_heap_realloc_max_line
+[45/56] Compiling C object tests/unittest_file_error.p/.._ini.c.o
+[46/56] Compiling C object tests/unittest_file_error.p/unittest_file_error.c.o
+[47/56] Compiling C object examples/unittest_INIReaderExample.p/.._ini.c.o
+[48/56] Linking target tests/unittest_call_handler_on_new_section
+[49/56] Linking target tests/unittest_allow_no_value
+[50/56] Linking target tests/unittest_file_error
+[51/56] Linking target tests/unittest_alloc
+[52/56] Compiling C++ object examples/unittest_INIReaderExample.p/INIReaderExample.cpp.o
+[53/56] Compiling C++ object libINIReader.a.p/cpp_INIReader.cpp.o
+[54/56] Compiling C++ object examples/unittest_INIReaderExample.p/.._cpp_INIReader.cpp.o
+[55/56] Linking static target libINIReader.a
+[56/56] Linking target examples/unittest_INIReaderExample

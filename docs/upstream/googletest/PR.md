@@ -15,13 +15,13 @@ The change is in googletest's QNX-only path (`#ifdef GTEST_OS_QNX`). POSIX says 
 (`qnx-ports/googletest`, branch `qnx_v1.13.0`) makes the same one-line change.
 
 ## Verification, from our logs
-Without the patch, googletest 1.15.2's own tests on the QNX 8.0 x86_64 target (`ports/googletest/logs/tests.log`):
+Without the patch, googletest 1.15.2's own tests on the QNX 8.0 x86_64 target (`ports-2024/googletest/logs/tests.log`):
 ```
 FAIL  googletest-death-test-test (exit 134)
 FAIL  gtest_repeat_test (exit 134)
 25/27 tests passed on the QNX target; 18 not runnable there
 ```
-The core dump (`ports/googletest/logs/crashes.log`) ends in `DeathTestAbort` called from
+The core dump (`ports-2024/googletest/logs/crashes.log`) ends in `DeathTestAbort` called from
 `ExecDeathTestSpawnChild`; the abort message read from the core
 ([`docs/qnx-reports/fchdir-o-rdonly.md`](../../qnx-reports/fchdir-o-rdonly.md)):
 ```

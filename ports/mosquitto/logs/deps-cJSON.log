@@ -1,0 +1,9 @@
+$ cmake --install /home/chirag/qnx-porter/ports/cJSON/work/build
+-- Install configuration: "Release"
+-- Installing: /home/chirag/qnx-porter/ports/mosquitto/work/deps/usr/local/include/cjson/cJSON.h
+-- Installing: /home/chirag/qnx-porter/ports/mosquitto/work/deps/usr/local/lib/pkgconfig/libcjson.pc
+-- Installing: /home/chirag/qnx-porter/ports/mosquitto/work/deps/usr/local/lib/libcjson.a
+-- Installing: /home/chirag/qnx-porter/ports/mosquitto/work/deps/usr/local/lib/cmake/cJSON/cjson.cmake
+-- Installing: /home/chirag/qnx-porter/ports/mosquitto/work/deps/usr/local/lib/cmake/cJSON/cjson-release.cmake
+-- Installing: /home/chirag/qnx-porter/ports/mosquitto/work/deps/usr/local/lib/cmake/cJSON/cJSONConfig.cmake
+-- Installing: /home/chirag/qnx-porter/ports/mosquitto/work/deps/usr/local/lib/cmake/cJSON/cJSONConfigVersion.cmake

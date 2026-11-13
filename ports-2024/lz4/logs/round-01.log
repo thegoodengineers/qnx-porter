@@ -1,0 +1,65 @@
+$ cmake -S /home/chirag/qnx-porter/ports/lz4/work/src/build/cmake -B /home/chirag/qnx-porter/ports/lz4/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/lz4/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/lz4/work/qnx-run
+-- Creating build script for LZ4 version: 1.10.0
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test CFLAG_pedantic_errors
+-- Performing Test CFLAG_pedantic_errors - Success
+-- Performing Test CFLAG_Wall
+-- Performing Test CFLAG_Wall - Success
+-- Performing Test CFLAG_Wextra
+-- Performing Test CFLAG_Wextra - Success
+-- Performing Test CFLAG_Wundef
+-- Performing Test CFLAG_Wundef - Success
+-- Performing Test CFLAG_Wcast_qual
+-- Performing Test CFLAG_Wcast_qual - Success
+-- Performing Test CFLAG_Wcast_align
+-- Performing Test CFLAG_Wcast_align - Success
+-- Performing Test CFLAG_Wshadow
+-- Performing Test CFLAG_Wshadow - Success
+-- Performing Test CFLAG_Wswitch_enum
+-- Performing Test CFLAG_Wswitch_enum - Success
+-- Performing Test CFLAG_Wdeclaration_after_statement
+-- Performing Test CFLAG_Wdeclaration_after_statement - Success
+-- Performing Test CFLAG_Wstrict_prototypes
+-- Performing Test CFLAG_Wstrict_prototypes - Success
+-- Performing Test CFLAG_Wpointer_arith
+-- Performing Test CFLAG_Wpointer_arith - Success
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports/lz4/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports/lz4/work/build -j 2 -- -k
+[  4%] Building C object CMakeFiles/lz4_static.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/lz4.c.o
+[  9%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/programs/bench.c.o
+[ 14%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/programs/lorem.c.o
+[ 19%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/programs/lz4cli.c.o
+[ 23%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/programs/lz4io.c.o
+[ 28%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/programs/threadpool.c.o
+[ 33%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/programs/timefn.c.o
+[ 38%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/programs/util.c.o
+[ 42%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/lz4.c.o
+[ 47%] Building C object CMakeFiles/lz4_static.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/lz4file.c.o
+[ 52%] Building C object CMakeFiles/lz4_static.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/lz4frame.c.o
+[ 57%] Building C object CMakeFiles/lz4_static.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/lz4hc.c.o
+[ 61%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/lz4file.c.o
+[ 66%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/lz4frame.c.o
+[ 71%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/lz4hc.c.o
+[ 76%] Building C object CMakeFiles/lz4_static.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/xxhash.c.o
+[ 80%] Linking C static library liblz4.a
+[ 80%] Built target lz4_static
+[ 85%] Building C object CMakeFiles/lz4cli.dir/home/chirag/qnx-porter/ports/lz4/work/src/lib/xxhash.c.o
+[ 90%] Linking C executable lz4
+[ 90%] Built target lz4cli
+[100%] Creating symlink for lz4cat
+[100%] Creating symlink for unlz4
+[100%] Built target create_unlz4_symlink
+[100%] Built target create_lz4cat_symlink

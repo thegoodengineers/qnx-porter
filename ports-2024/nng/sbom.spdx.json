@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "nng-v1.9.0-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/nng-29aff2bacc9e2cfa6dcc52155d2816582617f918",
+  "creationInfo": {
+    "created": "2026-11-13T05:09:06Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-nng",
+      "name": "nng",
+      "versionInfo": "v1.9.0",
+      "downloadLocation": "git+https://github.com/nanomsg/nng.git@29aff2bacc9e2cfa6dcc52155d2816582617f918",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "MIT",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over LICENSE.txt, README.adoc, docs/LICENSE.adoc, docs/README.txt, etc/README.adoc, tests/README.adoc: MIT. Per-file detections: LICENSE.txt: MIT; README.adoc: MIT; docs/LICENSE.adoc: MIT; tests/README.adoc: MIT."
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/nng/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "f32fe86844fa2fa920684d2517def4d703a6425d"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "d1c3e0dd55a036afe934d2e6b61ef8a8439d55b1714e9c84fe5565d6182f0329"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-nng"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-nng"
+    }
+  ]
+}

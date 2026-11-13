@@ -1,0 +1,18 @@
+Subject: [qnx-porter 0001] qnx-source
+Source: deterministic rule
+Reason: `strdup` is in <string.h>, which src/cbortojson.c already includes, so a strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions in QNX's headers, as _GNU_SOURCE does on glibc.
+Error: /home/chirag/qnx-porter/ports/tinycbor/work/src/src/cbortojson.c:399:20: error: implicit declaration of function 'strdup'; did you mean 'strcmp'? [-Werror=implicit-function-declaration]
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -13,8 +13,8 @@
+ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+-set(CMAKE_C_FLAGS_INIT "-g ")
+-set(CMAKE_CXX_FLAGS_INIT "-g ")
++set(CMAKE_C_FLAGS_INIT "-g -D_QNX_SOURCE")
++set(CMAKE_CXX_FLAGS_INIT "-g -D_QNX_SOURCE")
+ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/tinycbor/work/stubs")
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/tinycbor/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none

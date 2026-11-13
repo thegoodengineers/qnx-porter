@@ -31,13 +31,14 @@ on a QNX 8.0 target.
   through QNX's `on -u`, and QNX's `timeout` caps each test.
 - **Results** (README headline, written by `scripts/ports_csv.py`):
 
-  > aarch64le: 57 of 61 libraries built for QNX 8.0; 1314 of 1350 of their own tests passed on a QNX 8.0
-  > target (33 libraries with tests that ran); 27 patches, 27 by rules (29 of the 31 libraries oss.qnx.com does
-  > not list built); x86_64: 57 of 61 libraries built for QNX 8.0; 1332 of 1366 of their own tests passed on a
-  > QNX 8.0 target (33 libraries with tests that ran); 25 patches, 25 by rules (29 of the 31 libraries
-  > oss.qnx.com does not list built).
+  > aarch64le: 57 of 61 libraries built for QNX 8.0; 1314 of 1350 of their own tests passed on a QNX 8.0 target
+  > (33 libraries with tests that ran); 27 patches, 27 by rules (29 of the 31 libraries oss.qnx.com does not
+  > list built); x86_64: 58 of 61 libraries built for QNX 8.0; 1563 of 1658 of their own tests passed on a QNX
+  > 8.0 target (43 libraries with tests that ran); 31 patches, 31 by rules (29 of the 31 libraries oss.qnx.com
+  > does not list built).
 
-  For example, mbedtls passed 130/130 of its tests on QNX and json-c 25/25 (`results/ports.csv`).
+  x86_64 is at the newest release tag of each library, aarch64 at the 2024 tags. For example, on x86_64
+  mbedtls 4.2.0 passed 148/148 of its tests on QNX and json-c 0.19 28/28 (`results/ports.csv`).
 - **Crash triage from QNX core dumps.** When a test crashes on the target, the core is copied back and read
   with the SDP's own gdb. A `printf("%s", NULL)`, which glibc prints as `(null)` and QNX's libc faults on, is
   fixed by a rule, and the fix stays only if more tests pass. json-c, libconfig, tinyxml2 and capstone now pass.
@@ -154,7 +155,7 @@ with every change visible.
 | Runs the library's tests on QNX 8.0 | `qnx_porter/target.py`: `ctest_on_target()`, `Target.sync()`, `write_wrapper()`, `remote_command()`; output `ports/<library>/logs/tests.log` and `tests.junit.xml` (`junit_from_log()`) |
 | QNX path-space links | `qnx_porter/target.py`: `link_command()` (QNX `ln -sP`), called from `Target.sync()` |
 | QNX `on -u` and `timeout` | `qnx_porter/target.py`: `remote_command()`; `run_as: qnxuser` for libuv in `campaign.yaml`; output `ports-model/libuv/logs/tests.log` |
-| Reads QNX core dumps | `qnx_porter/crash.py`: `collect()` copies cores from the target, `backtrace()` runs the SDP's gdb; output `ports/json-c/logs/crashes.log` |
+| Reads QNX core dumps | `qnx_porter/crash.py`: `collect()` copies cores from the target, `backtrace()` runs the SDP's gdb; output `ports-2024/json-c/logs/crashes.log` |
 | Real-time harness on QNX | `qnx_porter/rt_bench.py`: `BENCH_C` (SCHED_FIFO, `ThreadCtl(_NTO_TCTL_RUNMASK)`, `ClockCycles()`, `SYSPAGE_ENTRY(qtime)->cycles_per_sec`), `compile_bench()` with `qcc`, `run_bench()`; output `results/rt/x86_64/<library>.json` |
 | Rust on QNX 8.0 | `qnx_porter/crate.py`: `cargo_env()` (SDP `qcc`/`q++`), `build_tests()` (`-Zbuild-std`), `run_tests()`; output `ports-rust*/<crate>/logs/tests.log` |
 | Builds the QNX target | `scripts/qemu_target.sh` (`mkqnximage`, sshd-auth snippet, bridge networking; `QNX_TARGET_ARCH=aarch64le` for aarch64 on QEMU) |

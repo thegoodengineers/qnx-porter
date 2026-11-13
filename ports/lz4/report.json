@@ -1,8 +1,8 @@
 {
   "library": "lz4",
   "url": "https://github.com/lz4/lz4.git",
-  "version": "v1.10.0",
-  "commit": "ebb370ca83af193212df4dcbadcc5d87bc0de2f0",
+  "version": "v1.11.1",
+  "commit": "aa4647fad575d01a874aaaadcdbe8e6a40e072f5",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -20,7 +20,8 @@
   "blocked_on": [],
   "minutes": 0.5,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T07:57:18+00:00"
+  "finished": "2026-11-13T16:03:57+00:00"
 }

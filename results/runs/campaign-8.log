@@ -1,0 +1,716 @@
+code: 5f0886c (main)
+target: QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+resume: 0 libraries already have a report in /home/chirag/qnx-porter/ports; 61 to go
+
+=== [1/61] json-c json-c-0.19-20260627 ===
+[1/5] fetch https://github.com/json-c/json-c.git @ json-c-0.19-20260627
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      27/28 tests passed
+      fix 0001 [printf-null] Crash on QNX: printf() at tests/test_json_patch.c:31 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C lea
+      after crash fixes: 28/28 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/json-c/REPORT.md
+
+=== [2/61] yyjson 0.13.0 ===
+[1/5] fetch https://github.com/ibireme/yyjson.git @ 0.13.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      12/12 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/yyjson/REPORT.md
+
+=== [3/61] cmocka cmocka-2.0.2 ===
+[1/5] fetch https://gitlab.com/cmocka/cmocka.git @ cmocka-2.0.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports/cmocka/work/src/src/cmocka.c:4346:30: error: 'PATH_MAX' undeclared (first use in this function)
+      no rule or model fix left for: /home/chirag/qnx-porter/ports/cmocka/work/src/src/cmocka.c:4346:30: error: 'PATH_MAX' undeclared (first use in this function)
+[5/5] report: /home/chirag/qnx-porter/ports/cmocka/REPORT.md
+
+=== [4/61] libcbor v0.14.0 ===
+[1/5] fetch https://github.com/PJK/libcbor.git @ v0.14.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libcbor/REPORT.md
+
+=== [5/61] mbedtls v4.2.0 ===
+[1/5] fetch https://github.com/Mbed-TLS/mbedtls.git @ v4.2.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 2 error(s); first: CMake Error at tests/CMakeLists.txt:69 (add_dependencies):
+      no rule or model fix left for: CMake Error at tests/CMakeLists.txt:69 (add_dependencies):
+[5/5] report: /home/chirag/qnx-porter/ports/mbedtls/REPORT.md
+
+=== [6/61] libsodium 1.0.22-RELEASE ===
+[1/5] fetch https://github.com/jedisct1/libsodium.git @ 1.0.22-RELEASE
+[2/5] build system: autotools; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      101/101 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libsodium/REPORT.md
+
+=== [7/61] libmodbus v3.2.0 ===
+[1/5] fetch https://github.com/stephane/libmodbus.git @ v3.2.0
+[2/5] build system: autotools; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libmodbus/REPORT.md
+
+=== [8/61] nng v2.1.0 ===
+[1/5] fetch https://github.com/nanomsg/nng.git @ v2.1.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+      fix 0001 [header-alias] <sys/errno.h> is a glibc alias QNX 8.0 does not ship; POSIX's <errno.h> declares the same things, and QNX has it.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+
+=== resumed, code: 8a40b5e (main): leftover test processes are now killed after each library ===
+target: QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+resume: 5 libraries already have a report in /home/chirag/qnx-porter/ports; 56 to go
+
+=== [1/56] cmocka cmocka-2.0.2 ===
+[1/5] fetch https://gitlab.com/cmocka/cmocka.git @ cmocka-2.0.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports/cmocka/work/src/src/cmocka.c:4346:30: error: 'PATH_MAX' undeclared (first use in this function)
+      fix 0001 [qnx-source] `PATH_MAX` is in <limits.h>, which src/cmocka.c already includes, so a strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions in QNX's headers, as
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      88/89 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/cmocka/REPORT.md
+
+=== [2/56] mbedtls v4.2.0 ===
+[1/5] fetch https://github.com/Mbed-TLS/mbedtls.git @ v4.2.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 29 error(s); first: /home/chirag/qnx-porter/ports/mbedtls/work/src/library/x509_crt.c:2846:(.text+0x7d1): undefined reference to `__inet_pton'
+      fix 0001 [link-libsocket] `__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      148/148 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/mbedtls/REPORT.md
+
+=== [3/56] nng v2.1.0 ===
+[1/5] fetch https://github.com/nanomsg/nng.git @ v2.1.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
+      fix 0001 [header-alias] <sys/errno.h> is a glibc alias QNX 8.0 does not ship; POSIX's <errno.h> declares the same things, and QNX has it.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      3/64 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/nng/REPORT.md
+
+=== [4/56] libconfig v1.8.3 ===
+[1/5] fetch https://github.com/hyperrealm/libconfig.git @ v1.8.3
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+      fix 0001 [printf-null] Crash on QNX: snprintf() at tests/tests.c:100 formats a NULL pointer with %s (backtrace: strlen <- snprintf). glibc prints "(null)" for that, QNX's libc faults; C leaves i
+      after crash fixes: 1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libconfig/REPORT.md
+
+=== [5/56] paho.mqtt.c v1.3.16 ===
+[1/5] fetch https://github.com/eclipse/paho.mqtt.c.git @ v1.3.16
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 6 error(s); first: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: ../src/libpaho-mqtt3c.so.1.3.16: undefined reference to `be32toh'
+      fix 0001 [endian-netbyte] `be32toh` comes from glibc's <endian.h>, which QNX 8.0 does not have. QNX has the same names as BSD macros in <net/netbyte.h>; a small header (-included in every compil
+[3/5] build OK after 2 round(s)
+[4/5] tests skipped: build only: the test suite needs an MQTT broker on the target
+[5/5] report: /home/chirag/qnx-porter/ports/paho.mqtt.c/REPORT.md
+
+=== [6/56] cJSON v1.7.19 ===
+[1/5] fetch https://github.com/DaveGamble/cJSON.git @ v1.7.19
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      18/19 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/cJSON/REPORT.md
+
+=== [7/56] jansson v2.15.1 ===
+[1/5] fetch https://github.com/akheron/jansson.git @ v2.15.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
+      fix 0001 [link-libm] `__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      211/215 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/jansson/REPORT.md
+
+=== [8/56] libyaml 0.2.5 ===
+[1/5] fetch https://github.com/yaml/libyaml.git @ 0.2.5
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      2/2 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libyaml/REPORT.md
+
+=== [9/56] msgpack-c c-7.0.2 ===
+[1/5] fetch https://github.com/msgpack/msgpack-c.git @ c-7.0.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/msgpack-c/REPORT.md
+
+=== [10/56] tinycbor v7.1 ===
+[1/5] fetch https://github.com/intel/tinycbor.git @ v7.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports/tinycbor/work/src/src/cbortojson.c:399:20: error: implicit declaration of function 'strdup'; did you mean 'strcmp'? [-Werror=implicit-fu
+      fix 0001 [qnx-source] `strdup` is in <string.h>, which src/cbortojson.c already includes, so a strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions in QNX's headers, 
+      fix 0002 [no-werror] Warning -Wint-conversion is promoted to an error by the project's -Werror. Keep it a warning (still printed in the build log) instead of editing the library's code; QNX's he
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/tinycbor/REPORT.md
+
+=== [11/56] nanopb 0.4.9.3 ===
+[1/5] fetch https://github.com/nanopb/nanopb.git @ 0.4.9.3
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests skipped: build only: its tests use scons and protoc
+[5/5] report: /home/chirag/qnx-porter/ports/nanopb/REPORT.md
+
+=== [12/56] flatcc v0.6.4 ===
+[1/5] fetch https://github.com/dvidelabs/flatcc.git @ v0.6.4
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests skipped: build only: its tests run the just-built flatcc compiler on the build host
+[5/5] report: /home/chirag/qnx-porter/ports/flatcc/REPORT.md
+
+=== [13/56] pugixml v1.16 ===
+[1/5] fetch https://github.com/zeux/pugixml.git @ v1.16
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/pugixml/REPORT.md
+
+=== [14/56] tinyxml2 11.0.0 ===
+[1/5] fetch https://github.com/leethomason/tinyxml2.git @ 11.0.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+      fix 0001 [printf-null] Crash on QNX: printf() at xmltest.cpp:54 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C leaves it undef
+      after crash fixes: 1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/tinyxml2/REPORT.md
+
+=== [15/56] expat R_2_10_0 ===
+[1/5] fetch https://github.com/libexpat/libexpat.git @ R_2_10_0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports/expat/work/src/expat/lib/xmlparse.c:163:4: error: #error You do not have support for any sources of high quality entropy enabled. For en
+      no rule or model fix left for: /home/chirag/qnx-porter/ports/expat/work/src/expat/lib/xmlparse.c:163:4: error: #error You do not have support for any sources of high quality entropy enabled. 
+[5/5] report: /home/chirag/qnx-porter/ports/expat/REPORT.md
+
+=== [16/56] libxml2 v2.15.4 ===
+[1/5] fetch https://github.com/GNOME/libxml2.git @ v2.15.4
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      7/8 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libxml2/REPORT.md
+
+=== [17/56] inih r63 ===
+[1/5] fetch https://github.com/benhoyt/inih.git @ r63
+[2/5] build system: meson; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      17/17 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/inih/REPORT.md
+
+=== [18/56] cmark 0.31.2 ===
+[1/5] fetch https://github.com/commonmark/cmark.git @ 0.31.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/cmark/REPORT.md
+
+=== [19/56] zlib v1.4 ===
+[1/5] fetch https://github.com/madler/zlib.git @ v1.4
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      4/10 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/zlib/REPORT.md
+
+=== [20/56] lz4 v1.11.1 ===
+[1/5] fetch https://github.com/lz4/lz4.git @ v1.11.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/lz4/REPORT.md
+
+=== [21/56] zstd v1.5.7 ===
+[1/5] fetch https://github.com/facebook/zstd.git @ v1.5.7
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/4 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/zstd/REPORT.md
+
+=== [22/56] miniz 3.1.2 ===
+[1/5] fetch https://github.com/richgel999/miniz.git @ 3.1.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/miniz/REPORT.md
+
+=== [23/56] libdeflate v1.26 ===
+[1/5] fetch https://github.com/ebiggers/libdeflate.git @ v1.26
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libdeflate/REPORT.md
+
+=== [24/56] xxHash v0.8.4 ===
+[1/5] fetch https://github.com/Cyan4973/xxHash.git @ v0.8.4
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/xxHash/REPORT.md
+
+=== [25/56] BLAKE3 1.8.7 ===
+[1/5] fetch https://github.com/BLAKE3-team/BLAKE3.git @ 1.8.7
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/BLAKE3/REPORT.md
+
+=== [26/56] libtommath v1.3.0 ===
+[1/5] fetch https://github.com/libtom/libtommath.git @ v1.3.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libtommath/REPORT.md
+
+=== [27/56] wolfssl v5.9.4-stable ===
+[1/5] fetch https://github.com/wolfSSL/wolfssl.git @ v5.9.4-stable
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 7 error(s); first: /home/chirag/qnx-porter/ports/wolfssl/work/src/wolfcrypt/src/wc_port.c:6187:(.text+0x1e9b): undefined reference to `socket'
+      fix 0001 [link-libsocket] `socket` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/wolfssl/REPORT.md
+
+=== [28/56] libsrtp v2.8.1 ===
+[1/5] fetch https://github.com/cisco/libsrtp.git @ v2.8.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 34 error(s); first: /builds/workspace/QNXOS_800/build_x86_64/lib/libpcap/build/nto-x86_64-o/../../dist/pcap.c:900:(.text+0x1036): undefined reference to `socket'
+      fix 0001 [link-libsocket] `socket` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      8/12 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libsrtp/REPORT.md
+
+=== [29/56] libuv v1.53.0 ===
+[1/5] fetch https://github.com/libuv/libuv.git @ v1.53.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 4 error(s); first: /home/chirag/qnx-porter/ports/libuv/work/src/test/test-fs.c:868:(.text+0x237a): undefined reference to `__isfinite'
+      fix 0001 [link-libm] `__isfinite` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/2 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libuv/REPORT.md
+
+=== [30/56] libevent release-2.1.13-stable ===
+[1/5] fetch https://github.com/libevent/libevent.git @ release-2.1.13-stable
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: /home/chirag/qnx-porter/ports/libevent/work/src/signal.c:257:24: error: 'SA_RESTART' undeclared (first use in this function); did you mean 'ERESTART'?
+      fix 0001 [sa-restart] QNX 8.0's <signal.h> lists SA_RESTART as not supported yet. Defining it as 0 lets the code build; system calls interrupted by a signal then return EINTR instead of restarti
+      round 2: 76 error(s); first: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libevent_extra-2.1.so.7.0.2: undefined reference to `setsockopt'
+      fix 0002 [link-libsocket] `setsockopt` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 3 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      20/24 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libevent/REPORT.md
+
+=== [31/56] c-ares v1.34.9 ===
+[1/5] fetch https://github.com/c-ares/c-ares.git @ v1.34.9
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/c-ares/REPORT.md
+
+=== [32/56] libcoap v4.3.5b ===
+[1/5] fetch https://github.com/obgm/libcoap.git @ v4.3.5b
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 73 error(s); first: /home/chirag/qnx-porter/ports/libcoap/work/src/src/coap_address.c:211:(.text+0x2c7): undefined reference to `getifaddrs'
+      fix 0001 [link-libsocket] `getifaddrs` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libcoap/REPORT.md
+
+=== [33/56] mosquitto v2.1.2 ===
+[1/5] fetch https://github.com/eclipse/mosquitto.git @ v2.1.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: CMake Error at /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+      no rule or model fix left for: CMake Error at /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:230 (message):
+[5/5] report: /home/chirag/qnx-porter/ports/mosquitto/REPORT.md
+
+=== [34/56] libwebsockets v5.1.0 ===
+[1/5] fetch https://github.com/warmcat/libwebsockets.git @ v5.1.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 4 error(s); first: /home/chirag/qnx800/target/qnx/usr/include/ifaddrs.h:32:8: error: redefinition of 'struct ifaddrs'
+      fix 0001 [sa-restart] QNX 8.0's <signal.h> lists SA_RESTART as not supported yet. Defining it as 0 lets the code build; system calls interrupted by a signal then return EINTR instead of restarti
+      round 2: 3 error(s); first: /home/chirag/qnx800/target/qnx/usr/include/ifaddrs.h:32:8: error: redefinition of 'struct ifaddrs'
+      no rule or model fix left for: /home/chirag/qnx800/target/qnx/usr/include/ifaddrs.h:32:8: error: redefinition of 'struct ifaddrs'
+[5/5] report: /home/chirag/qnx-porter/ports/libwebsockets/REPORT.md
+
+=== [35/56] open62541 v1.5.10 ===
+[1/5] fetch https://github.com/open62541/open62541.git @ v1.5.10
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 53 error(s); first: /home/chirag/qnx-porter/ports/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+      no rule or model fix left for: /home/chirag/qnx-porter/ports/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+[5/5] report: /home/chirag/qnx-porter/ports/open62541/REPORT.md
+
+=== [36/56] Micro-CDR v2.0.2 ===
+[1/5] fetch https://github.com/eProsima/Micro-CDR.git @ v2.0.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/Micro-CDR/REPORT.md
+
+=== [37/56] libgpiod v2.3.2 ===
+[1/5] fetch https://github.com/brgl/libgpiod.git @ v2.3.2
+[2/5] build system: meson; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: src/meson.build:4:0: ERROR: Meson version is 0.61.2 but project requires >= 0.64.0
+      no rule or model fix left for: src/meson.build:4:0: ERROR: Meson version is 0.61.2 but project requires >= 0.64.0
+[5/5] report: /home/chirag/qnx-porter/ports/libgpiod/REPORT.md
+
+=== [38/56] can-utils v2025.01 ===
+[1/5] fetch https://github.com/linux-can/can-utils.git @ v2025.01
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 8 error(s); first: /home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: fatal error: endian.h: No such file or directory
+      fix 0001 [endian-compat] <endian.h> does not exist on QNX 8.0. QNX provides BSD byte-order conversion macros in <net/netbyte.h> (__NET_BE*/__NET_LE*); a generated compatibility <endian.h> header
+      fix 0002 [guard-linux-header] <endian.h> does not exist on QNX 8.0 and isobusfs/isobusfs_cmn.h uses nothing from it, so the include is kept for Linux and skipped on QNX.
+      round 2: 6 error(s); first: /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can/netlink.h:22:10: fatal error: linux/types.h: No such file or directory
+      no rule or model fix left for: /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can/netlink.h:22:10: fatal error: linux/types.h: No such file or directory
+[5/5] report: /home/chirag/qnx-porter/ports/can-utils/REPORT.md
+
+=== [39/56] fmt 12.2.1 ===
+[1/5] fetch https://github.com/fmtlib/fmt.git @ 12.2.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 6 error(s); first: /home/chirag/qnx-porter/ports/fmt/work/src/test/gtest/gmock-gtest-all.cc:11045:(.text+0xbc05): undefined reference to `regfree'
+      fix 0001 [link-libregex] `regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      20/21 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/fmt/REPORT.md
+
+=== [40/56] spdlog v1.17.0 ===
+[1/5] fetch https://github.com/gabime/spdlog.git @ v1.17.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 5 error(s); first: /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:187:45: error: no matching function for call to 'stat::stat(const std::__2::basic_string
+      fix 0001 [qnx-source] C++ sees only `struct stat`, not the POSIX function `stat()`: in strict -std=c++NN mode QNX's headers hide POSIX extensions (here sys/stat.h declares stat() only under __EX
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/spdlog/REPORT.md
+
+=== [41/56] googletest v1.18.0 ===
+[1/5] fetch https://github.com/google/googletest.git @ v1.18.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 9 error(s); first: /home/chirag/qnx-porter/ports/googletest/work/src/googletest/src/gtest-port.cc:706:(.text+0x7015): undefined reference to `regfree'
+      fix 0001 [link-libregex] `regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      25/27 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/googletest/REPORT.md
+
+=== [42/56] yaml-cpp yaml-cpp-0.9.0 ===
+[1/5] fetch https://github.com/jbeder/yaml-cpp.git @ yaml-cpp-0.9.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/yaml-cpp/REPORT.md
+
+=== [43/56] tomlplusplus v3.4.0 ===
+[1/5] fetch https://github.com/marzer/tomlplusplus.git @ v3.4.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/tomlplusplus/REPORT.md
+
+=== [44/56] benchmark v1.10.0 ===
+[1/5] fetch https://github.com/google/benchmark.git @ v1.10.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/benchmark/REPORT.md
+
+=== [45/56] libjpeg-turbo 3.2.1 ===
+[1/5] fetch https://github.com/libjpeg-turbo/libjpeg-turbo.git @ 3.2.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      662/662 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libjpeg-turbo/REPORT.md
+
+=== [46/56] libpng v1.6.59 ===
+[1/5] fetch https://github.com/pnggroup/libpng.git @ v1.6.59
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 3 error(s); first: cc: unknown option: '--sysroot=/home/chirag/qnx800/target/qnx'
+      fix 0001 [qcc-sysroot] The project's own build script passes --sysroot to the compiler, which qcc does not accept. qcc already finds the SDP sysroot through QNX_TARGET, so the toolchain stops se
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libpng/REPORT.md
+
+=== [47/56] opus v1.6.1 ===
+[1/5] fetch https://github.com/xiph/opus.git @ v1.6.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/opus/REPORT.md
+
+=== [48/56] libogg v1.3.6 ===
+[1/5] fetch https://github.com/xiph/ogg.git @ v1.3.6
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libogg/REPORT.md
+
+=== [49/56] flac 1.5.0 ===
+[1/5] fetch https://github.com/xiph/flac.git @ 1.5.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 3 error(s); first: /home/chirag/qnx-porter/ports/flac/work/src/src/flac/utils.c:223:(.text+0x166): undefined reference to `wcswidth'
+      fix 0001 [wcswidth-compat] QNX 8.0's libc has wcwidth() but no wcswidth(). POSIX defines wcswidth(s, n) as the sum of wcwidth() over the first n characters of s, or -1 if any is not printable; a
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      7/10 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/flac/REPORT.md
+
+=== [50/56] libsamplerate 0.2.2 ===
+[1/5] fetch https://github.com/libsndfile/libsamplerate.git @ 0.2.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      12/13 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libsamplerate/REPORT.md
+
+=== [51/56] cglm v0.9.7 ===
+[1/5] fetch https://github.com/recp/cglm.git @ v0.9.7
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/cglm/REPORT.md
+
+=== [52/56] libccd v2.1 ===
+[1/5] fetch https://github.com/danfis/libccd.git @ v2.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      3/3 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libccd/REPORT.md
+
+=== [53/56] kissfft 131.2.0 ===
+[1/5] fetch https://github.com/mborgerding/kissfft.git @ 131.2.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/kissfft/REPORT.md
+
+=== [54/56] capstone 5.0.9 ===
+[1/5] fetch https://github.com/capstone-engine/capstone.git @ 5.0.9
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      23/24 tests passed
+      fix 0001 [printf-null] Crash on QNX: printf() at tests/test_iter.c:330 formats a NULL pointer with %s (backtrace: strlen <- printf). glibc prints "(null)" for that, QNX's libc faults; C leaves i
+      after crash fixes: 24/24 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/capstone/REPORT.md
+
+=== [55/56] pcre2 pcre2-10.49 ===
+[1/5] fetch https://github.com/PCRE2Project/pcre2.git @ pcre2-10.49
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/3 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/pcre2/REPORT.md
+
+=== [56/56] sqlite version-3.54.1 ===
+[1/5] fetch https://github.com/sqlite/sqlite.git @ version-3.54.1
+[2/5] build system: autotools; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests skipped: build only: its test suite needs Tcl on the target
+[5/5] report: /home/chirag/qnx-porter/ports/sqlite/REPORT.md
+aarch64le: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1314/1350 passed
+x86_64: 61 libraries, 55 built for QNX 8.0; tests ran for 35 (at least one test each): 1430/1529 passed
+-> /home/chirag/qnx-porter/results/ports.csv
+
+=== re-run with branch chirag/latest-x86: uses:, test options, expat /dev/urandom, sys/queue.h rule ===
+target: QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+
+=== [1/12] libcbor v0.14.0 ===
+[1/5] fetch https://github.com/PJK/libcbor.git @ v0.14.0
+      uses cmocka: installed from its QNX build into work/deps
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      28/28 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libcbor/REPORT.md
+
+=== [2/12] msgpack-c c-7.0.2 ===
+[1/5] fetch https://github.com/msgpack/msgpack-c.git @ c-7.0.2
+      uses googletest: installed from its QNX build into work/deps
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      5/5 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/msgpack-c/REPORT.md
+
+=== [3/12] tinycbor v7.1 ===
+[1/5] fetch https://github.com/intel/tinycbor.git @ v7.1
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 2 error(s); first: /home/chirag/qnx-porter/ports/tinycbor/work/src/src/cbortojson.c:399:20: error: implicit declaration of function 'strdup'; did you mean 'strcmp'? [-Werror=implicit-fu
+      fix 0001 [qnx-source] `strdup` is in <string.h>, which src/cbortojson.c already includes, so a strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions in QNX's headers, 
+      fix 0002 [no-werror] Warning -Wint-conversion is promoted to an error by the project's -Werror. Keep it a warning (still printed in the build log) instead of editing the library's code; QNX's he
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/tinycbor/REPORT.md
+
+=== [4/12] expat R_2_10_0 ===
+[1/5] fetch https://github.com/libexpat/libexpat.git @ R_2_10_0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/expat/REPORT.md
+
+=== [5/12] inih r63 ===
+[1/5] fetch https://github.com/benhoyt/inih.git @ r63
+[2/5] build system: meson; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      17/17 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/inih/REPORT.md
+
+=== [6/12] miniz 3.1.2 ===
+[1/5] fetch https://github.com/richgel999/miniz.git @ 3.1.2
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/miniz/REPORT.md
+
+=== [7/12] libdeflate v1.26 ===
+[1/5] fetch https://github.com/ebiggers/libdeflate.git @ v1.26
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      8/8 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libdeflate/REPORT.md
+
+=== [8/12] c-ares v1.34.9 ===
+[1/5] fetch https://github.com/c-ares/c-ares.git @ v1.34.9
+      uses googletest: installed from its QNX build into work/deps
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      2/3 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/c-ares/REPORT.md
+
+=== [9/12] mosquitto v2.1.2 ===
+[1/5] fetch https://github.com/eclipse/mosquitto.git @ v2.1.2
+      uses cJSON: installed from its QNX build into work/deps
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 4 error(s); first: /home/chirag/qnx-porter/ports/cJSON/work/src/cJSON.c:607:(.text+0x8f4): undefined reference to `__isinf'
+      fix 0001 [link-libm] `__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
+      fix 0002 [add-include] `ntohl` is a macro in QNX's <arpa/inet.h>, and neither libc nor libsocket exports it as a function. apps/db_dump/db_dump.c did not include the header, so the compiler took
+      fix 0003 [link-libsocket] `__inet_ntop` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/mosquitto/REPORT.md
+
+=== [10/12] open62541 v1.5.10 ===
+[1/5] fetch https://github.com/open62541/open62541.git @ v1.5.10
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 53 error(s); first: /home/chirag/qnx-porter/ports/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+      fix 0001 [add-include] `LIST_ENTRY` is a BSD list macro from <sys/queue.h>, which QNX 8.0 ships; arch/posix/eventloop_posix.h uses it without including that header.
+      fix 0002 [add-include] `LIST_ENTRY` is a BSD list macro from <sys/queue.h>, which QNX 8.0 ships; arch/posix/eventloop_posix_interrupt.c uses it without including that header.
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      0/0 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/open62541/REPORT.md
+
+=== [11/12] spdlog v1.17.0 ===
+[1/5] fetch https://github.com/gabime/spdlog.git @ v1.17.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 5 error(s); first: /home/chirag/qnx-porter/ports/spdlog/work/src/include/spdlog/details/os-inl.h:187:45: error: no matching function for call to 'stat::stat(const std::__2::basic_string
+      fix 0001 [qnx-source] C++ sees only `struct stat`, not the POSIX function `stat()`: in strict -std=c++NN mode QNX's headers hide POSIX extensions (here sys/stat.h declares stat() only under __EX
+[3/5] build OK after 2 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/spdlog/REPORT.md
+
+=== [12/12] benchmark v1.10.0 ===
+[1/5] fetch https://github.com/google/benchmark.git @ v1.10.0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      85/87 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/benchmark/REPORT.md
+aarch64le: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1314/1350 passed
+x86_64: 61 libraries, 58 built for QNX 8.0; tests ran for 42 (at least one test each): 1559/1662 passed
+-> /home/chirag/qnx-porter/results/ports.csv
+
+=== re-run with branch chirag/latest-x86: main-stack rule, enable_testing(), host-only test commands, expat test_timeout ===
+target: QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+
+=== [1/4] cJSON v1.7.19 ===
+[1/5] fetch https://github.com/DaveGamble/cJSON.git @ v1.7.19
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      18/19 tests passed
+      fix 0001 [main-stack] Crash on QNX: cJSON_Duplicate_rec() calls itself until the stack runs out (the backtrace is cJSON_Duplicate_rec <- cJSON_Duplicate_rec <- ...). A QNX main thread gets about
+      after crash fixes: 19/19 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/cJSON/REPORT.md
+
+=== [2/4] expat R_2_10_0 ===
+[1/5] fetch https://github.com/libexpat/libexpat.git @ R_2_10_0
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      1/1 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/expat/REPORT.md
+
+=== [3/4] zlib v1.4 ===
+[1/5] fetch https://github.com/madler/zlib.git @ v1.4
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      4/4 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/zlib/REPORT.md
+
+=== [4/4] libogg v1.3.6 ===
+[1/5] fetch https://github.com/xiph/ogg.git @ v1.3.6
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+[3/5] build OK after 1 round(s)
+[4/5] tests on target root@172.31.1.11:22 (QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64)
+      2/2 tests passed
+[5/5] report: /home/chirag/qnx-porter/ports/libogg/REPORT.md
+aarch64le: 61 libraries, 57 built for QNX 8.0; tests ran for 33 (at least one test each): 1314/1350 passed
+x86_64: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1563/1658 passed
+-> /home/chirag/qnx-porter/results/ports.csv

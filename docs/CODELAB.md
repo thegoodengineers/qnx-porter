@@ -136,7 +136,7 @@ The five stages:
    ```
 4. **tests on target**: the build tree is copied to `/data/qnx-porter` on QNX, and every test ctest knows
    about runs **on QNX** over ssh.
-5. **report**: `ports/json-c/REPORT.md`.
+5. **report**: `ports-2024/json-c/REPORT.md`.
 
 One test crashed on QNX ("Memory fault"). The agent copied the core dump from the target, read it with the
 SDP's gdb (`logs/crashes.log`), saw `strlen <- printf`, and found the cause: the test prints a NULL string with
@@ -145,7 +145,7 @@ the patch because more tests passed. See [LINUX_ISMS.md](LINUX_ISMS.md) row 14g.
 
 Open the toolchain the tool generated:
 ```bash
-cat ports/json-c/qnx-toolchain.cmake
+cat ports-2024/json-c/qnx-toolchain.cmake
 ```
 Find `CMAKE_SYSTEM_NAME QNX`, `qcc` with `CMAKE_C_COMPILER_TARGET gcc_ntox86_64`, and `CMAKE_SYSROOT` set
 to your `$QNX_TARGET`. This is the file most upstream projects are missing.
@@ -153,11 +153,11 @@ to your `$QNX_TARGET`. This is the file most upstream projects are missing.
 ## 5. Review every change, and check one test by hand (10 min)
 **[host]**
 ```bash
-cat ports/json-c/REPORT.md
+cat ports-2024/json-c/REPORT.md
 ls ports/json-c/patches/             # one file per change, numbered
 cat ports/json-c/qnx.patch           # every kept source change, against the upstream tag
-less ports/json-c/logs/round-01.log  # the build log of round 1
-less ports/json-c/logs/tests.log     # the test run on QNX
+less ports-2024/json-c/logs/round-01.log  # the build log of round 1
+less ports-2024/json-c/logs/tests.log     # the test run on QNX
 ```
 Each patch begins like this one (`ports/json-c/patches/0001-printf-null-test-json-patch-c.patch`):
 ```
@@ -171,7 +171,7 @@ If you disagree with a change, you have the error, the rule and the reason in on
 Now see for yourself that the tests ran on QNX, not on your host:
 ```bash
 file ports/json-c/work/build/tests/test1     # its interpreter is QNX's /usr/lib/ldqnx-64.so.2
-head -3 ports/json-c/logs/tests.log
+head -3 ports-2024/json-c/logs/tests.log
 ssh root@172.31.1.11 ls -l /home            # a QNX path-space link to /data/qnx-porter/home
 ```
 `tests.log` starts like this:
@@ -188,7 +188,7 @@ Exercise: apply the port to a clean checkout and build it yourself.
 ```bash
 git clone -q --depth 1 --branch json-c-0.18-20240915 https://github.com/json-c/json-c.git /tmp/jc
 git -C /tmp/jc apply "$PWD/ports/json-c/qnx.patch"
-cmake -S /tmp/jc -B /tmp/jc-build -DCMAKE_TOOLCHAIN_FILE="$PWD/ports/json-c/qnx-toolchain.cmake"
+cmake -S /tmp/jc -B /tmp/jc-build -DCMAKE_TOOLCHAIN_FILE="$PWD/ports-2024/json-c/qnx-toolchain.cmake"
 cmake --build /tmp/jc-build -j
 ```
 
@@ -267,7 +267,7 @@ differently. Take googletest's death tests, which abort on QNX 8.0.
 
 1. Read the backtrace the agent took from the core dump:
    ```bash
-   grep -A8 googletest-death-test-test ports/googletest/logs/crashes.log
+   grep -A8 googletest-death-test-test ports-2024/googletest/logs/crashes.log
    ```
    It shows `SIGABRT`, then `DeathTestAbort` and below it `ExecDeathTestSpawnChild`, a QNX-only code path in
    googletest.
@@ -354,7 +354,7 @@ oss.qnx.com check failed (The read operation timed out); using the last saved li
 
 **A test hangs.** Each test runs under QNX's own `timeout -s KILL` on the target (300 s, or the test's own
 smaller `TIMEOUT`), so a hung test cannot hold the ssh session. It is counted as failed, and `tests.log` says
-so; from `ports/flac/logs/tests.log`:
+so; from `ports-2024/flac/logs/tests.log`:
 ```
     killed on the target after 300 s
 ```

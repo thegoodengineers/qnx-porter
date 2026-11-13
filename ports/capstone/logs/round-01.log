@@ -1,4 +1,5 @@
 $ cmake -S /home/chirag/qnx-porter/ports/capstone/work/src -B /home/chirag/qnx-porter/ports/capstone/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/capstone/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/capstone/work/qnx-run
+-- PROJECT_VERSION: 5.0.9 CAPSTONE_VERSION: 5.0.9
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
@@ -40,7 +41,7 @@ CMake Warning:
 
 $ cmake --build /home/chirag/qnx-porter/ports/capstone/work/build -j 2 -- -k
 [  1%] Building C object CMakeFiles/capstone.dir/Mapping.c.o
-[  1%] Building C object CMakeFiles/capstone.dir/cs.c.o
+[  0%] Building C object CMakeFiles/capstone.dir/cs.c.o
 [  1%] Building C object CMakeFiles/capstone.dir/MCInst.c.o
 [  2%] Building C object CMakeFiles/capstone.dir/MCInstrDesc.c.o
 [  3%] Building C object CMakeFiles/capstone.dir/MCRegisterInfo.c.o
@@ -118,92 +119,93 @@ $ cmake --build /home/chirag/qnx-porter/ports/capstone/work/build -j 2 -- -k
 [ 50%] Building C object CMakeFiles/capstone.dir/arch/TriCore/TriCoreInstPrinter.c.o
 [ 50%] Building C object CMakeFiles/capstone.dir/arch/TriCore/TriCoreMapping.c.o
 [ 51%] Building C object CMakeFiles/capstone.dir/arch/TriCore/TriCoreModule.c.o
-[ 52%] Linking C static library libcapstone.a
-[ 52%] Built target capstone
+[ 51%] Built target capstone
+[ 53%] Building C object CMakeFiles/test_basic.dir/tests/test_basic.c.o
+[ 53%] Linking C static library libcapstone.a
+[ 53%] Linking C executable test_basic
+[ 53%] Built target capstone_static
 [ 54%] Building C object CMakeFiles/test_detail.dir/tests/test_detail.c.o
-[ 54%] Building C object CMakeFiles/test_basic.dir/tests/test_basic.c.o
 [ 54%] Linking C executable test_detail
-[ 54%] Linking C executable test_basic
-[ 54%] Built target test_detail
 [ 54%] Built target test_basic
 [ 55%] Building C object CMakeFiles/test_skipdata.dir/tests/test_skipdata.c.o
-[ 55%] Building C object CMakeFiles/test_iter.dir/tests/test_iter.c.o
 [ 55%] Linking C executable test_skipdata
+[ 55%] Built target test_detail
+[ 55%] Building C object CMakeFiles/test_iter.dir/tests/test_iter.c.o
 [ 56%] Linking C executable test_iter
 [ 56%] Built target test_skipdata
 [ 57%] Building C object CMakeFiles/test_arm.dir/tests/test_arm.c.o
+[ 57%] Linking C executable test_arm
 [ 57%] Built target test_iter
 [ 58%] Building C object CMakeFiles/test_arm64.dir/tests/test_arm64.c.o
-[ 58%] Linking C executable test_arm
 [ 59%] Linking C executable test_arm64
 [ 59%] Built target test_arm
 [ 59%] Building C object CMakeFiles/test_mips.dir/tests/test_mips.c.o
-[ 59%] Built target test_arm64
-[ 60%] Building C object CMakeFiles/test_ppc.dir/tests/test_ppc.c.o
-[ 61%] Linking C executable test_mips
+[ 60%] Linking C executable test_mips
+[ 60%] Built target test_arm64
+[ 61%] Building C object CMakeFiles/test_ppc.dir/tests/test_ppc.c.o
 [ 61%] Linking C executable test_ppc
 [ 61%] Built target test_mips
 [ 62%] Building C object CMakeFiles/test_x86.dir/tests/test_x86.c.o
 [ 62%] Built target test_ppc
 [ 62%] Building C object CMakeFiles/test_customized_mnem.dir/tests/test_customized_mnem.c.o
+[ 62%] Linking C executable test_x86
 [ 63%] Linking C executable test_customized_mnem
-[ 63%] Linking C executable test_x86
-[ 63%] Built target test_customized_mnem
+[ 63%] Built target test_x86
 [ 64%] Building C object CMakeFiles/test_sparc.dir/tests/test_sparc.c.o
+[ 64%] Built target test_customized_mnem
+[ 64%] Building C object CMakeFiles/test_systemz.dir/tests/test_systemz.c.o
 [ 65%] Linking C executable test_sparc
-[ 65%] Built target test_x86
-[ 65%] Building C object CMakeFiles/test_systemz.dir/tests/test_systemz.c.o
 [ 66%] Linking C executable test_systemz
+[ 66%] Built target test_systemz
 [ 66%] Built target test_sparc
 [ 67%] Building C object CMakeFiles/test_xcore.dir/tests/test_xcore.c.o
-[ 68%] Linking C executable test_xcore
-[ 68%] Built target test_systemz
-[ 69%] Building C object CMakeFiles/test_m68k.dir/tests/test_m68k.c.o
+[ 68%] Building C object CMakeFiles/test_m68k.dir/tests/test_m68k.c.o
+[ 69%] Linking C executable test_xcore
 [ 70%] Linking C executable test_m68k
 [ 70%] Built target test_xcore
+[ 70%] Built target test_m68k
 [ 71%] Building C object CMakeFiles/test_tms320c64x.dir/tests/test_tms320c64x.c.o
-[ 71%] Built target test_m68k
-[ 71%] Linking C executable test_tms320c64x
 [ 72%] Building C object CMakeFiles/test_m680x.dir/tests/test_m680x.c.o
+[ 72%] Linking C executable test_tms320c64x
 [ 72%] Linking C executable test_m680x
+[ 72%] Built target test_m680x
 [ 72%] Built target test_tms320c64x
+[ 72%] Building C object CMakeFiles/test_wasm.dir/tests/test_wasm.c.o
 [ 73%] Building C object CMakeFiles/test_evm.dir/tests/test_evm.c.o
-[ 74%] Linking C executable test_evm
-[ 74%] Built target test_m680x
-[ 74%] Building C object CMakeFiles/test_wasm.dir/tests/test_wasm.c.o
-[ 75%] Linking C executable test_wasm
+[ 74%] Linking C executable test_wasm
+[ 75%] Linking C executable test_evm
 [ 75%] Built target test_evm
+[ 75%] Built target test_wasm
 [ 75%] Building C object CMakeFiles/test_mos65xx.dir/tests/test_mos65xx.c.o
-[ 76%] Linking C executable test_mos65xx
-[ 76%] Built target test_wasm
-[ 77%] Building C object CMakeFiles/test_bpf.dir/tests/test_bpf.c.o
-[ 78%] Linking C executable test_bpf
-[ 78%] Built target test_mos65xx
+[ 76%] Building C object CMakeFiles/test_bpf.dir/tests/test_bpf.c.o
+[ 77%] Linking C executable test_bpf
+[ 78%] Linking C executable test_mos65xx
+[ 78%] Built target test_bpf
 [ 79%] Building C object CMakeFiles/test_riscv.dir/tests/test_riscv.c.o
+[ 79%] Built target test_mos65xx
+[ 79%] Building C object CMakeFiles/test_sh.dir/tests/test_sh.c.o
 [ 80%] Linking C executable test_riscv
-[ 80%] Built target test_bpf
-[ 80%] Building C object CMakeFiles/test_sh.dir/tests/test_sh.c.o
 [ 81%] Linking C executable test_sh
 [ 81%] Built target test_riscv
 [ 82%] Building C object CMakeFiles/test_tricore.dir/tests/test_tricore.c.o
+[ 82%] Built target test_sh
+[ 82%] Building C object CMakeFiles/test_arm_regression.dir/suite/arm/test_arm_regression.c.o
 [ 83%] Linking C executable test_tricore
-[ 83%] Built target test_sh
-[ 83%] Building C object CMakeFiles/test_arm_regression.dir/suite/arm/test_arm_regression.c.o
 [ 84%] Linking C executable test_arm_regression
 [ 84%] Built target test_tricore
 [ 84%] Building C object CMakeFiles/fuzz_disasm.dir/suite/fuzz/onefile.c.o
 [ 85%] Building C object CMakeFiles/fuzz_disasm.dir/suite/fuzz/fuzz_disasm.c.o
+[ 85%] Built target test_arm_regression
+[ 85%] Building C object CMakeFiles/cstool.dir/cstool/cstool.c.o
 [ 85%] Building C object CMakeFiles/fuzz_disasm.dir/suite/fuzz/platform.c.o
 [ 86%] Linking C executable fuzz_disasm
-[ 86%] Built target test_arm_regression
-[ 86%] Building C object CMakeFiles/cstool.dir/cstool/cstool.c.o
 [ 87%] Building C object CMakeFiles/cstool.dir/cstool/cstool_arm.c.o
 [ 88%] Building C object CMakeFiles/cstool.dir/cstool/cstool_arm64.c.o
 [ 88%] Building C object CMakeFiles/cstool.dir/cstool/cstool_bpf.c.o
-[ 88%] Built target fuzz_disasm
 [ 89%] Building C object CMakeFiles/cstool.dir/cstool/cstool_evm.c.o
 [ 90%] Building C object CMakeFiles/cstool.dir/cstool/cstool_m680x.c.o
 [ 90%] Building C object CMakeFiles/cstool.dir/cstool/cstool_m68k.c.o
+[ 90%] Built target fuzz_disasm
 [ 91%] Building C object CMakeFiles/cstool.dir/cstool/cstool_mips.c.o
 [ 92%] Building C object CMakeFiles/cstool.dir/cstool/cstool_mos65xx.c.o
 [ 92%] Building C object CMakeFiles/cstool.dir/cstool/cstool_powerpc.c.o

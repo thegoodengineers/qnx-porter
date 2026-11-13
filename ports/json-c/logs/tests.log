@@ -1,4 +1,5 @@
 $ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/json-c/work/build); every test command runs on root@172.31.1.11 over ssh
+PASS  test_json_parse_cli (exit 0)
 PASS  test1 (exit 0)
 PASS  test2 (exit 0)
 PASS  test4 (exit 0)
@@ -7,6 +8,7 @@ PASS  test_cast (exit 0)
 PASS  test_charcase (exit 0)
 PASS  test_compare (exit 0)
 PASS  test_deep_copy (exit 0)
+PASS  test_deep_nesting (exit 0)
 PASS  test_double_serializer (exit 0)
 PASS  test_float (exit 0)
 PASS  test_int_add (exit 0)
@@ -23,6 +25,7 @@ PASS  test_util_file (exit 0)
 PASS  test_visit (exit 0)
 PASS  test_object_iterator (exit 0)
 PASS  test_json_pointer (exit 0)
+PASS  test_safe_json_pointer_set (exit 0)
 PASS  test_json_patch (exit 0)
 
-25/25 tests passed on the QNX target
+28/28 tests passed on the QNX target

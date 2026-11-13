@@ -1,0 +1,307 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/libuv/work/build); every test command runs on root@172.31.1.11 over ssh
+FAIL  uv_test (exit 31); its own subtests (TAP): 401 ok, 31 not ok, 40 skipped
+      not ok: platform_output, fs_chown, fs_partial_write, handle_fileno, ipc_send_recv_pipe, ipc_send_recv_pipe_inprocess, ipc_send_recv_tcp_inprocess, pipe_bind_error_addrinuse, pipe_bind_error_addrinuse_pending_instances, pipe_bind_error_addrnotavail, pipe_bind_error_inval, pipe_connect_bad_name, pipe_connect_close_multiple, pipe_connect_multiple, pipe_connect_on_prepare, pipe_connect_to_file, pipe_getsockname, pipe_getsockname_long_path, pipe_pending_instances, pipe_ping_pong, pipe_ping_pong_vec, pipe_ref3, pipe_ref4, pipe_server_close, pipe_set_chmod, pipe_write_cancel_ipc, shutdown_close_pipe, spawn_detached, tty_pty_partial, udp_mmsg, udp_multicast_join
+    ok 331 - tcp_create_early
+    ok 332 - tcp_create_early_accept
+    ok 333 - tcp_create_early_bad_bind
+    ok 334 - tcp_create_early_bad_domain
+    ok 335 - tcp_flags
+    ok 336 - tcp_listen_without_bind
+    ok 337 - tcp_local_connect_timeout
+    ok 338 - tcp_oob
+    ok 339 - tcp_open
+    ok 340 - tcp_open_bound
+    ok 341 - tcp_open_connected
+    ok 342 - tcp_open_twice
+    ok 343 - tcp_ping_pong
+    ok 344 - tcp_ping_pong_vec
+    ok 345 - tcp_read_stop
+    ok 346 - tcp_read_stop_start
+    ok 347 - tcp_ref
+    ok 348 - tcp_ref2
+    ok 349 - tcp_ref2b
+    ok 350 - tcp_ref3
+    ok 351 - tcp_ref4
+    ok 352 - tcp_reuseport
+    ok 353 - tcp_rst
+    ok 354 - tcp_shutdown_after_write
+    ok 355 - tcp_try_write
+    ok 356 - tcp_try_write_error
+    ok 357 - tcp_unexpected_read
+    ok 358 - tcp_write_after_connect
+    ok 359 - tcp_write_cancel
+    ok 360 - tcp_write_fail
+    ok 361 - tcp_write_in_a_row
+    ok 362 - tcp_write_in_read_cb_backend_timeout
+    ok 363 - tcp_write_nwritten
+    ok 364 - tcp_write_queue_order
+    ok 365 - tcp_write_ready
+    ok 366 - tcp_write_to_half_open_connection
+    ok 367 - tcp_writealot
+    ok 368 - test_macros
+    ok 369 - thread_affinity
+    ok 370 - thread_create
+    ok 371 - thread_detach
+    ok 372 - thread_equal
+    ok 373 - thread_local_storage
+    ok 374 - thread_mutex
+    ok 375 - thread_mutex_recursive
+    ok 376 - thread_name
+    ok 377 - thread_name_threadpool
+    ok 378 - thread_priority
+    ok 379 - thread_rwlock
+    ok 380 - thread_rwlock_trylock
+    ok 381 - thread_stack_size
+    ok 382 - thread_stack_size_explicit
+    ok 383 - threadpool_cancel_fs
+    ok 384 - threadpool_cancel_fs_iouring_sync_cancel # SKIP Not on Linux.
+    ok 385 - threadpool_cancel_getaddrinfo
+    ok 386 - threadpool_cancel_getnameinfo
+    ok 387 - threadpool_cancel_random
+    ok 388 - threadpool_cancel_single
+    ok 389 - threadpool_cancel_when_busy
+    ok 390 - threadpool_cancel_work
+    ok 391 - threadpool_multiple_event_loops
+    ok 392 - threadpool_queue_work_einval
+    ok 393 - threadpool_queue_work_simple
+    ok 394 - timer
+    ok 395 - timer_again
+    ok 396 - timer_early_check
+    ok 397 - timer_from_check
+    ok 398 - timer_huge_repeat
+    ok 399 - timer_huge_timeout
+    ok 400 - timer_init
+    ok 401 - timer_is_closing
+    ok 402 - timer_no_double_call_nowait
+    ok 403 - timer_no_double_call_once
+    ok 404 - timer_no_run_on_unref
+    ok 405 - timer_null_callback
+    ok 406 - timer_order
+    ok 407 - timer_ref
+    ok 408 - timer_ref2
+    ok 409 - timer_run_once
+    ok 410 - timer_start_twice
+    ok 411 - timer_zero_timeout
+    ok 412 - tmpdir
+    ok 413 - tty # SKIP Cannot open /dev/tty as read-only: No such device or address
+    ok 414 - tty_file
+    ok 415 - tty_pty
+    not ok 416 - tty_pty_partial
+    # exit code 134
+    # Output from process `tty_pty_partial`:
+    # Assertion failed in /home/chirag/qnx-porter/ports/libuv/work/src/test/test-tty.c on line 533: `uv_tty_init(&loop, &master_tty, master_fd, 0)` okay (error: -22)
+    ok 417 - udp_alloc_cb_fail
+    ok 418 - udp_bind
+    ok 419 - udp_bind_reuseaddr
+    ok 420 - udp_connect
+    ok 421 - udp_connect6
+    ok 422 - udp_create_early
+    ok 423 - udp_create_early_bad_bind
+    ok 424 - udp_create_early_bad_domain
+    ok 425 - udp_dgram_too_big
+    ok 426 - udp_dual_stack # SKIP IPv6-IPv4 dual stack not supported
+    ok 427 - udp_ipv6_only
+    not ok 428 - udp_mmsg
+    # timeout
+    # Output from process `udp_mmsg`: (no output)
+    ok 429 - udp_mmsg_namelen_zero
+    ok 430 - udp_mmsg_single_drain_cb
+    ok 431 - udp_mmsg_small_buf
+    ok 432 - udp_multicast_interface
+    ok 433 - udp_multicast_interface6
+    not ok 434 - udp_multicast_join
+    # exit code 134
+    # Output from process `udp_multicast_join`:
+    # Assertion failed in /home/chirag/qnx-porter/ports/libuv/work/src/test/test-udp-multicast-join.c on line 63: `status` okay (error: -251)
+    ok 435 - udp_multicast_join6
+    ok 436 - udp_multicast_ttl
+    ok 437 - udp_no_autobind
+    ok 438 - udp_open
+    ok 439 - udp_open_bound
+    ok 440 - udp_open_connect
+    ok 441 - udp_open_twice
+    ok 442 - udp_options
+    ok 443 - udp_options6
+    ok 444 - udp_recv_cb_close_pollerr # SKIP ICMP error handling is Linux-specific
+    ok 445 - udp_recv_in_a_row
+    ok 446 - udp_recvmsg_unreachable_error # SKIP This test is Linux-specific
+    ok 447 - udp_recvmsg_unreachable_error6 # SKIP This test is Linux-specific
+    ok 448 - udp_ref
+    ok 449 - udp_ref2
+    ok 450 - udp_ref3
+    ok 451 - udp_reuseport
+    ok 452 - udp_send_and_recv
+    ok 453 - udp_send_fail_nbufs
+    ok 454 - udp_send_hang_loop
+    ok 455 - udp_send_immediate
+    ok 456 - udp_send_pollerr_no_recv # SKIP ICMP error handling is Linux-specific
+    ok 457 - udp_send_unix
+    ok 458 - udp_send_unreachable
+    ok 459 - udp_sendmmsg_error
+    ok 460 - udp_try_send
+    ok 461 - uname
+    ok 462 - unref_in_prepare_cb
+    ok 463 - utf16_to_wtf8_exact_fill
+    ok 464 - utf8_decode1
+    ok 465 - utf8_decode1_overrun
+    ok 466 - walk_handles
+    ok 467 - watcher_cross_stop # SKIP File descriptor limit too low.
+    ok 468 - we_get_signal
+    ok 469 - we_get_signal_one_shot
+    ok 470 - we_get_signals
+    ok 471 - we_get_signals_mixed
+    ok 472 - wtf8
+FAIL  uv_test_a (exit 31); its own subtests (TAP): 401 ok, 31 not ok, 40 skipped
+      not ok: platform_output, fs_chown, fs_partial_write, handle_fileno, ipc_send_recv_pipe, ipc_send_recv_pipe_inprocess, ipc_send_recv_tcp_inprocess, pipe_bind_error_addrinuse, pipe_bind_error_addrinuse_pending_instances, pipe_bind_error_addrnotavail, pipe_bind_error_inval, pipe_connect_bad_name, pipe_connect_close_multiple, pipe_connect_multiple, pipe_connect_on_prepare, pipe_connect_to_file, pipe_getsockname, pipe_getsockname_long_path, pipe_pending_instances, pipe_ping_pong, pipe_ping_pong_vec, pipe_ref3, pipe_ref4, pipe_server_close, pipe_set_chmod, pipe_write_cancel_ipc, shutdown_close_pipe, spawn_detached, tty_pty_partial, udp_mmsg, udp_multicast_join
+    ok 331 - tcp_create_early
+    ok 332 - tcp_create_early_accept
+    ok 333 - tcp_create_early_bad_bind
+    ok 334 - tcp_create_early_bad_domain
+    ok 335 - tcp_flags
+    ok 336 - tcp_listen_without_bind
+    ok 337 - tcp_local_connect_timeout
+    ok 338 - tcp_oob
+    ok 339 - tcp_open
+    ok 340 - tcp_open_bound
+    ok 341 - tcp_open_connected
+    ok 342 - tcp_open_twice
+    ok 343 - tcp_ping_pong
+    ok 344 - tcp_ping_pong_vec
+    ok 345 - tcp_read_stop
+    ok 346 - tcp_read_stop_start
+    ok 347 - tcp_ref
+    ok 348 - tcp_ref2
+    ok 349 - tcp_ref2b
+    ok 350 - tcp_ref3
+    ok 351 - tcp_ref4
+    ok 352 - tcp_reuseport
+    ok 353 - tcp_rst
+    ok 354 - tcp_shutdown_after_write
+    ok 355 - tcp_try_write
+    ok 356 - tcp_try_write_error
+    ok 357 - tcp_unexpected_read
+    ok 358 - tcp_write_after_connect
+    ok 359 - tcp_write_cancel
+    ok 360 - tcp_write_fail
+    ok 361 - tcp_write_in_a_row
+    ok 362 - tcp_write_in_read_cb_backend_timeout
+    ok 363 - tcp_write_nwritten
+    ok 364 - tcp_write_queue_order
+    ok 365 - tcp_write_ready
+    ok 366 - tcp_write_to_half_open_connection
+    ok 367 - tcp_writealot
+    ok 368 - test_macros
+    ok 369 - thread_affinity
+    ok 370 - thread_create
+    ok 371 - thread_detach
+    ok 372 - thread_equal
+    ok 373 - thread_local_storage
+    ok 374 - thread_mutex
+    ok 375 - thread_mutex_recursive
+    ok 376 - thread_name
+    ok 377 - thread_name_threadpool
+    ok 378 - thread_priority
+    ok 379 - thread_rwlock
+    ok 380 - thread_rwlock_trylock
+    ok 381 - thread_stack_size
+    ok 382 - thread_stack_size_explicit
+    ok 383 - threadpool_cancel_fs
+    ok 384 - threadpool_cancel_fs_iouring_sync_cancel # SKIP Not on Linux.
+    ok 385 - threadpool_cancel_getaddrinfo
+    ok 386 - threadpool_cancel_getnameinfo
+    ok 387 - threadpool_cancel_random
+    ok 388 - threadpool_cancel_single
+    ok 389 - threadpool_cancel_when_busy
+    ok 390 - threadpool_cancel_work
+    ok 391 - threadpool_multiple_event_loops
+    ok 392 - threadpool_queue_work_einval
+    ok 393 - threadpool_queue_work_simple
+    ok 394 - timer
+    ok 395 - timer_again
+    ok 396 - timer_early_check
+    ok 397 - timer_from_check
+    ok 398 - timer_huge_repeat
+    ok 399 - timer_huge_timeout
+    ok 400 - timer_init
+    ok 401 - timer_is_closing
+    ok 402 - timer_no_double_call_nowait
+    ok 403 - timer_no_double_call_once
+    ok 404 - timer_no_run_on_unref
+    ok 405 - timer_null_callback
+    ok 406 - timer_order
+    ok 407 - timer_ref
+    ok 408 - timer_ref2
+    ok 409 - timer_run_once
+    ok 410 - timer_start_twice
+    ok 411 - timer_zero_timeout
+    ok 412 - tmpdir
+    ok 413 - tty # SKIP Cannot open /dev/tty as read-only: No such device or address
+    ok 414 - tty_file
+    ok 415 - tty_pty
+    not ok 416 - tty_pty_partial
+    # exit code 134
+    # Output from process `tty_pty_partial`:
+    # Assertion failed in /home/chirag/qnx-porter/ports/libuv/work/src/test/test-tty.c on line 533: `uv_tty_init(&loop, &master_tty, master_fd, 0)` okay (error: -22)
+    ok 417 - udp_alloc_cb_fail
+    ok 418 - udp_bind
+    ok 419 - udp_bind_reuseaddr
+    ok 420 - udp_connect
+    ok 421 - udp_connect6
+    ok 422 - udp_create_early
+    ok 423 - udp_create_early_bad_bind
+    ok 424 - udp_create_early_bad_domain
+    ok 425 - udp_dgram_too_big
+    ok 426 - udp_dual_stack # SKIP IPv6-IPv4 dual stack not supported
+    ok 427 - udp_ipv6_only
+    not ok 428 - udp_mmsg
+    # timeout
+    # Output from process `udp_mmsg`: (no output)
+    ok 429 - udp_mmsg_namelen_zero
+    ok 430 - udp_mmsg_single_drain_cb
+    ok 431 - udp_mmsg_small_buf
+    ok 432 - udp_multicast_interface
+    ok 433 - udp_multicast_interface6
+    not ok 434 - udp_multicast_join
+    # exit code 134
+    # Output from process `udp_multicast_join`:
+    # Assertion failed in /home/chirag/qnx-porter/ports/libuv/work/src/test/test-udp-multicast-join.c on line 63: `status` okay (error: -251)
+    ok 435 - udp_multicast_join6
+    ok 436 - udp_multicast_ttl
+    ok 437 - udp_no_autobind
+    ok 438 - udp_open
+    ok 439 - udp_open_bound
+    ok 440 - udp_open_connect
+    ok 441 - udp_open_twice
+    ok 442 - udp_options
+    ok 443 - udp_options6
+    ok 444 - udp_recv_cb_close_pollerr # SKIP ICMP error handling is Linux-specific
+    ok 445 - udp_recv_in_a_row
+    ok 446 - udp_recvmsg_unreachable_error # SKIP This test is Linux-specific
+    ok 447 - udp_recvmsg_unreachable_error6 # SKIP This test is Linux-specific
+    ok 448 - udp_ref
+    ok 449 - udp_ref2
+    ok 450 - udp_ref3
+    ok 451 - udp_reuseport
+    ok 452 - udp_send_and_recv
+    ok 453 - udp_send_fail_nbufs
+    ok 454 - udp_send_hang_loop
+    ok 455 - udp_send_immediate
+    ok 456 - udp_send_pollerr_no_recv # SKIP ICMP error handling is Linux-specific
+    ok 457 - udp_send_unix
+    ok 458 - udp_send_unreachable
+    ok 459 - udp_sendmmsg_error
+    ok 460 - udp_try_send
+    ok 461 - uname
+    ok 462 - unref_in_prepare_cb
+    ok 463 - utf16_to_wtf8_exact_fill
+    ok 464 - utf8_decode1
+    ok 465 - utf8_decode1_overrun
+    ok 466 - walk_handles
+    ok 467 - watcher_cross_stop # SKIP File descriptor limit too low.
+    ok 468 - we_get_signal
+    ok 469 - we_get_signal_one_shot
+    ok 470 - we_get_signals
+    ok 471 - we_get_signals_mixed
+    ok 472 - wtf8
+
+0/2 tests passed on the QNX target

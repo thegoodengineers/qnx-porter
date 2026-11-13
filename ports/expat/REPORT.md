@@ -1,14 +1,14 @@
-# expat R_2_6_4 on QNX 8.0 (x86_64)
+# expat R_2_10_0 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/libexpat/libexpat.git at `R_2_6_4` (`2691aff4304a`) |
+| Upstream | https://github.com/libexpat/libexpat.git at `R_2_10_0` (`a70841d9ffa6`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |
-| Library's own tests | 2/2 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
+| Library's own tests | 1/1 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 2.5 min |
+| Time | 2.1 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

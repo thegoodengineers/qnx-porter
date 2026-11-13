@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="qnx-target" tests="5" failures="0" skipped="0"><testcase name="buffer_c" classname="qnx-target" /><testcase name="fixint_c" classname="qnx-target" /><testcase name="msgpack_c" classname="qnx-target" /><testcase name="pack_unpack_c" classname="qnx-target" /><testcase name="streaming_c" classname="qnx-target" /></testsuite>

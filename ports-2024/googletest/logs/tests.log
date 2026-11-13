@@ -1,0 +1,67 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/googletest/work/build); every test command runs on root@172.31.1.11 over ssh
+FAIL  googletest-death-test-test (exit 134)
+    Running main() from /home/chirag/qnx-porter/ports/googletest/work/src/googletest/src/gtest_main.cc
+    [==========] Running 61 tests from 12 test suites.
+    [----------] Global test environment set-up.
+    [----------] 35 tests from TestForDeathTest
+    [ RUN      ] TestForDeathTest.SingleStatement
+    [       OK ] TestForDeathTest.SingleStatement (12 ms)
+    [ RUN      ] TestForDeathTest.SwitchStatement
+    [       OK ] TestForDeathTest.SwitchStatement (4 ms)
+    [ RUN      ] TestForDeathTest.StaticMemberFunctionFastStyle
+    [       OK ] TestForDeathTest.StaticMemberFunctionFastStyle (3 ms)
+    [ RUN      ] TestForDeathTest.MemberFunctionFastStyle
+    [       OK ] TestForDeathTest.MemberFunctionFastStyle (2 ms)
+    [ RUN      ] TestForDeathTest.FastDeathTestInChangedDir
+    [       OK ] TestForDeathTest.FastDeathTestInChangedDir (4 ms)
+    [ RUN      ] TestForDeathTest.StaticMemberFunctionThreadsafeStyle
+PASS  gtest_environment_test (exit 0)
+PASS  googletest-filepath-test (exit 0)
+PASS  googletest-listener-test (exit 0)
+PASS  gtest_main_unittest (exit 0)
+PASS  googletest-message-test (exit 0)
+PASS  gtest_no_test_unittest (exit 0)
+PASS  googletest-options-test (exit 0)
+PASS  googletest-param-test-test (exit 0)
+PASS  googletest-port-test (exit 0)
+PASS  gtest_pred_impl_unittest (exit 0)
+PASS  gtest_premature_exit_test (exit 0)
+PASS  googletest-printers-test (exit 0)
+PASS  gtest_prod_test (exit 0)
+FAIL  gtest_repeat_test (exit 134)
+    [==========] Running 13 tests from 3 test suites.
+    [----------] Global test environment set-up.
+    [----------] 1 test from BarDeathTest
+    [ RUN      ] BarDeathTest.ThreadSafeAndFast
+PASS  gtest_sole_header_test (exit 0)
+PASS  gtest_stress_test (exit 0)
+PASS  googletest-test-part-test (exit 0)
+PASS  gtest_throw_on_failure_ex_test (exit 0)
+PASS  gtest-typed-test_test (exit 0)
+PASS  gtest_unittest (exit 0)
+PASS  gtest-unittest-api_test (exit 0)
+PASS  gtest_skip_in_environment_setup_test (exit 0)
+PASS  gtest_skip_test (exit 0)
+PASS  gtest-death-test_ex_nocatch_test (exit 0)
+PASS  gtest-death-test_ex_catch_test (exit 0)
+PASS  gtest_no_rtti_unittest (exit 0)
+N/A   googletest-break-on-failure-unittest (needs python3.10 on the target)
+N/A   gtest_skip_check_output_test (needs python3.10 on the target)
+N/A   gtest_skip_environment_check_output_test (needs python3.10 on the target)
+N/A   googletest-catch-exceptions-test (needs python3.10 on the target)
+N/A   googletest-color-test (needs python3.10 on the target)
+N/A   googletest-env-var-test (needs python3.10 on the target)
+N/A   googletest-filter-unittest (needs python3.10 on the target)
+N/A   gtest_help_test (needs python3.10 on the target)
+N/A   googletest-list-tests-unittest (needs python3.10 on the target)
+N/A   googletest-output-test (needs python3.10 on the target)
+N/A   googletest-shuffle-test (needs python3.10 on the target)
+N/A   googletest-throw-on-failure-test (needs python3.10 on the target)
+N/A   googletest-uninitialized-test (needs python3.10 on the target)
+N/A   gtest_list_output_unittest (needs python3.10 on the target)
+N/A   gtest_xml_outfiles_test (needs python3.10 on the target)
+N/A   googletest-json-outfiles-test (needs python3.10 on the target)
+N/A   gtest_xml_output_unittest (needs python3.10 on the target)
+N/A   googletest-json-output-unittest (needs python3.10 on the target)
+
+25/27 tests passed on the QNX target; 18 not runnable there

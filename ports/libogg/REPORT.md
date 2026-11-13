@@ -1,8 +1,8 @@
-# libogg v1.3.5 on QNX 8.0 (x86_64)
+# libogg v1.3.6 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/xiph/ogg.git at `v1.3.5` (`e1774cd77f47`) |
+| Upstream | https://github.com/xiph/ogg.git at `v1.3.6` (`be05b13e98b0`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

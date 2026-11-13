@@ -2,10 +2,10 @@
   "spdxVersion": "SPDX-2.3",
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
-  "name": "spdlog-v1.15.0-qnx8",
-  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/spdlog-8e5613379f5140fefb0b60412fbf1f5406e7c7f8",
+  "name": "spdlog-v1.17.0-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/spdlog-79524ddd08a4ec981b7fea76afd08ee05f83755d",
   "creationInfo": {
-    "created": "2026-11-13T05:00:46Z",
+    "created": "2026-11-13T19:03:02Z",
     "creators": [
       "Tool: scancode-toolkit-32.5.0",
       "Organization: The Good Engineers"
@@ -15,8 +15,8 @@
     {
       "SPDXID": "SPDXRef-Package-spdlog",
       "name": "spdlog",
-      "versionInfo": "v1.15.0",
-      "downloadLocation": "git+https://github.com/gabime/spdlog.git@8e5613379f5140fefb0b60412fbf1f5406e7c7f8",
+      "versionInfo": "v1.17.0",
+      "downloadLocation": "git+https://github.com/gabime/spdlog.git@79524ddd08a4ec981b7fea76afd08ee05f83755d",
       "filesAnalyzed": false,
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "MIT",

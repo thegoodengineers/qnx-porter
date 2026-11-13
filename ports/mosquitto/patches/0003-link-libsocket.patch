@@ -1,0 +1,15 @@
+Subject: [qnx-porter 0003] link-libsocket
+Source: deterministic rule
+Reason: `__inet_ntop` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
+Error: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: CMakeFiles/ctrl_shell.dir/ctrl_shell.c.o: undefined reference to symbol '__inet_ntop@@libsocket.so.4'
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -20,5 +20,5 @@
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports/mosquitto/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none
+ # Libraries the agent adds go at the end of every link line, after the objects that need them.
+-set(CMAKE_C_STANDARD_LIBRARIES "-lm")
+-set(CMAKE_CXX_STANDARD_LIBRARIES "-lm")
++set(CMAKE_C_STANDARD_LIBRARIES "-lm -lsocket")
++set(CMAKE_CXX_STANDARD_LIBRARIES "-lm -lsocket")

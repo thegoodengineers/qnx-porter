@@ -1,9 +1,5 @@
 $ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/yaml-cpp/work/build); every test command runs on root@172.31.1.11 over ssh
 FAIL  yaml-cpp::test (exit 1)
-    [ RUN      ] NodeSpecTest.Ex7_16_FlowMappingEntries
-    [       OK ] NodeSpecTest.Ex7_16_FlowMappingEntries (0 ms)
-    [ RUN      ] NodeSpecTest.Ex7_17_FlowMappingSeparateValues
-    [       OK ] NodeSpecTest.Ex7_17_FlowMappingSeparateValues (0 ms)
     [ RUN      ] NodeSpecTest.Ex7_18_FlowMappingAdjacentValues
     [       OK ] NodeSpecTest.Ex7_18_FlowMappingAdjacentValues (0 ms)
     [ RUN      ] NodeSpecTest.Ex7_19_SinglePairFlowMappings
@@ -30,6 +26,7 @@ FAIL  yaml-cpp::test (exit 1)
     [       OK ] NodeSpecTest.Ex8_3c_InvalidBlockScalarIndentationIndicators (0 ms)
     [ RUN      ] NodeSpecTest.Ex8_4_ChompingFinalLineBreak
     [       OK ] NodeSpecTest.Ex8_4_ChompingFinalLineBreak (0 ms)
+    [ DISABLED ] NodeSpecTest.DISABLED_Ex8_5_ChompingTrailingLines
     [ RUN      ] NodeSpecTest.Ex8_6_EmptyScalarChomping
     [       OK ] NodeSpecTest.Ex8_6_EmptyScalarChomping (0 ms)
     [ RUN      ] NodeSpecTest.Ex8_7_LiteralScalar
@@ -60,13 +57,14 @@ FAIL  yaml-cpp::test (exit 1)
     [       OK ] NodeSpecTest.Ex8_19_CompactBlockMappings (0 ms)
     [ RUN      ] NodeSpecTest.Ex8_20_BlockNodeTypes
     [       OK ] NodeSpecTest.Ex8_20_BlockNodeTypes (0 ms)
+    [ DISABLED ] NodeSpecTest.DISABLED_Ex8_21_BlockScalarNodes
     [ RUN      ] NodeSpecTest.Ex8_22_BlockCollectionNodes
     [       OK ] NodeSpecTest.Ex8_22_BlockCollectionNodes (0 ms)
     [ RUN      ] NodeSpecTest.FlowMapNotClosed
     [       OK ] NodeSpecTest.FlowMapNotClosed (0 ms)
-    [----------] 109 tests from NodeSpecTest (9 ms total)
+    [----------] 110 tests from NodeSpecTest (8 ms total)
     
-    [----------] 7 tests from NodeEmitterTest
+    [----------] 8 tests from NodeEmitterTest
     [ RUN      ] NodeEmitterTest.SimpleFlowSeqNode
     [       OK ] NodeEmitterTest.SimpleFlowSeqNode (0 ms)
     [ RUN      ] NodeEmitterTest.NestFlowSeqNode
@@ -81,7 +79,9 @@ FAIL  yaml-cpp::test (exit 1)
     [       OK ] NodeEmitterTest.NestBlockMapListNode (0 ms)
     [ RUN      ] NodeEmitterTest.NestFlowMapListNode
     [       OK ] NodeEmitterTest.NestFlowMapListNode (0 ms)
-    [----------] 7 tests from NodeEmitterTest (0 ms total)
+    [ RUN      ] NodeEmitterTest.RobustAgainstLocale
+    [       OK ] NodeEmitterTest.RobustAgainstLocale (1 ms)
+    [----------] 8 tests from NodeEmitterTest (2 ms total)
     
     [----------] 8 tests from OstreamWrapperTest
     [ RUN      ] OstreamWrapperTest.BufferNoWrite
@@ -106,20 +106,20 @@ FAIL  yaml-cpp::test (exit 1)
     [ RUN      ] ParserTest.Empty
     [       OK ] ParserTest.Empty (0 ms)
     [ RUN      ] ParserTest.CVE_2017_5950
-    [       OK ] ParserTest.CVE_2017_5950 (33 ms)
+    [       OK ] ParserTest.CVE_2017_5950 (26 ms)
     [ RUN      ] ParserTest.CVE_2018_20573
-    [       OK ] ParserTest.CVE_2018_20573 (22 ms)
+    [       OK ] ParserTest.CVE_2018_20573 (61 ms)
     [ RUN      ] ParserTest.CVE_2018_20574
-    [       OK ] ParserTest.CVE_2018_20574 (22 ms)
+    [       OK ] ParserTest.CVE_2018_20574 (17 ms)
     [ RUN      ] ParserTest.CVE_2019_6285
-    [       OK ] ParserTest.CVE_2019_6285 (19 ms)
-    [----------] 5 tests from ParserTest (99 ms total)
+    [       OK ] ParserTest.CVE_2019_6285 (17 ms)
+    [----------] 5 tests from ParserTest (123 ms total)
     
     [----------] 12 tests from RegExTest
     [ RUN      ] RegExTest.Empty
     [       OK ] RegExTest.Empty (0 ms)
     [ RUN      ] RegExTest.Range
-    [       OK ] RegExTest.Range (12 ms)
+    [       OK ] RegExTest.Range (14 ms)
     [ RUN      ] RegExTest.EmptyString
     [       OK ] RegExTest.EmptyString (0 ms)
     [ RUN      ] RegExTest.SingleCharacterString
@@ -129,7 +129,7 @@ FAIL  yaml-cpp::test (exit 1)
     [ RUN      ] RegExTest.OperatorNot
     [       OK ] RegExTest.OperatorNot (0 ms)
     [ RUN      ] RegExTest.OperatorOr
-    [       OK ] RegExTest.OperatorOr (78 ms)
+    [       OK ] RegExTest.OperatorOr (64 ms)
     [ RUN      ] RegExTest.OperatorOrShortCircuits
     [       OK ] RegExTest.OperatorOrShortCircuits (0 ms)
     [ RUN      ] RegExTest.OperatorAnd
@@ -140,11 +140,11 @@ FAIL  yaml-cpp::test (exit 1)
     [       OK ] RegExTest.OperatorPlus (0 ms)
     [ RUN      ] RegExTest.StringOr
     [       OK ] RegExTest.StringOr (0 ms)
-    [----------] 12 tests from RegExTest (92 ms total)
+    [----------] 12 tests from RegExTest (80 ms total)
     
     [----------] Global test environment tear-down
-    [==========] 992 tests from 15 test suites ran. (299 ms total)
-    [  PASSED  ] 991 tests.
+    [==========] 1008 tests from 16 test suites ran. (310 ms total)
+    [  PASSED  ] 1007 tests.
     [  FAILED  ] 1 test, listed below:
     [  FAILED  ] NodeTest.FloatingPrecisionDouble
     

@@ -1,0 +1,72 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "opus-v1.5.2-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/opus-ddbe48383984d56acd9e1ab6a090c54ca6b735a6",
+  "creationInfo": {
+    "created": "2026-11-13T05:00:32Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-opus",
+      "name": "opus",
+      "versionInfo": "v1.5.2",
+      "downloadLocation": "git+https://github.com/xiph/opus.git@ddbe48383984d56acd9e1ab6a090c54ca6b735a6",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "BSD-3-Clause AND LicenseRef-scancode-generic-cla AND LicenseRef-scancode-proprietary-license",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over COPYING, LICENSE_PLEASE_READ.txt, README, README.draft, cmake/README.md, dnn/README, dnn/README.md, meson/README.md: BSD-3-Clause AND LicenseRef-scancode-generic-cla AND LicenseRef-scancode-proprietary-license. Per-file detections: COPYING: BSD-3-Clause AND LicenseRef-scancode-proprietary-license; LICENSE_PLEASE_READ.txt: LicenseRef-scancode-generic-cla AND LicenseRef-scancode-proprietary-license; dnn/README.md: BSD-3-Clause."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-generic-cla",
+      "name": "Prior Generic Contributor License Agreement",
+      "extractedText": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/generic-cla.LICENSE",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/generic-cla.LICENSE"
+    },
+    {
+      "licenseId": "LicenseRef-scancode-proprietary-license",
+      "name": "Proprietary License",
+      "extractedText": "This component is normally licensed under a proprietary license agreement with \na supplier that has terms and conditions that restrict the use of the code, \nbut may not require payment to the supplier.",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/proprietary-license.LICENSE"
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/opus/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-opus"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-opus"
+    }
+  ]
+}

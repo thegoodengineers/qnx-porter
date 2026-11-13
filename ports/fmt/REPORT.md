@@ -1,14 +1,14 @@
-# fmt 11.0.2 on QNX 8.0 (x86_64)
+# fmt 12.2.1 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/fmtlib/fmt.git at `11.0.2` (`0c9fce2ffefe`) |
+| Upstream | https://github.com/fmtlib/fmt.git at `12.2.1` (`208219daff58`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 2 round(s) |
-| Library's own tests | 17/20 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
+| Library's own tests | 20/21 passed on `QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 6.9 min |
+| Time | 10.2 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

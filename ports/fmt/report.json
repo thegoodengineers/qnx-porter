@@ -1,8 +1,8 @@
 {
   "library": "fmt",
   "url": "https://github.com/fmtlib/fmt.git",
-  "version": "11.0.2",
-  "commit": "0c9fce2ffefecfdce794e1859584e25877b7b592",
+  "version": "12.2.1",
+  "commit": "208219daff58f2a7438f6931cc2ddc358acf33ef",
   "build_system": "cmake",
   "arch": "x86_64",
   "sdp": "QNX SDP 8.0",
@@ -10,8 +10,8 @@
   "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
   "build_result": "built",
   "rounds": 2,
-  "tests_passed": 17,
-  "tests_total": 20,
+  "tests_passed": 20,
+  "tests_total": 21,
   "tests_ran": true,
   "patches_kept": 1,
   "patches_by_rule": 1,
@@ -22,7 +22,7 @@
       "rule": "link-libregex",
       "source": "rule",
       "reason": "`regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.",
-      "error": "/home/chirag/qnx-porter/ports/fmt/work/src/test/gtest/gmock-gtest-all.cc:11045:(.text+0xbb65): undefined reference to `regfree'",
+      "error": "/home/chirag/qnx-porter/ports/fmt/work/src/test/gtest/gmock-gtest-all.cc:11045:(.text+0xbc05): undefined reference to `regfree'",
       "files": [
         "qnx-toolchain.cmake"
       ],
@@ -31,9 +31,10 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 6.9,
+  "minutes": 10.2,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T08:32:15+00:00"
+  "finished": "2026-11-13T16:58:33+00:00"
 }

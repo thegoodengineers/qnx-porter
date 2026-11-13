@@ -1,0 +1,11 @@
+$ cmake --install /home/chirag/qnx-porter/ports/cmocka/work/build
+-- Install configuration: "Release"
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/lib/pkgconfig/cmocka.pc
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/lib/cmake/cmocka/cmocka-config.cmake
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/lib/cmake/cmocka/cmocka-config-version.cmake
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/include/cmocka.h
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/include/cmocka_pbc.h
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/include/cmocka_version.h
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/lib/libcmocka.a
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/lib/cmake/cmocka/cmocka-targets.cmake
+-- Installing: /home/chirag/qnx-porter/ports/libcbor/work/deps/usr/local/lib/cmake/cmocka/cmocka-targets-release.cmake

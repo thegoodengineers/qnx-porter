@@ -1,8 +1,8 @@
-# lz4 v1.10.0 on QNX 8.0 (x86_64)
+# lz4 v1.11.1 on QNX 8.0 (x86_64)
 
 | | |
 |---|---|
-| Upstream | https://github.com/lz4/lz4.git at `v1.10.0` (`ebb370ca83af`) |
+| Upstream | https://github.com/lz4/lz4.git at `v1.11.1` (`aa4647fad575`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

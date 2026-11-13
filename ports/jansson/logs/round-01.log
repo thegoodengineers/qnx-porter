@@ -83,8 +83,6 @@ $ cmake -S /home/chirag/qnx-porter/ports/jansson/work/src -B /home/chirag/qnx-po
 -- Looking for _strtoi64 - not found
 -- Looking for include file locale.h
 -- Looking for include file locale.h - found
--- Looking for localeconv
--- Looking for localeconv - found
 -- Looking for setlocale
 -- Looking for setlocale - found
 -- Performing Test HAVE_INLINE
@@ -102,7 +100,7 @@ $ cmake -S /home/chirag/qnx-porter/ports/jansson/work/src -B /home/chirag/qnx-po
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports/jansson/work/build
 C compiler: QCC
-CMake Warning at CMakeLists.txt:372 (message):
+CMake Warning at CMakeLists.txt:384 (message):
   Sphinx not found.  Cannot generate documentation!
 
         Set -DJANSSON_BUILD_DOCS=OFF to get rid of this message.
@@ -115,191 +113,210 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports/jansson/work/build -j 2 -- -k
-[  3%] Building C object CMakeFiles/jansson.dir/src/error.c.o
+[  3%] Building C object CMakeFiles/jansson.dir/src/dtoa.c.o
 [  3%] Building C object CMakeFiles/jansson.dir/src/dump.c.o
-[  5%] Building C object CMakeFiles/jansson.dir/src/hashtable.c.o
-[  7%] Building C object CMakeFiles/jansson.dir/src/hashtable_seed.c.o
-[  9%] Building C object CMakeFiles/jansson.dir/src/load.c.o
-[ 11%] Building C object CMakeFiles/jansson.dir/src/memory.c.o
-[ 13%] Building C object CMakeFiles/jansson.dir/src/pack_unpack.c.o
-[ 15%] Building C object CMakeFiles/jansson.dir/src/strbuffer.c.o
+[  5%] Building C object CMakeFiles/jansson.dir/src/error.c.o
+[  7%] Building C object CMakeFiles/jansson.dir/src/hashtable.c.o
+[  8%] Building C object CMakeFiles/jansson.dir/src/hashtable_seed.c.o
+[ 10%] Building C object CMakeFiles/jansson.dir/src/load.c.o
+[ 12%] Building C object CMakeFiles/jansson.dir/src/memory.c.o
+[ 14%] Building C object CMakeFiles/jansson.dir/src/pack_unpack.c.o
+[ 16%] Building C object CMakeFiles/jansson.dir/src/strbuffer.c.o
 [ 17%] Building C object CMakeFiles/jansson.dir/src/strconv.c.o
 [ 19%] Building C object CMakeFiles/jansson.dir/src/utf.c.o
 [ 21%] Building C object CMakeFiles/jansson.dir/src/value.c.o
 [ 23%] Building C object CMakeFiles/jansson.dir/src/version.c.o
 [ 25%] Linking C static library lib/libjansson.a
 [ 25%] Built target jansson
-[ 27%] Building C object CMakeFiles/test_array.dir/test/suites/api/test_array.c.o
-[ 29%] Building C object CMakeFiles/simple_parse.dir/examples/simple_parse.c.o
-[ 31%] Linking C executable bin/simple_parse
-[ 33%] Building C object CMakeFiles/test_chaos.dir/test/suites/api/test_chaos.c.o
-[ 35%] Linking C executable bin/test_array
-[ 37%] Linking C executable bin/test_chaos
+[ 28%] Building C object CMakeFiles/simple_parse.dir/examples/simple_parse.c.o
+[ 28%] Building C object CMakeFiles/test_array.dir/test/suites/api/test_array.c.o
+[ 30%] Linking C executable bin/simple_parse
+[ 32%] Building C object CMakeFiles/test_chaos.dir/test/suites/api/test_chaos.c.o
+[ 33%] Linking C executable bin/test_array
+[ 35%] Linking C executable bin/test_chaos
+[ 37%] Building C object CMakeFiles/test_chaos_realloc.dir/test/suites/api/test_chaos_realloc.c.o
 [ 39%] Building C object CMakeFiles/test_copy.dir/test/suites/api/test_copy.c.o
-[ 41%] Building C object CMakeFiles/test_dump.dir/test/suites/api/test_dump.c.o
-[ 43%] Linking C executable bin/test_dump
-[ 45%] Linking C executable bin/test_copy
-[ 47%] Building C object CMakeFiles/test_dump_callback.dir/test/suites/api/test_dump_callback.c.o
-[ 49%] Building C object CMakeFiles/test_equal.dir/test/suites/api/test_equal.c.o
-[ 50%] Linking C executable bin/test_dump_callback
-[ 52%] Building C object CMakeFiles/test_fixed_size.dir/test/suites/api/test_fixed_size.c.o
-[ 54%] Linking C executable bin/test_equal
-[ 56%] Building C object CMakeFiles/test_load.dir/test/suites/api/test_load.c.o
+[ 41%] Linking C executable bin/test_chaos_realloc
+[ 42%] Linking C executable bin/test_copy
+[ 44%] Building C object CMakeFiles/test_dump.dir/test/suites/api/test_dump.c.o
+[ 46%] Building C object CMakeFiles/test_dump_callback.dir/test/suites/api/test_dump_callback.c.o
+[ 48%] Linking C executable bin/test_dump_callback
+[ 50%] Building C object CMakeFiles/test_equal.dir/test/suites/api/test_equal.c.o
+[ 51%] Linking C executable bin/test_dump
+[ 53%] Building C object CMakeFiles/test_fixed_size.dir/test/suites/api/test_fixed_size.c.o
+[ 55%] Linking C executable bin/test_equal
+[ 57%] Building C object CMakeFiles/test_load.dir/test/suites/api/test_load.c.o
 [ 58%] Linking C executable bin/test_fixed_size
 [ 60%] Building C object CMakeFiles/test_load_callback.dir/test/suites/api/test_load_callback.c.o
-[ 62%] Linking C executable bin/test_load_callback
-[ 64%] Linking C executable bin/test_load
+[ 62%] Linking C executable bin/test_load
+[ 64%] Linking C executable bin/test_load_callback
 [ 66%] Building C object CMakeFiles/test_loadb.dir/test/suites/api/test_loadb.c.o
-[ 68%] Building C object CMakeFiles/test_number.dir/test/suites/api/test_number.c.o
-[ 70%] Linking C executable bin/test_loadb
-[ 72%] Linking C executable bin/test_number
-[ 74%] Building C object CMakeFiles/test_object.dir/test/suites/api/test_object.c.o
-[ 76%] Building C object CMakeFiles/test_pack.dir/test/suites/api/test_pack.c.o
-[ 78%] Linking C executable bin/test_object
-[ 80%] Building C object CMakeFiles/test_simple.dir/test/suites/api/test_simple.c.o
-[ 82%] Linking C executable bin/test_simple
-[ 84%] Linking C executable bin/test_pack
-[ 86%] Building C object CMakeFiles/test_sprintf.dir/test/suites/api/test_sprintf.c.o
-[ 88%] Building C object CMakeFiles/test_unpack.dir/test/suites/api/test_unpack.c.o
-[ 90%] Linking C executable bin/test_sprintf
-[ 92%] Building C object CMakeFiles/test_memory_funcs.dir/test/suites/api/test_memory_funcs.c.o
-[ 94%] Linking C executable bin/test_memory_funcs
+[ 67%] Building C object CMakeFiles/test_number.dir/test/suites/api/test_number.c.o
+[ 69%] Linking C executable bin/test_loadb
+[ 71%] Linking C executable bin/test_number
+[ 73%] Building C object CMakeFiles/test_object.dir/test/suites/api/test_object.c.o
+[ 75%] Building C object CMakeFiles/test_pack.dir/test/suites/api/test_pack.c.o
+[ 76%] Linking C executable bin/test_object
+[ 78%] Building C object CMakeFiles/test_simple.dir/test/suites/api/test_simple.c.o
+[ 80%] Linking C executable bin/test_simple
+[ 82%] Building C object CMakeFiles/test_sprintf.dir/test/suites/api/test_sprintf.c.o
+[ 83%] Linking C executable bin/test_sprintf
+[ 85%] Building C object CMakeFiles/test_unpack.dir/test/suites/api/test_unpack.c.o
+[ 87%] Linking C executable bin/test_pack
+[ 89%] Building C object CMakeFiles/test_memory_funcs.dir/test/suites/api/test_memory_funcs.c.o
+[ 91%] Linking C executable bin/test_memory_funcs
+[ 92%] Building C object CMakeFiles/test_memory_funcs_realloc.dir/test/suites/api/test_memory_funcs_realloc.c.o
+[ 94%] Linking C executable bin/test_memory_funcs_realloc
 [ 96%] Building C object CMakeFiles/json_process.dir/test/bin/json_process.c.o
 [ 98%] Linking C executable bin/json_process
 [100%] Linking C executable bin/test_unpack
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/simple_parse.dir/build.make:98: bin/simple_parse] Error 1
 gmake[2]: Target 'CMakeFiles/simple_parse.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:148: CMakeFiles/simple_parse.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:152: CMakeFiles/simple_parse.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_array.dir/build.make:98: bin/test_array] Error 1
 gmake[2]: Target 'CMakeFiles/test_array.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:174: CMakeFiles/test_array.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:178: CMakeFiles/test_array.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_chaos.dir/build.make:98: bin/test_chaos] Error 1
 gmake[2]: Target 'CMakeFiles/test_chaos.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:200: CMakeFiles/test_chaos.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:204: CMakeFiles/test_chaos.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
-gmake[2]: *** [CMakeFiles/test_dump.dir/build.make:98: bin/test_dump] Error 1
-gmake[2]: Target 'CMakeFiles/test_dump.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:252: CMakeFiles/test_dump.dir/all] Error 2
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
+gmake[2]: *** [CMakeFiles/test_chaos_realloc.dir/build.make:98: bin/test_chaos_realloc] Error 1
+gmake[2]: Target 'CMakeFiles/test_chaos_realloc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:230: CMakeFiles/test_chaos_realloc.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_copy.dir/build.make:98: bin/test_copy] Error 1
 gmake[2]: Target 'CMakeFiles/test_copy.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:226: CMakeFiles/test_copy.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:256: CMakeFiles/test_copy.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_dump_callback.dir/build.make:98: bin/test_dump_callback] Error 1
 gmake[2]: Target 'CMakeFiles/test_dump_callback.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:278: CMakeFiles/test_dump_callback.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:308: CMakeFiles/test_dump_callback.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
+gmake[2]: *** [CMakeFiles/test_dump.dir/build.make:98: bin/test_dump] Error 1
+gmake[2]: Target 'CMakeFiles/test_dump.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:282: CMakeFiles/test_dump.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_equal.dir/build.make:98: bin/test_equal] Error 1
 gmake[2]: Target 'CMakeFiles/test_equal.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:304: CMakeFiles/test_equal.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:334: CMakeFiles/test_equal.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_fixed_size.dir/build.make:98: bin/test_fixed_size] Error 1
 gmake[2]: Target 'CMakeFiles/test_fixed_size.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:330: CMakeFiles/test_fixed_size.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:360: CMakeFiles/test_fixed_size.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
-gmake[2]: *** [CMakeFiles/test_load_callback.dir/build.make:98: bin/test_load_callback] Error 1
-gmake[2]: Target 'CMakeFiles/test_load_callback.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:382: CMakeFiles/test_load_callback.dir/all] Error 2
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_load.dir/build.make:98: bin/test_load] Error 1
 gmake[2]: Target 'CMakeFiles/test_load.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:356: CMakeFiles/test_load.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:386: CMakeFiles/test_load.dir/all] Error 2
+gmake[2]: *** [CMakeFiles/test_load_callback.dir/build.make:98: bin/test_load_callback] Error 1
+gmake[2]: Target 'CMakeFiles/test_load_callback.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:412: CMakeFiles/test_load_callback.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_loadb.dir/build.make:98: bin/test_loadb] Error 1
 gmake[2]: Target 'CMakeFiles/test_loadb.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:408: CMakeFiles/test_loadb.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:438: CMakeFiles/test_loadb.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_number.dir/build.make:98: bin/test_number] Error 1
 gmake[2]: Target 'CMakeFiles/test_number.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:434: CMakeFiles/test_number.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:464: CMakeFiles/test_number.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_object.dir/build.make:98: bin/test_object] Error 1
 gmake[2]: Target 'CMakeFiles/test_object.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:460: CMakeFiles/test_object.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:490: CMakeFiles/test_object.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_simple.dir/build.make:98: bin/test_simple] Error 1
 gmake[2]: Target 'CMakeFiles/test_simple.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:512: CMakeFiles/test_simple.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:542: CMakeFiles/test_simple.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
-gmake[2]: *** [CMakeFiles/test_pack.dir/build.make:98: bin/test_pack] Error 1
-gmake[2]: Target 'CMakeFiles/test_pack.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:486: CMakeFiles/test_pack.dir/all] Error 2
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_sprintf.dir/build.make:98: bin/test_sprintf] Error 1
 gmake[2]: Target 'CMakeFiles/test_sprintf.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:538: CMakeFiles/test_sprintf.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:568: CMakeFiles/test_sprintf.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
+gmake[2]: *** [CMakeFiles/test_pack.dir/build.make:98: bin/test_pack] Error 1
+gmake[2]: Target 'CMakeFiles/test_pack.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:516: CMakeFiles/test_pack.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_memory_funcs.dir/build.make:98: bin/test_memory_funcs] Error 1
 gmake[2]: Target 'CMakeFiles/test_memory_funcs.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:590: CMakeFiles/test_memory_funcs.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:620: CMakeFiles/test_memory_funcs.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
+gmake[2]: *** [CMakeFiles/test_memory_funcs_realloc.dir/build.make:98: bin/test_memory_funcs_realloc] Error 1
+gmake[2]: Target 'CMakeFiles/test_memory_funcs_realloc.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:646: CMakeFiles/test_memory_funcs_realloc.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/json_process.dir/build.make:98: bin/json_process] Error 1
 gmake[2]: Target 'CMakeFiles/json_process.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:616: CMakeFiles/json_process.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:672: CMakeFiles/json_process.dir/all] Error 2
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:926:(.text+0xa64): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:925:(.text+0xa44): undefined reference to `__isinf'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-ld: lib/libjansson.a(value.c.o): in function `json_real_set':
-/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:946:(.text+0xaf2): undefined reference to `__isinf'
+/home/chirag/qnx-porter/ports/jansson/work/src/src/value.c:945:(.text+0xd12): undefined reference to `__isinf'
 gmake[2]: *** [CMakeFiles/test_unpack.dir/build.make:98: bin/test_unpack] Error 1
 gmake[2]: Target 'CMakeFiles/test_unpack.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:564: CMakeFiles/test_unpack.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:594: CMakeFiles/test_unpack.dir/all] Error 2
 gmake[1]: Target 'all' not remade because of errors.
 gmake: *** [Makefile:146: all] Error 2
 gmake: Target 'default_target' not remade because of errors.

@@ -1,0 +1,37 @@
+$ meson setup /home/chirag/qnx-porter/ports/inih/work/build /home/chirag/qnx-porter/ports/inih/work/src --default-library=static --cross-file=/home/chirag/qnx-porter/ports/inih/work/qnx-cross.ini
+The Meson build system
+Version: 0.61.2
+Source dir: /home/chirag/qnx-porter/ports/inih/work/src
+Build dir: /home/chirag/qnx-porter/ports/inih/work/build
+Build type: cross build
+Project name: inih
+Project version: 58
+C compiler for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc (gcc 12.2.0 "x86_64-pc-nto-qnx8.0.0-gcc (QNX8.0.0-rfe1c11236e8a392fdc575fe111bbc8aa4f10d82b-500) 12.2.0")
+C linker for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-gcc ld.bfd 2.43.0
+C compiler for the build machine: cc (gcc 11.4.0 "cc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0")
+C linker for the build machine: cc ld.bfd 2.38
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Target machine cpu family: x86_64
+Target machine cpu: x86_64
+C++ compiler for the build machine: c++ (gcc 11.4.0 "c++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0")
+C++ linker for the build machine: c++ ld.bfd 2.38
+C++ compiler for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-g++ (gcc 12.2.0 "x86_64-pc-nto-qnx8.0.0-g++ (QNX8.0.0-rfe1c11236e8a392fdc575fe111bbc8aa4f10d82b-500) 12.2.0")
+C++ linker for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/x86_64-pc-nto-qnx8.0.0-g++ ld.bfd 2.43.0
+Build targets in project: 2
+
+inih 58
+
+  User defined options
+    Cross files    : /home/chirag/qnx-porter/ports/inih/work/qnx-cross.ini
+    default_library: static
+
+Found ninja-1.10.1 at /usr/bin/ninja
+$ meson compile -C /home/chirag/qnx-porter/ports/inih/work/build
+ninja: Entering directory `/home/chirag/qnx-porter/ports/inih/work/build'
+[1/4] Compiling C object libinih.a.p/ini.c.o
+[2/4] Linking static target libinih.a
+[3/4] Compiling C++ object libINIReader.a.p/cpp_INIReader.cpp.o
+[4/4] Linking static target libINIReader.a

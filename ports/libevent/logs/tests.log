@@ -10,11 +10,11 @@ PASS  test-dumpevents__SELECT (exit 0)
 FAIL  regress__SELECT (exit 1)
     [Lost connection!] 
       [fork FAILED]
-    1/300 TESTS FAILED. (47 skipped)
+    1/303 TESTS FAILED. (47 skipped)
 FAIL  regress__SELECT_debug (exit 1)
     [Lost connection!] 
       [fork FAILED]
-    1/300 TESTS FAILED. (47 skipped)
+    1/303 TESTS FAILED. (47 skipped)
 PASS  test-changelist__POLL (exit 0)
 PASS  test-eof__POLL (exit 0)
 PASS  test-closed__POLL (exit 0)
@@ -26,11 +26,11 @@ PASS  test-dumpevents__POLL (exit 0)
 FAIL  regress__POLL (exit 1)
     [Lost connection!] 
       [fork FAILED]
-    1/301 TESTS FAILED. (46 skipped)
+    1/304 TESTS FAILED. (46 skipped)
 FAIL  regress__POLL_debug (exit 1)
     [Lost connection!] 
       [fork FAILED]
-    1/301 TESTS FAILED. (46 skipped)
+    1/304 TESTS FAILED. (46 skipped)
 PASS  test-ratelim__group_lim (exit 0)
 PASS  test-ratelim__con_lim (exit 0)
 PASS  test-ratelim__group_con_lim (exit 0)
