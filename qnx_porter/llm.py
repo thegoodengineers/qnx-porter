@@ -1,7 +1,7 @@
 """The long tail: errors no rule handles go to a language model, which must answer with a small diff.
 
 Configuration comes only from the environment (nothing provider-specific lives in this repository):
-  QNX_PORTER_API_KEY      key for an OpenAI-compatible chat-completions endpoint
+  QNX_PORTER_API_KEY      key for a chat-completions endpoint
   QNX_PORTER_MODEL        model ID
   QNX_PORTER_BASE_URL     the endpoint's base URL (ending before /chat/completions)
   QNX_PORTER_TEMPERATURE  optional; sent only when set (some models reject sampling parameters)
