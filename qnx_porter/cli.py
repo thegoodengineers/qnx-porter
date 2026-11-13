@@ -1,5 +1,6 @@
 """qnx-porter: port an open-source C/C++ library to QNX 8.0 and prove it with the library's own tests."""
 import argparse
+import json
 import shutil
 import subprocess
 import sys
@@ -42,6 +43,9 @@ def main(argv=None) -> int:
     st = sub.add_parser("selftest", help="run the loop on a deliberately broken library with the host "
                                          "compiler (no QNX needed)")
     st.add_argument("--out", default="ports-selftest")
+    dg = sub.add_parser("diagnose", help="diagnose failures and recurring patterns across a port or campaign")
+    dg.add_argument("path", nargs="?", default="ports", help="path to a ports folder, port folder, or report.json")
+    dg.add_argument("--json", action="store_true", help="output structured JSON")
 
     a = ap.parse_args(argv)
     if a.cmd == "detect":
@@ -58,6 +62,64 @@ def main(argv=None) -> int:
         return 1 if bad else 0
     if a.cmd == "selftest":
         return selftest(Path(a.out))
+    if a.cmd == "diagnose":
+        from . import intelligence
+        p = Path(a.path)
+        if not p.exists():
+            print(f"qnx-porter diagnose: error: path '{p}' does not exist", file=sys.stderr)
+            return 1
+
+        report_file = None
+        logs_dir = None
+        if p.is_file():
+            if not p.name.endswith(".json"):
+                print(f"qnx-porter diagnose: error: file '{p}' is not a JSON report", file=sys.stderr)
+                return 1
+            report_file = p
+            logs_dir = p.parent / "logs"
+        elif (p / "report.json").is_file():
+            report_file = p / "report.json"
+            logs_dir = p / "logs"
+
+        if report_file is not None:
+            try:
+                data = json.loads(report_file.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, UnicodeDecodeError, OSError) as e:
+                print(f"qnx-porter diagnose: error: malformed report JSON in '{report_file}': {e}", file=sys.stderr)
+                return 1
+            res = intelligence.analyze_report(data, logs_dir).to_dict()
+            if a.json:
+                print(json.dumps(res, indent=2))
+            else:
+                lib_name = data.get("library") or report_file.parent.name
+                arch_name = data.get("arch", "unknown")
+                print(f"Library: {lib_name} ({arch_name})")
+                print(f"Overall Status: {res['overall_status']}")
+                print(f"Stage: {res['primary_stage']}")
+                print(f"Category: {res['primary_category']}")
+                print(f"Actionability: {res['primary_actionability']}")
+                print(f"Confidence: {res.get('confidence', 'medium')}")
+                print(f"Signature: {res['primary_signature']}")
+                print(f"Summary: {res['summary']}")
+                if res.get("hypothesis"):
+                    print(f"Hypothesis: {res['hypothesis']}")
+                if res.get("evidence"):
+                    print(f"Evidence: {res['evidence']}")
+                print(f"Suggested Action: {res['suggested_action']}")
+            return 0
+
+        if not list(p.glob("*/report.json")):
+            print(f"qnx-porter diagnose: error: no report.json files found under '{p}'", file=sys.stderr)
+            return 1
+        summary = intelligence.summarize_campaign(p)
+        if summary.get("total_libraries", 0) == 0:
+            print(f"qnx-porter diagnose: error: failed to parse any valid reports in '{p}'", file=sys.stderr)
+            return 1
+        if a.json:
+            print(json.dumps(summary, indent=2))
+        else:
+            print(intelligence.render_campaign_summary(summary))
+        return 0
     target = Target.parse(a.target, a.target_dir) if a.target else None
     if a.cmd == "crate":
         from . import crate

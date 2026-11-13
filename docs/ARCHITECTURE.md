@@ -124,6 +124,13 @@ Switches: `--only`, `--arch`, `--target`, `--no-tests`, `--no-model`, `--skip-os
 `<!-- results:start -->` and `<!-- results:end -->` and the headline sentence in README.md, so no result there
 is typed by hand.
 
+**Campaign failure intelligence** (`qnx_porter/intelligence.py`, `qnx-porter diagnose`). Classifies and clusters
+failures across compile, link, runtime, and test execution for port reports. Distinguishes observed compiler/test
+diagnostics, normalized signatures, root-cause hypotheses, and actionability categories (`unportable_kernel`,
+`existing_rule_could_not_apply`, `deterministic_rule_candidate`, `target_shim_candidate`, `model_patch_candidate`,
+`upstream_defect_or_test_caveat`). Provides an interactive CLI (`qnx-porter diagnose [path] [--json]`) to triage
+individual reports or aggregate recurring failure signatures across campaign directories.
+
 **build-files recipes** (`scripts/emit_recipes.py`). For CMake ports that built and that qnx-ports does not
 have, a recipe in qnx-ports/build-files layout under `recipes/build-files/ports/`, with the campaign's flags
 and `qnx.patch`. Written, never sent.
