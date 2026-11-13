@@ -1,0 +1,667 @@
+$ ctest --show-only=json-v1 (in /home/chirag/nng-pollhup/work/build); every test command runs on root@172.31.1.11 over ssh
+PASS  nng.core.aio_test (exit 0)
+PASS  nng.core.args_test (exit 0)
+PASS  nng.core.buf_size_test (exit 0)
+PASS  nng.core.errors_test (exit 0)
+PASS  nng.core.id_test (exit 0)
+PASS  nng.core.idhash_test (exit 0)
+PASS  nng.core.init_test (exit 0)
+PASS  nng.core.list_test (exit 0)
+PASS  nng.core.log_test (exit 0)
+PASS  nng.core.message_test (exit 0)
+PASS  nng.core.reconnect_test (exit 0)
+PASS  nng.core.sock_test (exit 0)
+PASS  nng.core.sockaddr_test (exit 0)
+PASS  nng.core.synch_test (exit 0)
+PASS  nng.core.stats_test (exit 0)
+PASS  nng.core.url_test (exit 0)
+PASS  nng.platform.files_test (exit 0)
+PASS  nng.platform.ipc_stream_test (exit 0)
+PASS  nng.platform.platform_test (exit 0)
+PASS  nng.platform.resolver_test (exit 0)
+PASS  nng.platform.tcp_stream_test (exit 0)
+FAIL  nng.platform.udp_test (exit 1)
+      udp_test.c:130: memcmp(&from, &unchanged, sizeof(from)) == 0... ok
+      udp_test.c:136: nng_aio_set_iov(recv, 1, &riov): expected success, got Hunky dory (0)... ok
+      udp_test.c:137: nng_aio_set_iov(send, 1, &siov): expected success, got Hunky dory (0)... ok
+      udp_test.c:138: nng_aio_set_input(send, 0, &addr): expected success, got Hunky dory (0)... ok
+      udp_test.c:143: nng_aio_result(send): expected success, got Hunky dory (0)... ok
+      udp_test.c:144: nng_aio_result(recv): expected success, got Hunky dory (0)... ok
+      udp_test.c:145: nng_aio_count(recv) == sizeof(message)... ok
+      udp_test.c:146: memcmp(buf, message, sizeof(message)) == 0... ok
+      udp_test.c:147: nng_sockaddr_equal(&from, &addr)... ok
+      udp_test.c:120: nng_aio_result(recv) fails with Timed out... ok
+      udp_test.c:121: nng_aio_count(recv) == 0... ok
+      udp_test.c:122: memcmp(&from, &unchanged, sizeof(from)) == 0... ok
+      udp_test.c:128: nng_aio_result(recv) fails with Operation canceled... ok
+      udp_test.c:129: nng_aio_count(recv) == 0... ok
+      udp_test.c:130: memcmp(&from, &unchanged, sizeof(from)) == 0... ok
+      udp_test.c:136: nng_aio_set_iov(recv, 1, &riov): expected success, got Hunky dory (0)... ok
+      udp_test.c:137: nng_aio_set_iov(send, 1, &siov): expected success, got Hunky dory (0)... ok
+      udp_test.c:138: nng_aio_set_input(send, 0, &addr): expected success, got Hunky dory (0)... ok
+      udp_test.c:143: nng_aio_result(send): expected success, got Hunky dory (0)... ok
+      udp_test.c:144: nng_aio_result(recv): expected success, got Hunky dory (0)... ok
+      udp_test.c:145: nng_aio_count(recv) == sizeof(message)... ok
+      udp_test.c:146: memcmp(buf, message, sizeof(message)) == 0... ok
+      udp_test.c:147: nng_sockaddr_equal(&from, &addr)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.051100 secs
+    
+    Test udp scatter gather:
+      udp_test.c:179: nng_udp_open(&u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:180: nng_udp_open(&u2, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:182: nng_udp_sockname(u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:183: nng_udp_sockname(u2, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:185: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:186: nng_aio_alloc(&aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:193: nng_aio_set_iov(aio1, 2, iov1): expected success, got Hunky dory (0)... ok
+      udp_test.c:194: nng_aio_set_input(aio1, 0, &to): expected success, got Hunky dory (0)... ok
+      udp_test.c:201: nng_aio_set_iov(aio2, 2, iov2): expected success, got Hunky dory (0)... ok
+      udp_test.c:202: nng_aio_set_input(aio2, 0, &from): expected success, got Hunky dory (0)... ok
+      udp_test.c:209: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+      udp_test.c:210: nng_aio_result(aio2): expected success, got Hunky dory (0)... ok
+      udp_test.c:211: nng_aio_count(aio2) == strlen("abcdef") + 1... ok
+      udp_test.c:212: strcmp(rbuf, "abcdef") == 0... ok
+      udp_test.c:213: from.s_in.sa_family == sa1.s_in.sa_family... ok
+      udp_test.c:214: from.s_in.sa_addr == sa1.s_in.sa_addr... ok
+      udp_test.c:215: from.s_in.sa_port == sa1.s_in.sa_port... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.001973 secs
+    
+    Test udp send recv multi:
+      udp_test.c:248: nng_udp_open(&u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:249: nng_udp_open(&u2, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:251: nng_udp_sockname(u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:252: nng_udp_sockname(u2, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:254: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:255: nng_aio_alloc(&aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:256: nng_aio_alloc(&aio3, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:257: nng_aio_alloc(&aio4, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:262: nng_aio_set_iov(aio1, 1, &iov1): expected success, got Hunky dory (0)... ok
+      udp_test.c:263: nng_aio_set_input(aio1, 0, &to): expected success, got Hunky dory (0)... ok
+      udp_test.c:268: nng_aio_set_iov(aio2, 1, &iov2): expected success, got Hunky dory (0)... ok
+      udp_test.c:269: nng_aio_set_input(aio2, 0, &to): expected success, got Hunky dory (0)... ok
+      udp_test.c:273: nng_aio_set_iov(aio3, 1, &iov3): expected success, got Hunky dory (0)... ok
+      udp_test.c:274: nng_aio_set_input(aio3, 0, &sa3): expected success, got Hunky dory (0)... ok
+      udp_test.c:278: nng_aio_set_iov(aio4, 1, &iov4): expected success, got Hunky dory (0)... ok
+      udp_test.c:279: nng_aio_set_input(aio4, 0, &sa4): expected success, got Hunky dory (0)... ok
+      udp_test.c:291: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+      udp_test.c:292: nng_aio_result(aio2): expected success, got Hunky dory (0)... ok
+      udp_test.c:293: nng_aio_result(aio3): expected success, got Hunky dory (0)... ok
+      udp_test.c:294: nng_aio_result(aio4): expected success, got Hunky dory (0)... ok
+      udp_test.c:295: nng_aio_count(aio3) == strlen(msg1) + 1... ok
+      udp_test.c:296: nng_aio_count(aio4) == strlen(msg2) + 1... ok
+      udp_test.c:297: strcmp(rbuf1, msg1) == 0... ok
+      udp_test.c:298: strcmp(rbuf2, msg2) == 0... ok
+      udp_test.c:300: nng_udp_sockname(u1, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:301: sa2.s_in.sa_family == sa3.s_in.sa_family... ok
+      udp_test.c:302: sa2.s_in.sa_addr == sa3.s_in.sa_addr... ok
+      udp_test.c:303: sa2.s_in.sa_port == sa3.s_in.sa_port... ok
+      udp_test.c:305: sa2.s_in.sa_family == sa4.s_in.sa_family... ok
+      udp_test.c:306: sa2.s_in.sa_addr == sa4.s_in.sa_addr... ok
+      udp_test.c:307: sa2.s_in.sa_port == sa4.s_in.sa_port... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.112343 secs
+    
+    Test udp send no address:
+      udp_test.c:333: nng_udp_open(&u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:334: nng_udp_sockname(u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:336: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:340: nng_aio_set_iov(aio1, 1, &iov1): expected success, got Hunky dory (0)... ok
+      udp_test.c:345: nng_aio_result(aio1) fails with Address invalid... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.000723 secs
+    
+    Test udp send ipc address:
+      udp_test.c:372: nng_udp_open(&u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:373: nng_udp_sockname(u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:375: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:379: nng_aio_set_iov(aio1, 1, &iov1): expected success, got Hunky dory (0)... ok
+      udp_test.c:380: nng_aio_set_input(aio1, 0, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:386: rv == NNG_EADDRINVAL || rv == NNG_ENOTSUP... failed
+    Test udp bogus bind:
+      udp_test.c:404: (rv == NNG_ENOTSUP) || (rv == NNG_EADDRINVAL)... ok
+      udp_test.c:408: nng_udp_open(&u, NULL) fails with Address invalid... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.000009 secs
+    
+    Test udp duplicate bind:
+      udp_test.c:421: nng_udp_open(&u1, &sa): expected success, got Hunky dory (0)... ok
+      udp_test.c:422: nng_udp_sockname(u1, &sa): expected success, got Hunky dory (0)... ok
+      udp_test.c:423: nng_udp_open(&u2, &sa) fails with Address in use... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.000730 secs
+    
+    Test udp multicast membership:
+      udp_test.c:440: nng_udp_open(&u1, &sa): expected success, got Hunky dory (0)... ok
+      udp_test.c:441: nng_udp_sockname(u1, &sa): expected success, got Hunky dory (0)... ok
+      udp_test.c:442: nng_udp_multicast_membership(u1, &mc, true): expected success, got Hunky dory (0)... ok
+      udp_test.c:443: nng_udp_multicast_membership(u1, &mc, false): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.001462 secs
+    
+    Test udp multicast send recv:
+      udp_test.c:472: nng_udp_open(&u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:473: nng_udp_sockname(u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:474: nng_udp_open(&u2, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:475: nng_udp_sockname(u2, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:476: nng_udp_multicast_membership(u1, &mc, true): expected success, got Hunky dory (0)... ok
+      udp_test.c:477: nng_udp_multicast_membership(u2, &mc, true): expected success, got Hunky dory (0)... ok
+      udp_test.c:478: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:479: nng_aio_alloc(&aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:483: nng_aio_set_iov(aio1, 1, &iov1): expected success, got Hunky dory (0)... ok
+      udp_test.c:484: nng_aio_set_input(aio1, 0, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:488: nng_aio_set_iov(aio2, 1, &iov2): expected success, got Hunky dory (0)... ok
+      udp_test.c:489: nng_aio_set_input(aio2, 0, &ra2): expected success, got Hunky dory (0)... ok
+      udp_test.c:495: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+      udp_test.c:496: nng_aio_result(aio2): expected success, got Hunky dory (0)... ok
+      udp_test.c:498: multi == multi... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.001655 secs
+    
+    Test udp send v6 from v4:
+      udp_test.c:522: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:523: nng_udp_open(&u1, &sa): expected success, got Hunky dory (0)... ok
+      udp_test.c:537: (rv == NNG_EADDRINVAL) || (rv == NNG_ENOTSUP) || (rv == NNG_EUNREACHABLE)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.000798 secs
+    
+    Summary:
+      Count of run unit tests:          11
+      Count of successful unit tests:   10
+      Count of failed unit tests:        1
+    FAILED: 1 of 11 unit tests has failed.
+PASS  nng.platform.posix_ipcwinsec_test (exit 0)
+PASS  nng.sp.pipe_test (exit 0)
+PASS  nng.sp.device_test (exit 0)
+PASS  nng.sp.multistress_test (exit 0)
+PASS  nng.sp.nonblock_test (exit 0)
+PASS  nng.sp.scalability_test (exit 0)
+FAIL  nng.sp.reconnect_stress_test (exit None)
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS)
+    killed on the target after 180 s
+PASS  nng.sp.protocol.bus0.bus_test (exit 0)
+PASS  nng.sp.protocol.pair0.pair0_test (exit 0)
+PASS  nng.sp.protocol.pair1.pair1_test (exit 0)
+PASS  nng.sp.protocol.pair1.pair1_poly_test (exit 0)
+PASS  nng.sp.protocol.pipeline0.pull_test (exit 0)
+PASS  nng.sp.protocol.pipeline0.push_test (exit 0)
+PASS  nng.sp.protocol.pubsub0.pub_test (exit 0)
+PASS  nng.sp.protocol.pubsub0.sub_test (exit 0)
+PASS  nng.sp.protocol.pubsub0.xsub_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.req_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.rep_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.xrep_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.xreq_test (exit 0)
+PASS  nng.sp.protocol.reqrep0.reqstress_test (exit 0)
+PASS  nng.sp.protocol.survey0.respond_test (exit 0)
+PASS  nng.sp.protocol.survey0.survey_test (exit 0)
+PASS  nng.sp.protocol.survey0.xrespond_test (exit 0)
+PASS  nng.sp.protocol.survey0.xsurvey_test (exit 0)
+PASS  nng.sp.transport.socket.sockfd_test (exit 0)
+PASS  nng.sp.transport.inproc.inproc_test (exit 0)
+FAIL  nng.sp.transport.ipc.ipc_test (exit 1)
+      SUCCESS: All conditions have passed.
+      Duration: 0.104483 secs
+    
+    Test ipc connect refused:
+      ipc_test.c:334: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:335: nng_socket_set_ms(s0, NNG_OPT_RECVTIMEO, 100): expected success, got Hunky dory (0)... ok
+      ipc_test.c:336: nng_socket_set_size(s0, NNG_OPT_RECVMAXSZ, 200): expected success, got Hunky dory (0)... ok
+      ipc_test.c:337: nng_dialer_create(&d, s0, addr): expected success, got Hunky dory (0)... ok
+      ipc_test.c:338: nng_dialer_start(d, 0) fails with Connection refused... ok
+      ipc_test.c:339: nng_socket_close(s0): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.001291 secs
+    
+    Test ipc connect blocking:
+      ipc_test.c:350: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:353: nng_stream_listener_alloc(&l, addr): expected success, got Hunky dory (0)... ok
+      ipc_test.c:354: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+      ipc_test.c:356: nng_dial(s0, addr, NULL, NNG_FLAG_NONBLOCK): expected success, got Hunky dory (0)... ok
+      ipc_test.c:358: nng_socket_close(s0): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.113029 secs
+    
+    Test ipc connect blocking accept:
+      ipc_test.c:372: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:375: nng_stream_listener_alloc(&l, addr): expected success, got Hunky dory (0)... ok
+      ipc_test.c:376: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+      ipc_test.c:378: nng_dial(s0, addr, NULL, NNG_FLAG_NONBLOCK): expected success, got Hunky dory (0)... ok
+      ipc_test.c:380: nng_aio_alloc(&aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      ipc_test.c:383: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      ipc_test.c:387: nng_socket_close(s0): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.103264 secs
+    
+    Test ipc listen cleanup stale:
+      ipc_test.c:519: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:522: nng_stream_listener_alloc(&l, addr): expected success, got Hunky dory (0)... ok
+      ipc_test.c:523: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+      ipc_test.c:526: rename(path, renamed) == 0... ok
+      ipc_test.c:531: rename(renamed, path) == 0... ok
+      ipc_test.c:533: nng_listen(s0, addr, NULL, 0): expected success, got Address in use (10)... failed
+    Test ipc listen duplicate:
+      ipc_test.c:500: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:503: nng_listen(s0, addr, NULL, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:504: nng_listen(s0, addr, NULL, 0) fails with Address in use... ok
+      ipc_test.c:505: nng_socket_close(s0): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.003486 secs
+    
+    Test ipc canceled connection output:
+      ipc_test.c:468: nng_pair1_open(&(sock)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:469: nng_listener_create(&listener, sock, addr): expected success, got Hunky dory (0)... ok
+      ipc_test.c:470: nng_dialer_create(&dialer, sock, addr): expected success, got Hunky dory (0)... ok
+      ipc_test.c:471: nni_listener_find(&l, (uint32_t) nng_listener_id(listener)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:472: nni_dialer_find(&d, (uint32_t) nng_dialer_id(dialer)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:483: streams[i]->freed == 1... ok
+      ipc_test.c:484: 0 == NULL... ok
+      ipc_test.c:483: streams[i]->freed == 1... ok
+      ipc_test.c:484: 0 == NULL... ok
+      ipc_test.c:488: nng_socket_close(sock): expected success, got Hunky dory (0)... ok
+      ipc_test.c:489: accepted.freed == 1... ok
+      ipc_test.c:490: dialed.freed == 1... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.000750 secs
+    
+    Test unix listen duplicate:
+      ipc_test.c:583: Not Windows AF_UNIX... skipped
+      SKIPPED: Not Windows AF_UNIX.
+    
+    Test ipc listen accept cancel:
+      ipc_test.c:400: nng_aio_alloc(&aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      ipc_test.c:403: nng_stream_listener_alloc(&l, addr): expected success, got Hunky dory (0)... ok
+      ipc_test.c:404: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.116126 secs
+    
+    Test ipc abstract sockets:
+      ipc_test.c:615: No abstract sockets... skipped
+      SKIPPED: No abstract sockets.
+    
+    Test ipc abstract auto-bind:
+      ipc_test.c:631: No abstract sockets... skipped
+      SKIPPED: No abstract sockets.
+    
+    Test ipc abstract name too long:
+      ipc_test.c:656: No abstract sockets... skipped
+      SKIPPED: No abstract sockets.
+    
+    Test ipc abstract embedded null:
+      ipc_test.c:696: No abstract sockets... skipped
+      SKIPPED: No abstract sockets.
+    
+    Test ipc unix scheme:
+      ipc_test.c:738: nng_pair1_open(&(s1)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:739: nng_pair1_open(&(s2)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:740: nng_socket_set_ms(s1, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      ipc_test.c:741: nng_socket_set_ms(s2, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      ipc_test.c:742: nng_socket_set_ms(s1, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      ipc_test.c:743: nng_socket_set_ms(s2, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      ipc_test.c:744: nng_listen(s1, a1, NULL, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:745: nng_dial(s2, a2, NULL, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:748: nng_send(s1, "ping", strlen("ping") + 1, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:749: nng_recvmsg(s2, &msg, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:750: msg != NULL... ok
+      ipc_test.c:751: nng_msg_len(msg) == 5... ok
+      ipc_test.c:752: ping == ping... ok
+      ipc_test.c:754: nng_pipe_peer_addr(p, &sa1): expected success, got Hunky dory (0)... ok
+      ipc_test.c:755: nng_pipe_self_addr(p, &sa2): expected success, got Hunky dory (0)... ok
+      ipc_test.c:756: sa1.s_family == sa2.s_family... ok
+      ipc_test.c:757: sa1.s_family == NNG_AF_IPC... ok
+      ipc_test.c:758: /tmp/c083d531234cd555 == /tmp/c083d531234cd555... ok
+      ipc_test.c:774: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+      ipc_test.c:775: nng_socket_close(s2): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.007550 secs
+    
+    Test ipc winpipe scheme:
+      ipc_test.c:801: Not Windows... skipped
+      SKIPPED: Not Windows.
+    
+    Test ipc peer id:
+      ipc_test.c:818: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:819: nng_listen(s0, addr, NULL, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:820: nng_pair1_open(&(s1)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:821: nng_dial(s1, addr, NULL, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:823: nng_socket_set_ms(s0, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      ipc_test.c:824: nng_socket_set_ms(s0, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      ipc_test.c:825: nng_socket_set_ms(s1, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      ipc_test.c:826: nng_socket_set_ms(s1, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      ipc_test.c:828: nng_send(s0, "something", strlen("something") + 1, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:829: nng_recvmsg(s1, &msg, 0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:831: nng_pipe_id(p) != -1... ok
+      ipc_test.c:848: nng_pipe_get_int(p, NNG_OPT_PEER_ZONEID, &id) fails with Not supported... ok
+      ipc_test.c:852: nng_socket_close(s0): expected success, got Hunky dory (0)... ok
+      ipc_test.c:853: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.004481 secs
+    
+    Test ipc security descriptor:
+      ipc_test.c:867: nng_pair1_open(&(s)): expected success, got Hunky dory (0)... ok
+      ipc_test.c:868: nng_listener_create(&l, s, addr): expected success, got Hunky dory (0)... ok
+      ipc_test.c:872: nng_listener_set_security_descriptor(l, addr) fails with Not supported... ok
+      ipc_test.c:874: nng_socket_close(s): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.000304 secs
+    
+    Summary:
+      Count of run unit tests:          26
+      Count of successful unit tests:   19
+      Count of failed unit tests:        1
+    FAILED: 1 of 26 unit tests has failed.
+FAIL  nng.sp.transport.tcp.tcp_test (exit 1)
+      tcp_test.c:134: nng_dialer_get_bool(d, NNG_OPT_TCP_NODELAY, &v): expected success, got Hunky dory (0)... ok
+      tcp_test.c:135: v == false... ok
+      tcp_test.c:136: nng_dialer_get_int(d, NNG_OPT_TCP_NODELAY, &x) fails with Incorrect type... ok
+      tcp_test.c:139: nng_dialer_set_int(d, NNG_OPT_TCP_NODELAY, x) fails with Incorrect type... ok
+      tcp_test.c:141: nng_listener_create(&l, s, addr): expected success, got Hunky dory (0)... ok
+      tcp_test.c:142: nng_listener_get_bool(l, NNG_OPT_TCP_NODELAY, &v): expected success, got Hunky dory (0)... ok
+      tcp_test.c:143: v == true... ok
+      tcp_test.c:145: nng_listener_set_int(l, NNG_OPT_TCP_NODELAY, x) fails with Incorrect type... ok
+      tcp_test.c:148: nng_dialer_close(d): expected success, got Hunky dory (0)... ok
+      tcp_test.c:149: nng_listener_close(l): expected success, got Hunky dory (0)... ok
+      tcp_test.c:151: nng_socket_close(s): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.001179 secs
+    
+    Test tcp keep alive option:
+      tcp_test.c:167: nng_url_parse(&url, addr): expected success, got Hunky dory (0)... ok
+      tcp_test.c:168: nng_pair1_open(&(s)): expected success, got Hunky dory (0)... ok
+      tcp_test.c:169: nng_dialer_create_url(&d, s, url): expected success, got Hunky dory (0)... ok
+      tcp_test.c:171: nng_dialer_get_bool(d, NNG_OPT_TCP_KEEPALIVE, &v): expected success, got Hunky dory (0)... ok
+      tcp_test.c:172: v == false... ok
+      tcp_test.c:173: nng_dialer_set_bool(d, NNG_OPT_TCP_KEEPALIVE, true): expected success, got Hunky dory (0)... ok
+      tcp_test.c:174: nng_dialer_get_bool(d, NNG_OPT_TCP_KEEPALIVE, &v): expected success, got Hunky dory (0)... ok
+      tcp_test.c:175: v... ok
+      tcp_test.c:176: nng_dialer_get_int(d, NNG_OPT_TCP_KEEPALIVE, &x) fails with Incorrect type... ok
+      tcp_test.c:179: nng_dialer_set_int(d, NNG_OPT_TCP_KEEPALIVE, x) fails with Incorrect type... ok
+      tcp_test.c:182: nng_listener_create(&l, s, addr): expected success, got Hunky dory (0)... ok
+      tcp_test.c:183: nng_listener_get_bool(l, NNG_OPT_TCP_KEEPALIVE, &v): expected success, got Hunky dory (0)... ok
+      tcp_test.c:184: v == false... ok
+      tcp_test.c:186: nng_listener_set_int(l, NNG_OPT_TCP_KEEPALIVE, x) fails with Incorrect type... ok
+      tcp_test.c:189: nng_dialer_close(d): expected success, got Hunky dory (0)... ok
+      tcp_test.c:190: nng_listener_close(l): expected success, got Hunky dory (0)... ok
+      tcp_test.c:192: nng_socket_close(s): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.001041 secs
+    
+    Test tcp recv max:
+      tcp_test.c:208: nng_pair1_open(&(s0)): expected success, got Hunky dory (0)... ok
+      tcp_test.c:209: nng_socket_set_ms(s0, NNG_OPT_RECVTIMEO, 100): expected success, got Hunky dory (0)... ok
+      tcp_test.c:210: nng_socket_set_size(s0, NNG_OPT_RECVMAXSZ, 200): expected success, got Hunky dory (0)... ok
+      tcp_test.c:211: nng_listener_create(&l, s0, addr): expected success, got Hunky dory (0)... ok
+      tcp_test.c:212: nng_socket_get_size(s0, NNG_OPT_RECVMAXSZ, &sz): expected success, got Hunky dory (0)... ok
+      tcp_test.c:213: sz == 200... ok
+      tcp_test.c:214: nng_listener_set_size(l, NNG_OPT_RECVMAXSZ, 100): expected success, got Hunky dory (0)... ok
+      tcp_test.c:215: nng_listener_start(l, 0): expected success, got Hunky dory (0)... ok
+      tcp_test.c:217: nng_pair1_open(&(s1)): expected success, got Hunky dory (0)... ok
+      tcp_test.c:218: nng_dial(s1, addr, NULL, 0): expected success, got Hunky dory (0)... ok
+      tcp_test.c:219: nng_send(s1, msg, 95, 0): expected success, got Hunky dory (0)... ok
+      tcp_test.c:220: nng_socket_set_ms(s1, NNG_OPT_SENDTIMEO, 100): expected success, got Hunky dory (0)... ok
+      tcp_test.c:221: nng_recv(s0, buf, &sz, 0): expected success, got Hunky dory (0)... ok
+      tcp_test.c:222: sz == 95... ok
+      tcp_test.c:223: nng_send(s1, msg, 150, 0): expected success, got Hunky dory (0)... ok
+      tcp_test.c:224: nng_recv(s0, buf, &sz, 0) fails with Timed out... ok
+      tcp_test.c:225: nng_socket_close(s0): expected success, got Hunky dory (0)... ok
+      tcp_test.c:226: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.107781 secs
+    
+    Test tcp props v4:
+      util.c:507: nng_pair1_open(&(s1)): expected success, got Hunky dory (0)... ok
+      util.c:508: nng_pair1_open(&(s2)): expected success, got Hunky dory (0)... ok
+      util.c:509: nng_socket_set_ms(s1, NNG_OPT_SENDTIMEO, 100): expected success, got Hunky dory (0)... ok
+      util.c:510: nng_socket_set_ms(s2, NNG_OPT_SENDTIMEO, 100): expected success, got Hunky dory (0)... ok
+      util.c:511: nng_socket_set_ms(s1, NNG_OPT_RECVTIMEO, 100): expected success, got Hunky dory (0)... ok
+      util.c:512: nng_socket_set_ms(s2, NNG_OPT_RECVTIMEO, 100): expected success, got Hunky dory (0)... ok
+      util.c:513: nng_listen(s1, addr, &l1, 0): expected success, got Hunky dory (0)... ok
+      util.c:514: nng_listener_get_url(l1, &url): expected success, got Hunky dory (0)... ok
+      util.c:515: nng_dial_url(s2, url, &d1, 0): expected success, got Hunky dory (0)... ok
+      util.c:516: nng_listener_id(l1) > 0... ok
+      util.c:517: nng_dialer_id(d1) > 0... ok
+      util.c:518: nng_send(s1, "ping", strlen("ping") + 1, 0): expected success, got Hunky dory (0)... ok
+      util.c:519: nng_recvmsg(s2, &msg, 0): expected success, got Hunky dory (0)... ok
+      util.c:520: ping == ping... ok
+      tcp_test.c:238: nng_pipe_id(p) > 0... ok
+      tcp_test.c:239: nng_pipe_self_addr(p, &la): expected success, got Hunky dory (0)... ok
+      tcp_test.c:240: la.s_family == NNG_AF_INET... ok
+      tcp_test.c:241: la.s_in.sa_port != 0... ok
+      tcp_test.c:242: la.s_in.sa_addr == nuts_be32(0x7f000001)... ok
+      tcp_test.c:244: nng_pipe_peer_addr(p, &ra): expected success, got Hunky dory (0)... ok
+      tcp_test.c:245: ra.s_family == NNG_AF_INET... ok
+      tcp_test.c:246: ra.s_in.sa_port != 0... ok
+      tcp_test.c:247: ra.s_in.sa_addr == nuts_be32(0x7f000001)... ok
+      tcp_test.c:248: ra.s_in.sa_port != la.s_in.sa_port... ok
+      tcp_test.c:250: nng_pipe_get_bool(p, NNG_OPT_TCP_KEEPALIVE, &b): expected success, got Hunky dory (0)... ok
+      tcp_test.c:251: b == false... ok
+      tcp_test.c:253: nng_pipe_get_bool(p, NNG_OPT_TCP_NODELAY, &b): expected success, got Hunky dory (0)... ok
+      tcp_test.c:254: b... ok
+      tcp_test.c:257: nng_pipe_peer_cert(p, &cert) fails with Not supported... ok
+      util.c:523: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+      util.c:524: nng_socket_close(s2): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.002828 secs
+    
+    Test tcp6 conn refused:
+      util.c:247: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 dialer cancel:
+      util.c:262: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 dialer closed:
+      util.c:278: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 duplicate listen:
+      util.c:297: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 listener cancel:
+      util.c:315: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 listener closed:
+      util.c:331: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 listen accept:
+      util.c:352: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 exchange:
+      util.c:382: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 pipe id:
+      util.c:418: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 huge msg:
+      util.c:460: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp6 perf:
+      util.c:535: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Test tcp props v6:
+      util.c:505: No IPv6 support present... skipped
+      SKIPPED: No IPv6 support present.
+    
+    Summary:
+      Count of run unit tests:          33
+      Count of successful unit tests:   20
+      Count of failed unit tests:        1
+    FAILED: 1 of 33 unit tests has failed.
+    
+    [NOTICE]: 18:24:26.682: tcp: Exchanging 64 byte messages for 10 seconds
+    [NOTICE]: 18:24:36.685: tcp: Did 22520 roundtrips in 10.00 seconds (2252.000 msg/sec)
+    [NOTICE]: 18:24:36.685: tcp: RTT 0.444 ms
+    [NOTICE]: 18:24:36.685: tcp: Timing overhead 0.000 ms, 0.000 us/msg
+PASS  nng.sp.transport.udp.udp_tran_test (exit 0)
+PASS  nng.sp.transport.udp.udp_wire_test (exit 0)
+PASS  nng.sp.transport.ws.ws_test (exit 0)
+PASS  nng.supplemental.http_client_test (exit 0)
+PASS  nng.supplemental.http_server_test (exit 0)
+PASS  nng.supplemental.sha1_test (exit 0)
+PASS  nng.supplemental.base64_test (exit 0)
+PASS  nng.supplemental.wssfile_test (exit 0)
+PASS  nng.supplemental.websocket_test (exit 0)
+PASS  nng.inproc_lat (exit 0)
+PASS  nng.inproc_thr (exit 0)
+PASS  nng.pubdrop (exit 0)
+PASS  nng.cplusplus_pair (exit 0)
+
+60/64 tests passed on the QNX target

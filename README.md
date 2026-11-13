@@ -274,6 +274,8 @@ reproducers are in [docs/qnx-reports/](docs/qnx-reports/):
   - `fchdir()` needs `O_DIRECTORY` (googletest's death tests). QNX documents this.
   - `qsort()` writes outside the array when the comparator is inconsistent (libsrtp's tests use a random
     comparator).
+  - `poll()` reports no `POLLHUP` when a pipe's writer closes (nng 2.1's tests hang at exit; a drafted nng
+    fix takes them from 3/64 to 60/64 on QNX).
 - **Undefined C that glibc tolerates:** `printf("%s", NULL)`. The agent reads the core dump and fixes it in
   json-c, libconfig, tinyxml2 and capstone (all now pass). It finds the same thing but cannot place the fix
   in libxml2 (library code) and nng (behind a tail call).

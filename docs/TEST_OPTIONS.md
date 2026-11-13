@@ -6,9 +6,9 @@ happened when we tried it.
 
 How each row was checked: `scripts/run_campaign.py --target none --no-model` with QNX SDP 8.0 (qcc,
 x86_64-pc-nto-qnx8.0.0) on the WSL Ubuntu 22.04 build host (CMake 3.22.1), then `ctest --show-only=json-v1`
-(or `meson introspect --tests`) in the build folder. "Tests listed" is that count. Cross-compiled only: none of
-these tests has been run on a QNX target yet. `file` reported every listed test binary as a QNX executable
-(interpreter `/usr/lib/ldqnx-64.so.2`).
+(or `meson introspect --tests`) in the build folder. "Tests listed" is that count. `file` reported every listed
+test binary as a QNX executable (interpreter `/usr/lib/ldqnx-64.so.2`). "On QNX x86_64" is the campaign's result
+on the QNX 8.0 x86_64 target in QEMU, 13 Nov 2026 (`ports/<library>/logs/tests.log`).
 
 ## Test frameworks from earlier ports (`uses`)
 
@@ -19,21 +19,21 @@ as a find root, so CMake finds the headers, libraries and package configs. The f
 the tests. A library may only use one listed before it, and the campaign stops otherwise.
 
 Checked by cross-building cmocka, googletest and cJSON, then libcbor, msgpack-c, c-ares and mosquitto against
-them, with `--target none`. The counts below are `ctest -N` in each build folder.
+them, with `--target none`, and then in the x86_64 campaign with the target (`results/runs/campaign-8.log`).
 
 ## Tests that should run on the target
 
-| Library | Tag | Option added | Tests listed | Target-side needs |
-|---|---|---|---|---|
-| benchmark | v1.10.0 | `-DBENCHMARK_ENABLE_TESTING=ON -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON` (was `TESTING=OFF`) | 87 | none. The build host downloads googletest v1.15.2 at configure time |
-| libdeflate | v1.26 | `-DLIBDEFLATE_BUILD_TESTS=ON` | 8 | none. Links the SDP's zlib |
-| spdlog | v1.17.0 | `-DSPDLOG_BUILD_TESTS=ON` | 1 (`spdlog-utests`, one Catch2 binary) | writable working folder and `rm`: the tests write log files under `test_logs/` and clear it with `system("rm -rf test_logs")`. The build host downloads Catch2 v3.5.0 at configure time |
-| miniz | 3.1.2 | none: `BUILD_TESTS` defaults to ON at this tag | 1 (`catch_tests`) | none |
-| tinycbor | v7.1 | none: v7.1 switched to CMake, and qnx-porter already passes `BUILD_TESTING=ON` | 1 (`tst_c90`) | none. Its Qt tests are skipped because the SDP has no Qt6 |
-| libcbor | v0.14.0 | `-DWITH_TESTS=ON`, `uses: [cmocka]` | 28 | none |
-| msgpack-c | c-7.0.2 | `-DMSGPACK_BUILD_TESTS=ON` (was OFF), `uses: [googletest]` | 5 | none |
-| c-ares | v1.34.9 | `-DCARES_BUILD_TESTS=ON`, `uses: [googletest]` | 3 (`arestest`, one GoogleTest binary with its own subtests, and two fuzz-corpus replays) | not checked yet: `arestest` includes live-lookup tests, and the target image has no internet access |
-| inih (meson) | r63 | none: meson option `tests` defaults to true | 17 | `/bin/sh` and `diff`: each test is `tests/runtest.sh`, which pipes the test program into `diff`. The SDP's target tree has no `diff` binary, so these may fail on the target if the image lacks one |
+| Library | Tag | Option added | Tests listed | On QNX x86_64 | Target-side needs |
+|---|---|---|---|---|---|
+| benchmark | v1.10.0 | `-DBENCHMARK_ENABLE_TESTING=ON -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON` (was `TESTING=OFF`) | 87 | 85/87. `locale_impermeability_test` needs the `en_US.UTF-8` locale, which the image lacks; two `string_util_gtest` cases expect `976.562` for 976.5625 (glibc rounds the exact tie to even) and QNX's `printf` gives `976.563` | none. The build host downloads googletest v1.15.2 at configure time |
+| libdeflate | v1.26 | `-DLIBDEFLATE_BUILD_TESTS=ON` | 8 | 8/8 | none. Links the SDP's zlib |
+| spdlog | v1.17.0 | `-DSPDLOG_BUILD_TESTS=ON` | 1 (`spdlog-utests`, one Catch2 binary) | 1/1 | writable working folder and `rm`: the tests write log files under `test_logs/` and clear it with `system("rm -rf test_logs")`. The build host downloads Catch2 v3.5.0 at configure time |
+| miniz | 3.1.2 | none: `BUILD_TESTS` defaults to ON at this tag | 1 (`catch_tests`) | 1/1 | none |
+| tinycbor | v7.1 | none: v7.1 switched to CMake, and qnx-porter already passes `BUILD_TESTING=ON` | 1 (`tst_c90`) | 1/1 | none. Its Qt tests are skipped because the SDP has no Qt6 |
+| libcbor | v0.14.0 | `-DWITH_TESTS=ON`, `uses: [cmocka]` | 28 | 28/28 | none |
+| msgpack-c | c-7.0.2 | `-DMSGPACK_BUILD_TESTS=ON` (was OFF), `uses: [googletest]` | 5 | 5/5 | none |
+| c-ares | v1.34.9 | `-DCARES_BUILD_TESTS=ON`, `uses: [googletest]` | 3 (`arestest`, one GoogleTest binary with its own subtests, and two fuzz-corpus replays) | 2/3: both fuzz replays pass; `arestest` fails, not yet investigated (the end of its output, all the log keeps, is its mock server's `Failed to send full reply, rc=-1`) | not checked yet: `arestest` includes live-lookup tests, and the target image has no internet access |
+| inih (meson) | r63 | none: meson option `tests` defaults to true | 17 | 17/17: the image has `/system/bin/diff` | `/bin/sh` and `diff`: each test is `tests/runtest.sh`, which pipes the test program into `diff` |
 
 ## Left out
 
