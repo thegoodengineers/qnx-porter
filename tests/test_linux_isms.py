@@ -328,3 +328,11 @@ def test_negative_constant_in_plain_char_on_aarch64(tmp_path):
     log = ("binary_test.cpp:11:38: error: narrowing conversion of '-58' from 'int' to 'char' [-Wnarrowing]\n")
     [f] = run(tmp_path, {"binary_test.cpp": "char c[] = {-58};\n"}, log)
     assert f.rule == "signed-char" and f.cflags == ["-fsigned-char"]
+
+
+def test_path_max_hidden_by_strict_xopen_gets_qnx_source(tmp_path):
+    # Real error from cmocka 2.0.2 (built with _XOPEN_SOURCE=700): QNX's <limits.h> defines PATH_MAX only
+    # under __EXT_UNIX_MISC.
+    log = "cmocka.c:4346:30: error: 'PATH_MAX' undeclared (first use in this function)\n"
+    [f] = run(tmp_path, {"cmocka.c": "#include <limits.h>\nint f(int n) { return n < PATH_MAX; }\n"}, log)
+    assert f.rule == "qnx-source" and f.cflags == ["-D_QNX_SOURCE"]

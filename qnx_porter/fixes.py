@@ -15,6 +15,8 @@ from .qnx import Flags
 SYMBOL_HEADERS = {
     **dict.fromkeys(["strcasecmp", "strncasecmp", "bzero", "bcopy", "index", "rindex", "ffs"], "strings.h"),
     "alloca": "alloca.h",
+    # QNX 8.0's <limits.h> defines these only under __EXT_UNIX_MISC, which strict _XOPEN_SOURCE hides (cmocka 2.0)
+    **dict.fromkeys(["PATH_MAX", "NAME_MAX"], "limits.h"),
     # QNX 8.0 C Library Reference: where QNX declares these (differs from glibc for gettid, dl_iterate_phdr)
     "gettid": "process.h",
     "dl_iterate_phdr": "sys/link.h",
@@ -234,7 +236,7 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
                 return Fix("add-include", f"`{d.symbol}` is declared in <{header}> ({how}); {rel} did not "
                            f"include it. glibc pulls it in through other headers, QNX's libc does not.",
                            d, edits={rel: new})
-            if d.kind == "implicit_decl" and "-D_QNX_SOURCE" not in flags.cflags:
+            if d.kind in ("implicit_decl", "undeclared") and "-D_QNX_SOURCE" not in flags.cflags:
                 return Fix("qnx-source", f"`{d.symbol}` is in <{header}>, which {rel} already includes, so a "
                            "strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions "
                            "in QNX's headers, as _GNU_SOURCE does on glibc.", d, cflags=["-D_QNX_SOURCE"])
