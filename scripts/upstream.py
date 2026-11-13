@@ -1,23 +1,21 @@
-"""Prepare upstream contributions from the ports: a patch and a pull-request description per genuine fix.
+"""List the ports' patches that upstream could take as they are: the candidates for docs/upstream/.
 
-Only source changes that are portability fixes upstream could take as they are (the rules in UPSTREAMABLE)
-become contributions. Build-flag workarounds (an empty libdl, -Wno-error) are QNX-side choices, not upstream
-patches, and are left out. Nothing is sent anywhere: this writes files for a person to review and submit.
+Only source changes that are portability or undefined-behaviour fixes (the rules in UPSTREAMABLE) are
+candidates. Build-flag workarounds (an empty libdl, -Wno-error, extra link libraries) are QNX-side choices,
+not upstream patches, and are left out. Each candidate is then checked by hand against upstream's current
+default branch; the drafts and their status are in docs/upstream/README.md. Nothing is sent anywhere.
 
-Writes ports/<lib>/upstream/NNNN-<rule>.patch (git format-patch style), ports/<lib>/upstream/PR.md, and
-results/upstream.md (the list to approve).
+Reads ports/<lib>/report.json and ports/<lib>/patches/; writes results/upstream.md.
 
 Usage: python3 scripts/upstream.py
 """
 import json
-import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 UPSTREAMABLE = {
-    "printf-null": "Tests pass NULL to %s, which is undefined in C; glibc prints \"(null)\", other C libraries "
-                   "(QNX 8.0's) crash. The fix keeps the glibc output, so the expected-output files stay valid.",
+    "printf-null": "Tests pass NULL to %s, which is undefined in C; glibc prints \"(null)\", other C libraries crash.",
     "header-alias": "Uses a glibc-only header spelling; the POSIX header declares the same things everywhere.",
     "bool-typedef": "A private `bool` typedef collides with <stdbool.h> on systems whose <sys/socket.h> includes it.",
     "add-include": "Relies on a header glibc includes implicitly; POSIX puts the declaration in the header added.",
@@ -31,57 +29,31 @@ UPSTREAMABLE = {
 }
 
 
-def parse_patch(text: str) -> tuple[dict, str]:
-    head, _, diff = text.partition("\n---\n")
-    meta = dict(re.findall(r"^(Subject|Source|Reason|Error): (.*)$", head, re.M))
-    return meta, diff
-
-
-def main() -> int:
-    listed = []
-    for rep in sorted(list(ROOT.glob("ports/*/report.json")) + list(ROOT.glob("ports-*/*/report.json"))):
+def candidates(ports: Path = ROOT / "ports") -> list[dict]:
+    """One row per kept patch whose rule is upstreamable and which changes the library's own files."""
+    rows = []
+    for rep in sorted(ports.glob("*/report.json")):
         r = json.loads(rep.read_text(encoding="utf-8"))
         if r.get("arch") == "host":
             continue
-        d = rep.parent
-        keep = [p for p in r["patches"] if p["kept"] and p["rule"] in UPSTREAMABLE
-                and not p["files"][0].startswith(("qnx-toolchain", "qnx-cross", "qnx-env"))]
-        if not keep:
-            continue
-        up = d / "upstream"
-        up.mkdir(exist_ok=True)
-        items = []
-        for p in keep:
-            meta, diff = parse_patch((d / p["path"]).read_text(encoding="utf-8"))
-            if not diff.strip():
-                continue
-            title = f"Portability: {UPSTREAMABLE[p['rule']].split(';')[0].split('.')[0].rstrip()}"[:72]
-            body = (f"{UPSTREAMABLE[p['rule']]}\n\nFound while building {r['library']} {r['version']} for QNX 8.0 "
-                    f"(qcc, GCC 12) and running its own tests on a QNX target.\n\nError: {meta.get('Error', '')}\n")
-            name = f"{p['number']:04d}-{p['rule']}.patch"
-            (up / name).write_text(f"From: <your name and email>\nSubject: [PATCH] {title}\n\n{body}\n---\n{diff}",
-                                   encoding="utf-8")
-            items.append((name, title, p, meta))
-        if not items:
-            continue
-        tests = (f"{r['tests_passed']}/{r['tests_total']} of the library's tests pass on QNX 8.0 with the patches"
-                 if r.get("tests_ran") else "the tests were not run on QNX for this library")
-        pr = [f"# Pull request draft for {r['library']} ({r['url']})", "",
-              "Not sent. Review it, sign it off as yourself, then open it if the change is worth it to the project.",
-              "", f"Base: `{r['version']}` (`{r['commit'][:12]}`). Result with these patches: {tests}.", ""]
-        for name, title, p, meta in items:
-            pr += [f"## {title}", "", f"Patch: `{name}` (files: {', '.join(p['files'])})", "",
-                   UPSTREAMABLE[p["rule"]], "", f"Why it showed up: `{meta.get('Error', '')[:300]}`", ""]
-        (up / "PR.md").write_text("\n".join(pr), encoding="utf-8")
-        folder = d.relative_to(ROOT).as_posix()
-        listed.append(f"| {r['library']} | {r['arch']} | {len(items)} | {', '.join(sorted({i[2]['rule'] for i in items}))} "
-                      f"| `{folder}/upstream/` | {tests} |")
+        for p in r.get("patches", []):
+            if p["kept"] and p["rule"] in UPSTREAMABLE and not p["files"][0].startswith("qnx-"):
+                tests = f"{r['tests_passed']}/{r['tests_total']}" if r.get("tests_ran") else "not run"
+                rows.append({"library": r["library"], "version": r["version"], "rule": p["rule"],
+                             "patch": f"ports/{rep.parent.name}/{p['path']}", "files": p["files"], "tests": tests})
+    return rows
+
+
+def main() -> int:
+    rows = candidates()
     out = ROOT / "results" / "upstream.md"
-    out.write_text("# Upstream contributions, ready for review (none sent)\n\nGenerated by `scripts/upstream.py` from the "
-                   "ports. Opening a pull request publishes as the person who opens it, so each one waits for a person "
-                   "to approve and send it.\n\n| Library | Arch | Patches | Rules | Folder | Tests on QNX |\n"
-                   "|---|---|---|---|---|---|\n" + "\n".join(listed) + "\n", encoding="utf-8")
-    print(f"{len(listed)} libraries with upstream-ready patches -> {out}")
+    out.write_text("# Upstream candidates from the ports (none sent)\n\nGenerated by `scripts/upstream.py`. Each "
+                   "row is checked by hand against upstream; drafts and status: "
+                   "[docs/upstream/README.md](../docs/upstream/README.md).\n\n"
+                   "| Library | Tag | Rule | Patch | Files | Tests on QNX with the patches |\n|---|---|---|---|---|---|\n"
+                   + "".join(f"| {c['library']} | `{c['version']}` | {c['rule']} | `{c['patch']}` | "
+                             f"{', '.join(c['files'])} | {c['tests']} |\n" for c in rows), encoding="utf-8")
+    print(f"{len(rows)} upstream candidates -> {out}")
     return 0
 
 

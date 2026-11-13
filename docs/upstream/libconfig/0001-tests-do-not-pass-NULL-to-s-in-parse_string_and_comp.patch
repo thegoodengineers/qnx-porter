@@ -1,0 +1,45 @@
+From 8e466ef74eab5226261cfa81574eecaa6b0f2dad Mon Sep 17 00:00:00 2001
+From: Chirag <118997601+Chirag6722@users.noreply.github.com>
+Date: Fri, 13 Nov 2026 09:35:45 +0530
+Subject: [PATCH] tests: do not pass NULL to %s in
+ parse_string_and_compare_error()
+
+When a string (not a file) is parsed, config_error_file() returns NULL,
+and the test formats it with "%s". Passing NULL to %s is undefined in
+C. glibc happens to print "(null)", and the test's expected text is
+built as "(null):...", so it passes there; C libraries that do not
+special-case NULL crash in strlen() instead.
+
+Map a NULL argument to the string "(null)" before formatting, so the
+output, and therefore the expected text, stays exactly the same.
+---
+ tests/tests.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/tests/tests.c b/tests/tests.c
+index c12a0c6..77dfea6 100644
+--- a/tests/tests.c
++++ b/tests/tests.c
+@@ -31,6 +31,9 @@
+ #include <libconfig.h>
+ #include <tinytest.h>
+ 
++/* qnx-porter: glibc prints "(null)" for a NULL %s argument; QNX's libc faults (it is undefined C). */
++static const char *qnx_porter_str(const char *s) { return s ? s : "(null)"; }
++
+ /* ------------------------------------------------------------------------- */
+ 
+ static void parse_and_compare(const char *input_file, const char *output_file)
+@@ -97,8 +100,8 @@ static void parse_string_and_compare_error(const char *input_text,
+   snprintf(expected_error, sizeof(expected_error), "(null):%s", parse_error);
+ 
+   snprintf(actual_error, sizeof(actual_error), "%s:%d %s\n",
+-           config_error_file(&cfg), config_error_line(&cfg),
+-           config_error_text(&cfg));
++           qnx_porter_str(config_error_file(&cfg)), config_error_line(&cfg),
++           qnx_porter_str(config_error_text(&cfg)));
+ 
+   config_destroy(&cfg);
+ 
+
+base-commit: 525922a6b49ca19235cdf307376e7c9c539d1b93

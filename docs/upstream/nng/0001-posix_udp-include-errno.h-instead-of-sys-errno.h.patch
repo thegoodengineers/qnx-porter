@@ -1,0 +1,27 @@
+From 5d4adb8ed97ecef3034f60fcc77d216fa5a27747 Mon Sep 17 00:00:00 2001
+From: Chirag <118997601+Chirag6722@users.noreply.github.com>
+Date: Fri, 13 Nov 2026 09:36:24 +0530
+Subject: [PATCH] posix_udp: include <errno.h> instead of <sys/errno.h>
+
+<sys/errno.h> is not a POSIX header; some C libraries provide it as an
+alias and others do not ship it at all, which stops the build at this
+include. POSIX's <errno.h> declares everything the file uses.
+---
+ src/platform/posix/posix_udp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/platform/posix/posix_udp.c b/src/platform/posix/posix_udp.c
+index 4ef4c68..c876c4d 100644
+--- a/src/platform/posix/posix_udp.c
++++ b/src/platform/posix/posix_udp.c
+@@ -11,7 +11,7 @@
+ #include "core/nng_impl.h"
+ #include "nng/nng.h"
+ #include "platform/posix/posix_impl.h"
+-#include <sys/errno.h>
++#include <errno.h>
+ 
+ #ifdef NNG_PLATFORM_POSIX
+ #include "platform/posix/posix_pollq.h"
+
+base-commit: 29aff2bacc9e2cfa6dcc52155d2816582617f918
