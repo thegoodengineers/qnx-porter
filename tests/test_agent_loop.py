@@ -114,3 +114,11 @@ def test_a_proved_fix_that_lets_the_build_reach_the_linker_is_kept(tmp_path):
     kept = [p for p in r["patches"] if p["rule"] == "bool-typedef"]
     assert kept and kept[0]["kept"] is True, (r["patches"], r["blocked_on"])
     assert "not_defined_anywhere" in r["blocked_on"][0]["error"]
+
+
+@needs_tools
+def test_a_local_checkout_without_a_tag(tmp_path):
+    # What the GitHub Action does: port the repository that is checked out, at whatever is checked out.
+    lib = upstream(tmp_path)
+    r = agent.port(str(lib), "", tmp_path / "ports", arch=None, use_llm=False, name="here", log=lambda *_: None)
+    assert r["build_result"] == "built" and len(r["version"]) == 12  # the commit, since there is no tag

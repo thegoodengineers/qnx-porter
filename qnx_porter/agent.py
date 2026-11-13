@@ -33,13 +33,15 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         old.unlink()
     src, bdir = work / "src", work / "build"
 
-    log(f"[1/5] fetch {url} @ {tag}")
+    log(f"[1/5] fetch {url} @ {tag or 'default branch'}")
     if (src / ".git").exists():
         patches.git(src, "reset", "-q", "--hard", "qnx-porter-base")
         patches.git(src, "clean", "-qfdx")
     else:
-        subprocess.run(["git", "-c", "advice.detachedHead=false", "clone", "-q", "--depth", "1", "--branch", tag, "--recurse-submodules",
-                        "--shallow-submodules", ("file://" + url) if Path(url).is_dir() else url, str(src)], check=True)
+        branch = ["--branch", tag] if tag else []  # no tag: the repository's default branch (or a local HEAD)
+        subprocess.run(["git", "-c", "advice.detachedHead=false", "clone", "-q", "--depth", "1", *branch,
+                        "--recurse-submodules", "--shallow-submodules",
+                        ("file://" + str(Path(url).resolve())) if Path(url).is_dir() else url, str(src)], check=True)
         patches.git(src, "tag", "qnx-porter-base")
     base = patches.git(src, "rev-parse", "HEAD").strip()
     shutil.rmtree(bdir, ignore_errors=True)
@@ -154,7 +156,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     kept = [p for p in applied if p.kept]
     patches.export_series(src, base, out)
     report = {
-        "library": name, "url": url, "version": tag, "commit": base, "build_system": system,
+        "library": name, "url": url, "version": tag or base[:12], "commit": base, "build_system": system,
         "arch": arch or "host", "sdp": "QNX SDP 8.0" if arch else "none (host self-test)",
         "host": f"{platform.system()} {platform.release()}", "target": uname,
         "build_result": "built" if ok else "failed", "rounds": rounds,
