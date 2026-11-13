@@ -1,0 +1,706 @@
+% qnx-porter: the paper. Source of truth; paper.md is generated from this file by build.py.
+% Every number is \N{key}, defined in numbers.tex by build.py from the repository's result files.
+% Rebuild: python3 paper/figures.py && python3 paper/build.py && tectonic paper/qnx-porter.tex
+\documentclass[conference]{IEEEtran}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[hyphens]{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+\input{numbers}
+\graphicspath{{fig/}}
+\makeatletter\def\verbatim@font{\footnotesize\ttfamily}\makeatother
+\sloppy
+
+\begin{document}
+
+\title{Porting C/C++ Libraries to QNX 8.0 with On-Target Verification:\\
+Rules, a Verified Language-Model Step, and What \N{all-libs} Libraries Taught Us}
+
+\author{\IEEEauthorblockN{The Good Engineers: Chirag, Bhumika, Ayush and Abhijeet}
+\IEEEauthorblockA{qnx-porter, QNX Global Hackathon entry\\ \url{https://github.com/thegoodengineers/qnx-porter}}}
+
+\maketitle
+
+\begin{abstract}
+Most open-source C and C++ libraries have never been built for QNX 8.0, and a library that merely compiles for
+a real-time OS has not been shown to work there. We present qnx-porter, a tool that cross-compiles a library with
+the QNX SDP's \texttt{qcc}, fixes what breaks with deterministic rules grounded in documented QNX 8.0 facts,
+records every change as a numbered patch with its reason and the compiler error it answers, and counts a port
+only when the library's own test suite runs on a QNX 8.0 target. An optional language-model step proposes a diff
+for errors no rule covers; the diff is kept only if a rebuild clears the error and is reverted otherwise. Over
+\N{all-libs} libraries at \N{campaign-file}, \N{x-built} built for x86\_64 and \N{a-built} for aarch64 on QEMU;
+\N{x-tests-passed} of \N{x-tests-total} and \N{a-tests-passed} of \N{a-tests-total} of their own tests passed
+on the target, with \N{x-model-patches} patches from the model. On the \N{model-libs} libraries the rules could
+not build that are not Linux-only by design, the model step built \N{model-built}, keeping \N{model-kept} patches and reverting
+\N{model-reverted}; its libuv fix makes the same changes as upstream libuv's later QNX pull request. The
+same pipeline built \N{x-crates-built} of \N{x-crates} Rust crates and passed \N{x-crate-tests-passed} of
+\N{x-crate-tests-total} of their tests on x86\_64. Running tests on the target exposed QNX~8.0 C-library
+behaviour that glibc-tested code does not expect, including a \texttt{strtod()} that misrounds
+\N{strtod-pct}\% of \texttt{\%.17g} round trips. Every number in this paper is generated from a file in the
+repository.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+QNX is a real-time operating system used in vehicles, medical devices and industrial control. QNX 8.0 is free
+for non-commercial use, and QNX maintains a catalogue of ported open-source software~\cite{ossqnx} and
+hand-written build recipes~\cite{qnxports}. Yet most open-source C and C++ libraries have never been built for
+QNX 8.0. Each missing library is work for an engineering team before it can even start, and the work repeats:
+the same missing header, the same socket functions that live in \texttt{libsocket} rather than libc, the same
+Linux-only call, library after library.
+
+Compiling is the easy half. QNX binaries do not run on the build host, so a cross-build that succeeds proves
+little. A library can compile against the QNX headers and still crash on the target because QNX's C library makes
+different, equally legal, choices from glibc where the C standard leaves behaviour undefined or
+unspecified. For a real-time system the bar is higher still: its dependencies should be shown to work on the
+target, and every change made to them should be reviewable, because the industries QNX serves review every
+change to a dependency.
+
+We built qnx-porter for the QNX Global Hackathon to make that work routine. Given a git URL and a tag, it
+detects the build system, writes a QNX toolchain for \texttt{qcc}, builds, parses the errors, fixes what it can,
+rebuilds, copies the build to a QNX 8.0 target and runs the library's own tests there. This paper reports what
+the tool does and what \N{all-libs} libraries, two architectures and \N{x-crates} Rust crates showed.
+
+\paragraph{Contributions}
+\begin{itemize}
+\item A porting pipeline whose output is evidence: per library a report, a numbered patch per change with the
+rule, the reason and the exact compiler error, a single \texttt{qnx.patch}, the toolchain file, every build and
+test log, and an SPDX SBOM (Section~\ref{sec:design}).
+\item A corpus of \N{linuxisms} Linux-isms and the documented QNX 8.0 answer to each, turned into deterministic
+rules, each with a test (Section~\ref{sec:rules}).
+\item A language-model step that is kept only when a rebuild proves it, and an evaluation showing that its fixes
+match the changes QNX-aware engineers made upstream (Section~\ref{sec:eval-model}).
+\item On-target test execution that runs CMake, Meson and automake test suites unchanged on QNX, plus crash
+triage from QNX core dumps that repairs one common class of glibc-only test code automatically
+(Section~\ref{sec:tests}).
+\item A two-architecture campaign on QEMU, a comparison with QNX's own hand-made ports, a Rust crate campaign,
+a real-time latency study, and a set of QNX 8.0 C-library findings, each reproduced with a stand-alone program
+(Sections~\ref{sec:eval} and~\ref{sec:findings}).
+\end{itemize}
+
+\section{Background}\label{sec:background}
+
+\paragraph{QNX 8.0 and the SDP} QNX OS 8.0 is a microkernel RTOS with a POSIX C library. Software for it is
+built on a Linux or Windows host with the QNX Software Development Platform (SDP). The SDP's compiler driver,
+\texttt{qcc}~\cite{qcc}, wraps GCC; a \texttt{-V} argument selects the target, for example
+\texttt{-Vgcc\_ntox86\_64} or \texttt{-Vgcc\_ntoaarch64le}, and the target headers and libraries live under
+\texttt{\$QNX\_TARGET}. Our SDP is build \N{sdp-build} with GCC \N{qcc-version}. The SDP also ships GNU-style
+drivers (\texttt{x86\_64-pc-nto-qnx8.0.0-gcc}) that autotools and Meson cross builds can use.
+
+\paragraph{Cross-compilation} Nothing builds on a QNX device: a system in a car has no compiler. Every library is
+cross-compiled, so each needs a CMake toolchain file, a Meson cross file or a \texttt{-{}-host} triplet, and the
+right flags. Most upstream projects ship none of these for QNX.
+
+\paragraph{QEMU targets} QNX's \texttt{mkqnximage}~\cite{mkqnximage} generates virtual-machine images, including
+QEMU images for x86\_64 and aarch64le. We used it for both our targets: QNX 8.0 x86\_64 under KVM, and QNX 8.0
+aarch64le on the QEMU \texttt{virt} machine, fully emulated. No hardware was used; every aarch64 result in this
+paper is ``aarch64 on QEMU''.
+
+\paragraph{Rust} The Rust compiler has two QNX 8.0 targets, \texttt{x86\_64-pc-qnx} and
+\texttt{aarch64-unknown-qnx}. Both are Tier~3: Rust ships no prebuilt standard library for them, so
+\texttt{std} is built from source with \texttt{-Zbuild-std}, and full standard-library support is marked as in
+progress~\cite{rustqnx}.
+
+\paragraph{Why ``it compiles'' is not a port} A cross-build exercises the headers and the linker, not the
+behaviour. Where C leaves behaviour undefined (passing \texttt{NULL} to \texttt{\%s}) or unspecified (the leading
+digit of \texttt{\%a}), glibc and QNX's libc legitimately differ, and test suites written against glibc encode
+glibc's choices. Only running the tests on the target reveals this; Section~\ref{sec:findings} shows such
+cases, some of them QNX defects.
+
+\section{Design}\label{sec:design}
+
+Figure~\ref{fig:pipeline} shows the pipeline for one library. Each box names the source file that implements it;
+the whole tool is \N{py-lines} lines of Python with no runtime dependencies, and \N{pytest-count} tests run
+in CI without QNX.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{pipeline}
+\caption{The qnx-porter pipeline for one library. Blue: steps every port takes. Green: deterministic rules.
+Orange: steps whose output is kept only if a later check proves it (a rebuild, or more tests passing).}
+\label{fig:pipeline}
+\end{figure*}
+
+\subsection{Detection, toolchain and build}\label{sec:toolchain}
+qnx-porter makes a shallow clone at the tag and tags it \texttt{qnx-porter-base}, so every later change is a git
+diff against upstream. It detects CMake, Meson, autotools or plain Make from the files present. It then reads
+\texttt{QNX\_HOST} and \texttt{QNX\_TARGET} from the SDP environment and writes what the build system needs: a
+CMake toolchain (\texttt{CMAKE\_SYSTEM\_NAME QNX}, \texttt{qcc} as the compiler with
+\texttt{CMAKE\_C\_COMPILER\_TARGET gcc\_ntox86\_64} or \texttt{gcc\_ntoaarch64le}, \texttt{CMAKE\_SYSROOT}),
+a Meson cross file, or a GNU host triplet. Empty \texttt{libpthread.a}, \texttt{librt.a} and \texttt{libdl.a}
+stand in for libraries whose functions QNX keeps in libc, so \texttt{-lpthread} and CMake's library checks
+succeed without editing the project. Tests are turned on, and builds carry \texttt{-g} so that crash backtraces
+have file and line.
+
+One lesson shaped this step: CMake reads \texttt{CMAKE\_*\_INIT} flags only into a fresh cache. Our first
+campaign silently ignored every flag fix after round one (mbedtls ``received'' \texttt{-lsocket} again and again).
+The loop now deletes the CMake cache whenever a fix changes the toolchain.
+
+\subsection{Error parsing}\label{sec:errors}
+The parser turns GCC, GNU ld, CMake, configure and Meson output into diagnostics: implicit declaration,
+undeclared symbol, missing header, \texttt{-Werror} warning, undefined reference, missing \texttt{-l} library,
+multiple definition, and configuration errors. A diagnostic's identity across rebuilds ignores line numbers,
+because a patch that adds lines moves them.
+
+\subsection{Rules with documented QNX facts}\label{sec:rules}
+Each rule acts only on what the compiler or linker printed plus a fact about QNX 8.0, and each fact has a source:
+the QNX C library reference (the header and the ``Library:'' line of a function), the io-sock networking guide,
+the QNX 8.0 migration guide, or a symbol listing of the SDP's own libraries. The corpus has \N{linuxisms}
+entries; some examples:
+\begin{itemize}
+\item sockets and \texttt{\_\_inet\_pton} are in \texttt{libsocket} (rule \texttt{link-libsocket});
+POSIX regex is in \texttt{libregex}; \texttt{isinf} and friends need \texttt{libm};
+\item \texttt{<sys/errno.h>} and other \texttt{<sys/...>} aliases do not exist (\texttt{header-alias});
+\item \texttt{SA\_RESTART} is listed as ``not supported yet'' in QNX 8.0's \texttt{<signal.h>}
+(\texttt{sa-restart} defines it as 0, so interrupted calls return \texttt{EINTR});
+\item glibc's \texttt{htobe32} family is in \texttt{<net/netbyte.h>} (\texttt{endian-netbyte});
+\item libc exports \texttt{wcwidth()} but not \texttt{wcswidth()} (\texttt{wcswidth-compat});
+\item \texttt{qcc} rejects \texttt{-{}-sysroot} (\texttt{qcc-sysroot}); a function hidden by a strict
+\texttt{-std=} needs \texttt{-D\_QNX\_SOURCE} (\texttt{qnx-source}).
+\end{itemize}
+Linux-only code that is actually used, such as an epoll loop or \texttt{sendfile()}, is never rewritten by a
+rule: a mechanical replacement would compile and change behaviour under load. It gets a QNX-specific hint and
+goes to the model step or to a person. Rules apply at most one fix per file and per flag in a round and never the
+same fix twice. A rule whose correctness is not obvious from the error, such as adding QNX to an OS
+\texttt{\#if} chain, is applied alone and put on probation like a model patch.
+
+\subsection{Patches with reasons}\label{sec:patches}
+Every change becomes a numbered file in \texttt{patches/} with a header naming the rule, whether a rule or the
+model wrote it, the one-sentence reason, and the exact error it answers. Source changes are git commits in the
+checkout; flag changes are diffs of the generated toolchain. All kept source changes are exported as one
+\texttt{qnx.patch} that applies to the upstream tag. Reading our own patches found two quality bugs that tests had
+not: a rule rewrote CRLF files with LF line endings (one patch replaced every line of a file to change a few), and
+a helper was inserted inside a non-Windows \texttt{\#else} branch, which would break the patched file on MSVC.
+Both are fixed and tested.
+
+\subsection{The language-model step}\label{sec:model}
+Only when no rule fits, and only if an endpoint, a model name and a key are set in the environment, qnx-porter
+asks a language model. The prompt holds the error, the code around it, the end of the build log and the QNX hint
+for that kind of error; the answer must be a unified diff and a one-sentence reason. The diff must pass
+\texttt{git apply -{}-check}. It is then always on probation: after the rebuild it is reverted if the error it
+targeted is still there or if new errors appear in the files it touched, and the report lists it as
+\texttt{reverted}. New errors elsewhere count as progress, because a compile fix lets the linker run; an early
+version reverted proven fixes for exactly that reason. The model is asked at most \N{model-tries} times per
+error. Nothing about the endpoint is stored in the repository or in any report.
+
+\subsection{Running the library's own tests on QNX}\label{sec:tests}
+\paragraph{Sync and path-space links} The source and build trees are copied to the target with \texttt{tar}
+over ssh. Generated test scripts hard-code absolute host paths, so qnx-porter uses QNX's path-space links
+(\texttt{ln -sP}) to make the copied trees appear on the target at the same absolute paths as on the host. The
+scripts then run unchanged.
+\paragraph{Every test command on QNX} CMake applies \texttt{CMAKE\_CROSSCOMPILING\_EMULATOR} only to executable
+targets, so ctest would run a test written as a shell script on Linux, where it tries to execute QNX binaries.
+json-c's first run reported 0 of its tests passing for this reason, which was our fault, not QNX's. qnx-porter
+therefore reads ctest's JSON test list and runs every command on QNX itself, applying ctest's
+\texttt{WILL\_FAIL}, pass and fail regular expressions (CMake's \texttt{.} matches newlines; Python needs
+\texttt{DOTALL}) and skip rules. \texttt{cmake -E} helper steps are mapped to the QNX shell commands that do the
+same. Meson suites go through an \texttt{exe\_wrapper}; automake suites through a generated
+\texttt{LOG\_COMPILER}, after building the test programs that automake builds only inside \texttt{make check}.
+A test that needs an interpreter the target lacks is reported as not runnable, never as passed or failed.
+\paragraph{Timeouts and users} A test killed on the host side kept running on QNX, so each test now runs under
+QNX's own \texttt{timeout -s KILL} with a \N{timeout-cap}~s cap. Suites that refuse to run as root (libuv) run as
+another user through QNX's \texttt{on -u} (\texttt{run\_as} in the campaign file).
+\paragraph{TAP subtests} Some test binaries report many subtests in TAP. qnx-porter counts \texttt{ok},
+\texttt{not ok} and \texttt{SKIP}/\texttt{TODO} lines and names every failing subtest in the log, so a binary that
+``fails'' is not mistaken for a suite that fails entirely.
+\paragraph{Crash triage} The \texttt{mkqnximage} image runs QNX's \texttt{dumper}, which writes a core for each
+crashing process. qnx-porter copies the cores to the host and reads them with the SDP's own gdb against the QNX
+target libraries. One crash class is repaired automatically: a backtrace through \texttt{strlen} from a
+printf-family call in the library's own code means a \texttt{NULL} \texttt{\%s} argument, which glibc prints as
+\texttt{(null)} and QNX's libc faults on. The \texttt{printf-null} rule wraps that call's string arguments in a
+helper, rebuilds and re-runs the tests; the patch stays only if more tests pass.
+
+\subsection{Campaigns}\label{sec:campaigns}
+A campaign script ports every library in a YAML file, checks \texttt{qcc} and the target first, records which
+libraries oss.qnx.com already lists, and writes \texttt{results/ports.csv} from each port's
+\texttt{report.json}; a second script rewrites the README table and headline from that CSV, and CI fails if the
+two disagree. A weekly job builds every library at its upstream default branch on a self-hosted runner with the
+SDP.
+
+\section{Evaluation}\label{sec:eval}
+
+Every number in this section is read by \texttt{paper/build.py} from a file in the repository; the file is named
+where the number appears.
+
+\subsection{C/C++ campaign on x86\_64 and aarch64 on QEMU}\label{sec:eval-campaign}
+The campaign ported \N{all-libs} libraries at \N{campaign-file}: parsers (JSON, XML, YAML, CBOR, TOML),
+compression, cryptography and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatting, test
+frameworks and codecs. \N{cand-libs} were chosen because neither oss.qnx.com nor the qnx-ports organisation had them when
+checked (\texttt{results/candidates\_check.csv}: \N{cand-new} of \N{cand-libs}); the rest are widely used, and
+some are on oss.qnx.com already, which makes them a direct comparison. The headline runs used rules only.
+Table~\ref{tab:campaign} summarises \texttt{results/ports.csv}; Figure~\ref{fig:outcomes} breaks the outcomes
+down and Figure~\ref{fig:tests} shows every library whose tests ran.
+
+\begin{table}[t]
+\centering
+\caption{C/C++ campaign, from \texttt{results/ports.csv}. Both targets are QEMU: x86\_64 under KVM, aarch64
+on the emulated \texttt{virt} machine. ``Tests'' counts only libraries whose suite ran at
+least one test on the target.}
+\label{tab:campaign}
+\footnotesize
+\begin{tabular}{lrr}
+\toprule
+ & x86\_64 (KVM) & aarch64 (emulated) \\
+\midrule
+Libraries & \N{x-libs} & \N{a-libs} \\
+Built for QNX 8.0 & \N{x-built} & \N{a-built} \\
+Libraries whose tests ran & \N{x-tested-libs} & \N{a-tested-libs} \\
+Tests passed / total & \N{x-tests-passed}/\N{x-tests-total} & \N{a-tests-passed}/\N{a-tests-total} \\
+Pass rate (\%) & \N{x-pass-pct} & \N{a-pass-pct} \\
+Kept patches (rule / model) & \N{x-rule-patches} / \N{x-model-patches} & \N{a-rule-patches} / \N{a-model-patches} \\
+Built with no patch & \N{x-unpatched-libs} & \N{a-unpatched-libs} \\
+Not on oss.qnx.com: built & \N{x-new-built} of \N{x-new-libs} & \N{a-new-built} of \N{a-new-libs} \\
+Port time, hours & \N{x-hours} & \N{a-hours} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{outcomes}
+\caption{Outcome per library and architecture (\texttt{results/ports.csv}). ``Registers no tests'': the default
+build defines none. ``Not run'': the suite needs something the target lacks.}
+\label{fig:outcomes}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{tests-per-library}
+\caption{Share of each library's own tests that passed on the QNX 8.0 target, for every library whose suite ran
+at least one test (\texttt{results/ports.csv}). Labels give passed/total, x86\_64 first where the architectures
+differ.}
+\label{fig:tests}
+\end{figure*}
+
+In this run \N{built-same}. \N{failed-sentence} In the 2024-pin run, libuv and libwebsockets stopped on errors no rule covered
+(\texttt{struct qtime\_entry} has no \texttt{nsec} member in QNX 8.0; \texttt{TCPCTL\_KEEPCNT}); QNX's own ports
+of both libraries change exactly those lines (Section~\ref{sec:eval-qnxports}), and the model step builds both
+(Section~\ref{sec:eval-model}).
+
+Figure~\ref{fig:rules} counts kept patches by rule. The most frequent rule on x86\_64 is
+\texttt{\N{x-top-rule}} (\N{x-top-rule-count} patches); \N{x-distinct-rules} distinct rules fired on x86\_64
+and \N{a-distinct-rules} on aarch64. The \texttt{printf-null} crash repair was kept in \N{x-printf-null-count}
+libraries on x86\_64 (\N{x-printf-null-libs}). Rules that fired only on aarch64 (\N{aarch-only-rules}) exist
+because of the architecture (Section~\ref{sec:findings-arm}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{rules}
+\caption{Kept patches by rule, per architecture, from \texttt{ports*/*/report.json}.}
+\label{fig:rules}
+\end{figure}
+
+What the failing tests are, from the logs and from reproduction outside the campaign: QNX C-library behaviour
+(Section~\ref{sec:findings}); \texttt{printf("\%s", NULL)} in places the \texttt{printf-null} rule cannot rewrite
+(inside libxml2's generic error code, and in nng behind a tail call that hides the caller in the backtrace);
+and things the test image lacks: \texttt{killall} (libmodbus), \texttt{/bin/echo} (pcre2grep), internet access
+(nng), enough memory for one zstd test, a \texttt{locale} command (pcre2). None of the failures was excluded
+by hand.
+
+\paragraph{How the numbers got here} Table~\ref{tab:runs} lists every x86\_64 campaign run as the campaign script
+summarised it in \texttt{results/runs/}. The first \N{small-runs} runs used \N{run1-libs} libraries. Most of the change between runs
+was in our harness, not in the rules: the CMake cache problem above, autotools configured in the wrong folder,
+automake test programs never copied to QNX (libsodium went from none to all of its tests passing), \texttt{.sh}
+tests that ran on Linux, and the DOTALL regex fix. Run 6 counted libraries whose suite registered no tests as
+``tests ran''; from run 7 the summary counts only libraries with at least one test.
+
+\begin{table}[t]
+\centering
+\caption{x86\_64 campaign runs, from the last summary line of each \texttt{results/runs/campaign-N.log}.
+Run 5 re-ran only json-c and libconfig; its line summarises the whole CSV.}
+\label{tab:runs}
+\footnotesize
+\begin{tabular}{rrrrr}
+\toprule
+Run & Libraries & Built & Tests ran & Passed/total \\
+\midrule
+\N{runs-table}
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Against QNX's hand-made ports}\label{sec:eval-qnxports}
+QNX maintains hand-made recipes in \texttt{qnx-ports/build-files}~\cite{qnxports}. \N{cmp-total} of our
+libraries have one; \texttt{docs/related/qnx-ports-comparison.md} compares them library by library against
+build-files commit \texttt{\N{cmp-builtfiles-commit}} and QNX's forks (Table~\ref{tab:qnxports}). The two sides
+are not the same experiment: versions differ for \N{cmp-versions-differ} of the \N{cmp-total}, QNX's READMEs
+mostly report tests on a Raspberry Pi~4, and few of their recipes state test results.
+
+\begin{table}[t]
+\centering
+\caption{qnx-porter's automatic ports against QNX's hand-made recipes
+(\texttt{docs/related/qnx-ports-comparison.md}).}
+\label{tab:qnxports}
+\footnotesize
+\begin{tabular}{p{0.62\columnwidth}r}
+\toprule
+Outcome & Libraries \\
+\midrule
+Same QNX change or cause, found independently (\N{cmp-same-change-libs}) & \N{cmp-same-change} \\
+Same problem at the same place; QNX fixed it, our rules-only run did not (\N{cmp-same-problem-libs}) & \N{cmp-same-problem} \\
+No QNX source change on either side, both build (\N{cmp-no-change-libs}) & \N{cmp-no-change} \\
+Different, or not comparable (\N{cmp-different-libs}) & \N{cmp-different} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Where both sides changed the same thing, the changes have the same effect, sometimes by a different mechanism:
+QNX's libevent fork leaves \texttt{SA\_RESTART} out on QNX while our rule defines it as 0. For googletest, both
+open the saved working directory with \texttt{O\_DIRECTORY}; we found it from the core dump of the aborting
+tests, but applied it by hand, not in the campaign. QNX's jansson and pugixml recipes link a separate
+float-conversion library because of the \texttt{strtod()} behaviour that our run traced from those same two
+libraries' failing tests (Section~\ref{sec:findings-strtod}). Every rule involved was committed before we read
+QNX's recipes, and each was written from an error our own campaign hit. The difference is coverage: QNX's ports
+fix \N{cmp-same-problem} problems that our rules-only run only reported, and some of their changes concern
+runtime behaviour (c-ares reads QNX's own resolver configuration) that our run cannot see when the library
+registers no tests.
+
+\subsection{The language-model step}\label{sec:eval-model}
+\texttt{scripts/model\_eval.py} re-ports, with the model step on, every library the rules-only campaign could not
+build, except libgpiod and can-utils, which use Linux-only kernel interfaces that no fix turns into QNX programs.
+The measured run uses the 2024 pins on the x86\_64 target; the results are in \texttt{results/model\_eval.csv}.
+
+Of the \N{model-libs} libraries (\N{model-lib-list}), \N{model-built} now build. The model kept
+\N{model-kept} patches and \N{model-reverted} were reverted, from \N{model-calls} calls with
+\N{model-failed-calls} failures, \N{model-tokens-in} input and \N{model-tokens-out} output tokens and
+\N{model-seconds}~s of model time in total. Building is not passing: libuv's suite ran as a non-root user and
+its \N{model-libuv-tests} test binaries did not pass as wholes, but inside them its own TAP subtests were
+\N{libuv-tap-ok} ok, \N{libuv-tap-notok} not ok and \N{libuv-tap-skip} skipped; libwebsockets registers no
+tests in its default build.
+
+\paragraph{Does the fix match what QNX-aware engineers did?}
+The model never saw the upstream changes; we compared them afterwards. For libuv, QNX 8.0 removed
+\texttt{qtime\_entry.nsec} and renamed the syspage entry \texttt{new\_cpuinfo} to \texttt{cpuinfo}. Upstream
+libuv's own QNX change, pull request \#4801 ``Improved QNX support''~\cite{libuvpr}, merged after the v1.49.2 we
+ported, makes the same two changes the model made: \texttt{uv\_uptime()} reads
+\texttt{clock\_gettime(CLOCK\_MONOTONIC)} and returns the error on failure (upstream keeps whole seconds; the
+model also adds the nanoseconds), and the syspage access uses \texttt{cpuinfo} (upstream guards it with
+\texttt{\#if \_\_QNX\_\_ >= 800}). For libwebsockets, QNX 8.0's \texttt{<netinet/tcp.h>} already defines the
+\texttt{TCP\_KEEP*} options and has no \texttt{TCPCTL\_KEEPCNT}; the model keeps the old fallback only where the
+options are missing, and QNX's own libwebsockets port changes the same lines.
+
+\N{model-libs} libraries is a small sample and no patch was reverted in this run, so the revert path is shown only by the
+test suite, with a stand-in model. A model's answer can differ between runs; each run's patches and reasons are
+kept in \texttt{ports-model/}.
+
+\subsection{Rust crates}\label{sec:eval-rust}
+A feasibility gate came first: with \texttt{rustc \N{rust-nightly}}, \texttt{-Zbuild-std} and \texttt{qcc} as the
+linker, a program making \N{rust-gate-checks} standard-library checks (threads, channels, files, time, TCP and
+UDP loopback, \texttt{process::Command}, environment, unwinding) passed all of them on both targets
+(\texttt{docs/rust/GATE.md}). The crate porter then never edits a crate's own code. Many dependencies support QNX
+7 (\texttt{target\_os = "nto"}) but not QNX 8.0 (\texttt{"qnx"}); rule \texttt{nto-to-qnx} vendors a copy that
+lets QNX 8.0 take the QNX 7 path and applies it through cargo's \texttt{[patch]} table, and rule
+\texttt{libc-update} moves a too-old pinned \texttt{libc} within its semver range. Whether the QNX 7 path is
+right on QNX 8.0 is shown by the tests, not assumed.
+
+Figure~\ref{fig:crates} shows \texttt{results/crates.csv} and \texttt{results/crates-aarch64le.csv}. On x86\_64,
+\N{x-crates-built} of \N{x-crates} crates built and \N{x-crate-tests-passed} of \N{x-crate-tests-total} tests
+passed (\N{x-crate-pass-pct}\%) in the \N{x-crates-tested} crates whose tests ran; on aarch64 on QEMU,
+\N{a-crates-built} built and \N{a-crate-tests-passed} of \N{a-crate-tests-total} passed. \N{x-crates-failed-list}
+did not build: it needs QNX 8.0 errno support beyond the rule. The failing tests read Android time-zone files
+(chrono), compile code at test time (serde\_json), or assume \texttt{/tmp} is not a link (tempfile); one
+crossbeam-channel test fails on x86\_64 only and is not yet explained.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{crates}
+\caption{Tests passed per Rust crate on QNX 8.0 (log scale), from \texttt{results/crates*.csv}. Right-hand labels
+give passed/total where any test failed.}
+\label{fig:crates}
+\end{figure}
+
+\subsection{Real-time scan and latency}\label{sec:eval-rt}
+A library that passes its tests can still be wrong for a real-time thread. \texttt{scripts/rt\_report.py} adds two
+views. A static scan of each library's own sources (\N{rt-scan-libs} libraries, \texttt{results/rt\_scan.csv})
+counts calls that can make a thread wait: heap allocation (found in \N{rt-scan-heap} libraries), blocking I/O,
+sleeps, process creation, signals, threads the library starts itself (\N{rt-scan-threads}) and locks
+(\N{rt-scan-locks}). Its score, from \N{rt-scan-min} to \N{rt-scan-max}, ranks libraries; it certifies nothing,
+because a scan cannot tell which calls are on the path an application uses.
+
+The latency harness is C, built with \texttt{qcc} and run on the target. It times one core call per library
+\N{rt-iterations} times with \texttt{ClockCycles()} at \texttt{SCHED\_FIFO} priority \N{rt-priority}: idle, under
+load (load threads on all \N{rt-cpus} CPUs), and under load with the measuring thread isolated on its own CPU by a
+QNX runmask (\texttt{ThreadCtl(\_NTO\_TCTL\_RUNMASK)}). \N{rt-measured} of \N{rt-specs} libraries were measured
+(\texttt{results/rt.csv}); \N{rt-not-measured} were not, because their harness did not compile. Figure~\ref{fig:rt}
+shows p99. Isolation at least halved loaded p99 for \N{rt-halved} library: \N{rt-best-lib}, from
+\N{rt-best-loaded} to \N{rt-best-isolated}~$\mu$s.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{rt-p99}
+\caption{p99 latency of one call per library on QNX 8.0 x86\_64 in QEMU (\texttt{results/rt.csv}). QEMU timing,
+not hardware timing: use it to compare libraries, not as a bound.}
+\label{fig:rt}
+\end{figure}
+
+\textbf{The QEMU caveat is essential here.} A virtual CPU can be descheduled by the host at any moment, so absolute
+numbers, and maxima most of all, say little about hardware. For \N{rt-noisy-count} libraries
+(\N{rt-noisy-list}) idle p99 was above loaded p99, which on a dedicated core would be unusual and here is a sign
+of host noise. The harness ran on x86\_64 only.
+
+\subsection{Recipes for QNX's build-files}\label{sec:eval-recipes}
+For CMake ports that qnx-ports does not have, \texttt{scripts/emit\_recipes.py} writes recipes in the
+build-files layout with the campaign's flags and \texttt{qnx.patch}. Each was built with QNX's recursive make for
+\texttt{nto-x86\_64-o} from a fresh clone: \N{recipes-built} of \N{recipes-total} built
+(\texttt{recipes/BUILD\_CHECK.md}). An earlier pass, before fixes to the generator, failed \N{recipes-early-failed}
+recipes on install paths, a missing submodule and a stub library. For \texttt{nto-aarch64-le}, only
+\N{recipes-aarch} were built. The recipes and a pull-request text for QNX are drafted and have not been sent.
+
+\subsection{Licences and SBOM}\label{sec:eval-licences}
+Every port has an SPDX 2.3~\cite{spdx} SBOM for the upstream package at the ported commit, with
+\texttt{qnx.patch} and its hash as a patch for that package. The declared licence is ScanCode Toolkit's
+summary~\cite{scancode} (\N{scancode-version}) over the top-level and first-level licence, copying, notice and
+README files (\texttt{results/licences.csv}). Of \N{lic-libs} libraries, \N{lic-gpl} have a GPL or AGPL licence
+in their expression, \N{lic-lgpl} an LGPL licence, \N{lic-weak} a weak copyleft licence (LGPL, MPL, EPL or CPL)
+and \N{lic-none} none detected. This matters on QNX, where products ship as one image that often links libraries
+statically. The table is scanner output for triage, not a legal review.
+
+\subsection{Campaign robustness}\label{sec:robust}
+Long campaigns on a laptop fail for reasons that have nothing to do with QNX. During the final x86\_64 run
+(\N{final-run-time}), a DNS outage in WSL stopped \N{dns-x86} libraries at \texttt{git clone}; they were re-run
+into the same log. In the aarch64 campaign, a DNS outage made \N{dns-aarch} clones fail within seconds, and an
+earlier attempt hung for \N{aarch-hang-seconds}~s on an ssh copy to a target that had stopped answering. Under
+host overload, ssh to the emulated target timed out during the banner exchange and tests were lost; libjpeg-turbo,
+nng and flac were re-run on a quiet host. A sleeping laptop paused WSL and QEMU, losing \N{sleep-hours} hours. The
+campaign now retries clones when the network is down, restarts a target that stops answering
+(\texttt{-{}-restart-target}), and continues with \texttt{-{}-resume} from the first library without a report. An
+emulated target needs the machine to itself.
+
+\section{Findings about QNX 8.0}\label{sec:findings}
+
+Each finding below came from a library's own test failing on the target and was then reproduced outside the
+campaign with a few-line program, run on the QNX 8.0 x86\_64 target and on Linux with glibc
+(\texttt{docs/qnx-reports/}). The reports are drafts and have not been sent to QNX.
+
+\subsection{\texttt{strtod()} is not correctly rounded}\label{sec:findings-strtod}
+\texttt{strtod\_roundtrip.c} prints \N{strtod-n} random finite doubles with \texttt{\%.17g} and parses each back.
+On QNX 8.0, \N{strtod-wrong} (\N{strtod-pct}\%) came back different, by up to \N{strtod-worst} units in the last
+place; with glibc, none did. \texttt{sscanf("\%lf")} on QNX returns the correctly rounded value. The digits
+\texttt{\%.17g} prints are within the bound for which C17~\cite{isoc17} requires correct rounding of an IEEE double,
+so text formats lose values on a round trip. This one cause explains \N{pugixml-strtod-fail} of pugixml's
+\N{pugixml-tests} checks, jansson's real-number tests and one yaml-cpp test; QNX's own jansson and pugixml
+recipes work around it by linking a separate float-conversion library. Separately, \texttt{printf("\%.20f")}
+truncates the last printed decimal where glibc rounds it.
+
+\subsection{\texttt{strftime()} writes nothing for \texttt{\%Ex}, \texttt{\%EX}, \texttt{\%Ec}}\label{sec:findings-strftime}
+In the C locale, QNX 8.0's \texttt{strftime()} and \texttt{wcsftime()} return 0 for these three conversions.
+POSIX requires a modified conversion to behave as the unmodified one when the locale has no alternative
+format~\cite{posixstrftime}, and QNX's own 8.0 documentation says the same~\cite{qnxstrftime}. fmt's chrono tests
+fail on exactly these (\N{strftime-assertions} assertions). A third fmt failure, \texttt{\%a} printing a
+different leading hexadecimal digit, is not a bug: C leaves that digit unspecified, and the test assumes glibc's.
+
+\subsection{\texttt{fchdir()} needs \texttt{O\_DIRECTORY}}\label{sec:findings-fchdir}
+\texttt{open(".", O\_RDONLY)} succeeds on QNX 8.0, but \texttt{fchdir()} on that descriptor fails with
+\texttt{ENOTDIR}; with \texttt{O\_DIRECTORY} it works. This is documented~\cite{qnxfchdir}, so it is a difference,
+not a bug, but googletest's QNX-only death-test path saves the working directory exactly that way, and its
+death-test programs abort. With one added flag, \N{fchdir-death-tests} death tests pass on QNX 8.0; QNX's googletest fork
+makes the same change.
+
+\subsection{\texttt{qsort()} with an inconsistent comparator}\label{sec:findings-qsort}
+libsrtp's test helper shuffles a buffer by calling \texttt{qsort()} with a comparator that answers at random,
+which C makes undefined. In a guard-word test of \N{qsort-calls} calls, QNX's \texttt{qsort()} wrote outside the
+array \N{qsort-bad} times and glibc's \N{qsort-glibc-bad}. That explains libsrtp's crashing tests; the fix belongs in
+libsrtp's test helper (a Fisher--Yates shuffle), not in QNX.
+
+\subsection{\texttt{printf("\%s", NULL)}}\label{sec:findings-printf}
+A short program prints \texttt{[(null)]} with glibc and dies with a memory fault on QNX 8.0. C makes this
+undefined, so neither libc is wrong; the tests that do it are glibc-only. json-c's own expected output even
+contains \texttt{(null)}. This is the crash class the \texttt{printf-null} rule repairs. Several projects have
+since fixed it upstream independently (\texttt{docs/upstream/README.md}).
+
+\subsection{aarch64-specific differences}\label{sec:findings-arm}
+These differences appeared only on aarch64 on QEMU, and each is now a rule or a triage change with a test:
+\begin{itemize}
+\item \textbf{Word size.} \texttt{cmocka.h} infers a 64-bit platform only from glibc's \texttt{\_\_WORDSIZE} or
+\texttt{\_\_x86\_64\_\_}; on aarch64 QNX it assumed 32 bits and redefined \texttt{uintptr\_t} as
+\texttt{unsigned int}. Rule \texttt{wordsize-64} fixes it.
+\item \textbf{Unsigned \texttt{char}.} Plain \texttt{char} is unsigned on aarch64, so a yaml-cpp test's negative
+constant in a \texttt{char} array is a narrowing error. Rule \texttt{signed-char} adds \texttt{-fsigned-char}.
+\item \textbf{\texttt{\_\_generic\_strlen}.} QNX's aarch64 libc names its \texttt{strlen} frame
+\texttt{\_\_generic\_strlen}, so the \texttt{printf-null} triage did not recognise the crash until it learned the
+name; json-c then passed all its tests on aarch64 too.
+\end{itemize}
+Some differences between the architectures are not explained yet: libsrtp, nng and the number of tests
+libjpeg-turbo registers differ (Figure~\ref{fig:tests}).
+
+\section{Threats to validity}\label{sec:threats}
+
+\paragraph{QEMU only} Both targets are QEMU; no hardware was used. x86\_64 runs under KVM; aarch64 is fully
+emulated and much slower, which interacted with the \N{timeout-cap}~s test cap (flac tests hit it). The
+latency figures in particular are QEMU timing.
+
+\paragraph{One run per architecture} A flaky test can pass or fail by chance: nng's \texttt{sockaddr\_test} failed
+in one run and passed when re-run by hand. The aarch64 campaign also lost tests to host overload before re-runs.
+
+\paragraph{Test coverage} Of the \N{x-built} libraries that built on x86\_64, only \N{x-tested-libs} ran at least
+one of their own tests; \N{x-notests-libs} register no tests in their default build and \N{x-notrun-libs} are
+build-only on purpose because their suites need Tcl, an MQTT broker, the build host, scons, or a runner we do not drive. For those, ``built''
+means compiles and links for QNX 8.0, nothing more. Pass counts are the libraries' own, so a library with one
+test binary counts the same as one with hundreds of cases.
+
+\paragraph{Versions} The published C/C++ results use \N{campaign-file}; \texttt{campaign.yaml} names newer
+releases for \N{latest-differs} libraries. A change one version needs may not exist in another, which also
+limits the comparison with QNX's recipes. This paper regenerates from whatever the CSVs say, so a later campaign
+updates every number here, but prose about specific failures describes the run whose logs it cites.
+
+\paragraph{Model nondeterminism} The model step was evaluated on \N{model-libs} libraries, once, on x86\_64 only.
+Another run may produce a different patch; the probation rule bounds what a wrong one can do, not whether a
+right one appears.
+
+\paragraph{ScanCode limits} Licences come from top-level and first-level files only, so a licence stated only in
+source headers is not seen; ScanCode joins licences in one file with AND even when the file offers a choice.
+
+\paragraph{Our own harness} Several early results were our bugs, not QNX's (Table~\ref{tab:runs}). We found
+them by distrusting surprising numbers; there may be others.
+
+\section{Related work}\label{sec:related}
+
+\paragraph{QNX ports} QNX's \texttt{qnx-ports/build-files}~\cite{qnxports} holds hand-made recipes in which an
+engineer adapts each library, and oss.qnx.com~\cite{ossqnx} lists ported packages. qnx-porter is complementary:
+it generates the port, tests it on a target, and emits recipes in their layout for libraries they lack.
+
+\paragraph{Cross-compilation tooling} Embedded Linux build systems such as the Yocto Project~\cite{yocto} and
+Buildroot~\cite{buildroot} build complete systems from per-package recipes, and package managers such as Conan
+separate build and host contexts for cross-building~\cite{conan}. All of them assume someone has already written
+a recipe that works for the target; qnx-porter targets the step before that, for an OS whose C library differs
+from glibc, and it adds on-target tests as the acceptance criterion.
+
+\paragraph{Build failures and their repair} Build errors are frequent and costly; at Google, dependency errors
+were the most common category~\cite{seo2014}. HireBuild repairs Gradle build scripts from historical fix
+patterns~\cite{hassan2018}; BuildMedic repairs Maven dependency breakage~\cite{macho2018}; Lou et al.\ showed that
+a simpler approach using current project information and external resources fixes more build failures than the
+history-driven one~\cite{lou2019}; DeepDelta learns repairs for Java compilation errors from developer
+history~\cite{mesbah2019}. qnx-porter's rules are closer to hand-written fix patterns, but each is tied to a
+documented platform fact rather than mined from history.
+
+\paragraph{Program repair and language models} Test-suite-guided repair goes back at least to
+GenProg~\cite{legoues2012}; Monperrus surveys the field~\cite{monperrus2018}. Xia et al.\ showed that large
+pre-trained language models are competitive program repairers~\cite{xia2023}; SWE-bench evaluates models on
+real repository issues~\cite{jimenez2024}; CompileAgent uses a tool-integrated agent to compile real
+repositories~\cite{hu2025}. Our model step is deliberately narrow: one error, one diff, kept only if a rebuild
+clears that error, with the library's own tests on the target as the final judge.
+
+\section{Conclusion and future work}\label{sec:conclusion}
+
+Porting a C or C++ library to QNX 8.0 is mostly repetitive, and the repetitive part can be automated with rules
+that cite documented platform facts and leave a reviewable patch for every change. The part that matters for a
+real-time system, whether the library works on the target, needs the library's own tests to run there; doing that
+found differences in QNX 8.0's C library that a cross-build alone would never show. A language model helps with
+the long tail when its output is treated as a hypothesis that a rebuild must confirm.
+
+Future work: hardware targets, starting with a Raspberry Pi; repeated runs to separate flaky tests from real
+failures; the latest-release campaign; the latency harness on aarch64; more of the tests that libraries keep
+behind build options; sending the drafted upstream patches and QNX reports, which needs a person to review and
+sign them; and the model step on a larger set of libraries.
+
+\appendix
+\section{Artifact}\label{app:artifact}
+
+Everything is in \url{https://github.com/thegoodengineers/qnx-porter}. Host: Ubuntu 22.04 or 24.04, or WSL2. QNX
+SDP 8.0 needs a free QNX licence (\texttt{SETUP.md}).
+
+\paragraph{Without QNX}
+\begin{verbatim}
+python3 -m pip install --user --upgrade pip
+python3 -m pip install --user -e ".[test]"
+python3 -m pytest -q
+\end{verbatim}
+
+\paragraph{The QEMU targets}
+\begin{verbatim}
+sudo scripts/qemu_target.sh net
+scripts/qemu_target.sh build
+scripts/qemu_target.sh start
+export QNX_TARGET_ARCH=aarch64le
+scripts/qemu_target.sh build
+scripts/qemu_target.sh start
+\end{verbatim}
+
+\paragraph{One library, then the campaigns}
+\begin{verbatim}
+source ~/qnx800/qnxsdp-env.sh
+qnx-porter doctor
+qnx-porter port \
+  https://github.com/json-c/json-c.git \
+  --tag json-c-0.18-20240915 \
+  --target root@172.31.1.11
+python3 scripts/run_campaign.py --no-model \
+  --campaign campaign-2024.yaml
+python3 scripts/run_campaign.py --no-model \
+  --campaign campaign-2024.yaml \
+  --arch aarch64le --target root@172.31.1.12
+python3 scripts/model_eval.py \
+  --campaign campaign-2024.yaml
+python3 scripts/run_crates.py
+python3 scripts/run_crates.py --arch aarch64le \
+  --target root@172.31.1.12
+python3 scripts/rt_report.py \
+  --target root@172.31.1.11
+\end{verbatim}
+The model step reads \texttt{QNX\_PORTER\_API\_KEY}, \texttt{QNX\_PORTER\_MODEL} and \texttt{QNX\_PORTER\_BASE\_URL}
+from the shell only.
+
+\paragraph{This paper}
+\begin{verbatim}
+python3 paper/figures.py
+python3 paper/build.py
+tectonic paper/qnx-porter.tex
+\end{verbatim}
+\texttt{build.py} fails if the paper uses a number it does not define, so the PDF and \texttt{paper.md} always
+match the CSVs they were built from.
+
+\begin{thebibliography}{99}
+\bibitem{ossqnx} QNX, ``QNX open-source dashboard,'' \url{https://oss.qnx.com/}, accessed Nov. 2026.
+\bibitem{qnxports} QNX, ``qnx-ports/build-files: QNX build files and instructions for ports,'' GitHub,
+\url{https://github.com/qnx-ports/build-files}, accessed Nov. 2026.
+\bibitem{qcc} QNX, ``qcc, q++,'' QNX OS 8.0 Utilities Reference,
+\url{https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.utilities/topic/q/qcc.html}.
+\bibitem{mkqnximage} QNX, ``mkqnximage,'' QNX OS 8.0 Utilities Reference,
+\url{https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.utilities/topic/m/mkqnximage.html}.
+\bibitem{rustqnx} The Rust Project, ``*-nto-qnx-*,'' The rustc book, platform support,
+\url{https://doc.rust-lang.org/nightly/rustc/platform-support/nto-qnx.html}.
+\bibitem{libuvpr} libuv, ``Improved QNX support,'' pull request \#4801, merged 30 June 2025,
+\url{https://github.com/libuv/libuv/pull/4801}.
+\bibitem{spdx} The Linux Foundation, ``The Software Package Data Exchange (SPDX) Specification, version 2.3,''
+\url{https://spdx.github.io/spdx-spec/v2.3/}.
+\bibitem{scancode} nexB and contributors, ``ScanCode Toolkit documentation,''
+\url{https://scancode-toolkit.readthedocs.io/}.
+\bibitem{isoc17} ISO/IEC, ``ISO/IEC 9899:2018, Information technology --- Programming languages --- C,'' 2018,
+\url{https://www.iso.org/standard/74528.html}.
+\bibitem{posixstrftime} The Open Group and IEEE, ``strftime, strftime\_l,'' The Open Group Base Specifications
+Issue 8, IEEE Std 1003.1-2024, \url{https://pubs.opengroup.org/onlinepubs/9799919799/functions/strftime.html}.
+\bibitem{qnxstrftime} QNX, ``strftime(),'' QNX OS 8.0 C Library Reference,
+\url{https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.lib_ref/topic/s/strftime.html}.
+\bibitem{qnxfchdir} QNX, ``fchdir(),'' QNX OS 8.0 C Library Reference,
+\url{https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.lib_ref/topic/f/fchdir.html}.
+\bibitem{yocto} The Yocto Project, \url{https://www.yoctoproject.org/}.
+\bibitem{buildroot} Buildroot, ``Making embedded Linux easy,'' \url{https://buildroot.org/}.
+\bibitem{conan} Conan, ``How to cross-compile your applications using Conan: host and build contexts,'' Conan 2
+documentation, \url{https://docs.conan.io/2/tutorial/consuming_packages/cross_building_with_conan.html}.
+\bibitem{seo2014} H. Seo, C. Sadowski, S. Elbaum, E. Aftandilian and R. Bowdidge, ``Programmers' build errors: a
+case study (at Google),'' in \emph{Proc. ICSE}, 2014, pp. 724--734, doi: 10.1145/2568225.2568255.
+\bibitem{hassan2018} F. Hassan and X. Wang, ``HireBuild: an automatic approach to history-driven repair of build
+scripts,'' in \emph{Proc. ICSE}, 2018, pp. 1078--1089, doi: 10.1145/3180155.3180181.
+\bibitem{macho2018} C. Macho, S. McIntosh and M. Pinzger, ``Automatically repairing dependency-related build
+breakage,'' in \emph{Proc. SANER}, 2018, pp. 106--117, doi: 10.1109/SANER.2018.8330201.
+\bibitem{lou2019} Y. Lou, J. Chen, L. Zhang, D. Hao and L. Zhang, ``History-driven build failure fixing: how far
+are we?,'' in \emph{Proc. ISSTA}, 2019, pp. 43--54, doi: 10.1145/3293882.3330578.
+\bibitem{mesbah2019} A. Mesbah, A. Rice, E. Johnston, N. Glorioso and E. Aftandilian, ``DeepDelta: learning to
+repair compilation errors,'' in \emph{Proc. ESEC/FSE}, 2019, pp. 925--936, doi: 10.1145/3338906.3340455.
+\bibitem{legoues2012} C. Le Goues, T. Nguyen, S. Forrest and W. Weimer, ``GenProg: a generic method for automatic
+software repair,'' \emph{IEEE Trans. Softw. Eng.}, vol. 38, no. 1, pp. 54--72, 2012, doi: 10.1109/TSE.2011.104.
+\bibitem{monperrus2018} M. Monperrus, ``Automatic software repair: a bibliography,'' \emph{ACM Comput. Surv.},
+vol. 51, no. 1, art. 17, 2018, doi: 10.1145/3105906.
+\bibitem{xia2023} C. S. Xia, Y. Wei and L. Zhang, ``Automated program repair in the era of large pre-trained
+language models,'' in \emph{Proc. ICSE}, 2023, pp. 1482--1494, doi: 10.1109/ICSE48619.2023.00129.
+\bibitem{jimenez2024} C. E. Jimenez, J. Yang, A. Wettig, S. Yao, K. Pei, O. Press and K. Narasimhan, ``SWE-bench:
+can language models resolve real-world GitHub issues?,'' in \emph{Proc. ICLR}, 2024,
+\url{https://arxiv.org/abs/2310.06770}.
+\bibitem{hu2025} L. Hu, G. Chen, X. Shang, S. Cheng, B. Wu, G. Li, X. Zhu, W. Zhang and N. Yu, ``CompileAgent:
+automated real-world repo-level compilation with tool-integrated LLM-based agent system,'' in \emph{Proc. ACL},
+2025, pp. 2078--2091, doi: 10.18653/v1/2025.acl-long.103.
+\end{thebibliography}
+
+\end{document}
