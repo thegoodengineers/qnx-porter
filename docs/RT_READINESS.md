@@ -9,7 +9,7 @@ block, sleep or lock on the path you call. `scripts/rt_report.py` answers two qu
    `qcc` and run on the QNX target (`qnx_porter/rt_bench.py`, calls in `bench/specs.yaml`).
 
 No latency figure is recorded in this repository yet. `results/rt_scan.csv` is the output of the static scan;
-`results/rt.csv` and `ports/<lib>/rt.json` appear only after a run on a target, and only those files are a
+`results/rt.csv` and `results/rt/<arch>/<lib>.json` appear only after a run on a target, and only those files are a
 source for any latency number.
 
 ## Part 1: static hazard scan
@@ -41,7 +41,7 @@ Comments and string literals are blanked before matching (newlines kept, so line
 | `threads` | `pthread_create(`; `std::thread` / `std::jthread` being constructed (not the type named, e.g. `std::thread::id`) | threads the library starts itself run at a priority the caller did not choose |
 | `locks` | `pthread_mutex_lock pthread_rwlock_rdlock pthread_rwlock_wrlock pthread_cond_wait pthread_cond_timedwait sem_wait mtx_lock cnd_wait` calls; `std::lock_guard unique_lock scoped_lock shared_lock condition_variable(_any)` | the wait lasts as long as another thread holds the lock: unbounded unless its hold time is known. On QNX a mutex's default protocol is priority inheritance |
 
-For each category the scan records the count and the first three places (`file:line`), in `rt.json`.
+For each category the scan records the count and the first three places (`file:line`), in `results/rt/<arch>/<lib>.json`.
 
 **Static score** (`rt.static_score`): 100 minus a weight for each category present at all (count above zero):
 heap 20, blocking_io 20, process 20, sleep 10, signals 10, threads 10, locks 10; floored at 0. Presence, not
@@ -106,7 +106,7 @@ off).
 over the idle median, at most 30. A ranking heuristic like the static score, not a certification.
 
 **Outputs.**
-- `ports/<lib>/rt.json` (`ports-<arch>/` for aarch64le): `scan` (counts, first places, limits); `bench` with
+- `results/rt/<arch>/<lib>.json`: `scan` (counts, first places, limits); `bench` with
   `call`, `target` (`uname -a` of the target), `platform` (`qemu` or `hardware`), `iterations`, `measured` (one
   paragraph saying what was measured, as above), `timing_note`, and `runs` (the three JSON results, or an
   `error`); `static_score`, `rt_score`, `score_basis`, `generated`, `qnx_porter_commit`.
@@ -142,7 +142,7 @@ target, default `/data/qnx-porter`), `--platform hardware` when the target is a 
   QEMU the virtual CPUs are host threads: the host OS can deschedule them at any moment, and the time counters
   are virtualized. Absolute latencies, and worst cases most of all, include the emulator and the host. They
   are not representative of QNX on hardware. Compare runs and libraries with each other, not with hardware
-  figures. `rt.json` says this in `timing_note` whenever `--platform` is `qemu` (the default).
+  figures. each JSON file says this in `timing_note` whenever `--platform` is `qemu` (the default).
 - **max is the worst case seen, not a bound.** N calls with one input on one machine. A worst-case execution
   time needs analysis or far longer runs on the real board.
 - **One call per library, one input size.** A different call (or `deflate` at level 9, or a 1 MB document) can

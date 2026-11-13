@@ -6,7 +6,7 @@ archives). A library without work/src is reported as "sources absent", not skipp
   --scan-only   static scan only (qnx_porter.rt.scan): no SDP, no target. Writes results/rt_scan.csv.
   (default)     the scan, plus one core call per library (bench/specs.yaml) built with qcc and timed on the
                 target: idle, under load, and under load with runmask isolation (qnx_porter.rt_bench).
-                Writes ports[-<arch>]/<lib>/rt.json, results/rt_scan.csv and results/rt.csv.
+                Writes results/rt/<arch>/<lib>.json, results/rt_scan.csv and results/rt.csv.
 CSV rows are merged by (library, arch), so --only and a second --arch keep the other rows.
 
 Usage:
@@ -161,11 +161,12 @@ def main(argv=None) -> int:
         out["rt_score"] = rt_bench.rt_score(scan["static_score"], (out["bench"] or {}).get("runs")) if scan else None
         out["score_basis"] = ("static scan and latency on the QNX target" if out["rt_score"] is not None else
                               "static scan only" if scan else "none: sources absent")
-        dest = ROOT / port_dir / lib
+        # kept apart from ports/: a later campaign at other versions replaces ports/, and each file names its commit
+        dest = ROOT / "results" / "rt" / a.arch
         dest.mkdir(parents=True, exist_ok=True)
-        (dest / "rt.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
+        (dest / f"{lib}.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
         row = bench_row(out)
-        if spec:  # results/rt.csv holds the benchmarked libraries; the others have their scan in rt.json
+        if spec:  # results/rt.csv holds the benchmarked libraries; the others have their scan in their JSON file
             bench_rows.append(row)
         print(f"{lib:16s} " + (row["error"][:100] if row["error"] else
                                f"p99 idle/loaded/isolated {row['idle_p99_us']}/{row['loaded_p99_us']}/"
@@ -176,7 +177,7 @@ def main(argv=None) -> int:
           f" -> results/rt_scan.csv", file=sys.stderr)
     if bench_rows:
         merge_csv(ROOT / "results" / "rt.csv", BENCH_FIELDS, bench_rows)
-        print(f"{len(bench_rows)} libraries -> results/rt.csv and {port_dir}/<lib>/rt.json", file=sys.stderr)
+        print(f"{len(bench_rows)} libraries -> results/rt.csv and results/rt/{a.arch}/<lib>.json", file=sys.stderr)
     return 0
 
 

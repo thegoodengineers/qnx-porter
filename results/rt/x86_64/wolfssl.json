@@ -1,0 +1,82 @@
+{
+ "library": "wolfssl",
+ "arch": "x86_64",
+ "commit": "bdd62314f00fca0e216bf8c963c8eeff6327e0cb",
+ "generated": "2026-11-13T11:02:37+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 694,
+  "lines": 1567316,
+  "hazards": {
+   "heap": {
+    "count": 123,
+    "examples": [
+     "IDE/ECLIPSE/DEOS/deos_malloc.c:26",
+     "IDE/ECLIPSE/DEOS/deos_malloc.c:46",
+     "IDE/RISCV/SIFIVE-HIFIVE1/main.c:62"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 1676,
+    "examples": [
+     "IDE/AURIX/wolf_main.c:127",
+     "IDE/AURIX/wolf_main.c:131",
+     "IDE/AURIX/wolf_main.c:136"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 10,
+    "examples": [
+     "IDE/MDK5-ARM/Inc/wolfssl_MDK_ARM.h:61",
+     "IDE/MDK5-ARM/Inc/wolfssl_MDK_ARM.h:63",
+     "IDE/MSVS-2019-AZSPHERE/wolfssl_new_azsphere/main.c:88"
+    ],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 1,
+    "examples": [
+     "src/wolfio.c:1396"
+    ],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 6,
+    "examples": [
+     "src/ssl.c:10664",
+     "src/ssl.c:10686",
+     "src/ssl.c:10689"
+    ],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 9,
+    "examples": [
+     "IDE/HEXAGON/ecc-verify-benchmark.c:95",
+     "IDE/HEXAGON/ecc-verify-benchmark.c:143",
+     "wolfcrypt/src/port/caam/wolfcaam_seco.c:70"
+    ],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 27,
+    "examples": [
+     "wolfcrypt/src/port/caam/caam_qnx.c:949",
+     "wolfcrypt/src/port/caam/caam_qnx.c:1382",
+     "wolfcrypt/src/port/caam/caam_qnx.c:1569"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 0,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 0,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

@@ -1,0 +1,81 @@
+{
+ "library": "libuv",
+ "arch": "x86_64",
+ "commit": "e1095c7a4373ce00cd8874d8e820de5afb25776e",
+ "generated": "2026-11-13T11:01:34+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 119,
+  "lines": 60661,
+  "hazards": {
+   "heap": {
+    "count": 4,
+    "examples": [
+     "src/unix/fs.c:594",
+     "src/unix/fs.c:808",
+     "src/unix/fsevents.c:805"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 63,
+    "examples": [
+     "src/unix/aix.c:597",
+     "src/unix/aix.c:618",
+     "src/unix/aix.c:845"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 1,
+    "examples": [
+     "src/unix/core.c:1800"
+    ],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 4,
+    "examples": [
+     "src/unix/process.c:400",
+     "src/unix/process.c:697",
+     "src/unix/process.c:741"
+    ],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 4,
+    "examples": [
+     "src/unix/process.c:298",
+     "src/unix/process.c:1089",
+     "src/unix/signal.c:238"
+    ],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 2,
+    "examples": [
+     "src/unix/fsevents.c:637",
+     "src/unix/thread.c:172"
+    ],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 11,
+    "examples": [
+     "src/unix/fsevents.c:510",
+     "src/unix/os390-syscalls.c:534",
+     "src/unix/os390-syscalls.h:72"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 0,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 0,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

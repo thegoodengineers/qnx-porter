@@ -1,0 +1,76 @@
+{
+ "library": "libevent",
+ "arch": "x86_64",
+ "commit": "5df3037d10556bfcb675bc73e516978b75fc7bc7",
+ "generated": "2026-11-13T11:01:30+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 95,
+  "lines": 54673,
+  "hazards": {
+   "heap": {
+    "count": 24,
+    "examples": [
+     "event.c:816",
+     "event.c:822",
+     "event.c:830"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 54,
+    "examples": [
+     "WIN32-Code/getopt.c:120",
+     "WIN32-Code/getopt.c:137",
+     "WIN32-Code/getopt_long.c:108"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 3,
+    "examples": [
+     "evutil_time.c:169",
+     "evutil_time.c:173",
+     "evutil_time.c:174"
+    ],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 0,
+    "examples": [],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 5,
+    "examples": [
+     "signal.c:260",
+     "signal.c:267",
+     "signal.c:346"
+    ],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 0,
+    "examples": [],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 3,
+    "examples": [
+     "evthread_pthread.c:75",
+     "evthread_pthread.c:150",
+     "evthread_pthread.c:158"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 30,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 30,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

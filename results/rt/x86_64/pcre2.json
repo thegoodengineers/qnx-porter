@@ -1,0 +1,132 @@
+{
+ "library": "pcre2",
+ "arch": "x86_64",
+ "commit": "6ae58beca071f13ccfed31d03b3f479ab520639b",
+ "generated": "2026-11-13T11:02:17+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 81,
+  "lines": 134632,
+  "hazards": {
+   "heap": {
+    "count": 130,
+    "examples": [
+     "maint/ucptest.c:1004",
+     "src/pcre2_compile.c:1206",
+     "src/pcre2_compile.c:1241"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 1293,
+    "examples": [
+     "maint/ucptest.c:396",
+     "maint/ucptest.c:401",
+     "maint/ucptest.c:408"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 0,
+    "examples": [],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 2,
+    "examples": [
+     "src/pcre2grep.c:2506",
+     "src/pcre2grep.c:2509"
+    ],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 0,
+    "examples": [],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 0,
+    "examples": [],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 3,
+    "examples": [
+     "src/sljit/allocator_src/sljitWXExecAllocatorPosix.c:61",
+     "src/sljit/sljitUtils.c:43",
+     "src/sljit/sljitUtils.c:115"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 30,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "call": "match a precompiled regex against a 56-byte line",
+  "target": "QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64",
+  "platform": "qemu",
+  "iterations": 20000,
+  "measured": "Time of one library call (ClockCycles() before and after), 20000 timed calls after 200 untimed warm-up calls, in a SCHED_FIFO priority 60 thread. Three runs: idle (nothing else of ours running); loaded (one SCHED_RR priority 10 thread per CPU churning malloc/memset/free); loaded_isolated (the same load, measured thread on CPU 0 and load on the other CPUs via ThreadCtl(_NTO_TCTL_RUNMASK)). Statistics per run: min, median, p99, p99.9, max in microseconds; max is the worst case seen in that run, not a bound.",
+  "timing_note": "Measured on a QEMU virtual machine. Absolute times and jitter include the emulator and the host operating system: they are NOT representative of QNX on hardware. Compare runs and libraries with each other, not with hardware figures.",
+  "runs": {
+   "idle": {
+    "n": 20000,
+    "warmup": 200,
+    "load_threads": 0,
+    "cpus": 4,
+    "isolated": 0,
+    "runmask_rc": 0,
+    "policy": "SCHED_FIFO",
+    "priority": 60,
+    "setschedparam_rc": 0,
+    "cycles_per_sec": 2502561391,
+    "clockcycles_global": 0,
+    "min_us": 0.197,
+    "median_us": 0.317,
+    "p99_us": 0.374,
+    "p999_us": 1.371,
+    "max_us": 97.425
+   },
+   "loaded": {
+    "n": 20000,
+    "warmup": 200,
+    "load_threads": 4,
+    "cpus": 4,
+    "isolated": 0,
+    "runmask_rc": 0,
+    "policy": "SCHED_FIFO",
+    "priority": 60,
+    "setschedparam_rc": 0,
+    "cycles_per_sec": 2502561391,
+    "clockcycles_global": 0,
+    "min_us": 0.139,
+    "median_us": 0.197,
+    "p99_us": 0.233,
+    "p999_us": 0.298,
+    "max_us": 14.575
+   },
+   "loaded_isolated": {
+    "n": 20000,
+    "warmup": 200,
+    "load_threads": 4,
+    "cpus": 4,
+    "isolated": 1,
+    "runmask_rc": 0,
+    "policy": "SCHED_FIFO",
+    "priority": 60,
+    "setschedparam_rc": 0,
+    "cycles_per_sec": 2502561391,
+    "clockcycles_global": 0,
+    "min_us": 0.181,
+    "median_us": 0.252,
+    "p99_us": 0.304,
+    "p999_us": 3.101,
+    "max_us": 29.684
+   }
+  }
+ },
+ "static_score": 30,
+ "rt_score": 30,
+ "score_basis": "static scan and latency on the QNX target"
+}

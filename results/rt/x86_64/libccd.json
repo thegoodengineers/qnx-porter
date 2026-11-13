@@ -1,0 +1,64 @@
+{
+ "library": "libccd",
+ "arch": "x86_64",
+ "commit": "7931e764a19ef6b21b443376c699bbc9c6d4fba8",
+ "generated": "2026-11-13T11:01:28+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 16,
+  "lines": 3670,
+  "hazards": {
+   "heap": {
+    "count": 5,
+    "examples": [
+     "src/alloc.h:33",
+     "src/ccd.c:170",
+     "src/polytope.h:200"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 11,
+    "examples": [
+     "src/dbg.h:37",
+     "src/dbg.h:42",
+     "src/dbg.h:47"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 0,
+    "examples": [],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 0,
+    "examples": [],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 0,
+    "examples": [],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 0,
+    "examples": [],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 0,
+    "examples": [],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 60,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 60,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}
