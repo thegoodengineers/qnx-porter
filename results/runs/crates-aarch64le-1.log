@@ -1,0 +1,189 @@
+code: 
+target: QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le
+
+=== [1/22] memchr 2.8.3 ===
+[1/4] fetch memchr 2.8.3 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [libc-update] libc@0.2.176
+      fix 0002 [nto-to-qnx] getrandom@0.2.16
+[3/4] 1 test binaries on root@172.31.1.12
+      112/112 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/memchr/REPORT.md
+
+=== [2/22] itoa 1.0.19 ===
+[1/4] fetch itoa 1.0.19 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+[3/4] 2 test binaries on root@172.31.1.12
+      11/11 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/itoa/REPORT.md
+
+=== [3/22] ryu 1.0.23 ===
+[1/4] fetch ryu 1.0.23 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [libc-update] libc@0.2.180
+      fix 0002 [nto-to-qnx] getrandom@0.4.1
+[3/4] 9 test binaries on root@172.31.1.12
+      46/46 tests passed (1 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/ryu/REPORT.md
+
+=== [4/22] smallvec 1.16.5 ===
+[1/4] fetch smallvec 1.16.5 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+[3/4] 1 test binaries on root@172.31.1.12
+      63/63 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/smallvec/REPORT.md
+
+=== [5/22] bytes 1.12.1 ===
+[1/4] fetch bytes 1.12.1 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+[3/4] 13 test binaries on root@172.31.1.12
+      1055/1055 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/bytes/REPORT.md
+
+=== [6/22] hashbrown 0.17.1 ===
+[1/4] fetch hashbrown 0.17.1 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [nto-to-qnx] getrandom@0.3.4
+      fix 0002 [libc-update] libc@0.2.186
+[3/4] 7 test binaries on root@172.31.1.12
+      113/113 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/hashbrown/REPORT.md
+
+=== [7/22] serde_json 1.0.154 ===
+[1/4] fetch serde_json 1.0.154 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+[3/4] 8 test binaries on root@172.31.1.12
+      143/144 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/serde_json/REPORT.md
+
+=== [8/22] regex 1.13.1 ===
+[1/4] fetch regex 1.13.1 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [libc-update] libc@0.2.177
+      fix 0002 [nto-to-qnx] getrandom@0.2.16
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/REPORT.md
+
+=== [9/22] crossbeam-channel 0.5.17 ===
+[1/4] fetch crossbeam-channel 0.5.17 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [libc-update] libc@0.2.186
+      fix 0002 [nto-to-qnx] getrandom@0.2.17
+      fix 0003 [nto-to-qnx] signal-hook-registry@1.4.8
+      fix 0004 [nto-to-qnx] errno@0.3.14
+[3/4] 15 test binaries on root@172.31.1.12
+      391/391 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/crossbeam-channel/REPORT.md
+
+=== [10/22] parking_lot 0.13.0 ===
+[1/4] fetch parking_lot 0.13.0 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [nto-to-qnx] getrandom@0.4.3
+[3/4] 3 test binaries on root@172.31.1.12
+      100/100 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/parking_lot/REPORT.md
+
+=== [11/22] rand 0.10.3 ===
+[1/4] fetch rand 0.10.3 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [nto-to-qnx] getrandom@0.4.3
+[3/4] 1 test binaries on root@172.31.1.12
+      103/103 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/rand/REPORT.md
+
+=== [12/22] chrono 0.4.45 ===
+[1/4] fetch chrono 0.4.45 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [libc-update] libc@0.2.180
+[3/4] 4 test binaries on root@172.31.1.12
+      281/290 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/chrono/REPORT.md
+
+=== [13/22] uuid 1.29.2 ===
+[1/4] fetch uuid 1.29.2 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+[3/4] 1 test binaries on root@172.31.1.12
+      62/62 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/uuid/REPORT.md
+
+=== [14/22] tempfile 3.27.0 ===
+[1/4] fetch tempfile 3.27.0 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [nto-to-qnx] getrandom@0.4.1
+      fix 0002 [libc-update] libc@0.2.182
+      fix 0003 [nto-to-qnx] rustix@1.1.4
+      fix 0004 [libc-update] libc@0.2.191
+      fix 0005 [nto-to-qnx] getrandom@0.4.3
+      fix 0006 [nto-to-qnx] errno@0.3.14
+[3/4] 6 test binaries on root@172.31.1.12
+      61/63 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/REPORT.md
+
+=== [15/22] walkdir 2.5.0 ===
+[1/4] fetch walkdir 2.5.0 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+[3/4] 1 test binaries on root@172.31.1.12
+      47/47 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/walkdir/REPORT.md
+
+=== [16/22] getrandom 0.4.3 ===
+[1/4] fetch getrandom 0.4.3 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [nto-to-qnx] getrandom-0.4.3
+      fix 0002 [libc-update] libc@0.2.186
+[3/4] 3 test binaries on root@172.31.1.12
+      9/9 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/getrandom/REPORT.md
+
+=== [17/22] socket2 0.6.5 ===
+[1/4] fetch socket2 0.6.5 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [libc-update] libc@0.2.172
+[3/4] 1 test binaries on root@172.31.1.12
+      10/10 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/socket2/REPORT.md
+
+=== [18/22] libc 0.2.191 ===
+[1/4] fetch libc 0.2.191 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+[3/4] 2 test binaries on root@172.31.1.12
+      17/17 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/libc/REPORT.md
+
+=== [19/22] nix 0.31.3 ===
+[1/4] fetch nix 0.31.3 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [nto-to-qnx] getrandom@0.3.4
+      fix 0002 [nto-to-qnx] getrandom@0.4.1
+      fix 0003 [libc-update] libc@0.2.186
+      fix 0004 [nto-to-qnx] rustix@1.1.4
+      fix 0005 [libc-update] libc@0.2.191
+      fix 0006 [nto-to-qnx] getrandom@0.4.3
+      fix 0007 [nto-to-qnx] nix-0.31.3
+      error[E0432]: unresolved import `self::consts`; error[E0432]: unresolved import `self::Errno`; error[E0432]: unresolved import `crate::errno::Errno`
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/nix/REPORT.md
+
+=== [20/22] mio 1.2.4 ===
+[1/4] fetch mio 1.2.4 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [nto-to-qnx] getrandom@0.3.4
+      fix 0002 [libc-update] libc@0.2.183
+[3/4] 1 test binaries on root@172.31.1.12
+      0/0 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/mio/REPORT.md
+
+=== [21/22] flate2 1.1.11 ===
+[1/4] fetch flate2 1.1.11 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+      fix 0001 [nto-to-qnx] getrandom@0.4.3
+      fix 0002 [nto-to-qnx] getrandom@0.3.4
+[3/4] 10 test binaries on root@172.31.1.12
+      97/97 tests passed (0 ignored)
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/flate2/REPORT.md
+
+=== [22/22] zstd 0.14.3 ===
+[1/4] fetch zstd 0.14.3 from crates.io
+[2/4] cargo test --no-run -Zbuild-std --target aarch64-unknown-qnx
+[4/4] report: /home/chirag/qnx-porter-rust/ports-rust-aarch64le/zstd/REPORT.md
+
+aarch64le: 22 crates, 21 built for QNX 8.0; tests ran for 18 (at least one test each): 2721/2733 passed
+-> /home/chirag/qnx-porter-rust/results/crates-aarch64le.csv

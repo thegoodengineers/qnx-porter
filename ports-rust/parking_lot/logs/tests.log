@@ -1,0 +1,6 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/parking_lot/work/src/parking_lot-0.13.0
+PASS  test:issue_392 (exit 0): 1 passed, 0 failed, 0 ignored
+PASS  test:issue_203 (exit 0): 1 passed, 0 failed, 0 ignored
+PASS  lib:parking_lot (exit 0): 98 passed, 0 failed, 0 ignored
+
+100/100 tests passed on the QNX target (0 ignored)

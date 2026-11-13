@@ -1,0 +1,10 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/hashbrown/work/src/hashbrown-0.17.1
+PASS  test:rayon (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:set (exit 0): 1 passed, 0 failed, 0 ignored
+PASS  test:equivalent_trait (exit 0): 2 passed, 0 failed, 0 ignored
+PASS  test:serde (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:hasher_unwind (exit 0): 1 passed, 0 failed, 0 ignored
+PASS  test:hasher (exit 0): 4 passed, 0 failed, 0 ignored
+PASS  lib:hashbrown (exit 0): 105 passed, 0 failed, 0 ignored
+
+113/113 tests passed on the QNX target (0 ignored)

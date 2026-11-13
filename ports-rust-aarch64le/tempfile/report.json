@@ -1,0 +1,55 @@
+{
+  "crate": "tempfile",
+  "version": "3.27.0",
+  "arch": "aarch64le",
+  "rust_target": "aarch64-unknown-qnx",
+  "rounds": 5,
+  "note": "",
+  "patches": [
+    {
+      "rule": "nto-to-qnx",
+      "dep": "getrandom@0.4.1",
+      "reason": "getrandom 0.4.1 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0001-nto-to-qnx-getrandom-0.4.1.patch"
+    },
+    {
+      "rule": "libc-update",
+      "dep": "libc@0.2.182",
+      "reason": "Cargo.lock pins libc 0.2.182, which does not build for QNX 8.0; newer libc releases in the same semver range do, so update it there.",
+      "patch": "patches/0002-libc-update-libc-0.2.182.patch"
+    },
+    {
+      "rule": "nto-to-qnx",
+      "dep": "rustix@1.1.4",
+      "reason": "rustix 1.1.4 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0003-nto-to-qnx-rustix-1.1.4.patch"
+    },
+    {
+      "rule": "libc-update",
+      "dep": "libc@0.2.191",
+      "reason": "Cargo.lock pins libc 0.2.191, which does not build for QNX 8.0; newer libc releases in the same semver range do, so update it there.",
+      "patch": "patches/0004-libc-update-libc-0.2.191.patch"
+    },
+    {
+      "rule": "nto-to-qnx",
+      "dep": "getrandom@0.4.3",
+      "reason": "getrandom 0.4.3 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0005-nto-to-qnx-getrandom-0.4.3.patch"
+    },
+    {
+      "rule": "nto-to-qnx",
+      "dep": "errno@0.3.14",
+      "reason": "errno 0.3.14 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0006-nto-to-qnx-errno-0.3.14.patch"
+    }
+  ],
+  "build_result": "built",
+  "errors": [],
+  "test_binaries": 6,
+  "tests_passed": 61,
+  "tests_total": 63,
+  "tests_ignored": 0,
+  "tests_ran": true,
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "minutes": 3.4
+}

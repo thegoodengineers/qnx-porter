@@ -1,0 +1,3 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/itoa/work/src/itoa-1.0.19)
+
+    Finished `release` profile [optimized] target(s) in 0.65s

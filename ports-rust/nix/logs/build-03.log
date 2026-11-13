@@ -1,0 +1,136 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_3_4.path="/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/getrandom-0.3.4" --config patch.crates-io.getrandom_0_3_4.package="getrandom" --config patch.crates-io.getrandom_0_4_1.path="/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/getrandom-0.4.1" --config patch.crates-io.getrandom_0_4_1.package="getrandom" --config patch.crates-io.rustix_1_1_4.path="/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/rustix-1.1.4" --config patch.crates-io.rustix_1_1_4.package="rustix"  (in /home/chirag/qnx-porter-rust/ports-rust/nix/work/src/nix-0.31.3)
+
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+     Locking 2 packages to highest compatible versions
+      Adding getrandom v0.3.4 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/getrandom-0.3.4)
+      Adding rustix v1.1.4 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/rustix-1.1.4)
+warning: patch `getrandom v0.3.4 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/getrandom-0.3.4)` was not used in the crate graph
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+warning: patch `rustix v1.1.4 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/rustix-1.1.4)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+warning: trailing semicolon in macro used in expression position
+  --> build.rs:4:5
+   |
+ 4 | /     cfg_aliases! {
+ 5 | |         android: { target_os = "android" },
+ 6 | |         dragonfly: { target_os = "dragonfly" },
+ 7 | |         ios: { target_os = "ios" },
+...  |
+27 | |         solarish: { any(illumos, solaris) },
+28 | |     }
+   | |_____^
+   |
+   = warning: this was previously accepted by the compiler but is being phased out; it will become a hard error in a future release!
+   = note: for more information, see issue #79813 <https://github.com/rust-lang/rust/issues/79813>
+   = note: `#[warn(semicolon_in_expressions_from_non_local_macros)]` (part of `#[warn(future_incompatible)]`) on by default
+   = note: this warning originates in the macro `$crate::cfg_aliases` which comes from the expansion of the macro `cfg_aliases` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: trailing semicolon in macro used in expression position
+  --> build.rs:4:5
+   |
+ 4 | /     cfg_aliases! {
+ 5 | |         android: { target_os = "android" },
+ 6 | |         dragonfly: { target_os = "dragonfly" },
+ 7 | |         ios: { target_os = "ios" },
+...  |
+27 | |         solarish: { any(illumos, solaris) },
+28 | |     }
+   | |_____^
+   |
+   = warning: this was previously accepted by the compiler but is being phased out; it will become a hard error in a future release!
+   = note: for more information, see issue #79813 <https://github.com/rust-lang/rust/issues/79813>
+   = note: this warning originates in the macro `$crate::cfg_aliases` which comes from the expansion of the macro `cfg_aliases` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `nix` (build script) generated 54 warnings (52 duplicates)
+   Compiling nix v0.31.3 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/src/nix-0.31.3)
+   Compiling getrandom v0.4.3
+   Compiling rustix v1.1.4 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/vendor/rustix-1.1.4)
+   Compiling rand_chacha v0.9.0
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.4.3/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.4.3/src/backends.rs:185:9
+    |
+185 | /         compile_error!(concat!(
+186 | |             "target is not supported. You may need to define a custom backend see: \
+187 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+188 | |         ));
+    | |__________^
+
+error[E0432]: unresolved import `self::consts`
+  --> src/errno.rs:19:15
+   |
+19 | pub use self::consts::*;
+   |               ^^^^^^ could not find `consts` in `self`
+
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error[E0432]: unresolved import `self::Errno`
+   --> src/errno.rs:199:15
+    |
+199 |     use self::Errno::*;
+    |               ^^^^^ could not find `Errno` in `self`
+
+error[E0432]: unresolved import `crate::errno::Errno`
+ --> src/fcntl.rs:2:5
+  |
+2 | use crate::errno::Errno;
+  |     ^^^^^^^^^^^^^^-----
+  |                   |
+  |                   no `Errno` in `errno`
+  |
+help: a similar name exists in the module
+  |
+2 - use crate::errno::Errno;
+2 + use crate::errno::errno;
+  |
+
+error[E0432]: unresolved import `crate::errno::Errno`
+ --> src/sys/signal.rs:3:5
+  |
+3 | use crate::errno::Errno;
+  |     ^^^^^^^^^^^^^^-----
+  |                   |
+  |                   no `Errno` in `errno`
+  |
+help: a similar name exists in the module
+  |
+3 - use crate::errno::Errno;
+3 + use crate::errno::errno;
+  |
+
+error[E0432]: unresolved import `crate::errno::Errno`
+ --> src/unistd.rs:3:5
+  |
+3 | use crate::errno::Errno;
+  |     ^^^^^^^^^^^^^^-----
+  |                   |
+  |                   no `Errno` in `errno`
+  |
+help: a similar name exists in the module
+  |
+3 - use crate::errno::Errno;
+3 + use crate::errno::errno;
+  |
+
+error[E0432]: unresolved import `errno::Errno`
+   --> src/lib.rs:226:5
+    |
+226 | use errno::Errno;
+    |     ^^^^^^^-----
+    |            |
+    |            no `Errno` in `errno`
+    |
+help: a similar name exists in the module
+    |
+226 - use errno::Errno;
+226 + use errno::errno;
+    |
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `nix` (lib) due to 6 previous errors

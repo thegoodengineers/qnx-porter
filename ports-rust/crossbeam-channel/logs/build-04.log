@@ -1,0 +1,40 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_2_17.path="/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/getrandom-0.2.17" --config patch.crates-io.getrandom_0_2_17.package="getrandom" --config patch.crates-io.signal_hook_registry_1_4_8.path="/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/signal-hook-registry-1.4.8" --config patch.crates-io.signal_hook_registry_1_4_8.package="signal-hook-registry" --config patch.crates-io.errno_0_3_14.path="/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/errno-0.3.14" --config patch.crates-io.errno_0_3_14.package="errno"  (in /home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/src/crossbeam-channel-0.5.17)
+
+     Locking 1 package to highest compatible version
+      Adding errno v0.3.14 (/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/errno-0.3.14)
+warning: patch `errno v0.3.14 (/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/errno-0.3.14)` was not used in the crate graph
+warning: patch `getrandom v0.2.17 (/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/getrandom-0.2.17)` was not used in the crate graph
+warning: patch `signal-hook-registry v1.4.8 (/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/signal-hook-registry-1.4.8)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+warning: use of deprecated associated function `core::num::<impl usize>::max_value`: replaced by the `MAX` associated constant on this type
+  --> /home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/getrandom-0.2.17/src/use_file.rs:19:33
+   |
+19 | const FD_UNINIT: usize = usize::max_value();
+   |                                 ^^^^^^^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+   Compiling errno v0.3.14 (/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/errno-0.3.14)
+warning: `getrandom` (lib) generated 1 warning
+   Compiling signal-hook-registry v1.4.8 (/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/signal-hook-registry-1.4.8)
+warning: use of deprecated module `std::isize`: all constants in this module replaced by associated constants on the type
+  --> /home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/signal-hook-registry-1.4.8/src/half_lock.rs:35:10
+   |
+35 | use std::isize;
+   |          ^^^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated constant `std::isize::MAX`: replaced by the `MAX` associated constant on this type
+  --> /home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/vendor/signal-hook-registry-1.4.8/src/half_lock.rs:45:35
+   |
+45 | const MAX_GUARDS: usize = (isize::MAX) as usize;
+   |                                   ^^^
+
+   Compiling signal-hook v0.3.18
+warning: `signal-hook-registry` (lib) generated 2 warnings
+   Compiling crossbeam-channel v0.5.17 (/home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/src/crossbeam-channel-0.5.17)
+    Finished `release` profile [optimized] target(s) in 32.31s

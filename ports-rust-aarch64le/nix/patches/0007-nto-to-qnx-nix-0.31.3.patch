@@ -1,0 +1,33 @@
+Subject: [qnx-porter 0007] nto-to-qnx
+Source: deterministic rule
+Reason: The crate supports QNX 7 (`target_os = "nto"`) but not QNX 8.0 (`target_os = "qnx"`); let QNX 8.0 take the QNX 7 code path.
+---
+--- a/src/sys/termios.rs
++++ b/src/sys/termios.rs
+@@ -483,7 +483,7 @@
+                   target_os = "cygwin",
+                   target_os = "haiku",
+                   target_os = "hurd",
+-                  target_os = "nto",
++                  any(target_os = "nto", target_os = "qnx"),
+                   solarish))]
+         IUCLC;
+         #[cfg(not(target_os = "redox"))]
+@@ -517,7 +517,7 @@
+                   target_os = "fuchsia",
+                   target_os = "haiku",
+                   target_os = "hurd",
+-                  target_os = "nto",
++                  any(target_os = "nto", target_os = "qnx"),
+                   target_os = "redox",
+                   solarish,
+                   apple_targets))]
+@@ -708,7 +708,7 @@
+         #[cfg(any(linux_android,
+                   target_os = "aix",
+                   target_os = "haiku",
+-                  target_os = "nto"))]
++                  any(target_os = "nto", target_os = "qnx")))]
+         XCASE;
+     }
+ }

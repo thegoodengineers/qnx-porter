@@ -1,0 +1,154 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_4_1.path="/home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1" --config patch.crates-io.getrandom_0_4_1.package="getrandom"  (in /home/chirag/qnx-porter-rust/ports-rust/ryu/work/src/ryu-1.0.23)
+
+     Locking 1 package to highest compatible version
+      Adding getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1)
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1)
+   Compiling num_cpus v1.17.0
+   Compiling rand_xorshift v0.5.0
+   Compiling criterion v0.8.2
+   Compiling ryu v1.0.23 (/home/chirag/qnx-porter-rust/ports-rust/ryu/work/src/ryu-1.0.23)
+error[E0432]: unresolved import `libc`
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/../utils/get_errno.rs:13:13
+   |
+13 |         use libc::__get_errno_ptr as errno_location;
+   |             ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/../utils/sys_fill_exact.rs:30:29
+   |
+30 |                 if errno != libc::EINTR {
+   |                             ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:50:9
+   |
+50 |         libc::read(fd, buf.as_mut_ptr().cast::<c_void>(), buf.len())
+   |         ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:57:27
+   |
+57 |         let fd = unsafe { libc::open(path.as_ptr(), libc::O_RDONLY | libc::O_CLOEXEC) };
+   |                           ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:57:53
+   |
+57 |         let fd = unsafe { libc::open(path.as_ptr(), libc::O_RDONLY | libc::O_CLOEXEC) };
+   |                                                     ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:57:70
+   |
+57 |         let fd = unsafe { libc::open(path.as_ptr(), libc::O_RDONLY | libc::O_CLOEXEC) };
+   |                                                                      ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:63:21
+   |
+63 |         if errno != libc::EINTR {
+   |                     ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+   --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:132:13
+    |
+132 |             libc::nanosleep(&rqtp, &mut rmtp);
+    |             ^^^^ use of unresolved module or unlinked crate `libc`
+    |
+    = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/../utils/get_errno.rs:27:30
+   |
+27 | pub(crate) fn get_errno() -> libc::c_int {
+   |                              ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/../utils/sys_fill_exact.rs:16:50
+   |
+16 |     sys_fill: impl Fn(&mut [MaybeUninit<u8>]) -> libc::ssize_t,
+   |                                                  ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:71:29
+   |
+71 | fn open_or_wait() -> Result<libc::c_int, Error> {
+   |                             ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:24:18
+   |
+24 | const FD_UNINIT: libc::c_int = -1;
+   |                  ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:25:24
+   |
+25 | const FD_ONGOING_INIT: libc::c_int = -2;
+   |                        ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+   --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:126:24
+    |
+126 |         let mut rmtp = libc::timespec {
+    |                        ^^^^ use of unresolved module or unlinked crate `libc`
+    |
+    = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+  --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:55:41
+   |
+55 | fn open_readonly(path: &CStr) -> Result<libc::c_int, Error> {
+   |                                         ^^^^ use of unresolved module or unlinked crate `libc`
+   |
+   = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+   --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:122:20
+    |
+122 |         let rqtp = libc::timespec {
+    |                    ^^^^ use of unresolved module or unlinked crate `libc`
+    |
+    = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+error[E0433]: cannot find module or crate `libc` in this scope
+   --> /home/chirag/qnx-porter-rust/ports-rust/ryu/work/vendor/getrandom-0.4.1/src/backends/use_file.rs:106:24
+    |
+106 | fn open_fd() -> Result<libc::c_int, Error> {
+    |                        ^^^^ use of unresolved module or unlinked crate `libc`
+    |
+    = help: if you wanted to use a crate named `libc`, use `cargo add libc` to add it to your `Cargo.toml`
+
+Some errors have detailed explanations: E0432, E0433.
+For more information about an error, try `rustc --explain E0432`.
+error: could not compile `getrandom` (lib) due to 17 previous errors
+warning: build failed, waiting for other jobs to finish...

@@ -1,0 +1,15 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/getrandom/work/src/getrandom-0.4.3)
+
+   Compiling getrandom v0.4.3 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/getrandom/work/src/getrandom-0.4.3)
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.4.3/#custom-backend
+   --> src/backends.rs:185:9
+    |
+185 | /         compile_error!(concat!(
+186 | |             "target is not supported. You may need to define a custom backend see: \
+187 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+188 | |         ));
+    | |__________^
+
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `getrandom` (lib test) due to 1 previous error

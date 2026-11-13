@@ -1,0 +1,18 @@
+{
+  "crate": "bytes",
+  "version": "1.12.1",
+  "arch": "aarch64le",
+  "rust_target": "aarch64-unknown-qnx",
+  "rounds": 1,
+  "note": "",
+  "patches": [],
+  "build_result": "built",
+  "errors": [],
+  "test_binaries": 13,
+  "tests_passed": 1055,
+  "tests_total": 1055,
+  "tests_ignored": 0,
+  "tests_ran": true,
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "minutes": 1.0
+}

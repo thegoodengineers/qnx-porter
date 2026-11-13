@@ -1,0 +1,67 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/ryu/work/src/ryu-1.0.23)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded clap_lex v0.7.7
+  Downloaded cpufeatures v0.3.0
+  Downloaded rand_xorshift v0.5.0
+  Downloaded itoa v1.0.17
+  Downloaded num_cpus v1.17.0
+  Downloaded anstyle v1.0.13
+  Downloaded rand_core v0.10.0
+  Downloaded quote v1.0.44
+  Downloaded either v1.15.0
+  Downloaded shlex v1.3.0
+  Downloaded autocfg v1.5.0
+  Downloaded find-msvc-tools v0.1.9
+  Downloaded unicode-ident v1.0.22
+  Downloaded chacha20 v0.10.0
+  Downloaded serde_core v1.0.228
+  Downloaded clap v4.5.57
+  Downloaded proc-macro2 v1.0.106
+  Downloaded getrandom v0.4.1
+  Downloaded serde_derive v1.0.228
+  Downloaded cc v1.2.55
+  Downloaded serde v1.0.228
+  Downloaded memchr v2.8.0
+  Downloaded rand v0.10.0
+  Downloaded zmij v1.0.20
+  Downloaded aho-corasick v1.1.4
+  Downloaded serde_json v1.0.149
+  Downloaded clap_builder v4.5.57
+  Downloaded regex v1.12.3
+  Downloaded zerocopy-derive v0.8.39
+  Downloaded syn v2.0.114
+  Downloaded zerocopy v0.8.39
+  Downloaded regex-syntax v0.8.9
+  Downloaded regex-automata v0.4.14
+  Downloaded libc v0.2.180
+   Compiling proc-macro2 v1.0.106
+   Compiling quote v1.0.44
+   Compiling unicode-ident v1.0.22
+   Compiling cfg-if v1.0.4
+   Compiling serde_core v1.0.228
+   Compiling zerocopy v0.8.39
+   Compiling serde v1.0.228
+   Compiling libc v0.2.180
+   Compiling shlex v1.3.0
+   Compiling find-msvc-tools v0.1.9
+   Compiling zmij v1.0.20
+   Compiling cc v1.2.55
+   Compiling syn v2.0.114
+   Compiling rand_core v0.10.0
+   Compiling autocfg v1.5.0
+   Compiling serde_json v1.0.149
+   Compiling alloca v0.4.0
+   Compiling num-traits v0.2.19
+error[E0432]: unresolved import `unistd`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.180/src/new/mod.rs:230:17
+    |
+230 |         pub use unistd::*;
+    |                 ^^^^^^ use of unresolved module or unlinked crate `unistd`
+    |
+    = help: if you wanted to use a crate named `unistd`, use `cargo add unistd` to add it to your `Cargo.toml`
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `libc` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

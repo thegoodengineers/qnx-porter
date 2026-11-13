@@ -1,0 +1,29 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/serde_json/work/src/serde_json-1.0.154
+PASS  test:stream (exit 0): 11 passed, 0 failed, 0 ignored
+FAIL  test:compiletest (exit 101): 0 passed, 1 failed, 0 ignored
+    running 1 test
+    test ui ... FAILED
+    
+    failures:
+    
+    ---- ui stdout ----
+    
+    thread 'ui' (2) panicked at /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/trybuild-1.0.122/src/run.rs:63:13:
+    tests failed
+    note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+    
+    
+    failures:
+        ui
+    
+    test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+    
+    [0m[1m[31mERROR[0m: failed to execute cargo: No such file or directory (os error 2)
+PASS  test:regression (exit 0): 8 passed, 0 failed, 0 ignored
+PASS  lib:serde_json (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:map (exit 0): 3 passed, 0 failed, 0 ignored
+PASS  test:lexical (exit 0): 35 passed, 0 failed, 0 ignored
+PASS  test:test (exit 0): 77 passed, 0 failed, 0 ignored
+PASS  test:debug (exit 0): 9 passed, 0 failed, 0 ignored
+
+143/144 tests passed on the QNX target (0 ignored)

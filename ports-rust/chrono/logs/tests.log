@@ -1,0 +1,103 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/chrono/work/src/chrono-0.4.45
+PASS  test:dateutils (exit 0): 1 passed, 0 failed, 0 ignored
+FAIL  test:win_bindings (exit 101): 0 passed, 1 failed, 0 ignored
+    running 1 test
+    test gen_bindings ... FAILED
+    
+    failures:
+    
+    ---- gen_bindings stdout ----
+    
+    thread 'gen_bindings' (2) panicked at tests/win_bindings.rs:21:6:
+    failed to format output with `rustfmt`
+    note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+    
+    
+    failures:
+        gen_bindings
+    
+    test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.79s
+PASS  test:wasm (exit 0): 0 passed, 0 failed, 0 ignored
+FAIL  lib:chrono (exit 101): 280 passed, 8 failed, 0 ignored
+    test time_delta::tests::test_duration_num_milliseconds ... ok
+    test time_delta::tests::test_duration_num_nanoseconds ... ok
+    test time_delta::tests::test_duration_num_seconds ... ok
+    test time_delta::tests::test_duration_ord ... ok
+    test time_delta::tests::test_duration_seconds_max_allowed ... ok
+    test time_delta::tests::test_duration_seconds_max_overflow ... ok
+    test time_delta::tests::test_duration_seconds_max_overflow_panic - should panic ... ok
+    test time_delta::tests::test_duration_seconds_min_allowed ... ok
+    test time_delta::tests::test_duration_seconds_min_underflow ... ok
+    test time_delta::tests::test_duration_seconds_min_underflow_panic - should panic ... ok
+    test time_delta::tests::test_duration_subsec_micros ... ok
+    test time_delta::tests::test_duration_subsec_millis ... ok
+    test time_delta::tests::test_duration_subsec_nanos ... ok
+    test time_delta::tests::test_duration_sum ... ok
+    test time_delta::tests::test_from_std ... ok
+    test time_delta::tests::test_max ... ok
+    test time_delta::tests::test_min ... ok
+    test time_delta::tests::test_to_std ... ok
+    test traits::tests::test_num_days_in_month ... ok
+    test weekday::tests::test_days_since ... ok
+    test weekday::tests::test_formatting_alignment ... ok
+    test weekday_set::tests::bitwise_set_operations_preserve_8th_bit_invariant ... ok
+    test weekday_set::tests::debug_prints_8th_bit_if_not_zero ... ok
+    test weekday_set::tests::split_at_is_equivalent_to_iterating ... ok
+    test traits::tests::test_num_days_from_ce_against_alternative_impl ... ok
+    
+    failures:
+    
+    ---- offset::local::tz_data::tests::test_android_tzdata_find stdout ----
+    
+    thread 'offset::local::tz_data::tests::test_android_tzdata_find' (5) panicked at src/offset/local/tz_data.rs:248:57:
+    called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    
+    ---- offset::local::tz_data::tests::test_android_tzdata_find_missing stdout ----
+    
+    thread 'offset::local::tz_data::tests::test_android_tzdata_find_missing' (2) panicked at src/offset/local/tz_data.rs:255:57:
+    called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    
+    ---- offset::local::tz_data::tests::test_android_tzdata_header_and_index stdout ----
+    
+    thread 'offset::local::tz_data::tests::test_android_tzdata_header_and_index' (3) panicked at src/offset/local/tz_data.rs:210:57:
+    called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    
+    ---- offset::local::tz_data::tests::test_android_tzdata_loading stdout ----
+    
+    thread 'offset::local::tz_data::tests::test_android_tzdata_loading' (4) panicked at src/offset/local/tz_data.rs:225:57:
+    called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    
+    ---- offset::local::tz_data::tests::test_ohos_tzdata_find stdout ----
+    
+    thread 'offset::local::tz_data::tests::test_ohos_tzdata_find' (2) panicked at src/offset/local/tz_data.rs:235:54:
+    called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    
+    ---- offset::local::tz_data::tests::test_ohos_tzdata_find_missing stdout ----
+    
+    thread 'offset::local::tz_data::tests::test_ohos_tzdata_find_missing' (3) panicked at src/offset/local/tz_data.rs:242:54:
+    called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    
+    ---- offset::local::tz_data::tests::test_ohos_tzdata_header_and_index stdout ----
+    
+    thread 'offset::local::tz_data::tests::test_ohos_tzdata_header_and_index' (4) panicked at src/offset/local/tz_data.rs:180:54:
+    called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    
+    ---- offset::local::tz_data::tests::test_ohos_tzdata_loading stdout ----
+    
+    thread 'offset::local::tz_data::tests::test_ohos_tzdata_loading' (5) panicked at src/offset/local/tz_data.rs:195:54:
+    called `Result::unwrap()` on an `Err` value: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    
+    
+    failures:
+        offset::local::tz_data::tests::test_android_tzdata_find
+        offset::local::tz_data::tests::test_android_tzdata_find_missing
+        offset::local::tz_data::tests::test_android_tzdata_header_and_index
+        offset::local::tz_data::tests::test_android_tzdata_loading
+        offset::local::tz_data::tests::test_ohos_tzdata_find
+        offset::local::tz_data::tests::test_ohos_tzdata_find_missing
+        offset::local::tz_data::tests::test_ohos_tzdata_header_and_index
+        offset::local::tz_data::tests::test_ohos_tzdata_loading
+    
+    test result: FAILED. 280 passed; 8 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.25s
+
+281/290 tests passed on the QNX target (0 ignored)

@@ -1,0 +1,1649 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/socket2/work/src/socket2-0.6.5)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded libc v0.2.172
+   Compiling libc v0.2.172
+error[E0425]: cannot find type `time_t` in this scope
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:55:21
+   |
+55 |         pub actime: time_t,
+   |                     ^^^^^^ not found in this scope
+   |
+note: similarly named type alias `size_t` defined here
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+   |
+11 | pub type size_t = usize;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+   |
+55 -         pub actime: time_t,
+55 +         pub actime: size_t,
+   |
+
+error[E0425]: cannot find type `time_t` in this scope
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:56:22
+   |
+56 |         pub modtime: time_t,
+   |                      ^^^^^^ not found in this scope
+   |
+note: similarly named type alias `size_t` defined here
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+   |
+11 | pub type size_t = usize;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+   |
+56 -         pub modtime: time_t,
+56 +         pub modtime: size_t,
+   |
+
+error[E0425]: cannot find type `time_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:55:21
+    |
+ 55 |         pub actime: time_t,
+    |                     ^^^^^^ not found in this scope
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:115:43
+    |
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+    |
+note: similarly named type alias `size_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+    |
+ 11 | pub type size_t = usize;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+ 55 -         pub actime: time_t,
+ 55 +         pub actime: size_t,
+    |
+
+error[E0425]: cannot find type `time_t` in this scope
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:61:21
+   |
+61 |         pub tv_sec: time_t,
+   |                     ^^^^^^ not found in this scope
+   |
+note: similarly named type alias `size_t` defined here
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+   |
+11 | pub type size_t = usize;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+   |
+61 -         pub tv_sec: time_t,
+61 +         pub tv_sec: size_t,
+   |
+
+error[E0425]: cannot find type `suseconds_t` in this scope
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:62:22
+   |
+62 |         pub tv_usec: suseconds_t,
+   |                      ^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `time_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:61:21
+    |
+ 61 |         pub tv_sec: time_t,
+    |                     ^^^^^^ not found in this scope
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:115:43
+    |
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+    |
+note: similarly named type alias `size_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+    |
+ 11 | pub type size_t = usize;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+ 61 -         pub tv_sec: time_t,
+ 61 +         pub tv_sec: size_t,
+    |
+
+error[E0425]: cannot find type `suseconds_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:62:22
+    |
+ 62 |         pub tv_usec: suseconds_t,
+    |                      ^^^^^^^^^^^ not found in this scope
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:115:43
+    |
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+
+error[E0425]: cannot find type `time_t` in this scope
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:68:21
+   |
+68 |         pub tv_sec: time_t,
+   |                     ^^^^^^ not found in this scope
+   |
+note: similarly named type alias `size_t` defined here
+  --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+   |
+11 | pub type size_t = usize;
+   | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+   |
+68 -         pub tv_sec: time_t,
+68 +         pub tv_sec: size_t,
+   |
+
+error[E0425]: cannot find type `time_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:68:21
+    |
+ 68 |         pub tv_sec: time_t,
+    |                     ^^^^^^ not found in this scope
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:115:43
+    |
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+    |
+note: similarly named type alias `size_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+    |
+ 11 | pub type size_t = usize;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+ 68 -         pub tv_sec: time_t,
+ 68 +         pub tv_sec: size_t,
+    |
+
+error[E0425]: cannot find type `rlim_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:76:23
+    |
+ 76 |         pub rlim_cur: rlim_t,
+    |                       ^^^^^^ not found in this scope
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+    |
+ 96 | macro_rules! s {
+    |
+note: similarly named struct `rlimit` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+    |
+118 |               pub struct $i { $($field)* }
+    |               ^^^^^^^^^^^^^
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+    |
+ 46 | / s! {
+ 47 | |     pub struct group {
+ 48 | |         pub gr_name: *mut c_char,
+ 49 | |         pub gr_passwd: *mut c_char,
+...   |
+213 | | }
+    | |_- in this macro invocation
+help: a struct with a similar name exists
+    |
+ 76 -         pub rlim_cur: rlim_t,
+ 76 +         pub rlim_cur: rlimit,
+    |
+
+error[E0425]: cannot find type `rlim_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:77:23
+    |
+ 77 |         pub rlim_max: rlim_t,
+    |                       ^^^^^^ not found in this scope
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+    |
+ 96 | macro_rules! s {
+    |
+note: similarly named struct `rlimit` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+    |
+118 |               pub struct $i { $($field)* }
+    |               ^^^^^^^^^^^^^
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+    |
+ 46 | / s! {
+ 47 | |     pub struct group {
+ 48 | |         pub gr_name: *mut c_char,
+ 49 | |         pub gr_passwd: *mut c_char,
+...   |
+213 | | }
+    | |_- in this macro invocation
+help: a struct with a similar name exists
+    |
+ 77 -         pub rlim_max: rlim_t,
+ 77 +         pub rlim_max: rlimit,
+    |
+
+error[E0425]: cannot find type `rlim_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:76:23
+    |
+ 76 |         pub rlim_cur: rlim_t,
+    |                       ^^^^^^ not found in this scope
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+    |
+ 96 | macro_rules! s {
+...
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+    |
+note: similarly named struct `rlimit` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+    |
+118 |               pub struct $i { $($field)* }
+    |               ^^^^^^^^^^^^^
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+    |
+ 46 | / s! {
+ 47 | |     pub struct group {
+ 48 | |         pub gr_name: *mut c_char,
+ 49 | |         pub gr_passwd: *mut c_char,
+...   |
+213 | | }
+    | |_- in this macro invocation
+help: a struct with a similar name exists
+    |
+ 76 -         pub rlim_cur: rlim_t,
+ 76 +         pub rlim_cur: rlimit,
+    |
+
+error[E0425]: cannot find type `clock_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:184:31
+    |
+184 |         pub tms_utime: crate::clock_t,
+    |                               ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `clock_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:185:31
+    |
+185 |         pub tms_stime: crate::clock_t,
+    |                               ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `clock_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:186:32
+    |
+186 |         pub tms_cutime: crate::clock_t,
+    |                                ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `clock_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:187:32
+    |
+187 |         pub tms_cstime: crate::clock_t,
+    |                                ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `clock_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:184:31
+    |
+184 |         pub tms_utime: crate::clock_t,
+    |                               ^^^^^^^ not found in the crate root
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:115:43
+    |
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+
+error[E0425]: cannot find type `clock_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:185:31
+    |
+185 |         pub tms_stime: crate::clock_t,
+    |                               ^^^^^^^ not found in the crate root
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:115:43
+    |
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+
+error[E0425]: cannot find type `clock_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:186:32
+    |
+186 |         pub tms_cutime: crate::clock_t,
+    |                                ^^^^^^^ not found in the crate root
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:115:43
+    |
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+
+error[E0425]: cannot find type `clock_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:187:32
+    |
+187 |         pub tms_cstime: crate::clock_t,
+    |                                ^^^^^^^ not found in the crate root
+    |
+   ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:115:43
+    |
+115 |             #[::core::prelude::v1::derive(::core::clone::Clone, ::core::marker::Copy)]
+    |                                           -------------------- in this derive macro
+
+error[E0425]: cannot find type `mode_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:248:27
+    |
+248 | pub const S_ISUID: crate::mode_t = 0o4000;
+    |                           ^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `mode_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:249:27
+    |
+249 | pub const S_ISGID: crate::mode_t = 0o2000;
+    |                           ^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `mode_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:250:27
+    |
+250 | pub const S_ISVTX: crate::mode_t = 0o1000;
+    |                           ^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `wchar_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:712:31
+    |
+712 |     pub fn wcslen(buf: *const wchar_t) -> size_t;
+    |                               ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `wchar_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:713:52
+    |
+713 |     pub fn wcstombs(dest: *mut c_char, src: *const wchar_t, n: size_t) -> size_t;
+    |                                                    ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `wchar_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:716:31
+    |
+716 |     pub fn wmemchr(cx: *const wchar_t, c: wchar_t, n: size_t) -> *mut wchar_t;
+    |                               ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `wchar_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:716:43
+    |
+716 |     pub fn wmemchr(cx: *const wchar_t, c: wchar_t, n: size_t) -> *mut wchar_t;
+    |                                           ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `wchar_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:716:71
+    |
+716 |     pub fn wmemchr(cx: *const wchar_t, c: wchar_t, n: size_t) -> *mut wchar_t;
+    |                                                                       ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `passwd` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:726:50
+    |
+726 |     pub fn getpwnam(name: *const c_char) -> *mut passwd;
+    |                                                  ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `passwd` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:728:48
+    |
+728 |     pub fn getpwuid(uid: crate::uid_t) -> *mut passwd;
+    |                                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sockaddr` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:768:51
+    |
+768 |     pub fn connect(socket: c_int, address: *const sockaddr, len: socklen_t) -> c_int;
+    |                                                   ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `socklen_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:768:66
+    |
+768 |     pub fn connect(socket: c_int, address: *const sockaddr, len: socklen_t) -> c_int;
+    |                                                                  ^^^^^^^^^ not found in this scope
+    |
+note: similarly named type alias `locale_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:44:1
+    |
+ 44 | pub type locale_t = *mut c_void;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+768 -     pub fn connect(socket: c_int, address: *const sockaddr, len: socklen_t) -> c_int;
+768 +     pub fn connect(socket: c_int, address: *const sockaddr, len: locale_t) -> c_int;
+    |
+
+error[E0425]: cannot find type `sockaddr` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:781:48
+    |
+781 |     pub fn accept(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t) -> c_int;
+    |                                                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `socklen_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:781:76
+    |
+781 |     pub fn accept(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t) -> c_int;
+    |                                                                            ^^^^^^^^^ not found in this scope
+    |
+note: similarly named type alias `locale_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:44:1
+    |
+ 44 | pub type locale_t = *mut c_void;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+781 -     pub fn accept(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t) -> c_int;
+781 +     pub fn accept(socket: c_int, address: *mut sockaddr, address_len: *mut locale_t) -> c_int;
+    |
+
+error[E0425]: cannot find type `sockaddr` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:788:53
+    |
+788 |     pub fn getpeername(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t)
+    |                                                     ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `socklen_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:788:81
+    |
+788 |     pub fn getpeername(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t)
+    |                                                                                 ^^^^^^^^^ not found in this scope
+    |
+note: similarly named type alias `locale_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:44:1
+    |
+ 44 | pub type locale_t = *mut c_void;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+788 -     pub fn getpeername(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t)
+788 +     pub fn getpeername(socket: c_int, address: *mut sockaddr, address_len: *mut locale_t)
+    |
+
+error[E0425]: cannot find type `sockaddr` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:796:53
+    |
+796 |     pub fn getsockname(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t)
+    |                                                     ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `socklen_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:796:81
+    |
+796 |     pub fn getsockname(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t)
+    |                                                                                 ^^^^^^^^^ not found in this scope
+    |
+note: similarly named type alias `locale_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:44:1
+    |
+ 44 | pub type locale_t = *mut c_void;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+796 -     pub fn getsockname(socket: c_int, address: *mut sockaddr, address_len: *mut socklen_t)
+796 +     pub fn getsockname(socket: c_int, address: *mut sockaddr, address_len: *mut locale_t)
+    |
+
+error[E0425]: cannot find type `socklen_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:804:21
+    |
+804 |         option_len: socklen_t,
+    |                     ^^^^^^^^^ not found in this scope
+    |
+note: similarly named type alias `locale_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:44:1
+    |
+ 44 | pub type locale_t = *mut c_void;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+804 -         option_len: socklen_t,
+804 +         option_len: locale_t,
+    |
+
+error[E0425]: cannot find type `sockaddr` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:835:22
+    |
+835 |         addr: *const sockaddr,
+    |                      ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `socklen_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:836:18
+    |
+836 |         addrlen: socklen_t,
+    |                  ^^^^^^^^^ not found in this scope
+    |
+note: similarly named type alias `locale_t` defined here
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:44:1
+    |
+ 44 | pub type locale_t = *mut c_void;
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+    |
+836 -         addrlen: socklen_t,
+836 +         addrlen: locale_t,
+    |
+
+error[E0425]: cannot find type `mode_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:845:45
+    |
+845 |     pub fn chmod(path: *const c_char, mode: mode_t) -> c_int;
+    |                                             ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `mode_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:850:36
+    |
+850 |     pub fn fchmod(fd: c_int, mode: mode_t) -> c_int;
+    |                                    ^^^^^^ not found in this scope
+
+error[E0573]: cannot find type `stat` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:862:43
+    |
+862 |     pub fn fstat(fildes: c_int, buf: *mut stat) -> c_int;
+    |                                           ^^^^ not found in this scope
+    |
+    = note: a function named `stat` exists in another namespace
+
+error[E0425]: cannot find type `mode_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:864:45
+    |
+864 |     pub fn mkdir(path: *const c_char, mode: mode_t) -> c_int;
+    |                                             ^^^^^^ not found in this scope
+
+error[E0573]: cannot find type `stat` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:876:48
+    |
+876 |     pub fn stat(path: *const c_char, buf: *mut stat) -> c_int;
+    |                                                ^^^^ not found in this scope
+    |
+    = note: a function named `stat` exists in another namespace
+
+error[E0425]: cannot find type `mode_t` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:897:45
+    |
+897 |     pub fn creat(path: *const c_char, mode: mode_t) -> c_int;
+    |                                             ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `dirent` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:926:58
+    |
+926 |     pub fn readdir(dirp: *mut crate::DIR) -> *mut crate::dirent;
+    |                                                          ^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `mode_t` in the crate root
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:945:22
+    |
+945 |         mode: crate::mode_t,
+    |                      ^^^^^^ not found in the crate root
+
+error[E0573]: cannot find type `stat` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:965:69
+    |
+965 |     pub fn fstatat(dirfd: c_int, pathname: *const c_char, buf: *mut stat, flags: c_int) -> c_int;
+    |                                                                     ^^^^ not found in this scope
+    |
+    = note: a function named `stat` exists in another namespace
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1040:37
+     |
+1040 |     pub fn lseek(fd: c_int, offset: off_t, whence: c_int) -> off_t;
+     |                                     ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1040:62
+     |
+1040 |     pub fn lseek(fd: c_int, offset: off_t, whence: c_int) -> off_t;
+     |                                                              ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1103:70
+     |
+1103 |     pub fn pread(fd: c_int, buf: *mut c_void, count: size_t, offset: off_t) -> ssize_t;
+     |                                                                      ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1109:73
+     |
+1109 |     pub fn pwrite(fd: c_int, buf: *const c_void, count: size_t, offset: off_t) -> ssize_t;
+     |                                                                         ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `mode_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1110:24
+     |
+1110 |     pub fn umask(mask: mode_t) -> mode_t;
+     |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `mode_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1110:35
+     |
+1110 |     pub fn umask(mask: mode_t) -> mode_t;
+     |                                   ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1142:17
+     |
+1142 |         offset: off_t,
+     |                 ^^^^^ not found in this scope
+
+error[E0573]: cannot find type `stat` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1163:49
+     |
+1163 |     pub fn lstat(path: *const c_char, buf: *mut stat) -> c_int;
+     |                                                 ^^^^ not found in this scope
+     |
+     = note: a function named `stat` exists in another namespace
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1186:50
+     |
+1186 |     pub fn truncate(path: *const c_char, length: off_t) -> c_int;
+     |                                                  ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1188:41
+     |
+1188 |     pub fn ftruncate(fd: c_int, length: off_t) -> c_int;
+     |                                         ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `clock_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1208:50
+     |
+1208 |     pub fn times(buf: *mut crate::tms) -> crate::clock_t;
+     |                                                  ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1210:37
+     |
+1210 |     pub fn pthread_self() -> crate::pthread_t;
+     |                                     ^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1211:37
+     |
+1211 |     pub fn pthread_equal(t1: crate::pthread_t, t2: crate::pthread_t) -> c_int;
+     |                                     ^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1211:59
+     |
+1211 |     pub fn pthread_equal(t1: crate::pthread_t, t2: crate::pthread_t) -> c_int;
+     |                                                           ^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1216:40
+     |
+1216 |     pub fn pthread_join(native: crate::pthread_t, value: *mut *mut c_void) -> c_int;
+     |                                        ^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_attr_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1218:48
+     |
+1218 |     pub fn pthread_attr_init(attr: *mut crate::pthread_attr_t) -> c_int;
+     |                                                ^^^^^^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_attr_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1219:51
+     |
+1219 |     pub fn pthread_attr_destroy(attr: *mut crate::pthread_attr_t) -> c_int;
+     |                                                   ^^^^^^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_attr_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1221:29
+     |
+1221 |         attr: *const crate::pthread_attr_t,
+     |                             ^^^^^^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_attr_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1224:56
+     |
+1224 |     pub fn pthread_attr_setstacksize(attr: *mut crate::pthread_attr_t, stack_size: size_t)
+     |                                                        ^^^^^^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_attr_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1226:58
+     |
+1226 |     pub fn pthread_attr_setdetachstate(attr: *mut crate::pthread_attr_t, state: c_int) -> c_int;
+     |                                                          ^^^^^^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1227:42
+     |
+1227 |     pub fn pthread_detach(thread: crate::pthread_t) -> c_int;
+     |                                          ^^^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `pthread_key_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1231:19
+     |
+1231 |         key: *mut pthread_key_t,
+     |                   ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_key_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1234:36
+     |
+1234 |     pub fn pthread_key_delete(key: pthread_key_t) -> c_int;
+     |                                    ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_key_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1235:37
+     |
+1235 |     pub fn pthread_getspecific(key: pthread_key_t) -> *mut c_void;
+     |                                     ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_key_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1236:37
+     |
+1236 |     pub fn pthread_setspecific(key: pthread_key_t, value: *const c_void) -> c_int;
+     |                                     ^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutex_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1238:20
+     |
+1238 |         lock: *mut pthread_mutex_t,
+     |                    ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutexattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1239:22
+     |
+1239 |         attr: *const pthread_mutexattr_t,
+     |                      ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutex_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1241:45
+     |
+1241 |     pub fn pthread_mutex_destroy(lock: *mut pthread_mutex_t) -> c_int;
+     |                                             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutex_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1242:42
+     |
+1242 |     pub fn pthread_mutex_lock(lock: *mut pthread_mutex_t) -> c_int;
+     |                                          ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutex_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1243:45
+     |
+1243 |     pub fn pthread_mutex_trylock(lock: *mut pthread_mutex_t) -> c_int;
+     |                                             ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutex_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1244:44
+     |
+1244 |     pub fn pthread_mutex_unlock(lock: *mut pthread_mutex_t) -> c_int;
+     |                                            ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutexattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1246:46
+     |
+1246 |     pub fn pthread_mutexattr_init(attr: *mut pthread_mutexattr_t) -> c_int;
+     |                                              ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutexattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1251:49
+     |
+1251 |     pub fn pthread_mutexattr_destroy(attr: *mut pthread_mutexattr_t) -> c_int;
+     |                                                 ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutexattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1252:49
+     |
+1252 |     pub fn pthread_mutexattr_settype(attr: *mut pthread_mutexattr_t, _type: c_int) -> c_int;
+     |                                                 ^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_cond_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1258:41
+     |
+1258 |     pub fn pthread_cond_init(cond: *mut pthread_cond_t, attr: *const pthread_condattr_t) -> c_int;
+     |                                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_condattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1258:70
+     |
+1258 |     pub fn pthread_cond_init(cond: *mut pthread_cond_t, attr: *const pthread_condattr_t) -> c_int;
+     |                                                                      ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_cond_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1263:41
+     |
+1263 |     pub fn pthread_cond_wait(cond: *mut pthread_cond_t, lock: *mut pthread_mutex_t) -> c_int;
+     |                                         ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutex_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1263:68
+     |
+1263 |     pub fn pthread_cond_wait(cond: *mut pthread_cond_t, lock: *mut pthread_mutex_t) -> c_int;
+     |                                                                    ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_cond_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1269:20
+     |
+1269 |         cond: *mut pthread_cond_t,
+     |                    ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_mutex_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1270:20
+     |
+1270 |         lock: *mut pthread_mutex_t,
+     |                    ^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_cond_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1273:43
+     |
+1273 |     pub fn pthread_cond_signal(cond: *mut pthread_cond_t) -> c_int;
+     |                                           ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_cond_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1274:46
+     |
+1274 |     pub fn pthread_cond_broadcast(cond: *mut pthread_cond_t) -> c_int;
+     |                                              ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_cond_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1275:44
+     |
+1275 |     pub fn pthread_cond_destroy(cond: *mut pthread_cond_t) -> c_int;
+     |                                            ^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_condattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1276:45
+     |
+1276 |     pub fn pthread_condattr_init(attr: *mut pthread_condattr_t) -> c_int;
+     |                                             ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_condattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1277:48
+     |
+1277 |     pub fn pthread_condattr_destroy(attr: *mut pthread_condattr_t) -> c_int;
+     |                                                ^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlock_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1283:20
+     |
+1283 |         lock: *mut pthread_rwlock_t,
+     |                    ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlockattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1284:22
+     |
+1284 |         attr: *const pthread_rwlockattr_t,
+     |                      ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlock_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1290:46
+     |
+1290 |     pub fn pthread_rwlock_destroy(lock: *mut pthread_rwlock_t) -> c_int;
+     |                                              ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlock_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1295:45
+     |
+1295 |     pub fn pthread_rwlock_rdlock(lock: *mut pthread_rwlock_t) -> c_int;
+     |                                             ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlock_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1300:48
+     |
+1300 |     pub fn pthread_rwlock_tryrdlock(lock: *mut pthread_rwlock_t) -> c_int;
+     |                                                ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlock_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1305:45
+     |
+1305 |     pub fn pthread_rwlock_wrlock(lock: *mut pthread_rwlock_t) -> c_int;
+     |                                             ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlock_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1310:48
+     |
+1310 |     pub fn pthread_rwlock_trywrlock(lock: *mut pthread_rwlock_t) -> c_int;
+     |                                                ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlock_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1315:45
+     |
+1315 |     pub fn pthread_rwlock_unlock(lock: *mut pthread_rwlock_t) -> c_int;
+     |                                             ^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlockattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1316:47
+     |
+1316 |     pub fn pthread_rwlockattr_init(attr: *mut pthread_rwlockattr_t) -> c_int;
+     |                                               ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `pthread_rwlockattr_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1317:50
+     |
+1317 |     pub fn pthread_rwlockattr_destroy(attr: *mut pthread_rwlockattr_t) -> c_int;
+     |                                                  ^^^^^^^^^^^^^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `socklen_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1329:29
+     |
+1329 |         optlen: *mut crate::socklen_t,
+     |                             ^^^^^^^^^ not found in the crate root
+     |
+note: similarly named type alias `locale_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:44:1
+     |
+  44 | pub type locale_t = *mut c_void;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1329 -         optlen: *mut crate::socklen_t,
+1329 +         optlen: *mut crate::locale_t,
+     |
+
+error[E0425]: cannot find type `addrinfo` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1349:23
+     |
+1349 |         hints: *const addrinfo,
+     |                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `addrinfo` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1350:24
+     |
+1350 |         res: *mut *mut addrinfo,
+     |                        ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `addrinfo` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1354:35
+     |
+1354 |     pub fn freeaddrinfo(res: *mut addrinfo);
+     |                                   ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1385:36
+     |
+1385 |     pub fn gmtime_r(time_p: *const time_t, result: *mut tm) -> *mut tm;
+     |                                    ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1385 -     pub fn gmtime_r(time_p: *const time_t, result: *mut tm) -> *mut tm;
+1385 +     pub fn gmtime_r(time_p: *const size_t, result: *mut tm) -> *mut tm;
+     |
+
+error[E0425]: cannot find type `tm` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1385:57
+     |
+1385 |     pub fn gmtime_r(time_p: *const time_t, result: *mut tm) -> *mut tm;
+     |                                                         ^^ not found in this scope
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+     |
+  96 | macro_rules! s {
+     |
+note: similarly named struct `tms` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+     |
+ 118 |               pub struct $i { $($field)* }
+     |               ^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+     |
+  46 | / s! {
+  47 | |     pub struct group {
+  48 | |         pub gr_name: *mut c_char,
+  49 | |         pub gr_passwd: *mut c_char,
+...    |
+ 213 | | }
+     | |_- in this macro invocation
+help: a struct with a similar name exists
+     |
+1385 |     pub fn gmtime_r(time_p: *const time_t, result: *mut tms) -> *mut tm;
+     |                                                           +
+
+error[E0425]: cannot find type `tm` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1385:69
+     |
+1385 |     pub fn gmtime_r(time_p: *const time_t, result: *mut tm) -> *mut tm;
+     |                                                                     ^^ not found in this scope
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+     |
+  96 | macro_rules! s {
+     |
+note: similarly named struct `tms` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+     |
+ 118 |               pub struct $i { $($field)* }
+     |               ^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+     |
+  46 | / s! {
+  47 | |     pub struct group {
+  48 | |         pub gr_name: *mut c_char,
+  49 | |         pub gr_passwd: *mut c_char,
+...    |
+ 213 | | }
+     | |_- in this macro invocation
+help: a struct with a similar name exists
+     |
+1385 |     pub fn gmtime_r(time_p: *const time_t, result: *mut tm) -> *mut tms;
+     |                                                                       +
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1389:39
+     |
+1389 |     pub fn localtime_r(time_p: *const time_t, result: *mut tm) -> *mut tm;
+     |                                       ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1389 -     pub fn localtime_r(time_p: *const time_t, result: *mut tm) -> *mut tm;
+1389 +     pub fn localtime_r(time_p: *const size_t, result: *mut tm) -> *mut tm;
+     |
+
+error[E0425]: cannot find type `tm` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1389:60
+     |
+1389 |     pub fn localtime_r(time_p: *const time_t, result: *mut tm) -> *mut tm;
+     |                                                            ^^ not found in this scope
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+     |
+  96 | macro_rules! s {
+     |
+note: similarly named struct `tms` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+     |
+ 118 |               pub struct $i { $($field)* }
+     |               ^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+     |
+  46 | / s! {
+  47 | |     pub struct group {
+  48 | |         pub gr_name: *mut c_char,
+  49 | |         pub gr_passwd: *mut c_char,
+...    |
+ 213 | | }
+     | |_- in this macro invocation
+help: a struct with a similar name exists
+     |
+1389 |     pub fn localtime_r(time_p: *const time_t, result: *mut tms) -> *mut tm;
+     |                                                              +
+
+error[E0425]: cannot find type `tm` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1389:72
+     |
+1389 |     pub fn localtime_r(time_p: *const time_t, result: *mut tm) -> *mut tm;
+     |                                                                        ^^ not found in this scope
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+     |
+  96 | macro_rules! s {
+     |
+note: similarly named struct `tms` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+     |
+ 118 |               pub struct $i { $($field)* }
+     |               ^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+     |
+  46 | / s! {
+  47 | |     pub struct group {
+  48 | |         pub gr_name: *mut c_char,
+  49 | |         pub gr_passwd: *mut c_char,
+...    |
+ 213 | | }
+     | |_- in this macro invocation
+help: a struct with a similar name exists
+     |
+1389 |     pub fn localtime_r(time_p: *const time_t, result: *mut tm) -> *mut tms;
+     |                                                                          +
+
+error[E0425]: cannot find type `tm` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1397:28
+     |
+1397 |     pub fn mktime(tm: *mut tm) -> time_t;
+     |                            ^^ not found in this scope
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+     |
+  96 | macro_rules! s {
+     |
+note: similarly named struct `tms` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+     |
+ 118 |               pub struct $i { $($field)* }
+     |               ^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+     |
+  46 | / s! {
+  47 | |     pub struct group {
+  48 | |         pub gr_name: *mut c_char,
+  49 | |         pub gr_passwd: *mut c_char,
+...    |
+ 213 | | }
+     | |_- in this macro invocation
+help: a struct with a similar name exists
+     |
+1397 |     pub fn mktime(tm: *mut tms) -> time_t;
+     |                              +
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1397:35
+     |
+1397 |     pub fn mktime(tm: *mut tm) -> time_t;
+     |                                   ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1397 -     pub fn mktime(tm: *mut tm) -> time_t;
+1397 +     pub fn mktime(tm: *mut tm) -> size_t;
+     |
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1401:28
+     |
+1401 |     pub fn time(time: *mut time_t) -> time_t;
+     |                            ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1401 -     pub fn time(time: *mut time_t) -> time_t;
+1401 +     pub fn time(time: *mut size_t) -> time_t;
+     |
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1401:39
+     |
+1401 |     pub fn time(time: *mut time_t) -> time_t;
+     |                                       ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1401 -     pub fn time(time: *mut time_t) -> time_t;
+1401 +     pub fn time(time: *mut time_t) -> size_t;
+     |
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1405:34
+     |
+1405 |     pub fn gmtime(time_p: *const time_t) -> *mut tm;
+     |                                  ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1405 -     pub fn gmtime(time_p: *const time_t) -> *mut tm;
+1405 +     pub fn gmtime(time_p: *const size_t) -> *mut tm;
+     |
+
+error[E0425]: cannot find type `tm` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1405:50
+     |
+1405 |     pub fn gmtime(time_p: *const time_t) -> *mut tm;
+     |                                                  ^^ not found in this scope
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+     |
+  96 | macro_rules! s {
+     |
+note: similarly named struct `tms` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+     |
+ 118 |               pub struct $i { $($field)* }
+     |               ^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+     |
+  46 | / s! {
+  47 | |     pub struct group {
+  48 | |         pub gr_name: *mut c_char,
+  49 | |         pub gr_passwd: *mut c_char,
+...    |
+ 213 | | }
+     | |_- in this macro invocation
+help: a struct with a similar name exists
+     |
+1405 |     pub fn gmtime(time_p: *const time_t) -> *mut tms;
+     |                                                    +
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1409:37
+     |
+1409 |     pub fn localtime(time_p: *const time_t) -> *mut tm;
+     |                                     ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1409 -     pub fn localtime(time_p: *const time_t) -> *mut tm;
+1409 +     pub fn localtime(time_p: *const size_t) -> *mut tm;
+     |
+
+error[E0425]: cannot find type `tm` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1409:53
+     |
+1409 |     pub fn localtime(time_p: *const time_t) -> *mut tm;
+     |                                                     ^^ not found in this scope
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+     |
+  96 | macro_rules! s {
+     |
+note: similarly named struct `tms` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+     |
+ 118 |               pub struct $i { $($field)* }
+     |               ^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+     |
+  46 | / s! {
+  47 | |     pub struct group {
+  48 | |         pub gr_name: *mut c_char,
+  49 | |         pub gr_passwd: *mut c_char,
+...    |
+ 213 | | }
+     | |_- in this macro invocation
+help: a struct with a similar name exists
+     |
+1409 |     pub fn localtime(time_p: *const time_t) -> *mut tms;
+     |                                                       +
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1413:28
+     |
+1413 |     pub fn difftime(time1: time_t, time0: time_t) -> c_double;
+     |                            ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1413 -     pub fn difftime(time1: time_t, time0: time_t) -> c_double;
+1413 +     pub fn difftime(time1: size_t, time0: time_t) -> c_double;
+     |
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1413:43
+     |
+1413 |     pub fn difftime(time1: time_t, time0: time_t) -> c_double;
+     |                                           ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1413 -     pub fn difftime(time1: time_t, time0: time_t) -> c_double;
+1413 +     pub fn difftime(time1: time_t, time0: size_t) -> c_double;
+     |
+
+error[E0425]: cannot find type `tm` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1417:35
+     |
+1417 |     pub fn timegm(tm: *mut crate::tm) -> time_t;
+     |                                   ^^ not found in the crate root
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:96
+     |
+  96 | macro_rules! s {
+     |
+note: similarly named struct `tms` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/macros.rs:118:13
+     |
+ 118 |               pub struct $i { $($field)* }
+     |               ^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:46:1
+     |
+  46 | / s! {
+  47 | |     pub struct group {
+  48 | |         pub gr_name: *mut c_char,
+  49 | |         pub gr_passwd: *mut c_char,
+...    |
+ 213 | | }
+     | |_- in this macro invocation
+help: a struct with a similar name exists
+     |
+1417 |     pub fn timegm(tm: *mut crate::tms) -> time_t;
+     |                                     +
+
+error[E0425]: cannot find type `time_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1417:42
+     |
+1417 |     pub fn timegm(tm: *mut crate::tm) -> time_t;
+     |                                          ^^^^^^ not found in this scope
+     |
+note: similarly named type alias `size_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:11:1
+     |
+  11 | pub type size_t = usize;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a type alias with a similar name exists
+     |
+1417 -     pub fn timegm(tm: *mut crate::tm) -> time_t;
+1417 +     pub fn timegm(tm: *mut crate::tm) -> size_t;
+     |
+
+error[E0425]: cannot find type `mode_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1424:56
+     |
+1424 |     pub fn mknod(pathname: *const c_char, mode: crate::mode_t, dev: crate::dev_t) -> c_int;
+     |                                                        ^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `dev_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1424:76
+     |
+1424 |     pub fn mknod(pathname: *const c_char, mode: crate::mode_t, dev: crate::dev_t) -> c_int;
+     |                                                                            ^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `nfds_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1464:41
+     |
+1464 |     pub fn poll(fds: *mut pollfd, nfds: nfds_t, timeout: c_int) -> c_int;
+     |                                         ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `fd_set` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1476:23
+     |
+1476 |         readfds: *mut fd_set,
+     |                       ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `fd_set` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1477:24
+     |
+1477 |         writefds: *mut fd_set,
+     |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `fd_set` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1478:24
+     |
+1478 |         errorfds: *mut fd_set,
+     |                        ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `lconv` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1483:33
+     |
+1483 |     pub fn localeconv() -> *mut lconv;
+     |                                 ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sem_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1489:31
+     |
+1489 |     pub fn sem_wait(sem: *mut sem_t) -> c_int;
+     |                               ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sem_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1490:34
+     |
+1490 |     pub fn sem_trywait(sem: *mut sem_t) -> c_int;
+     |                                  ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sem_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1491:31
+     |
+1491 |     pub fn sem_post(sem: *mut sem_t) -> c_int;
+     |                               ^^^^^ not found in this scope
+
+error[E0573]: cannot find type `statvfs` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1493:51
+     |
+1493 |     pub fn statvfs(path: *const c_char, buf: *mut statvfs) -> c_int;
+     |                                                   ^^^^^^^ not found in this scope
+     |
+     = note: a function named `statvfs` exists in another namespace
+
+error[E0573]: cannot find type `statvfs` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1495:42
+     |
+1495 |     pub fn fstatvfs(fd: c_int, buf: *mut statvfs) -> c_int;
+     |                                          ^^^^^^^ not found in this scope
+     |
+     = note: a function named `statvfs` exists in another namespace
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1498:34
+     |
+1498 |     pub fn sigemptyset(set: *mut sigset_t) -> c_int;
+     |                                  ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1500:32
+     |
+1500 |     pub fn sigaddset(set: *mut sigset_t, signum: c_int) -> c_int;
+     |                                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1502:33
+     |
+1502 |     pub fn sigfillset(set: *mut sigset_t) -> c_int;
+     |                                 ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1504:32
+     |
+1504 |     pub fn sigdelset(set: *mut sigset_t, signum: c_int) -> c_int;
+     |                                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1506:36
+     |
+1506 |     pub fn sigismember(set: *const sigset_t, signum: c_int) -> c_int;
+     |                                    ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1509:48
+     |
+1509 |     pub fn sigprocmask(how: c_int, set: *const sigset_t, oldset: *mut sigset_t) -> c_int;
+     |                                                ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1509:71
+     |
+1509 |     pub fn sigprocmask(how: c_int, set: *const sigset_t, oldset: *mut sigset_t) -> c_int;
+     |                                                                       ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1511:33
+     |
+1511 |     pub fn sigpending(set: *mut sigset_t) -> c_int;
+     |                                 ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `mode_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1516:46
+     |
+1516 |     pub fn mkfifo(path: *const c_char, mode: mode_t) -> c_int;
+     |                                              ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1519:53
+     |
+1519 |     pub fn fseeko(stream: *mut crate::FILE, offset: off_t, whence: c_int) -> c_int;
+     |                                                     ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1521:48
+     |
+1521 |     pub fn ftello(stream: *mut crate::FILE) -> off_t;
+     |                                                ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `termios` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1527:47
+     |
+1527 |     pub fn cfgetispeed(termios: *const crate::termios) -> crate::speed_t;
+     |                                               ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `speed_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1527:66
+     |
+1527 |     pub fn cfgetispeed(termios: *const crate::termios) -> crate::speed_t;
+     |                                                                  ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `termios` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1528:47
+     |
+1528 |     pub fn cfgetospeed(termios: *const crate::termios) -> crate::speed_t;
+     |                                               ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `speed_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1528:66
+     |
+1528 |     pub fn cfgetospeed(termios: *const crate::termios) -> crate::speed_t;
+     |                                                                  ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `termios` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1529:45
+     |
+1529 |     pub fn cfsetispeed(termios: *mut crate::termios, speed: crate::speed_t) -> c_int;
+     |                                             ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `speed_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1529:68
+     |
+1529 |     pub fn cfsetispeed(termios: *mut crate::termios, speed: crate::speed_t) -> c_int;
+     |                                                                    ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `termios` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1530:45
+     |
+1530 |     pub fn cfsetospeed(termios: *mut crate::termios, speed: crate::speed_t) -> c_int;
+     |                                             ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `speed_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1530:68
+     |
+1530 |     pub fn cfsetospeed(termios: *mut crate::termios, speed: crate::speed_t) -> c_int;
+     |                                                                    ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `termios` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1531:54
+     |
+1531 |     pub fn tcgetattr(fd: c_int, termios: *mut crate::termios) -> c_int;
+     |                                                      ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `termios` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1532:81
+     |
+1532 |     pub fn tcsetattr(fd: c_int, optional_actions: c_int, termios: *const crate::termios) -> c_int;
+     |                                                                                 ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `off_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1563:46
+     |
+1563 |     pub fn lockf(fd: c_int, cmd: c_int, len: off_t) -> c_int;
+     |                                              ^^^^^ not found in this scope
+
+error[E0425]: cannot find type `Dl_info` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1631:59
+     |
+1631 |             pub fn dladdr(addr: *const c_void, info: *mut Dl_info) -> c_int;
+     |                                                           ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `wchar_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1647:51
+     |
+1647 |             pub fn open_wmemstream(ptr: *mut *mut wchar_t, sizeloc: *mut size_t) -> *mut FILE;
+     |                                                   ^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `mode_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1662:80
+     |
+1662 |             pub fn mkdirat(dirfd: c_int, pathname: *const c_char, mode: crate::mode_t) -> c_int;
+     |                                                                                ^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `dirent` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1695:36
+     |
+1695 |                 entry: *mut crate::dirent,
+     |                                    ^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `dirent` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1696:42
+     |
+1696 |                 result: *mut *mut crate::dirent,
+     |                                          ^^^^^^ not found in the crate root
+
+error[E0573]: cannot find type `sigaction` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1735:57
+     |
+1735 |             pub fn sigaction(signum: c_int, act: *const sigaction, oldact: *mut sigaction)
+     |                                                         ^^^^^^^^^ not found in this scope
+     |
+     = note: a function named `sigaction` exists in another namespace
+
+error[E0573]: cannot find type `sigaction` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1735:81
+     |
+1735 |             pub fn sigaction(signum: c_int, act: *const sigaction, oldact: *mut sigaction)
+     |                                                                                 ^^^^^^^^^ not found in this scope
+     |
+     = note: a function named `sigaction` exists in another namespace
+
+error[E0425]: cannot find type `fd_set` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1749:31
+     |
+1749 |                 readfds: *mut fd_set,
+     |                               ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `fd_set` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1750:32
+     |
+1750 |                 writefds: *mut fd_set,
+     |                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `fd_set` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1751:32
+     |
+1751 |                 errorfds: *mut fd_set,
+     |                                ^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `sigset_t` in this scope
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1753:33
+     |
+1753 |                 sigmask: *const sigset_t,
+     |                                 ^^^^^^^^ not found in this scope
+
+error[E0425]: cannot find type `termios` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1766:51
+     |
+1766 |             pub fn cfmakeraw(termios: *mut crate::termios);
+     |                                                   ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `termios` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1767:52
+     |
+1767 |             pub fn cfsetspeed(termios: *mut crate::termios, speed: crate::speed_t) -> c_int;
+     |                                                    ^^^^^^^ not found in the crate root
+
+error[E0425]: cannot find type `speed_t` in the crate root
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.172/src/unix/mod.rs:1767:75
+     |
+1767 |             pub fn cfsetspeed(termios: *mut crate::termios, speed: crate::speed_t) -> c_int;
+     |                                                                           ^^^^^^^ not found in the crate root
+
+Some errors have detailed explanations: E0425, E0573.
+For more information about an error, try `rustc --explain E0425`.
+error: could not compile `libc` (lib) due to 175 previous errors

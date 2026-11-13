@@ -1,0 +1,116 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/itoa/work/src/itoa-1.0.19)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded cast v0.3.0
+  Downloaded cfg-if v1.0.5
+  Downloaded ciborium-ll v0.2.2
+  Downloaded alloca v0.4.0
+  Downloaded ciborium-io v0.2.2
+  Downloaded clap_lex v1.1.1
+  Downloaded same-file v1.0.6
+  Downloaded autocfg v1.5.1
+  Downloaded page_size v0.6.0
+  Downloaded itoa v1.0.18
+  Downloaded anes v0.1.6
+  Downloaded criterion-plot v0.8.2
+  Downloaded tinytemplate v1.2.1
+  Downloaded walkdir v2.5.0
+  Downloaded shlex v2.0.1
+  Downloaded quote v1.0.47
+  Downloaded oorandom v11.1.5
+  Downloaded zmij v1.0.23
+  Downloaded find-msvc-tools v0.1.15
+  Downloaded anstyle v1.0.14
+  Downloaded ciborium v0.2.2
+  Downloaded either v1.19.0
+  Downloaded half v2.7.1
+  Downloaded serde_derive v1.0.229
+  Downloaded unicode-ident v1.0.27
+  Downloaded serde_core v1.0.229
+  Downloaded proc-macro2 v1.0.107
+  Downloaded clap v4.6.7
+  Downloaded num-traits v0.2.19
+  Downloaded serde v1.0.229
+  Downloaded zerocopy-derive v0.8.63
+  Downloaded criterion v0.8.2
+  Downloaded regex v1.13.1
+  Downloaded cc v1.11.1
+  Downloaded itertools v0.13.0
+  Downloaded clap_builder v4.6.7
+  Downloaded serde_json v1.0.154
+  Downloaded aho-corasick v1.1.5
+  Downloaded syn v2.0.119
+  Downloaded syn v3.0.9
+  Downloaded zerocopy v0.8.63
+  Downloaded regex-syntax v0.8.11
+  Downloaded regex-automata v0.4.18
+   Compiling compiler_builtins v0.1.160 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/compiler-builtins/compiler-builtins)
+   Compiling core v0.0.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/core)
+   Compiling libc v0.2.191
+   Compiling object v0.39.1
+   Compiling std v0.0.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std)
+   Compiling test v0.0.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/test)
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling serde_core v1.0.229
+   Compiling zerocopy v0.8.63
+   Compiling shlex v2.0.1
+   Compiling syn v2.0.119
+   Compiling syn v3.0.9
+   Compiling find-msvc-tools v0.1.15
+   Compiling serde v1.0.229
+   Compiling zmij v1.0.23
+   Compiling cc v1.11.1
+   Compiling serde_derive v1.0.229
+   Compiling zerocopy-derive v0.8.63
+   Compiling serde_json v1.0.154
+   Compiling autocfg v1.5.1
+   Compiling alloca v0.4.0
+   Compiling num-traits v0.2.19
+   Compiling rustc-std-workspace-core v1.99.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/rustc-std-workspace-core)
+   Compiling alloc v0.0.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/alloc)
+   Compiling memchr v2.8.3
+   Compiling unwind v0.0.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/unwind)
+   Compiling adler2 v2.0.1
+   Compiling rustc-demangle v0.1.28
+   Compiling cfg-if v1.0.4
+   Compiling rustc-literal-escaper v0.0.8
+   Compiling rustc-std-workspace-alloc v1.99.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/rustc-std-workspace-alloc)
+   Compiling panic_unwind v0.0.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/panic_unwind)
+   Compiling panic_abort v0.0.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/panic_abort)
+   Compiling gimli v0.34.0
+   Compiling std_detect v0.1.5 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/std_detect)
+   Compiling hashbrown v0.17.1
+   Compiling miniz_oxide v0.9.1
+   Compiling addr2line v0.27.1
+   Compiling rustc-std-workspace-std v1.99.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/rustc-std-workspace-std)
+   Compiling proc_macro v0.0.0 (/home/chirag/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library/proc_macro)
+   Compiling getopts v0.2.24
+   Compiling cfg-if v1.0.5
+   Compiling regex-syntax v0.8.11
+   Compiling ciborium-io v0.2.2
+   Compiling either v1.19.0
+   Compiling itoa v1.0.18
+   Compiling clap_lex v1.1.1
+   Compiling anstyle v1.0.14
+   Compiling clap_builder v4.6.7
+   Compiling half v2.7.1
+   Compiling ciborium-ll v0.2.2
+   Compiling itertools v0.13.0
+   Compiling regex-automata v0.4.18
+   Compiling cast v0.3.0
+   Compiling same-file v1.0.6
+   Compiling walkdir v2.5.0
+   Compiling criterion-plot v0.8.2
+   Compiling page_size v0.6.0
+   Compiling clap v4.6.7
+   Compiling ciborium v0.2.2
+   Compiling regex v1.13.1
+   Compiling tinytemplate v1.2.1
+   Compiling anes v0.1.6
+   Compiling oorandom v11.1.5
+   Compiling itoa v1.0.19 (/home/chirag/qnx-porter-rust/ports-rust/itoa/work/src/itoa-1.0.19)
+   Compiling criterion v0.8.2
+    Finished `release` profile [optimized] target(s) in 4m 16s

@@ -1,0 +1,18 @@
+{
+  "crate": "itoa",
+  "version": "1.0.19",
+  "arch": "aarch64le",
+  "rust_target": "aarch64-unknown-qnx",
+  "rounds": 1,
+  "note": "",
+  "patches": [],
+  "build_result": "built",
+  "errors": [],
+  "test_binaries": 2,
+  "tests_passed": 11,
+  "tests_total": 11,
+  "tests_ignored": 0,
+  "tests_ran": true,
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "minutes": 0.2
+}

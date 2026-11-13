@@ -1,0 +1,17 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/zstd/work/src/zstd-0.14.3)
+
+   Compiling zstd v0.14.3 (/home/chirag/qnx-porter-rust/ports-rust/zstd/work/src/zstd-0.14.3)
+error: couldn't read `src/stream/../../assets/example.txt.zst`: No such file or directory (os error 2)
+   --> src/stream/tests.rs:179:17
+    |
+179 |     let input = include_bytes!("../../assets/example.txt.zst");
+    |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: couldn't read `src/stream/../../zstd-safe/zstd-sys/src/bindings_zstd.rs`: No such file or directory (os error 2)
+   --> src/stream/tests.rs:238:16
+    |
+238 |     let data = include_bytes!("../../zstd-safe/zstd-sys/src/bindings_zstd.rs");
+    |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error: could not compile `zstd` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

@@ -1,0 +1,60 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/src/crossbeam-channel-0.5.17
+PASS  test:never (exit 0): 7 passed, 0 failed, 0 ignored
+PASS  test:ready (exit 0): 24 passed, 0 failed, 0 ignored
+PASS  test:array (exit 0): 27 passed, 0 failed, 0 ignored
+PASS  test:select (exit 0): 32 passed, 0 failed, 0 ignored
+PASS  test:tick (exit 0): 14 passed, 0 failed, 0 ignored
+PASS  test:select_macro (exit 0): 59 passed, 0 failed, 0 ignored
+PASS  test:iter (exit 0): 5 passed, 0 failed, 0 ignored
+PASS  test:same_channel (exit 0): 7 passed, 0 failed, 0 ignored
+PASS  test:after (exit 0): 14 passed, 0 failed, 0 ignored
+PASS  test:thread_locals (exit 0): 1 passed, 0 failed, 0 ignored
+PASS  test:list (exit 0): 26 passed, 0 failed, 0 ignored
+PASS  test:zero (exit 0): 22 passed, 0 failed, 0 ignored
+PASS  lib:crossbeam_channel (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:mpsc (exit 0): 127 passed, 0 failed, 0 ignored
+FAIL  test:golang (exit 101): 25 passed, 1 failed, 0 ignored
+    running 26 tests
+    test chan_test::test_chan_send_interface ... ok
+    test chan1::main ... ok
+    test chan::main ... ok
+    test chan_test::test_nonblock_select_race ... ok
+    test chan_test::test_multi_consumer ... ok
+    test chan_test::test_pseudo_random_send ... ok
+    test chan_test::test_select_duplicate_channel ... ok
+    test chan_test::test_nonblock_recv_race ... ok
+    test chan_test::test_select_fairness ... ok
+    test chan_test::test_self_select ... ok
+    test chan_test::test_chan ... ok
+    test fifo::asynch_fifo ... ok
+    test fifo::synch_fifo ... ok
+    test doubleselect::main ... ok
+    test nonblock::main ... ok
+    test goroutines::main ... ok
+    test select2::main ... FAILED
+    test select4::main ... ok
+    test select6::main ... ok
+    test select::main ... ok
+    test select7::main ... ok
+    test zerosize::zero_size_array ... ok
+    test zerosize::zero_size_struct ... ok
+    test sieve1::main ... ok
+    test chan_test::test_nonblock_select_race2 ... ok
+    test chan_test::test_select_stress ... ok
+    
+    failures:
+    
+    ---- select2::main stdout ----
+    
+    thread 'select2::main' (20) panicked at tests/golang.rs:767:9:
+    assertion failed: !(ALLOCATED.load(SeqCst) > alloc &&
+                (ALLOCATED.load(SeqCst) - alloc) > (N as usize + 10000))
+    note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+    
+    
+    failures:
+        select2::main
+    
+    test result: FAILED. 25 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.97s
+
+390/391 tests passed on the QNX target (0 ignored)

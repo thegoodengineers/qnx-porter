@@ -1,0 +1,65 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/src/tempfile-3.27.0
+PASS  lib:tempfile (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:tempfile (exit 0): 2 passed, 0 failed, 0 ignored
+PASS  test:spooled (exit 0): 18 passed, 0 failed, 0 ignored
+PASS  test:env (exit 0): 1 passed, 0 failed, 0 ignored
+FAIL  test:namedtempfile (exit 101): 30 passed, 2 failed, 0 ignored
+    running 32 tests
+    test temp_path_from_argument_types ... ok
+    test test_append ... ok
+    test test_basic ... ok
+    test test_customnamed ... ok
+    test temp_path_from_existing ... ok
+    test test_deleted ... ok
+    test test_change_dir ... ok
+    test test_from_parts ... ok
+    test test_immut ... ok
+    test test_into_file ... ok
+    test test_disable_cleanup ... ok
+    test test_into_parts ... ok
+    test test_change_dir_make ... ok
+    test test_make ... ok
+    test test_keep ... ok
+    test test_make_fnmut ... ok
+    test test_overly_generic_bounds ... ok
+    test test_make_in ... ok
+    test test_make_uds ... ok
+    test test_prefix ... ok
+    test test_persist ... ok
+    test test_persist_noclobber ... ok
+    test test_reopen ... ok
+    test test_suffix ... ok
+    test test_reseed ... ok
+    test test_temp_path_resolve_existing_cwd ... FAILED
+    test test_temp_path_resolve_missing_cwd ... FAILED
+    test test_temppath ... ok
+    test test_write_after_close ... ok
+    test test_temppath_persist ... ok
+    test test_temppath_persist_noclobber ... ok
+    test test_make_uds_conflict has been running for over 60 seconds
+    test test_make_uds_conflict ... ok
+    
+    failures:
+    
+    ---- test_temp_path_resolve_existing_cwd stdout ----
+    
+    thread 'test_temp_path_resolve_existing_cwd' (3) panicked at tests/namedtempfile.rs:373:5:
+    assertion `left == right` failed
+      left: "/data/var/tmp/.tmptNDcMb/foo"
+     right: "/tmp/.tmptNDcMb/foo"
+    note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+    
+    ---- test_temp_path_resolve_missing_cwd stdout ----
+    
+    thread 'test_temp_path_resolve_missing_cwd' (4) panicked at tests/namedtempfile.rs:24:33:
+    called `Result::unwrap()` on an `Err` value: PoisonError { .. }
+    
+    
+    failures:
+        test_temp_path_resolve_existing_cwd
+        test_temp_path_resolve_missing_cwd
+    
+    test result: FAILED. 30 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 140.83s
+PASS  test:tempdir (exit 0): 10 passed, 0 failed, 0 ignored
+
+61/63 tests passed on the QNX target (0 ignored)

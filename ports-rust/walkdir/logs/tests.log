@@ -1,0 +1,4 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/walkdir/work/src/walkdir-2.5.0
+PASS  lib:walkdir (exit 0): 47 passed, 0 failed, 0 ignored
+
+47/47 tests passed on the QNX target (0 ignored)

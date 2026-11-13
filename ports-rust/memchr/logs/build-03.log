@@ -1,0 +1,40 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_2_16.path="/home/chirag/qnx-porter-rust/ports-rust/memchr/work/vendor/getrandom-0.2.16" --config patch.crates-io.getrandom_0_2_16.package="getrandom"  (in /home/chirag/qnx-porter-rust/ports-rust/memchr/work/src/memchr-2.8.3)
+
+     Locking 1 package to highest compatible version
+      Adding getrandom v0.2.16 (/home/chirag/qnx-porter-rust/ports-rust/memchr/work/vendor/getrandom-0.2.16)
+warning: patch `getrandom v0.2.16 (/home/chirag/qnx-porter-rust/ports-rust/memchr/work/vendor/getrandom-0.2.16)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+warning: use of deprecated constant `core::u8::MAX`: replaced by the `MAX` associated constant on this type
+   --> src/arch/all/packedpair/mod.rs:179:41
+    |
+179 |         let max = usize::from(core::u8::MAX);
+    |                                         ^^^
+    |
+    = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated constant `core::u32::MAX`: replaced by the `MAX` associated constant on this type
+   --> src/memmem/searcher.rs:916:34
+    |
+916 |             Err(_) => core::u32::MAX,
+    |                                  ^^^
+
+warning: `memchr` (lib) generated 2 warnings
+   Compiling getrandom v0.2.16 (/home/chirag/qnx-porter-rust/ports-rust/memchr/work/vendor/getrandom-0.2.16)
+warning: use of deprecated associated function `core::num::<impl usize>::max_value`: replaced by the `MAX` associated constant on this type
+  --> /home/chirag/qnx-porter-rust/ports-rust/memchr/work/vendor/getrandom-0.2.16/src/use_file.rs:19:33
+   |
+19 | const FD_UNINIT: usize = usize::max_value();
+   |                                 ^^^^^^^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+   Compiling rand_core v0.6.4
+   Compiling rand v0.8.5
+warning: `getrandom` (lib) generated 1 warning
+   Compiling quickcheck v1.0.3
+   Compiling memchr v2.8.3 (/home/chirag/qnx-porter-rust/ports-rust/memchr/work/src/memchr-2.8.3)
+warning: `memchr` (lib test) generated 2 warnings (2 duplicates)
+    Finished `release` profile [optimized + debuginfo] target(s) in 10.32s

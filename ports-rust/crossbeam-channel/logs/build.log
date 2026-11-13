@@ -1,0 +1,27 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/crossbeam-channel/work/src/crossbeam-channel-0.5.17)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded rand_chacha v0.3.1
+  Downloaded errno v0.3.14
+  Downloaded crossbeam-utils v0.8.22
+  Downloaded signal-hook v0.3.18
+  Downloaded signal-hook-registry v1.4.8
+  Downloaded getrandom v0.2.17
+  Downloaded rand v0.8.7
+  Downloaded zerocopy v0.8.56
+   Compiling libc v0.2.186
+   Compiling zerocopy v0.8.56
+   Compiling crossbeam-utils v0.8.22
+   Compiling signal-hook v0.3.18
+error[E0432]: unresolved import `unistd`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.186/src/new/mod.rs:237:17
+    |
+237 |         pub use unistd::*;
+    |                 ^^^^^^ use of unresolved module or unlinked crate `unistd`
+    |
+    = help: if you wanted to use a crate named `unistd`, use `cargo add unistd` to add it to your `Cargo.toml`
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `libc` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

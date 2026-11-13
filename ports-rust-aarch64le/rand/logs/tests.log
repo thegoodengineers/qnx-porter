@@ -1,0 +1,4 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/rand/work/src/rand-0.10.3
+PASS  lib:rand (exit 0): 103 passed, 0 failed, 0 ignored
+
+103/103 tests passed on the QNX target (0 ignored)

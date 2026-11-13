@@ -1,0 +1,58 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/hashbrown/work/src/hashbrown-0.17.1)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded equivalent v1.0.2
+  Downloaded plotters-svg v0.3.7
+  Downloaded fnv v1.0.7
+  Downloaded clap_lex v1.1.0
+  Downloaded plotters-backend v0.3.7
+  Downloaded criterion-plot v0.6.0
+  Downloaded zmij v1.0.21
+  Downloaded quote v1.0.45
+  Downloaded rand_core v0.9.5
+  Downloaded ppv-lite86 v0.2.21
+  Downloaded crossbeam-deque v0.8.6
+  Downloaded crossbeam-utils v0.8.21
+  Downloaded rand_chacha v0.9.0
+  Downloaded crossbeam-epoch v0.9.18
+  Downloaded allocator-api2 v0.2.21
+  Downloaded clap v4.6.1
+  Downloaded unicode-ident v1.0.24
+  Downloaded rayon-core v1.13.0
+  Downloaded bumpalo v3.20.2
+  Downloaded getrandom v0.3.4
+  Downloaded rand v0.9.4
+  Downloaded zerocopy-derive v0.8.48
+  Downloaded clap_builder v4.6.0
+  Downloaded plotters v0.3.7
+  Downloaded rayon v1.12.0
+  Downloaded syn v2.0.117
+  Downloaded zerocopy v0.8.48
+  Downloaded regex-syntax v0.8.10
+  Downloaded libc v0.2.186
+  Downloaded criterion v0.7.0
+   Compiling quote v1.0.45
+   Compiling unicode-ident v1.0.24
+   Compiling zerocopy v0.8.48
+   Compiling crossbeam-utils v0.8.21
+   Compiling proc-macro2 v1.0.106
+   Compiling getrandom v0.3.4
+   Compiling zmij v1.0.21
+   Compiling num-traits v0.2.19
+   Compiling either v1.15.0
+   Compiling syn v2.0.117
+   Compiling crossbeam-epoch v0.9.18
+   Compiling rayon-core v1.13.0
+   Compiling crossbeam-deque v0.8.6
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.3.4/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.3.4/src/backends.rs:204:9
+    |
+204 | /         compile_error!(concat!(
+205 | |             "target is not supported. You may need to define a custom backend see: \
+206 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+207 | |         ));
+    | |__________^
+
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

@@ -1,0 +1,4 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/getrandom/work/src/getrandom-0.4.3)
+
+   Compiling getrandom v0.4.3 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/getrandom/work/src/getrandom-0.4.3)
+    Finished `release` profile [optimized] target(s) in 1.33s

@@ -1,0 +1,15 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_3_4.path="/home/chirag/qnx-porter-rust/ports-rust/hashbrown/work/vendor/getrandom-0.3.4" --config patch.crates-io.getrandom_0_3_4.package="getrandom"  (in /home/chirag/qnx-porter-rust/ports-rust/hashbrown/work/src/hashbrown-0.17.1)
+
+     Locking 1 package to highest Rust 1.85.0 compatible version
+      Adding getrandom v0.3.4 (/home/chirag/qnx-porter-rust/ports-rust/hashbrown/work/vendor/getrandom-0.3.4)
+warning: patch `getrandom v0.3.4 (/home/chirag/qnx-porter-rust/ports-rust/hashbrown/work/vendor/getrandom-0.3.4)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling getrandom v0.3.4 (/home/chirag/qnx-porter-rust/ports-rust/hashbrown/work/vendor/getrandom-0.3.4)
+   Compiling rand_core v0.9.5
+   Compiling rand_chacha v0.9.0
+   Compiling rand v0.9.4
+   Compiling hashbrown v0.17.1 (/home/chirag/qnx-porter-rust/ports-rust/hashbrown/work/src/hashbrown-0.17.1)
+    Finished `release` profile [optimized] target(s) in 9.19s

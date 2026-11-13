@@ -1,0 +1,28 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_4_1.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1" --config patch.crates-io.getrandom_0_4_1.package="getrandom" --config patch.crates-io.rustix_1_1_4.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/rustix-1.1.4" --config patch.crates-io.rustix_1_1_4.package="rustix"  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/src/tempfile-3.27.0)
+
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+     Locking 1 package to highest compatible version
+      Adding rustix v1.1.4 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/rustix-1.1.4)
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+warning: patch `rustix v1.1.4 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/rustix-1.1.4)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling getrandom v0.4.3
+   Compiling rustix v1.1.4 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/rustix-1.1.4)
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.4.3/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.4.3/src/backends.rs:185:9
+    |
+185 | /         compile_error!(concat!(
+186 | |             "target is not supported. You may need to define a custom backend see: \
+187 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+188 | |         ));
+    | |__________^
+
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

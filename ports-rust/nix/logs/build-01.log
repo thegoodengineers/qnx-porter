@@ -1,0 +1,71 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/nix/work/src/nix-0.31.3)
+
+warning: trailing semicolon in macro used in expression position
+  --> build.rs:4:5
+   |
+ 4 | /     cfg_aliases! {
+ 5 | |         android: { target_os = "android" },
+ 6 | |         dragonfly: { target_os = "dragonfly" },
+ 7 | |         ios: { target_os = "ios" },
+...  |
+27 | |         solarish: { any(illumos, solaris) },
+28 | |     }
+   | |_____^
+   |
+   = warning: this was previously accepted by the compiler but is being phased out; it will become a hard error in a future release!
+   = note: for more information, see issue #79813 <https://github.com/rust-lang/rust/issues/79813>
+   = note: `#[warn(semicolon_in_expressions_from_non_local_macros)]` (part of `#[warn(future_incompatible)]`) on by default
+   = note: this warning originates in the macro `$crate::cfg_aliases` which comes from the expansion of the macro `cfg_aliases` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: trailing semicolon in macro used in expression position
+  --> build.rs:4:5
+   |
+ 4 | /     cfg_aliases! {
+ 5 | |         android: { target_os = "android" },
+ 6 | |         dragonfly: { target_os = "dragonfly" },
+ 7 | |         ios: { target_os = "ios" },
+...  |
+27 | |         solarish: { any(illumos, solaris) },
+28 | |     }
+   | |_____^
+   |
+   = warning: this was previously accepted by the compiler but is being phased out; it will become a hard error in a future release!
+   = note: for more information, see issue #79813 <https://github.com/rust-lang/rust/issues/79813>
+   = note: this warning originates in the macro `$crate::cfg_aliases` which comes from the expansion of the macro `cfg_aliases` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: `nix` (build script) generated 54 warnings (52 duplicates)
+   Compiling libc v0.2.186
+   Compiling getrandom v0.3.4
+   Compiling getrandom v0.4.1
+   Compiling nix v0.31.3 (/home/chirag/qnx-porter-rust/ports-rust/nix/work/src/nix-0.31.3)
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.3.4/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.3.4/src/backends.rs:204:9
+    |
+204 | /         compile_error!(concat!(
+205 | |             "target is not supported. You may need to define a custom backend see: \
+206 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+207 | |         ));
+    | |__________^
+
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.4.1/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.4.1/src/backends.rs:185:9
+    |
+185 | /         compile_error!(concat!(
+186 | |             "target is not supported. You may need to define a custom backend see: \
+187 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+188 | |         ));
+    | |__________^
+
+error[E0432]: unresolved import `unistd`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.186/src/new/mod.rs:237:17
+    |
+237 |         pub use unistd::*;
+    |                 ^^^^^^ use of unresolved module or unlinked crate `unistd`
+    |
+    = help: if you wanted to use a crate named `unistd`, use `cargo add unistd` to add it to your `Cargo.toml`
+
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `getrandom` (lib) due to 1 previous error
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `libc` (lib) due to 1 previous error

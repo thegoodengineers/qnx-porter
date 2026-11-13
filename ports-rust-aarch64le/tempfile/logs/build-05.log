@@ -1,0 +1,20 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_4_1.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1" --config patch.crates-io.getrandom_0_4_1.package="getrandom" --config patch.crates-io.rustix_1_1_4.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/rustix-1.1.4" --config patch.crates-io.rustix_1_1_4.package="rustix" --config patch.crates-io.getrandom_0_4_3.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.3" --config patch.crates-io.getrandom_0_4_3.package="getrandom" --config patch.crates-io.errno_0_3_14.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/errno-0.3.14" --config patch.crates-io.errno_0_3_14.package="errno"  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/src/tempfile-3.27.0)
+
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+  |
+  = help: perhaps you meant one of the following:
+          	/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.3
+     Locking 1 package to highest compatible version
+      Adding errno v0.3.14 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/errno-0.3.14)
+warning: patch `errno v0.3.14 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/errno-0.3.14)` was not used in the crate graph
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+warning: patch `getrandom v0.4.3 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.3)` was not used in the crate graph
+warning: patch `rustix v1.1.4 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/rustix-1.1.4)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling errno v0.3.14 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/errno-0.3.14)
+   Compiling rustix v1.1.4 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/rustix-1.1.4)
+   Compiling tempfile v3.27.0 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/src/tempfile-3.27.0)
+    Finished `release` profile [optimized] target(s) in 3.73s

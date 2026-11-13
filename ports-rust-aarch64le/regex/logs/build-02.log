@@ -1,0 +1,11 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/work/src/regex-1.13.1)
+
+   Compiling getrandom v0.2.16
+error: target is not supported, for more information see: https://docs.rs/getrandom/#unsupported-targets
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.2.16/src/lib.rs:351:9
+    |
+351 | /         compile_error!("target is not supported, for more information see: \
+352 | |                         https://docs.rs/getrandom/#unsupported-targets");
+    | |________________________________________________________________________^
+
+error: could not compile `getrandom` (lib) due to 1 previous error

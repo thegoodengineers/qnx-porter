@@ -1,0 +1,33 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/flate2/work/src/flate2-1.1.11)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded futures-sink v0.3.34
+  Downloaded futures-task v0.3.34
+  Downloaded futures-io v0.3.34
+  Downloaded futures-core v0.3.34
+  Downloaded pin-project-lite v0.2.17
+  Downloaded simd-adler32 v0.3.10
+  Downloaded quickcheck v1.1.0
+  Downloaded futures-channel v0.3.34
+  Downloaded futures v0.3.34
+  Downloaded crc32fast v1.5.4
+  Downloaded rand v0.9.5
+  Downloaded futures-util v0.3.34
+  Downloaded zlib-rs v0.6.8
+   Compiling zerocopy v0.8.63
+   Compiling getrandom v0.4.3
+   Compiling futures-sink v0.3.34
+   Compiling getrandom v0.3.4
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.3.4/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.3.4/src/backends.rs:204:9
+    |
+204 | /         compile_error!(concat!(
+205 | |             "target is not supported. You may need to define a custom backend see: \
+206 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+207 | |         ));
+    | |__________^
+
+   Compiling futures-core v0.3.34
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
