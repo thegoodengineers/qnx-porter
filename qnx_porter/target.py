@@ -73,22 +73,37 @@ while [ $# -gt 0 ]; do
 done
 
 if [ -z "$targets" ]; then
-    exit 0
+    exit 1
 fi
 
 slay_args="-f"
 [ "$quiet" = 1 ] && slay_args="$slay_args -Q"
 [ -n "$sig" ] && slay_args="$slay_args -s $sig"
 
-rc=0
+killed_any=0
+failed=0
 for t in $targets; do
     if [ "$quiet" = 1 ]; then
-        slay $slay_args "$t" >/dev/null 2>&1 || true
+        slay $slay_args "$t" >/dev/null 2>&1
+        slay_rc=$?
     else
-        slay $slay_args "$t" || rc=$?
+        slay $slay_args "$t"
+        slay_rc=$?
+    fi
+    # QNX slay exits with the count of processes killed (0 if none matched).
+    # Linux killall exits 0 on success (>=1 killed) and 1 on failure (0 killed).
+    if [ "$slay_rc" -gt 0 ]; then
+        killed_any=1
+    else
+        failed=1
     fi
 done
-exit $rc
+
+if [ "$killed_any" = 1 ] && [ "$failed" = 0 ]; then
+    exit 0
+else
+    exit 1
+fi
 """
 
 PS_SHIM = """#!/bin/sh
@@ -160,7 +175,10 @@ class Target:
 
     def sync_shims(self) -> bool:
         """Install target runtime compatibility shims (killall, ps) under root/shims, and set up
-        system compatibility links like /bin/echo if missing."""
+        system compatibility links like /bin/echo if missing.
+
+        Note: the /bin/echo path link modifies global target state in /bin until reboot
+        (safe and standard for ephemeral QEMU target images)."""
         shim_dir = f"{self.root}/shims"
         lines = [f"mkdir -p {shlex.quote(shim_dir)}"]
         for name, text in RUNTIME_SHIMS.items():

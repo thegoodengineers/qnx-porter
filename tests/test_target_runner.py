@@ -104,7 +104,10 @@ def test_tap_subtests_are_counted_and_every_failure_named():
 
 def test_leftover_test_processes_are_killed_before_the_tree_is_removed(tmp_path):
     # libuv's runner spawns children that outlive QNX's `timeout -s KILL`; they slowed every later library.
+    import shutil
     import subprocess
+    import pytest
+    from pathlib import Path
     from qnx_porter.target import kill_leftovers_command
     cmd = kill_leftovers_command(["home/u/ports/nng/work/src", "home/u/ports/nng/work/build"])
     assert '/proc/[0-9]*' in cmd and 'exefile' in cmd and 'kill -9' in cmd
@@ -112,8 +115,12 @@ def test_leftover_test_processes_are_killed_before_the_tree_is_removed(tmp_path)
     for pid, exe in (("11", "/data/qnx-porter/home/u/ports/nng/work/build/uv_test"), ("12", "/proc/boot/sh")):
         (tmp_path / pid).mkdir()
         (tmp_path / pid / "exefile").write_text(exe)
-    fake = cmd.replace("/proc/[0-9]*", f"{tmp_path}/[0-9]*").replace("${d#/proc/}", "${d##*/}").replace("kill -9", "echo")
-    out = subprocess.run(["sh", "-c", fake], capture_output=True, text=True).stdout.split()
+    tpath = tmp_path.as_posix()
+    fake = cmd.replace("/proc/[0-9]*", f"{tpath}/[0-9]*").replace("${d#/proc/}", "${d##*/}").replace("kill -9", "echo")
+    sh = shutil.which("sh") or (Path("C:/Program Files/Git/bin/sh.exe") if Path("C:/Program Files/Git/bin/sh.exe").is_file() else None)
+    if not sh:
+        pytest.skip("sh interpreter not available on this host")
+    out = subprocess.run([str(sh), "-c", fake], capture_output=True, text=True).stdout.split()
     assert out == ["11"]
 
 
@@ -238,3 +245,51 @@ def test_killall_and_ps_shim_scripts_semantics():
     assert "exec pidin -p" in PS_SHIM
     assert "exec pidin" in PS_SHIM
     assert "-ef" in PS_SHIM and "aux" in PS_SHIM
+
+
+def test_killall_shim_exit_status_mapping_with_fake_slay(tmp_path):
+    import os
+    import shutil
+    from pathlib import Path
+    import pytest
+    from qnx_porter.target import KILLALL_SHIM
+
+    sh = shutil.which("sh") or (Path("C:/Program Files/Git/bin/sh.exe") if Path("C:/Program Files/Git/bin/sh.exe").is_file() else None)
+    if not sh:
+        pytest.skip("sh interpreter not available on this host")
+
+    shim_file = tmp_path / "killall"
+    shim_file.write_text(KILLALL_SHIM)
+    shim_file.chmod(0o755)
+
+    fake_bin = tmp_path / "bin"
+    fake_bin.mkdir()
+    fake_slay = fake_bin / "slay"
+    fake_slay.write_text('#!/bin/sh\nexit "${FAKE_SLAY_RC:-0}"\n')
+    fake_slay.chmod(0o755)
+
+    base_env = dict(os.environ)
+    base_env["PATH"] = f"{fake_bin}{os.pathsep}{base_env.get('PATH', '')}"
+
+    # 1. Slay killed 1 process (slay rc=1) -> killall must exit 0 (success)
+    env1 = dict(base_env, FAKE_SLAY_RC="1")
+    r1 = subprocess.run([str(sh), str(shim_file), "srv"], env=env1, capture_output=True)
+    assert r1.returncode == 0
+
+    # 2. Slay matched 0 processes (slay rc=0) -> killall must exit 1 (failure)
+    env0 = dict(base_env, FAKE_SLAY_RC="0")
+    r0 = subprocess.run([str(sh), str(shim_file), "missing_srv"], env=env0, capture_output=True)
+    assert r0.returncode == 1
+
+    # 3. With -q (quiet), keep returning 0 only on success (slay rc=1)
+    rq_success = subprocess.run([str(sh), str(shim_file), "-q", "srv"], env=env1, capture_output=True)
+    assert rq_success.returncode == 0
+
+    # 4. With -q (quiet) on missing process (slay rc=0) -> returns 1
+    rq_fail = subprocess.run([str(sh), str(shim_file), "-q", "missing_srv"], env=env0, capture_output=True)
+    assert rq_fail.returncode == 1
+
+    # 5. Slay killed multiple processes (slay rc=2) -> killall exits 0
+    env2 = dict(base_env, FAKE_SLAY_RC="2")
+    r2 = subprocess.run([str(sh), str(shim_file), "srv"], env=env2, capture_output=True)
+    assert r2.returncode == 0
