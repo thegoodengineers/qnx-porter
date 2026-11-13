@@ -34,7 +34,8 @@ libraries:
   - name: mbedtls               # TLS and crypto for embedded; CMake + ctest
     url: https://github.com/Mbed-TLS/mbedtls.git
     tag: v4.2.0
-    args: [-DENABLE_PROGRAMS=OFF]
+    # Programs stay on: in 4.2.0, tests/CMakeLists.txt uses ${ssl_opt_target}, which CMakeLists.txt defines only
+    # when ENABLE_PROGRAMS is on, so ENABLE_PROGRAMS=OFF with tests on fails at configure on every OS.
 
   - name: libsodium             # crypto; autotools + make check
     url: https://github.com/jedisct1/libsodium.git
