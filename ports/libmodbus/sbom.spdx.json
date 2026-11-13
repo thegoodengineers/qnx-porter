@@ -1,0 +1,66 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "libmodbus-v3.1.11-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libmodbus-5190e5e141780ae481f24be16d7b39a5f3ad8f8f",
+  "creationInfo": {
+    "created": "2026-11-13T04:58:34Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-libmodbus",
+      "name": "libmodbus",
+      "versionInfo": "v3.1.11",
+      "downloadLocation": "git+https://github.com/stephane/libmodbus.git@5190e5e141780ae481f24be16d7b39a5f3ad8f8f",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over COPYING.LESSER, README.md, tests/LICENSE, tests/README.md: LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later. Per-file detections: COPYING.LESSER: LGPL-2.1-only; README.md: LicenseRef-scancode-unknown-license-reference AND LGPL-2.1-or-later; tests/LICENSE: BSD-3-Clause; tests/README.md: BSD-3-Clause."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-scancode-unknown-license-reference",
+      "name": "Unknown License file reference",
+      "extractedText": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/unknown-license-reference.LICENSE",
+      "comment": "See details at https://github.com/nexB/scancode-toolkit/blob/develop/src/licensedcode/data/licenses/unknown-license-reference.LICENSE"
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/libmodbus/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply; empty: the port needed no source change"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-libmodbus"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-libmodbus"
+    }
+  ]
+}

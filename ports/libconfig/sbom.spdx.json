@@ -1,0 +1,58 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "libconfig-v1.7.3-qnx8",
+  "documentNamespace": "https://github.com/thegoodengineers/qnx-porter/spdx/libconfig-525922a6b49ca19235cdf307376e7c9c539d1b93",
+  "creationInfo": {
+    "created": "2026-11-13T05:09:01Z",
+    "creators": [
+      "Tool: scancode-toolkit-32.5.0",
+      "Organization: The Good Engineers"
+    ]
+  },
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-libconfig",
+      "name": "libconfig",
+      "versionInfo": "v1.7.3",
+      "downloadLocation": "git+https://github.com/hyperrealm/libconfig.git@525922a6b49ca19235cdf307376e7c9c539d1b93",
+      "filesAnalyzed": false,
+      "licenseConcluded": "NOASSERTION",
+      "licenseDeclared": "LGPL-2.1-only",
+      "copyrightText": "NOASSERTION",
+      "licenseComments": "ScanCode summary declared licence over COPYING.LIB, LICENSE, README, README.md, contrib/README, debian/copyright: LGPL-2.1-only. Per-file detections: COPYING.LIB: LGPL-2.1-only; LICENSE: LGPL-2.1-only; debian/copyright: (LGPL-2.1-only AND LGPL-2.1-or-later) AND (GPL-1.0-or-later AND GPL-2.0-only)."
+    }
+  ],
+  "files": [
+    {
+      "SPDXID": "SPDXRef-File-qnx.patch",
+      "fileName": "./ports/libconfig/qnx.patch",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "67ff111b40015f0bef1d881835eb722d20754082"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9b0fa78001f9a3ff25b78969ccd9bcd7d7df576917b9c9b53f7c231d4a03b519"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "copyrightText": "NOASSERTION",
+      "comment": "QNX 8.0 port changes, apply with git apply"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-libconfig"
+    },
+    {
+      "spdxElementId": "SPDXRef-File-qnx.patch",
+      "relationshipType": "PATCH_FOR",
+      "relatedSpdxElement": "SPDXRef-Package-libconfig"
+    }
+  ]
+}
