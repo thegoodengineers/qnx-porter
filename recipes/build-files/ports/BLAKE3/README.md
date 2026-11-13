@@ -7,6 +7,6 @@ BLAKE3 `1.5.4` (https://github.com/BLAKE3-team/BLAKE3.git). On a QNX 8.0 x86_64 
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 1.5.4 https://github.com/BLAKE3-team/BLAKE3.git BLAKE3
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 1.5.4 https://github.com/BLAKE3-team/BLAKE3.git BLAKE3
 QNX_PROJECT_ROOT="$(pwd)/BLAKE3" make -C build-files/ports/BLAKE3 install JLEVEL=4
 ```

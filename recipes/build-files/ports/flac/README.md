@@ -7,7 +7,7 @@ flac `1.4.3` (https://github.com/xiph/flac.git). On a QNX 8.0 x86_64 target (QEM
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 1.4.3 https://github.com/xiph/flac.git flac
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 1.4.3 https://github.com/xiph/flac.git flac
 QNX_PROJECT_ROOT="$(pwd)/flac" make -C build-files/ports/flac install JLEVEL=4
 ```
 

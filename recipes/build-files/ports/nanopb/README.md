@@ -7,6 +7,6 @@ nanopb `0.4.9` (https://github.com/nanopb/nanopb.git). On a QNX 8.0 x86_64 targe
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 0.4.9 https://github.com/nanopb/nanopb.git nanopb
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 0.4.9 https://github.com/nanopb/nanopb.git nanopb
 QNX_PROJECT_ROOT="$(pwd)/nanopb" make -C build-files/ports/nanopb install JLEVEL=4
 ```

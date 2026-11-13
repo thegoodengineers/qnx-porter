@@ -7,6 +7,6 @@ tomlplusplus `v3.4.0` (https://github.com/marzer/tomlplusplus.git). On a QNX 8.0
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v3.4.0 https://github.com/marzer/tomlplusplus.git tomlplusplus
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v3.4.0 https://github.com/marzer/tomlplusplus.git tomlplusplus
 QNX_PROJECT_ROOT="$(pwd)/tomlplusplus" make -C build-files/ports/tomlplusplus install JLEVEL=4
 ```

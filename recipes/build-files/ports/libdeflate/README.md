@@ -7,6 +7,6 @@ libdeflate `v1.22` (https://github.com/ebiggers/libdeflate.git). On a QNX 8.0 x8
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.22 https://github.com/ebiggers/libdeflate.git libdeflate
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.22 https://github.com/ebiggers/libdeflate.git libdeflate
 QNX_PROJECT_ROOT="$(pwd)/libdeflate" make -C build-files/ports/libdeflate install JLEVEL=4
 ```

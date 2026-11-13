@@ -7,6 +7,6 @@ flatcc `v0.6.1` (https://github.com/dvidelabs/flatcc.git). On a QNX 8.0 x86_64 t
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v0.6.1 https://github.com/dvidelabs/flatcc.git flatcc
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v0.6.1 https://github.com/dvidelabs/flatcc.git flatcc
 QNX_PROJECT_ROOT="$(pwd)/flatcc" make -C build-files/ports/flatcc install JLEVEL=4
 ```

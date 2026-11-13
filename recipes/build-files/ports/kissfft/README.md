@@ -7,6 +7,6 @@ kissfft `131.1.0` (https://github.com/mborgerding/kissfft.git). On a QNX 8.0 x86
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 131.1.0 https://github.com/mborgerding/kissfft.git kissfft
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 131.1.0 https://github.com/mborgerding/kissfft.git kissfft
 QNX_PROJECT_ROOT="$(pwd)/kissfft" make -C build-files/ports/kissfft install JLEVEL=4
 ```

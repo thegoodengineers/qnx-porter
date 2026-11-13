@@ -7,6 +7,6 @@ libsamplerate `0.2.2` (https://github.com/libsndfile/libsamplerate.git). On a QN
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 0.2.2 https://github.com/libsndfile/libsamplerate.git libsamplerate
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 0.2.2 https://github.com/libsndfile/libsamplerate.git libsamplerate
 QNX_PROJECT_ROOT="$(pwd)/libsamplerate" make -C build-files/ports/libsamplerate install JLEVEL=4
 ```

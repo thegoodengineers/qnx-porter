@@ -7,6 +7,6 @@ libogg `v1.3.5` (https://github.com/xiph/ogg.git). On a QNX 8.0 x86_64 target (Q
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.3.5 https://github.com/xiph/ogg.git libogg
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.3.5 https://github.com/xiph/ogg.git libogg
 QNX_PROJECT_ROOT="$(pwd)/libogg" make -C build-files/ports/libogg install JLEVEL=4
 ```

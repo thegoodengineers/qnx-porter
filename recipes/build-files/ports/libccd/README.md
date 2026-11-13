@@ -7,6 +7,6 @@ libccd `v2.1` (https://github.com/danfis/libccd.git). On a QNX 8.0 x86_64 target
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v2.1 https://github.com/danfis/libccd.git libccd
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v2.1 https://github.com/danfis/libccd.git libccd
 QNX_PROJECT_ROOT="$(pwd)/libccd" make -C build-files/ports/libccd install JLEVEL=4
 ```

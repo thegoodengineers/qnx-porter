@@ -7,7 +7,7 @@ libconfig `v1.7.3` (https://github.com/hyperrealm/libconfig.git). On a QNX 8.0 x
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.7.3 https://github.com/hyperrealm/libconfig.git libconfig
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.7.3 https://github.com/hyperrealm/libconfig.git libconfig
 git -C libconfig apply ../build-files/ports/libconfig/qnx.patch
 QNX_PROJECT_ROOT="$(pwd)/libconfig" make -C build-files/ports/libconfig install JLEVEL=4
 ```

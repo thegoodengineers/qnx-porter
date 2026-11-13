@@ -7,7 +7,7 @@ libcoap `v4.3.5` (https://github.com/obgm/libcoap.git). On a QNX 8.0 x86_64 targ
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v4.3.5 https://github.com/obgm/libcoap.git libcoap
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v4.3.5 https://github.com/obgm/libcoap.git libcoap
 QNX_PROJECT_ROOT="$(pwd)/libcoap" make -C build-files/ports/libcoap install JLEVEL=4
 ```
 

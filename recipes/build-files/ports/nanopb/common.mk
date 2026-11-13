@@ -24,19 +24,22 @@ STUBS = $(CURDIR)/build/stubs
 CFLAGS += -I$(INSTALL_ROOT)/$(PREFIX)/include
 LDFLAGS += -L$(STUBS)
 
+# CMAKE_INSTALL_LIBDIR is set because some projects include GNUInstallDirs only when not cross-compiling.
 CMAKE_ARGS = -DCMAKE_TOOLCHAIN_FILE=$(PROJECT_ROOT)/qnx.nto.toolchain.cmake \
              -DCMAKE_SYSTEM_PROCESSOR=$(CPUVARDIR) \
              -DCMAKE_INSTALL_PREFIX=$(INSTALL_ROOT)/$(CPUVARDIR)/$(PREFIX) \
              -DCMAKE_INSTALL_INCLUDEDIR=$(INSTALL_ROOT)/$(PREFIX)/include \
+             -DCMAKE_INSTALL_LIBDIR=lib \
              -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE) \
-             -DCMAKE_LIBRARY_PATH=$(STUBS) \
+             -DCMAKE_LIBRARY_PATH=/stubs \
              -DEXTRA_CMAKE_C_FLAGS="$(CFLAGS)" \
              -DEXTRA_CMAKE_CXX_FLAGS="$(CFLAGS)" \
              -DEXTRA_CMAKE_LINKER_FLAGS="$(LDFLAGS)" \
              -DCMAKE_C_STANDARD_LIBRARIES="" \
              -DCMAKE_CXX_STANDARD_LIBRARIES="" \
              -DBUILD_SHARED_LIBS=$(BUILD_SHARED_LIBS) \
-             -DBUILD_TESTING=$(BUILD_TESTING)
+             -DBUILD_TESTING=$(BUILD_TESTING) \
+             -Dnanopb_BUILD_GENERATOR=OFF
 
 ifndef NO_TARGET_OVERRIDE
 nanopb_all:

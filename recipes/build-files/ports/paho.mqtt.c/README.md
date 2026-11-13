@@ -7,7 +7,7 @@ paho.mqtt.c `v1.3.14` (https://github.com/eclipse/paho.mqtt.c.git). On a QNX 8.0
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.3.14 https://github.com/eclipse/paho.mqtt.c.git paho.mqtt.c
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.3.14 https://github.com/eclipse/paho.mqtt.c.git paho.mqtt.c
 git -C paho.mqtt.c apply ../build-files/ports/paho.mqtt.c/qnx.patch
 QNX_PROJECT_ROOT="$(pwd)/paho.mqtt.c" make -C build-files/ports/paho.mqtt.c install JLEVEL=4
 ```

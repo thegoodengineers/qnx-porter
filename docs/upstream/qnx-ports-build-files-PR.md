@@ -25,13 +25,20 @@ Not included:
 ## What has been checked
 - Every recipe holds the flags, CMake options, source patch and compat headers from the port that the campaign
   built and tested on a QNX 8.0 x86_64 target. Each recipe's README states that port's test result.
-- Built with QNX's recursive make (`make install` with `INSTALL_ROOT_nto` set to a staging folder), for both
-  `nto-x86_64-o` and `nto-aarch64-le`: yyjson, wolfssl and flac. The other 31 recipes have not been built
-  through make yet.
+- Built with QNX's recursive make (`make install` with `INSTALL_ROOT_nto` set to a staging folder):
+  - `nto-x86_64-o`: all 34 build and install on 13 Nov 2026. The table, with what each installed, is
+    [`recipes/BUILD_CHECK.md`](../../recipes/BUILD_CHECK.md).
+  - `nto-aarch64-le`: yyjson, wolfssl and flac. The other 31 have not been built for aarch64 through make.
+- The first make build of the 31 found five recipe faults, now fixed in `scripts/emit_recipes.py`:
+  libccd did not find the `librt` stub (CMake re-rooted its path under the SDP), kissfft installed its CMake files
+  to `/cmake` (it sets `CMAKE_INSTALL_LIBDIR` only when not cross-compiling), mbedtls needs its git submodule
+  (the README's clone now uses `--recurse-submodules`), nanopb tried to install its host Python generator into the
+  build machine's `site-packages`, and flatcc installed nothing (its install rules are off by default).
 - Tests on aarch64: the separate aarch64 campaign (QEMU `virt`) reports them in `results/ports.csv`.
 
 ## Differences from the hand-made recipes
-- Static libraries (`BUILD_SHARED_LIBS ?= OFF`), as tested. Set it to `ON` for shared libraries.
+- Static libraries (`BUILD_SHARED_LIBS ?= OFF`), as tested. Set it to `ON` for shared libraries. cglm, kissfft
+  and paho.mqtt.c use their own options for this and install shared libraries; libdeflate installs both.
 - Empty `librt.a`, `libdl.a` and `libpthread.a` stubs in the build folder, because QNX keeps those functions in
   libc. Some projects' CMake checks insist on finding the libraries.
 - The toolchain file calls the archiver `nto<cpu>-ar` with the trailing `le` removed. The SDP's aarch64

@@ -7,6 +7,6 @@ opus `v1.5.2` (https://github.com/xiph/opus.git). On a QNX 8.0 x86_64 target (QE
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.5.2 https://github.com/xiph/opus.git opus
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.5.2 https://github.com/xiph/opus.git opus
 QNX_PROJECT_ROOT="$(pwd)/opus" make -C build-files/ports/opus install JLEVEL=4
 ```

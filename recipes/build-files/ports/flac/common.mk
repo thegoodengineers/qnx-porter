@@ -24,12 +24,14 @@ STUBS = $(CURDIR)/build/stubs
 CFLAGS += -I$(INSTALL_ROOT)/$(PREFIX)/include -include $(PROJECT_ROOT)/qnx-compat/qnx-wcswidth.h -D_QNX_PORTER_WCSWIDTH
 LDFLAGS += -L$(STUBS)
 
+# CMAKE_INSTALL_LIBDIR is set because some projects include GNUInstallDirs only when not cross-compiling.
 CMAKE_ARGS = -DCMAKE_TOOLCHAIN_FILE=$(PROJECT_ROOT)/qnx.nto.toolchain.cmake \
              -DCMAKE_SYSTEM_PROCESSOR=$(CPUVARDIR) \
              -DCMAKE_INSTALL_PREFIX=$(INSTALL_ROOT)/$(CPUVARDIR)/$(PREFIX) \
              -DCMAKE_INSTALL_INCLUDEDIR=$(INSTALL_ROOT)/$(PREFIX)/include \
+             -DCMAKE_INSTALL_LIBDIR=lib \
              -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE) \
-             -DCMAKE_LIBRARY_PATH=$(STUBS) \
+             -DCMAKE_LIBRARY_PATH=/stubs \
              -DEXTRA_CMAKE_C_FLAGS="$(CFLAGS)" \
              -DEXTRA_CMAKE_CXX_FLAGS="$(CFLAGS)" \
              -DEXTRA_CMAKE_LINKER_FLAGS="$(LDFLAGS)" \

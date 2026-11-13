@@ -7,6 +7,6 @@ cmark `0.31.1` (https://github.com/commonmark/cmark.git). On a QNX 8.0 x86_64 ta
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 0.31.1 https://github.com/commonmark/cmark.git cmark
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 0.31.1 https://github.com/commonmark/cmark.git cmark
 QNX_PROJECT_ROOT="$(pwd)/cmark" make -C build-files/ports/cmark install JLEVEL=4
 ```

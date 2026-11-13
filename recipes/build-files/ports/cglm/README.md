@@ -7,6 +7,6 @@ cglm `v0.9.4` (https://github.com/recp/cglm.git). On a QNX 8.0 x86_64 target (QE
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v0.9.4 https://github.com/recp/cglm.git cglm
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v0.9.4 https://github.com/recp/cglm.git cglm
 QNX_PROJECT_ROOT="$(pwd)/cglm" make -C build-files/ports/cglm install JLEVEL=4
 ```

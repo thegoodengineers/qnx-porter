@@ -7,6 +7,6 @@ cmocka `cmocka-1.1.7` (https://gitlab.com/cmocka/cmocka.git). On a QNX 8.0 x86_6
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch cmocka-1.1.7 https://gitlab.com/cmocka/cmocka.git cmocka
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch cmocka-1.1.7 https://gitlab.com/cmocka/cmocka.git cmocka
 QNX_PROJECT_ROOT="$(pwd)/cmocka" make -C build-files/ports/cmocka install JLEVEL=4
 ```

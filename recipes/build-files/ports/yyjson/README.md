@@ -7,7 +7,7 @@ yyjson `0.10.0` (https://github.com/ibireme/yyjson.git). On a QNX 8.0 x86_64 tar
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 0.10.0 https://github.com/ibireme/yyjson.git yyjson
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 0.10.0 https://github.com/ibireme/yyjson.git yyjson
 QNX_PROJECT_ROOT="$(pwd)/yyjson" make -C build-files/ports/yyjson install JLEVEL=4
 ```
 
