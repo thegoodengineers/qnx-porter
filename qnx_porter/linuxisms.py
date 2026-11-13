@@ -24,7 +24,8 @@ LINUX_HEADERS = {
     "execinfo.h": (r"\bbacktrace\w*", "QNX has no backtrace(): guard that code with !defined(__QNX__)"),
     "features.h": (r"(?!)", "<features.h> is glibc-only"),  # provides nothing a port needs
     "mcheck.h": (r"\bmcheck\w*|\bmtrace\b|\bmuntrace\b", "glibc-only heap checking: guard with !defined(__QNX__)"),
-    "endian.h": (r"\b(?:htobe|htole|be|le)(?:16|32|64)(?:toh)?\b|\b__?BYTE_ORDER\b|\b__?(?:LITTLE|BIG)_ENDIAN\b",
+    "endian.h": (r"\b(?:htobe|htole|be|le)(?:16|32|64)(?:toh)?\b|\b(?:betoh|letoh)(?:16|32|64)\b|"
+                 r"\b__?BYTE_ORDER\b|\b__?(?:LITTLE|BIG|PDP)_ENDIAN\b",
                  "QNX 8.0 has no <endian.h>: use <gulliver.h> (ENDIAN_LE32 etc.) or GCC's __BYTE_ORDER__"),
 }
 # <sys/X.h> spellings glibc accepts and QNX 8.0 does not ship; the plain <X.h> exists (SDP 8.0 build 141).

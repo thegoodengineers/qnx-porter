@@ -244,8 +244,13 @@ def _apply(f: fixes.Fix, n: int, src: Path, out: Path, job: build.Job, work: Pat
     for name, text in f.compat.items():
         d = work / "qnx-compat"
         d.mkdir(exist_ok=True)
-        (d / name).write_text(text, encoding="utf-8")
-        job.flags.cflags += ["-include", str(d / name)]
+        target_path = d / name
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        target_path.write_text(text, encoding="utf-8")
+        inc = f"-I{d}"
+        if inc not in job.flags.cflags:
+            job.flags.cflags.append(inc)
+        job.flags.cflags += ["-include", str(target_path)]
         extra += "".join(["--- /dev/null\n", f"+++ b/qnx-compat/{name}\n",
                           f"@@ -0,0 +1,{len(text.splitlines())} @@\n",
                           *[f"+{ln}\n" for ln in text.splitlines()]])

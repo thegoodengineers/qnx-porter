@@ -221,13 +221,32 @@ def test_own_bool_typedef_after_qnx_sys_socket(tmp_path):
         assert compiles(tmp_path, f.edits["MQTTPacket.h"])
 
 
-def test_unused_endian_h_is_guarded_and_used_gets_gulliver_hint(tmp_path):
+def test_unused_endian_h_is_guarded(tmp_path):
     [f] = run(tmp_path, {"e.c": "#include <endian.h>\nint x;\n"},
               "e.c:1:10: fatal error: endian.h: No such file or directory\n")
     assert f.rule == "guard-linux-header"
+
+
+def test_used_endian_h_gets_compat_rule_and_header(tmp_path):
     log = "g.c:1:10: fatal error: endian.h: No such file or directory\n"
-    assert run(tmp_path, {"g.c": "#include <endian.h>\nunsigned f(unsigned x) { return htobe32(x); }\n"}, log) == []
-    assert "gulliver.h" in fixes.hint(parse(log)[0])
+    [f] = run(tmp_path, {"g.c": "#include <endian.h>\nunsigned f(unsigned x) { return htobe32(x); }\n"}, log)
+    assert f.rule == "endian-compat"
+    assert f.cflags == ["-D_QNX_PORTER_ENDIAN"]
+    assert "endian.h" in f.compat
+    header = f.compat["endian.h"]
+    assert "<net/netbyte.h>" in header
+    assert "htobe32(x) __NET_BE32((x))" in header
+    assert "be64toh(x) __NET_BE64((x))" in header
+    assert "le16toh(x) __NET_LE16((x))" in header
+    assert "betoh32(x) __NET_BE32((x))" in header
+    assert "BYTE_ORDER __BYTE_ORDER" in header
+    assert "LITTLE_ENDIAN __LITTLE_ENDIAN" in header
+    assert "BIG_ENDIAN __BIG_ENDIAN" in header
+    # Idempotency: when -D_QNX_PORTER_ENDIAN is already present, rule does not re-fire
+    assert run(tmp_path, {"g.c": "#include <endian.h>\nunsigned f(unsigned x) { return htobe32(x); }\n"},
+               log, flags=Flags(cflags=["-D_QNX_PORTER_ENDIAN"])) == []
+
+
 
 
 def test_glibc_endian_functions_come_from_qnx_netbyte(tmp_path):
