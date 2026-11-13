@@ -51,6 +51,9 @@ libraries:
     url: https://github.com/nanomsg/nng.git
     tag: v2.1.0
     args: [-DNNG_TESTS=ON]
+    # every 2.1.0 test hangs in nng_fini() on QNX (docs/qnx-reports/pipe-pollhup.md), so a known hang
+    # costs 60 s per test, not 300 s; its passing tests finish in seconds
+    test_timeout: 60
 
   - name: libconfig             # configuration files; CMake
     url: https://github.com/hyperrealm/libconfig.git
