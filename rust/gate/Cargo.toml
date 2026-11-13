@@ -1,0 +1,12 @@
+[package]
+name = "rustgate"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "hello"
+path = "src/hello.rs"
+
+[[bin]]
+name = "stdcheck"
+path = "src/stdcheck.rs"

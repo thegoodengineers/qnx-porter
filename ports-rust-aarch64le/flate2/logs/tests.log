@@ -1,0 +1,13 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/flate2/work/src/flate2-1.1.11
+PASS  test:early-flush (exit 0): 3 passed, 0 failed, 0 ignored
+PASS  test:gunzip (exit 0): 5 passed, 0 failed, 0 ignored
+PASS  test:zero-write (exit 0): 3 passed, 0 failed, 0 ignored
+PASS  test:capabilities (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:partial-write (exit 0): 2 passed, 0 failed, 0 ignored
+PASS  test:zlib-rs-uninit (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:empty-read (exit 0): 7 passed, 0 failed, 0 ignored
+PASS  test:gzip-read-errors (exit 0): 4 passed, 0 failed, 0 ignored
+PASS  test:write-after-finish (exit 0): 2 passed, 0 failed, 0 ignored
+PASS  lib:flate2 (exit 0): 71 passed, 0 failed, 0 ignored
+
+97/97 tests passed on the QNX target (0 ignored)

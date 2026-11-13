@@ -1,0 +1,514 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_4_1.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1" --config patch.crates-io.getrandom_0_4_1.package="getrandom"  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/src/tempfile-3.27.0)
+
+     Locking 1 package to highest compatible version
+      Adding getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1)
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/tempfile/work/vendor/getrandom-0.4.1)
+   Compiling rustix v1.1.4
+error[E0425]: cannot find function `statfs` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/syscalls.rs:269:16
+     |
+ 269 |         ret(c::statfs(c_str(filename), result.as_mut_ptr()))?;
+     |                ^^^^^^ not found in `c`
+     |
+note: similarly named function `statvfs` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/mod.rs:1674:5
+     |
+1674 |     pub fn statvfs(path: *const c_char, buf: *mut crate::statvfs) -> c_int;
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:135:84
+     |
+ 130 | #[cfg(target_os = "aix")]
+     |       ----------------- the item is gated behind the `aix` feature
+...
+ 135 |     rlimit64 as rlimit, setrlimit64 as setrlimit, stat64at as fstatat, statfs64 as statfs,
+     |                                                                                    ^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:143:63
+     |
+ 138 | #[cfg(any(linux_like, target_os = "hurd"))]
+     |          -------------------------------- the item is gated here
+...
+ 143 |     rlimit64 as rlimit, setrlimit64 as setrlimit, statfs64 as statfs, statvfs64 as statvfs,
+     |                                                               ^^^^^^
+help: a function with a similar name exists
+     |
+ 269 |         ret(c::statvfs(c_str(filename), result.as_mut_ptr()))?;
+     |                    +
+help: consider importing this function through its public re-export
+     |
+   3 + use crate::fs::statfs;
+     |
+help: if you import `statfs`, refer to it directly
+     |
+ 269 -         ret(c::statfs(c_str(filename), result.as_mut_ptr()))?;
+ 269 +         ret(statfs(c_str(filename), result.as_mut_ptr()))?;
+     |
+
+error[E0425]: cannot find function `fstatfs` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/syscalls.rs:1607:16
+     |
+1607 |         ret(c::fstatfs(borrowed_fd(fd), statfs.as_mut_ptr()))?;
+     |                ^^^^^^^ not found in `c`
+     |
+note: similarly named function `fstatvfs` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/mod.rs:1677:5
+     |
+1677 |     pub fn fstatvfs(fd: c_int, buf: *mut crate::statvfs) -> c_int;
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:132:62
+     |
+ 130 | #[cfg(target_os = "aix")]
+     |       ----------------- the item is gated behind the `aix` feature
+ 131 | pub(super) use {
+ 132 |     blksize64_t as blksize_t, fstat64 as fstat, fstatfs64 as fstatfs, fstatvfs64 as fstatvfs,
+     |                                                              ^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:140:58
+     |
+ 138 | #[cfg(any(linux_like, target_os = "hurd"))]
+     |          -------------------------------- the item is gated here
+ 139 | pub(super) use {
+ 140 |     fstat64 as fstat, fstatat64 as fstatat, fstatfs64 as fstatfs, fstatvfs64 as fstatvfs,
+     |                                                          ^^^^^^^
+help: a function with a similar name exists
+     |
+1607 |         ret(c::fstatvfs(borrowed_fd(fd), statfs.as_mut_ptr()))?;
+     |                     +
+help: consider importing this function through its public re-export
+     |
+   3 + use crate::fs::fstatfs;
+     |
+help: if you import `fstatfs`, refer to it directly
+     |
+1607 -         ret(c::fstatfs(borrowed_fd(fd), statfs.as_mut_ptr()))?;
+1607 +         ret(fstatfs(borrowed_fd(fd), statfs.as_mut_ptr()))?;
+     |
+
+error[E0531]: cannot find unit struct, unit variant or constant `DT_REG` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:629:16
+    |
+629 |             c::DT_REG => Self::RegularFile,
+    |                ^^^^^^ not found in `c`
+
+error[E0531]: cannot find unit struct, unit variant or constant `DT_DIR` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:630:16
+    |
+630 |             c::DT_DIR => Self::Directory,
+    |                ^^^^^^ not found in `c`
+
+error[E0531]: cannot find unit struct, unit variant or constant `DT_LNK` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:631:16
+    |
+631 |             c::DT_LNK => Self::Symlink,
+    |                ^^^^^^ not found in `c`
+
+error[E0531]: cannot find unit struct, unit variant or constant `DT_SOCK` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:633:16
+    |
+633 |             c::DT_SOCK => Self::Socket,
+    |                ^^^^^^^ not found in `c`
+
+error[E0531]: cannot find unit struct, unit variant or constant `DT_FIFO` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:635:16
+    |
+635 |             c::DT_FIFO => Self::Fifo,
+    |                ^^^^^^^ not found in `c`
+
+error[E0531]: cannot find unit struct, unit variant or constant `DT_CHR` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:636:16
+    |
+636 |             c::DT_CHR => Self::CharacterDevice,
+    |                ^^^^^^ not found in `c`
+
+error[E0531]: cannot find unit struct, unit variant or constant `DT_BLK` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:637:16
+    |
+637 |             c::DT_BLK => Self::BlockDevice,
+    |                ^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `FALLOC_FL_KEEP_SIZE` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:788:39
+    |
+788 |         const KEEP_SIZE = bitcast!(c::FALLOC_FL_KEEP_SIZE);
+    |                                       ^^^^^^^^^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `FALLOC_FL_PUNCH_HOLE` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:798:40
+    |
+798 |         const PUNCH_HOLE = bitcast!(c::FALLOC_FL_PUNCH_HOLE);
+    |                                        ^^^^^^^^^^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `FALLOC_FL_NO_HIDE_STALE` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:813:43
+    |
+813 |         const NO_HIDE_STALE = bitcast!(c::FALLOC_FL_NO_HIDE_STALE);
+    |                                           ^^^^^^^^^^^^^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `FALLOC_FL_COLLAPSE_RANGE` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:824:44
+    |
+824 |         const COLLAPSE_RANGE = bitcast!(c::FALLOC_FL_COLLAPSE_RANGE);
+    |                                            ^^^^^^^^^^^^^^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `FALLOC_FL_ZERO_RANGE` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:835:40
+    |
+835 |         const ZERO_RANGE = bitcast!(c::FALLOC_FL_ZERO_RANGE);
+    |                                        ^^^^^^^^^^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `FALLOC_FL_INSERT_RANGE` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:846:42
+    |
+846 |         const INSERT_RANGE = bitcast!(c::FALLOC_FL_INSERT_RANGE);
+    |                                          ^^^^^^^^^^^^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `FALLOC_FL_UNSHARE_RANGE` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:857:43
+    |
+857 |         const UNSHARE_RANGE = bitcast!(c::FALLOC_FL_UNSHARE_RANGE);
+    |                                           ^^^^^^^^^^^^^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find type `statfs` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:1069:22
+     |
+1069 | pub type StatFs = c::statfs;
+     |                      ^^^^^^ not found in `c`
+     |
+note: similarly named struct `statvfs` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/macros.rs:200:9
+     |
+ 200 |           $pub struct $i { $($field)* }
+     |           ^^^^^^^^^^^^^^
+     |
+    ::: /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/nto/mod.rs:100:1
+     |
+ 100 | / s! {
+ 101 | |     pub struct dirent_extra {
+ 102 | |         pub d_datalen: u16,
+ 103 | |         pub d_type: u16,
+...    |
+ 705 | | }
+     | |_- in this macro invocation
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:135:84
+     |
+ 130 | #[cfg(target_os = "aix")]
+     |       ----------------- the item is gated behind the `aix` feature
+...
+ 135 |     rlimit64 as rlimit, setrlimit64 as setrlimit, stat64at as fstatat, statfs64 as statfs,
+     |                                                                                    ^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:143:63
+     |
+ 138 | #[cfg(any(linux_like, target_os = "hurd"))]
+     |          -------------------------------- the item is gated here
+...
+ 143 |     rlimit64 as rlimit, setrlimit64 as setrlimit, statfs64 as statfs, statvfs64 as statvfs,
+     |                                                               ^^^^^^
+     = note: this error originates in the macro `s` (in Nightly builds, run with -Z macro-backtrace for more info)
+help: a struct with a similar name exists
+     |
+1069 | pub type StatFs = c::statvfs;
+     |                          +
+
+error[E0425]: cannot find type `fsid_t` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/types.rs:1090:20
+     |
+1090 | pub type Fsid = c::fsid_t;
+     |                    ^^^^^^ not found in `c`
+     |
+note: similarly named type alias `gid_t` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/mod.rs:34:9
+     |
+  34 |         pub type gid_t = i32;
+     |         ^^^^^^^^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:516:28
+     |
+ 515 | #[cfg(target_os = "android")]
+     |       --------------------- the item is gated behind the `android` feature
+ 516 | pub(crate) use __fsid_t as fsid_t;
+     |                            ^^^^^^
+help: a type alias with a similar name exists
+     |
+1090 - pub type Fsid = c::fsid_t;
+1090 + pub type Fsid = c::gid_t;
+     |
+
+error[E0425]: cannot find value `EDOTDOT` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:253:38
+    |
+253 |     pub const DOTDOT: Self = Self(c::EDOTDOT);
+    |                                      ^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `EHWPOISON` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:290:40
+    |
+290 |     pub const HWPOISON: Self = Self(c::EHWPOISON);
+    |                                        ^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `EISNAM` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:340:37
+    |
+340 |     pub const ISNAM: Self = Self(c::EISNAM);
+    |                                     ^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `EKEYEXPIRED` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:357:42
+    |
+357 |     pub const KEYEXPIRED: Self = Self(c::EKEYEXPIRED);
+    |                                          ^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `EKEYREJECTED` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:374:43
+    |
+374 |     pub const KEYREJECTED: Self = Self(c::EKEYREJECTED);
+    |                                           ^^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `EKEYREVOKED` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:391:42
+    |
+391 |     pub const KEYREVOKED: Self = Self(c::EKEYREVOKED);
+    |                                          ^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `EMEDIUMTYPE` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:544:42
+    |
+544 |     pub const MEDIUMTYPE: Self = Self(c::EMEDIUMTYPE);
+    |                                          ^^^^^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `ENAVAIL` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:574:38
+    |
+574 |     pub const NAVAIL: Self = Self(c::ENAVAIL);
+    |                                      ^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `ENOKEY` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:655:37
+     |
+ 655 |     pub const NOKEY: Self = Self(c::ENOKEY);
+     |                                     ^^^^^^ not found in `c`
+     |
+note: similarly named constant `ENODEV` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/nto/mod.rs:1327:1
+     |
+1327 | pub const ENODEV: c_int = 19;
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+help: a constant with a similar name exists
+     |
+ 655 -     pub const NOKEY: Self = Self(c::ENOKEY);
+ 655 +     pub const NOKEY: Self = Self(c::ENODEV);
+     |
+
+error[E0425]: cannot find value `ENOMEDIUM` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:677:40
+     |
+ 677 |     pub const NOMEDIUM: Self = Self(c::ENOMEDIUM);
+     |                                        ^^^^^^^^^ not found in `c`
+     |
+note: similarly named constant `ENOMEM` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/nto/mod.rs:1320:1
+     |
+1320 | pub const ENOMEM: c_int = 12;
+     | ^^^^^^^^^^^^^^^^^^^^^^^
+help: a constant with a similar name exists
+     |
+ 677 -     pub const NOMEDIUM: Self = Self(c::ENOMEDIUM);
+ 677 +     pub const NOMEDIUM: Self = Self(c::ENOMEM);
+     |
+
+error[E0425]: cannot find value `ENOTNAM` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:780:38
+    |
+780 |     pub const NOTNAM: Self = Self(c::ENOTNAM);
+    |                                      ^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `EREMOTEIO` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:909:40
+     |
+ 909 |     pub const REMOTEIO: Self = Self(c::EREMOTEIO);
+     |                                        ^^^^^^^^^ not found in `c`
+     |
+note: similarly named constant `EREMOTE` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/nto/mod.rs:1372:1
+     |
+1372 | pub const EREMOTE: c_int = 66;
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+help: a constant with a similar name exists
+     |
+ 909 -     pub const REMOTEIO: Self = Self(c::EREMOTEIO);
+ 909 +     pub const REMOTEIO: Self = Self(c::EREMOTE);
+     |
+
+error[E0425]: cannot find value `ERFKILL` in module `c`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:942:38
+    |
+942 |     pub const RFKILL: Self = Self(c::ERFKILL);
+    |                                      ^^^^^^^ not found in `c`
+
+error[E0425]: cannot find value `EUCLEAN` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/errno.rs:1041:38
+     |
+1041 |     pub const UCLEAN: Self = Self(c::EUCLEAN);
+     |                                      ^^^^^^^ not found in `c`
+
+error[E0425]: cannot find function `preadv` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/syscalls.rs:117:22
+     |
+ 117 |         ret_usize(c::preadv(
+     |                      ^^^^^^ not found in `c`
+     |
+note: similarly named function `pread` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/mod.rs:1271:5
+     |
+1271 |     pub fn pread(fd: c_int, buf: *mut c_void, count: size_t, offset: off_t) -> ssize_t;
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:134:65
+     |
+ 130 | #[cfg(target_os = "aix")]
+     |       ----------------- the item is gated behind the `aix` feature
+...
+ 134 |     off64_t as off_t, openat, posix_fadvise64 as posix_fadvise, preadv, pwritev,
+     |                                                                 ^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:169:29
+     |
+ 168 | #[cfg(any(target_os = "linux", target_os = "hurd", target_os = "emscripten"))]
+     |          ------------------------------------------------------------------- the item is gated here
+ 169 | pub(super) use {preadv64 as preadv, pwritev64 as pwritev};
+     |                             ^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:294:45
+     |
+ 293 | #[cfg(target_os = "android")]
+     |       --------------------- the item is gated behind the `android` feature
+ 294 | pub(super) use readwrite_pv64::{preadv64 as preadv, pwritev64 as pwritev};
+     |                                             ^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:317:31
+     |
+ 316 | #[cfg(apple)]
+     |       ----- the item is gated here
+ 317 | pub(super) use readwrite_pv::{preadv, pwritev};
+     |                               ^^^^^^
+help: a function with a similar name exists
+     |
+ 117 -         ret_usize(c::preadv(
+ 117 +         ret_usize(c::pread(
+     |
+help: consider importing this function through its public re-export
+     |
+   3 + use crate::io::preadv;
+     |
+help: if you import `preadv`, refer to it directly
+     |
+ 117 -         ret_usize(c::preadv(
+ 117 +         ret_usize(preadv(
+     |
+
+error[E0425]: cannot find function `pwritev` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/syscalls.rs:144:22
+     |
+ 144 |         ret_usize(c::pwritev(
+     |                      ^^^^^^^ not found in `c`
+     |
+note: similarly named function `pwrite` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/mod.rs:1277:5
+     |
+1277 |     pub fn pwrite(fd: c_int, buf: *const c_void, count: size_t, offset: off_t) -> ssize_t;
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:134:73
+     |
+ 130 | #[cfg(target_os = "aix")]
+     |       ----------------- the item is gated behind the `aix` feature
+...
+ 134 |     off64_t as off_t, openat, posix_fadvise64 as posix_fadvise, preadv, pwritev,
+     |                                                                         ^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:169:50
+     |
+ 168 | #[cfg(any(target_os = "linux", target_os = "hurd", target_os = "emscripten"))]
+     |          ------------------------------------------------------------------- the item is gated here
+ 169 | pub(super) use {preadv64 as preadv, pwritev64 as pwritev};
+     |                                                  ^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:294:66
+     |
+ 293 | #[cfg(target_os = "android")]
+     |       --------------------- the item is gated behind the `android` feature
+ 294 | pub(super) use readwrite_pv64::{preadv64 as preadv, pwritev64 as pwritev};
+     |                                                                  ^^^^^^^
+note: found an item that was configured out
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/c.rs:317:39
+     |
+ 316 | #[cfg(apple)]
+     |       ----- the item is gated here
+ 317 | pub(super) use readwrite_pv::{preadv, pwritev};
+     |                                       ^^^^^^^
+help: a function with a similar name exists
+     |
+ 144 -         ret_usize(c::pwritev(
+ 144 +         ret_usize(c::pwrite(
+     |
+help: consider importing this function through its public re-export
+     |
+   3 + use crate::io::pwritev;
+     |
+help: if you import `pwritev`, refer to it directly
+     |
+ 144 -         ret_usize(c::pwritev(
+ 144 +         ret_usize(pwritev(
+     |
+
+error[E0425]: cannot find function `dup3` in module `c`
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/io/syscalls.rs:282:29
+     |
+ 282 |         ret_discarded_fd(c::dup3(
+     |                             ^^^^ not found in `c`
+     |
+note: similarly named function `dup` defined here
+    --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.191/src/unix/mod.rs:1154:5
+     |
+1154 |     pub fn dup(fd: c_int) -> c_int;
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+help: a function with a similar name exists
+     |
+ 282 -         ret_discarded_fd(c::dup3(
+ 282 +         ret_discarded_fd(c::dup(
+     |
+help: consider importing this function through its public re-export
+     |
+   3 + use crate::io::dup3;
+     |
+help: if you import `dup3`, refer to it directly
+     |
+ 282 -         ret_discarded_fd(c::dup3(
+ 282 +         ret_discarded_fd(dup3(
+     |
+
+error[E0425]: cannot find type `_Opcode` in this scope
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/ioctl/mod.rs:289:19
+    |
+289 | pub type Opcode = _Opcode;
+    |                   ^^^^^^^ not found in this scope
+
+error[E0609]: no field `d_type` on type `&dirent`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/rustix-1.1.4/src/backend/libc/fs/dir.rs:209:36
+    |
+209 |                     d_type: dirent.d_type,
+    |                                    ^^^^^^ unknown field
+    |
+    = note: available fields are: `d_ino`, `d_offset`, `d_reclen`, `d_namelen`, `d_name`
+
+Some errors have detailed explanations: E0425, E0531, E0609.
+For more information about an error, try `rustc --explain E0425`.
+error: could not compile `rustix` (lib) due to 37 previous errors

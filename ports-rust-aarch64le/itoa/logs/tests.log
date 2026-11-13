@@ -1,0 +1,5 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/itoa/work/src/itoa-1.0.19
+PASS  lib:itoa (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:test (exit 0): 11 passed, 0 failed, 0 ignored
+
+11/11 tests passed on the QNX target (0 ignored)

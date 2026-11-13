@@ -250,6 +250,20 @@ registered no tests as "tests ran". Since run 7, the summary and the headline co
 least one test.
 
 
+## Rust crates on QNX 8.0
+`qnx-porter crate <name> --version <v>` ports a crate from crates.io and runs its own tests on a QNX 8.0 target.
+Many widely used crates support QNX 7 but not QNX 8.0, often through a dependency (getrandom, errno, rustix,
+signal-hook-registry). Two rules fix that without editing the crate's own code:
+- `libc-update` updates a too-old pinned `libc`;
+- `nto-to-qnx` lets QNX 8.0 take the dependency's QNX 7 path through cargo's `[patch]`.
+
+The crates' own test suites then run on the target. Written by `scripts/crates_md.py` from `results/crates*.csv`:
+<!-- crates:start -->
+- x86_64 (QEMU, KVM): 21 of 22 crates built; 2751 of 2764 of their own tests passed (18 crates with tests that ran)
+- aarch64 on QEMU `virt` (emulated): 21 of 22 crates built; 2721 of 2733 of their own tests passed (18 crates with tests that ran)
+<!-- crates:end -->
+Per crate, with every fix and every failing test explained: [docs/rust/CRATES.md](docs/rust/CRATES.md).
+
 ## How it works
 The full pipeline as a diagram, one box per source file: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 ```

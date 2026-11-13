@@ -1,0 +1,4 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/mio/work/src/mio-1.2.4
+PASS  lib:mio (exit 0): 0 passed, 0 failed, 0 ignored
+
+0/0 tests passed on the QNX target (0 ignored)

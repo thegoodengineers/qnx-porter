@@ -1,0 +1,33 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/rand/work/src/rand-0.10.3)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded either v1.18.0
+  Downloaded rand_pcg v0.10.2
+  Downloaded thiserror-impl v2.0.20
+  Downloaded thiserror v2.0.20
+  Downloaded crossbeam-deque v0.8.8
+  Downloaded crossbeam-utils v0.8.23
+  Downloaded crossbeam-epoch v0.9.21
+  Downloaded serde_json v1.0.151
+  Downloaded syn v3.0.6
+  Downloaded libc v0.2.189
+   Compiling crossbeam-utils v0.8.23
+   Compiling crossbeam-epoch v0.9.21
+   Compiling syn v3.0.6
+   Compiling crossbeam-deque v0.8.8
+   Compiling thiserror v2.0.20
+   Compiling serde v1.0.229
+   Compiling serde_json v1.0.151
+   Compiling getrandom v0.4.3
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.4.3/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.4.3/src/backends.rs:185:9
+    |
+185 | /         compile_error!(concat!(
+186 | |             "target is not supported. You may need to define a custom backend see: \
+187 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+188 | |         ));
+    | |__________^
+
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

@@ -1,0 +1,71 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_4_1.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/ryu/work/vendor/getrandom-0.4.1" --config patch.crates-io.getrandom_0_4_1.package="getrandom"  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/ryu/work/src/ryu-1.0.23)
+
+     Locking 1 package to highest compatible version
+      Adding getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/ryu/work/vendor/getrandom-0.4.1)
+warning: patch `getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/ryu/work/vendor/getrandom-0.4.1)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling getrandom v0.4.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/ryu/work/vendor/getrandom-0.4.1)
+   Compiling chacha20 v0.10.0
+   Compiling rand_xorshift v0.5.0
+   Compiling criterion v0.8.2
+   Compiling num_cpus v1.17.0
+   Compiling ryu v1.0.23 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/ryu/work/src/ryu-1.0.23)
+   Compiling rand v0.10.0
+warning: use of deprecated constant `std::f32::NAN`: replaced by the `NAN` associated constant on `f32`
+  --> tests/f2s_test.rs:78:28
+   |
+78 |     assert_eq!(pretty(f32::NAN.copysign(1.0)), "NaN");
+   |                            ^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated constant `std::f32::NAN`: replaced by the `NAN` associated constant on `f32`
+  --> tests/f2s_test.rs:79:28
+   |
+79 |     assert_eq!(pretty(f32::NAN.copysign(-1.0)), "NaN");
+   |                            ^^^
+
+warning: use of deprecated constant `std::f32::INFINITY`: replaced by the `INFINITY` associated constant on `f32`
+  --> tests/f2s_test.rs:80:28
+   |
+80 |     assert_eq!(pretty(f32::INFINITY), "inf");
+   |                            ^^^^^^^^
+
+warning: use of deprecated constant `std::f32::NEG_INFINITY`: replaced by the `NEG_INFINITY` associated constant on `f32`
+  --> tests/f2s_test.rs:81:28
+   |
+81 |     assert_eq!(pretty(f32::NEG_INFINITY), "-inf");
+   |                            ^^^^^^^^^^^^
+
+warning: `ryu` (test "f2s_test") generated 4 warnings
+warning: use of deprecated constant `std::f64::NAN`: replaced by the `NAN` associated constant on `f64`
+  --> tests/d2s_test.rs:85:28
+   |
+85 |     assert_eq!(pretty(f64::NAN.copysign(1.0)), "NaN");
+   |                            ^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated constant `std::f64::NAN`: replaced by the `NAN` associated constant on `f64`
+  --> tests/d2s_test.rs:86:28
+   |
+86 |     assert_eq!(pretty(f64::NAN.copysign(-1.0)), "NaN");
+   |                            ^^^
+
+warning: use of deprecated constant `std::f64::INFINITY`: replaced by the `INFINITY` associated constant on `f64`
+  --> tests/d2s_test.rs:87:28
+   |
+87 |     assert_eq!(pretty(f64::INFINITY), "inf");
+   |                            ^^^^^^^^
+
+warning: use of deprecated constant `std::f64::NEG_INFINITY`: replaced by the `NEG_INFINITY` associated constant on `f64`
+  --> tests/d2s_test.rs:88:28
+   |
+88 |     assert_eq!(pretty(f64::NEG_INFINITY), "-inf");
+   |                            ^^^^^^^^^^^^
+
+warning: `ryu` (test "d2s_test") generated 4 warnings
+    Finished `release` profile [optimized] target(s) in 19.38s

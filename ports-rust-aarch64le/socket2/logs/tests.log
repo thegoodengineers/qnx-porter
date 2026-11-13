@@ -1,0 +1,4 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/socket2/work/src/socket2-0.6.5
+PASS  lib:socket2 (exit 0): 10 passed, 0 failed, 0 ignored
+
+10/10 tests passed on the QNX target (0 ignored)

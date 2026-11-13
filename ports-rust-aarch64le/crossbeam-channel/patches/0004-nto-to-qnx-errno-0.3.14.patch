@@ -1,0 +1,14 @@
+Subject: [qnx-porter 0004] nto-to-qnx
+Source: deterministic rule
+Reason: errno 0.3.14 supports QNX 7 (`target_os = "nto"`) but not QNX 8.0 (`target_os = "qnx"`); let QNX 8.0 take the QNX 7 code path.
+---
+--- a/errno-0.3.14/src/unix.rs
++++ b/errno-0.3.14/src/unix.rs
+@@ -99,6 +99,6 @@
+         link_name = "__errno_location"
+     )]
+     #[cfg_attr(target_os = "aix", link_name = "_Errno")]
+-    #[cfg_attr(target_os = "nto", link_name = "__get_errno_ptr")]
++    #[cfg_attr(any(target_os = "nto", target_os = "qnx"), link_name = "__get_errno_ptr")]
+     fn errno_location() -> *mut c_int;
+ }

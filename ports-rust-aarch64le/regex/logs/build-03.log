@@ -1,0 +1,95 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_2_16.path="/home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/work/vendor/getrandom-0.2.16" --config patch.crates-io.getrandom_0_2_16.package="getrandom"  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/work/src/regex-1.13.1)
+
+     Locking 1 package to highest compatible version
+      Adding getrandom v0.2.16 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/work/vendor/getrandom-0.2.16)
+warning: patch `getrandom v0.2.16 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/work/vendor/getrandom-0.2.16)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling getrandom v0.2.16 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/work/vendor/getrandom-0.2.16)
+warning: use of deprecated associated function `core::num::<impl usize>::max_value`: replaced by the `MAX` associated constant on this type
+  --> /home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/work/vendor/getrandom-0.2.16/src/use_file.rs:19:33
+   |
+19 | const FD_UNINIT: usize = usize::max_value();
+   |                                 ^^^^^^^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+   Compiling rand_core v0.6.4
+   Compiling rand v0.8.5
+warning: `getrandom` (lib) generated 1 warning
+   Compiling quickcheck v1.0.3
+   Compiling regex v1.13.1 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/regex/work/src/regex-1.13.1)
+error[E0583]: file not found for module `fuzz`
+ --> tests/lib.rs:3:1
+  |
+3 | mod fuzz;
+  | ^^^^^^^^^
+  |
+  = help: to create the module `fuzz`, create file "tests/fuzz.rs" or "tests/fuzz/mod.rs"
+  = note: if there is a `mod fuzz` elsewhere in the crate already, import it with `use crate::...` instead
+
+error: couldn't read `tests/../testdata/fowler/basic.toml`: No such file or directory (os error 2)
+  --> tests/lib.rs:26:17
+   |
+26 |                 include_bytes!(concat!("../testdata/", $name, ".toml"));
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+53 |     load!("fowler/basic");
+   |     --------------------- in this macro invocation
+   |
+   = note: this error originates in the macro `include_bytes` which comes from the expansion of the macro `load` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: couldn't read `tests/../testdata/fowler/nullsubexpr.toml`: No such file or directory (os error 2)
+  --> tests/lib.rs:26:17
+   |
+26 |                 include_bytes!(concat!("../testdata/", $name, ".toml"));
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+54 |     load!("fowler/nullsubexpr");
+   |     --------------------------- in this macro invocation
+   |
+   = note: this error originates in the macro `include_bytes` which comes from the expansion of the macro `load` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+error: couldn't read `tests/../testdata/fowler/repetition.toml`: No such file or directory (os error 2)
+  --> tests/lib.rs:26:17
+   |
+26 |                 include_bytes!(concat!("../testdata/", $name, ".toml"));
+   |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+55 |     load!("fowler/repetition");
+   |     -------------------------- in this macro invocation
+   |
+   = note: this error originates in the macro `include_bytes` which comes from the expansion of the macro `load` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: use of deprecated constant `std::usize::MAX`: replaced by the `MAX` associated constant on this type
+  --> tests/suite_bytes.rs:26:64
+   |
+26 |                 .take(test.match_limit().unwrap_or(std::usize::MAX))
+   |                                                                ^^^
+   |
+   = note: `#[warn(deprecated)]` on by default
+
+warning: use of deprecated constant `std::usize::MAX`: replaced by the `MAX` associated constant on this type
+  --> tests/suite_bytes.rs:35:64
+   |
+35 |                 .take(test.match_limit().unwrap_or(std::usize::MAX))
+   |                                                                ^^^
+
+warning: use of deprecated constant `std::usize::MAX`: replaced by the `MAX` associated constant on this type
+  --> tests/suite_string.rs:34:64
+   |
+34 |                 .take(test.match_limit().unwrap_or(std::usize::MAX))
+   |                                                                ^^^
+
+warning: use of deprecated constant `std::usize::MAX`: replaced by the `MAX` associated constant on this type
+  --> tests/suite_string.rs:43:64
+   |
+43 |                 .take(test.match_limit().unwrap_or(std::usize::MAX))
+   |                                                                ^^^
+
+For more information about this error, try `rustc --explain E0583`.
+warning: `regex` (test "integration") generated 4 warnings
+error: could not compile `regex` (test "integration") due to 4 previous errors; 4 warnings emitted
+warning: build failed, waiting for other jobs to finish...

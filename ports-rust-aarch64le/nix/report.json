@@ -1,0 +1,66 @@
+{
+  "crate": "nix",
+  "version": "0.31.3",
+  "arch": "aarch64le",
+  "rust_target": "aarch64-unknown-qnx",
+  "rounds": 5,
+  "note": "",
+  "patches": [
+    {
+      "rule": "nto-to-qnx",
+      "dep": "getrandom@0.3.4",
+      "reason": "getrandom 0.3.4 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0001-nto-to-qnx-getrandom-0.3.4.patch"
+    },
+    {
+      "rule": "nto-to-qnx",
+      "dep": "getrandom@0.4.1",
+      "reason": "getrandom 0.4.1 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0002-nto-to-qnx-getrandom-0.4.1.patch"
+    },
+    {
+      "rule": "libc-update",
+      "dep": "libc@0.2.186",
+      "reason": "Cargo.lock pins libc 0.2.186, which does not build for QNX 8.0; newer libc releases in the same semver range do, so update it there.",
+      "patch": "patches/0003-libc-update-libc-0.2.186.patch"
+    },
+    {
+      "rule": "nto-to-qnx",
+      "dep": "rustix@1.1.4",
+      "reason": "rustix 1.1.4 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0004-nto-to-qnx-rustix-1.1.4.patch"
+    },
+    {
+      "rule": "libc-update",
+      "dep": "libc@0.2.191",
+      "reason": "Cargo.lock pins libc 0.2.191, which does not build for QNX 8.0; newer libc releases in the same semver range do, so update it there.",
+      "patch": "patches/0005-libc-update-libc-0.2.191.patch"
+    },
+    {
+      "rule": "nto-to-qnx",
+      "dep": "getrandom@0.4.3",
+      "reason": "getrandom 0.4.3 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0006-nto-to-qnx-getrandom-0.4.3.patch"
+    },
+    {
+      "rule": "nto-to-qnx",
+      "dep": "nix-0.31.3",
+      "in_crate": true,
+      "reason": "The crate supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0007-nto-to-qnx-nix-0.31.3.patch"
+    }
+  ],
+  "build_result": "failed",
+  "errors": [
+    "error[E0432]: unresolved import `self::consts`",
+    "error[E0432]: unresolved import `self::Errno`",
+    "error[E0432]: unresolved import `crate::errno::Errno`"
+  ],
+  "test_binaries": 0,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ignored": 0,
+  "tests_ran": false,
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "minutes": 0.4
+}

@@ -1,0 +1,4 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/uuid/work/src/uuid-1.29.2
+PASS  lib:uuid (exit 0): 62 passed, 0 failed, 0 ignored
+
+62/62 tests passed on the QNX target (0 ignored)

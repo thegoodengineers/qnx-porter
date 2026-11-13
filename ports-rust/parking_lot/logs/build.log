@@ -1,0 +1,41 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/parking_lot/work/src/parking_lot-0.13.0)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded cpufeatures v0.3.1
+  Downloaded embedded-io v0.6.1
+  Downloaded scopeguard v1.2.0
+  Downloaded cobs v0.3.0
+  Downloaded embedded-io v0.4.0
+  Downloaded rand_core v0.10.1
+  Downloaded thiserror v2.0.21
+  Downloaded thiserror-impl v2.0.21
+  Downloaded chacha20 v0.10.2
+  Downloaded parking_lot_core v0.10.0
+  Downloaded lock_api v0.5.0
+  Downloaded smallvec v1.16.3
+  Downloaded postcard v1.1.3
+  Downloaded getrandom v0.4.3
+  Downloaded rand v0.10.3
+   Compiling thiserror v2.0.21
+   Compiling syn v3.0.9
+   Compiling rand_core v0.10.1
+   Compiling getrandom v0.4.3
+   Compiling serde v1.0.229
+   Compiling cpufeatures v0.3.1
+   Compiling smallvec v1.16.3
+   Compiling scopeguard v1.2.0
+   Compiling lock_api v0.5.0
+   Compiling parking_lot_core v0.10.0
+   Compiling chacha20 v0.10.2
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.4.3/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.4.3/src/backends.rs:185:9
+    |
+185 | /         compile_error!(concat!(
+186 | |             "target is not supported. You may need to define a custom backend see: \
+187 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+188 | |         ));
+    | |__________^
+
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

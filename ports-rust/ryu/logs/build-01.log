@@ -1,0 +1,25 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/ryu/work/src/ryu-1.0.23)
+
+   Compiling libc v0.2.180
+   Compiling getrandom v0.4.1
+error[E0432]: unresolved import `unistd`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.180/src/new/mod.rs:230:17
+    |
+230 |         pub use unistd::*;
+    |                 ^^^^^^ use of unresolved module or unlinked crate `unistd`
+    |
+    = help: if you wanted to use a crate named `unistd`, use `cargo add unistd` to add it to your `Cargo.toml`
+
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.4.1/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.4.1/src/backends.rs:185:9
+    |
+185 | /         compile_error!(concat!(
+186 | |             "target is not supported. You may need to define a custom backend see: \
+187 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+188 | |         ));
+    | |__________^
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...
+error: could not compile `libc` (lib) due to 1 previous error

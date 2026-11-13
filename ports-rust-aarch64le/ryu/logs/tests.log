@@ -1,0 +1,12 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/ryu/work/src/ryu-1.0.23
+PASS  test:d2s_intrinsics_test (exit 0): 1 passed, 0 failed, 0 ignored
+PASS  lib:ryu (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:s2d_test (exit 0): 9 passed, 0 failed, 0 ignored
+PASS  test:exhaustive (exit 0): 0 passed, 0 failed, 1 ignored
+PASS  test:d2s_table_test (exit 0): 2 passed, 0 failed, 0 ignored
+PASS  test:f2s_test (exit 0): 12 passed, 0 failed, 0 ignored
+PASS  test:s2f_test (exit 0): 4 passed, 0 failed, 0 ignored
+PASS  test:common_test (exit 0): 6 passed, 0 failed, 0 ignored
+PASS  test:d2s_test (exit 0): 12 passed, 0 failed, 0 ignored
+
+46/46 tests passed on the QNX target (1 ignored)

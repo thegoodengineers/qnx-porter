@@ -1,0 +1,25 @@
+{
+  "crate": "parking_lot",
+  "version": "0.13.0",
+  "arch": "aarch64le",
+  "rust_target": "aarch64-unknown-qnx",
+  "rounds": 2,
+  "note": "",
+  "patches": [
+    {
+      "rule": "nto-to-qnx",
+      "dep": "getrandom@0.4.3",
+      "reason": "getrandom 0.4.3 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0001-nto-to-qnx-getrandom-0.4.3.patch"
+    }
+  ],
+  "build_result": "built",
+  "errors": [],
+  "test_binaries": 3,
+  "tests_passed": 100,
+  "tests_total": 100,
+  "tests_ignored": 0,
+  "tests_ran": true,
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "minutes": 3.1
+}

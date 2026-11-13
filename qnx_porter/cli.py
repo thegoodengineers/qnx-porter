@@ -27,6 +27,14 @@ def main(argv=None) -> int:
         s.add_argument("--max-rounds", type=int, default=15)
         s.add_argument("--no-model", action="store_true", help="deterministic rules only")
 
+    c = sub.add_parser("crate", help="port one Rust crate from crates.io and run its tests on QNX")
+    c.add_argument("name")
+    c.add_argument("--version", required=True, help="crate version, e.g. 1.0.154")
+    c.add_argument("--arch", default="x86_64", choices=sorted(qnx.ARCHES))
+    c.add_argument("--target", help="QNX target for tests, user@host[:port]")
+    c.add_argument("--target-dir", default="/data/qnx-porter", help="scratch folder on the target")
+    c.add_argument("--out", default="ports-rust", help="where crate folders are written")
+
     d = sub.add_parser("detect", help="print the build system of a source folder")
     d.add_argument("path")
     dr = sub.add_parser("doctor", help="check the QNX SDP 8.0 install, host tools and (optionally) the target")
@@ -51,6 +59,10 @@ def main(argv=None) -> int:
     if a.cmd == "selftest":
         return selftest(Path(a.out))
     target = Target.parse(a.target, a.target_dir) if a.target else None
+    if a.cmd == "crate":
+        from . import crate
+        r = crate.port(a.name, a.version, Path(a.out), arch=a.arch, target=target)
+        return 0 if r["build_result"] == "built" else 1
     r = agent.port(a.url, a.tag, Path(a.out), arch=a.arch, target=target, max_rounds=a.max_rounds,
                    use_llm=not a.no_model, extra_args=tuple(a.arg), name=a.name, subdir=a.subdir)
     return 0 if r["build_result"] == "built" else 1

@@ -1,0 +1,25 @@
+{
+  "crate": "socket2",
+  "version": "0.6.5",
+  "arch": "aarch64le",
+  "rust_target": "aarch64-unknown-qnx",
+  "rounds": 2,
+  "note": "",
+  "patches": [
+    {
+      "rule": "libc-update",
+      "dep": "libc@0.2.172",
+      "reason": "Cargo.lock pins libc 0.2.172, which does not build for QNX 8.0; newer libc releases in the same semver range do, so update it there.",
+      "patch": "patches/0001-libc-update-libc-0.2.172.patch"
+    }
+  ],
+  "build_result": "built",
+  "errors": [],
+  "test_binaries": 1,
+  "tests_passed": 10,
+  "tests_total": 10,
+  "tests_ignored": 0,
+  "tests_ran": true,
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "minutes": 0.2
+}

@@ -1,0 +1,31 @@
+{
+  "crate": "memchr",
+  "version": "2.8.3",
+  "arch": "aarch64le",
+  "rust_target": "aarch64-unknown-qnx",
+  "rounds": 3,
+  "note": "",
+  "patches": [
+    {
+      "rule": "libc-update",
+      "dep": "libc@0.2.176",
+      "reason": "Cargo.lock pins libc 0.2.176, which does not build for QNX 8.0; newer libc releases in the same semver range do, so update it there.",
+      "patch": "patches/0001-libc-update-libc-0.2.176.patch"
+    },
+    {
+      "rule": "nto-to-qnx",
+      "dep": "getrandom@0.2.16",
+      "reason": "getrandom 0.2.16 supports QNX 7 (`target_os = \"nto\"`) but not QNX 8.0 (`target_os = \"qnx\"`); let QNX 8.0 take the QNX 7 code path.",
+      "patch": "patches/0002-nto-to-qnx-getrandom-0.2.16.patch"
+    }
+  ],
+  "build_result": "built",
+  "errors": [],
+  "test_binaries": 1,
+  "tests_passed": 112,
+  "tests_total": 112,
+  "tests_ignored": 0,
+  "tests_ran": true,
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "minutes": 4.1
+}

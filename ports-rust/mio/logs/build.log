@@ -1,0 +1,27 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/mio/work/src/mio-1.2.4)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded cfg-if v1.0.0
+  Downloaded env_logger v0.11.8
+  Downloaded env_filter v0.1.4
+  Downloaded rand_core v0.9.3
+  Downloaded log v0.4.27
+  Downloaded zerocopy v0.8.24
+  Downloaded libc v0.2.183
+   Compiling zerocopy v0.8.24
+   Compiling libc v0.2.183
+   Compiling cfg-if v1.0.0
+   Compiling log v0.4.27
+   Compiling getrandom v0.3.4
+error: target is not supported. You may need to define a custom backend see: https://docs.rs/getrandom/0.3.4/#custom-backend
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.3.4/src/backends.rs:204:9
+    |
+204 | /         compile_error!(concat!(
+205 | |             "target is not supported. You may need to define a custom backend see: \
+206 | |             https://docs.rs/getrandom/", env!("CARGO_PKG_VERSION"), "/#custom-backend"
+207 | |         ));
+    | |__________^
+
+error: could not compile `getrandom` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

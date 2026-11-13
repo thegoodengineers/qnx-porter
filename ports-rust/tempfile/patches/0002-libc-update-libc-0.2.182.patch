@@ -1,0 +1,19 @@
+Subject: [qnx-porter 0002] libc-update
+Source: deterministic rule
+Reason: Cargo.lock pins libc 0.2.182, which does not build for QNX 8.0; newer libc releases in the same semver range do, so update it there.
+---
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -120,9 +120,9 @@
+ 
+ [[package]]
+ name = "libc"
+-version = "0.2.182"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "6800badb6cb2082ffd7b6a67e6125bb39f18782f793520caee8cb8846be06112"
++version = "0.2.191"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a"
+ 
+ [[package]]
+ name = "linux-raw-sys"

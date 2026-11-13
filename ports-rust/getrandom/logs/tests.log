@@ -1,0 +1,6 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/getrandom/work/src/getrandom-0.4.3
+PASS  lib:getrandom (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:sys_rng (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:mod (exit 0): 9 passed, 0 failed, 0 ignored
+
+9/9 tests passed on the QNX target (0 ignored)

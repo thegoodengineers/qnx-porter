@@ -1,0 +1,10 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/smallvec/work/src/smallvec-1.16.5)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded bincode v1.3.3
+   Compiling serde_core v1.0.229
+   Compiling serde v1.0.229
+   Compiling smallvec v1.16.5 (/home/chirag/qnx-porter-rust/ports-rust/smallvec/work/src/smallvec-1.16.5)
+   Compiling bincode v1.3.3
+    Finished `release` profile [optimized] target(s) in 8.15s

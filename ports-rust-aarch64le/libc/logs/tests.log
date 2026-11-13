@@ -1,0 +1,5 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/libc/work/src/libc-0.2.191
+PASS  lib:libc (exit 0): 17 passed, 0 failed, 0 ignored
+PASS  test:const_fn (exit 0): 0 passed, 0 failed, 0 ignored
+
+17/17 tests passed on the QNX target (0 ignored)

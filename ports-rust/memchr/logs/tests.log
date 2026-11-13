@@ -1,0 +1,4 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/memchr/work/src/memchr-2.8.3
+PASS  lib:memchr (exit 0): 142 passed, 0 failed, 0 ignored
+
+142/142 tests passed on the QNX target (0 ignored)

@@ -1,0 +1,35 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/chrono/work/src/chrono-0.4.45)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded windows-threading v0.2.1
+  Downloaded windows-link v0.2.1
+  Downloaded zmij v1.0.12
+  Downloaded quote v1.0.43
+  Downloaded iana-time-zone v0.1.64
+  Downloaded console v0.16.3
+  Downloaded proc-macro2 v1.0.105
+  Downloaded libm v0.2.15
+  Downloaded unicode-segmentation v1.12.0
+  Downloaded bstr v1.12.1
+  Downloaded regex-automata v0.4.13
+  Downloaded similar-asserts v2.0.0
+  Downloaded similar v3.1.1
+  Downloaded windows-bindgen v0.66.0
+   Compiling proc-macro2 v1.0.105
+   Compiling quote v1.0.43
+   Compiling serde v1.0.228
+   Compiling zmij v1.0.12
+   Compiling num-traits v0.2.19
+   Compiling libc v0.2.180
+error[E0432]: unresolved import `unistd`
+   --> /home/chirag/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/libc-0.2.180/src/new/mod.rs:230:17
+    |
+230 |         pub use unistd::*;
+    |                 ^^^^^^ use of unresolved module or unlinked crate `unistd`
+    |
+    = help: if you wanted to use a crate named `unistd`, use `cargo add unistd` to add it to your `Cargo.toml`
+
+For more information about this error, try `rustc --explain E0432`.
+error: could not compile `libc` (lib) due to 1 previous error
+warning: build failed, waiting for other jobs to finish...

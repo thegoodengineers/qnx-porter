@@ -1,0 +1,20 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics --config patch.crates-io.getrandom_0_4_3.path="/home/chirag/qnx-porter-rust/ports-rust/flate2/work/vendor/getrandom-0.4.3" --config patch.crates-io.getrandom_0_4_3.package="getrandom" --config patch.crates-io.getrandom_0_3_4.path="/home/chirag/qnx-porter-rust/ports-rust/flate2/work/vendor/getrandom-0.3.4" --config patch.crates-io.getrandom_0_3_4.package="getrandom"  (in /home/chirag/qnx-porter-rust/ports-rust/flate2/work/src/flate2-1.1.11)
+
+     Locking 2 packages to highest compatible versions
+      Adding getrandom v0.3.4 (/home/chirag/qnx-porter-rust/ports-rust/flate2/work/vendor/getrandom-0.3.4)
+      Adding getrandom v0.4.3 (/home/chirag/qnx-porter-rust/ports-rust/flate2/work/vendor/getrandom-0.4.3)
+warning: patch `getrandom v0.3.4 (/home/chirag/qnx-porter-rust/ports-rust/flate2/work/vendor/getrandom-0.3.4)` was not used in the crate graph
+warning: patch `getrandom v0.4.3 (/home/chirag/qnx-porter-rust/ports-rust/flate2/work/vendor/getrandom-0.4.3)` was not used in the crate graph
+help: Check that the patched package version and available features are compatible
+      with the dependency requirements. If the patch has a different version from
+      what is locked in the Cargo.lock file, run `cargo update` to use the new
+      version. This may also occur with an optional dependency that is not enabled.
+   Compiling getrandom v0.3.4 (/home/chirag/qnx-porter-rust/ports-rust/flate2/work/vendor/getrandom-0.3.4)
+   Compiling getrandom v0.4.3 (/home/chirag/qnx-porter-rust/ports-rust/flate2/work/vendor/getrandom-0.4.3)
+   Compiling rand v0.10.3
+   Compiling rand_core v0.9.5
+   Compiling rand_chacha v0.9.0
+   Compiling rand v0.9.5
+   Compiling quickcheck v1.1.0
+   Compiling flate2 v1.1.11 (/home/chirag/qnx-porter-rust/ports-rust/flate2/work/src/flate2-1.1.11)
+    Finished `release` profile [optimized] target(s) in 11.22s

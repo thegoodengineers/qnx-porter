@@ -1,0 +1,4 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target aarch64-unknown-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/socket2/work/src/socket2-0.6.5)
+
+   Compiling socket2 v0.6.5 (/home/chirag/qnx-porter-rust/ports-rust-aarch64le/socket2/work/src/socket2-0.6.5)
+    Finished `release` profile [optimized] target(s) in 0.48s

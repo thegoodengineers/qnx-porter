@@ -1,0 +1,16 @@
+every test binary runs on root@172.31.1.11 over ssh, in /home/chirag/qnx-porter-rust/ports-rust/bytes/work/src/bytes-1.12.1
+PASS  test:test_serde (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:test_debug (exit 0): 1 passed, 0 failed, 0 ignored
+PASS  test:test_buf (exit 0): 875 passed, 0 failed, 0 ignored
+PASS  test:test_bytes (exit 0): 118 passed, 0 failed, 0 ignored
+PASS  test:test_take (exit 0): 4 passed, 0 failed, 0 ignored
+PASS  test:test_bytes_vec_alloc (exit 0): 4 passed, 0 failed, 0 ignored
+PASS  test:test_iter (exit 0): 2 passed, 0 failed, 0 ignored
+PASS  test:test_chain (exit 0): 7 passed, 0 failed, 0 ignored
+PASS  test:test_limit (exit 0): 8 passed, 0 failed, 0 ignored
+PASS  lib:bytes (exit 0): 2 passed, 0 failed, 0 ignored
+PASS  test:test_buf_mut (exit 0): 23 passed, 0 failed, 0 ignored
+PASS  test:test_bytes_odd_alloc (exit 0): 8 passed, 0 failed, 0 ignored
+PASS  test:test_reader (exit 0): 3 passed, 0 failed, 0 ignored
+
+1055/1055 tests passed on the QNX target (0 ignored)

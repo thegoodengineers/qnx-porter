@@ -1,0 +1,4 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/libc/work/src/libc-0.2.191)
+
+   Compiling libc v0.2.191 (/home/chirag/qnx-porter-rust/ports-rust/libc/work/src/libc-0.2.191)
+    Finished `release` profile [optimized] target(s) in 1.90s

@@ -1,0 +1,18 @@
+every test binary runs on root@172.31.1.12 over ssh, in /home/chirag/qnx-porter-rust/ports-rust-aarch64le/crossbeam-channel/work/src/crossbeam-channel-0.5.17
+PASS  test:iter (exit 0): 5 passed, 0 failed, 0 ignored
+PASS  test:ready (exit 0): 24 passed, 0 failed, 0 ignored
+PASS  test:tick (exit 0): 14 passed, 0 failed, 0 ignored
+PASS  test:mpsc (exit 0): 127 passed, 0 failed, 0 ignored
+PASS  test:select_macro (exit 0): 59 passed, 0 failed, 0 ignored
+PASS  lib:crossbeam_channel (exit 0): 0 passed, 0 failed, 0 ignored
+PASS  test:never (exit 0): 7 passed, 0 failed, 0 ignored
+PASS  test:golang (exit 0): 26 passed, 0 failed, 0 ignored
+PASS  test:thread_locals (exit 0): 1 passed, 0 failed, 0 ignored
+PASS  test:list (exit 0): 26 passed, 0 failed, 0 ignored
+PASS  test:array (exit 0): 27 passed, 0 failed, 0 ignored
+PASS  test:same_channel (exit 0): 7 passed, 0 failed, 0 ignored
+PASS  test:select (exit 0): 32 passed, 0 failed, 0 ignored
+PASS  test:after (exit 0): 14 passed, 0 failed, 0 ignored
+PASS  test:zero (exit 0): 22 passed, 0 failed, 0 ignored
+
+391/391 tests passed on the QNX target (0 ignored)

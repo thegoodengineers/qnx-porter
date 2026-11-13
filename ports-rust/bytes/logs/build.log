@@ -1,0 +1,10 @@
+$ cargo +nightly test --release --no-run -Zbuild-std --target x86_64-pc-qnx --message-format=json-render-diagnostics  (in /home/chirag/qnx-porter-rust/ports-rust/bytes/work/src/bytes-1.12.1)
+
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded serde_test v1.0.177
+   Compiling serde_core v1.0.228
+   Compiling serde v1.0.228
+   Compiling bytes v1.12.1 (/home/chirag/qnx-porter-rust/ports-rust/bytes/work/src/bytes-1.12.1)
+   Compiling serde_test v1.0.177
+    Finished `release` profile [optimized] target(s) in 18.55s
