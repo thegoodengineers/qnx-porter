@@ -7,6 +7,6 @@ xxHash `v0.8.2` (https://github.com/Cyan4973/xxHash.git). On a QNX 8.0 x86_64 ta
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v0.8.2 https://github.com/Cyan4973/xxHash.git xxHash
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v0.8.2 https://github.com/Cyan4973/xxHash.git xxHash
 QNX_PROJECT_ROOT="$(pwd)/xxHash" make -C build-files/ports/xxHash install JLEVEL=4
 ```

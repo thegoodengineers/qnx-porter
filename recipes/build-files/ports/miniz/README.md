@@ -7,6 +7,6 @@ miniz `3.0.2` (https://github.com/richgel999/miniz.git). On a QNX 8.0 x86_64 tar
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 3.0.2 https://github.com/richgel999/miniz.git miniz
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 3.0.2 https://github.com/richgel999/miniz.git miniz
 QNX_PROJECT_ROOT="$(pwd)/miniz" make -C build-files/ports/miniz install JLEVEL=4
 ```

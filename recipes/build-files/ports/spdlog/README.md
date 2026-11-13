@@ -7,7 +7,7 @@ spdlog `v1.15.0` (https://github.com/gabime/spdlog.git). On a QNX 8.0 x86_64 tar
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.15.0 https://github.com/gabime/spdlog.git spdlog
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.15.0 https://github.com/gabime/spdlog.git spdlog
 QNX_PROJECT_ROOT="$(pwd)/spdlog" make -C build-files/ports/spdlog install JLEVEL=4
 ```
 

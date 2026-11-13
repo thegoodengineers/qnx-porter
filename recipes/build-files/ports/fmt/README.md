@@ -7,7 +7,7 @@ fmt `11.0.2` (https://github.com/fmtlib/fmt.git). On a QNX 8.0 x86_64 target (QE
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 11.0.2 https://github.com/fmtlib/fmt.git fmt
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 11.0.2 https://github.com/fmtlib/fmt.git fmt
 QNX_PROJECT_ROOT="$(pwd)/fmt" make -C build-files/ports/fmt install JLEVEL=4
 ```
 

@@ -7,7 +7,7 @@ capstone `5.0.3` (https://github.com/capstone-engine/capstone.git). On a QNX 8.0
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 5.0.3 https://github.com/capstone-engine/capstone.git capstone
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 5.0.3 https://github.com/capstone-engine/capstone.git capstone
 git -C capstone apply ../build-files/ports/capstone/qnx.patch
 QNX_PROJECT_ROOT="$(pwd)/capstone" make -C build-files/ports/capstone install JLEVEL=4
 ```

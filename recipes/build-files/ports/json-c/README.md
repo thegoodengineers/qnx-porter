@@ -7,7 +7,7 @@ json-c `json-c-0.18-20240915` (https://github.com/json-c/json-c.git). On a QNX 8
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch json-c-0.18-20240915 https://github.com/json-c/json-c.git json-c
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch json-c-0.18-20240915 https://github.com/json-c/json-c.git json-c
 git -C json-c apply ../build-files/ports/json-c/qnx.patch
 QNX_PROJECT_ROOT="$(pwd)/json-c" make -C build-files/ports/json-c install JLEVEL=4
 ```

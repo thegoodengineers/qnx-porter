@@ -7,7 +7,7 @@ nng `v1.9.0` (https://github.com/nanomsg/nng.git). On a QNX 8.0 x86_64 target (Q
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.9.0 https://github.com/nanomsg/nng.git nng
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.9.0 https://github.com/nanomsg/nng.git nng
 git -C nng apply ../build-files/ports/nng/qnx.patch
 QNX_PROJECT_ROOT="$(pwd)/nng" make -C build-files/ports/nng install JLEVEL=4
 ```

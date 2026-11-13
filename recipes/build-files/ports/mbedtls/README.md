@@ -7,7 +7,7 @@ mbedtls `v3.6.2` (https://github.com/Mbed-TLS/mbedtls.git). On a QNX 8.0 x86_64 
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v3.6.2 https://github.com/Mbed-TLS/mbedtls.git mbedtls
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v3.6.2 https://github.com/Mbed-TLS/mbedtls.git mbedtls
 QNX_PROJECT_ROOT="$(pwd)/mbedtls" make -C build-files/ports/mbedtls install JLEVEL=4
 ```
 

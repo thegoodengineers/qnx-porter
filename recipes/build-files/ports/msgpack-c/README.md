@@ -7,6 +7,6 @@ msgpack-c `c-6.1.0` (https://github.com/msgpack/msgpack-c.git). On a QNX 8.0 x86
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch c-6.1.0 https://github.com/msgpack/msgpack-c.git msgpack-c
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch c-6.1.0 https://github.com/msgpack/msgpack-c.git msgpack-c
 QNX_PROJECT_ROOT="$(pwd)/msgpack-c" make -C build-files/ports/msgpack-c install JLEVEL=4
 ```

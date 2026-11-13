@@ -7,7 +7,7 @@ libsrtp `v2.6.0` (https://github.com/cisco/libsrtp.git). On a QNX 8.0 x86_64 tar
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v2.6.0 https://github.com/cisco/libsrtp.git libsrtp
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v2.6.0 https://github.com/cisco/libsrtp.git libsrtp
 QNX_PROJECT_ROOT="$(pwd)/libsrtp" make -C build-files/ports/libsrtp install JLEVEL=4
 ```
 

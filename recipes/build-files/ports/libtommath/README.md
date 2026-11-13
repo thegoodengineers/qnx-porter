@@ -7,6 +7,6 @@ libtommath `v1.3.0` (https://github.com/libtom/libtommath.git). On a QNX 8.0 x86
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.3.0 https://github.com/libtom/libtommath.git libtommath
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.3.0 https://github.com/libtom/libtommath.git libtommath
 QNX_PROJECT_ROOT="$(pwd)/libtommath" make -C build-files/ports/libtommath install JLEVEL=4
 ```

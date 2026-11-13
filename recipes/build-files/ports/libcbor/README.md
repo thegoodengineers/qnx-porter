@@ -7,6 +7,6 @@ libcbor `v0.11.0` (https://github.com/PJK/libcbor.git). On a QNX 8.0 x86_64 targ
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v0.11.0 https://github.com/PJK/libcbor.git libcbor
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v0.11.0 https://github.com/PJK/libcbor.git libcbor
 QNX_PROJECT_ROOT="$(pwd)/libcbor" make -C build-files/ports/libcbor install JLEVEL=4
 ```

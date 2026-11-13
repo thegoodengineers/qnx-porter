@@ -17,6 +17,10 @@ set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -Vgcc_nto${CMAKE_SYSTEM_PROCESSOR}" CACH
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${EXTRA_CMAKE_LINKER_FLAGS}" CACHE STRING "exe_linker_flags")
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${EXTRA_CMAKE_LINKER_FLAGS}" CACHE STRING "so_linker_flags")
 set(CMAKE_FIND_ROOT_PATH "$ENV{QNX_TARGET}" "$ENV{QNX_TARGET}/${CMAKE_SYSTEM_PROCESSOR}")
+# common.mk's empty rt/dl/pthread archives are in <build>/stubs, outside the SDP. find_library re-roots every
+# search path under each root path (CMake 3.22 even an absolute one already inside a root), so the build folder
+# is a root and common.mk passes CMAKE_LIBRARY_PATH=/stubs, which finds <build>/stubs/librt.a.
+list(APPEND CMAKE_FIND_ROOT_PATH "${CMAKE_BINARY_DIR}")
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)

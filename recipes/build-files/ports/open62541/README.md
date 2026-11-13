@@ -7,6 +7,6 @@ open62541 `v1.4.6` (https://github.com/open62541/open62541.git). On a QNX 8.0 x8
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v1.4.6 https://github.com/open62541/open62541.git open62541
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v1.4.6 https://github.com/open62541/open62541.git open62541
 QNX_PROJECT_ROOT="$(pwd)/open62541" make -C build-files/ports/open62541 install JLEVEL=4
 ```

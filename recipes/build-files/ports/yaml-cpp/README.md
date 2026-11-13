@@ -7,7 +7,7 @@ yaml-cpp `0.8.0` (https://github.com/jbeder/yaml-cpp.git). On a QNX 8.0 x86_64 t
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch 0.8.0 https://github.com/jbeder/yaml-cpp.git yaml-cpp
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch 0.8.0 https://github.com/jbeder/yaml-cpp.git yaml-cpp
 QNX_PROJECT_ROOT="$(pwd)/yaml-cpp" make -C build-files/ports/yaml-cpp install JLEVEL=4
 ```
 

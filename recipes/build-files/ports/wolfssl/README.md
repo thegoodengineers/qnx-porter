@@ -7,7 +7,7 @@ wolfssl `v5.7.4-stable` (https://github.com/wolfSSL/wolfssl.git). On a QNX 8.0 x
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v5.7.4-stable https://github.com/wolfSSL/wolfssl.git wolfssl
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v5.7.4-stable https://github.com/wolfSSL/wolfssl.git wolfssl
 QNX_PROJECT_ROOT="$(pwd)/wolfssl" make -C build-files/ports/wolfssl install JLEVEL=4
 ```
 

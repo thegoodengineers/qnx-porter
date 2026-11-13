@@ -7,6 +7,6 @@ Micro-CDR `v2.0.1` (https://github.com/eProsima/Micro-CDR.git). On a QNX 8.0 x86
 ## Build
 ```bash
 source ~/qnx800/qnxsdp-env.sh
-git clone --depth 1 --branch v2.0.1 https://github.com/eProsima/Micro-CDR.git Micro-CDR
+git clone --depth 1 --recurse-submodules --shallow-submodules --branch v2.0.1 https://github.com/eProsima/Micro-CDR.git Micro-CDR
 QNX_PROJECT_ROOT="$(pwd)/Micro-CDR" make -C build-files/ports/Micro-CDR install JLEVEL=4
 ```
