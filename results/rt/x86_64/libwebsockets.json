@@ -1,0 +1,84 @@
+{
+ "library": "libwebsockets",
+ "arch": "x86_64",
+ "commit": "4415e84c095857629863804e941b9e1c2e9347ef",
+ "generated": "2026-11-13T11:01:37+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 590,
+  "lines": 250642,
+  "hazards": {
+   "heap": {
+    "count": 226,
+    "examples": [
+     "lib/abstract/abstract.c:256",
+     "lib/abstract/protocols/smtp/smtp-sequencer.c:299",
+     "lib/core/alloc.c:63"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 410,
+    "examples": [
+     "include/libwebsockets.h:454",
+     "include/libwebsockets.h:455",
+     "include/libwebsockets.h:456"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 20,
+    "examples": [
+     "lib/plat/unix/unix-misc.c:39",
+     "lwsws/main.c:218",
+     "lwsws/main.c:226"
+    ],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 9,
+    "examples": [
+     "lib/plat/unix/unix-spawn.c:447",
+     "lib/plat/unix/unix-spawn.c:449",
+     "lib/plat/unix/unix-spawn.c:557"
+    ],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 119,
+    "examples": [
+     "lib/core/libwebsockets.c:1439",
+     "lib/plat/unix/unix-init.c:50",
+     "lib/plat/unix/unix-init.c:51"
+    ],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 11,
+    "examples": [
+     "minimal-examples/http-client/minimal-http-client-attach/minimal-http-client-attach.c:233",
+     "minimal-examples/http-server/minimal-http-server-eventlib-smp/minimal-http-server-eventlib-smp.c:158",
+     "minimal-examples/http-server/minimal-http-server-smp/minimal-http-server-smp.c:128"
+    ],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 21,
+    "examples": [
+     "include/libwebsockets.h:340",
+     "lib/core/libwebsockets.c:1314",
+     "lib/core-net/private-lib-core-net.h:1003"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 0,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 0,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

@@ -1,0 +1,70 @@
+{
+ "library": "capstone",
+ "arch": "x86_64",
+ "commit": "5cca00533dadfe53181f1de3525f859769f69b65",
+ "generated": "2026-11-13T11:01:11+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 559,
+  "lines": 232671,
+  "hazards": {
+   "heap": {
+    "count": 139,
+    "examples": [
+     "cstool/cstool.c:159",
+     "cstool/cstool.c:629",
+     "suite/synctools/tablegen/include/llvm/CodeGen/GlobalISel/LegalizationArtifactCombiner.h:1071"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 510,
+    "examples": [
+     "Mapping.c:103",
+     "Mapping.c:128",
+     "Mapping.c:152"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 0,
+    "examples": [],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 0,
+    "examples": [],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 1,
+    "examples": [
+     "suite/synctools/tablegen/include/llvm/CodeGen/ExecutionDomainFix.h:183"
+    ],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 0,
+    "examples": [],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 4,
+    "examples": [
+     "suite/synctools/tablegen/include/llvm/IR/ValueMap.h:264",
+     "suite/synctools/tablegen/include/llvm/IR/ValueMap.h:266",
+     "suite/synctools/tablegen/include/llvm/IR/ValueMap.h:277"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 40,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 40,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

@@ -1,0 +1,78 @@
+{
+ "library": "paho.mqtt.c",
+ "arch": "x86_64",
+ "commit": "2150ba29d9df24ad1733c460eb099f292af84ee5",
+ "generated": "2026-11-13T11:02:16+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 64,
+  "lines": 31286,
+  "hazards": {
+   "heap": {
+    "count": 566,
+    "examples": [
+     "src/Heap.c:169",
+     "src/Heap.c:177",
+     "src/Heap.c:180"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 152,
+    "examples": [
+     "src/Base64.c:259",
+     "src/Base64.c:347",
+     "src/Base64.c:349"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 11,
+    "examples": [
+     "src/MQTTAsyncUtils.c:114",
+     "src/MQTTTime.c:33",
+     "src/OsWrapper.c:21"
+    ],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 0,
+    "examples": [],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 3,
+    "examples": [
+     "src/Socket.c:136",
+     "src/Socket.c:140",
+     "src/Socket.c:143"
+    ],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 1,
+    "examples": [
+     "src/Thread.c:75"
+    ],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 5,
+    "examples": [
+     "src/SSLSocket.c:366",
+     "src/Thread.c:153",
+     "src/Thread.c:430"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 20,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 20,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

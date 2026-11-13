@@ -1,0 +1,64 @@
+{
+ "library": "tinyxml2",
+ "arch": "x86_64",
+ "commit": "321ea883b7190d4e85cae5512a12e5eaa8f8731f",
+ "generated": "2026-11-13T11:02:22+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 3,
+  "lines": 8164,
+  "hazards": {
+   "heap": {
+    "count": 27,
+    "examples": [
+     "tinyxml2.cpp:76",
+     "tinyxml2.cpp:78",
+     "tinyxml2.cpp:191"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 44,
+    "examples": [
+     "tinyxml2.cpp:2334",
+     "tinyxml2.cpp:2417",
+     "tinyxml2.cpp:2554"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 0,
+    "examples": [],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 0,
+    "examples": [],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 0,
+    "examples": [],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 0,
+    "examples": [],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 0,
+    "examples": [],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 60,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 60,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

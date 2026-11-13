@@ -1,0 +1,81 @@
+{
+ "library": "mosquitto",
+ "arch": "x86_64",
+ "commit": "a196c2b244f248072a6b3ac8fb3f00ce0ff63dea",
+ "generated": "2026-11-13T11:02:12+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 154,
+  "lines": 51588,
+  "hazards": {
+   "heap": {
+    "count": 179,
+    "examples": [
+     "client/client_shared.c:210",
+     "client/client_shared.c:211",
+     "client/client_shared.c:212"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 584,
+    "examples": [
+     "client/client_props.c:76",
+     "client/client_props.c:82",
+     "client/client_props.c:88"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 3,
+    "examples": [
+     "client/pub_client.c:255",
+     "client/pub_client.c:322",
+     "lib/thread_mosq.c:118"
+    ],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 1,
+    "examples": [
+     "src/mosquitto.c:147"
+    ],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 12,
+    "examples": [
+     "client/rr_client.c:356",
+     "client/rr_client.c:362",
+     "client/sub_client.c:383"
+    ],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 2,
+    "examples": [
+     "lib/pthread_compat.h:7",
+     "lib/thread_mosq.c:45"
+    ],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 46,
+    "examples": [
+     "lib/actions.c:158",
+     "lib/callbacks.c:27",
+     "lib/callbacks.c:34"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 0,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 0,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

@@ -1,0 +1,60 @@
+{
+ "library": "nanopb",
+ "arch": "x86_64",
+ "commit": "98bf4db69897b53434f3d0ba72e0a3ab1a902824",
+ "generated": "2026-11-13T11:02:12+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 16,
+  "lines": 5997,
+  "hazards": {
+   "heap": {
+    "count": 6,
+    "examples": [
+     "extra/pb_syshdr.h:69",
+     "extra/pb_syshdr.h:70",
+     "pb.h:483"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 0,
+    "examples": [],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 0,
+    "examples": [],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 0,
+    "examples": [],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 0,
+    "examples": [],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 0,
+    "examples": [],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 0,
+    "examples": [],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 80,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 80,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}

@@ -1,0 +1,29 @@
+library,arch,commit,platform,target,iterations,cpus,call,idle_min_us,idle_median_us,idle_p99_us,idle_p999_us,idle_max_us,loaded_min_us,loaded_median_us,loaded_p99_us,loaded_p999_us,loaded_max_us,loaded_isolated_min_us,loaded_isolated_median_us,loaded_isolated_p99_us,loaded_isolated_p999_us,loaded_isolated_max_us,static_score,rt_score,error
+BLAKE3,x86_64,95e42b84fc4709974c7b23c7ae885989ab36c31e,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,BLAKE3 of 1 KB,1.133,1.168,1.985,12.723,53.193,1.489,2.23,3.203,22.861,243.504,1.584,2.374,4.635,24.643,83.629,60,45,
+cglm,x86_64,1796cc5ce298235b615dc7a4750b8c3ba56a05dd,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,4x4 matrix multiply,0.006,0.007,0.008,0.026,0.086,0.008,0.009,0.024,0.034,12.301,0.007,0.01,0.027,0.032,10.929,80,62,
+cJSON,x86_64,acc76239bee01d8e9c858ae2cab296704e52d916,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,parse a 121-byte JSON document and free it,1.707,1.916,5.242,16.061,99.121,1.978,3.217,4.957,28.826,494.602,2.497,3.851,4.949,35.622,93.975,80,66,
+expat,x86_64,2691aff4304a6d7e053199c205620136481b9dd1,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,parse a 112-byte XML document,41.309,143.916,387.376,719.075,1736.177,40.874,66.004,208.874,330.356,1183.826,36.774,62.45,203.315,340.688,3285.562,60,55,
+inih,x86_64,5cc5e2c24642513aaa5b19126aad42d0e4e0923e,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,parse a 5-line INI text,0.289,0.328,0.538,1.135,56.95,0.356,0.405,0.818,1.935,38.83,0.386,0.44,0.712,1.718,19.853,80,67,
+json-c,x86_64,41a55cfcedb54d9c1874f2f0eb07b504091d7e37,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,parse a 121-byte JSON document and free it,3.483,3.56,13.604,23.635,122.501,4.358,5.013,12.645,31.754,172.759,4.757,5.023,9.388,29.118,63.071,60,42,
+libsodium,x86_64,9511c982fb1d046470a8b42aa36556cdb7da15de,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,,BLAKE2b (crypto_generichash) of 1 KB,,,,,,,,,,,,,,,,30,,"harness did not compile: um/work/src/src/libsodium/include/sodium.h:5,
+                 from /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/wt/upstream/build/rt-bench/x86_64/libsodium/bench.c:12:
+/home/chirag/qnx-porter/ports/libsodium/work/build/src/libsodium/include/sodium/version.h:5:10: fatal error: export.h: No such file or directory
+    5 | #include ""export.h""
+      |          ^~~~~~~~~~
+compilation terminated.
+"
+lz4,x86_64,ebb370ca83af193212df4dcbadcc5d87bc0de2f0,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,LZ4 compress 1 KB,0.569,0.618,2.009,6.046,69.553,0.675,1.078,3.405,15.334,220.508,0.796,1.055,3.04,12.388,45.275,60,35,
+mbedtls,x86_64,107ea89daaefb9867ea9121002fbbdf926780e98,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,SHA-256 of 1 KB,4.076,4.165,7.909,27.511,55.134,4.881,7.643,15.405,34.925,200.975,5.057,7.992,19.015,45.752,346.764,30,11,
+miniz,x86_64,293d4db1b7d0ffee9756d035b9ac6f7431ef8492,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,deflate 1 KB (mz_compress),202.76,471.984,1178.448,1878.073,9503.397,202.841,324.266,603.301,1867.442,24295.899,214.536,315.555,615.048,3823.432,20268.595,60,56,
+msgpack-c,x86_64,445880108a1d171f755ff6ac77e03fbebbb23729,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,,pack a 5-field map into a buffer and free it,,,,,,,,,,,,,,,,60,,"harness did not compile: irag/qnx-porter/ports/msgpack-c/work/src/include/msgpack.h:17,
+                 from /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/wt/upstream/build/rt-bench/x86_64/msgpack-c/bench.c:12:
+/home/chirag/qnx-porter/ports/msgpack-c/work/src/include/msgpack/zone.h:13:10: fatal error: sysdep.h: No such file or directory
+   13 | #include ""sysdep.h""
+      |          ^~~~~~~~~~
+compilation terminated.
+"
+pcre2,x86_64,6ae58beca071f13ccfed31d03b3f479ab520639b,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,match a precompiled regex against a 56-byte line,0.197,0.317,0.374,1.371,97.425,0.139,0.197,0.233,0.298,14.575,0.181,0.252,0.304,3.101,29.684,30,30,
+xxHash,x86_64,bbb27a5efb85b92a0486cf361a8635715a53f6ba,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,XXH64 of 1 KB,0.216,0.245,0.308,0.313,119.371,0.075,0.086,0.137,0.275,16.449,0.08,0.108,0.153,0.245,10.856,60,60,
+yyjson,x86_64,9ddba001a4ea88e93b46932e5c5b87b222e19a5f,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,parse a 121-byte JSON document and free it,0.302,0.615,0.697,1.665,76.907,0.215,0.35,0.441,0.774,20.3,0.3,0.409,0.502,14.294,294.74,60,60,
+zlib,x86_64,51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,compress 1 KB (default level),6.871,7.915,17.471,36.367,80.762,8.312,10.565,139.248,338.246,589.693,9.513,10.444,24.535,44.13,175.89,60,30,
+zstd,x86_64,794ea1b0afca0f020f4e57b6732332231fb23c70,qemu,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,20000,4,zstd level 1 compress 1 KB,13.138,13.545,28.104,53.593,113.559,16.108,23.253,40.452,69.91,374.121,14.73,20.877,47.26,121.506,777.614,40,24,

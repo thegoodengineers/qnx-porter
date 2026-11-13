@@ -135,12 +135,12 @@ def test_full_run_writes_rt_json_and_csv_saying_what_was_measured(tmp_path, monk
     monkeypatch.setattr(mod.rt_bench, "compile_bench", lambda *a: (True, ""))
     monkeypatch.setattr(mod.rt_bench, "run_bench", lambda t, b, lib, n: {k: dict(run) for k in rt_bench.RUNS})
     assert mod.main(["--target", "root@10.0.0.1", "--ports", str(ports), "--n", "1000"]) == 0
-    out = json.loads((tmp_path / "ports" / "zlib" / "rt.json").read_text())
+    out = json.loads((tmp_path / "results" / "rt" / "x86_64" / "zlib.json").read_text())
     b = out["bench"]
     assert (b["iterations"], b["platform"], b["call"]) == (1000, "qemu", "compress 1 KB (default level)")
     assert "NOT representative" in b["timing_note"] and "1000 timed calls" in b["measured"]
     assert set(b["runs"]) == {"idle", "loaded", "loaded_isolated"} and out["score_basis"].startswith("static scan and")
-    nospec = json.loads((tmp_path / "ports" / "nospec" / "rt.json").read_text())
+    nospec = json.loads((tmp_path / "results" / "rt" / "x86_64" / "nospec.json").read_text())
     assert nospec["bench"]["error"].startswith("no call spec") and nospec["score_basis"] == "static scan only"
     rows = list(csv.DictReader((tmp_path / "results" / "rt.csv").open()))
     assert [r["library"] for r in rows] == ["zlib"]

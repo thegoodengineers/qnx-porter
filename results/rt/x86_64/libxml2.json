@@ -1,0 +1,70 @@
+{
+ "library": "libxml2",
+ "arch": "x86_64",
+ "commit": "de918d45e1b2276a28a4cd32bcf556bef65284e4",
+ "generated": "2026-11-13T11:01:38+00:00",
+ "qnx_porter_commit": "",
+ "scan": {
+  "files": 135,
+  "lines": 218608,
+  "hazards": {
+   "heap": {
+    "count": 109,
+    "examples": [
+     "debugXML.c:3398",
+     "debugXML.c:3411",
+     "globals.c:720"
+    ],
+    "why": "heap allocation: time is not bounded and can fail; preallocate or use a pool on hot paths"
+   },
+   "blocking_io": {
+    "count": 1641,
+    "examples": [
+     "buf.c:476",
+     "catalog.c:309",
+     "catalog.c:312"
+    ],
+    "why": "blocking I/O: the caller waits on a device, a file system or the network"
+   },
+   "sleep": {
+    "count": 0,
+    "examples": [],
+    "why": "sleeps: fine in a worker thread, a bug in a control loop"
+   },
+   "process": {
+    "count": 0,
+    "examples": [],
+    "why": "process creation: slow, and fork copies the address space"
+   },
+   "signals": {
+    "count": 0,
+    "examples": [],
+    "why": "signals: asynchronous control flow; QNX prefers pulses for event delivery"
+   },
+   "threads": {
+    "count": 1,
+    "examples": [
+     "runtest.c:4302"
+    ],
+    "why": "threads the library creates itself: their priority is not the caller's"
+   },
+   "locks": {
+    "count": 8,
+    "examples": [
+     "os400/dlfcn/dlfcn.c:121",
+     "os400/dlfcn/dlfcn.c:148",
+     "os400/dlfcn/dlfcn.c:220"
+    ],
+    "why": "locks and condition waits: the wait is as long as another thread holds the lock (unbounded unless its hold time is known); on QNX a mutex's default protocol is priority inheritance"
+   }
+  },
+  "static_score": 40,
+  "limits": "Library-wide counts of direct calls in the library's own sources. A static scan cannot tell which calls are on a hot path, and does not see calls hidden behind the library's own wrappers or macros; check the examples against the API you call."
+ },
+ "bench": {
+  "error": "no call spec in bench/specs.yaml"
+ },
+ "static_score": 40,
+ "rt_score": null,
+ "score_basis": "static scan only"
+}
