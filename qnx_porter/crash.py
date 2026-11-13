@@ -14,7 +14,7 @@ from pathlib import Path
 from .target import SSH_OPTS, Target
 
 CORE_DIRS = ["/data/var/dumper", "/var/dumps"]
-PRINTF_FMT_ARG = {"printf": 0, "fprintf": 1, "sprintf": 1, "dprintf": 1, "asprintf": 1, "snprintf": 2}
+PRINTF_FMT_ARG = {"printf": 0, "fprintf": 1, "sprintf": 1, "dprintf": 1, "asprintf": 1, "snprintf": 2, "syslog": 1}
 # Greedy up to the last ") at file:line": arguments can contain strings with parentheses in them.
 FRAME = re.compile(r"^#\d+\s+(?:0x[0-9a-f]+ in )?(?P<func>[\w.:~<>]+) \(.*\)(?: at (?P<path>\S+):(?P<line>\d+))?\s*$",
                    re.M)
@@ -70,8 +70,8 @@ def frames(bt: str) -> list[tuple[str, str, int]]:
     return out
 
 
-def printf_null(bt: str, src: Path, in_tree) -> tuple[str, str, str] | None:
-    """(rel path, reason, new text) if the crash is a NULL %s in a printf-family call in the library's code."""
+def find_printf_null_call(bt: str, src: Path, in_tree) -> tuple[str, str, int] | None:
+    """(rel path, func, line) if the backtrace is a NULL %s crash in a printf-family call in the library."""
     fr = frames(bt)
     if not fr or not fr[0][0].endswith(("strlen", "strnlen")):  # aarch64 libc: __generic_strlen
         return None
@@ -81,14 +81,24 @@ def printf_null(bt: str, src: Path, in_tree) -> tuple[str, str, str] | None:
             if not caller:
                 return None
             rel = in_tree(src, caller[0])
-            new = wrap_string_args(src / rel, func, caller[1])
-            if new is None:
-                return None
-            return rel, (f"Crash on QNX: {func}() at {rel}:{caller[1]} formats a NULL pointer with %s (backtrace: "
-                         f"strlen <- {func}). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it "
-                         "undefined. Each %s argument of that call now goes through qnx_porter_str(), which "
-                         "prints \"(null)\" like glibc."), new
+            if rel:
+                return rel, func, caller[1]
     return None
+
+
+def printf_null(bt: str, src: Path, in_tree) -> tuple[str, str, str] | None:
+    """(rel path, reason, new text) if the crash is a NULL %s in a printf-family call in the library's code."""
+    call = find_printf_null_call(bt, src, in_tree)
+    if not call:
+        return None
+    rel, func, line = call
+    new = wrap_string_args(src / rel, func, line)
+    if new is None:
+        return None
+    return rel, (f"Crash on QNX: {func}() at {rel}:{line} formats a NULL pointer with %s (backtrace: "
+                 f"strlen <- {func}). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it "
+                 "undefined. Each %s argument of that call now goes through qnx_porter_str(), which "
+                 "prints \"(null)\" like glibc."), new
 
 
 def _call_span(text: str, start: int) -> int | None:
@@ -154,38 +164,111 @@ def string_arg_positions(fmt: str) -> list[int]:
     return out
 
 
-def wrap_string_args(path: Path, func: str, line: int) -> str | None:
-    text = path.read_text(encoding="utf-8", errors="surrogateescape")
+def wrap_string_args_in_text(text: str, func: str, line: int, insert_helper: bool = True) -> str | None:
     lines = text.splitlines(keepends=True)
     offset = sum(len(x) for x in lines[:max(line - 6, 0)])
     window_end = sum(len(x) for x in lines[:line])
+    line_start = sum(len(x) for x in lines[:line - 1])
     calls = [m for m in re.finditer(rf"\b{func}\s*\(", text[offset:window_end])]
     if not calls:
         return None
-    start = offset + calls[-1].end() - 1  # the call nearest to the crash line
-    end = _call_span(text, start)
-    if end is None:
-        return None
-    args = _split_args(text[start + 1:end - 1])
+    line_calls = [c for c in calls if offset + c.start() >= line_start]
+    if line_calls:
+        candidates = line_calls
+    else:
+        last = calls[-1]
+        start = offset + last.end() - 1
+        end = _call_span(text, start)
+        if end is not None and end >= line_start:
+            candidates = [last]
+        else:
+            return None
     k = PRINTF_FMT_ARG[func]
-    if len(args) <= k:
-        return None
-    literals = re.findall(r'"((?:[^"\\]|\\.)*)"', args[k])
-    if not literals or re.sub(r'"((?:[^"\\]|\\.)*)"|\s', "", args[k]):
-        return None  # the format is not a plain string literal: not mechanical
-    changed = False
-    for p in string_arg_positions("".join(literals)):
-        j = k + 1 + p
-        if j < len(args) and "qnx_porter_str(" not in args[j] and not args[j].strip().startswith('"'):
-            lead = args[j][:len(args[j]) - len(args[j].lstrip())]
-            args[j] = f"{lead}qnx_porter_str({args[j].strip()})"
-            changed = True
-    if not changed:
-        return None
-    new = text[:start + 1] + ",".join(args) + text[end - 1:]
-    if "qnx_porter_str(const char *s)" not in new:
-        new = _insert_helper(new)
-    return new
+    for c in reversed(candidates):
+        start = offset + c.end() - 1
+        end = _call_span(text, start)
+        if end is None:
+            continue
+        args = _split_args(text[start + 1:end - 1])
+        if len(args) <= k:
+            continue
+        literals = re.findall(r'"((?:[^"\\]|\\.)*)"', args[k])
+        if not literals or re.sub(r'"((?:[^"\\]|\\.)*)"|\s', "", args[k]):
+            continue  # the format is not a plain string literal: not mechanical
+        changed = False
+        for p in string_arg_positions("".join(literals)):
+            j = k + 1 + p
+            if j < len(args) and "qnx_porter_str(" not in args[j] and not args[j].strip().startswith('"'):
+                lead = args[j][:len(args[j]) - len(args[j].lstrip())]
+                args[j] = f"{lead}qnx_porter_str({args[j].strip()})"
+                changed = True
+        if not changed:
+            continue
+        new = text[:start + 1] + ",".join(args) + text[end - 1:]
+        if insert_helper and "qnx_porter_str(const char *s)" not in new:
+            new = _insert_helper(new)
+        return new
+    return None
+
+
+def wrap_string_args(path: Path, func: str, line: int) -> str | None:
+    text = path.read_text(encoding="utf-8", errors="surrogateescape")
+    return wrap_string_args_in_text(text, func, line, insert_helper=True)
+
+
+def wrap_multiple_calls_in_text(text: str, sites: list[tuple[str, int]]) -> tuple[str, list[tuple[str, int]]]:
+    """Wraps each (func, line) call in text.
+    Returns (updated_text, list_of_successfully_wrapped_sites)."""
+    sorted_sites = sorted(sites, key=lambda x: (x[1], x[0]), reverse=True)
+    wrapped = []
+    current_text = text
+    for func, line in sorted_sites:
+        res = wrap_string_args_in_text(current_text, func, line, insert_helper=False)
+        if res is not None:
+            current_text = res
+            wrapped.append((func, line))
+    if wrapped and "qnx_porter_str(const char *s)" not in current_text:
+        current_text = _insert_helper(current_text)
+    return current_text, wrapped
+
+
+def triage_crashes(crashes: list[dict], src: Path, in_tree) -> list[tuple[str, str, str]]:
+    """Group crash backtraces by file, wrap all printf-null calls per file, and return
+    [(rel, reason, new_text)] ready for committing as patches."""
+    sites_by_file: dict[str, list[tuple[str, int]]] = {}
+    for c in crashes:
+        call = find_printf_null_call(c.get("backtrace", ""), src, in_tree)
+        if call:
+            rel, func, line = call
+            sites = sites_by_file.setdefault(rel, [])
+            if (func, line) not in sites:
+                sites.append((func, line))
+
+    fixes = []
+    for rel, sites in sites_by_file.items():
+        file_path = src / rel
+        if not file_path.is_file():
+            continue
+        original_text = file_path.read_text(encoding="utf-8", errors="surrogateescape")
+        new_text, wrapped = wrap_multiple_calls_in_text(original_text, sites)
+        if not wrapped:
+            continue
+        if len(wrapped) == 1:
+            func, line = wrapped[0]
+            reason = (f"Crash on QNX: {func}() at {rel}:{line} formats a NULL pointer with %s (backtrace: "
+                      f"strlen <- {func}). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it "
+                      "undefined. Each %s argument of that call now goes through qnx_porter_str(), which "
+                      "prints \"(null)\" like glibc.")
+        else:
+            calls_str = ", ".join(f"{f}() at {rel}:{ln}" for f, ln in sorted(wrapped, key=lambda x: x[1]))
+            funcs = sorted({f for f, _ in wrapped})
+            funcs_chain = ", ".join(funcs)
+            reason = (f"Crash on QNX: calls ({calls_str}) format a NULL pointer with %s (backtrace: "
+                      f"strlen <- {funcs_chain}). glibc prints \"(null)\" for that, QNX's libc faults; C leaves it "
+                      "undefined. Each %s argument of these calls now goes through qnx_porter_str(), which "
+                      "prints \"(null)\" like glibc.")
+        fixes.append((rel, reason, new_text))
+    return fixes
 
 
 def _insert_helper(text: str) -> str:
