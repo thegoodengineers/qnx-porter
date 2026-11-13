@@ -185,6 +185,7 @@ least one test.
 
 
 ## How it works
+The full pipeline as a diagram, one box per source file: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 ```
 git URL + tag
    │
