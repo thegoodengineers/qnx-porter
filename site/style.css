@@ -60,6 +60,9 @@ pre.diff .add { color: var(--pass); } pre.diff .del { color: var(--fail); } pre.
        text-decoration: none; border-radius: 3px; }
 .btn:hover { color: #fff; filter: brightness(1.08); }
 .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); }
+aside { border-left: 3px solid var(--pass); background: var(--card); padding: 10px 14px; margin: 16px 0; }
+aside.negative { border-left-color: var(--warn); }
+.prose hr { display: none; } /* a codelab's step separator; every h2 already has a rule */
 .prose { max-width: 75ch; } .prose table td, .prose table th, table.wrap td { white-space: normal; }
 footer { border-top: 2px solid var(--rule-strong); margin-top: 72px; padding: 20px 0 40px; font-size: 14px; color: var(--muted); }
 footer .wrap { display: flex; gap: 24px; flex-wrap: wrap; }

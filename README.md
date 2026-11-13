@@ -72,6 +72,7 @@ The two meet in three places:
   compares them library by library. It covers where we found the same QNX change, where QNX fixed something our
   run only reported, and where the two sides differ.
 - Setup: [SETUP.md](SETUP.md). Tutorial: [docs/CODELAB.md](docs/CODELAB.md).
+- Codelab: [Port a CMake C library to QNX 8.0 and run its own tests on a QEMU target](docs/codelab/port-a-library.md) ([web page](https://thegoodengineers.github.io/qnx-porter/codelab-port-a-library.html)).
 
 ## Results on QNX 8.0
 61 libraries, ported by `scripts/run_campaign.py` with QNX SDP 8.0 (build 141, qcc 12.2.0) for two

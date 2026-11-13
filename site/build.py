@@ -2,7 +2,7 @@
 
 Every number on the site is read from ports/*/report.json (written by the porter on a QNX target) or from
 results/*.csv (written by scripts/ports_csv.py). Pages: landing, results dashboard, one page per port, the
-weekly upstream check, the codelab, the rule corpus and setup. Output: site/_out/ (published to GitHub Pages by CI).
+weekly upstream check, the codelabs, the rule corpus and setup. Output: site/_out/ (published to GitHub Pages by CI).
 
 Usage: python site/build.py   (needs Python-Markdown: pip install markdown)
 """
@@ -23,7 +23,7 @@ BLOB = f"{REPO}/blob/main"
 ARCH_LABEL = {"x86_64": "x86_64", "aarch64le": "aarch64"}
 PORT_DIRS = ["ports", "ports-aarch64le"]  # x86_64 campaign, aarch64 campaign (the latter may not exist yet)
 NAV = [("index.html", "Overview"), ("results.html", "Results"), ("upstream.html", "Weekly check"),
-       ("rules.html", "Rules"), ("codelab.html", "Codelab"), ("setup.html", "Setup"), (REPO, "GitHub")]
+       ("rules.html", "Rules"), ("codelab-port-a-library.html", "Codelab"), ("setup.html", "Setup"), (REPO, "GitHub")]
 
 
 def esc(s) -> str:
@@ -138,7 +138,8 @@ def index(reps: list[dict]) -> str:
 <h1>Port open-source C libraries to QNX 8.0, and prove each port on QNX.</h1>
 <p class="lead">qnx-porter builds a library with QNX's own toolchain, fixes what breaks with reviewable patches,
 then runs the library's <em>own</em> test suite on a QNX 8.0 target. A port only counts when those tests ran there.</p>
-<p><a class="btn" href="results.html">See every port</a> <a class="btn ghost" href="codelab.html">Try the codelab</a></p>
+<p><a class="btn" href="results.html">See every port</a> <a class="btn ghost" href="codelab-port-a-library.html">Codelab: port a
+CMake C library to QNX 8.0 and run its tests on QEMU</a></p>
 <div class="stats">
 <div class="stat"><div class="n">{t['built']}/{t['libs']}</div><div class="t">libraries built for QNX 8.0 x86_64</div></div>
 <div class="stat"><div class="n">{t['passed']}/{t['total']}</div><div class="t">of their own tests passed on the QNX target ({t['with_tests']} libraries)</div></div>
@@ -316,14 +317,25 @@ Files: <a href="{BLOB}/{rel}/REPORT.md">REPORT.md</a> · <a href="{BLOB}/{rel}/q
     return page(f"{r['library']} on QNX 8.0 · qnx-porter", body, "results.html", depth=1)
 
 
-def md_page(src: str, title: str, current: str) -> str:
+def md_page(src: str, title: str, current: str, desc: str = "") -> str:
     text = (ROOT / src).read_text(encoding="utf-8")
+    facts = ""
+    if text.startswith("id: "):  # a QNX codelab (claat format): metadata lines, then the H1
+        meta, text = text.split("\n# ", 1)
+        meta, text = dict(re.findall(r"^(\w+): (.*)$", meta, re.M)), "# " + text
+        mins = sum(int(m) * 60 + int(s) for m, s in re.findall(r"^Duration: (\d+):(\d\d)$", text, re.M)) // 60
+        facts = (f'<p class="label">QNX codelab · {mins} minutes in all (the sum of the steps) · '
+                 f'{esc(meta.get("tags", ""))}</p>')
+        desc = desc or meta.get("summary", "")
+    text = text.replace(f"{BLOB}/docs/CODELAB.md", "codelab.html").replace(f"{BLOB}/SETUP.md", "setup.html")
     text = re.sub(r"\]\(\.\./SETUP\.md\)", "](setup.html)", text)
+    text = re.sub(r"\]\((?:docs/)?codelab/port-a-library\.md\)", "](codelab-port-a-library.html)", text)
     text = re.sub(r"\]\((?:docs/)?LINUX_ISMS\.md\)", "](rules.html)", text)
     text = re.sub(r"\]\((?:docs/)?CODELAB\.md\)", "](codelab.html)", text)
     body = markdown.markdown(text, extensions=["tables", "fenced_code"])
     body = body.replace("<table>", '<div class="scroll"><table>').replace("</table>", "</table></div>")
-    return page(f"{title} · qnx-porter", f'<div class="prose">{body}</div>', current)
+    body = re.sub(r"<p>Duration: ([\d:]+)</p>", r'<p class="label">Duration: \1</p>', body).replace("</h1>", "</h1>" + facts, 1)
+    return page(f"{title} · qnx-porter", f'<div class="prose">{body}</div>', current, desc=desc)
 
 
 def main() -> int:
@@ -339,7 +351,9 @@ def main() -> int:
     for r in reps:
         (OUT / "ports" / f"{r['_slug']}.html").write_text(port_page(r), encoding="utf-8")
     (OUT / "upstream.html").write_text(upstream(), encoding="utf-8")
-    (OUT / "codelab.html").write_text(md_page("docs/CODELAB.md", "Codelab", "codelab.html"), encoding="utf-8")
+    (OUT / "codelab.html").write_text(md_page("docs/CODELAB.md", "Codelab (full reference)", "codelab-port-a-library.html"), encoding="utf-8")
+    (OUT / "codelab-port-a-library.html").write_text(md_page(
+        "docs/codelab/port-a-library.md", "Codelab: port a CMake C library to QNX 8.0", "codelab-port-a-library.html"), encoding="utf-8")
     (OUT / "rules.html").write_text(md_page("docs/LINUX_ISMS.md", "Rules", "rules.html"), encoding="utf-8")
     (OUT / "setup.html").write_text(md_page("SETUP.md", "Setup", "setup.html"), encoding="utf-8")
     (OUT / ".nojekyll").write_text("")
