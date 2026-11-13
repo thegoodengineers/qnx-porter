@@ -1,0 +1,3 @@
+library,rules_only_build,rules_only_tests,rules_model_build,rules_model_tests,model_patches_kept,model_patches_reverted,rule_patches,model_calls,model_failed_calls,tokens_in,tokens_out,model_seconds,minutes,still_failing_on
+libuv,failed,not run,built,0/2,1,0,0,1,0,3736,1498,15.0,6.3,
+libwebsockets,failed,not run,built,0/0,1,0,1,1,0,3672,806,8.8,8.7,

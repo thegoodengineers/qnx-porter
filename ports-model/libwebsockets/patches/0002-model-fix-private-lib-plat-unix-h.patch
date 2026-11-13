@@ -1,0 +1,28 @@
+Subject: [qnx-porter 0002] model-fix
+Source: language model, checked by rebuilding
+Reason: QNX 8.0's io-sock <netinet/tcp.h>, already included at line 32, defines TCP_KEEPIDLE, TCP_KEEPINTVL and TCP_KEEPCNT as real socket options, so the old io-pkt TCPCTL_* fallback (which has no TCPCTL_KEEPCNT) is now applied only when those macros are missing.
+Error: /mnt/c/Users/chira/Downloads/Hackathon/2026-11-qnx/qnx-porter/ports-model/libwebsockets/work/src/lib/plat/unix/./private-lib-plat-unix.h:141:24: error: 'TCPCTL_KEEPCNT' undeclared (first use in this function); did you mean 'TCPCTL_KEEPINIT'?
+---
+diff --git a/lib/plat/unix/private-lib-plat-unix.h b/lib/plat/unix/private-lib-plat-unix.h
+index 1aa9e80..73cdcfb 100644
+--- a/lib/plat/unix/private-lib-plat-unix.h
++++ b/lib/plat/unix/private-lib-plat-unix.h
+@@ -134,11 +134,17 @@ typedef pthread_mutex_t lws_mutex_t;
+ #include <sys/syslog.h>
+ #endif
+ 
+-#ifdef __QNX__
++#if defined(__QNX__) && (!defined(TCP_KEEPINTVL) || !defined(TCP_KEEPIDLE) || !defined(TCP_KEEPCNT))
+ # include "netinet/tcp_var.h"
++# if !defined(TCP_KEEPINTVL)
+ # define TCP_KEEPINTVL TCPCTL_KEEPINTVL
++# endif
++# if !defined(TCP_KEEPIDLE)
+ # define TCP_KEEPIDLE  TCPCTL_KEEPIDLE
++# endif
++# if !defined(TCP_KEEPCNT)
+ # define TCP_KEEPCNT   TCPCTL_KEEPCNT
++# endif
+ #endif
+ 
+ #define LWS_ERRNO errno

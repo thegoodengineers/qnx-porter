@@ -6,7 +6,7 @@ to rules+model result, the model's patches kept and reverted, calls, tokens and 
 
 Needs QNX_PORTER_API_KEY, QNX_PORTER_MODEL and QNX_PORTER_BASE_URL in the environment (see SETUP.md); stops
 with that message if they are missing. Usage:
-    source ~/qnx800/qnxsdp-env.sh && python3 scripts/model_eval.py [--only lib,lib] [--max-rounds 25]
+    source ~/qnx800/qnxsdp-env.sh && python3 scripts/model_eval.py [--campaign campaign-2024.yaml] [--only lib,lib] [--max-rounds 25]
 """
 import argparse
 import csv
@@ -34,13 +34,15 @@ def tests(r: dict) -> str:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--only")
+    ap.add_argument("--campaign", default=str(ROOT / "campaign.yaml"),
+                    help="campaign file; the published measurement used campaign-2024.yaml")
     ap.add_argument("--max-rounds", type=int, default=25)
     ap.add_argument("--no-tests", action="store_true")
     a = ap.parse_args(argv)
     if not llm.configured():
         raise SystemExit("The model step is not configured. Set QNX_PORTER_API_KEY, QNX_PORTER_MODEL and "
                          "QNX_PORTER_BASE_URL in your shell (never in the repository); see SETUP.md.")
-    c = load(ROOT / "campaign.yaml")
+    c = load(Path(a.campaign))
     libs = {lib["name"]: lib for lib in c["libraries"]}
     target = None if a.no_tests or not c["target"] else Target.parse(c["target"], c["target_dir"])
     rows = []
