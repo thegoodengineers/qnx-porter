@@ -1,0 +1,119 @@
+# The 2024 pins behind the 12 Nov 2026 results in ports/: python3 scripts/run_campaign.py --campaign campaign-2024.yaml
+# The libraries we port for the results table. Pinned to release tags.
+# The first 10 were on neither oss.qnx.com nor github.com/qnx-ports when checked (results/candidates_check.csv).
+# The rest are widely used in automotive, robotics, medical and industrial systems; some are on oss.qnx.com
+# already, which makes them a direct comparison. scripts/run_campaign.py re-checks oss.qnx.com before every run
+# and records the answer per library (results/oss_listed.json, column on_oss_qnx_com) instead of skipping.
+#
+# Run: source ~/qnx800/qnxsdp-env.sh && python3 scripts/run_campaign.py
+
+target: root@172.31.1.11      # QEMU image from mkqnximage (SETUP.md step 4); null = build only
+target_dir: /data/qnx-porter  # writable partition on that image
+arch: x86_64           # python3 scripts/run_campaign.py --arch aarch64le for the other one
+max_rounds: 15
+skip_ported: false   # true: skip libraries oss.qnx.com already lists
+
+libraries:
+  - name: json-c                # JSON for C; CMake + ctest
+    url: https://github.com/json-c/json-c.git
+    tag: json-c-0.18-20240915
+
+  - name: yyjson                # fast JSON; CMake + ctest
+    url: https://github.com/ibireme/yyjson.git
+    tag: 0.10.0
+    args: [-DYYJSON_BUILD_TESTS=ON]
+
+  - name: cmocka                # C unit-test framework; CMake + ctest
+    url: https://gitlab.com/cmocka/cmocka.git
+    tag: cmocka-1.1.7
+    args: [-DUNIT_TESTING=ON]
+
+  - name: libcbor               # CBOR, used in IoT and FIDO; CMake
+    url: https://github.com/PJK/libcbor.git
+    tag: v0.11.0
+
+  - name: mbedtls               # TLS and crypto for embedded; CMake + ctest
+    url: https://github.com/Mbed-TLS/mbedtls.git
+    tag: v3.6.2
+    args: [-DENABLE_PROGRAMS=OFF]
+
+  - name: libsodium             # crypto; autotools + make check
+    url: https://github.com/jedisct1/libsodium.git
+    tag: 1.0.20-RELEASE
+
+  - name: libmodbus             # industrial fieldbus; autotools
+    url: https://github.com/stephane/libmodbus.git
+    tag: v3.1.11
+
+  - name: nng                   # messaging (successor of nanomsg); CMake + ctest
+    url: https://github.com/nanomsg/nng.git
+    tag: v1.9.0
+    args: [-DNNG_TESTS=ON]
+
+  - name: libconfig             # configuration files; CMake
+    url: https://github.com/hyperrealm/libconfig.git
+    tag: v1.7.3
+
+  - name: paho.mqtt.c           # MQTT client for vehicles and IoT; CMake
+    url: https://github.com/eclipse/paho.mqtt.c.git
+    tag: v1.3.14
+    tests: false                  # its 103 tests need an MQTT broker on localhost:1883, which the image lacks
+    note: "build only: the test suite needs an MQTT broker on the target"
+
+  # ---- serialization and data formats
+  - {name: cJSON, url: https://github.com/DaveGamble/cJSON.git, tag: v1.7.18}
+  - {name: jansson, url: https://github.com/akheron/jansson.git, tag: v2.14}
+  - {name: libyaml, url: https://github.com/yaml/libyaml.git, tag: 0.2.5, args: [-DBUILD_TESTING=ON]}
+  - {name: msgpack-c, url: https://github.com/msgpack/msgpack-c.git, tag: c-6.1.0, args: [-DMSGPACK_BUILD_TESTS=OFF, -DMSGPACK_BUILD_EXAMPLES=OFF]}
+  - {name: tinycbor, url: https://github.com/intel/tinycbor.git, tag: v0.6.0}
+  - {name: nanopb, url: https://github.com/nanopb/nanopb.git, tag: 0.4.9, tests: false, note: "build only: its tests use scons and protoc"}
+  - {name: flatcc, url: https://github.com/dvidelabs/flatcc.git, tag: v0.6.1, args: [-DFLATCC_TEST=OFF], tests: false, note: "build only: its tests run the just-built flatcc compiler on the build host"}
+  - {name: pugixml, url: https://github.com/zeux/pugixml.git, tag: v1.14, args: [-DPUGIXML_BUILD_TESTS=ON]}
+  - {name: tinyxml2, url: https://github.com/leethomason/tinyxml2.git, tag: 10.0.0}
+  - {name: expat, url: https://github.com/libexpat/libexpat.git, tag: R_2_6_4, subdir: expat, args: [-DEXPAT_BUILD_DOCS=OFF]}
+  - {name: libxml2, url: https://github.com/GNOME/libxml2.git, tag: v2.13.5, args: [-DLIBXML2_WITH_PYTHON=OFF, -DLIBXML2_WITH_ZLIB=OFF, -DLIBXML2_WITH_LZMA=OFF, -DLIBXML2_WITH_ICONV=OFF, -DLIBXML2_WITH_ICU=OFF]}
+  - {name: inih, url: https://github.com/benhoyt/inih.git, tag: r58}
+  - {name: cmark, url: https://github.com/commonmark/cmark.git, tag: 0.31.1}
+  # ---- compression and hashing
+  - {name: zlib, url: https://github.com/madler/zlib.git, tag: v1.3.1}
+  - {name: lz4, url: https://github.com/lz4/lz4.git, tag: v1.10.0, subdir: build/cmake}
+  - {name: zstd, url: https://github.com/facebook/zstd.git, tag: v1.5.6, subdir: build/cmake, args: [-DZSTD_BUILD_TESTS=ON, -DZSTD_BUILD_PROGRAMS=ON]}
+  - {name: miniz, url: https://github.com/richgel999/miniz.git, tag: 3.0.2}
+  - {name: libdeflate, url: https://github.com/ebiggers/libdeflate.git, tag: v1.22}
+  - {name: xxHash, url: https://github.com/Cyan4973/xxHash.git, tag: v0.8.2, subdir: cmake_unofficial}
+  - {name: BLAKE3, url: https://github.com/BLAKE3-team/BLAKE3.git, tag: 1.5.4, subdir: c, args: [-DBLAKE3_SIMD_TYPE=none], note: "portable C: its CMake has SIMD flags only for compilers it knows, not qcc"}
+  - {name: libtommath, url: https://github.com/libtom/libtommath.git, tag: v1.3.0}
+  # ---- crypto and security
+  - {name: wolfssl, url: https://github.com/wolfSSL/wolfssl.git, tag: v5.7.4-stable, args: [-DWOLFSSL_EXAMPLES=OFF]}
+  - {name: libsrtp, url: https://github.com/cisco/libsrtp.git, tag: v2.6.0}
+  # ---- networking, messaging, IoT, industrial
+  - {name: libuv, url: https://github.com/libuv/libuv.git, tag: v1.49.2, args: [-DLIBUV_BUILD_TESTS=ON]}
+  - {name: libevent, url: https://github.com/libevent/libevent.git, tag: release-2.1.12-stable, args: [-DEVENT__DISABLE_OPENSSL=ON, -DEVENT__DISABLE_MBEDTLS=ON, -DEVENT__DISABLE_BENCHMARK=ON]}
+  - {name: c-ares, url: https://github.com/c-ares/c-ares.git, tag: v1.34.3}
+  - {name: libcoap, url: https://github.com/obgm/libcoap.git, tag: v4.3.5, args: [-DENABLE_DTLS=OFF, -DENABLE_DOCS=OFF]}
+  - {name: mosquitto, url: https://github.com/eclipse/mosquitto.git, tag: v2.0.20, args: [-DWITH_TLS=OFF, -DWITH_CJSON=OFF, -DDOCUMENTATION=OFF]}
+  - {name: libwebsockets, url: https://github.com/warmcat/libwebsockets.git, tag: v4.3.3, args: [-DLWS_WITH_SSL=OFF, -DLWS_WITHOUT_TESTAPPS=ON]}
+  - {name: open62541, url: https://github.com/open62541/open62541.git, tag: v1.4.6, args: [-DUA_ENABLE_ENCRYPTION=OFF]}
+  - {name: Micro-CDR, url: https://github.com/eProsima/Micro-CDR.git, tag: v2.0.1}
+  - {name: libgpiod, url: https://github.com/brgl/libgpiod.git, tag: v2.2.4, note: "Linux GPIO character-device API: expected not to port"}
+  - {name: can-utils, url: https://github.com/linux-can/can-utils.git, tag: v2023.03, note: "Linux SocketCAN tools: expected not to port"}
+  # ---- C++ foundations
+  - {name: fmt, url: https://github.com/fmtlib/fmt.git, tag: 11.0.2}
+  - {name: spdlog, url: https://github.com/gabime/spdlog.git, tag: v1.15.0, args: [-DSPDLOG_BUILD_EXAMPLE=OFF]}
+  - {name: googletest, url: https://github.com/google/googletest.git, tag: v1.15.2, args: [-Dgtest_build_tests=ON]}
+  - {name: yaml-cpp, url: https://github.com/jbeder/yaml-cpp.git, tag: 0.8.0, args: [-DYAML_CPP_BUILD_TESTS=ON]}
+  - {name: tomlplusplus, url: https://github.com/marzer/tomlplusplus.git, tag: v3.4.0}
+  - {name: benchmark, url: https://github.com/google/benchmark.git, tag: v1.9.1, args: [-DBENCHMARK_ENABLE_TESTING=OFF]}
+  # ---- media, math, robotics
+  - {name: libjpeg-turbo, url: https://github.com/libjpeg-turbo/libjpeg-turbo.git, tag: 3.0.4, args: [-DWITH_SIMD=OFF]}
+  - {name: libpng, url: https://github.com/pnggroup/libpng.git, tag: v1.6.44}
+  - {name: opus, url: https://github.com/xiph/opus.git, tag: v1.5.2, args: [-DOPUS_BUILD_TESTING=ON]}
+  - {name: libogg, url: https://github.com/xiph/ogg.git, tag: v1.3.5}
+  - {name: flac, url: https://github.com/xiph/flac.git, tag: 1.4.3, args: [-DWITH_OGG=OFF, -DBUILD_DOCS=OFF, -DINSTALL_MANPAGES=OFF]}
+  - {name: libsamplerate, url: https://github.com/libsndfile/libsamplerate.git, tag: 0.2.2}
+  - {name: cglm, url: https://github.com/recp/cglm.git, tag: v0.9.4, args: [-DCGLM_USE_TEST=ON]}
+  - {name: libccd, url: https://github.com/danfis/libccd.git, tag: v2.1, args: [-DBUILD_TESTING=ON]}
+  - {name: kissfft, url: https://github.com/mborgerding/kissfft.git, tag: 131.1.0, args: [-DKISSFFT_TEST=OFF, -DKISSFFT_TOOLS=OFF]}
+  - {name: capstone, url: https://github.com/capstone-engine/capstone.git, tag: 5.0.3}
+  - {name: pcre2, url: https://github.com/PCRE2Project/pcre2.git, tag: pcre2-10.44}
+  - {name: sqlite, url: https://github.com/sqlite/sqlite.git, tag: version-3.47.2, args: [--disable-tcl, --disable-editline, --disable-readline], tests: false, note: "build only: its test suite needs Tcl on the target"}
