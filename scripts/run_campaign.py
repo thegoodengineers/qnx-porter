@@ -43,6 +43,7 @@ def load(path: Path) -> dict:
         lib["note"] = str(lib.get("note", ""))
         lib["subdir"] = str(lib.get("subdir", ""))
         lib["run_as"] = str(lib.get("run_as", ""))
+        lib["test_timeout"] = int(lib.get("test_timeout", 300))
         lib["uses"] = [str(u) for u in lib.get("uses", [])]
     names = [lib["name"] for lib in libs]
     for i, lib in enumerate(libs):
@@ -92,8 +93,12 @@ def default_branch(url: str) -> str:
 
 
 def for_library(target: Target | None, lib: dict) -> Target | None:
-    """The target as this library's tests need it: as another user (`run_as`) for suites that refuse root."""
-    return dataclasses.replace(target, run_as=lib["run_as"]) if target and lib.get("run_as") else target
+    """The target as this library's tests need it: as another user (`run_as`) for suites that refuse root, and
+    with a longer cap per test (`test_timeout`) for suites that are slow on QNX."""
+    if not target:
+        return target
+    return dataclasses.replace(target, run_as=lib.get("run_as") or target.run_as,
+                               test_timeout=lib.get("test_timeout") or target.test_timeout)
 
 
 def finished(report: Path) -> bool:

@@ -30,6 +30,8 @@ class Target:
     root: str = "/data/qnx-porter"  # where the trees are copied on the target
     # run the tests as this target user (QNX `on -u`), for suites that refuse root (libuv); "" = the ssh user
     run_as: str = ""
+    # cap on each test command, seconds; a library can raise it (expat 2.10: 241 s, as QNX commits each 1 GiB malloc)
+    test_timeout: int = 300
 
     @classmethod
     def parse(cls, spec: str, root: str = "/data/qnx-porter") -> "Target":

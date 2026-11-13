@@ -241,8 +241,8 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
     crash.clear_cores(target)
     not_runnable = []
     if job.system in ("cmake", "meson"):
-        r = (ctest_on_target(target, bdir, work, job.emulator, same, logs / "tests.log") if job.system == "cmake"
-             else meson_on_target(target, bdir, work, same, logs / "tests.log"))
+        r = (ctest_on_target(target, bdir, work, job.emulator, same, logs / "tests.log", target.test_timeout)
+             if job.system == "cmake" else meson_on_target(target, bdir, work, same, logs / "tests.log", target.test_timeout))
         passed, total, not_runnable = r["passed"], r["total"], r["not_runnable"]
     else:
         _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
