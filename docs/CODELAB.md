@@ -5,6 +5,9 @@ every change the tool made and why, run the library's own tests on QNX, teach th
 run the same pipeline on aarch64, through a network outage, into build-files recipes and every week at
 upstream HEAD.
 
+This is the full reference. For one goal in about an hour, start with the focused codelab
+[Port a CMake C library to QNX 8.0 and run its own tests on a QEMU target](codelab/port-a-library.md).
+
 | | |
 |---|---|
 | Time | about 90 minutes for steps 1 to 9; 45 of them are downloads and installs |
