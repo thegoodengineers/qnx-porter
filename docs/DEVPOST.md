@@ -61,10 +61,13 @@ on a QNX 8.0 target.
   `scripts/run_campaign.py` ports a whole list and regenerates the results.
 - **One folder per library**, the same every time: `REPORT.md`, `report.json`, one numbered patch per change
   with its rule, reason and the compiler error it answers, a combined `qnx.patch`, the toolchain file, every
-  build and test log, and an SPDX SBOM that includes our `qnx.patch` and its hash.
+  build and test log, the test results as JUnit XML for CI dashboards (`logs/tests.junit.xml`), and an SPDX SBOM
+  that includes our `qnx.patch` and its hash.
 - **Fits QNX's own workflow.** Recipes in qnx-ports/build-files layout for CMake ports QNX does not have, each
   built with QNX's recursive make (`recipes/BUILD_CHECK.md`, generated), and a licence table with copyleft flags
-  (`docs/LICENCES.md`, generated).
+  (`docs/LICENCES.md`, generated). It complements QNX's own agent skills, which build natively on the target
+  with `abuild`: qnx-porter cross-compiles on the host with the SDP and runs each library's own suite test by
+  test (README, "Related work").
 - **Runs in CI.** A GitHub Action (`action.yml`) ports the repository it runs in on a self-hosted runner with
   the SDP. A weekly workflow re-ports every library at its upstream default branch and records whether it
   still builds.
@@ -148,7 +151,7 @@ with every change visible.
 | Generates the QNX toolchain | `qnx_porter/qnx.py`: `cmake_toolchain()`, `meson_cross()`, `gnu_env()`, `ARCHES` (`gcc_ntox86_64`, `gcc_ntoaarch64le`); saved per port as `ports/<library>/qnx-toolchain.cmake` and `ports-aarch64le/<library>/qnx-toolchain.cmake` |
 | Invokes qcc | `qnx_porter/build.py`: `Job.steps()` builds the configure/build commands, `run()` executes them; logs in `ports/<library>/logs/round-NN.log` |
 | QNX 8.0 porting knowledge, with sources | `qnx_porter/fixes.py` `_rule()`, `qnx_porter/linuxisms.py`; table in `docs/LINUX_ISMS.md` |
-| Runs the library's tests on QNX 8.0 | `qnx_porter/target.py`: `ctest_on_target()`, `Target.sync()`, `write_wrapper()`, `remote_command()`; output `ports/<library>/logs/tests.log` |
+| Runs the library's tests on QNX 8.0 | `qnx_porter/target.py`: `ctest_on_target()`, `Target.sync()`, `write_wrapper()`, `remote_command()`; output `ports/<library>/logs/tests.log` and `tests.junit.xml` (`junit_from_log()`) |
 | QNX path-space links | `qnx_porter/target.py`: `link_command()` (QNX `ln -sP`), called from `Target.sync()` |
 | QNX `on -u` and `timeout` | `qnx_porter/target.py`: `remote_command()`; `run_as: qnxuser` for libuv in `campaign.yaml`; output `ports-model/libuv/logs/tests.log` |
 | Reads QNX core dumps | `qnx_porter/crash.py`: `collect()` copies cores from the target, `backtrace()` runs the SDP's gdb; output `ports/json-c/logs/crashes.log` |
