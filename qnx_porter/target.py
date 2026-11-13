@@ -186,6 +186,22 @@ def _run_one(t: Target, work: Path, cwd: str, cmd: list[str], same_path: bool, e
     return rc, out
 
 
+TAP = re.compile(r"^\s*(not ok|ok) \d+(?: -)? ?([^#\n]*)(#\s*(?:SKIP|TODO)[^\n]*)?$", re.M | re.I)
+
+
+def tap_summary(out: str) -> str:
+    """For a test binary that reports its own subtests in TAP (libuv, ...): the counts, and every failing name.
+    The log keeps only the end of a long output, so the full list of failures is written here."""
+    marks = TAP.findall(out)
+    if not marks:
+        return ""
+    skip = sum(1 for _, _, d in marks if d)
+    bad = [name.strip() for kind, name, d in marks if kind.lower() == "not ok" and not d]
+    ok = len(marks) - skip - len(bad)
+    text = f"; its own subtests (TAP): {ok} ok, {len(bad)} not ok, {skip} skipped"
+    return text + (f"\n      not ok: {', '.join(bad)}" if bad else "")
+
+
 def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_path: Path, header: str,
               default_timeout: int = 300) -> dict:
     """Run each test command on the target and judge it with ctest's rules.
@@ -223,7 +239,7 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
         if v != "skip":
             total += 1
             passed += v == "pass"
-        lines.append(f"{v.upper():5s} {test['name']} (exit {rc})\n")
+        lines.append(f"{v.upper():5s} {test['name']} (exit {rc}){tap_summary(out)}\n")
         if v == "fail" or out.startswith("(run with ksh"):
             lines.append("".join(f"    {ln}\n" for ln in out.strip().splitlines()[-150:]))
     lines.append(f"\n{passed}/{total} tests passed on the QNX target"
