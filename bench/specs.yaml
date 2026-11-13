@@ -34,7 +34,7 @@ mbedtls:
 
 libsodium:
   what: BLAKE2b (crypto_generichash) of 1 KB
-  include_dirs: ["src/libsodium/include", "build/src/libsodium/include"]
+  include_dirs: ["src/libsodium/include", "src/libsodium/include/sodium", "build/src/libsodium/include"]
   includes: '#include <sodium.h>'
   setup: 'if (sodium_init() < 0) return 1;'
   call: 'return crypto_generichash(out, 32, in, sizeof in, NULL, 0);'
@@ -103,7 +103,7 @@ pcre2:
 
 msgpack-c:
   what: pack a 5-field map into a buffer and free it
-  include_dirs: ["include", "build/include", "build"]
+  include_dirs: ["include", "build/include", "build/include/msgpack", "build"]
   includes: '#include <msgpack.h>'
   call: |
     msgpack_sbuffer sb; msgpack_packer pk; msgpack_sbuffer_init(&sb); msgpack_packer_init(&pk, &sb, msgpack_sbuffer_write);
