@@ -92,12 +92,54 @@ _MATH = ["sqrt", "cbrt", "pow", "exp", "exp2", "expm1", "log", "log2", "log10", 
 _CLASSIFY = ["__isinf", "__isnan", "__isfinite", "__isnormal", "__fpclassify", "__signbit"]
 ENDIAN_MACROS = {f"{a}{n}{b}" for n in (16, 32, 64) for a, b in
                  (("htobe", ""), ("htole", ""), ("be", "toh"), ("le", "toh"))}
+BSD_ENDIAN_MACROS = {f"{a}{n}" for n in (16, 32, 64) for a in ("betoh", "letoh")}
+ALL_ENDIAN_MACROS = ENDIAN_MACROS | BSD_ENDIAN_MACROS
+
 # QNX 8.0 has these as BSD macros in <net/netbyte.h>, visible only with __EXT_BSD (off under strict POSIX
 # macros). The compat header includes it and fills any missing name from QNX's own __NET_BE*/__NET_LE*
 # helpers. It is -included into every compile: function-like -D flags would break the make shell.
 ENDIAN_HEADER = ("/* qnx-porter: glibc <endian.h> names, from QNX's <net/netbyte.h> */\n#include <net/netbyte.h>\n"
-                 + "".join(f"#ifndef {m}\n#define {m}(x) __NET_{'BE' if m.startswith(('htobe', 'be')) else 'LE'}"
-                           f"{''.join(c for c in m if c.isdigit())}((x))\n#endif\n" for m in sorted(ENDIAN_MACROS)))
+                 + "".join(f"#ifndef {m}\n#define {m}(x) __NET_{'BE' if m.startswith(('htobe', 'be', 'betoh')) else 'LE'}"
+                           f"{''.join(c for c in m if c.isdigit())}((x))\n#endif\n" for m in sorted(ALL_ENDIAN_MACROS)))
+
+# Standalone compatibility header for projects that explicitly do `#include <endian.h>`.
+# QNX 8.0 does not ship <endian.h>. This header includes <net/netbyte.h> when available,
+# defines standard byte-order constants (__LITTLE_ENDIAN, __BIG_ENDIAN, __PDP_ENDIAN, __BYTE_ORDER,
+# and their unqualified aliases), and defines all 16/32/64-bit conversion macros.
+ENDIAN_COMPAT_H = ("#ifndef _QNX_PORTER_ENDIAN_H\n#define _QNX_PORTER_ENDIAN_H\n\n"
+                   "#if defined(__has_include)\n"
+                   "#  if __has_include(<net/netbyte.h>)\n"
+                   "#    include <net/netbyte.h>\n"
+                   "#  endif\n"
+                   "#else\n"
+                   "#  include <net/netbyte.h>\n"
+                   "#endif\n\n"
+                   "/* Byte order constants */\n"
+                   "#ifndef __LITTLE_ENDIAN\n#  define __LITTLE_ENDIAN 1234\n#endif\n"
+                   "#ifndef __BIG_ENDIAN\n#  define __BIG_ENDIAN 4321\n#endif\n"
+                   "#ifndef __PDP_ENDIAN\n#  define __PDP_ENDIAN 3412\n#endif\n"
+                   "#ifndef __BYTE_ORDER\n"
+                   "#  if defined(__BYTE_ORDER__)\n"
+                   "#    define __BYTE_ORDER __BYTE_ORDER__\n"
+                   "#  elif defined(__ORDER_LITTLE_ENDIAN__) && defined(__ORDER_BIG_ENDIAN__)\n"
+                   "#    if defined(__BIG_ENDIAN__)\n"
+                   "#      define __BYTE_ORDER __BIG_ENDIAN\n"
+                   "#    else\n"
+                   "#      define __BYTE_ORDER __LITTLE_ENDIAN\n"
+                   "#    endif\n"
+                   "#  else\n"
+                   "#    define __BYTE_ORDER __LITTLE_ENDIAN\n"
+                   "#  endif\n"
+                   "#endif\n\n"
+                   "#ifndef LITTLE_ENDIAN\n#  define LITTLE_ENDIAN __LITTLE_ENDIAN\n#endif\n"
+                   "#ifndef BIG_ENDIAN\n#  define BIG_ENDIAN __BIG_ENDIAN\n#endif\n"
+                   "#ifndef PDP_ENDIAN\n#  define PDP_ENDIAN __PDP_ENDIAN\n#endif\n"
+                   "#ifndef BYTE_ORDER\n#  define BYTE_ORDER __BYTE_ORDER\n#endif\n\n"
+                   "/* Endian conversion macros */\n"
+                   + "".join(f"#ifndef {m}\n#  define {m}(x) __NET_{'BE' if m.startswith(('htobe', 'be', 'betoh')) else 'LE'}"
+                             f"{''.join(c for c in m if c.isdigit())}((x))\n#endif\n" for m in sorted(ALL_ENDIAN_MACROS))
+                   + "\n#endif /* _QNX_PORTER_ENDIAN_H */\n")
+
 LIBM_SYMBOLS = {f"{n}{s}" for n in _MATH + _CLASSIFY for s in ("", "f", "l")}
 
 INCLUDE = re.compile(r"^\s*#\s*include\b")
@@ -239,7 +281,13 @@ def _rule(d: Diagnostic, src: Path, flags: Flags) -> Fix | None:
     if d.kind == "undefined_ref" and d.symbol in FSNOTIFY_SYMBOLS and "-lfsnotify" not in flags.libs:
         return Fix("link-libfsnotify", f"QNX 8.0 has inotify, but `{d.symbol}` moved from libc to libfsnotify: "
                    "link with -lfsnotify.", d, libs=["-lfsnotify"])
-    if d.kind in ("undefined_ref", "implicit_decl") and d.symbol in ENDIAN_MACROS \
+    if d.kind == "missing_header" and d.header == "endian.h" and "-D_QNX_PORTER_ENDIAN" not in flags.cflags:
+        return Fix("endian-compat", "<endian.h> does not exist on QNX 8.0. QNX provides BSD byte-order "
+                   "conversion macros in <net/netbyte.h> (__NET_BE*/__NET_LE*); a generated compatibility "
+                   "<endian.h> header in the include search path maps glibc names and byte-order "
+                   "constants to QNX's definitions.", d,
+                   cflags=["-D_QNX_PORTER_ENDIAN"], compat={"endian.h": ENDIAN_COMPAT_H})
+    if d.kind in ("undefined_ref", "implicit_decl") and d.symbol in ALL_ENDIAN_MACROS \
             and "-D_QNX_PORTER_ENDIAN" not in flags.cflags:
         return Fix("endian-netbyte", f"`{d.symbol}` comes from glibc's <endian.h>, which QNX 8.0 does not have. "
                    "QNX has the same names as BSD macros in <net/netbyte.h>; a small header (-included in "

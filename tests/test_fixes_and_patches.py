@@ -152,3 +152,52 @@ def test_an_edit_of_a_crlf_file_changes_only_the_edited_lines(tmp_path):
     assert (tmp_path / "t.cpp").read_bytes() == b"int a;\r\nint b, c;\r\n"
     diff = patches.git(tmp_path, "diff")
     assert "-int a;" not in diff and "+int b, c;" in diff
+
+
+def test_can_utils_endian_missing_header_fires_endian_compat_rule(tmp_path):
+    # Real error from ports/can-utils/report.json
+    log = ("/home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: "
+           "fatal error: endian.h: No such file or directory\n")
+    src = "#include <endian.h>\nuint32_t to_be(uint32_t val) { return htobe32(val); }\n"
+    core_dump_path = tmp_path / "mcp251xfd"
+    core_dump_path.mkdir(parents=True)
+    (core_dump_path / "mcp251xfd-dev-coredump.c").write_text(src)
+    diags = parse(log)
+    planned = fixes.plan(diags, tmp_path, Flags(), set())
+    assert len(planned) == 1
+    f = planned[0]
+    assert f.rule == "endian-compat"
+    assert f.cflags == ["-D_QNX_PORTER_ENDIAN"]
+    assert "endian.h" in f.compat
+    assert "htobe32" in f.compat["endian.h"]
+    assert "be64toh" in f.compat["endian.h"]
+
+
+def test_agent_apply_adds_include_directory_for_compat_headers(tmp_path):
+    from unittest.mock import MagicMock
+    from qnx_porter import agent
+
+    diag = Diagnostic("missing_header", "fatal error: endian.h: No such file or directory", header="endian.h")
+    fix = fixes.Fix("endian-compat", "test reason", diag, cflags=["-D_QNX_PORTER_ENDIAN"],
+                    compat={"endian.h": fixes.ENDIAN_COMPAT_H})
+    mock_job = MagicMock()
+    mock_job.flags = Flags()
+    mock_job.toolchain_text.return_value = "BEFORE"
+    mock_job.toolchain_path.return_value = tmp_path / "toolchain.cmake"
+
+    src = tmp_path / "src"
+    src.mkdir()
+    out = tmp_path / "out"
+    out.mkdir()
+    (out / "patches").mkdir()
+    work = tmp_path / "work"
+    work.mkdir()
+
+    patch = agent._apply(fix, 1, src, out, mock_job, work)
+    compat_dir = work / "qnx-compat"
+    assert (compat_dir / "endian.h").is_file()
+    assert (compat_dir / "endian.h").read_text(encoding="utf-8") == fixes.ENDIAN_COMPAT_H
+    assert f"-I{compat_dir}" in mock_job.flags.cflags
+    assert ["-include", str(compat_dir / "endian.h")][0] in mock_job.flags.cflags
+    assert "-D_QNX_PORTER_ENDIAN" in mock_job.flags.cflags
+    assert patch.rule == "endian-compat"
