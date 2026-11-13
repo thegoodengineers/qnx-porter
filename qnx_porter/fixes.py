@@ -50,12 +50,13 @@ SYMBOL_HEADERS = {
     **dict.fromkeys(["pthread_create", "pthread_mutex_t", "pthread_t"], "pthread.h"),
 }
 
-# Network functions live in libsocket on QNX, not in libc as on Linux.
+# Network functions and data symbols (e.g. in6addr_any) live in libsocket on QNX, not in libc as on Linux.
 SOCKET_SYMBOLS = {"socket", "bind", "connect", "listen", "accept", "accept4", "setsockopt", "getsockopt",
                   "send", "recv", "sendto", "recvfrom", "sendmsg", "recvmsg", "shutdown", "getaddrinfo",
                   "freeaddrinfo", "gai_strerror", "getnameinfo", "gethostbyname", "gethostbyaddr",
                   "getpeername", "getsockname", "inet_pton", "inet_ntop", "inet_addr", "inet_ntoa",
-                  "if_nametoindex", "if_indextoname", "getifaddrs", "freeifaddrs", "socketpair"}
+                  "if_nametoindex", "if_indextoname", "getifaddrs", "freeifaddrs", "socketpair",
+                  "in6addr_any"}
 
 # On Linux these are separate libraries; on QNX 8.0 their functions are in libc (the C Library Reference
 # lists "Library: libc" for pthread_*, clock_gettime, timer_create, shm_open, mq_open and dlopen).
