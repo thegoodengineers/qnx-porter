@@ -27,7 +27,8 @@ def main(argv=None) -> int:
 
     d = sub.add_parser("detect", help="print the build system of a source folder")
     d.add_argument("path")
-    sub.add_parser("doctor", help="check the QNX SDP 8.0 install and host tools")
+    dr = sub.add_parser("doctor", help="check the QNX SDP 8.0 install, host tools and (optionally) the target")
+    dr.add_argument("--target", help="also check this QNX target answers over ssh, user@host[:port]")
     st = sub.add_parser("selftest", help="run the loop on a deliberately broken library with the host "
                                          "compiler (no QNX needed)")
     st.add_argument("--out", default="ports-selftest")
@@ -38,9 +39,12 @@ def main(argv=None) -> int:
         return 0
     if a.cmd == "doctor":
         bad = 0
-        for what, ok, detail in qnx.doctor(qnx.sdp_env()):
-            print(f"{'ok ' if ok else 'BAD'} {what:12s} {detail}")
+        for what, ok, detail, fix in qnx.doctor(target=Target.parse(a.target) if a.target else None):
+            print(f"{'ok ' if ok else 'BAD'} {what:16s} {detail}")
+            if fix:
+                print(f"    fix: {fix}")
             bad += not ok
+        print("all checks passed" if not bad else f"{bad} check(s) failed: fix them in order, then run doctor again")
         return 1 if bad else 0
     if a.cmd == "selftest":
         return selftest(Path(a.out))
