@@ -2,6 +2,9 @@ name: site
 on:
   push:
     branches: [main]
+  workflow_run:  # refresh the weekly upstream page after each weekly run
+    workflows: ["weekly upstream HEAD"]
+    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
@@ -20,6 +23,11 @@ jobs:
         with:
           python-version: "3.11"
       - run: python -m pip install markdown==3.7
+      - name: Weekly upstream history from the data/head-history branch, if it exists
+        run: |
+          git fetch --depth=1 origin data/head-history || exit 0
+          mkdir -p results/head
+          git show FETCH_HEAD:results/head/history.csv > results/head/history.csv || rm -f results/head/history.csv
       - name: Build the site from results/ and ports/ (it cannot drift from them)
         run: python site/build.py
       - uses: actions/upload-pages-artifact@v3

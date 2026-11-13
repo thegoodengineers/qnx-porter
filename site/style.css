@@ -35,10 +35,10 @@ h3 { font-size: 21px; margin: 28px 0 8px; }
          margin: 32px 0; background: var(--card); }
 .stat { padding: 18px 20px; border-right: 1px solid var(--rule); }
 .stat:last-child { border-right: 0; }
-.stat .n { font: 600 40px/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.stat .n { font: 600 clamp(22px, 5.6vw, 40px)/1.1 var(--mono); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .stat .t { font-size: 14px; color: var(--muted); }
 figure { margin: 28px 0; } figcaption { font: 12px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 8px; }
-figure svg { width: 100%; height: auto; display: block; }
+figure { overflow-x: auto; } figure svg { width: 100%; min-width: 720px; height: auto; display: block; }
 .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--rule); background: var(--card); }
 table { border-collapse: collapse; width: 100%; font-size: 15px; font-variant-numeric: tabular-nums; }
 th, td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
@@ -58,13 +58,13 @@ pre.diff .add { color: var(--pass); } pre.diff .del { color: var(--fail); } pre.
        text-decoration: none; border-radius: 3px; }
 .btn:hover { color: #fff; filter: brightness(1.08); }
 .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--rule-strong); }
-.prose { max-width: 75ch; } .prose table td, .prose table th { white-space: normal; }
+.prose { max-width: 75ch; } .prose table td, .prose table th, table.wrap td { white-space: normal; }
 footer { border-top: 2px solid var(--rule-strong); margin-top: 72px; padding: 20px 0 40px; font-size: 14px; color: var(--muted); }
 footer .wrap { display: flex; gap: 24px; flex-wrap: wrap; }
 input[type=search] { font: 15px var(--sans); padding: 8px 10px; border: 1px solid var(--rule-strong); background: var(--card);
                      color: var(--ink); width: min(320px, 100%); border-radius: 3px; }
 @media (max-width: 640px) {
-  body { font-size: 16px; } .stat { border-right: 0; border-bottom: 1px solid var(--rule); }
+  body { font-size: 16px; } .stat { border-right: 0; border-bottom: 1px solid var(--rule); padding: 14px 16px; }
   h2 { font-size: 25px; } nav { margin-left: 0; }
 }
 @media (prefers-reduced-motion: no-preference) { a { transition: color .12s; } }
