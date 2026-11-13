@@ -28,6 +28,8 @@ class Target:
     host: str  # user@host
     port: int = 22
     root: str = "/data/qnx-porter"  # where the trees are copied on the target
+    # run the tests as this target user (QNX `on -u`), for suites that refuse root (libuv); "" = the ssh user
+    run_as: str = ""
 
     @classmethod
     def parse(cls, spec: str, root: str = "/data/qnx-porter") -> "Target":
@@ -54,6 +56,9 @@ class Target:
         tar = subprocess.Popen(["tar", "-C", "/", "-cf", "-", *rel], stdout=subprocess.PIPE)
         self.ssh(f"mkdir -p {root} && tar -C {root} -xf -", stdin=tar.stdout, check=True, timeout=1800)
         tar.wait()
+        if self.run_as:  # the tests write into their trees, so that user must own them
+            owner = shlex.quote(self.run_as)
+            self.ssh(" && ".join(f"chown -R {owner} {shlex.quote(self.root + '/' + r)}" for r in rel), timeout=600)
         return self.ssh(link_command(self.root, rel), capture_output=True, timeout=60).returncode == 0
 
     def remove(self, paths: list[Path]) -> None:
@@ -82,6 +87,7 @@ def remote_command(t: Target, work: str, cwd: str, argv: list[str], same_path: b
     def move(a: str) -> str:
         return a.replace(work, t.root + work) if (work in a and not same_path) else a
     prefix = f"timeout -s KILL {limit} " if limit else ""
+    prefix += f"on -u {shlex.quote(t.run_as)} " if t.run_as else ""
     prefix += ("env " + " ".join(shlex.quote(move(e)) for e in env) + " ") if env else ""
     return f"cd {shlex.quote(move(cwd))} && exec {prefix}{' '.join(shlex.quote(move(a)) for a in argv)}"
 

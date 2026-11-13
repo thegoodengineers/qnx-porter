@@ -106,3 +106,12 @@ def test_clone_retries_only_when_the_network_is_down(tmp_path, monkeypatch):
         cmd, 128, "", "fatal: Remote branch v9 not found in upstream origin"))
     with pytest.raises(subprocess.CalledProcessError):
         agent.clone("https://x/y.git", "v9", tmp_path / "src", log=lambda m: None)
+
+
+def test_tests_can_run_as_another_target_user():
+    # libuv's test suite refuses root ("The libuv test suite cannot be run as root."); QNX's `on -u` drops it.
+    from qnx_porter.target import Target, remote_command
+    t = rc.for_library(Target("root@q"), {"run_as": "qnxuser"})
+    assert t.run_as == "qnxuser" and rc.for_library(Target("root@q"), {"run_as": ""}).run_as == ""
+    cmd = remote_command(t, "/w", "/w/b", ["/w/b/uv_run_tests"], same_path=True, limit=300)
+    assert "exec timeout -s KILL 300 on -u qnxuser /w/b/uv_run_tests" in cmd

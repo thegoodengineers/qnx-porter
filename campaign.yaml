@@ -86,7 +86,7 @@ libraries:
   - {name: wolfssl, url: https://github.com/wolfSSL/wolfssl.git, tag: v5.9.4-stable, args: [-DWOLFSSL_EXAMPLES=OFF]}
   - {name: libsrtp, url: https://github.com/cisco/libsrtp.git, tag: v2.8.1}
   # ---- networking, messaging, IoT, industrial
-  - {name: libuv, url: https://github.com/libuv/libuv.git, tag: v1.53.0, args: [-DLIBUV_BUILD_TESTS=ON]}
+  - {name: libuv, url: https://github.com/libuv/libuv.git, tag: v1.53.0, args: [-DLIBUV_BUILD_TESTS=ON], run_as: qnxuser}
   - {name: libevent, url: https://github.com/libevent/libevent.git, tag: release-2.1.13-stable, args: [-DEVENT__DISABLE_OPENSSL=ON, -DEVENT__DISABLE_MBEDTLS=ON, -DEVENT__DISABLE_BENCHMARK=ON]}
   - {name: c-ares, url: https://github.com/c-ares/c-ares.git, tag: v1.34.9}
   - {name: libcoap, url: https://github.com/obgm/libcoap.git, tag: v4.3.5b, args: [-DENABLE_DTLS=OFF, -DENABLE_DOCS=OFF]}

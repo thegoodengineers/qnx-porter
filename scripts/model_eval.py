@@ -20,7 +20,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from qnx_porter import agent, llm  # noqa: E402
 from qnx_porter.target import Target  # noqa: E402
-from run_campaign import load  # noqa: E402
+from run_campaign import for_library, load  # noqa: E402
 
 FIELDS = ["library", "rules_only_build", "rules_only_tests", "rules_model_build", "rules_model_tests",
           "model_patches_kept", "model_patches_reverted", "rule_patches", "model_calls", "model_failed_calls",
@@ -52,7 +52,7 @@ def main(argv=None) -> int:
         lib = libs[name]
         print(f"=== {name}: rules only ended {base['build_result']}; re-porting with the model step", flush=True)
         r = agent.port(lib["url"], lib["tag"], ROOT / "ports-model", arch=c["arch"],
-                       target=target if lib["tests"] else None, max_rounds=a.max_rounds, use_llm=True,
+                       target=for_library(target, lib) if lib["tests"] else None, max_rounds=a.max_rounds, use_llm=True,
                        extra_args=tuple(lib["args"] + lib["arch_args"].get(c["arch"], [])), name=name,
                        note=lib["note"], subdir=lib["subdir"])
         u = r.get("model_usage") or {}

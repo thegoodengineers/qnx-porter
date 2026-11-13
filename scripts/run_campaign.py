@@ -8,6 +8,7 @@ It stops before doing anything if qcc or the QNX target is missing, and says whi
 Each library's patches, diff (qnx.patch), toolchain file and logs land in ports/<name>/.
 """
 import argparse
+import dataclasses
 import json
 import re
 import subprocess
@@ -41,6 +42,7 @@ def load(path: Path) -> dict:
         lib["tests"] = lib.get("tests", True) is not False
         lib["note"] = str(lib.get("note", ""))
         lib["subdir"] = str(lib.get("subdir", ""))
+        lib["run_as"] = str(lib.get("run_as", ""))
     return {"target": c.get("target"), "target_dir": c.get("target_dir", "/data/qnx-porter"),
             "arch": c.get("arch", "x86_64"), "max_rounds": int(c.get("max_rounds", 15)), "libraries": libs,
             "skip_ported": bool(c.get("skip_ported", True))}
@@ -81,6 +83,11 @@ def default_branch(url: str) -> str:
     r = subprocess.run(["git", "ls-remote", "--symref", url, "HEAD"], capture_output=True, text=True, timeout=120)
     m = re.search(r"^ref: refs/heads/(\S+)\s+HEAD", r.stdout, re.M)
     return m.group(1) if m else ""
+
+
+def for_library(target: Target | None, lib: dict) -> Target | None:
+    """The target as this library's tests need it: as another user (`run_as`) for suites that refuse root."""
+    return dataclasses.replace(target, run_as=lib["run_as"]) if target and lib.get("run_as") else target
 
 
 def finished(report: Path) -> bool:
@@ -179,7 +186,7 @@ def main(argv=None) -> int:
                   "re-run with --resume to continue from this library")
             break
         try:
-            agent.port(lib["url"], lib["tag"], out, arch=c["arch"], target=target if lib["tests"] else None,
+            agent.port(lib["url"], lib["tag"], out, arch=c["arch"], target=for_library(target, lib) if lib["tests"] else None,
                        max_rounds=c["max_rounds"], use_llm=not a.no_model,
                        extra_args=tuple(lib["args"] + lib["arch_args"].get(c["arch"], [])),
                        name=lib["name"], note=lib["note"], subdir=lib["subdir"])
