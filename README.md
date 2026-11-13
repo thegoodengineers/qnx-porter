@@ -34,6 +34,11 @@ Each line links the generated file its numbers come from.
   its hash ([example](ports/mbedtls/sbom.spdx.json)), and a copyleft flag per library.
 - **Codelab** ([web page](https://thegoodengineers.github.io/qnx-porter/codelab-port-a-library.html),
   [source](docs/codelab/port-a-library.md)): port a CMake C library to QNX 8.0 and run its own tests in QEMU.
+- **What you get per library** (json-c as the example): [patches with their reasons](ports/json-c/patches/),
+  one [`qnx.patch`](ports/json-c/qnx.patch), a [CMake toolchain file](ports/json-c/qnx-toolchain.cmake), the
+  per-test [QNX log](ports/json-c/logs/tests.log) and [JUnit XML](ports/json-c/logs/tests.junit.xml), the
+  [crash triage](ports/json-c/logs/crashes.log) from QNX core dumps, an [SPDX SBOM](ports/json-c/sbom.spdx.json),
+  and a [REPORT.md](ports/json-c/REPORT.md) that says what changed and why.
 - **Install:** `python3 -m pip install --user qnx-porter`. **Website:**
   [thegoodengineers.github.io/qnx-porter](https://thegoodengineers.github.io/qnx-porter/).
 
