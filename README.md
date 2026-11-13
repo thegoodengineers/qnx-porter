@@ -296,8 +296,9 @@ source ~/qnx800/qnxsdp-env.sh && qnx-porter doctor
 qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11
 python3 scripts/run_campaign.py                       # every library in campaign.yaml, then the CSV
 ```
-Build and run requirements: **QNX SDP 8.0**, target **x86_64 QEMU** (from `mkqnximage`) or **aarch64le**
-hardware with ssh, toolchain **qcc / GCC from SDP 8.0**, host **Ubuntu 22.04/24.04 or WSL2**. Details: [SETUP.md](SETUP.md).
+Build and run requirements: **QNX SDP 8.0**, target **x86_64 QEMU** or **aarch64le QEMU `virt`**
+(both built by `scripts/qemu_target.sh` with QNX's `mkqnximage`; any QNX 8.0 target reachable over ssh also
+works, but we tested only these two), toolchain **qcc / GCC from SDP 8.0**, host **Ubuntu 22.04/24.04 or WSL2**. Details: [SETUP.md](SETUP.md).
 
 ## Known limits
 - Linux host only (WSL2 on Windows), because QNX's QEMU tooling is Ubuntu-only.
