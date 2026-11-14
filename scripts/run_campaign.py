@@ -10,7 +10,9 @@ Each library's patches, diff (qnx.patch), toolchain file and logs land in ports/
 import argparse
 import dataclasses
 import json
+import os
 import re
+import shutil
 import subprocess
 import sys
 import time
@@ -136,6 +138,34 @@ def error_report(out: Path, lib: dict, arch: str, err: str, minutes: float) -> N
     }, indent=2), encoding="utf-8")
 
 
+def low_disk(paths: list[str], min_gb: float) -> list[tuple[str, float]]:
+    """(path, GiB free) for each existing path with less than min_gb free."""
+    free = [(p, shutil.disk_usage(p).free / 2**30) for p in paths if Path(p).exists()]
+    return [(p, gb) for p, gb in free if gb < min_gb]
+
+
+def wait_for_disk(paths: list[str], min_gb: float, pause: float = 60, sleep=time.sleep) -> None:
+    """Pause before the next library while a watched disk is low, and continue once there is room again.
+    On WSL, watch the Windows drive that holds the distribution's ext4.vhdx (QNX_PORTER_DISK_WATCH=/mnt/d):
+    when that drive filled up on 14 Nov 2026, the Linux filesystem went read-only and WSL stopped starting."""
+    told = False
+    while low := low_disk(paths, min_gb):
+        if not told:
+            print("    paused: " + ", ".join(f"{p} has {gb:.1f} GiB free" for p, gb in low)
+                  + f" (under {min_gb:g} GiB). Free some space and the campaign continues.", flush=True)
+            told = True
+        sleep(pause)
+    if told:
+        print("    disk space is back: continuing", flush=True)
+
+
+def tidy(out: Path, name: str, keep: set[str]) -> None:
+    """Delete a finished library's build tree (work/build, the bulk of its disk use). work/src stays for
+    scripts/sbom.py; libraries that others list under `uses` keep their build, which those link against."""
+    if name not in keep:
+        shutil.rmtree(out / name / "work" / "build", ignore_errors=True)
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--campaign", default=str(ROOT / "campaign.yaml"))
@@ -153,7 +183,13 @@ def main(argv=None) -> int:
     ap.add_argument("--restart-target", metavar="CMD",
                     help="shell command that restarts a QNX target that stopped answering, e.g. "
                          "'QNX_TARGET_ARCH=aarch64le scripts/qemu_target.sh restart'")
+    ap.add_argument("--keep-work", action="store_true",
+                    help="keep each library's work/build tree (default: delete it once its report is written)")
+    ap.add_argument("--min-free-gb", type=float, default=5,
+                    help="pause before the next library while a watched disk has less free (default 5 GiB); "
+                         "watched: / and the paths in QNX_PORTER_DISK_WATCH (colon-separated)")
     a = ap.parse_args(argv)
+    watch = ["/", *filter(None, os.environ.get("QNX_PORTER_DISK_WATCH", "").split(":"))]
 
     c = load(Path(a.campaign))
     if a.arch:
@@ -189,7 +225,9 @@ def main(argv=None) -> int:
         done = [lib["name"] for lib in libs if finished(out / lib["name"] / "report.json")]
         libs = [lib for lib in libs if lib["name"] not in done]
         print(f"resume: {len(done)} libraries already have a report in {out}; {len(libs)} to go")
+    used = {u for lib in c["libraries"] for u in lib["uses"]}
     for i, lib in enumerate(libs, 1):
+        wait_for_disk(watch, a.min_free_gb)
         print(f"\n=== [{i}/{len(libs)}] {lib['name']} {lib['tag']} ===")
         t0 = time.time()
         if target and lib["tests"] and not alive(target, a.restart_target):
@@ -205,6 +243,8 @@ def main(argv=None) -> int:
         except (subprocess.CalledProcessError, subprocess.TimeoutExpired, OSError, RuntimeError, ValueError) as e:
             print(f"    {lib['name']}: agent error: {e}")
             error_report(out, lib, c["arch"], str(e), (time.time() - t0) / 60)
+        if not a.keep_work:
+            tidy(out, lib["name"], used)
     subprocess.run([sys.executable, str(ROOT / "scripts" / "ports_csv.py")], check=True)
     return 0
 

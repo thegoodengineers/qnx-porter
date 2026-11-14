@@ -23,6 +23,11 @@ sudo apt update && sudo apt install -y build-essential cmake ninja-build meson a
 
 `protobuf-compiler` and `tcl` are host tools that nanopb's and sqlite's own builds run.
 
+WSL keeps the whole Linux filesystem in one growing file, `ext4.vhdx`, on a Windows drive. If that drive fills up,
+Linux switches to read-only and WSL can stop starting (it happened to us on 14 Nov 2026). Keep 5 GB or more free
+there, and tell the campaign which drive to watch, for example `export QNX_PORTER_DISK_WATCH=/mnt/d`: it then
+pauses before the next library while that drive has less than 5 GiB free (`--min-free-gb`).
+
 ## 3. QNX Software Center and SDP 8.0 (you)
 1. From the QNX Everywhere page, download **QNX Software Center for Linux hosts**
    (`qnx-setup-*-linux.run`) and run it: `chmod +x qnx-setup-*.run && ./qnx-setup-*.run`.
@@ -79,6 +84,7 @@ source ~/qnx800/qnxsdp-env.sh
 qnx-porter doctor                    # every line should say ok
 qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11
 python3 scripts/run_campaign.py      # all of campaign.yaml -> ports/<lib>/, results/ports.csv
+                                     # deletes each work/build once its report is written; --keep-work keeps it
 ```
 
 ## 6. Optional: the model for the long tail
