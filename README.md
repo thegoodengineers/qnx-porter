@@ -104,6 +104,11 @@ nothing above it does. All three are in our campaign:
 
 ([`results/ports.csv`](results/ports.csv)).
 
+**Python on QNX, over our port.** The CPython 3.13.7 that SDP 8.0 ships for QNX, run on the x86_64 target with
+our zlib port loaded in place of the image's zlib (`zlib.ZLIB_RUNTIME_VERSION` reports 1.4, not 1.2.13), passes
+CPython's own `test_zlib` and `test_gzip`: 148 tests, 2 skipped, the same as over the image's zlib
+([docs/PYTHON_ON_QNX.md](docs/PYTHON_ON_QNX.md), [`scripts/python_on_qnx.sh`](scripts/python_on_qnx.sh)).
+
 ## Related work: QNX's own ports
 QNX maintains hand-made build recipes in [qnx-ports](https://github.com/qnx-ports)
 ([build-files](https://github.com/qnx-ports/build-files)): a person adapts each library and writes its recipe.

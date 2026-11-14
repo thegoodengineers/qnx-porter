@@ -52,6 +52,9 @@ on a QNX 8.0 target.
 - **QNX libc differences found by the tests**, each with a small reproducer (`docs/qnx-reports/`): `strtod()`
   rounding, `strftime()` with `%Ex`, `fchdir()` needing `O_DIRECTORY`, and `qsort()` with an inconsistent
   comparator. The reports are drafts and have not been sent.
+- **Python on QNX, over our port.** The SDP's CPython 3.13.7 on the QNX target, with our zlib port loaded in
+  place of the image's zlib, passes CPython's own `test_zlib` and `test_gzip`: 148 tests, 2 skipped, the same as
+  over the image's zlib (`docs/PYTHON_ON_QNX.md`).
 - **Contributions sent upstream** (14 Nov 2026; opened, under review, none merged): the nng fix for the
   POLLHUP hang (issue #2419, PR #2420) and its `<sys/errno.h>` include (issue #2421, PR #2422), libsrtp's test
   shuffle (cisco/libsrtp PR #841), the googletest `fchdir()` report (issue #5170), and qnx-porter's yyjson
