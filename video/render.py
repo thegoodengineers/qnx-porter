@@ -55,8 +55,8 @@ NARRATION = {
     "json-c": "When a test crashes on QNX, qnx-porter copies the core dump back and reads the backtrace. json-c passes "
               "NULL to printf: glibc prints (null), QNX faults. A rule fixes the test, and json-c goes from "
               "{jc_before} to {jc_after} of {jc_total}.",
-    "hang": "When a test hangs, pidin and a kernel trace show why: in nng, one thread spins, because QNX reports no "
-            "POLLHUP on a closed pipe. We sent nng the fix.",
+    "hang": "When a test hangs, pidin and a kernel trace show why: in nng, one thread spins, as QNX sends no POLLHUP. "
+            "We sent nng the fix.",
     "campaign": "The campaign: {lib} libraries. On x86_64, {built} built for QNX 8.0, and {ok} of {total} of their own "
                 "tests passed on the target. {aarch64_built} {rules_phrase}",
     "failures": "Every failing test is listed by cause: QNX libc differences such as strtod rounding, with reproducers, "
@@ -66,8 +66,8 @@ NARRATION = {
     "crates": "The same tool ports Rust crates: {cr_built} of {cr_total} build for QNX 8.0.",
     "model": "Where no rule applied, the model step built {model_libs}, each diff proved by a rebuild.",
     "rt": "Real-time check: the latency of one call in {rt_libs} libraries on QNX in QEMU, idle, loaded and isolated.",
-    "site": "Everything is on the website, generated from the same reports: every port, every rule, and a weekly "
-            "check against upstream. Install with pip install qnx-porter.",
+    "site": "Everything is on the website, generated from the same reports, with a weekly check against upstream. "
+            "Install with pip install qnx-porter.",
     "paper": "The method and every result are written up in a research paper.",
     "close": "Rules first; a language model only where no rule fits, kept only if the rebuild proves it. "
              "Every command here ran on QNX 8.0.",

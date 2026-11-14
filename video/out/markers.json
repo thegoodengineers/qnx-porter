@@ -1,119 +1,275 @@
 [
  {
-  "t": 0.0,
+  "t": 0.007,
+  "shot": "title",
+  "seconds": 7,
   "slide": "title"
  },
  {
-  "t": 0.0,
+  "t": 0.008,
+  "shot": "problem",
+  "seconds": 9,
   "slide": "problem"
  },
  {
-  "t": 0.0,
-  "caption": "1/4  A real QNX 8.0 target (QEMU image from mkqnximage) and the SDP 8.0 toolchain"
+  "t": 0.008,
+  "shot": "why-c",
+  "seconds": 9,
+  "slide": "why-c"
  },
  {
-  "t": 0.0,
+  "t": 0.008,
+  "shot": "target",
+  "seconds": 10,
+  "caption": "A real QNX 8.0 target (QEMU image from mkqnximage) and the SDP 8.0 toolchain"
+ },
+ {
+  "t": 0.008,
   "command": "scripts/qemu_target.sh status"
  },
  {
-  "t": 0.275,
+  "t": 0.196,
   "done": "scripts/qemu_target.sh status",
   "exit": 0
  },
  {
-  "t": 0.275,
+  "t": 0.196,
   "command": "qnx-porter doctor | grep -v '^[[:space:]]' | cut -c1-120"
  },
  {
-  "t": 0.825,
+  "t": 0.469,
   "done": "qnx-porter doctor | grep -v '^[[:space:]]' | cut -c1-120",
   "exit": 0
  },
  {
-  "t": 0.825,
-  "caption": "2/4  paho.mqtt.c (MQTT client) does not build for QNX: four rule-based fixes, rebuilt each round"
+  "t": 0.469,
+  "shot": "mbedtls",
+  "seconds": 22,
+  "caption": "mbedtls, straight from upstream: the build fails on QNX, a rule fixes it, its own tests run on QNX"
  },
  {
-  "t": 0.825,
-  "command": "qnx-porter port https://github.com/eclipse/paho.mqtt.c.git --tag v1.3.14 --no-model --out /tmp/qnx-porter-demo"
+  "t": 0.469,
+  "command": "qnx-porter port https://github.com/Mbed-TLS/mbedtls.git --tag v4.2.0 --target root@172.31.1.11 --no-model --out /tmp/qnx-porter-demo"
  },
  {
-  "t": 22.043,
-  "done": "qnx-porter port https://github.com/eclipse/paho.mqtt.c.git --tag v1.3.14 --no-model --out /tmp/qnx-porter-demo",
+  "t": 342.451,
+  "done": "qnx-porter port https://github.com/Mbed-TLS/mbedtls.git --tag v4.2.0 --target root@172.31.1.11 --no-model --out /tmp/qnx-porter-demo",
   "exit": 0
  },
  {
-  "t": 22.043,
-  "command": "head -24 /tmp/qnx-porter-demo/paho.mqtt.c/patches/0002-*.patch | cut -c1-138"
+  "t": 342.452,
+  "command": "head -4 /tmp/qnx-porter-demo/mbedtls/patches/*-link-libsocket.patch | cut -c1-138"
  },
  {
-  "t": 22.049,
-  "done": "head -24 /tmp/qnx-porter-demo/paho.mqtt.c/patches/0002-*.patch | cut -c1-138",
+  "t": 342.477,
+  "done": "head -4 /tmp/qnx-porter-demo/mbedtls/patches/*-link-libsocket.patch | cut -c1-138",
   "exit": 0
  },
  {
-  "t": 22.049,
-  "caption": "3/4  json-c: built with qcc, its own 25 tests run ON the QNX target; a crash is traced from the core dump"
+  "t": 342.477,
+  "shot": "json-c",
+  "seconds": 17,
+  "caption": "json-c: built with qcc, its own tests run on the QNX target; a crash is traced from the core dump"
  },
  {
-  "t": 22.049,
-  "command": "qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11 --no-model --out /tmp/qnx-porter-demo"
+  "t": 342.477,
+  "command": "qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.19-20260627 --target root@172.31.1.11 --no-model --out /tmp/qnx-porter-demo"
  },
  {
-  "t": 119.876,
-  "done": "qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 --target root@172.31.1.11 --no-model --out /tmp/qnx-porter-demo",
+  "t": 380.238,
+  "done": "qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.19-20260627 --target root@172.31.1.11 --no-model --out /tmp/qnx-porter-demo",
   "exit": 0
  },
  {
-  "t": 119.879,
+  "t": 380.238,
   "command": "grep -E '^(#[0-4] |Program)' /tmp/qnx-porter-demo/json-c/logs/crashes.log | awk '!seen[$1]++' | cut -c1-138"
  },
  {
-  "t": 119.931,
+  "t": 380.251,
   "done": "grep -E '^(#[0-4] |Program)' /tmp/qnx-porter-demo/json-c/logs/crashes.log | awk '!seen[$1]++' | cut -c1-138",
   "exit": 0
  },
  {
-  "t": 119.931,
-  "command": "tail -4 /tmp/qnx-porter-demo/json-c/logs/tests.log"
+  "t": 380.252,
+  "shot": "hang",
+  "seconds": 11,
+  "caption": "A hung test on QNX: pidin and a kernel trace, taken before it is killed"
  },
  {
-  "t": 119.942,
-  "done": "tail -4 /tmp/qnx-porter-demo/json-c/logs/tests.log",
+  "t": 380.252,
+  "command": "awk '/^## Hang on QNX/{f=1} f' ports/nng/REPORT.md | grep -v '^```' | head -15 | cut -c1-138"
+ },
+ {
+  "t": 380.267,
+  "done": "awk '/^## Hang on QNX/{f=1} f' ports/nng/REPORT.md | grep -v '^```' | head -15 | cut -c1-138",
   "exit": 0
  },
  {
-  "t": 119.943,
-  "caption": "4/4  The campaign: 10 libraries not on oss.qnx.com, every number written by the scripts"
+  "t": 380.267,
+  "command": "grep -o 'https://github.com/nanomsg/nng/pull/[0-9]*' upstream/outbox/README.md | head -1"
  },
  {
-  "t": 119.943,
-  "command": "python3 scripts/ports_csv.py | sed 's| -> .*||'"
- },
- {
-  "t": 120.081,
-  "done": "python3 scripts/ports_csv.py | sed 's| -> .*||'",
+  "t": 380.276,
+  "done": "grep -o 'https://github.com/nanomsg/nng/pull/[0-9]*' upstream/outbox/README.md | head -1",
   "exit": 0
  },
  {
-  "t": 120.082,
-  "command": "cut -d, -f1,5,6,7,8 results/ports.csv | column -s, -t"
+  "t": 380.276,
+  "shot": "campaign",
+  "seconds": 9,
+  "caption": "The campaign: every library, every number written by scripts/ports_csv.py"
  },
  {
-  "t": 120.091,
-  "done": "cut -d, -f1,5,6,7,8 results/ports.csv | column -s, -t",
+  "t": 380.276,
+  "command": "python3 scripts/ports_csv.py | grep -v '^->'"
+ },
+ {
+  "t": 382.05,
+  "done": "python3 scripts/ports_csv.py | grep -v '^->'",
   "exit": 0
  },
  {
-  "t": 120.091,
+  "t": 382.05,
+  "command": "cut -d, -f1,4,5,6,7,8,9,10 results/ports.csv | column -s, -t"
+ },
+ {
+  "t": 382.065,
+  "done": "cut -d, -f1,4,5,6,7,8,9,10 results/ports.csv | column -s, -t",
+  "exit": 0
+ },
+ {
+  "t": 382.066,
+  "shot": "campaign",
+  "seconds": 9,
   "slide": "results"
  },
  {
-  "t": 120.091,
+  "t": 382.066,
+  "shot": "failures",
+  "seconds": 9,
   "slide": "failures"
  },
  {
-  "t": 120.091,
+  "t": 382.066,
+  "shot": "comparison",
+  "seconds": 11,
+  "caption": "Checked against QNX's own hand-made ports"
+ },
+ {
+  "t": 382.066,
+  "command": "sed -n '/^## Summary/,/^## Library/p' docs/related/qnx-ports-comparison.md | head -12 | cut -c1-138"
+ },
+ {
+  "t": 382.077,
+  "done": "sed -n '/^## Summary/,/^## Library/p' docs/related/qnx-ports-comparison.md | head -12 | cut -c1-138",
+  "exit": 0
+ },
+ {
+  "t": 382.077,
+  "command": "ls recipes/build-files/ports | wc -l"
+ },
+ {
+  "t": 382.087,
+  "done": "ls recipes/build-files/ports | wc -l",
+  "exit": 0
+ },
+ {
+  "t": 382.087,
+  "shot": "crates",
+  "seconds": 6,
+  "caption": "Rust crates on QNX 8.0: each crate's own tests, run on the target"
+ },
+ {
+  "t": 382.087,
+  "command": "cut -d, -f1,2,3,5,6,7 results/crates.csv | column -s, -t"
+ },
+ {
+  "t": 382.095,
+  "done": "cut -d, -f1,2,3,5,6,7 results/crates.csv | column -s, -t",
+  "exit": 0
+ },
+ {
+  "t": 382.095,
+  "shot": "model",
+  "seconds": 7,
+  "caption": "The model step, where no rule applies: kept only if the rebuild proves it"
+ },
+ {
+  "t": 382.095,
+  "command": "cut -d, -f1-7 results/model_eval.csv | column -s, -t"
+ },
+ {
+  "t": 382.102,
+  "done": "cut -d, -f1-7 results/model_eval.csv | column -s, -t",
+  "exit": 0
+ },
+ {
+  "t": 382.102,
+  "command": "head -3 ports-model/libuv/patches/*-model-fix-*.patch | cut -c1-138"
+ },
+ {
+  "t": 382.112,
+  "done": "head -3 ports-model/libuv/patches/*-model-fix-*.patch | cut -c1-138",
+  "exit": 0
+ },
+ {
+  "t": 382.112,
+  "shot": "rt",
+  "seconds": 7,
+  "caption": "Real-time check: latency of one call on QNX 8.0 in QEMU (compares libraries; not a hardware figure)"
+ },
+ {
+  "t": 382.112,
+  "command": "sed -n '/^## Latency/,/^## What/p' docs/RT_RESULTS.md | grep -E '^(## |[|] )' | cut -c1-138"
+ },
+ {
+  "t": 382.12,
+  "done": "sed -n '/^## Latency/,/^## What/p' docs/RT_RESULTS.md | grep -E '^(## |[|] )' | cut -c1-138",
+  "exit": 0
+ },
+ {
+  "t": 382.12,
+  "shot": "site",
+  "seconds": 2,
+  "image": "shots/site-overview.png"
+ },
+ {
+  "t": 382.12,
+  "shot": "site",
+  "seconds": 2,
+  "image": "shots/site-results.png"
+ },
+ {
+  "t": 382.12,
+  "shot": "site",
+  "seconds": 2,
+  "image": "shots/site-weekly.png"
+ },
+ {
+  "t": 382.12,
+  "shot": "site",
+  "seconds": 3,
+  "caption": "Install"
+ },
+ {
+  "t": 382.12,
+  "command": "python3 -m pip index versions qnx-porter 2>/dev/null"
+ },
+ {
+  "t": 383.305,
+  "done": "python3 -m pip index versions qnx-porter 2>/dev/null",
+  "exit": 0
+ },
+ {
+  "t": 383.305,
+  "shot": "paper",
+  "seconds": 5,
+  "image": "shots/site-paper.png"
+ },
+ {
+  "t": 383.305,
+  "shot": "close",
+  "seconds": 10,
   "slide": "close"
  }
 ]

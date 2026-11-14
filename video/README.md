@@ -6,8 +6,9 @@ the recording together with the slides and the site screenshots into `out/qnx-po
 the timing, and says on screen how much wait it cut. The shot list, the narration and where every number comes
 from: [docs/VIDEO_SCRIPT.md](../docs/VIDEO_SCRIPT.md).
 
-**Status.** The pipeline for the new 2:38 cut is in place and tested without the QNX target (see "Tests"). It has
-**not been recorded yet**: the committed `out/` files are still the older 10-library cut until `make.sh` runs.
+**Status.** Recorded on 14 Nov 2026 with `make.sh` against the x86_64 QNX 8.0 QEMU target: 167 s (2:47),
+`out/qnx-porter-demo.mp4`, `out/demo.cast`, `out/markers.json`. The narration is not yet in our voice: `voice.wav`
+is recorded from the lines `render.py` printed (they are in [docs/VIDEO_SCRIPT.md](../docs/VIDEO_SCRIPT.md)).
 
 ## Re-record (when the QNX target is free)
 ```bash
@@ -59,8 +60,9 @@ published results and `results/runs/campaign-8.log`.
 - **Per-shot timing.** Each scene has a length. A terminal scene starts at relaxed pacing (typing 30 characters
   a second, pauses up to 1 s, 6 s hold after each command) and tightens towards 200 characters a second, 0.05 s
   pauses and a 1 s hold only as far as it must to fit; what is left is held on the last frame.
-- **Length guard.** It fails if the total reaches 170 s and warns outside 140-160 s.
-- **Placeholders by file presence.** Shots 10 and 11 go in only when `results/crates.csv` and
+- **Length guard.** It fails if the total reaches 170 s and warns outside 140-168 s.
+- **Placeholders by file presence.** The hang shot goes in only when `ports/nng/REPORT.md` has a "Hang on QNX"
+  section. The crates and model shots go in only when `results/crates.csv` and
   `results/model_eval.csv` exist on the recorded commit. No flag.
 - **Narration.** `NARRATION` has one line per shot. It is drawn as a caption bar at the bottom of every frame of
   that shot (at most three lines). If `video/voice.wav` exists it is muxed in (AAC, padded with silence to the
