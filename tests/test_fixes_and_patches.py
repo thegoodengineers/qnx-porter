@@ -270,4 +270,13 @@ def test_deep_recursion_backtrace_names_the_function():
           + "".join(f"#{i}  0x5e8d04d6c7 in cJSON_Duplicate_rec (item=<optimized out>, depth={6540 - i}, "
                     "recurse=1) at /s/cJSON.c:2824\n" for i in range(3, 12)))
     assert crash.deep_recursion(bt) == "cJSON_Duplicate_rec"
+    # same test on aarch64: QNX's malloc takes frames #0-#4, so 24 frames are read, not 12
+    arm = ("#0  pthread_mutex_trylock (mutex=0x2b) at /b/pthread_mutex_trylock.c:28\n"
+           "#1  0x2b in forksafe_mutex_trylock (fs_p=0x2b) at /b/forksafe_mutex.c:48\n"
+           "#2  0x2b in arena_trylock (arena=<optimized out>) at /b/ptmalloc3.c:86\n"
+           "#3  arena_get (size=72) at /b/ptmalloc3.c:289\n#4  malloc (bytes=64) at /b/ptmalloc3.c:365\n"
+           "#5  0x16 in cJSON_New_Item (hooks=0x16) at /s/cJSON.c:243\n"
+           + "".join(f"#{i}  0x16 in cJSON_Duplicate_rec (item=<optimized out>, depth={6545 - i}, recurse=1) "
+                     "at /s/cJSON.c:2824\n" for i in range(6, 24)))
+    assert crash.deep_recursion(arm) == "cJSON_Duplicate_rec"
     assert crash.deep_recursion("#0  0x1 in strlen (s=0x0) at a.c:1\n#1  0x2 in printf (f=0x1) at b.c:2\n") is None

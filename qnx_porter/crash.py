@@ -53,7 +53,7 @@ def backtrace(env: dict, triplet: str, binary: Path, core: Path) -> str:
     arch = "x86_64" if triplet.startswith("x86_64") else "aarch64le"
     libs = f"{target}/{arch}/lib:{target}/{arch}/usr/lib"
     gdb = f"{env['QNX_HOST'].rstrip('/')}/usr/bin/{gdb_name(triplet)}"
-    r = subprocess.run([gdb, "-q", "-batch", "-ex", f"set solib-search-path {libs}", "-ex", "bt 12",
+    r = subprocess.run([gdb, "-q", "-batch", "-ex", f"set solib-search-path {libs}", "-ex", "bt 24",
                         str(binary), str(core)], capture_output=True, text=True, errors="replace", env=env,
                        timeout=300)
     return "\n".join(ln for ln in r.stdout.splitlines() if ln.startswith(("#", "Program terminated", "Core was")))
@@ -92,7 +92,10 @@ def printf_null(bt: str, src: Path, in_tree) -> tuple[str, str, str] | None:
 
 
 def deep_recursion(bt: str) -> str | None:
-    """The function, if most frames of the (12-frame) backtrace are one function calling itself.
+    """The function, if at least 8 frames of the (24-frame) backtrace are one function calling itself.
+
+    24, not 12: on aarch64 QNX's malloc alone takes 5 frames (cJSON v1.7.19 misc_tests left only 6 recursive
+    frames in a 12-frame backtrace, so the rule did not fire there while it did on x86_64).
 
     That is a stack overflow on QNX more often than on Linux: a QNX process's main thread gets about 464 KiB of
     stack unless it is linked with `qcc -N` (scripts/stack_probe.c measured 464 KiB by default and 7472 KiB with
