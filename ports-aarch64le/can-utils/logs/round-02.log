@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src -B /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src -B /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/qnx-toolchain.cmake
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -21,10 +21,10 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/build -j 
 [  1%] Building C object CMakeFiles/can-calc-bit-timing.dir/calc-bit-timing/can-calc-bit-timing.c.o
 [  2%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-dev-coredump.c.o
 [  3%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-dump.c.o
-[  4%] Building C object CMakeFiles/can.dir/lib.c.o
-[  5%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-main.c.o
-[  6%] Building C object CMakeFiles/can.dir/canframelen.c.o
-[  7%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-regmap.c.o
+[  4%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-main.c.o
+[  5%] Building C object CMakeFiles/can.dir/lib.c.o
+[  6%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-regmap.c.o
+[  7%] Building C object CMakeFiles/can.dir/canframelen.c.o
 [  8%] Building C object CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn.c.o
 [  9%] Building C object CMakeFiles/canfdtest.dir/canfdtest.c.o
 [ 10%] Building C object CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn_dh.c.o
@@ -63,12 +63,6 @@ In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
 gmake[2]: *** [CMakeFiles/mcp251xfd-dump.dir/build.make:90: CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-dump.c.o] Error 1
-In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/lib.c:50:
-/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
-   49 | #include <linux/types.h>
-      |          ^~~~~~~~~~~~~~~
-compilation terminated.
-gmake[2]: *** [CMakeFiles/can.dir/build.make:76: CMakeFiles/can.dir/lib.c.o] Error 1
 In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/kernel.h:11,
                  from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/mcp251xfd/mcp251xfd-main.c:15:
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
@@ -76,15 +70,12 @@ In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
 gmake[2]: *** [CMakeFiles/mcp251xfd-dump.dir/build.make:104: CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-main.c.o] Error 1
-In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/canframelen.h:50,
-                 from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/canframelen.c:54:
+In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/lib.c:50:
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
    49 | #include <linux/types.h>
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
-gmake[2]: *** [CMakeFiles/can.dir/build.make:90: CMakeFiles/can.dir/canframelen.c.o] Error 1
-gmake[2]: Target 'CMakeFiles/can.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:372: CMakeFiles/can.dir/all] Error 2
+gmake[2]: *** [CMakeFiles/can.dir/build.make:76: CMakeFiles/can.dir/lib.c.o] Error 1
 In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/kernel.h:11,
                  from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/mcp251xfd/mcp251xfd-regmap.c:16:
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
@@ -94,12 +85,29 @@ compilation terminated.
 gmake[2]: *** [CMakeFiles/mcp251xfd-dump.dir/build.make:118: CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-regmap.c.o] Error 1
 gmake[2]: Target 'CMakeFiles/mcp251xfd-dump.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:184: CMakeFiles/mcp251xfd-dump.dir/all] Error 2
+In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/canframelen.h:50,
+                 from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/canframelen.c:54:
+/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
+   49 | #include <linux/types.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/can.dir/build.make:90: CMakeFiles/can.dir/canframelen.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/can.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:372: CMakeFiles/can.dir/all] Error 2
 In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/isobusfs/isobusfs_cmn.c:15:
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/errqueue.h:5:10: fatal error: linux/types.h: No such file or directory
     5 | #include <linux/types.h>
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
 gmake[2]: *** [CMakeFiles/isobusfs.dir/build.make:76: CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn.c.o] Error 1
+In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/canfdtest.c:41:
+/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
+   49 | #include <linux/types.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/canfdtest.dir/build.make:76: CMakeFiles/canfdtest.dir/canfdtest.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/canfdtest.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:684: CMakeFiles/canfdtest.dir/all] Error 2
 In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/isobusfs/isobusfs_cmn.h:13,
                  from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/isobusfs/isobusfs_cmn_dh.c:9:
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
@@ -109,14 +117,6 @@ compilation terminated.
 gmake[2]: *** [CMakeFiles/isobusfs.dir/build.make:90: CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn_dh.c.o] Error 1
 gmake[2]: Target 'CMakeFiles/isobusfs.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:236: CMakeFiles/isobusfs.dir/all] Error 2
-In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/canfdtest.c:41:
-/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
-   49 | #include <linux/types.h>
-      |          ^~~~~~~~~~~~~~~
-compilation terminated.
-gmake[2]: *** [CMakeFiles/canfdtest.dir/build.make:76: CMakeFiles/canfdtest.dir/canfdtest.c.o] Error 1
-gmake[2]: Target 'CMakeFiles/canfdtest.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:684: CMakeFiles/canfdtest.dir/all] Error 2
 In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/cangw.c:47:
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can/gw.h:48:10: fatal error: linux/types.h: No such file or directory
    48 | #include <linux/types.h>
@@ -170,31 +170,31 @@ In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src
    49 | #include <linux/types.h>
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
-gmake[2]: *** [CMakeFiles/isotpsniffer.dir/build.make:76: CMakeFiles/isotpsniffer.dir/isotpsniffer.c.o] Error 1
-gmake[2]: Target 'CMakeFiles/isotpsniffer.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:866: CMakeFiles/isotpsniffer.dir/all] Error 2
 In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/isotptun.c:67:
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
    49 | #include <linux/types.h>
       |          ^~~~~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/isotpsniffer.dir/build.make:76: CMakeFiles/isotpsniffer.dir/isotpsniffer.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/isotpsniffer.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:866: CMakeFiles/isotpsniffer.dir/all] Error 2
 compilation terminated.
 gmake[2]: *** [CMakeFiles/isotptun.dir/build.make:76: CMakeFiles/isotptun.dir/isotptun.c.o] Error 1
 gmake[2]: Target 'CMakeFiles/isotptun.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:892: CMakeFiles/isotptun.dir/all] Error 2
-/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/slcan_attach.c:47:10: fatal error: linux/sockios.h: No such file or directory
-   47 | #include <linux/sockios.h>
-      |          ^~~~~~~~~~~~~~~~~
-compilation terminated.
-gmake[2]: *** [CMakeFiles/slcan_attach.dir/build.make:76: CMakeFiles/slcan_attach.dir/slcan_attach.c.o] Error 1
-gmake[2]: Target 'CMakeFiles/slcan_attach.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:918: CMakeFiles/slcan_attach.dir/all] Error 2
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/slcand.c:27:10: fatal error: linux/serial.h: No such file or directory
    27 | #include <linux/serial.h>
       |          ^~~~~~~~~~~~~~~~
 compilation terminated.
+/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/slcan_attach.c:47:10: fatal error: linux/sockios.h: No such file or directory
+   47 | #include <linux/sockios.h>
+      |          ^~~~~~~~~~~~~~~~~
+compilation terminated.
 gmake[2]: *** [CMakeFiles/slcand.dir/build.make:76: CMakeFiles/slcand.dir/slcand.c.o] Error 1
 gmake[2]: Target 'CMakeFiles/slcand.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:944: CMakeFiles/slcand.dir/all] Error 2
+gmake[2]: *** [CMakeFiles/slcan_attach.dir/build.make:76: CMakeFiles/slcan_attach.dir/slcan_attach.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/slcan_attach.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:918: CMakeFiles/slcan_attach.dir/all] Error 2
 In file included from /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/bcmserver.c:127:
 /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
    49 | #include <linux/types.h>

@@ -40,7 +40,7 @@ We built qnx-porter for the QNX Global Hackathon to make that work routine. Give
 
 ## 3 Design
 
-Figure 1 shows the pipeline for one library. Each box names the source file that implements it; the whole tool is 2964 lines of Python with no runtime dependencies, and 164 tests run in CI without QNX.
+Figure 1 shows the pipeline for one library. Each box names the source file that implements it; the whole tool is 3050 lines of Python with no runtime dependencies, and 167 tests run in CI without QNX.
 
 ![Figure 1: The qnx-porter pipeline for one library. Blue: steps every port takes. Green: deterministic rules. Orange: steps whose output is kept only if a later check proves it (a rebuild, or more tests passing).](fig/pipeline.png)
 
@@ -115,7 +115,7 @@ The campaign ported 61 libraries at the latest upstream releases in campaign.yam
 
 *Figure 3. Share of each library's own tests that passed on the QNX 8.0 target, for every library whose suite ran at least one test (`results/ports.csv`). Labels give passed/total, x86_64 first where the architectures differ.*
 
-In this run the same 58 libraries built on both architectures. The libraries that did not build were can-utils (Linux SocketCAN tools: expected not to port), libgpiod (Linux GPIO character-device API: expected not to port) and libwebsockets on both architectures. In the 2024-pin run, libuv and libwebsockets stopped on errors no rule covered (`struct qtime_entry` has no `nsec` member in QNX 8.0; `TCPCTL_KEEPCNT`); QNX's own ports of both libraries change exactly those lines (Section 4.2), and the model step builds both (Section 4.3).
+In this run the same 58 libraries built on both architectures. The library that did not build was libwebsockets on both architectures. Two more, can-utils and libgpiod, stopped on Linux-only kernel interfaces and need a QNX equivalent on both architectures. For those, the porting advisor (`qnx_porter/advisor.py`) acts only when the build stopped on a Linux kernel header: it scans the sources for Linux-only interfaces and names the QNX equivalent of each, with its QNX documentation page (for SocketCAN, a `dev-can-*` driver driven by `CAN_DEVCTL_*` devctl commands; for the GPIO character device, the board's GPIO resource manager). In the 2024-pin run, libuv and libwebsockets stopped on errors no rule covered (`struct qtime_entry` has no `nsec` member in QNX 8.0; `TCPCTL_KEEPCNT`); QNX's own ports of both libraries change exactly those lines (Section 4.2), and the model step builds both (Section 4.3).
 
 Figure 4 counts kept patches by rule. The most frequent rule on x86_64 is `link-libsocket` (6 patches); 15 distinct rules fired on x86_64 and 16 on aarch64. The `printf-null` crash repair was kept in 4 libraries on x86_64 (capstone, json-c, libconfig and tinyxml2). Rules that fired only on aarch64 (signed-char) exist because of the architecture (Section 5.8).
 

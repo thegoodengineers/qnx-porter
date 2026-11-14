@@ -8,7 +8,7 @@
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
   "target": "",
-  "build_result": "failed",
+  "build_result": "needs-qnx-equivalent",
   "rounds": 2,
   "tests_passed": 0,
   "tests_total": 0,
@@ -74,10 +74,36 @@
       "hint": "<linux/serial.h> is a Linux kernel header and does not exist on QNX"
     }
   ],
+  "linux_interfaces": {
+    "stopped_on": "linux/types.h",
+    "interfaces": [
+      {
+        "interface": "SocketCAN (AF_CAN, <linux/can.h>)",
+        "files": 41,
+        "first": "asc2log.c:55",
+        "qnx": "a QNX CAN driver (dev-can-<board>) used through devctl() CAN_DEVCTL_* commands (<sys/can_dcmd.h>) and the canctl utility",
+        "docs": "https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.devctl/topic/can.html"
+      },
+      {
+        "interface": "netlink (AF_NETLINK, <linux/netlink.h>)",
+        "files": 4,
+        "first": "cangw.c:48",
+        "qnx": "routing sockets (PF_ROUTE, <net/route.h>) and sysctl on the io-sock network stack",
+        "docs": "https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.utilities/topic/i/io-sock.html"
+      },
+      {
+        "interface": "epoll (<sys/epoll.h>)",
+        "files": 5,
+        "first": "candump.c:57",
+        "qnx": "poll() or select(), or ionotify() to have a resource manager deliver a pulse or signal",
+        "docs": "https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.lib_ref/topic/i/ionotify.html"
+      }
+    ]
+  },
   "minutes": 0.1,
   "note": "Linux SocketCAN tools: expected not to port",
   "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-13T16:48:22+00:00"
+  "finished": "2026-11-14T10:49:20+00:00"
 }

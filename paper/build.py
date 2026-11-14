@@ -97,7 +97,8 @@ def campaign(n: dict) -> None:
             f"{p}-model-patches": sum(int(r["patches_by_model"]) for r in rs),
             f"{p}-patched-libs": sum(int(r["patches"]) > 0 for r in built),
             f"{p}-unpatched-libs": sum(int(r["patches"]) == 0 for r in built),
-            f"{p}-failed-list": names(r["library"] + (f" ({r['note']})" if r["note"] else "") for r in failed),
+            f"{p}-failed-list": names(r["library"] for r in failed if r["build_result"] != "needs-qnx-equivalent"),
+            f"{p}-equiv-list": names(r["library"] for r in failed if r["build_result"] == "needs-qnx-equivalent"),
             f"{p}-hours": f"{sum(float(r['minutes']) for r in rs) / 60:.1f}",
             f"{p}-first-day": min(r["finished"][:10] for r in rs) if rs else "none",
             f"{p}-last-day": max(r["finished"][:10] for r in rs) if rs else "none",
@@ -116,8 +117,14 @@ def campaign(n: dict) -> None:
                        f"{len(xb & ab)} libraries built on both architectures, "
                        f"{len(xb ^ ab)} on only one ({names(xb ^ ab)})")
     xf, af = n["x-failed-list"], n["a-failed-list"]
-    n["failed-sentence"] = (f"The libraries that did not build were {xf} on both architectures." if xf == af else
-                            f"The libraries that did not build were {xf} on x86_64, and {af} on aarch64.")
+    were = "The library that did not build was" if " and " not in xf and "," not in xf else         "The libraries that did not build were"
+    n["failed-sentence"] = (f"{were} {xf} on both architectures." if xf == af else
+                            f"{were} {xf} on x86_64, and {af} on aarch64.")
+    xe, ae = n["x-equiv-list"], n["a-equiv-list"]
+    if xe != "none":  # the porting advisor's status (qnx_porter/advisor.py), not counted as built
+        k = sum(r["build_result"] == "needs-qnx-equivalent" for r in ports if r["arch"] == "x86_64")
+        n["failed-sentence"] += (f" {['One', 'Two', 'Three', 'Four'][k - 1] if k <= 4 else k} more, {xe}, stopped on Linux-only kernel interfaces and need a QNX equivalent"
+                                 + (" on both architectures." if xe == ae else f" on x86_64 ({ae} on aarch64)."))
     n["all-libs"] = len({r["library"] for r in ports})
     n["tests-passed-both"] = n["x-tests-passed"] + n["a-tests-passed"]
     n["aarch-only-rules"] = names(set(rule_counts("aarch64le")) - set(rule_counts("x86_64")))

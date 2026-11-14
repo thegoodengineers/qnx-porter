@@ -89,6 +89,13 @@ New errors elsewhere count as progress (a compile fix lets the linker run). The 
 **Stop and report what is left.** When neither a rule nor the model has a fix, the loop stops, and the first
 errors go into the report's "Still failing" section with a QNX hint where one is known.
 
+**Porting advisor** (`qnx_porter/advisor.py`). If the build stopped on a Linux kernel header (`<linux/...>`,
+`<sys/epoll.h>`, `<sys/signalfd.h>`, ...), the advisor scans the sources for Linux-only kernel interfaces
+(SocketCAN, the GPIO character device, netlink, I2C and SPI device nodes, epoll, signalfd, eventfd, timerfd) and
+reports each with the number of files that use it, the first place, QNX's equivalent and its QNX 8.0 docs page.
+The build result is then `needs-qnx-equivalent` instead of `failed`; it is not counted as built. A library that
+only has an epoll path behind `#ifdef __linux__` builds, so it is never advised.
+
 **Sync to the QNX target and run the library's own tests** (`qnx_porter/target.py`). `Target.sync()` copies
 the source and build trees to `/data/qnx-porter` on the target with `tar` over ssh, and a QNX path-space link
 (`ln -sP`) makes them appear at the same absolute paths as on the host. For CMake, `ctest_on_target()` reads

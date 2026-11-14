@@ -236,7 +236,7 @@ def lib_line(reps: list[dict], name: str) -> str:
     r = next(r for r in reps if r["library"] == name and r["arch"] == "x86_64")
     link = f'<a href="ports/{esc(r["_slug"])}.html">{esc(name)}</a>'
     if r["build_result"] != "built":
-        return f"<li>{link}: {esc(r['build_result'])}.</li>"
+        return f"<li>{link}: {esc(status_text(r))}.</li>"
     if r.get("tests_ran") and r["tests_total"]:
         return f"<li>{link}: built, {r['tests_passed']}/{r['tests_total']} of its own tests pass on QNX 8.0.</li>"
     return f"<li>{link}: built; tests not run{(' (' + esc(r['note']) + ')') if r.get('note') else ''}.</li>"
@@ -284,7 +284,14 @@ def evidence() -> str:
     return "".join(cards)
 
 
+def status_text(r: dict) -> str:
+    """build_result in words; needs-qnx-equivalent is the porting advisor's status (qnx_porter/advisor.py)."""
+    return "needs a QNX equivalent" if r["build_result"] == "needs-qnx-equivalent" else r["build_result"]
+
+
 def outcome(r: dict) -> tuple[str, str]:
+    if r["build_result"] == "needs-qnx-equivalent":
+        return "equiv", "needs a QNX equivalent"
     if r["build_result"] != "built":
         return "no", esc(r["build_result"])
     if r.get("tests_ran") and r["tests_total"]:
@@ -293,7 +300,7 @@ def outcome(r: dict) -> tuple[str, str]:
 
 
 OUTCOMES = [("done", "all own tests passed on QNX"), ("part", "some tests failed"),
-            ("built", "built, tests not run"), ("no", "did not build")]
+            ("built", "built, tests not run"), ("equiv", "needs a QNX equivalent"), ("no", "did not build")]
 
 
 def coverage(reps: list[dict]) -> str:
@@ -586,7 +593,8 @@ def results(reps: list[dict]) -> str:
     listed = oss_listed()
     rows = []
     for r in reps:
-        build = '<span class="ok">built</span>' if r["build_result"] == "built" else f'<span class="bad">{esc(r["build_result"])}</span>'
+        build = ('<span class="ok">built</span>' if r["build_result"] == "built" else
+                 f'<span class="{"warn" if r["build_result"] == "needs-qnx-equivalent" else "bad"}">{esc(status_text(r))}</span>')
         on = "yes" if r["library"] in listed else "—"
         rows.append(f'<tr data-q="{esc((r["library"] + " " + r["arch"]).lower())}"><td><a href="ports/{esc(r["_slug"])}.html">{esc(r["library"])}</a></td>'
                     f'<td>{esc(r["version"])}</td><td>{ARCH_LABEL.get(r["arch"], r["arch"])}</td><td>{esc(r["build_system"])}</td>'
@@ -680,7 +688,8 @@ def port_page(r: dict) -> str:
     body = f"""<header class="page"><p class="label"><a href="../results.html">Results</a> / {esc(r['library'])}</p>
 <h1>{esc(r['library'])} <span class="label">{esc(r['version'])} · {ARCH_LABEL.get(r['arch'], r['arch'])}</span></h1></header>
 <div class="tiles metrics">
-{tile('built' if r['build_result'] == 'built' else esc(r['build_result']), f"after {r['rounds']} round(s), {esc(r['build_system'])}")}
+{tile('built' if r['build_result'] == 'built' else 'Linux-only' if r.get('linux_interfaces') else esc(r['build_result']),
+       ('needs a QNX equivalent (below); ' if r.get('linux_interfaces') else '') + f"after {r['rounds']} round(s), {esc(r['build_system'])}")}
 {tile(tests_cell(r), "its own tests on QNX 8.0")}
 {tile(r['patches_kept'], f"patches kept ({r['patches_by_rule']} rule, {r['patches_by_model']} model)")}
 {tile(r['minutes'], "minutes, end to end")}</div>
@@ -688,9 +697,22 @@ def port_page(r: dict) -> str:
 Target: <code>{esc(r.get('target') or 'no target')}</code>.
 Files: <a href="{BLOB}/{rel}/REPORT.md">REPORT.md</a> · <a href="{BLOB}/{rel}/qnx.patch">qnx.patch</a> ·
 <a href="{BLOB}/{rel}/report.json">report.json</a> · <a href="{REPO}/tree/main/{rel}/logs">logs</a></p>
-<h2>Patches</h2>{''.join(patches) or '<p>No changes needed: the library built for QNX as it is.</p>'}
+{advice(r)}<h2>Patches</h2>{''.join(patches) or '<p>No changes needed: the library built for QNX as it is.</p>'}
 {tail}{('<h2>Crashes</h2>' + crashes) if crashes else ''}{('<h2>Still failing</h2><ul>' + blocked + '</ul>') if blocked else ''}"""
     return page(f"{r['library']} on QNX 8.0 · qnx-porter", body, "results.html", depth=1)
+
+
+def advice(r: dict) -> str:
+    """The porting advisor's table: each Linux-only interface the library uses and QNX's equivalent."""
+    a = r.get("linux_interfaces")
+    if not a:
+        return ""
+    rows = "".join(f"<tr><td>{esc(u['interface'])}</td><td>{u['files']} (first: <code>{esc(u['first'])}</code>)</td>"
+                   f"<td>{esc(u['qnx'])}</td><td><a href=\"{esc(u['docs'])}\">QNX docs</a></td></tr>" for u in a["interfaces"])
+    return (f"<h2>Not portable as-is: needs a QNX equivalent</h2><p>The build stopped on <code>&lt;{esc(a['stopped_on'])}&gt;</code>, "
+            "a Linux kernel header. The sources use Linux-only kernel interfaces that QNX 8.0 provides differently; the code "
+            "that uses them needs a QNX back end.</p><div class=\"table-wrap\"><table class=\"table\"><thead><tr><th>Linux interface</th>"
+            f"<th>Files</th><th>QNX equivalent</th><th></th></tr></thead><tbody>{rows}</tbody></table></div>")
 
 
 def gh_slug(value: str, separator: str = "-") -> str:
