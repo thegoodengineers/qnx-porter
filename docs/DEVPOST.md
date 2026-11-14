@@ -52,6 +52,10 @@ on a QNX 8.0 target.
 - **QNX libc differences found by the tests**, each with a small reproducer (`docs/qnx-reports/`): `strtod()`
   rounding, `strftime()` with `%Ex`, `fchdir()` needing `O_DIRECTORY`, and `qsort()` with an inconsistent
   comparator. The reports are drafts and have not been sent.
+- **Contributions sent upstream** (14 Nov 2026; opened, under review, none merged): the nng fix for the
+  POLLHUP hang (issue #2419, PR #2420) and its `<sys/errno.h>` include (issue #2421, PR #2422), libsrtp's test
+  shuffle (cisco/libsrtp PR #841), the googletest `fchdir()` report (issue #5170), and qnx-porter's yyjson
+  recipe for QNX's own qnx-ports/build-files (PR #343).
 - **No hand-typed numbers.** Every table is written by a script from the per-library reports, and CI fails if
   the README's generated sections differ from what the script writes.
 
@@ -206,8 +210,9 @@ submission period.
   use the 2024 pins (`campaign-2024.yaml`).
 - Run on real hardware. Every result so far is from QEMU, and the real-time numbers above mean little until
   they are measured on a board.
-- Send the drafted QNX libc reports and upstream patches, and open the qnx-ports pull request with the generated
-  recipes, if the team decides to. None has been sent.
+- Follow the five contributions sent upstream on 14 Nov 2026 through review (nng issues #2419 and #2421 with
+  PRs #2420 and #2422, cisco/libsrtp PR #841, google/googletest issue #5170, qnx-ports/build-files PR #343 for
+  yyjson; all open, none merged), and send the drafted QNX libc reports if the team decides to.
 - build-files recipes for the autotools, Meson and Make ports, which the recipe generator does not write yet.
 
 ## Built with

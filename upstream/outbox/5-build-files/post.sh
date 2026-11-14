@@ -6,7 +6,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=qnx-ports/build-files
 BRANCH=add-yyjson
 
-gh repo fork "$REPO" --clone=true --remote=true
+gh repo fork "$REPO" --clone=true  # --clone sets origin to the fork and upstream to the parent
 cd build-files
 git fetch upstream main
 git checkout -b "$BRANCH" upstream/main

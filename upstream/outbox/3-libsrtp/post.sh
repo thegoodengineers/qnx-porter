@@ -5,7 +5,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=cisco/libsrtp
 BRANCH=ut-sim-shuffle
 
-gh repo fork "$REPO" --clone=true --remote=true
+gh repo fork "$REPO" --clone=true  # --clone sets origin to the fork and upstream to the parent
 cd libsrtp
 git fetch upstream main
 git checkout -b "$BRANCH" upstream/main

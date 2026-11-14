@@ -17,7 +17,7 @@ issue)
 pr)
     N="$2"
     [ -n "$N" ] || { echo "usage: sh post.sh pr <issue-number>"; exit 1; }
-    gh repo fork "$REPO" --clone=true --remote=true
+    gh repo fork "$REPO" --clone=true  # --clone sets origin to the fork and upstream to the parent
     cd googletest
     git fetch upstream main
     git checkout -b "$BRANCH" upstream/main

@@ -1,4 +1,4 @@
-# Draft pull request for nng (not sent)
+# Draft pull request for nng (sent 14 Nov 2026 as [issue #2421](https://github.com/nanomsg/nng/issues/2421) and [PR #2422](https://github.com/nanomsg/nng/pull/2422), from the refreshed text in [`upstream/outbox/4-nng/`](../../../upstream/outbox/4-nng/))
 
 - **Upstream:** https://github.com/nanomsg/nng
 - **Patch:** [`0001-posix_udp-include-errno.h-instead-of-sys-errno.h.patch`](0001-posix_udp-include-errno.h-instead-of-sys-errno.h.patch),

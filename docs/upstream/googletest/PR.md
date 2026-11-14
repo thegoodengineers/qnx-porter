@@ -1,4 +1,4 @@
-# Draft pull request for googletest (not sent)
+# Draft pull request for googletest (issue sent 14 Nov 2026 as [#5170](https://github.com/google/googletest/issues/5170); PR not sent: it waits for the CLA and a maintainer)
 
 - **Upstream:** https://github.com/google/googletest
 - **Patch:** [`0001-Open-the-saved-working-directory-with-O_DIRECTORY-in.patch`](0001-Open-the-saved-working-directory-with-O_DIRECTORY-in.patch),

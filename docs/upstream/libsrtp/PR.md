@@ -1,4 +1,4 @@
-# Draft pull request for libsrtp (not sent)
+# Draft pull request for libsrtp (sent 14 Nov 2026 as [PR #841](https://github.com/cisco/libsrtp/pull/841), from the refreshed text in [`upstream/outbox/3-libsrtp/`](../../../upstream/outbox/3-libsrtp/))
 
 - **Upstream:** https://github.com/cisco/libsrtp
 - **Patch:** [`0001-test-shuffle-ut_sim-s-buffer-without-qsort-and-a-ran.patch`](0001-test-shuffle-ut_sim-s-buffer-without-qsort-and-a-ran.patch),

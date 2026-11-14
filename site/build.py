@@ -443,7 +443,8 @@ independently.</p>
 <tbody>{cmp_table}</tbody></table></div>
 <p class="small">Source: the summary table of {COMPARISON}. For CMake ports that qnx-ports does not have, qnx-porter
 generates recipes in their layout (<a href="{REPO}/tree/main/recipes/build-files">recipes/build-files/</a>). The draft
-pull request text is in <a href="{BLOB}/docs/upstream/qnx-ports-build-files-PR.md">docs/upstream/</a>; it has not been sent.</p>
+pull request text for all of them is in <a href="{BLOB}/docs/upstream/qnx-ports-build-files-PR.md">docs/upstream/</a> and
+has not been sent; one recipe, yyjson, was sent on its own (<a href="evidence.html#sent-upstream">sent upstream</a>).</p>
 </section>
 
 <section>
@@ -475,6 +476,20 @@ are shortened to <code>…/</code> and a backtrace frame drops its address and a
 </section>"""
 
 
+def sent_upstream() -> str:
+    """The contributions sent upstream, read from the Sent column of upstream/outbox/README.md."""
+    rows = []
+    for ln in read("upstream/outbox/README.md").splitlines():
+        cells = [c.strip() for c in ln.strip().strip("|").split("|")]
+        if len(cells) == 6 and cells[0].isdigit() and cells[5] != "not sent":
+            rows.append("<tr>" + "".join(f"<td>{markdown.markdown(c)[3:-4]}</td>" for c in (cells[1], cells[3], cells[5]))
+                        + "</tr>")
+    return (f"""<div class="table-wrap"><table class="table stack"><thead><tr><th>Repository</th><th>What</th>
+<th>Sent (opened, under review; none merged)</th></tr></thead><tbody>{"".join(rows)}</tbody></table></div>
+<p class="small">Source: <a href="{BLOB}/upstream/outbox/README.md">upstream/outbox/README.md</a>, which also has the
+patches and the exact commands.</p>""")
+
+
 def evidence_page(reps: list[dict]) -> str:
     body = f"""<header class="page"><p class="label">Evidence</p><h1>What ran on QNX, and where it is written down</h1>
 <p class="lede">Excerpts of the committed logs, the claims with the file behind each, and every library's own
@@ -491,6 +506,11 @@ result. All of it is read from the repository when the site is built.</p></heade
 <p class="intro">One square per library, from its <code>report.json</code>. The numbers are its own tests that passed
 on QNX 8.0. aarch64 and every patch are on the <a href="results.html">results page</a>.</p>
 {coverage(reps)}
+</section>
+<section>
+<p class="label">Upstream</p>
+<h2 id="sent-upstream">Contributions sent upstream</h2>
+{sent_upstream()}
 </section>"""
     return page("Evidence · qnx-porter", body, "evidence.html")
 

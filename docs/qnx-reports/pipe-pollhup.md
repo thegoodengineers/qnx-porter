@@ -1,7 +1,7 @@
 # QNX 8.0: poll() reports no POLLHUP on a pipe whose writer has closed
 
-**Status:** draft report for QNX, not sent, plus a draft fix for nng ([`docs/upstream/nng-pollhup/`](../upstream/nng-pollhup/)),
-not sent. Found by qnx-porter's campaign (every nng 2.1.0 test hung until its timeout), reproduced with
+**Status:** draft report for QNX, not sent. The fix for nng ([`docs/upstream/nng-pollhup/`](../upstream/nng-pollhup/))
+was sent on 14 Nov 2026 as [nng issue #2419](https://github.com/nanomsg/nng/issues/2419) and [PR #2420](https://github.com/nanomsg/nng/pull/2420) (open, under review). Found by qnx-porter's campaign (every nng 2.1.0 test hung until its timeout), reproduced with
 `pipe_pollhup.c` (this folder) on 13 Nov 2026.
 
 ## Summary
