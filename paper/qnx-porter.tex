@@ -448,7 +448,8 @@ build-files layout with the campaign's flags and \texttt{qnx.patch}. Each was bu
 \texttt{nto-x86\_64-o} from a fresh clone: \N{recipes-built} of \N{recipes-total} built
 (\texttt{recipes/BUILD\_CHECK.md}). An earlier pass, before fixes to the generator, failed \N{recipes-early-failed}
 recipes on install paths, a missing submodule and a stub library. For \texttt{nto-aarch64-le}, only
-\N{recipes-aarch} were built. The recipes and a pull-request text for QNX are drafted and have not been sent.
+\N{recipes-aarch} were built. The pull-request text for all the recipes is drafted and has not been sent; the yyjson recipe alone was sent to
+qnx-ports/build-files as pull request \#343 (open, under review).
 
 \subsection{Licences and SBOM}\label{sec:eval-licences}
 Every port has an SPDX 2.3~\cite{spdx} SBOM for the upstream package at the ported commit, with
@@ -519,7 +520,7 @@ and never \texttt{POLLHUP}, also after \texttt{read()} returns end of file; Linu
 POSIX describes it for exactly this case. nng 2.1.0's poll thread stops only on that \texttt{POLLHUP}, so
 \texttt{nng\_fini()} never returns and 61 of its 64 tests reached the time limit. We found it from
 \texttt{pidin} thread states and a core dump read with the SDP's gdb, then reduced it to a short program
-(\texttt{docs/qnx-reports/pipe-pollhup.md}). A two-hunk nng fix, drafted and not sent, takes the suite to 60 of 64
+(\texttt{docs/qnx-reports/pipe-pollhup.md}). A two-hunk nng fix, sent upstream as nng pull request \#2420 (open, under review), takes the suite to 60 of 64
 on QNX and keeps all 74 tests passing on Linux.
 
 \subsection{The main thread's stack}\label{sec:findings-stack}
@@ -615,8 +616,8 @@ the long tail when its output is treated as a hypothesis that a rebuild must con
 
 Future work: hardware targets, starting with a Raspberry Pi; repeated runs to separate flaky tests from real
 failures; the latest-release campaign; the latency harness on aarch64; more of the tests that libraries keep
-behind build options; sending the drafted upstream patches and QNX reports, which needs a person to review and
-sign them; and the model step on a larger set of libraries.
+behind build options; following the five contributions sent upstream through review, and sending the QNX reports, which needs a
+person to review and sign them; and the model step on a larger set of libraries.
 
 \appendix
 \section{Artifact}\label{app:artifact}

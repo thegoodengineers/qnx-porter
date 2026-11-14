@@ -40,7 +40,7 @@ We built qnx-porter for the QNX Global Hackathon to make that work routine. Give
 
 ## 3 Design
 
-Figure 1 shows the pipeline for one library. Each box names the source file that implements it; the whole tool is 3050 lines of Python with no runtime dependencies, and 167 tests run in CI without QNX.
+Figure 1 shows the pipeline for one library. Each box names the source file that implements it; the whole tool is 3050 lines of Python with no runtime dependencies, and 169 tests run in CI without QNX.
 
 ![Figure 1: The qnx-porter pipeline for one library. Blue: steps every port takes. Green: deterministic rules. Orange: steps whose output is kept only if a later check proves it (a rebuild, or more tests passing).](fig/pipeline.png)
 
@@ -189,7 +189,7 @@ The latency harness is C, built with `qcc` and run on the target. It times one c
 
 ### 4.6 Recipes for QNX's build-files
 
-For CMake ports that qnx-ports does not have, `scripts/emit_recipes.py` writes recipes in the build-files layout with the campaign's flags and `qnx.patch`. Each was built with QNX's recursive make for `nto-x86_64-o` from a fresh clone: 34 of 34 built (`recipes/BUILD_CHECK.md`). An earlier pass, before fixes to the generator, failed 4 recipes on install paths, a missing submodule and a stub library. For `nto-aarch64-le`, only yyjson, wolfssl and flac were built. The recipes and a pull-request text for QNX are drafted and have not been sent.
+For CMake ports that qnx-ports does not have, `scripts/emit_recipes.py` writes recipes in the build-files layout with the campaign's flags and `qnx.patch`. Each was built with QNX's recursive make for `nto-x86_64-o` from a fresh clone: 34 of 34 built (`recipes/BUILD_CHECK.md`). An earlier pass, before fixes to the generator, failed 4 recipes on install paths, a missing submodule and a stub library. For `nto-aarch64-le`, only yyjson, wolfssl and flac were built. The pull-request text for all the recipes is drafted and has not been sent; the yyjson recipe alone was sent to qnx-ports/build-files as pull request #343 (open, under review).
 
 ### 4.7 Licences and SBOM
 
@@ -225,7 +225,7 @@ A short program prints `[(null)]` with glibc and dies with a memory fault on QNX
 
 ### 5.6 `poll()` reports no `POLLHUP` when a pipe's writer closes
 
-On QNX 8.0, once the last write end of a pipe is closed, `poll()` on the read end reports `POLLIN` and never `POLLHUP`, also after `read()` returns end of file; Linux reports `POLLHUP`, and POSIX describes it for exactly this case. nng 2.1.0's poll thread stops only on that `POLLHUP`, so `nng_fini()` never returns and 61 of its 64 tests reached the time limit. We found it from `pidin` thread states and a core dump read with the SDP's gdb, then reduced it to a short program (`docs/qnx-reports/pipe-pollhup.md`). A two-hunk nng fix, drafted and not sent, takes the suite to 60 of 64 on QNX and keeps all 74 tests passing on Linux.
+On QNX 8.0, once the last write end of a pipe is closed, `poll()` on the read end reports `POLLIN` and never `POLLHUP`, also after `read()` returns end of file; Linux reports `POLLHUP`, and POSIX describes it for exactly this case. nng 2.1.0's poll thread stops only on that `POLLHUP`, so `nng_fini()` never returns and 61 of its 64 tests reached the time limit. We found it from `pidin` thread states and a core dump read with the SDP's gdb, then reduced it to a short program (`docs/qnx-reports/pipe-pollhup.md`). A two-hunk nng fix, sent upstream as nng pull request #2420 (open, under review), takes the suite to 60 of 64 on QNX and keeps all 74 tests passing on Linux.
 
 ### 5.7 The main thread's stack
 
@@ -272,7 +272,7 @@ mbedtls's PBKDF2 suite exceeds the 300 s per-test limit on the emulated CPU (it 
 
 Porting a C or C++ library to QNX 8.0 is mostly repetitive, and the repetitive part can be automated with rules that cite documented platform facts and leave a reviewable patch for every change. The part that matters for a real-time system, whether the library works on the target, needs the library's own tests to run there; doing that found differences in QNX 8.0's C library that a cross-build alone would never show. A language model helps with the long tail when its output is treated as a hypothesis that a rebuild must confirm.
 
-Future work: hardware targets, starting with a Raspberry Pi; repeated runs to separate flaky tests from real failures; the latest-release campaign; the latency harness on aarch64; more of the tests that libraries keep behind build options; sending the drafted upstream patches and QNX reports, which needs a person to review and sign them; and the model step on a larger set of libraries.
+Future work: hardware targets, starting with a Raspberry Pi; repeated runs to separate flaky tests from real failures; the latest-release campaign; the latency harness on aarch64; more of the tests that libraries keep behind build options; following the five contributions sent upstream through review, and sending the QNX reports, which needs a person to review and sign them; and the model step on a larger set of libraries.
 
 ## A Artifact
 

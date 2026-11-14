@@ -1,4 +1,4 @@
-# Draft pull request for nng: poller shutdown without POLLHUP (not sent)
+# Draft pull request for nng: poller shutdown without POLLHUP (sent 14 Nov 2026 as [issue #2419](https://github.com/nanomsg/nng/issues/2419) and [PR #2420](https://github.com/nanomsg/nng/pull/2420))
 
 - **Upstream:** https://github.com/nanomsg/nng
 - **Patch:** [`0001-posix-pollq-stop-the-poll-thread-on-a-flag-not-only-on-POLLHUP.patch`](0001-posix-pollq-stop-the-poll-thread-on-a-flag-not-only-on-POLLHUP.patch),

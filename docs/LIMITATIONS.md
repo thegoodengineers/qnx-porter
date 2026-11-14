@@ -70,8 +70,10 @@ line links.
   - `strftime` `%E*`: a QNX bug, reproduced the same way.
   - `fchdir` needs `O_DIRECTORY`: documented QNX behaviour, not a bug.
   - `qsort` with an inconsistent comparator: undefined C in libsrtp's tests.
-- The upstream patches in [`docs/upstream/`](upstream/) (googletest, libconfig, libsrtp, nng) and the qnx-ports
-  pull request text are drafts and have not been sent.
+- Five upstream contributions were sent on 14 Nov 2026 (nng x2, libsrtp, googletest issue, the yyjson recipe for
+  qnx-ports/build-files) and are open, under review; none is merged yet
+  ([`upstream/outbox/README.md`](../upstream/outbox/README.md)). The libconfig patch, the googletest PR, the
+  mbedtls recipe and the full qnx-ports pull request text are not sent.
 - pcre2's test 8 crashes deep in a recursive function. Running out of stack is likely but not confirmed.
 
 ## Real-time readiness

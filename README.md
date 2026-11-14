@@ -42,7 +42,15 @@ Each line links the generated file its numbers come from.
 - **Install:** `python3 -m pip install --user qnx-porter`. **Website:**
   [thegoodengineers.github.io/qnx-porter](https://thegoodengineers.github.io/qnx-porter/).
 
-Not done: no real hardware; the upstream reports and pull requests are drafted, not sent. Everything else that
+**Contributions sent upstream** (14 Nov 2026; opened, under review, none merged): nng
+[issue #2419](https://github.com/nanomsg/nng/issues/2419) + [PR #2420](https://github.com/nanomsg/nng/pull/2420) (the POLLHUP hang) and
+[issue #2421](https://github.com/nanomsg/nng/issues/2421) + [PR #2422](https://github.com/nanomsg/nng/pull/2422) (`<sys/errno.h>`),
+[cisco/libsrtp PR #841](https://github.com/cisco/libsrtp/pull/841),
+[google/googletest issue #5170](https://github.com/google/googletest/issues/5170) and
+[qnx-ports/build-files PR #343](https://github.com/qnx-ports/build-files/pull/343) (yyjson). Patches and commands:
+[upstream/outbox/](upstream/outbox/README.md).
+
+Not done: no real hardware; the QNX C library reports are drafted, not sent. Everything else that
 is missing, with numbers: [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
 
 ## For judges, start here

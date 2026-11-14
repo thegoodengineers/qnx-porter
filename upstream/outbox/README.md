@@ -1,18 +1,19 @@
-# Outbox: upstream contributions ready to send (nothing sent)
+# Outbox: upstream contributions
 
-Prepared 14 Nov 2026. Nothing here has been posted, forked, pushed or opened. Each folder holds the patch,
-the title and body to paste, and a `post.sh` with the exact commands; read the folder's `README.md` first.
-Run each `post.sh` from an empty working folder (`gh repo fork --clone` clones into the current folder), with
-`gh` logged in as `Chirag6722`.
+Prepared 14 Nov 2026. With the user's approval, items 1 to 5 were sent the same day from the `Chirag6722`
+account (for 2, the issue only); item 6 was not sent. They are **opened and under review**; none is merged.
+Each folder holds the patch, the title and body that were pasted, and the `post.sh` that was run; read the
+folder's `README.md` first. Run a `post.sh` from an empty working folder (`gh repo fork --clone` clones into the
+current folder), with `gh` logged in as `Chirag6722`.
 
-| # | Repository | Kind | Title | Before sending |
-|---|---|---|---|---|
-| 1 | [nanomsg/nng](https://github.com/nanomsg/nng) | issue, then PR | issue: `nng_fini() hangs where poll() reports no POLLHUP for a closed pipe (QNX 8.0)`; PR: `posix pollq: stop the poll thread on a flag, not only on POLLHUP` | `post.sh` opens the issue and puts its number in the commit and PR (nng's commit format is `fixes #<n> <synopsis>`) |
-| 2 | [google/googletest](https://github.com/google/googletest) | issue, then PR | issue: `[Bug]: QNX 8.0: threadsafe death tests abort, fchdir() needs a directory opened with O_DIRECTORY`; PR: `Open the saved working directory with O_DIRECTORY in QNX death tests` | **sign the Google CLA**; open the issue first and wait for a maintainer before the PR |
-| 3 | [cisco/libsrtp](https://github.com/cisco/libsrtp) | PR | `test: shuffle ut_sim's buffer without qsort() and a random comparator` | none (no CONTRIBUTING, CLA or DCO); patch refreshed for `main` |
-| 4 | [nanomsg/nng](https://github.com/nanomsg/nng) | issue, then PR | issue: `posix_udp.c includes the non-POSIX <sys/errno.h>`; PR: `posix_udp: do not include <sys/errno.h>` | same as 1; patch refreshed for `main` (the fix there is deleting the line) |
-| 5 | [qnx-ports/build-files](https://github.com/qnx-ports/build-files) | PR | `yyjson: add build files` | none |
-| 6 | [qnx-ports/build-files](https://github.com/qnx-ports/build-files) | PR | `mbedtls: add build files` | optional, weaker than 5 (x86_64 only through make; 3.6 LTS) |
+| # | Repository | Kind | Title | Before sending | Sent (14 Nov 2026), open |
+|---|---|---|---|---|---|
+| 1 | [nanomsg/nng](https://github.com/nanomsg/nng) | issue, then PR | issue: `nng_fini() hangs where poll() reports no POLLHUP for a closed pipe (QNX 8.0)`; PR: `posix pollq: stop the poll thread on a flag, not only on POLLHUP` | `post.sh` opens the issue and puts its number in the commit and PR (nng's commit format is `fixes #<n> <synopsis>`) | [issue #2419](https://github.com/nanomsg/nng/issues/2419), [PR #2420](https://github.com/nanomsg/nng/pull/2420) |
+| 2 | [google/googletest](https://github.com/google/googletest) | issue, then PR | issue: `[Bug]: QNX 8.0: threadsafe death tests abort, fchdir() needs a directory opened with O_DIRECTORY`; PR: `Open the saved working directory with O_DIRECTORY in QNX death tests` | **sign the Google CLA**; open the issue first and wait for a maintainer before the PR | [issue #5170](https://github.com/google/googletest/issues/5170); PR waits for the CLA and a maintainer |
+| 3 | [cisco/libsrtp](https://github.com/cisco/libsrtp) | PR | `test: shuffle ut_sim's buffer without qsort() and a random comparator` | none (no CONTRIBUTING, CLA or DCO); patch refreshed for `main` | [PR #841](https://github.com/cisco/libsrtp/pull/841) |
+| 4 | [nanomsg/nng](https://github.com/nanomsg/nng) | issue, then PR | issue: `posix_udp.c includes the non-POSIX <sys/errno.h>`; PR: `posix_udp: do not include <sys/errno.h>` | same as 1; patch refreshed for `main` (the fix there is deleting the line) | [issue #2421](https://github.com/nanomsg/nng/issues/2421), [PR #2422](https://github.com/nanomsg/nng/pull/2422) |
+| 5 | [qnx-ports/build-files](https://github.com/qnx-ports/build-files) | PR | `yyjson: add build files` | none | [PR #343](https://github.com/qnx-ports/build-files/pull/343) |
+| 6 | [qnx-ports/build-files](https://github.com/qnx-ports/build-files) | PR | `mbedtls: add build files` | optional, weaker than 5 (x86_64 only through make; 3.6 LTS) | not sent |
 
 Upstream HEADs checked (shallow clones, 14 Nov 2026):
 

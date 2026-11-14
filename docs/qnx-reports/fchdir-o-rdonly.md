@@ -1,8 +1,9 @@
 # QNX 8.0: fchdir() needs a directory opened with O_DIRECTORY (Linux does not)
 
 **Status:** a documented QNX difference, not a QNX bug, plus a one-line patch for upstream googletest
-(`googletest-qnx-fchdir.patch`, not sent). Found by qnx-porter's campaign (googletest 1.15.2's own tests),
-reproduced with `fchdir_test.c` (this folder) on 12 Nov 2026. The team decides whether to send the patch.
+(`googletest-qnx-fchdir.patch`). Reported on 14 Nov 2026 as
+[googletest issue #5170](https://github.com/google/googletest/issues/5170) (open); the PR waits for the CLA and a maintainer. Found by qnx-porter's campaign (googletest 1.15.2's own tests),
+reproduced with `fchdir_test.c` (this folder) on 12 Nov 2026.
 
 ## Summary
 On QNX SDP 8.0 (build 141, x86_64), `open(".", O_RDONLY)` succeeds, but `fchdir()` on that descriptor fails
