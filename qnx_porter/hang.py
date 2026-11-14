@@ -43,8 +43,9 @@ def watcher(diag: str, work: str, limit: int) -> str:
 
 
 def epilogue(diag: str) -> str:
-    """After the test: stop the watcher; if the test was killed (137), print the snapshot."""
-    return (f'kill $w 2>/dev/null; if [ $rc = 137 ] && [ -s {diag}.txt ]; then cat {diag}.txt; '
+    """After the test: stop the watcher; if `timeout -s KILL` killed the test, print the snapshot (QNX's timeout
+    exits 137 then; GNU coreutils 9 exits 124, which the host test sees)."""
+    return (f'kill $w 2>/dev/null; if { [ $rc = 137 ] || [ $rc = 124 ]; } && [ -s {diag}.txt ]; then cat {diag}.txt; '
             f'else rm -f {diag}.txt {diag}.kev; fi; exit $rc')
 
 

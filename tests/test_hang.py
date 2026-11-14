@@ -46,7 +46,7 @@ def test_watcher_snapshots_a_stuck_test_and_leaves_a_finished_one_alone(tmp_path
     rc, out, took = run(["true"], 3)
     assert rc == 0 and hang.MARK not in out and took < 2  # not held open by the sleeping watcher
     rc, out, took = run(["sleep", "20"], 3)
-    assert rc == 137 and hang.MARK in out and took < 10
+    assert rc in (124, 137) and hang.MARK in out and took < 10  # 137 on QNX and coreutils 8, 124 on coreutils 9
 
 
 def test_read_trace_drops_raw_trace_unless_kept(tmp_path, monkeypatch):
