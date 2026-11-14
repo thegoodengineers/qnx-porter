@@ -262,7 +262,7 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
             for c in crashes), encoding="utf-8")
     if hangs:  # tests killed at their limit, with the QNX snapshot taken just before (qnx_porter/hang.py)
         (logs / "hangs.log").write_text("".join(
-            f"=== {h['name']}" + NL + "pidin:" + NL + f"{h['pidin']}" + NL + "kernel trace, per thread:" + NL + f"{h['trace']}" + NL + NL
+            f"=== {h['name']}\npidin:\n{h['pidin']}\nkernel trace, per thread:\n{h['trace']}\n\n"
             for h in hangs), encoding="utf-8")
     return passed, total, crashes, not_runnable, hangs
 

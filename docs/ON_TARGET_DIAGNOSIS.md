@@ -27,6 +27,39 @@ for QNX's IDE or `traceprinter`; later ones keep only the summary.
 A thread with no kernel calls in the window is waiting, and `pidin` says on what (`CONDVAR`, `REPLY <pid>`,
 `RECEIVE`, ...). A thread with thousands of calls is spinning.
 
+### A real case: nng 2.1.0's tests
+nng v2.1.0 builds for QNX, but 61 of its 64 tests run until they are killed (x86_64 target, 14 Nov 2026,
+`campaign.yaml` gives nng a 60 s limit). With the watcher, 60 of those 61 got a snapshot; the 61st,
+`nng.cplusplus_pair`, has a 15 s limit, under the watcher's 20 s minimum. This is `nng.core.aio_test`, as the test
+log has it:
+```
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call
+ 7409686   1 aio_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call
+ 7413784   1 aio_test           CONDVAR        (0x5daeff7610)               sync_condvar_wa
+ 7413784   2 aio_test           READY          143370
+ 7413784   3 aio_test           SIGWAITINFO                                 signal_waitinfo
+ 7413784   4 aio_test           SIGWAITINFO                                 signal_waitinfo
+ 7413784   5 aio_test           SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 7413784 tid 2: ran 139726 time(s), 277593 kernel call(s) (MSG_SENDV x138797, SYNC_CONDVAR_SIGNAL x69398, SIGNAL_ACTION x69398)
+pid(s) 7409686: no thread ran during the trace
+```
+The first process is the test framework's parent, waiting on the kernel (pid 1) for its child. In the child, the
+main thread waits on a condition variable, and thread 2 is not blocked at all: in 2 s it was scheduled about 140,000
+times and made about 280,000 kernel calls, half of them `MSG_SENDV` (on QNX a `read()` is a message to the
+resource manager that owns the file). Across the 60 snapshots the picture is the same in 59: the main thread in
+`CONDVAR`, thread 2 running with 135,792 to 300,581 kernel calls in the 2 s, `MSG_SENDV` first. The other one,
+`nng.sp.reconnect_stress_test`, differs: its main thread made 997 `TIMER_TIMEOUT` calls and nothing spun.
+
+That matches the poller loop described in [qnx-reports/pipe-pollhup.md](qnx-reports/pipe-pollhup.md):
+on QNX 8.0, `poll()` on a pipe whose writer has closed keeps reporting `POLLIN` and never `POLLHUP`, so nng's poller
+thread reads end-of-file, polls again, and never stops, and the main thread's shutdown waits for it forever. The
+snapshot found that from the target alone, with no debugger attached and no change to the test.
+
 Two QNX shell details we hit while building this, both checked on the x86_64 target:
 - QNX's `sh` cannot parse a `case` pattern inside `$( )` ("syntax error: `;;' unexpected"); the watcher uses a
   `${e#*path}` test instead.
