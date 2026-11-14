@@ -53,7 +53,7 @@ def scenes(root: Path = ROOT) -> list:
           f"grep -E '^(#[0-4] |Program)' {DEMO}/json-c/logs/crashes.log | awk '!seen[$1]++' | cut -c1-138"]),
         # The hang snapshot of a real nng run (qnx_porter/hang.py), and the fix sent upstream (upstream/outbox/).
         *([("hang", 11, "A hung test on QNX: pidin and a kernel trace, taken before it is killed",
-            ["awk '/^## Hang on QNX/{f=1} f' ports/nng/REPORT.md | grep -v '^```' | head -12 | cut -c1-138",
+            ["awk '/^## Hang on QNX/{f=1} f' ports/nng/REPORT.md | grep -v '^```' | head -15 | cut -c1-138",
              "grep -o 'https://github.com/nanomsg/nng/pull/[0-9]*' upstream/outbox/README.md | head -1"])] if hang else []),
         ("campaign", 9, "The campaign: every library, every number written by scripts/ports_csv.py",
          ["python3 scripts/ports_csv.py | grep -v '^->'",
