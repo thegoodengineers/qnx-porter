@@ -1,0 +1,239 @@
+From ce64cbd7ebe762618f2b844c10d02229c37a2544 Mon Sep 17 00:00:00 2001
+From: Chirag <118997601+Chirag6722@users.noreply.github.com>
+Date: Sat, 14 Nov 2026 16:51:26 +0530
+Subject: [PATCH] mbedtls: add build files
+
+CMake port of mbedtls for QNX 8.0 (nto-x86_64-o, nto-aarch64-le), with a build workflow and a row in the port table.
+---
+ .github/workflows/mbedtls.yml         | 48 ++++++++++++++++++++++
+ README.md                             |  1 +
+ ports/mbedtls/Makefile                |  8 ++++
+ ports/mbedtls/README.md               | 17 ++++++++
+ ports/mbedtls/common.mk               | 57 +++++++++++++++++++++++++++
+ ports/mbedtls/nto-aarch64-le/Makefile |  1 +
+ ports/mbedtls/nto-x86_64-o/Makefile   |  1 +
+ ports/mbedtls/qnx.nto.toolchain.cmake | 26 ++++++++++++
+ 8 files changed, 159 insertions(+)
+ create mode 100644 .github/workflows/mbedtls.yml
+ create mode 100644 ports/mbedtls/Makefile
+ create mode 100644 ports/mbedtls/README.md
+ create mode 100644 ports/mbedtls/common.mk
+ create mode 100644 ports/mbedtls/nto-aarch64-le/Makefile
+ create mode 100644 ports/mbedtls/nto-x86_64-o/Makefile
+ create mode 100644 ports/mbedtls/qnx.nto.toolchain.cmake
+
+diff --git a/.github/workflows/mbedtls.yml b/.github/workflows/mbedtls.yml
+new file mode 100644
+index 0000000..cdd5ca8
+--- /dev/null
++++ b/.github/workflows/mbedtls.yml
+@@ -0,0 +1,48 @@
++name: mbedtls
++
++permissions:
++  contents: write
++  checks: write
++
++on:
++  workflow_dispatch:
++  push:
++    branches:
++      - main
++    paths:
++      - '.github/workflows/mbedtls.yml'
++      - 'ports/mbedtls/**'
++  pull_request:
++    branches:
++      - main
++    paths:
++      - '.github/workflows/mbedtls.yml'
++      - 'ports/mbedtls/**'
++
++jobs:
++
++  build:
++    runs-on: ubuntu-22.04-common
++    if: |
++      ((github.event_name == 'workflow_dispatch') ||
++      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
++      (github.event_name == 'pull_request' && contains(github.event.pull_request.title, 'mbedtls')))
++    steps:
++    - name: Checkout build-files
++      uses: actions/checkout@v4
++      with:
++        path: build-files
++
++    - name: Checkout mbedtls
++      uses: actions/checkout@v4
++      with:
++        repository: Mbed-TLS/mbedtls
++        path: mbedtls
++        ref: v3.6.2
++        submodules: recursive
++
++    - name: Build mbedtls
++      shell: bash
++      run: |
++        source ~/qnx/800/qnxsdp-env.sh
++        QNX_PROJECT_ROOT="$(pwd)/mbedtls" make -C build-files/ports/mbedtls install
+diff --git a/README.md b/README.md
+index 997b72f..3bcd67a 100644
+--- a/README.md
++++ b/README.md
+@@ -144,6 +144,7 @@ Click on a port below to navigate to its `README.md` for build and test instruct
+ | [lua](https://github.com/qnx-ports/build-files/blob/main/ports/lua/README.md) | [![Build](https://github.com/qnx-ports/build-files/actions/workflows/lua.yml/badge.svg)](https://github.com/qnx-ports/build-files/actions/workflows/lua.yml) |
+ | [lz4](https://github.com/qnx-ports/build-files/blob/main/ports/lz4/README.md) | [![Build](https://github.com/qnx-ports/build-files/actions/workflows/lz4.yml/badge.svg)](https://github.com/qnx-ports/build-files/actions/workflows/lz4.yml) |
+ | [mame](https://github.com/qnx-ports/build-files/blob/main/ports/mame/README.md) | [![Build](https://github.com/qnx-ports/build-files/actions/workflows/mame.yml/badge.svg)](https://github.com/qnx-ports/build-files/actions/workflows/mame.yml) |
++| [mbedtls](https://github.com/qnx-ports/build-files/blob/main/ports/mbedtls/README.md) | [![Build](https://github.com/qnx-ports/build-files/actions/workflows/mbedtls.yml/badge.svg)](https://github.com/qnx-ports/build-files/actions/workflows/mbedtls.yml) |
+ | [memory](https://github.com/qnx-ports/build-files/blob/main/ports/memory/README.md) | [![Build](https://github.com/qnx-ports/build-files/actions/workflows/memory.yml/badge.svg)](https://github.com/qnx-ports/build-files/actions/workflows/memory.yml) |
+ | [METIS](https://github.com/qnx-ports/build-files/blob/main/ports/METIS/README.md) | [![Build](https://github.com/qnx-ports/build-files/actions/workflows/METIS.yml/badge.svg)](https://github.com/qnx-ports/build-files/actions/workflows/METIS.yml) |
+ | [minicom](https://github.com/qnx-ports/build-files/blob/main/ports/minicom/README.md) | [![Build](https://github.com/qnx-ports/build-files/actions/workflows/minicom.yml/badge.svg)](https://github.com/qnx-ports/build-files/actions/workflows/minicom.yml) |
+diff --git a/ports/mbedtls/Makefile b/ports/mbedtls/Makefile
+new file mode 100644
+index 0000000..1f25400
+--- /dev/null
++++ b/ports/mbedtls/Makefile
+@@ -0,0 +1,8 @@
++LIST=OS
++ifndef QRECURSE
++QRECURSE=recurse.mk
++ifdef QCONFIG
++QRDIR=$(dir $(QCONFIG))
++endif
++endif
++include $(QRDIR)$(QRECURSE)
+diff --git a/ports/mbedtls/README.md b/ports/mbedtls/README.md
+new file mode 100644
+index 0000000..134bde1
+--- /dev/null
++++ b/ports/mbedtls/README.md
+@@ -0,0 +1,17 @@
++# mbedtls for QNX 8.0
++
++Generated by [qnx-porter](https://github.com/thegoodengineers/qnx-porter) from its automatic port of
++mbedtls `v3.6.2` (https://github.com/Mbed-TLS/mbedtls.git). On a QNX 8.0 x86_64 target (QEMU) 130/130 of its own tests passed. Full report:
++`ports-2024/mbedtls/REPORT.md` in qnx-porter.
++
++## Build
++```bash
++source ~/qnx800/qnxsdp-env.sh
++git clone --depth 1 --recurse-submodules --shallow-submodules --branch v3.6.2 https://github.com/Mbed-TLS/mbedtls.git mbedtls
++QNX_PROJECT_ROOT="$(pwd)/mbedtls" make -C build-files/ports/mbedtls install JLEVEL=4
++```
++
++## QNX changes, each with its reason
++| rule | reason |
++|---|---|
++| link-libsocket | `__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket. |
+diff --git a/ports/mbedtls/common.mk b/ports/mbedtls/common.mk
+new file mode 100644
+index 0000000..99e6c64
+--- /dev/null
++++ b/ports/mbedtls/common.mk
+@@ -0,0 +1,57 @@
++# Generated by qnx-porter from its QNX 8.0 port of mbedtls v3.6.2 (see README.md).
++ifndef QCONFIG
++QCONFIG=qconfig.mk
++endif
++include $(QCONFIG)
++
++NAME=mbedtls
++
++QNX_PROJECT_ROOT ?= $(PRODUCT_ROOT)/../../mbedtls
++INSTALL_ROOT ?= $(INSTALL_ROOT_$(OS))
++PREFIX ?= /usr/local
++BUILD_TESTING ?= OFF
++CMAKE_BUILD_TYPE ?= Release
++# Static libraries, as in the tested port; set ON for shared ones.
++BUILD_SHARED_LIBS ?= OFF
++
++ALL_DEPENDENCIES = mbedtls_all
++.PHONY: mbedtls_all install check clean
++
++include $(MKFILES_ROOT)/qtargets.mk
++
++# QNX keeps pthread, rt and dl in libc: empty archives let `-lrt` and CMake's library checks succeed.
++STUBS = $(CURDIR)/build/stubs
++CFLAGS += -I$(INSTALL_ROOT)/$(PREFIX)/include
++LDFLAGS += -L$(STUBS)
++
++# CMAKE_INSTALL_LIBDIR is set because some projects include GNUInstallDirs only when not cross-compiling.
++CMAKE_ARGS = -DCMAKE_TOOLCHAIN_FILE=$(PROJECT_ROOT)/qnx.nto.toolchain.cmake \
++             -DCMAKE_SYSTEM_PROCESSOR=$(CPUVARDIR) \
++             -DCMAKE_INSTALL_PREFIX=$(INSTALL_ROOT)/$(CPUVARDIR)/$(PREFIX) \
++             -DCMAKE_INSTALL_INCLUDEDIR=$(INSTALL_ROOT)/$(PREFIX)/include \
++             -DCMAKE_INSTALL_LIBDIR=lib \
++             -DCMAKE_BUILD_TYPE=$(CMAKE_BUILD_TYPE) \
++             -DCMAKE_LIBRARY_PATH=/stubs \
++             -DEXTRA_CMAKE_C_FLAGS="$(CFLAGS)" \
++             -DEXTRA_CMAKE_CXX_FLAGS="$(CFLAGS)" \
++             -DEXTRA_CMAKE_LINKER_FLAGS="$(LDFLAGS)" \
++             -DCMAKE_C_STANDARD_LIBRARIES="-lsocket" \
++             -DCMAKE_CXX_STANDARD_LIBRARIES="-lsocket" \
++             -DBUILD_SHARED_LIBS=$(BUILD_SHARED_LIBS) \
++             -DBUILD_TESTING=$(BUILD_TESTING) \
++             -DENABLE_PROGRAMS=OFF
++
++ifndef NO_TARGET_OVERRIDE
++mbedtls_all:
++	@mkdir -p $(STUBS) && for l in rt dl pthread; do [ -f $(STUBS)/lib$$l.a ] || printf '!<arch>\n' > $(STUBS)/lib$$l.a; done
++	@cd build && cmake $(CMAKE_ARGS) $(QNX_PROJECT_ROOT)
++	@cd build && cmake --build . $(MAKE_ARGS)
++
++install check: mbedtls_all
++	@cd build && cmake --install .
++
++clean iclean spotless:
++	rm -rf build
++
++uninstall:
++endif
+diff --git a/ports/mbedtls/nto-aarch64-le/Makefile b/ports/mbedtls/nto-aarch64-le/Makefile
+new file mode 100644
+index 0000000..23f8a8f
+--- /dev/null
++++ b/ports/mbedtls/nto-aarch64-le/Makefile
+@@ -0,0 +1 @@
++include ../common.mk
+diff --git a/ports/mbedtls/nto-x86_64-o/Makefile b/ports/mbedtls/nto-x86_64-o/Makefile
+new file mode 100644
+index 0000000..23f8a8f
+--- /dev/null
++++ b/ports/mbedtls/nto-x86_64-o/Makefile
+@@ -0,0 +1 @@
++include ../common.mk
+diff --git a/ports/mbedtls/qnx.nto.toolchain.cmake b/ports/mbedtls/qnx.nto.toolchain.cmake
+new file mode 100644
+index 0000000..a5fabae
+--- /dev/null
++++ b/ports/mbedtls/qnx.nto.toolchain.cmake
+@@ -0,0 +1,26 @@
++# QNX SDP 8.0 cross toolchain; CMAKE_SYSTEM_PROCESSOR (x86_64 or aarch64le) comes from common.mk.
++if("$ENV{QNX_HOST}" STREQUAL "" OR "$ENV{QNX_TARGET}" STREQUAL "")
++    message(FATAL_ERROR "Source qnxsdp-env.sh first: QNX_HOST and QNX_TARGET are not set")
++endif()
++set(QNX TRUE)
++set(CMAKE_SYSTEM_NAME QNX)
++set(CMAKE_C_COMPILER $ENV{QNX_HOST}/usr/bin/qcc)
++set(CMAKE_CXX_COMPILER $ENV{QNX_HOST}/usr/bin/q++)
++set(CMAKE_ASM_COMPILER $ENV{QNX_HOST}/usr/bin/qcc)
++# binutils are ntox86_64-ar and ntoaarch64-ar: no "le", unlike the -V names
++string(REGEX REPLACE "le$" "" NTO_TOOLS "${CMAKE_SYSTEM_PROCESSOR}")
++set(CMAKE_AR "$ENV{QNX_HOST}/usr/bin/nto${NTO_TOOLS}-ar" CACHE PATH "archiver")
++set(CMAKE_RANLIB "$ENV{QNX_HOST}/usr/bin/nto${NTO_TOOLS}-ranlib" CACHE PATH "ranlib")
++set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Vgcc_nto${CMAKE_SYSTEM_PROCESSOR} ${EXTRA_CMAKE_C_FLAGS}" CACHE STRING "c_flags")
++set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Vgcc_nto${CMAKE_SYSTEM_PROCESSOR}_cxx ${EXTRA_CMAKE_CXX_FLAGS}" CACHE STRING "cxx_flags")
++set(CMAKE_ASM_FLAGS "${CMAKE_ASM_FLAGS} -Vgcc_nto${CMAKE_SYSTEM_PROCESSOR}" CACHE STRING "asm_flags")
++set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${EXTRA_CMAKE_LINKER_FLAGS}" CACHE STRING "exe_linker_flags")
++set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${EXTRA_CMAKE_LINKER_FLAGS}" CACHE STRING "so_linker_flags")
++set(CMAKE_FIND_ROOT_PATH "$ENV{QNX_TARGET}" "$ENV{QNX_TARGET}/${CMAKE_SYSTEM_PROCESSOR}")
++# common.mk's empty rt/dl/pthread archives are in <build>/stubs, outside the SDP. find_library re-roots every
++# search path under each root path (CMake 3.22 even an absolute one already inside a root), so the build folder
++# is a root and common.mk passes CMAKE_LIBRARY_PATH=/stubs, which finds <build>/stubs/librt.a.
++list(APPEND CMAKE_FIND_ROOT_PATH "${CMAKE_BINARY_DIR}")
++set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
++set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
++set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+-- 
+2.54.0.windows.1
+

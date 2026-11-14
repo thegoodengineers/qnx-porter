@@ -27,6 +27,12 @@ Linux (WSL Ubuntu 22.04, gcc 11.4.0), same tag, `ctest --timeout 300 -j2`:
   ([`tests-linux-plain.log`](tests-linux-plain.log)); we did not look into it;
 - with the patch, 74 of 74 passed ([`tests-linux-patched.log`](tests-linux-patched.log)).
 
+Correction (14 Nov 2026): these two Linux runs used nng's default poller on Linux, epoll, so they never
+compiled `posix_pollq_poll.c`, the file the patch changes; they only show the patch does not break the build.
+The final text in [`upstream/outbox/1-nng/`](../../../upstream/outbox/1-nng/) adds a Linux run on `main` with
+`-DNNG_POLLQ_POLLER=poll`, where the changed file is the poller in use (all tests passed; that run's log is not
+committed, so the text only says "all tests pass").
+
 ## Title and body to paste
 **posix pollq: stop the poll thread on a flag, not only on POLLHUP**
 

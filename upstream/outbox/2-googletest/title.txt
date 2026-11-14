@@ -1,0 +1,1 @@
+Open the saved working directory with O_DIRECTORY in QNX death tests
