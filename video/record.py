@@ -40,13 +40,13 @@ def scenes(root: Path = ROOT) -> list:
         ("why-c", 9, "slide", "why-c"),
         ("target", 10, "A real QNX 8.0 target (QEMU image from mkqnximage) and the SDP 8.0 toolchain",
          ["scripts/qemu_target.sh status", "qnx-porter doctor | grep -v '^[[:space:]]' | cut -c1-120"]),
-        # The 2024 pin of campaign-2024.yaml (v3.6.2 with programs off), the run in results/runs/campaign-7.log.
+        # The pins of campaign.yaml (mbedtls v4.2.0 with programs on), the run in results/runs/campaign-8.log.
         ("mbedtls", 22, "mbedtls, straight from upstream: the build fails on QNX, a rule fixes it, its own tests run on QNX",
-         [f"qnx-porter port https://github.com/Mbed-TLS/mbedtls.git --tag v3.6.2 --arg -DENABLE_PROGRAMS=OFF "
+         [f"qnx-porter port https://github.com/Mbed-TLS/mbedtls.git --tag v4.2.0 "
           f"--target {TARGET} --no-model --out {DEMO}",
           f"head -4 {DEMO}/mbedtls/patches/*-link-libsocket.patch | cut -c1-138"]),
         ("json-c", 17, "json-c: built with qcc, its own tests run on the QNX target; a crash is traced from the core dump",
-         [f"qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.18-20240915 "
+         [f"qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.19-20260627 "
           f"--target {TARGET} --no-model --out {DEMO}",
           f"grep -E '^(#[0-4] |Program)' {DEMO}/json-c/logs/crashes.log | awk '!seen[$1]++' | cut -c1-138"]),
         ("campaign", 9, "The campaign: every library, every number written by scripts/ports_csv.py",

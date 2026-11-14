@@ -17,7 +17,7 @@ video/make.sh                              # checks, records, then renders
 ```
 `make.sh` first runs `record.py --check`, which stops with a message if a screenshot, ffmpeg or Pillow is
 missing, so a long recording is never wasted. It then sources the SDP, checks the target and records. The
-recording builds mbedtls and json-c and runs their own tests (130 and 25) on the QEMU target. Do not run it while
+recording builds mbedtls and json-c and runs their own tests (148 and 28) on the QEMU target. Do not run it while
 a campaign is using the same machine.
 
 After recording, `render.py` prints, per scene, its length next to its target, then every narration line with
@@ -34,7 +34,7 @@ Lengths are in `record.py` `scenes()`; the narration, slides and parsing are in 
 | 2 | slide `problem` ("Why a real-time OS needs this") | 9 s | no | none |
 | 3 | slide `why-c` | 9 s | no | `results/ports.csv` (zlib, libsodium, sqlite) |
 | 4 | `scripts/qemu_target.sh status`, `qnx-porter doctor` | 10 s | **yes** | the recording (aarch64 sentence from shot 7's output) |
-| 5 | `qnx-porter port` mbedtls v3.6.2 `--arg -DENABLE_PROGRAMS=OFF`, then `head -4` of `*-link-libsocket.patch` | 22 s | **yes** | the recording |
+| 5 | `qnx-porter port` mbedtls v4.2.0, then `head -4` of `*-link-libsocket.patch` | 22 s | **yes** | the recording |
 | 6 | `qnx-porter port` json-c, then the `crashes.log` backtrace | 17 s | **yes** | the recording |
 | 7 | `scripts/ports_csv.py`, the `cut -d, -f1,4,5,6,7,8,9,10 \| column` table; slide `results` | 9 s + 9 s | no | the recording |
 | 8 | slide `failures` | 9 s | no | `results/ports.csv` (failed builds) |
@@ -46,13 +46,12 @@ Lengths are in `record.py` `scenes()`; the narration, slides and parsing are in 
 | 14 | image `shots/site-paper.png` | 5 s | no | none |
 | 15 | slide `close` | 10 s | no | none |
 
-mbedtls uses the 2024 pin of `campaign-2024.yaml` (v3.6.2, programs off), which matches the published results and
-`results/runs/campaign-7.log`. `campaign.yaml` now pins v4.2.0 with programs on; that is not the run the video
-shows.
+mbedtls and json-c use the pins of `campaign.yaml` (mbedtls v4.2.0 with programs on, json-c 0.19), which match the
+published results and `results/runs/campaign-8.log`.
 
 ## How `render.py` works
 - **Numbers.** None is typed. `facts()` reads them from each shot's recorded output (for example `round 1: 26
-  error(s)`, `x86_64: 61 libraries, 57 built ...; tests ran for 33 (at least one test each): 1332/1366 passed`)
+  error(s)`, `x86_64: 61 libraries, 58 built ...; tests ran for 43 (at least one test each): 1563/1658 passed`)
   or from a result CSV. The results slide anchors on the `x86_64:` line, adds the `aarch64le:` line when
   `ports_csv.py` printed one (else "aarch64 on QEMU: campaign running"), and sums patches, patches by rule and
   patches by model over each arch's own table rows. It stops if a number is missing, or if the table's row count
