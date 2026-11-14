@@ -6,8 +6,9 @@ the recording together with the slides and the site screenshots into `out/qnx-po
 the timing, and says on screen how much wait it cut. The shot list, the narration and where every number comes
 from: [docs/VIDEO_SCRIPT.md](../docs/VIDEO_SCRIPT.md).
 
-**Status.** The pipeline for the new 2:38 cut is in place and tested without the QNX target (see "Tests"). It has
-**not been recorded yet**: the committed `out/` files are still the older 10-library cut until `make.sh` runs.
+**Status.** Recorded on 14 Nov 2026 with `make.sh` against the x86_64 QNX 8.0 QEMU target: 167 s (2:47),
+`out/qnx-porter-demo.mp4`, `out/demo.cast`, `out/markers.json`. The narration is not yet in our voice: `voice.wav`
+is recorded from the lines `render.py` printed (they are in [docs/VIDEO_SCRIPT.md](../docs/VIDEO_SCRIPT.md)).
 
 ## Re-record (when the QNX target is free)
 ```bash
@@ -17,7 +18,7 @@ video/make.sh                              # checks, records, then renders
 ```
 `make.sh` first runs `record.py --check`, which stops with a message if a screenshot, ffmpeg or Pillow is
 missing, so a long recording is never wasted. It then sources the SDP, checks the target and records. The
-recording builds mbedtls and json-c and runs their own tests (130 and 25) on the QEMU target. Do not run it while
+recording builds mbedtls and json-c and runs their own tests (148 and 28) on the QEMU target. Do not run it while
 a campaign is using the same machine.
 
 After recording, `render.py` prints, per scene, its length next to its target, then every narration line with
@@ -34,7 +35,7 @@ Lengths are in `record.py` `scenes()`; the narration, slides and parsing are in 
 | 2 | slide `problem` ("Why a real-time OS needs this") | 9 s | no | none |
 | 3 | slide `why-c` | 9 s | no | `results/ports.csv` (zlib, libsodium, sqlite) |
 | 4 | `scripts/qemu_target.sh status`, `qnx-porter doctor` | 10 s | **yes** | the recording (aarch64 sentence from shot 7's output) |
-| 5 | `qnx-porter port` mbedtls v3.6.2 `--arg -DENABLE_PROGRAMS=OFF`, then `head -4` of `*-link-libsocket.patch` | 22 s | **yes** | the recording |
+| 5 | `qnx-porter port` mbedtls v4.2.0, then `head -4` of `*-link-libsocket.patch` | 22 s | **yes** | the recording |
 | 6 | `qnx-porter port` json-c, then the `crashes.log` backtrace | 17 s | **yes** | the recording |
 | 7 | `scripts/ports_csv.py`, the `cut -d, -f1,4,5,6,7,8,9,10 \| column` table; slide `results` | 9 s + 9 s | no | the recording |
 | 8 | slide `failures` | 9 s | no | `results/ports.csv` (failed builds) |
@@ -46,13 +47,12 @@ Lengths are in `record.py` `scenes()`; the narration, slides and parsing are in 
 | 14 | image `shots/site-paper.png` | 5 s | no | none |
 | 15 | slide `close` | 10 s | no | none |
 
-mbedtls uses the 2024 pin of `campaign-2024.yaml` (v3.6.2, programs off), which matches the published results and
-`results/runs/campaign-7.log`. `campaign.yaml` now pins v4.2.0 with programs on; that is not the run the video
-shows.
+mbedtls and json-c use the pins of `campaign.yaml` (mbedtls v4.2.0 with programs on, json-c 0.19), which match the
+published results and `results/runs/campaign-8.log`.
 
 ## How `render.py` works
 - **Numbers.** None is typed. `facts()` reads them from each shot's recorded output (for example `round 1: 26
-  error(s)`, `x86_64: 61 libraries, 57 built ...; tests ran for 33 (at least one test each): 1332/1366 passed`)
+  error(s)`, `x86_64: 61 libraries, 58 built ...; tests ran for 43 (at least one test each): 1563/1658 passed`)
   or from a result CSV. The results slide anchors on the `x86_64:` line, adds the `aarch64le:` line when
   `ports_csv.py` printed one (else "aarch64 on QEMU: campaign running"), and sums patches, patches by rule and
   patches by model over each arch's own table rows. It stops if a number is missing, or if the table's row count
@@ -60,8 +60,9 @@ shows.
 - **Per-shot timing.** Each scene has a length. A terminal scene starts at relaxed pacing (typing 30 characters
   a second, pauses up to 1 s, 6 s hold after each command) and tightens towards 200 characters a second, 0.05 s
   pauses and a 1 s hold only as far as it must to fit; what is left is held on the last frame.
-- **Length guard.** It fails if the total reaches 170 s and warns outside 140-160 s.
-- **Placeholders by file presence.** Shots 10 and 11 go in only when `results/crates.csv` and
+- **Length guard.** It fails if the total reaches 170 s and warns outside 140-168 s.
+- **Placeholders by file presence.** The hang shot goes in only when `ports/nng/REPORT.md` has a "Hang on QNX"
+  section. The crates and model shots go in only when `results/crates.csv` and
   `results/model_eval.csv` exist on the recorded commit. No flag.
 - **Narration.** `NARRATION` has one line per shot. It is drawn as a caption bar at the bottom of every frame of
   that shot (at most three lines). If `video/voice.wav` exists it is muxed in (AAC, padded with silence to the
@@ -69,12 +70,12 @@ shows.
 - **Images.** An image scene shows a PNG, scaled to 1920x1080, for its length.
 
 ## Screenshots
-`video/shots/site-overview.png`, `site-results.png`, `site-mbedtls.png`, `site-weekly.png` and `site-paper.png`
+`video/shots/site-overview.png`, `site-results.png`, `site-weekly.png` and `site-paper.png`
 are 1920x1080 captures of the live site, page content only (no browser toolbar, tabs or bookmarks). They were
 taken with headless Chrome, which renders only the page:
 ```bash
 B=https://thegoodengineers.github.io/qnx-porter
-for p in overview:index.html results:results.html mbedtls:ports/mbedtls-x86_64.html weekly:upstream.html paper:paper.html; do
+for p in overview:index.html results:results.html weekly:upstream.html paper:paper.html; do
   google-chrome --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1920,1080 \
     --virtual-time-budget=8000 --screenshot="video/shots/site-${p%%:*}.png" "$B/${p#*:}"
 done

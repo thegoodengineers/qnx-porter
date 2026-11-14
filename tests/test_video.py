@@ -114,7 +114,7 @@ def test_every_narration_line_and_slide_is_filled_from_files():
             title, lines = render.slide(body, f)
             assert title and lines
     assert render.slide("why-c", f)[1][2].startswith("On QNX 8.0: zlib ")
-    assert "did not build with rules only" in render.slide("failures", f)[1][2]
+    assert "Did not build with rules only" in render.slide("failures", f)[1][2]
 
 
 def test_a_number_missing_from_the_recording_stops_the_render():
@@ -129,6 +129,11 @@ def test_placeholder_shots_go_in_only_with_their_csv(tmp_path):
     (tmp_path / "results" / "crates.csv").write_text("crate\n")
     (tmp_path / "results" / "model_eval.csv").write_text("library\n")
     assert {"crates", "model"} <= {s[0] for s in record.scenes(tmp_path)}
+    (tmp_path / "ports" / "nng").mkdir(parents=True)
+    (tmp_path / "ports" / "nng" / "REPORT.md").write_text("# nng\n")
+    assert "hang" not in {s[0] for s in record.scenes(tmp_path)}
+    (tmp_path / "ports" / "nng" / "REPORT.md").write_text("# nng\n## Hang on QNX: nng.core.aio_test\n")
+    assert "hang" in {s[0] for s in record.scenes(tmp_path)}
 
 
 @pytest.mark.parametrize("with_placeholders", [False, True])
@@ -137,6 +142,8 @@ def test_the_shot_list_stays_in_the_aim(tmp_path, with_placeholders):
         (tmp_path / "results").mkdir()
         (tmp_path / "results" / "crates.csv").write_text("crate\n")
         (tmp_path / "results" / "model_eval.csv").write_text("library\n")
+        (tmp_path / "ports" / "nng").mkdir(parents=True)
+        (tmp_path / "ports" / "nng" / "REPORT.md").write_text("## Hang on QNX: x\n")
     total = sum(s[1] for s in record.scenes(tmp_path))
     assert render.AIM[0] <= total <= render.AIM[1] and total < render.LIMIT
     assert set(s[0] for s in record.scenes(tmp_path)) <= set(render.NARRATION)

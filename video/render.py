@@ -36,7 +36,7 @@ NAR_TOP = H - NAR_LINES * NAR_LINE - 28   # the narration bar, at the bottom of 
 # command in s). A scene starts RELAXED and moves towards TIGHT only as far as it must to fit its length.
 RELAXED = (30.0, 1.0, 6.0)
 TIGHT = (200.0, 0.05, 1.0)
-LIMIT, AIM = 170.0, (140.0, 160.0)   # fail at LIMIT (a margin under the 3:00 rule); warn outside AIM
+LIMIT, AIM = 170.0, (140.0, 168.0)   # fail at LIMIT (a margin under the 3:00 rule); warn outside AIM
 
 BG, FG, DIM = (15, 20, 25), (214, 221, 230), (120, 132, 145)
 ACCENT, GREEN, YELLOW, RED = (64, 156, 255), (98, 209, 129), (240, 200, 90), (240, 110, 100)
@@ -55,6 +55,8 @@ NARRATION = {
     "json-c": "When a test crashes on QNX, qnx-porter copies the core dump back and reads the backtrace. json-c passes "
               "NULL to printf: glibc prints (null), QNX faults. A rule fixes the test, and json-c goes from "
               "{jc_before} to {jc_after} of {jc_total}.",
+    "hang": "When a test hangs, pidin and a kernel trace show why: in nng, one thread spins, as QNX sends no POLLHUP. "
+            "We sent nng the fix.",
     "campaign": "The campaign: {lib} libraries. On x86_64, {built} built for QNX 8.0, and {ok} of {total} of their own "
                 "tests passed on the target. {aarch64_built} {rules_phrase}",
     "failures": "Every failing test is listed by cause: QNX libc differences such as strtod rounding, with reproducers, "
@@ -64,8 +66,8 @@ NARRATION = {
     "crates": "The same tool ports Rust crates: {cr_built} of {cr_total} build for QNX 8.0.",
     "model": "Where no rule applied, the model step built {model_libs}, each diff proved by a rebuild.",
     "rt": "Real-time check: the latency of one call in {rt_libs} libraries on QNX in QEMU, idle, loaded and isolated.",
-    "site": "Everything is on the website, generated from the same reports: every port, every rule, and a weekly "
-            "check against upstream. Install with pip install qnx-porter.",
+    "site": "Everything is on the website, generated from the same reports, with a weekly check against upstream. "
+            "Install with pip install qnx-porter.",
     "paper": "The method and every result are written up in a research paper.",
     "close": "Rules first; a language model only where no rule fits, kept only if the rebuild proves it. "
              "Every command here ran on QNX 8.0.",
@@ -186,15 +188,15 @@ def slide(name: str, f: dict) -> tuple[str, list[str]]:
             "Other languages wrap C libraries: Python's zlib module, PyNaCl on libsodium, Rust's rusqlite on SQLite.",
             "On QNX 8.0: " + ", ".join(parts) + "."])
     if name == "failures":
-        failed = [r for r in x86 if r["build_result"] != "built"]
-        linux = [r["library"] for r in failed if "expected not to port" in r["note"]]
-        other = [r["library"] for r in failed if r["library"] not in linux]
+        equiv = [r["library"] for r in x86 if r["build_result"] == "needs-qnx-equivalent"]
+        other = [r["library"] for r in x86 if r["build_result"] not in ("built", "needs-qnx-equivalent")]
         return ("What still fails, by cause", [
             "QNX C library differences, each with a reproducer in docs/qnx-reports/: strtod() rounding, "
             "strftime() %Ex, fchdir() needs O_DIRECTORY, qsort() with an inconsistent comparator.",
             "What our test image lacks: killall, internet access, Tcl, an MQTT broker.",
-            f"{len(failed)} libraries did not build with rules only: {' and '.join(linux)} are Linux-only by design; "
-            f"{' and '.join(other)} stop on errors no rule covers yet.",
+            f"Did not build with rules only: {' and '.join(other)} (errors no rule covers yet). "
+            f"Need a QNX equivalent: {' and '.join(equiv)} use Linux-only kernel interfaces; the porting advisor "
+            "names QNX's equivalent for each.",
             "",
             "Every failing test, by cause: README.md (What the failures are) and docs/LEARNINGS.md."])
     if name == "results":

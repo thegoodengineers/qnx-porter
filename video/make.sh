@@ -5,6 +5,7 @@
 # Output: video/out/demo.cast (the raw recording, `asciinema play`-able) and video/out/qnx-porter-demo.mp4.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+export PATH="$HOME/.local/bin:$PATH"  # where pip --user puts the qnx-porter command
 export PYTHONPATH="$PWD${PYTHONPATH:+:$PYTHONPATH}"  # record this checkout's qnx-porter, not whichever one pip installed
 python3 video/record.py --check   # screenshots, ffmpeg and Pillow: stop before the recording, not after it
 [ -n "${QNX_HOST:-}" ] || source "${QNX_SDP:-$HOME/qnx800}/qnxsdp-env.sh" >/dev/null
