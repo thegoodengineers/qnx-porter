@@ -9,7 +9,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import build, crash, errors, fixes, llm, patches, qnx
+from . import advisor, build, crash, errors, fixes, llm, patches, qnx
 from .target import SAME_PATH_MARK, Target, ctest_on_target, meson_on_target, parse_results, write_wrapper
 
 STACK_FLAG = "-N8M"  # qcc: main-thread stack size, written into the QNX ELF note (see crash.deep_recursion)
@@ -203,16 +203,17 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                                                  else "no test runner for " + system)))
 
     kept = [p for p in applied if p.kept]
+    advice = None if ok else advisor.advise(blocked, src)
     patches.export_series(src, base, out)
     report = {
         "library": name, "url": url, "version": tag or base[:12], "commit": base, "build_system": system,
         "arch": arch or "host", "sdp": "QNX SDP 8.0" if arch else "none (host self-test)",
         "host": f"{platform.system()} {platform.release()}", "target": uname,
-        "build_result": "built" if ok else "failed", "rounds": rounds,
+        "build_result": "built" if ok else advisor.NEEDS if advice else "failed", "rounds": rounds,
         "tests_passed": tests_passed, "tests_total": tests_total, "tests_ran": bool(ok and target and uname),
         "patches_kept": len(kept), "patches_by_rule": sum(p.source == "rule" for p in kept),
         "patches_by_model": sum(p.source == "model" for p in kept),
-        "patches": [p.to_dict() for p in applied], "blocked_on": blocked,
+        "patches": [p.to_dict() for p in applied], "blocked_on": blocked, "linux_interfaces": advice,
         "minutes": round((time.time() - t0) / 60, 1), "note": note,
         "model_usage": {**llm.USAGE, "seconds": round(llm.USAGE["seconds"], 1)} if use_llm and llm.configured() else None,
         "tests_not_runnable": not_runnable,
@@ -383,5 +384,5 @@ All kept source changes in one file: `qnx.patch` (apply to the upstream tag with
 Build logs for every round: `logs/`.
 
 ## Still failing
-{blocked if r['build_result'] == 'failed' else '- nothing'}
-{crashes}"""
+{blocked if r['build_result'] != 'built' else '- nothing'}
+{crashes}""" + ("\n" + advisor.render(r['linux_interfaces']) if r.get('linux_interfaces') else "")

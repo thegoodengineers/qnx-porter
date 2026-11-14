@@ -152,6 +152,7 @@ section > h2 ~ h2 { margin-top: 48px; }
 .legend .done, .status .done i { background: var(--ok); }
 .legend .part, .status .part i { background: var(--warn); }
 .legend .built, .status .built i { background: var(--blue); }
+.legend .equiv, .status .equiv i { background: transparent; box-shadow: inset 0 0 0 1px var(--warn); }
 .legend .no, .status .no i { background: transparent; box-shadow: inset 0 0 0 1px var(--muted); }
 
 /* tables */

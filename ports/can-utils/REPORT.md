@@ -5,7 +5,7 @@
 | Upstream | https://github.com/linux-can/can-utils.git at `v2025.01` (`01083a64ebf2`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
-| Build | **failed** after 2 round(s) |
+| Build | **needs-qnx-equivalent** after 2 round(s) |
 | Library's own tests | not run |
 | Patches kept | 2 (2 by rule, 0 by model) |
 | Time | 0.1 min |
@@ -34,3 +34,12 @@ Build logs for every round: `logs/`.
   QNX note: <linux/sockios.h> is a Linux kernel header and does not exist on QNX
 - `/home/chirag/qnx-porter/ports/can-utils/work/src/slcand.c:27:10: fatal error: linux/serial.h: No such file or directory`  
   QNX note: <linux/serial.h> is a Linux kernel header and does not exist on QNX
+
+## Not portable as-is: needs a QNX equivalent
+The build stopped on `<linux/types.h>`, a Linux kernel header. The sources use Linux-only kernel interfaces that QNX 8.0 provides differently, so no header shim makes this library work; the code that uses them needs a QNX back end.
+
+| Linux interface | Files | QNX equivalent | |
+|---|---|---|---|
+| SocketCAN (AF_CAN, <linux/can.h>) | 41 (first: `asc2log.c:55`) | a QNX CAN driver (dev-can-<board>) used through devctl() CAN_DEVCTL_* commands (<sys/can_dcmd.h>) and the canctl utility | [QNX docs](https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.devctl/topic/can.html) |
+| netlink (AF_NETLINK, <linux/netlink.h>) | 4 (first: `cangw.c:48`) | routing sockets (PF_ROUTE, <net/route.h>) and sysctl on the io-sock network stack | [QNX docs](https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.utilities/topic/i/io-sock.html) |
+| epoll (<sys/epoll.h>) | 5 (first: `candump.c:57`) | poll() or select(), or ionotify() to have a resource manager deliver a pulse or signal | [QNX docs](https://www.qnx.com/developers/docs/8.0/com.qnx.doc.neutrino.lib_ref/topic/i/ionotify.html) |

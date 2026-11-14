@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports/can-utils/work/src -B /home/chirag/qnx-porter/ports/can-utils/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/can-utils/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports/can-utils/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports/can-utils/work/src -B /home/chirag/qnx-porter/ports/can-utils/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports/can-utils/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports/can-utils/work/qnx-toolchain.cmake
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -18,16 +18,16 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports/can-utils/work/build -j 2 -- -k
+[  1%] Building C object CMakeFiles/can-calc-bit-timing.dir/calc-bit-timing/can-calc-bit-timing.c.o
 [  2%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-dev-coredump.c.o
-[  2%] Building C object CMakeFiles/can-calc-bit-timing.dir/calc-bit-timing/can-calc-bit-timing.c.o
 [  3%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-dump.c.o
 [  4%] Building C object CMakeFiles/can.dir/lib.c.o
 [  5%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-main.c.o
 [  6%] Building C object CMakeFiles/can.dir/canframelen.c.o
 [  7%] Building C object CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-regmap.c.o
 [  8%] Building C object CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn.c.o
-[  9%] Building C object CMakeFiles/canfdtest.dir/canfdtest.c.o
-[ 10%] Building C object CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn_dh.c.o
+[  9%] Building C object CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn_dh.c.o
+[ 10%] Building C object CMakeFiles/canfdtest.dir/canfdtest.c.o
 [ 11%] Building C object CMakeFiles/cangw.dir/cangw.c.o
 [ 13%] Building C object CMakeFiles/cansniffer.dir/cansniffer.c.o
 [ 14%] Building C object CMakeFiles/isotpdump.dir/isotpdump.c.o
@@ -46,15 +46,15 @@ In file included from /home/chirag/qnx-porter/ports/can-utils/work/src/calc-bit-
    22 | #include <linux/types.h>
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
+gmake[2]: *** [CMakeFiles/can-calc-bit-timing.dir/build.make:76: CMakeFiles/can-calc-bit-timing.dir/calc-bit-timing/can-calc-bit-timing.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/can-calc-bit-timing.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:158: CMakeFiles/can-calc-bit-timing.dir/all] Error 2
 In file included from /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/kernel.h:11,
                  from /home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:18:
 /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
    49 | #include <linux/types.h>
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
-gmake[2]: *** [CMakeFiles/can-calc-bit-timing.dir/build.make:76: CMakeFiles/can-calc-bit-timing.dir/calc-bit-timing/can-calc-bit-timing.c.o] Error 1
-gmake[2]: Target 'CMakeFiles/can-calc-bit-timing.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:158: CMakeFiles/can-calc-bit-timing.dir/all] Error 2
 gmake[2]: *** [CMakeFiles/mcp251xfd-dump.dir/build.make:76: CMakeFiles/mcp251xfd-dump.dir/mcp251xfd/mcp251xfd-dev-coredump.c.o] Error 1
 In file included from /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/kernel.h:11,
                  from /home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dump.c:9:
@@ -100,14 +100,6 @@ In file included from /home/chirag/qnx-porter/ports/can-utils/work/src/isobusfs/
       |          ^~~~~~~~~~~~~~~
 compilation terminated.
 gmake[2]: *** [CMakeFiles/isobusfs.dir/build.make:76: CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn.c.o] Error 1
-In file included from /home/chirag/qnx-porter/ports/can-utils/work/src/canfdtest.c:41:
-/home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
-   49 | #include <linux/types.h>
-      |          ^~~~~~~~~~~~~~~
-compilation terminated.
-gmake[2]: *** [CMakeFiles/canfdtest.dir/build.make:76: CMakeFiles/canfdtest.dir/canfdtest.c.o] Error 1
-gmake[2]: Target 'CMakeFiles/canfdtest.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:684: CMakeFiles/canfdtest.dir/all] Error 2
 In file included from /home/chirag/qnx-porter/ports/can-utils/work/src/isobusfs/isobusfs_cmn.h:13,
                  from /home/chirag/qnx-porter/ports/can-utils/work/src/isobusfs/isobusfs_cmn_dh.c:9:
 /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
@@ -117,6 +109,14 @@ compilation terminated.
 gmake[2]: *** [CMakeFiles/isobusfs.dir/build.make:90: CMakeFiles/isobusfs.dir/isobusfs/isobusfs_cmn_dh.c.o] Error 1
 gmake[2]: Target 'CMakeFiles/isobusfs.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:236: CMakeFiles/isobusfs.dir/all] Error 2
+In file included from /home/chirag/qnx-porter/ports/can-utils/work/src/canfdtest.c:41:
+/home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can.h:49:10: fatal error: linux/types.h: No such file or directory
+   49 | #include <linux/types.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+gmake[2]: *** [CMakeFiles/canfdtest.dir/build.make:76: CMakeFiles/canfdtest.dir/canfdtest.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/canfdtest.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:684: CMakeFiles/canfdtest.dir/all] Error 2
 In file included from /home/chirag/qnx-porter/ports/can-utils/work/src/cangw.c:47:
 /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can/gw.h:48:10: fatal error: linux/types.h: No such file or directory
    48 | #include <linux/types.h>
@@ -212,6 +212,6 @@ gmake[2]: *** [CMakeFiles/isotpserver.dir/build.make:76: CMakeFiles/isotpserver.
 gmake[2]: Target 'CMakeFiles/isotpserver.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:996: CMakeFiles/isotpserver.dir/all] Error 2
 gmake[1]: Target 'all' not remade because of errors.
-gmake: *** [Makefile:136: all] Error 2
+gmake: *** [Makefile:146: all] Error 2
 gmake: Target 'default_target' not remade because of errors.
 [exit 2]

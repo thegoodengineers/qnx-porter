@@ -274,7 +274,7 @@ differ.}
 \label{fig:tests}
 \end{figure*}
 
-In this run \N{built-same}. \N{failed-sentence} In the 2024-pin run, libuv and libwebsockets stopped on errors no rule covered
+In this run \N{built-same}. \N{failed-sentence} For those, the porting advisor (\texttt{qnx\_porter/advisor.py}) acts only when the build stopped on a Linux kernel header: it scans the sources for Linux-only interfaces and names the QNX equivalent of each, with its QNX documentation page (for SocketCAN, a \texttt{dev-can-*} driver driven by \texttt{CAN\_DEVCTL\_*} devctl commands; for the GPIO character device, the board's GPIO resource manager). In the 2024-pin run, libuv and libwebsockets stopped on errors no rule covered
 (\texttt{struct qtime\_entry} has no \texttt{nsec} member in QNX 8.0; \texttt{TCPCTL\_KEEPCNT}); QNX's own ports
 of both libraries change exactly those lines (Section~\ref{sec:eval-qnxports}), and the model step builds both
 (Section~\ref{sec:eval-model}).

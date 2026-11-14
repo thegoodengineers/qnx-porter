@@ -158,7 +158,7 @@ crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatt
 | [benchmark](ports/benchmark/REPORT.md) | v1.10.0 | x86_64 | built | 85/87 | 0 (0 / 0) | 6.0 |  |
 | [c-ares](ports/c-ares/REPORT.md) | v1.34.9 | x86_64 | built | 2/3 | 0 (0 / 0) | 5.8 |  |
 | [cJSON](ports/cJSON/REPORT.md) | v1.7.19 | x86_64 | built | 19/19 | 1 (1 / 0) | 0.8 |  |
-| [can-utils](ports/can-utils/REPORT.md) | v2025.01 | x86_64 | failed | not run | 2 (2 / 0) | 0.1 | Linux SocketCAN tools: expected not to port |
+| [can-utils](ports/can-utils/REPORT.md) | v2025.01 | x86_64 | needs-qnx-equivalent | not run | 2 (2 / 0) | 0.1 | Linux SocketCAN tools: expected not to port |
 | [capstone](ports/capstone/REPORT.md) | 5.0.9 | x86_64 | built | 24/24 | 1 (1 / 0) | 4.1 |  |
 | [cglm](ports/cglm/REPORT.md) | v0.9.7 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.6 |  |
 | [cmark](ports/cmark/REPORT.md) | 0.31.2 | x86_64 | built | 1/1 | 0 (0 / 0) | 0.3 |  |
@@ -178,7 +178,7 @@ crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatt
 | [libconfig](ports/libconfig/REPORT.md) | v1.8.3 | x86_64 | built | 1/1 | 1 (1 / 0) | 0.5 |  |
 | [libdeflate](ports/libdeflate/REPORT.md) | v1.26 | x86_64 | built | 8/8 | 0 (0 / 0) | 0.4 |  |
 | [libevent](ports/libevent/REPORT.md) | release-2.1.13-stable | x86_64 | built | 20/24 | 2 (2 / 0) | 10.2 |  |
-| [libgpiod](ports/libgpiod/REPORT.md) | v2.3.2 | x86_64 | failed | not run | 0 (0 / 0) | 0.0 | Linux GPIO character-device API: expected not to port |
+| [libgpiod](ports/libgpiod/REPORT.md) | v2.3.2 | x86_64 | needs-qnx-equivalent | not run | 0 (0 / 0) | 0.9 | Linux GPIO character-device API: expected not to port |
 | [libjpeg-turbo](ports/libjpeg-turbo/REPORT.md) | 3.2.1 | x86_64 | built | 662/662 | 0 (0 / 0) | 7.8 |  |
 | [libmodbus](ports/libmodbus/REPORT.md) | v3.2.0 | x86_64 | built | 0/1 | 0 (0 / 0) | 0.6 |  |
 | [libogg](ports/libogg/REPORT.md) | v1.3.6 | x86_64 | built | 2/2 | 0 (0 / 0) | 0.2 |  |
@@ -219,7 +219,7 @@ crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatt
 | [benchmark](ports-aarch64le/benchmark/REPORT.md) | v1.10.0 | aarch64le | built | 85/87 | 0 (0 / 0) | 21.0 |  |
 | [c-ares](ports-aarch64le/c-ares/REPORT.md) | v1.34.9 | aarch64le | built | 2/3 | 0 (0 / 0) | 11.3 |  |
 | [cJSON](ports-aarch64le/cJSON/REPORT.md) | v1.7.19 | aarch64le | built | 19/19 | 1 (1 / 0) | 3.6 |  |
-| [can-utils](ports-aarch64le/can-utils/REPORT.md) | v2025.01 | aarch64le | failed | not run | 2 (2 / 0) | 0.1 | Linux SocketCAN tools: expected not to port |
+| [can-utils](ports-aarch64le/can-utils/REPORT.md) | v2025.01 | aarch64le | needs-qnx-equivalent | not run | 2 (2 / 0) | 0.1 | Linux SocketCAN tools: expected not to port |
 | [capstone](ports-aarch64le/capstone/REPORT.md) | 5.0.9 | aarch64le | built | 24/24 | 1 (1 / 0) | 16.6 |  |
 | [cglm](ports-aarch64le/cglm/REPORT.md) | v0.9.7 | aarch64le | built | 1/1 | 0 (0 / 0) | 2.7 |  |
 | [cmark](ports-aarch64le/cmark/REPORT.md) | 0.31.2 | aarch64le | built | 1/1 | 0 (0 / 0) | 0.9 |  |
@@ -239,7 +239,7 @@ crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatt
 | [libconfig](ports-aarch64le/libconfig/REPORT.md) | v1.8.3 | aarch64le | built | 1/1 | 1 (1 / 0) | 3.1 |  |
 | [libdeflate](ports-aarch64le/libdeflate/REPORT.md) | v1.26 | aarch64le | built | 8/8 | 0 (0 / 0) | 1.0 |  |
 | [libevent](ports-aarch64le/libevent/REPORT.md) | release-2.1.13-stable | aarch64le | built | 20/24 | 2 (2 / 0) | 18.9 |  |
-| [libgpiod](ports-aarch64le/libgpiod/REPORT.md) | v2.3.2 | aarch64le | failed | not run | 0 (0 / 0) | 0.0 | Linux GPIO character-device API: expected not to port |
+| [libgpiod](ports-aarch64le/libgpiod/REPORT.md) | v2.3.2 | aarch64le | needs-qnx-equivalent | not run | 0 (0 / 0) | 0.5 | Linux GPIO character-device API: expected not to port |
 | [libjpeg-turbo](ports-aarch64le/libjpeg-turbo/REPORT.md) | 3.2.1 | aarch64le | built | 646/646 | 0 (0 / 0) | 71.2 |  |
 | [libmodbus](ports-aarch64le/libmodbus/REPORT.md) | v3.2.0 | aarch64le | built | 0/1 | 0 (0 / 0) | 1.2 |  |
 | [libogg](ports-aarch64le/libogg/REPORT.md) | v1.3.6 | aarch64le | built | 2/2 | 0 (0 / 0) | 0.7 |  |
@@ -303,8 +303,16 @@ reproducers are in [docs/qnx-reports/](docs/qnx-reports/):
   the `en_US.UTF-8` locale (benchmark),
   2 GiB of memory for one zstd test, a `locale` command (pcre2 skips those tests), Tcl (sqlite), an MQTT
   broker (paho), cmake on the target (libpng's tests are CMake scripts).
-- **Did not build** (3 on x86_64): libgpiod and can-utils use Linux-only kernel interfaces, as expected.
-  libwebsockets 5.1.0 defines its own `struct ifaddrs`, which clashes with QNX's `<ifaddrs.h>`. libuv 1.53.0
+- **Needs a QNX equivalent** (2, on both architectures, not counted as built): can-utils and libgpiod stop on
+  Linux kernel headers (`<linux/types.h>`, `<linux/const.h>`). The porting advisor
+  ([`qnx_porter/advisor.py`](qnx_porter/advisor.py)) then scans the source and names each Linux-only interface
+  with QNX's equivalent and its QNX docs page: can-utils uses SocketCAN in 41 files (QNX: a `dev-can-*` driver
+  with `CAN_DEVCTL_*` devctl commands), netlink in 4 and epoll in 5; libgpiod uses the GPIO character device in
+  38 files (QNX: the board's GPIO resource manager, or the GPIO framework of SDP 8.0.5). See
+  [`ports/can-utils/REPORT.md`](ports/can-utils/REPORT.md) and [`ports/libgpiod/REPORT.md`](ports/libgpiod/REPORT.md);
+  log [`results/runs/advisor-1.log`](results/runs/advisor-1.log). libgpiod 2.3.2 needs meson 0.64 or newer, so
+  that run used meson 1.6.1; with the host's meson 0.61.2 it stopped before compiling anything.
+- **Did not build** (1): libwebsockets 5.1.0 defines its own `struct ifaddrs`, which clashes with QNX's `<ifaddrs.h>`. libuv 1.53.0
   builds with rules only, because upstream added QNX 8.0 support
   ([PR #4801](https://github.com/libuv/libuv/pull/4801)); 401 of its subtests pass on QNX and 31 fail, which we
   have not looked into. At the 2024 tags libuv (`struct qtime_entry` has no `nsec` in QNX 8.0) and

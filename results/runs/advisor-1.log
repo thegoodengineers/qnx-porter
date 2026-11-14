@@ -1,0 +1,49 @@
+code: branch chirag/advisor (uncommitted at run time), campaign.yaml; build only (--target none)
+
+=== [1/1] can-utils v2025.01 ===
+[1/5] fetch https://github.com/linux-can/can-utils.git @ v2025.01
+[2/5] build system: cmake; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 8 error(s); first: /home/chirag/qnx-porter/ports/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: fatal error: endian.h: No such file or directory
+      fix 0001 [endian-compat] <endian.h> does not exist on QNX 8.0. QNX provides BSD byte-order conversion macros in <net/netbyte.h> (__NET_BE*/__NET_LE*); a generated compatibility <endian.h> header
+      fix 0002 [guard-linux-header] <endian.h> does not exist on QNX 8.0 and isobusfs/isobusfs_cmn.h uses nothing from it, so the include is kept for Linux and skipped on QNX.
+      round 2: 6 error(s); first: /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can/netlink.h:22:10: fatal error: linux/types.h: No such file or directory
+      no rule or model fix left for: /home/chirag/qnx-porter/ports/can-utils/work/src/./include/linux/can/netlink.h:22:10: fatal error: linux/types.h: No such file or directory
+[5/5] report: /home/chirag/qnx-porter/ports/can-utils/REPORT.md
+aarch64le: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1546/1642 passed
+x86_64: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1563/1658 passed
+-> /home/chirag/qnx-porter/results/ports.csv
+--- libgpiod with meson 1.6.1 via ~/meson-new on PATH
+
+=== [1/1] libgpiod v2.3.2 ===
+[1/5] fetch https://github.com/brgl/libgpiod.git @ v2.3.2
+[2/5] build system: meson; target: x86_64-pc-nto-qnx8.0.0
+      round 1: 1 error(s); first: ../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+      no rule or model fix left for: ../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+[5/5] report: /home/chirag/qnx-porter/ports/libgpiod/REPORT.md
+aarch64le: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1546/1642 passed
+x86_64: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1563/1658 passed
+-> /home/chirag/qnx-porter/results/ports.csv
+
+=== [1/1] can-utils v2025.01 ===
+[1/5] fetch https://github.com/linux-can/can-utils.git @ v2025.01
+[2/5] build system: cmake; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 8 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/mcp251xfd/mcp251xfd-dev-coredump.c:9:10: fatal error: endian.h: No such file or directory
+      fix 0001 [endian-compat] <endian.h> does not exist on QNX 8.0. QNX provides BSD byte-order conversion macros in <net/netbyte.h> (__NET_BE*/__NET_LE*); a generated compatibility <endian.h> header
+      fix 0002 [guard-linux-header] <endian.h> does not exist on QNX 8.0 and isobusfs/isobusfs_cmn.h uses nothing from it, so the include is kept for Linux and skipped on QNX.
+      round 2: 6 error(s); first: /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can/netlink.h:22:10: fatal error: linux/types.h: No such file or directory
+      no rule or model fix left for: /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/src/./include/linux/can/netlink.h:22:10: fatal error: linux/types.h: No such file or directory
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/can-utils/REPORT.md
+aarch64le: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1546/1642 passed
+x86_64: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1563/1658 passed
+-> /home/chirag/qnx-porter/results/ports.csv
+--- libgpiod with meson 1.6.1 via ~/meson-new on PATH
+
+=== [1/1] libgpiod v2.3.2 ===
+[1/5] fetch https://github.com/brgl/libgpiod.git @ v2.3.2
+[2/5] build system: meson; target: aarch64-unknown-nto-qnx8.0.0
+      round 1: 1 error(s); first: ../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+      no rule or model fix left for: ../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+[5/5] report: /home/chirag/qnx-porter/ports-aarch64le/libgpiod/REPORT.md
+aarch64le: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1546/1642 passed
+x86_64: 61 libraries, 58 built for QNX 8.0; tests ran for 43 (at least one test each): 1563/1658 passed
+-> /home/chirag/qnx-porter/results/ports.csv

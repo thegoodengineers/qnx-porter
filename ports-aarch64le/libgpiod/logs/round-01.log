@@ -1,11 +1,125 @@
 $ meson setup /home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/build /home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/src --default-library=static --cross-file=/home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/qnx-cross.ini
 The Meson build system
-Version: 0.61.2
+Version: 1.6.1
 Source dir: /home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/src
 Build dir: /home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/build
 Build type: cross build
+Project name: libgpiod
+Project version: 2.3.2
+C compiler for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc (gcc 12.2.0 "aarch64-unknown-nto-qnx8.0.0-gcc (QNX8.0.0-rfe1c11236e8a392fdc575fe111bbc8aa4f10d82b-500) 12.2.0")
+C linker for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc ld.bfd 2.43.0
+C compiler for the build machine: cc (gcc 11.4.0 "cc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0")
+C linker for the build machine: cc ld.bfd 2.38
+Build machine cpu family: x86_64
+Build machine cpu: x86_64
+Host machine cpu family: aarch64
+Host machine cpu: aarch64
+Target machine cpu family: aarch64
+Target machine cpu: aarch64
+C++ compiler for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-g++ (gcc 12.2.0 "aarch64-unknown-nto-qnx8.0.0-g++ (QNX8.0.0-rfe1c11236e8a392fdc575fe111bbc8aa4f10d82b-500) 12.2.0")
+C++ linker for the host machine: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-g++ ld.bfd 2.43.0
+Found pkg-config: NO
+Found CMake: NO
+Run-time dependency libedit found: NO (tried pkgconfig and cmake)
+Run-time dependency libkmod found: NO (tried pkgconfig and cmake)
+Run-time dependency mount found: NO (tried pkgconfig and cmake)
+Run-time dependency threads found: YES
+Run-time dependency glib-2.0 found: NO (tried pkgconfig and cmake)
+Run-time dependency gio-2.0 found: NO (tried pkgconfig and cmake)
+Run-time dependency glib-2.0 found: NO (tried pkgconfig and cmake)
+Run-time dependency gobject-2.0 found: NO (tried pkgconfig and cmake)
+Run-time dependency gio-2.0 found: NO (tried pkgconfig and cmake)
+Run-time dependency gio-unix-2.0 found: NO (tried pkgconfig and cmake)
+Program glib-mkenums found: NO
+Run-time dependency gudev-1.0 found: NO (tried pkgconfig and cmake)
+Program gdbus-codegen found: NO
+Run-time dependency systemd found: NO (tried pkgconfig and cmake)
+Program help2man found: NO
+Build targets in project: 10
 
-src/meson.build:4:0: ERROR: Meson version is 0.61.2 but project requires >= 0.64.0
+libgpiod 2.3.2
 
-A full log can be found at /home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/build/meson-logs/meson-log.txt
+  Components
+    Tools                : YES
+    Tests                : NO
+    Examples             : NO
+    D-Bus                : NO
+
+  Bindings
+    C++                  : YES
+    C++ tests            : NO
+    Python               : NO
+    Rust                 : NO
+    GLib                 : NO
+
+  Features
+    gpioset interactive  : NO
+    GObject introspection: NO
+    systemd              : NO
+    Profiling            : NO
+
+  User defined options
+    Cross files          : /home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/qnx-cross.ini
+    default_library      : static
+
+Found ninja-1.10.1 at /usr/bin/ninja
+$ meson compile -C /home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/build
+ninja: Entering directory `/home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/build'
+[1/44] Compiling C object lib/libgpiod.a.p/info-event.c.o
+FAILED: lib/libgpiod.a.p/info-event.c.o 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -Ilib/libgpiod.a.p -Ilib -I../src/lib -Iinclude -I../src/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -std=gnu89 -O0 -g -D_GNU_SOURCE '-DGPIOD_VERSION_STR="2.3.2"' '-DGPIOD_API_VERSION_STR="2.2.1"' -g -fPIC -fvisibility=hidden -MD -MQ lib/libgpiod.a.p/info-event.c.o -MF lib/libgpiod.a.p/info-event.c.o.d -o lib/libgpiod.a.p/info-event.c.o -c ../src/lib/info-event.c
+In file included from ../src/lib/internal.h:11,
+                 from ../src/lib/info-event.c:10:
+../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+   14 | #include <linux/const.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+[2/44] Compiling C object lib/libgpiod.a.p/chip.c.o
+FAILED: lib/libgpiod.a.p/chip.c.o 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -Ilib/libgpiod.a.p -Ilib -I../src/lib -Iinclude -I../src/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -std=gnu89 -O0 -g -D_GNU_SOURCE '-DGPIOD_VERSION_STR="2.3.2"' '-DGPIOD_API_VERSION_STR="2.2.1"' -g -fPIC -fvisibility=hidden -MD -MQ lib/libgpiod.a.p/chip.c.o -MF lib/libgpiod.a.p/chip.c.o.d -o lib/libgpiod.a.p/chip.c.o -c ../src/lib/chip.c
+In file included from ../src/lib/internal.h:11,
+                 from ../src/lib/chip.c:12:
+../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+   14 | #include <linux/const.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+[3/44] Compiling C object lib/libgpiod.a.p/edge-event.c.o
+FAILED: lib/libgpiod.a.p/edge-event.c.o 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -Ilib/libgpiod.a.p -Ilib -I../src/lib -Iinclude -I../src/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -std=gnu89 -O0 -g -D_GNU_SOURCE '-DGPIOD_VERSION_STR="2.3.2"' '-DGPIOD_API_VERSION_STR="2.2.1"' -g -fPIC -fvisibility=hidden -MD -MQ lib/libgpiod.a.p/edge-event.c.o -MF lib/libgpiod.a.p/edge-event.c.o.d -o lib/libgpiod.a.p/edge-event.c.o -c ../src/lib/edge-event.c
+In file included from ../src/lib/internal.h:11,
+                 from ../src/lib/edge-event.c:11:
+../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+   14 | #include <linux/const.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+[4/44] Compiling C object lib/libgpiod.a.p/line-config.c.o
+FAILED: lib/libgpiod.a.p/line-config.c.o 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -Ilib/libgpiod.a.p -Ilib -I../src/lib -Iinclude -I../src/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -std=gnu89 -O0 -g -D_GNU_SOURCE '-DGPIOD_VERSION_STR="2.3.2"' '-DGPIOD_API_VERSION_STR="2.2.1"' -g -fPIC -fvisibility=hidden -MD -MQ lib/libgpiod.a.p/line-config.c.o -MF lib/libgpiod.a.p/line-config.c.o.d -o lib/libgpiod.a.p/line-config.c.o -c ../src/lib/line-config.c
+In file included from ../src/lib/internal.h:11,
+                 from ../src/lib/line-config.c:11:
+../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+   14 | #include <linux/const.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+[5/44] Compiling C object lib/libgpiod.a.p/chip-info.c.o
+FAILED: lib/libgpiod.a.p/chip-info.c.o 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -Ilib/libgpiod.a.p -Ilib -I../src/lib -Iinclude -I../src/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -std=gnu89 -O0 -g -D_GNU_SOURCE '-DGPIOD_VERSION_STR="2.3.2"' '-DGPIOD_API_VERSION_STR="2.2.1"' -g -fPIC -fvisibility=hidden -MD -MQ lib/libgpiod.a.p/chip-info.c.o -MF lib/libgpiod.a.p/chip-info.c.o.d -o lib/libgpiod.a.p/chip-info.c.o -c ../src/lib/chip-info.c
+In file included from ../src/lib/internal.h:11,
+                 from ../src/lib/chip-info.c:9:
+../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+   14 | #include <linux/const.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+[6/44] Compiling C object lib/libgpiod.a.p/internal.c.o
+FAILED: lib/libgpiod.a.p/internal.c.o 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -Ilib/libgpiod.a.p -Ilib -I../src/lib -Iinclude -I../src/include -fdiagnostics-color=always -D_FILE_OFFSET_BITS=64 -Wall -Winvalid-pch -Wextra -std=gnu89 -O0 -g -D_GNU_SOURCE '-DGPIOD_VERSION_STR="2.3.2"' '-DGPIOD_API_VERSION_STR="2.2.1"' -g -fPIC -fvisibility=hidden -MD -MQ lib/libgpiod.a.p/internal.c.o -MF lib/libgpiod.a.p/internal.c.o.d -o lib/libgpiod.a.p/internal.c.o -c ../src/lib/internal.c
+In file included from ../src/lib/internal.h:11,
+                 from ../src/lib/internal.c:16:
+../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory
+   14 | #include <linux/const.h>
+      |          ^~~~~~~~~~~~~~~
+compilation terminated.
+ninja: build stopped: subcommand failed.
+INFO: autodetecting backend as ninja
+INFO: calculating backend command to run: /usr/bin/ninja -C /home/chirag/qnx-porter/ports-aarch64le/libgpiod/work/build
 [exit 1]

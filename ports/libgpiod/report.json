@@ -8,7 +8,7 @@
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
   "target": "",
-  "build_result": "failed",
+  "build_result": "needs-qnx-equivalent",
   "rounds": 1,
   "tests_passed": 0,
   "tests_total": 0,
@@ -19,15 +19,27 @@
   "patches": [],
   "blocked_on": [
     {
-      "kind": "error",
-      "error": "src/meson.build:4:0: ERROR: Meson version is 0.61.2 but project requires >= 0.64.0",
-      "hint": ""
+      "kind": "missing_header",
+      "error": "../src/lib/uapi/gpio.h:14:10: fatal error: linux/const.h: No such file or directory",
+      "hint": "<linux/const.h> is a Linux kernel header and does not exist on QNX"
     }
   ],
-  "minutes": 0.0,
+  "linux_interfaces": {
+    "stopped_on": "linux/const.h",
+    "interfaces": [
+      {
+        "interface": "GPIO character device (<linux/gpio.h>, /dev/gpiochip)",
+        "files": 38,
+        "first": "tools/gpiodetect.c:20",
+        "qnx": "the board's GPIO resource manager from its BSP, or the QNX GPIO framework (added in SDP 8.0.5; not in the SDP 8.0 build these ports used)",
+        "docs": "https://www.qnx.com/developers/docs/8.0/com.qnx.doc.gpio_framework/topic/overview.html"
+      }
+    ]
+  },
+  "minutes": 0.9,
   "note": "Linux GPIO character-device API: expected not to port",
   "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-13T16:48:18+00:00"
+  "finished": "2026-11-14T10:50:18+00:00"
 }
