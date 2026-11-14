@@ -30,12 +30,15 @@ WHO = re.compile(r"pid:(\d+) tid:(\d+)")
 
 def watcher(diag: str, work: str, limit: int) -> str:
     """Background shell that, LEAD s before `limit`, snapshots the test's processes into <diag>.txt/.kev."""
+    # no `case` here: QNX's sh cannot parse `pattern)` inside $( ) ("syntax error: `;;' unexpected")
     pids = (f'for d in /proc/[0-9]*; do e=$(cat "$d/exefile" 2>/dev/null) || continue; '
-            f'case "$e" in *{shlex.quote(work)}*) echo "${{d#/proc/}}";; esac; done')
+            f'[ "${{e#*{shlex.quote(work)}}}" != "$e" ] && echo "${{d#/proc/}}"; done')
     delay = limit - LEAD
-    return (f'( sleep {delay}; {{ echo "{MARK}, {delay} s after the start: pidin, then tracelogger -s {TRACE_SECONDS}"; '
+    # `exec` redirects inside the subshell: with `( ... ) >/dev/null &`, QNX's sh keeps copies of the ssh
+    # session's descriptors that the watcher's sleep inherits, and every test's ssh then waited for the watcher.
+    return (f'( exec </dev/null >/dev/null 2>&1; sleep {delay}; {{ echo "{MARK}, {delay} s after the start: pidin, then tracelogger -s {TRACE_SECONDS}"; '
             f'for p in $({pids}); do pidin -p "$p" -F "{PIDIN_FORMAT}"; done; }} > {diag}.txt 2>&1; '
-            f'tracelogger -s {TRACE_SECONDS} -f {diag}.kev > /dev/null 2>&1 ) < /dev/null > /dev/null 2>&1 & w=$!; ')
+            f'tracelogger -s {TRACE_SECONDS} -f {diag}.kev ) & w=$!; ')
 
 
 def epilogue(diag: str) -> str:

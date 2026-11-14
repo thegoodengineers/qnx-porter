@@ -70,7 +70,7 @@ def test_every_ctest_command_runs_on_the_target_including_scripts(tmp_path, monk
                                tmp_path / "tests.log")
     assert (r["passed"], r["total"], r["not_runnable"]) == (3, 3, [])
     # each test runs under QNX's timeout, with the hang watcher beside it (qnx_porter/hang.py)
-    assert sent[0].startswith("cd /w/build/tests || exit 127; ( sleep 292; ")
+    assert sent[0].startswith("cd /w/build/tests || exit 127; ( exec </dev/null >/dev/null 2>&1; sleep 292; ")
     assert "; timeout -s KILL 300 /w/src/tests/test1.test; rc=$?; kill $w" in sent[0]
     assert "; timeout -s KILL 300 /w/build/unit; rc=$?" in sent[1]  # our emulator prefix is stripped: the command runs on QNX
     assert "3/3 tests passed on the QNX target" in (tmp_path / "tests.log").read_text()
