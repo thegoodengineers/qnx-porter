@@ -21,7 +21,7 @@ VIDEO = ROOT / "video"
 OUT = VIDEO / "out"
 DEMO = Path("/tmp/qnx-porter-demo")  # fresh port folders for the recording
 TARGET = os.environ.get("QNX_TARGET_SSH", "root@172.31.1.11")  # same as scripts/qemu_target.sh
-SITE_SHOTS = ["overview", "results", "mbedtls", "weekly"]  # video/shots/site-<name>.png, taken by hand
+SITE_SHOTS = ["overview", "results", "weekly"]  # video/shots/site-<name>.png, taken by hand
 
 
 def scenes(root: Path = ROOT) -> list:
@@ -34,6 +34,8 @@ def scenes(root: Path = ROOT) -> list:
     """
     crates = (root / "results" / "crates.csv").exists()
     model = (root / "results" / "model_eval.csv").exists()
+    nng = root / "ports" / "nng" / "REPORT.md"
+    hang = nng.exists() and "## Hang on QNX" in nng.read_text(encoding="utf-8")
     return [
         ("title", 7, "slide", "title"),
         ("problem", 9, "slide", "problem"),
@@ -49,6 +51,10 @@ def scenes(root: Path = ROOT) -> list:
          [f"qnx-porter port https://github.com/json-c/json-c.git --tag json-c-0.19-20260627 "
           f"--target {TARGET} --no-model --out {DEMO}",
           f"grep -E '^(#[0-4] |Program)' {DEMO}/json-c/logs/crashes.log | awk '!seen[$1]++' | cut -c1-138"]),
+        # The hang snapshot of a real nng run (qnx_porter/hang.py), and the fix sent upstream (upstream/outbox/).
+        *([("hang", 11, "A hung test on QNX: pidin and a kernel trace, taken before it is killed",
+            ["awk '/^## Hang on QNX/{f=1} f' ports/nng/REPORT.md | grep -v '^```' | head -12 | cut -c1-138",
+             "grep -o 'https://github.com/nanomsg/nng/pull/[0-9]*' upstream/outbox/README.md | head -1"])] if hang else []),
         ("campaign", 9, "The campaign: every library, every number written by scripts/ports_csv.py",
          ["python3 scripts/ports_csv.py | grep -v '^->'",
           "cut -d, -f1,4,5,6,7,8,9,10 results/ports.csv | column -s, -t"]),
