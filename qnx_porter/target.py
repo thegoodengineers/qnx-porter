@@ -19,6 +19,8 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 
+from . import hang
+
 SSH_OPTS = ["-o", "BatchMode=yes", "-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null",
             "-o", "LogLevel=ERROR", "-o", "ConnectTimeout=15"]
 
@@ -80,18 +82,27 @@ def kill_leftovers_command(rel: list[str]) -> str:
             f'case "$e" in {pats}) kill -9 "${{d#/proc/}}" 2>/dev/null;; esac; done')
 
 
-def link_command(root: str, rel: list[str]) -> str:
-    """Shell that makes /<top> show root/<top> (QNX `ln -sP`), and fails if /<top> is something else."""
+def link_command(root: str, rel: list[str], depth: int = 3) -> str:
+    """Shell that makes each tree visible on the target at its host path: /<top> shows root/<top> (QNX `ln -sP`).
+    If /<top> is already something else on the target, the link goes one level deeper, up to `depth`: the QNX
+    image has /tmp (a link to /data/var/tmp), so a port under /tmp/qnx-porter-demo is linked at
+    /tmp/qnx-porter-demo. Before this, such a port fell back to moved paths and mbedtls 4.2.0 lost 12 of its 148
+    tests on x86_64 (it opens its data files at their build-time paths). Fails if no level works."""
     checks = []
     for top in sorted({r.split("/", 1)[0] for r in rel}):
-        src, dst = shlex.quote(f"{root}/{top}"), shlex.quote(f"/{top}")
-        checks.append(f'{{ [ -e {dst} ] || ln -sP {src} {dst}; }} && '
-                      f'[ "$(cd {dst} && pwd -P)" = "$(cd {src} && pwd -P)" ]')
+        parts = next(r for r in sorted(rel) if r.split("/", 1)[0] == top).split("/")
+        tries = []
+        for d in range(1, min(depth, len(parts)) + 1):
+            sub = "/".join(parts[:d])
+            src, dst = shlex.quote(f"{root}/{sub}"), shlex.quote(f"/{sub}")
+            tries.append(f'{{ {{ [ -e {dst} ] || ln -sP {src} {dst}; }} && '
+                         f'[ "$(cd {dst} && pwd -P)" = "$(cd {src} && pwd -P)" ]; }}')
+        checks.append("{ " + " || ".join(tries) + "; }")
     return " && ".join(checks)
 
 
 def remote_command(t: Target, work: str, cwd: str, argv: list[str], same_path: bool = False,
-                   env: list[str] = (), limit: int = 0) -> str:
+                   env: list[str] = (), limit: int = 0, diag: str = "") -> str:
     """The shell command that runs argv on the target. Unless the trees are visible at their host paths,
     host paths under `work` are moved under t.root. With a limit, QNX's own `timeout` kills the test on
     the target, so a hung test cannot outlive its ssh session."""
@@ -100,7 +111,11 @@ def remote_command(t: Target, work: str, cwd: str, argv: list[str], same_path: b
     prefix = f"timeout -s KILL {limit} " if limit else ""
     prefix += f"on -u {shlex.quote(t.run_as)} " if t.run_as else ""
     prefix += ("env " + " ".join(shlex.quote(move(e)) for e in env) + " ") if env else ""
-    return f"cd {shlex.quote(move(cwd))} && exec {prefix}{' '.join(shlex.quote(move(a)) for a in argv)}"
+    run = f"{prefix}{' '.join(shlex.quote(move(a)) for a in argv)}"
+    if diag and limit >= hang.MIN_LIMIT:  # snapshot a test that is about to be killed (qnx_porter/hang.py)
+        return (f"cd {shlex.quote(move(cwd))} || exit 127; {hang.watcher(diag, work, limit)}"
+                f"{run}; rc=$?; {hang.epilogue(diag)}")
+    return f"cd {shlex.quote(move(cwd))} && exec {run}"
 
 
 SAME_PATH_MARK = ".qnx-same-path"  # written in the work folder when sync() linked the paths
@@ -187,9 +202,10 @@ def meson_on_target(t: Target, build: Path, work: Path, same_path: bool, log_pat
                      default_timeout)
 
 
-def _run_one(t: Target, work: Path, cwd: str, cmd: list[str], same_path: bool, env: list[str], limit: int):
+def _run_one(t: Target, work: Path, cwd: str, cmd: list[str], same_path: bool, env: list[str], limit: int,
+             diag: str = ""):
     try:
-        r = t.ssh(remote_command(t, str(work), cwd, cmd, same_path, env, limit), capture_output=True,
+        r = t.ssh(remote_command(t, str(work), cwd, cmd, same_path, env, limit, diag), capture_output=True,
                   text=True, errors="replace", timeout=limit + 60)
         rc, out = r.returncode, r.stdout + r.stderr
         if rc == 137:
@@ -224,9 +240,9 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
     A bash script gets one retry with QNX's ksh, which is said in the log.
     """
     passed = total = 0
-    not_runnable = []
+    not_runnable, hangs = [], []
     lines = [header]
-    for test in tests:
+    for i, test in enumerate(tests):
         props, cmd = test["props"], test["cmd"]
         if _on(props.get("DISABLED")) or not cmd:
             lines.append(f"SKIP  {test['name']} (disabled or not built)\n")
@@ -239,7 +255,13 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
             not_runnable.append({"name": test["name"], "needs": Path(cmd[0]).name})
             lines.append(f"N/A   {test['name']} (needs {Path(cmd[0]).name} on the target)\n")
             continue
-        rc, out = _run_one(t, work, test["cwd"], cmd, same_path, test["env"], limit)
+        diag = f"{t.root}/hang-{i}"
+        rc, out = _run_one(t, work, test["cwd"], cmd, same_path, test["env"], limit, diag)
+        if rc is None and hang.MARK in out:
+            h = diagnose_hang(t, diag, out, log_path.with_name(f"hang-{len(hangs) + 1}.kev"),
+                              keep=len(hangs) < hang.KEEP_TRACES)
+            hangs.append({"name": test["name"], **h})
+            out += f"\n{hang.MARK.lstrip('# ')}: kernel trace, per thread (traceprinter):\n{h['trace']}\n"
         if shim:
             out = f"(cmake -E helper run on QNX as: {' '.join(shim[:2])})\n" + out
         m = MISSING_EXEC.search(out) if rc == 127 else None
@@ -264,7 +286,18 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
     log_path.write_text("".join(lines), encoding="utf-8")
     log_path.with_name("tests.junit.xml").write_text(junit_from_log(log_path.read_text(encoding="utf-8")),
                                                      encoding="utf-8")
-    return {"passed": passed, "total": total, "not_runnable": not_runnable}
+    return {"passed": passed, "total": total, "not_runnable": not_runnable, "hangs": hangs}
+
+
+def diagnose_hang(t: Target, diag: str, out: str, path: Path, keep: bool = True) -> dict:
+    """Fetch the watcher's kernel trace of a test killed at its limit and summarise it (qnx_porter/hang.py)."""
+    r = t.ssh(f"cat {shlex.quote(diag)}.kev; rm -f {shlex.quote(diag)}.kev {shlex.quote(diag)}.txt",
+              capture_output=True, timeout=120)
+    text = hang.read_trace(r.stdout, path, keep)
+    pids = hang.snapshot_pids(out)
+    snap = out.split(hang.MARK, 1)[1].strip().split("\n", 1)[-1] if hang.MARK in out else ""
+    return {"pidin": snap, "trace": hang.summary(text, pids) if text else "no trace (traceprinter not found)",
+            "kev": path.name if keep else ""}
 
 
 RESULT_LINE = re.compile(r"^(PASS|FAIL|SKIP|N/A)\s+(\S+) \((.*)\)(.*)$")

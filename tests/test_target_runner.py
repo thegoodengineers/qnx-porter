@@ -36,6 +36,20 @@ def test_link_command_uses_qnx_path_space_links():
     assert cmd.count("ln -sP /data/qnx-porter/home /home") == 1 and "pwd -P" in cmd
 
 
+def test_link_goes_one_level_deeper_when_the_top_folder_exists_on_the_target(tmp_path):
+    # QNX's /tmp is a link to /data/var/tmp; the demo writes its ports under /tmp/qnx-porter-demo
+    import subprocess
+    root, fake = tmp_path / "data" / "qnx-porter", tmp_path / "fake"
+    (root / "qtop" / "demo" / "lib" / "work").mkdir(parents=True)
+    (fake / "qtop").mkdir(parents=True)  # stands for the target's own /tmp
+    cmd = link_command(str(root), ["qtop/demo/lib/work"])
+    assert "ln -sP " + str(root) + "/qtop/demo /qtop/demo" in cmd
+    # run it with "/" moved to `fake`, and plain ln -s standing in for QNX's ln -sP
+    sh = cmd.replace(" /qtop", f" {fake}/qtop").replace("ln -sP", "ln -s")
+    assert subprocess.run(["sh", "-c", sh]).returncode == 0
+    assert (fake / "qtop" / "demo" / "lib" / "work").is_dir()
+
+
 def test_every_ctest_command_runs_on_the_target_including_scripts(tmp_path, monkeypatch):
     listing = {"tests": [
         {"name": "test1", "command": ["/w/src/tests/test1.test"],
@@ -55,8 +69,10 @@ def test_every_ctest_command_runs_on_the_target_including_scripts(tmp_path, monk
     r = target.ctest_on_target(Target.parse("root@q"), tmp_path, tmp_path, "/w/qnx-run", True,
                                tmp_path / "tests.log")
     assert (r["passed"], r["total"], r["not_runnable"]) == (3, 3, [])
-    assert sent[0] == "cd /w/build/tests && exec timeout -s KILL 300 /w/src/tests/test1.test"
-    assert sent[1].endswith("exec timeout -s KILL 300 /w/build/unit")  # our emulator prefix is stripped: the command runs on QNX
+    # each test runs under QNX's timeout, with the hang watcher beside it (qnx_porter/hang.py)
+    assert sent[0].startswith("cd /w/build/tests || exit 127; ( exec </dev/null >/dev/null 2>&1; sleep 292; ")
+    assert "; timeout -s KILL 300 /w/src/tests/test1.test; rc=$?; kill $w" in sent[0]
+    assert "; timeout -s KILL 300 /w/build/unit; rc=$?" in sent[1]  # our emulator prefix is stripped: the command runs on QNX
     assert "3/3 tests passed on the QNX target" in (tmp_path / "tests.log").read_text()
 
 

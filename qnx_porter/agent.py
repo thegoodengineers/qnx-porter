@@ -152,10 +152,11 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
     uname = ""
     crashes: list[dict] = []
     not_runnable: list[dict] = []
+    hangs: list[dict] = []
     if ok and target and job.test_cmd():
         uname = target.uname()
         log(f"[4/5] tests on target {target.host}:{target.port} ({uname or 'uname failed'})")
-        tests_passed, tests_total, crashes, not_runnable = _run_tests(job, target, src, bdir, work, env, logs)
+        tests_passed, tests_total, crashes, not_runnable, hangs = _run_tests(job, target, src, bdir, work, env, logs)
         log(f"      {tests_passed}/{tests_total} tests passed")
         # A crash the backtrace explains mechanically gets a patch; it stays only if the re-run is better.
         crash_fixes = []
@@ -173,7 +174,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                 errors.Diagnostic("crash", f"Memory fault (SIGSEGV) in {deep}, deep recursion"),
                 ldflags=[STACK_FLAG])
         if crash_fixes or stack_fix:
-            before = (tests_passed, tests_total, crashes, not_runnable)
+            before = (tests_passed, tests_total, crashes, not_runnable, hangs)
             first = len(applied)
             for rel, reason, text in crash_fixes:
                 patches.write_source(src / rel, text)
@@ -186,7 +187,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                 log(f"      fix {len(applied):04d} [main-stack] {stack_fix.reason}"[:200])
             rebuilt, _ = build.run(job.steps(tests=True), work, env, logs / "rebuild-after-crash-fix.log")
             if rebuilt:
-                tests_passed, tests_total, crashes, not_runnable = _run_tests(job, target, src, bdir, work, env, logs)
+                tests_passed, tests_total, crashes, not_runnable, hangs = _run_tests(job, target, src, bdir, work, env, logs)
                 log(f"      after crash fixes: {tests_passed}/{tests_total} tests passed")
             if not rebuilt or tests_passed <= before[0]:
                 for p in applied[first:]:
@@ -196,7 +197,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
                     else:
                         patches.revert_last(src)
                     p.kept = False
-                tests_passed, tests_total, crashes, not_runnable = before
+                tests_passed, tests_total, crashes, not_runnable, hangs = before
                 log("      crash fixes did not help: reverted")
     elif ok:
         log("[4/5] tests skipped: " + (note or ("no --target given" if not target
@@ -218,6 +219,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
         "model_usage": {**llm.USAGE, "seconds": round(llm.USAGE["seconds"], 1)} if use_llm and llm.configured() else None,
         "tests_not_runnable": not_runnable,
         "crashes": [{"binary": Path(c["binary"]).name, "backtrace": c["backtrace"]} for c in crashes],
+        "hangs": hangs,
         "finished": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
     (out / "report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
@@ -230,7 +232,7 @@ def port(url: str, tag: str, out_root: Path, arch: str | None = "x86_64", target
 
 
 def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path, env: dict,
-               logs: Path) -> tuple[int, int, list[dict]]:
+               logs: Path) -> tuple[int, int, list[dict], list[dict], list[dict]]:
     """Copy the trees to the target, run the library's tests there, and collect any core dumps."""
     if job.pretest_cmd():  # automake builds its test programs only in `make check`: build them first
         build.run([job.pretest_cmd()], work, env, logs / "tests-build.log")
@@ -240,11 +242,11 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
     if same:
         (work / SAME_PATH_MARK).write_text("")
     crash.clear_cores(target)
-    not_runnable = []
+    not_runnable, hangs = [], []
     if job.system in ("cmake", "meson"):
         r = (ctest_on_target(target, bdir, work, job.emulator, same, logs / "tests.log", target.test_timeout)
              if job.system == "cmake" else meson_on_target(target, bdir, work, same, logs / "tests.log", target.test_timeout))
-        passed, total, not_runnable = r["passed"], r["total"], r["not_runnable"]
+        passed, total, not_runnable, hangs = r["passed"], r["total"], r["not_runnable"], r["hangs"]
     else:
         _, ttext = build.run([job.test_cmd()], work, env, logs / "tests.log")
         if job.system == "autotools":  # each test's own log has the QNX output
@@ -258,7 +260,11 @@ def _run_tests(job: build.Job, target: Target, src: Path, bdir: Path, work: Path
         (logs / "crashes.log").write_text("".join(
             f"=== {c['binary']}\n{c['backtrace'] or '(no backtrace: binary not found on the host)'}\n\n"
             for c in crashes), encoding="utf-8")
-    return passed, total, crashes, not_runnable
+    if hangs:  # tests killed at their limit, with the QNX snapshot taken just before (qnx_porter/hang.py)
+        (logs / "hangs.log").write_text("".join(
+            f"=== {h['name']}\npidin:\n{h['pidin']}\nkernel trace, per thread:\n{h['trace']}\n\n"
+            for h in hangs), encoding="utf-8")
+    return passed, total, crashes, not_runnable, hangs
 
 
 def _fresh_toolchain(job: build.Job, bdir: Path) -> None:
@@ -358,7 +364,14 @@ def render(r: dict, job: build.Job) -> str:
                         for b in r["blocked_on"]) or "- nothing"
     crashes = "".join(f"\n## Crash on QNX: {c['binary']}\nBacktrace from the core dump (SDP gdb):\n```\n"
                       f"{c['backtrace'] or 'no backtrace'}\n```\n" for c in r.get("crashes", []))
-    tests = (f"{r['tests_passed']}/{r['tests_total']} passed on `{r['target']}`" if r["tests_ran"]
+    hangs = r.get("hangs") or []
+    crashes += "".join(f"\n## Hang on QNX: {h['name']}\nKilled at its time limit. Just before, on the target "
+                       f"(`pidin`: state, blocked on, last kernel call):\n```\n{h['pidin']}\n```\n"
+                       f"Kernel trace (`tracelogger`, read with `traceprinter`), per thread:\n```\n{h['trace']}\n```\n"
+                       for h in hangs[:3])
+    if len(hangs) > 3:
+        crashes += f"\n{len(hangs) - 3} more tests hung the same way: `logs/hangs.log`.\n"
+    tests =(f"{r['tests_passed']}/{r['tests_total']} passed on `{r['target']}`" if r["tests_ran"]
              else "not run")
     where = f"on QNX 8.0 ({r['arch']})" if r["arch"] != "host" else "(self-test with the host compiler, not QNX)"
     return f"""# {r['library']} {r['version']} {where}

@@ -15,6 +15,10 @@ jobs:
           python-version: "3.11"
       - run: python -m pip install -e ".[test]"
       - run: python -m pytest -q
+      - name: No undefined names (code that only runs on a QNX target is not covered by the tests)
+        run: |
+          python -m pip install pyflakes==3.2.0
+          python -m pyflakes qnx_porter scripts tests site paper video
       - name: CLI smoke test
         run: |
           qnx-porter --help

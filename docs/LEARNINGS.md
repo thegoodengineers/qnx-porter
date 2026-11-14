@@ -229,6 +229,24 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
 - [Verified] After `wsl --shutdown`, the bridge the targets use is gone until `sudo scripts/qemu_target.sh net`
   runs again; without it the target boots but never answers ssh.
 
+## 14 Nov 2026: a full disk, a /tmp bug, and QNX's shell
+- [Verified] The Windows drive holding WSL's `ext4.vhdx` (104 GB) ran down to 33 MB free. Linux remounted its
+  root read-only (`emergency_ro`), then WSL would not start ("failure step 2"). Emptying the drive's recycle bin
+  (2.5 GB) let it boot; the journal recovered. Deleting old build trees inside WSL took Linux from 107 GB to 74 GB
+  used. `wsl --manage --set-sparse true` is refused on this WSL ("currently disabled due to potential data
+  corruption"), so the file only shrinks with a manual compact. The campaign now deletes each finished library's
+  `work/build` and pauses below 5 GiB free on a watched drive (#57).
+- [Verified] A port written under `/tmp` lost tests: mbedtls 4.2.0 passed 136/148 with `--out /tmp/qnx-porter-demo`
+  and 148/148 with `--out` under the home folder. On the QNX image `/tmp` is a link to `/data/var/tmp`, so the
+  link that shows the build tree at its host path (`ln -sP /data/qnx-porter/tmp /tmp`) was never made, and the
+  tests ran from moved paths; mbedtls opens its data files at their build-time paths. The link now goes one level
+  deeper when the top folder exists (`/tmp/qnx-porter-demo`).
+- [Verified] The `qnx-porter` command on the recording machine was an editable install of the CI runner's checkout,
+  not of the repo the video was recorded from. `video/make.sh` now exports `PYTHONPATH` to its own checkout.
+- [Verified] Two QNX `sh` details, found while adding the hang snapshot: a `case` pattern inside `$( )` is a syntax
+  error ("`;;' unexpected"), and `( ... ) >/dev/null 2>&1 &` kept the ssh session open until the background
+  `sleep` ended (a 1 s test took 25 s); `exec` redirections inside the subshell fixed it (1.3 s).
+
 ## Still to do
 1. Offer the two test fixes upstream (json-c, libconfig): `printf("%s", NULL)` in their tests is undefined C.
 2. Runs with the language model on for the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).
