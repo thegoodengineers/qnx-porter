@@ -1,5 +1,7 @@
 $ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/libpng/work/build); every test command runs on root@172.31.1.12 over ssh
 N/A   pngtest (needs cmake on the target)
+N/A   pngtest-png-3 (needs cmake on the target)
+N/A   pnggetset (needs cmake on the target)
 N/A   pngvalid-gamma-16-to-8 (needs cmake on the target)
 N/A   pngvalid-gamma-alpha-mode (needs cmake on the target)
 N/A   pngvalid-gamma-background (needs cmake on the target)
@@ -22,6 +24,9 @@ N/A   pngstest-none-none (needs cmake on the target)
 N/A   pngstest-none-alpha (needs cmake on the target)
 N/A   pngstest-sRGB-none (needs cmake on the target)
 N/A   pngstest-sRGB-alpha (needs cmake on the target)
+N/A   pngstest-large-stride (needs cmake on the target)
+N/A   pngstest-negative-stride (needs cmake on the target)
+N/A   pngstest-negative-stride-extra (needs cmake on the target)
 N/A   pngunknown-discard (needs cmake on the target)
 N/A   pngunknown-IDAT (needs cmake on the target)
 N/A   pngunknown-if-safe (needs cmake on the target)
@@ -32,4 +37,4 @@ N/A   pngunknown-vpAg (needs cmake on the target)
 N/A   pngimage-quick (needs cmake on the target)
 N/A   pngimage-full (needs cmake on the target)
 
-0/0 tests passed on the QNX target; 32 not runnable there
+0/0 tests passed on the QNX target; 37 not runnable there

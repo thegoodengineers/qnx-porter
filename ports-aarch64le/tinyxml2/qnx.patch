@@ -1,5 +1,5 @@
 diff --git a/xmltest.cpp b/xmltest.cpp
-index ae97604..e0233d0 100755
+index f7408d1..aa3c41b 100644
 --- a/xmltest.cpp
 +++ b/xmltest.cpp
 @@ -21,6 +21,9 @@

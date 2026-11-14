@@ -1,8 +1,8 @@
 {
   "library": "libdeflate",
   "url": "https://github.com/ebiggers/libdeflate.git",
-  "version": "v1.22",
-  "commit": "2335c047e91cac6fd04cb0fd2769380395149f15",
+  "version": "v1.26",
+  "commit": "92e6a0db9fa848d742f9eb286c92afc60f2c3dda",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -10,17 +10,18 @@
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
   "rounds": 1,
-  "tests_passed": 0,
-  "tests_total": 0,
+  "tests_passed": 8,
+  "tests_total": 8,
   "tests_ran": true,
   "patches_kept": 0,
   "patches_by_rule": 0,
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 0.6,
+  "minutes": 1.0,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T13:40:22+00:00"
+  "finished": "2026-11-13T23:31:24+00:00"
 }

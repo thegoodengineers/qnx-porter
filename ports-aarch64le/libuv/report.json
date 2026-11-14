@@ -1,37 +1,40 @@
 {
   "library": "libuv",
   "url": "https://github.com/libuv/libuv.git",
-  "version": "v1.49.2",
-  "commit": "e1095c7a4373ce00cd8874d8e820de5afb25776e",
+  "version": "v1.53.0",
+  "commit": "840404ce8ba7cc0204be52389a6cfff9f2c90fb6",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
-  "target": "",
-  "build_result": "failed",
-  "rounds": 1,
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "build_result": "built",
+  "rounds": 2,
   "tests_passed": 0,
-  "tests_total": 0,
-  "tests_ran": false,
-  "patches_kept": 0,
-  "patches_by_rule": 0,
+  "tests_total": 2,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
   "patches_by_model": 0,
-  "patches": [],
-  "blocked_on": [
+  "patches": [
     {
-      "kind": "error",
-      "error": "/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:117:19: error: 'struct qtime_entry' has no member named 'nsec'",
-      "hint": ""
-    },
-    {
-      "kind": "error",
-      "error": "/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:124:57: error: 'struct syspage_entry' has no member named 'new_cpuinfo'; did you mean 'cpuinfo'?",
-      "hint": ""
+      "number": 1,
+      "rule": "link-libm",
+      "source": "rule",
+      "reason": "`__isfinite` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-fs.c:868:(.text+0x2b5c): undefined reference to `__isfinite'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-link-libm.patch",
+      "kept": true
     }
   ],
-  "minutes": 0.4,
+  "blocked_on": [],
+  "minutes": 12.7,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T14:01:36+00:00"
+  "finished": "2026-11-14T00:06:18+00:00"
 }

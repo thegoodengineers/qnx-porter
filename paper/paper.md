@@ -8,7 +8,7 @@ qnx-porter, QNX Global Hackathon entry <https://github.com/thegoodengineers/qnx-
 
 ## Abstract
 
-Most open-source C and C++ libraries have never been built for QNX 8.0, and a library that merely compiles for a real-time OS has not been shown to work there. We present qnx-porter, a tool that cross-compiles a library with the QNX SDP's `qcc`, fixes what breaks with deterministic rules grounded in documented QNX 8.0 facts, records every change as a numbered patch with its reason and the compiler error it answers, and counts a port only when the library's own test suite runs on a QNX 8.0 target. An optional language-model step proposes a diff for errors no rule covers; the diff is kept only if a rebuild clears the error and is reverted otherwise. Over 61 libraries at the latest upstream releases in campaign.yaml on x86_64 and the 2024 release pins in campaign-2024.yaml on aarch64, 58 built for x86_64 and 57 for aarch64 on QEMU; 1563 of 1658 and 1314 of 1350 of their own tests passed on the target, with 0 patches from the model. On the 2 libraries the rules could not build that are not Linux-only by design, the model step built 2, keeping 2 patches and reverting 0; its libuv fix makes the same changes as upstream libuv's later QNX pull request. The same pipeline built 21 of 22 Rust crates and passed 2751 of 2764 of their tests on x86_64. Running tests on the target exposed QNX 8.0 C-library behaviour that glibc-tested code does not expect, including a `strtod()` that misrounds 51.05% of `%.17g` round trips. Every number in this paper is generated from a file in the repository.
+Most open-source C and C++ libraries have never been built for QNX 8.0, and a library that merely compiles for a real-time OS has not been shown to work there. We present qnx-porter, a tool that cross-compiles a library with the QNX SDP's `qcc`, fixes what breaks with deterministic rules grounded in documented QNX 8.0 facts, records every change as a numbered patch with its reason and the compiler error it answers, and counts a port only when the library's own test suite runs on a QNX 8.0 target. An optional language-model step proposes a diff for errors no rule covers; the diff is kept only if a rebuild clears the error and is reverted otherwise. Over 61 libraries at the latest upstream releases in campaign.yaml, 58 built for x86_64 and 58 for aarch64 on QEMU; 1563 of 1658 and 1546 of 1642 of their own tests passed on the target, with 0 patches from the model. On the 2 libraries the rules could not build that are not Linux-only by design, the model step built 2, keeping 2 patches and reverting 0; its libuv fix makes the same changes as upstream libuv's later QNX pull request. The same pipeline built 21 of 22 Rust crates and passed 2751 of 2764 of their tests on x86_64. Running tests on the target exposed QNX 8.0 C-library behaviour that glibc-tested code does not expect, including a `strtod()` that misrounds 51.05% of `%.17g` round trips. Every number in this paper is generated from a file in the repository.
 
 ## 1 Introduction
 
@@ -40,7 +40,7 @@ We built qnx-porter for the QNX Global Hackathon to make that work routine. Give
 
 ## 3 Design
 
-Figure 1 shows the pipeline for one library. Each box names the source file that implements it; the whole tool is 2961 lines of Python with no runtime dependencies, and 164 tests run in CI without QNX.
+Figure 1 shows the pipeline for one library. Each box names the source file that implements it; the whole tool is 2964 lines of Python with no runtime dependencies, and 164 tests run in CI without QNX.
 
 ![Figure 1: The qnx-porter pipeline for one library. Blue: steps every port takes. Green: deterministic rules. Orange: steps whose output is kept only if a later check proves it (a rebuild, or more tests passing).](fig/pipeline.png)
 
@@ -91,21 +91,21 @@ Every number in this section is read by `paper/build.py` from a file in the repo
 
 ### 4.1 C/C++ campaign on x86_64 and aarch64 on QEMU
 
-The campaign ported 61 libraries at the latest upstream releases in campaign.yaml on x86_64 and the 2024 release pins in campaign-2024.yaml on aarch64: parsers (JSON, XML, YAML, CBOR, TOML), compression, cryptography and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatting, test frameworks and codecs. 10 were chosen because neither oss.qnx.com nor the qnx-ports organisation had them when checked (`results/candidates_check.csv`: 10 of 10); the rest are widely used, and some are on oss.qnx.com already, which makes them a direct comparison. The headline runs used rules only. Table 1 summarises `results/ports.csv`; Figure 2 breaks the outcomes down and Figure 3 shows every library whose tests ran.
+The campaign ported 61 libraries at the latest upstream releases in campaign.yaml: parsers (JSON, XML, YAML, CBOR, TOML), compression, cryptography and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatting, test frameworks and codecs. 10 were chosen because neither oss.qnx.com nor the qnx-ports organisation had them when checked (`results/candidates_check.csv`: 10 of 10); the rest are widely used, and some are on oss.qnx.com already, which makes them a direct comparison. The headline runs used rules only. Table 1 summarises `results/ports.csv`; Figure 2 breaks the outcomes down and Figure 3 shows every library whose tests ran.
 
 *Table 1. C/C++ campaign, from `results/ports.csv`. Both targets are QEMU: x86_64 under KVM, aarch64 on the emulated `virt` machine. “Tests” counts only libraries whose suite ran at least one test on the target.*
 
 |  | x86_64 (KVM) | aarch64 (emulated) |
 |---|---|---|
 | Libraries | 61 | 61 |
-| Built for QNX 8.0 | 58 | 57 |
-| Libraries whose tests ran | 43 | 33 |
-| Tests passed / total | 1563/1658 | 1314/1350 |
-| Pass rate (%) | 94.3 | 97.3 |
-| Kept patches (rule / model) | 31 / 0 | 27 / 0 |
-| Built with no patch | 35 | 36 |
+| Built for QNX 8.0 | 58 | 58 |
+| Libraries whose tests ran | 43 | 43 |
+| Tests passed / total | 1563/1658 | 1546/1642 |
+| Pass rate (%) | 94.3 | 94.2 |
+| Kept patches (rule / model) | 31 / 0 | 32 / 0 |
+| Built with no patch | 35 | 34 |
 | Not on oss.qnx.com: built | 29 of 31 | 29 of 31 |
-| Port time, hours | 5.8 | 8.0 |
+| Port time, hours | 5.8 | 10.1 |
 
 ![Figure 2: Outcome per library and architecture (`results/ports.csv`). “Registers no tests”: the default build defines none. “Not run”: the suite needs something the target lacks.](fig/outcomes.png)
 
@@ -115,9 +115,9 @@ The campaign ported 61 libraries at the latest upstream releases in campaign.yam
 
 *Figure 3. Share of each library's own tests that passed on the QNX 8.0 target, for every library whose suite ran at least one test (`results/ports.csv`). Labels give passed/total, x86_64 first where the architectures differ.*
 
-In this run 57 libraries built on both architectures, 1 on only one (libuv). The libraries that did not build were can-utils (Linux SocketCAN tools: expected not to port), libgpiod (Linux GPIO character-device API: expected not to port) and libwebsockets on x86_64, and can-utils (Linux SocketCAN tools: expected not to port), libgpiod (Linux GPIO character-device API: expected not to port), libuv and libwebsockets on aarch64. In the 2024-pin run, libuv and libwebsockets stopped on errors no rule covered (`struct qtime_entry` has no `nsec` member in QNX 8.0; `TCPCTL_KEEPCNT`); QNX's own ports of both libraries change exactly those lines (Section 4.2), and the model step builds both (Section 4.3).
+In this run the same 58 libraries built on both architectures. The libraries that did not build were can-utils (Linux SocketCAN tools: expected not to port), libgpiod (Linux GPIO character-device API: expected not to port) and libwebsockets on both architectures. In the 2024-pin run, libuv and libwebsockets stopped on errors no rule covered (`struct qtime_entry` has no `nsec` member in QNX 8.0; `TCPCTL_KEEPCNT`); QNX's own ports of both libraries change exactly those lines (Section 4.2), and the model step builds both (Section 4.3).
 
-Figure 4 counts kept patches by rule. The most frequent rule on x86_64 is `link-libsocket` (6 patches); 15 distinct rules fired on x86_64 and 14 on aarch64. The `printf-null` crash repair was kept in 4 libraries on x86_64 (capstone, json-c, libconfig and tinyxml2). Rules that fired only on aarch64 (bool-typedef, signed-char and wordsize-64) exist because of the architecture (Section 5.8).
+Figure 4 counts kept patches by rule. The most frequent rule on x86_64 is `link-libsocket` (6 patches); 15 distinct rules fired on x86_64 and 16 on aarch64. The `printf-null` crash repair was kept in 4 libraries on x86_64 (capstone, json-c, libconfig and tinyxml2). Rules that fired only on aarch64 (signed-char) exist because of the architecture (Section 5.8).
 
 ![Figure 4: Kept patches by rule, per architecture, from `ports*/*/report.json`.](fig/rules.png)
 
@@ -238,8 +238,9 @@ These differences appeared only on aarch64 on QEMU, and each is now a rule or a 
 - **Word size.** `cmocka.h` infers a 64-bit platform only from glibc's `__WORDSIZE` or `__x86_64__`; on aarch64 QNX it assumed 32 bits and redefined `uintptr_t` as `unsigned int`. Rule `wordsize-64` fixes it.
 - **Unsigned `char`.** Plain `char` is unsigned on aarch64, so a yaml-cpp test's negative constant in a `char` array is a narrowing error. Rule `signed-char` adds `-fsigned-char`.
 - **`__generic_strlen`.** QNX's aarch64 libc names its `strlen` frame `__generic_strlen`, so the `printf-null` triage did not recognise the crash until it learned the name; json-c then passed all its tests on aarch64 too.
+- **Backtrace depth.** QNX's aarch64 `malloc` takes five frames of a crash backtrace, so a 12-frame backtrace of cJSON's stack overflow held only six recursive frames and the `main-stack` rule, which needs eight, did not fire. The triage now reads 24 frames, and cJSON passed 19 of 19 on aarch64 as well.
 
-Some differences between the architectures are not explained yet: libsrtp, nng and the number of tests libjpeg-turbo registers differ (Figure 3).
+mbedtls's PBKDF2 suite exceeds the 300 s per-test limit on the emulated CPU (it passes on x86_64). Other differences between the architectures are not explained yet: libsrtp, flac and the number of tests libjpeg-turbo registers differ (Figure 3).
 
 ## 6 Threats to validity
 
@@ -249,7 +250,7 @@ Some differences between the architectures are not explained yet: libsrtp, nng a
 
 **Test coverage.** Of the 58 libraries that built on x86_64, only 43 ran at least one of their own tests; 11 register no tests in their default build and 4 are build-only on purpose because their suites need Tcl, an MQTT broker, the build host, scons, or a runner we do not drive. For those, “built” means compiles and links for QNX 8.0, nothing more. Pass counts are the libraries' own, so a library with one test binary counts the same as one with hundreds of cases.
 
-**Versions.** The published C/C++ results use the latest upstream releases in campaign.yaml on x86_64 and the 2024 release pins in campaign-2024.yaml on aarch64; `campaign.yaml` names newer releases for 56 libraries. A change one version needs may not exist in another, which also limits the comparison with QNX's recipes. This paper regenerates from whatever the CSVs say, so a later campaign updates every number here, but prose about specific failures describes the run whose logs it cites.
+**Versions.** The published C/C++ results use the latest upstream releases in campaign.yaml; `campaign.yaml` names newer releases for 56 libraries. A change one version needs may not exist in another, which also limits the comparison with QNX's recipes. This paper regenerates from whatever the CSVs say, so a later campaign updates every number here, but prose about specific failures describes the run whose logs it cites.
 
 **Model nondeterminism.** The model step was evaluated on 2 libraries, once, on x86_64 only. Another run may produce a different patch; the probation rule bounds what a wrong one can do, not whether a right one appears.
 

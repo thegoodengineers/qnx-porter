@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/qnx-run -DWITH_SIMD=OFF
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/qnx-run -DWITH_SIMD=OFF
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -6,7 +6,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src -B /ho
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- CMAKE_BUILD_TYPE = Release
--- VERSION = 3.0.4, BUILD = 20261113
+-- VERSION = 3.2.1, BUILD = 20261114
 -- 64-bit build (arm64)
 -- CMAKE_INSTALL_PREFIX = /opt/libjpeg-turbo
 -- CMAKE_INSTALL_BINDIR = bin (/opt/libjpeg-turbo/bin)
@@ -20,7 +20,10 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src -B /ho
 -- Arithmetic decoding support enabled (WITH_ARITH_DEC = 1)
 -- Arithmetic encoding support enabled (WITH_ARITH_ENC = 1)
 -- TurboJPEG API library enabled (WITH_TURBOJPEG = 1)
--- TurboJPEG Java wrapper disabled (WITH_JAVA = 0)
+-- TurboJPEG Java Native Access interfaces (TurboJPEG/JNA) disabled
+   (WITH_JNA = )
+-- Command-line tools enabled (WITH_TOOLS = 1)
+-- Regression tests enabled (WITH_TESTS = 1)
 -- Emulating libjpeg API/ABI v6.2 (WITH_JPEG7 = 0, WITH_JPEG8 = 0)
 -- libjpeg API shared library version = 62.4.0
 -- Compiler flags = -g -O3 -DNDEBUG -O3 -DNDEBUG
@@ -51,6 +54,10 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src -B /ho
 -- Linker supports GNU-style version scripts
 -- CMAKE_EXECUTABLE_SUFFIX = 
 -- SIMD extensions: None (WITH_SIMD = 0)
+-- System-supplied libspng disabled (WITH_SYSTEM_SPNG = 0)
+-- System-supplied zlib disabled (WITH_SYSTEM_ZLIB = 0)
+-- Looking for fmemopen
+-- Looking for fmemopen - not found
 -- FLOATTEST8 = 
 -- FLOATTEST12 = 
 -- Configuring done
@@ -63,509 +70,606 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/build -j 2 -- -k
-[  0%] Building C object CMakeFiles/jpeg12.dir/jcapistd.c.o
-[  0%] Building C object CMakeFiles/jpeg16.dir/jcapistd.c.o
-[  0%] Building C object CMakeFiles/jpeg16.dir/jccolor.c.o
-[  1%] Building C object CMakeFiles/jpeg12.dir/jccolor.c.o
-[  1%] Building C object CMakeFiles/jpeg16.dir/jcdiffct.c.o
-[  2%] Building C object CMakeFiles/jpeg16.dir/jclossls.c.o
-[  2%] Building C object CMakeFiles/jpeg12.dir/jcdiffct.c.o
-[  2%] Building C object CMakeFiles/jpeg16.dir/jcmainct.c.o
-[  2%] Building C object CMakeFiles/jpeg16.dir/jcprepct.c.o
-[  2%] Building C object CMakeFiles/jpeg12.dir/jclossls.c.o
-[  2%] Building C object CMakeFiles/jpeg16.dir/jcsample.c.o
-[  2%] Building C object CMakeFiles/jpeg12.dir/jcmainct.c.o
-[  2%] Building C object CMakeFiles/jpeg12.dir/jcprepct.c.o
-[  3%] Building C object CMakeFiles/jpeg12.dir/jcsample.c.o
-[  4%] Building C object CMakeFiles/jpeg16.dir/jdapistd.c.o
-[  4%] Building C object CMakeFiles/jpeg16.dir/jdcolor.c.o
-[  4%] Building C object CMakeFiles/jpeg12.dir/jdapistd.c.o
-[  4%] Building C object CMakeFiles/jpeg12.dir/jdcolor.c.o
-[  4%] Building C object CMakeFiles/jpeg16.dir/jddiffct.c.o
-[  4%] Building C object CMakeFiles/jpeg16.dir/jdlossls.c.o
-[  5%] Building C object CMakeFiles/jpeg16.dir/jdmainct.c.o
-[  5%] Building C object CMakeFiles/jpeg16.dir/jdpostct.c.o
-[  5%] Building C object CMakeFiles/jpeg16.dir/jdsample.c.o
-[  5%] Building C object CMakeFiles/jpeg12.dir/jddiffct.c.o
-[  5%] Building C object CMakeFiles/jpeg16.dir/jutils.c.o
-[  6%] Building C object CMakeFiles/jpeg12.dir/jdlossls.c.o
-[  6%] Built target jpeg16
-[  7%] Building C object CMakeFiles/jpeg12-static.dir/jcapistd.c.o
-[  7%] Building C object CMakeFiles/jpeg12-static.dir/jccolor.c.o
-[  7%] Building C object CMakeFiles/jpeg12.dir/jdmainct.c.o
-[  7%] Building C object CMakeFiles/jpeg12.dir/jdpostct.c.o
-[  7%] Building C object CMakeFiles/jpeg12.dir/jdsample.c.o
-[  7%] Building C object CMakeFiles/jpeg12.dir/jutils.c.o
-[  8%] Building C object CMakeFiles/jpeg12.dir/jccoefct.c.o
-[  8%] Building C object CMakeFiles/jpeg12-static.dir/jcdiffct.c.o
-[  8%] Building C object CMakeFiles/jpeg12.dir/jcdctmgr.c.o
-[  8%] Building C object CMakeFiles/jpeg12-static.dir/jclossls.c.o
-[  9%] Building C object CMakeFiles/jpeg12.dir/jdcoefct.c.o
-[  9%] Building C object CMakeFiles/jpeg12-static.dir/jcmainct.c.o
-[  9%] Building C object CMakeFiles/jpeg12-static.dir/jcprepct.c.o
-[  9%] Building C object CMakeFiles/jpeg12-static.dir/jcsample.c.o
-[  9%] Building C object CMakeFiles/jpeg12.dir/jddctmgr.c.o
-[  9%] Building C object CMakeFiles/jpeg12-static.dir/jdapistd.c.o
-[ 10%] Building C object CMakeFiles/jpeg12.dir/jdmerge.c.o
-[ 10%] Building C object CMakeFiles/jpeg12-static.dir/jdcolor.c.o
-[ 10%] Building C object CMakeFiles/jpeg12.dir/jfdctfst.c.o
-[ 10%] Building C object CMakeFiles/jpeg12.dir/jfdctint.c.o
-[ 10%] Building C object CMakeFiles/jpeg12.dir/jidctflt.c.o
-[ 11%] Building C object CMakeFiles/jpeg12.dir/jidctfst.c.o
-[ 11%] Building C object CMakeFiles/jpeg12.dir/jidctint.c.o
-[ 12%] Building C object CMakeFiles/jpeg12-static.dir/jddiffct.c.o
-[ 12%] Building C object CMakeFiles/jpeg12-static.dir/jdlossls.c.o
-[ 12%] Building C object CMakeFiles/jpeg12-static.dir/jdmainct.c.o
-[ 12%] Building C object CMakeFiles/jpeg12-static.dir/jdpostct.c.o
-[ 13%] Building C object CMakeFiles/jpeg12-static.dir/jdsample.c.o
-[ 13%] Building C object CMakeFiles/jpeg12-static.dir/jutils.c.o
-[ 13%] Building C object CMakeFiles/jpeg12-static.dir/jccoefct.c.o
-[ 13%] Building C object CMakeFiles/jpeg12-static.dir/jcdctmgr.c.o
-[ 14%] Building C object CMakeFiles/jpeg12-static.dir/jdcoefct.c.o
-[ 14%] Building C object CMakeFiles/jpeg12-static.dir/jddctmgr.c.o
-[ 14%] Building C object CMakeFiles/jpeg12.dir/jidctred.c.o
-[ 14%] Building C object CMakeFiles/jpeg12-static.dir/jdmerge.c.o
-[ 14%] Building C object CMakeFiles/jpeg12.dir/jquant1.c.o
-[ 14%] Building C object CMakeFiles/jpeg12.dir/jquant2.c.o
-[ 14%] Building C object CMakeFiles/jpeg12-static.dir/jfdctfst.c.o
-[ 14%] Building C object CMakeFiles/jpeg12-static.dir/jfdctint.c.o
-[ 15%] Building C object CMakeFiles/jpeg12-static.dir/jidctflt.c.o
-[ 15%] Building C object CMakeFiles/jpeg12-static.dir/jidctfst.c.o
-[ 15%] Building C object CMakeFiles/jpeg12-static.dir/jidctint.c.o
-[ 15%] Built target jpeg12
-[ 15%] Building C object CMakeFiles/jpeg16-static.dir/jcapistd.c.o
-[ 16%] Building C object CMakeFiles/jpeg16-static.dir/jccolor.c.o
-[ 16%] Building C object CMakeFiles/jpeg16-static.dir/jcdiffct.c.o
-[ 16%] Building C object CMakeFiles/jpeg16-static.dir/jclossls.c.o
-[ 16%] Building C object CMakeFiles/jpeg16-static.dir/jcmainct.c.o
-[ 17%] Building C object CMakeFiles/jpeg16-static.dir/jcprepct.c.o
-[ 17%] Building C object CMakeFiles/jpeg16-static.dir/jcsample.c.o
-[ 17%] Building C object CMakeFiles/jpeg16-static.dir/jdapistd.c.o
-[ 17%] Building C object CMakeFiles/jpeg16-static.dir/jdcolor.c.o
-[ 17%] Building C object CMakeFiles/jpeg12-static.dir/jidctred.c.o
-[ 18%] Building C object CMakeFiles/jpeg12-static.dir/jquant1.c.o
-[ 18%] Building C object CMakeFiles/jpeg12-static.dir/jquant2.c.o
-[ 18%] Building C object CMakeFiles/jpeg16-static.dir/jddiffct.c.o
-[ 19%] Building C object CMakeFiles/jpeg16-static.dir/jdlossls.c.o
-[ 19%] Building C object CMakeFiles/jpeg16-static.dir/jdmainct.c.o
-[ 19%] Building C object CMakeFiles/jpeg16-static.dir/jdpostct.c.o
-[ 19%] Built target jpeg12-static
-[ 19%] Building C object CMakeFiles/jpeg16-static.dir/jdsample.c.o
-[ 19%] Building C object CMakeFiles/turbojpeg12.dir/rdppm.c.o
-[ 20%] Building C object CMakeFiles/jpeg16-static.dir/jutils.c.o
-[ 20%] Built target jpeg16-static
-[ 20%] Building C object CMakeFiles/turbojpeg16.dir/rdppm.c.o
-[ 21%] Building C object CMakeFiles/turbojpeg12.dir/wrppm.c.o
-[ 21%] Built target turbojpeg12
-[ 21%] Building C object CMakeFiles/turbojpeg12-static.dir/rdppm.c.o
-[ 22%] Building C object CMakeFiles/turbojpeg16.dir/wrppm.c.o
-[ 22%] Built target turbojpeg16
-[ 22%] Building C object CMakeFiles/turbojpeg16-static.dir/rdppm.c.o
-[ 22%] Building C object CMakeFiles/turbojpeg12-static.dir/wrppm.c.o
-[ 22%] Built target turbojpeg12-static
-[ 22%] Building C object CMakeFiles/cjpeg12-static.dir/rdgif.c.o
-[ 22%] Building C object CMakeFiles/turbojpeg16-static.dir/wrppm.c.o
-[ 22%] Built target turbojpeg16-static
-[ 22%] Building C object CMakeFiles/cjpeg12-static.dir/rdppm.c.o
-[ 22%] Building C object CMakeFiles/cjpeg16-static.dir/rdgif.c.o
-[ 22%] Building C object CMakeFiles/cjpeg16-static.dir/rdppm.c.o
-[ 22%] Built target cjpeg12-static
-[ 22%] Building C object CMakeFiles/djpeg12-static.dir/rdcolmap.c.o
-[ 22%] Building C object CMakeFiles/djpeg12-static.dir/wrgif.c.o
-[ 22%] Built target cjpeg16-static
-[ 22%] Building C object CMakeFiles/djpeg16-static.dir/wrppm.c.o
-[ 22%] Building C object CMakeFiles/djpeg12-static.dir/wrppm.c.o
-[ 22%] Built target djpeg16-static
-[ 22%] Built target djpeg12-static
-[ 22%] Building C object CMakeFiles/rdjpgcom.dir/rdjpgcom.c.o
-[ 22%] Building C object CMakeFiles/wrjpgcom.dir/wrjpgcom.c.o
-[ 22%] Linking C executable rdjpgcom
-[ 23%] Linking C executable wrjpgcom
-[ 23%] Built target rdjpgcom
-[ 23%] Building C object CMakeFiles/strtest.dir/strtest.c.o
-[ 23%] Built target wrjpgcom
-[ 23%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcapistd.c.o
-[ 24%] Linking C executable strtest
-[ 24%] Built target strtest
-[ 25%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jccolor.c.o
-[ 25%] Building C object sharedlib/CMakeFiles/cjpeg12.dir/__/rdgif.c.o
-[ 26%] Building C object sharedlib/CMakeFiles/cjpeg12.dir/__/rdppm.c.o
-[ 26%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcdiffct.c.o
-[ 26%] Built target cjpeg12
-[ 26%] Building C object sharedlib/CMakeFiles/cjpeg16.dir/__/rdgif.c.o
-[ 26%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jclossls.c.o
-[ 26%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcmainct.c.o
-[ 27%] Building C object sharedlib/CMakeFiles/cjpeg16.dir/__/rdppm.c.o
-[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcprepct.c.o
-[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcsample.c.o
-[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdapistd.c.o
-[ 28%] Built target cjpeg16
-[ 28%] Building C object sharedlib/CMakeFiles/djpeg12.dir/__/rdcolmap.c.o
-[ 29%] Building C object sharedlib/CMakeFiles/djpeg12.dir/__/wrgif.c.o
-[ 29%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdcolor.c.o
-[ 29%] Building C object sharedlib/CMakeFiles/djpeg12.dir/__/wrppm.c.o
-[ 29%] Built target djpeg12
-[ 30%] Building C object sharedlib/CMakeFiles/djpeg16.dir/__/wrppm.c.o
-[ 30%] Built target djpeg16
-[ 30%] Building C object md5/CMakeFiles/md5cmp.dir/md5cmp.c.o
-[ 30%] Building C object md5/CMakeFiles/md5cmp.dir/md5.c.o
-[ 31%] Building C object md5/CMakeFiles/md5cmp.dir/md5hl.c.o
-[ 31%] Linking C executable md5cmp
-[ 31%] Built target md5cmp
-[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jddiffct.c.o
-[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdlossls.c.o
-[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdmainct.c.o
-[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdpostct.c.o
-[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdsample.c.o
-[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jutils.c.o
-[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jccoefct.c.o
-[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcdctmgr.c.o
-[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdcoefct.c.o
-[ 34%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jddctmgr.c.o
-[ 34%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdmerge.c.o
-[ 34%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jfdctfst.c.o
-[ 34%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jfdctint.c.o
-[ 34%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jidctflt.c.o
-[ 35%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jidctfst.c.o
-[ 35%] Building C object CMakeFiles/jpeg-static.dir/jcapistd.c.o
-[ 35%] Building C object CMakeFiles/jpeg-static.dir/jccolor.c.o
-[ 35%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jidctint.c.o
-[ 35%] Building C object CMakeFiles/jpeg-static.dir/jcdiffct.c.o
-[ 36%] Building C object CMakeFiles/jpeg-static.dir/jclossls.c.o
-[ 36%] Building C object CMakeFiles/jpeg-static.dir/jcmainct.c.o
-[ 36%] Building C object CMakeFiles/jpeg-static.dir/jcprepct.c.o
-[ 36%] Building C object CMakeFiles/jpeg-static.dir/jcsample.c.o
-[ 36%] Building C object CMakeFiles/jpeg-static.dir/jdapistd.c.o
-[ 37%] Building C object CMakeFiles/jpeg-static.dir/jdcolor.c.o
-[ 37%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jidctred.c.o
-[ 37%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jquant1.c.o
-[ 38%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jquant2.c.o
-[ 38%] Building C object CMakeFiles/jpeg-static.dir/jddiffct.c.o
-[ 38%] Building C object CMakeFiles/jpeg-static.dir/jdlossls.c.o
-[ 38%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcapimin.c.o
-[ 38%] Building C object CMakeFiles/jpeg-static.dir/jdmainct.c.o
-[ 38%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jchuff.c.o
-[ 39%] Building C object CMakeFiles/jpeg-static.dir/jdpostct.c.o
-[ 39%] Building C object CMakeFiles/jpeg-static.dir/jdsample.c.o
-[ 39%] Building C object CMakeFiles/jpeg-static.dir/jutils.c.o
-[ 39%] Building C object CMakeFiles/jpeg-static.dir/jccoefct.c.o
-[ 40%] Building C object CMakeFiles/jpeg-static.dir/jcdctmgr.c.o
-[ 40%] Building C object CMakeFiles/jpeg-static.dir/jdcoefct.c.o
-[ 40%] Building C object CMakeFiles/jpeg-static.dir/jddctmgr.c.o
-[ 40%] Building C object CMakeFiles/jpeg-static.dir/jdmerge.c.o
-[ 40%] Building C object CMakeFiles/jpeg-static.dir/jfdctfst.c.o
-[ 41%] Building C object CMakeFiles/jpeg-static.dir/jfdctint.c.o
-[ 41%] Building C object CMakeFiles/jpeg-static.dir/jidctflt.c.o
-[ 41%] Building C object CMakeFiles/jpeg-static.dir/jidctfst.c.o
-[ 41%] Building C object CMakeFiles/jpeg-static.dir/jidctint.c.o
-[ 41%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcicc.c.o
-[ 42%] Building C object CMakeFiles/jpeg-static.dir/jidctred.c.o
-[ 43%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcinit.c.o
-[ 43%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jclhuff.c.o
-[ 43%] Building C object CMakeFiles/jpeg-static.dir/jquant1.c.o
-[ 43%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcmarker.c.o
-[ 43%] Building C object CMakeFiles/jpeg-static.dir/jquant2.c.o
-[ 43%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcmaster.c.o
-[ 43%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcomapi.c.o
-[ 44%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcparam.c.o
-[ 44%] Building C object CMakeFiles/jpeg-static.dir/jcapimin.c.o
-[ 44%] Building C object CMakeFiles/jpeg-static.dir/jchuff.c.o
-[ 44%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcphuff.c.o
-[ 44%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jctrans.c.o
-[ 44%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdapimin.c.o
-[ 45%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdatadst.c.o
-[ 45%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdatasrc.c.o
-[ 45%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdhuff.c.o
-[ 45%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdicc.c.o
-[ 45%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdinput.c.o
-[ 46%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdlhuff.c.o
-[ 46%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdmarker.c.o
-[ 46%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdmaster.c.o
-[ 46%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdphuff.c.o
-[ 47%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdtrans.c.o
-[ 47%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jerror.c.o
-[ 47%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jfdctflt.c.o
-[ 47%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jmemmgr.c.o
-[ 48%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jmemnobs.c.o
-[ 48%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jpeg_nbits.c.o
-[ 48%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jaricom.c.o
-[ 48%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jcarith.c.o
-[ 48%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/jdarith.c.o
-[ 49%] Linking C shared library ../libjpeg.so
-[ 49%] Built target jpeg
-[ 49%] Building C object CMakeFiles/turbojpeg.dir/jcapistd.c.o
-[ 49%] Building C object CMakeFiles/turbojpeg.dir/jccolor.c.o
-[ 50%] Building C object CMakeFiles/jpeg-static.dir/jcicc.c.o
-[ 50%] Building C object CMakeFiles/jpeg-static.dir/jcinit.c.o
-[ 50%] Building C object CMakeFiles/jpeg-static.dir/jclhuff.c.o
-[ 50%] Building C object CMakeFiles/jpeg-static.dir/jcmarker.c.o
-[ 50%] Building C object CMakeFiles/turbojpeg.dir/jcdiffct.c.o
-[ 51%] Building C object CMakeFiles/turbojpeg.dir/jclossls.c.o
-[ 52%] Building C object CMakeFiles/jpeg-static.dir/jcmaster.c.o
-[ 52%] Building C object CMakeFiles/turbojpeg.dir/jcmainct.c.o
-[ 52%] Building C object CMakeFiles/turbojpeg.dir/jcprepct.c.o
-[ 52%] Building C object CMakeFiles/jpeg-static.dir/jcomapi.c.o
-[ 52%] Building C object CMakeFiles/turbojpeg.dir/jcsample.c.o
-[ 52%] Building C object CMakeFiles/jpeg-static.dir/jcparam.c.o
-[ 52%] Building C object CMakeFiles/jpeg-static.dir/jcphuff.c.o
-[ 53%] Building C object CMakeFiles/turbojpeg.dir/jdapistd.c.o
-[ 53%] Building C object CMakeFiles/turbojpeg.dir/jdcolor.c.o
-[ 54%] Building C object CMakeFiles/jpeg-static.dir/jctrans.c.o
-[ 54%] Building C object CMakeFiles/jpeg-static.dir/jdapimin.c.o
-[ 54%] Building C object CMakeFiles/jpeg-static.dir/jdatadst.c.o
-[ 54%] Building C object CMakeFiles/jpeg-static.dir/jdatasrc.c.o
-[ 54%] Building C object CMakeFiles/jpeg-static.dir/jdhuff.c.o
-[ 55%] Building C object CMakeFiles/jpeg-static.dir/jdicc.c.o
-[ 55%] Building C object CMakeFiles/turbojpeg.dir/jddiffct.c.o
-[ 55%] Building C object CMakeFiles/jpeg-static.dir/jdinput.c.o
-[ 55%] Building C object CMakeFiles/turbojpeg.dir/jdlossls.c.o
-[ 55%] Building C object CMakeFiles/jpeg-static.dir/jdlhuff.c.o
-[ 56%] Building C object CMakeFiles/turbojpeg.dir/jdmainct.c.o
-[ 56%] Building C object CMakeFiles/jpeg-static.dir/jdmarker.c.o
-[ 56%] Building C object CMakeFiles/turbojpeg.dir/jdpostct.c.o
-[ 56%] Building C object CMakeFiles/turbojpeg.dir/jdsample.c.o
-[ 57%] Building C object CMakeFiles/jpeg-static.dir/jdmaster.c.o
-[ 57%] Building C object CMakeFiles/turbojpeg.dir/jutils.c.o
-[ 57%] Building C object CMakeFiles/turbojpeg.dir/jccoefct.c.o
-[ 57%] Building C object CMakeFiles/jpeg-static.dir/jdphuff.c.o
-[ 58%] Building C object CMakeFiles/turbojpeg.dir/jcdctmgr.c.o
-[ 58%] Building C object CMakeFiles/jpeg-static.dir/jdtrans.c.o
-[ 58%] Building C object CMakeFiles/turbojpeg.dir/jdcoefct.c.o
-[ 58%] Building C object CMakeFiles/jpeg-static.dir/jerror.c.o
-[ 58%] Building C object CMakeFiles/jpeg-static.dir/jfdctflt.c.o
-[ 59%] Building C object CMakeFiles/jpeg-static.dir/jmemmgr.c.o
-[ 59%] Building C object CMakeFiles/turbojpeg.dir/jddctmgr.c.o
-[ 59%] Building C object CMakeFiles/jpeg-static.dir/jmemnobs.c.o
-[ 59%] Building C object CMakeFiles/jpeg-static.dir/jpeg_nbits.c.o
-[ 59%] Building C object CMakeFiles/jpeg-static.dir/jaricom.c.o
-[ 60%] Building C object CMakeFiles/jpeg-static.dir/jcarith.c.o
-[ 60%] Building C object CMakeFiles/turbojpeg.dir/jdmerge.c.o
-[ 60%] Building C object CMakeFiles/jpeg-static.dir/jdarith.c.o
-[ 61%] Building C object CMakeFiles/turbojpeg.dir/jfdctfst.c.o
-[ 61%] Building C object CMakeFiles/turbojpeg.dir/jfdctint.c.o
-[ 61%] Linking C static library libjpeg.a
-[ 61%] Building C object CMakeFiles/turbojpeg.dir/jidctflt.c.o
-[ 61%] Built target jpeg-static
-[ 61%] Building C object CMakeFiles/turbojpeg.dir/jidctfst.c.o
-[ 61%] Building C object CMakeFiles/turbojpeg-static.dir/jcapistd.c.o
-[ 61%] Building C object CMakeFiles/turbojpeg.dir/jidctint.c.o
-[ 61%] Building C object CMakeFiles/turbojpeg-static.dir/jccolor.c.o
-[ 62%] Building C object CMakeFiles/turbojpeg-static.dir/jcdiffct.c.o
-[ 62%] Building C object CMakeFiles/turbojpeg-static.dir/jclossls.c.o
-[ 62%] Building C object CMakeFiles/turbojpeg-static.dir/jcmainct.c.o
-[ 62%] Building C object CMakeFiles/turbojpeg-static.dir/jcprepct.c.o
-[ 63%] Building C object CMakeFiles/turbojpeg-static.dir/jcsample.c.o
-[ 63%] Building C object CMakeFiles/turbojpeg-static.dir/jdapistd.c.o
-[ 63%] Building C object CMakeFiles/turbojpeg-static.dir/jdcolor.c.o
-[ 64%] Building C object CMakeFiles/turbojpeg.dir/jidctred.c.o
-[ 64%] Building C object CMakeFiles/turbojpeg.dir/jquant1.c.o
-[ 64%] Building C object CMakeFiles/turbojpeg.dir/jquant2.c.o
-[ 64%] Building C object CMakeFiles/turbojpeg-static.dir/jddiffct.c.o
-[ 65%] Building C object CMakeFiles/turbojpeg-static.dir/jdlossls.c.o
-[ 65%] Building C object CMakeFiles/turbojpeg.dir/jcapimin.c.o
-[ 66%] Building C object CMakeFiles/turbojpeg.dir/jchuff.c.o
-[ 66%] Building C object CMakeFiles/turbojpeg-static.dir/jdmainct.c.o
-[ 66%] Building C object CMakeFiles/turbojpeg-static.dir/jdpostct.c.o
-[ 66%] Building C object CMakeFiles/turbojpeg-static.dir/jdsample.c.o
-[ 66%] Building C object CMakeFiles/turbojpeg-static.dir/jutils.c.o
-[ 67%] Building C object CMakeFiles/turbojpeg-static.dir/jccoefct.c.o
-[ 67%] Building C object CMakeFiles/turbojpeg-static.dir/jcdctmgr.c.o
-[ 67%] Building C object CMakeFiles/turbojpeg-static.dir/jdcoefct.c.o
-[ 67%] Building C object CMakeFiles/turbojpeg-static.dir/jddctmgr.c.o
-[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/jdmerge.c.o
-[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/jfdctfst.c.o
-[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/jfdctint.c.o
-[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/jidctflt.c.o
-[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/jidctfst.c.o
-[ 69%] Building C object CMakeFiles/turbojpeg-static.dir/jidctint.c.o
-[ 69%] Building C object CMakeFiles/turbojpeg-static.dir/jidctred.c.o
-[ 69%] Building C object CMakeFiles/turbojpeg-static.dir/jquant1.c.o
-[ 69%] Building C object CMakeFiles/turbojpeg.dir/jcicc.c.o
-[ 69%] Building C object CMakeFiles/turbojpeg.dir/jcinit.c.o
-[ 69%] Building C object CMakeFiles/turbojpeg.dir/jclhuff.c.o
-[ 69%] Building C object CMakeFiles/turbojpeg-static.dir/jquant2.c.o
-[ 70%] Building C object CMakeFiles/turbojpeg.dir/jcmarker.c.o
-[ 70%] Building C object CMakeFiles/turbojpeg.dir/jcmaster.c.o
-[ 71%] Building C object CMakeFiles/turbojpeg-static.dir/jcapimin.c.o
-[ 71%] Building C object CMakeFiles/turbojpeg.dir/jcomapi.c.o
-[ 71%] Building C object CMakeFiles/turbojpeg-static.dir/jchuff.c.o
-[ 71%] Building C object CMakeFiles/turbojpeg.dir/jcparam.c.o
-[ 71%] Building C object CMakeFiles/turbojpeg.dir/jcphuff.c.o
-[ 72%] Building C object CMakeFiles/turbojpeg.dir/jctrans.c.o
-[ 72%] Building C object CMakeFiles/turbojpeg.dir/jdapimin.c.o
-[ 72%] Building C object CMakeFiles/turbojpeg.dir/jdatadst.c.o
-[ 72%] Building C object CMakeFiles/turbojpeg.dir/jdatasrc.c.o
-[ 73%] Building C object CMakeFiles/turbojpeg.dir/jdhuff.c.o
-[ 73%] Building C object CMakeFiles/turbojpeg.dir/jdicc.c.o
-[ 73%] Building C object CMakeFiles/turbojpeg.dir/jdinput.c.o
-[ 73%] Building C object CMakeFiles/turbojpeg.dir/jdlhuff.c.o
-[ 73%] Building C object CMakeFiles/turbojpeg.dir/jdmarker.c.o
-[ 74%] Building C object CMakeFiles/turbojpeg.dir/jdmaster.c.o
-[ 74%] Building C object CMakeFiles/turbojpeg.dir/jdphuff.c.o
-[ 74%] Building C object CMakeFiles/turbojpeg.dir/jdtrans.c.o
-[ 74%] Building C object CMakeFiles/turbojpeg.dir/jerror.c.o
-[ 75%] Building C object CMakeFiles/turbojpeg.dir/jfdctflt.c.o
-[ 75%] Building C object CMakeFiles/turbojpeg.dir/jmemmgr.c.o
-[ 75%] Building C object CMakeFiles/turbojpeg.dir/jmemnobs.c.o
-[ 75%] Building C object CMakeFiles/turbojpeg.dir/jpeg_nbits.c.o
-[ 76%] Building C object CMakeFiles/turbojpeg.dir/jaricom.c.o
-[ 76%] Building C object CMakeFiles/turbojpeg.dir/jcarith.c.o
-[ 76%] Building C object CMakeFiles/turbojpeg.dir/jdarith.c.o
-[ 76%] Building C object CMakeFiles/turbojpeg.dir/turbojpeg.c.o
-[ 76%] Building C object CMakeFiles/turbojpeg-static.dir/jcicc.c.o
-[ 76%] Building C object CMakeFiles/turbojpeg-static.dir/jcinit.c.o
-[ 77%] Building C object CMakeFiles/turbojpeg-static.dir/jclhuff.c.o
-[ 77%] Building C object CMakeFiles/turbojpeg-static.dir/jcmarker.c.o
-[ 77%] Building C object CMakeFiles/turbojpeg-static.dir/jcmaster.c.o
-[ 77%] Building C object CMakeFiles/turbojpeg-static.dir/jcomapi.c.o
-[ 77%] Building C object CMakeFiles/turbojpeg-static.dir/jcparam.c.o
-[ 78%] Building C object CMakeFiles/turbojpeg-static.dir/jcphuff.c.o
-[ 78%] Building C object CMakeFiles/turbojpeg-static.dir/jctrans.c.o
-[ 78%] Building C object CMakeFiles/turbojpeg-static.dir/jdapimin.c.o
-[ 78%] Building C object CMakeFiles/turbojpeg-static.dir/jdatadst.c.o
-[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/jdatasrc.c.o
-[ 79%] Building C object CMakeFiles/turbojpeg.dir/transupp.c.o
-[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/jdhuff.c.o
-[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/jdicc.c.o
-[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/jdinput.c.o
-[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/jdlhuff.c.o
-[ 80%] Building C object CMakeFiles/turbojpeg-static.dir/jdmarker.c.o
-[ 80%] Building C object CMakeFiles/turbojpeg-static.dir/jdmaster.c.o
-[ 81%] Building C object CMakeFiles/turbojpeg.dir/jdatadst-tj.c.o
-[ 81%] Building C object CMakeFiles/turbojpeg-static.dir/jdphuff.c.o
-[ 81%] Building C object CMakeFiles/turbojpeg.dir/jdatasrc-tj.c.o
-[ 81%] Building C object CMakeFiles/turbojpeg.dir/rdbmp.c.o
-[ 81%] Building C object CMakeFiles/turbojpeg-static.dir/jdtrans.c.o
-[ 82%] Building C object CMakeFiles/turbojpeg-static.dir/jerror.c.o
-[ 82%] Building C object CMakeFiles/turbojpeg-static.dir/jfdctflt.c.o
-[ 82%] Building C object CMakeFiles/turbojpeg.dir/rdppm.c.o
-[ 82%] Building C object CMakeFiles/turbojpeg-static.dir/jmemmgr.c.o
-[ 82%] Building C object CMakeFiles/turbojpeg-static.dir/jmemnobs.c.o
-[ 83%] Building C object CMakeFiles/turbojpeg-static.dir/jpeg_nbits.c.o
-[ 83%] Building C object CMakeFiles/turbojpeg-static.dir/jaricom.c.o
-[ 83%] Building C object CMakeFiles/turbojpeg-static.dir/jcarith.c.o
-[ 84%] Building C object CMakeFiles/turbojpeg.dir/wrbmp.c.o
-[ 84%] Building C object CMakeFiles/turbojpeg.dir/wrppm.c.o
-[ 84%] Building C object CMakeFiles/turbojpeg-static.dir/jdarith.c.o
+[  0%] Building C object src/spng/CMakeFiles/spng-static.dir/spng.c.o
+[  1%] Building C object CMakeFiles/jpeg-static.dir/src/jcapimin.c.o
+[  1%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcapistd-8.c.o
+[  1%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcapistd-12.c.o
+[  1%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcapistd-16.c.o
+[  1%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jccoefct-8.c.o
+[  1%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jccoefct-12.c.o
+[  2%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jccolor-8.c.o
+[  2%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jccolor-12.c.o
+[  2%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jccolor-16.c.o
+[  2%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcdctmgr-8.c.o
+[  2%] Built target spng-static
+[  2%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/adler32.c.o
+[  2%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/compress.c.o
+[  2%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcdctmgr-12.c.o
+[  2%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/crc32.c.o
+[  3%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/deflate.c.o
+[  4%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcdiffct-8.c.o
+[  4%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcdiffct-12.c.o
+[  4%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcdiffct-16.c.o
+[  4%] Building C object CMakeFiles/jpeg-static.dir/src/jchuff.c.o
+[  4%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/inffast.c.o
+[  4%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/inflate.c.o
+[  4%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/inftrees.c.o
+[  4%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/trees.c.o
+[  5%] Building C object src/spng/CMakeFiles/zlib-static.dir/zlib/zutil.c.o
+[  5%] Built target zlib-static
+[  6%] Building C object CMakeFiles/rdjpgcom.dir/src/rdjpgcom.c.o
+[  6%] Linking C executable rdjpgcom
+[  6%] Built target rdjpgcom
+[  6%] Building C object CMakeFiles/wrjpgcom.dir/src/wrjpgcom.c.o
+[  6%] Linking C executable wrjpgcom
+[  6%] Built target wrjpgcom
+[  6%] Building C object CMakeFiles/strtest.dir/src/strtest.c.o
+[  6%] Linking C executable strtest
+[  6%] Built target strtest
+[  6%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcapimin.c.o
+[  6%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcapistd-8.c.o
+[  6%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcapistd-12.c.o
+[  6%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcapistd-16.c.o
+[  7%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jccoefct-8.c.o
+[  7%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jccoefct-12.c.o
+[  7%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jccolor-8.c.o
+[  7%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jccolor-12.c.o
+[  7%] Building C object CMakeFiles/jpeg-static.dir/src/jcicc.c.o
+[  7%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jccolor-16.c.o
+[  7%] Building C object CMakeFiles/jpeg-static.dir/src/jcinit.c.o
+[  8%] Building C object CMakeFiles/jpeg-static.dir/src/jclhuff.c.o
+[  8%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jclossls-8.c.o
+[  8%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcdctmgr-8.c.o
+[  8%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jclossls-12.c.o
+[  8%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jclossls-16.c.o
+[  9%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcdctmgr-12.c.o
+[  9%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcmainct-8.c.o
+[  9%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcmainct-12.c.o
+[  9%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcdiffct-8.c.o
+[ 10%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcmainct-16.c.o
+[ 10%] Building C object CMakeFiles/jpeg-static.dir/src/jcmarker.c.o
+[ 10%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcdiffct-12.c.o
+[ 10%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcdiffct-16.c.o
+[ 10%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jchuff.c.o
+[ 10%] Building C object CMakeFiles/jpeg-static.dir/src/jcmaster.c.o
+[ 10%] Building C object CMakeFiles/jpeg-static.dir/src/jcomapi.c.o
+[ 10%] Building C object CMakeFiles/jpeg-static.dir/src/jcparam.c.o
+[ 10%] Building C object CMakeFiles/jpeg-static.dir/src/jcphuff.c.o
+[ 11%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcprepct-8.c.o
+[ 11%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcprepct-12.c.o
+[ 11%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcprepct-16.c.o
+[ 11%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcsample-8.c.o
+[ 11%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcsample-12.c.o
+[ 12%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jcsample-16.c.o
+[ 12%] Building C object CMakeFiles/jpeg-static.dir/src/jctrans.c.o
+[ 12%] Building C object CMakeFiles/jpeg-static.dir/src/jdapimin.c.o
+[ 12%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdapistd-8.c.o
+[ 12%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdapistd-12.c.o
+[ 12%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdapistd-16.c.o
+[ 13%] Building C object CMakeFiles/jpeg-static.dir/src/jdatadst.c.o
+[ 13%] Building C object CMakeFiles/jpeg-static.dir/src/jdatasrc.c.o
+[ 13%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdcoefct-8.c.o
+[ 13%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdcoefct-12.c.o
+[ 13%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdcolor-8.c.o
+[ 13%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcicc.c.o
+[ 14%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcinit.c.o
+[ 14%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jclhuff.c.o
+[ 14%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jclossls-8.c.o
+[ 14%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jclossls-12.c.o
+[ 14%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jclossls-16.c.o
+[ 14%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdcolor-12.c.o
+[ 14%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcmainct-8.c.o
+[ 15%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcmainct-12.c.o
+[ 15%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcmainct-16.c.o
+[ 15%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcmarker.c.o
+[ 15%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcmaster.c.o
+[ 15%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcomapi.c.o
+[ 16%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdcolor-16.c.o
+[ 17%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcparam.c.o
+[ 17%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcphuff.c.o
+[ 17%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcprepct-8.c.o
+[ 17%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcprepct-12.c.o
+[ 17%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jddctmgr-8.c.o
+[ 17%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcprepct-16.c.o
+[ 17%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jddctmgr-12.c.o
+[ 17%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcsample-8.c.o
+[ 17%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jddiffct-8.c.o
+[ 17%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jddiffct-12.c.o
+[ 17%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jddiffct-16.c.o
+[ 18%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcsample-12.c.o
+[ 19%] Building C object CMakeFiles/jpeg-static.dir/src/jdhuff.c.o
+[ 19%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jcsample-16.c.o
+[ 19%] Building C object CMakeFiles/jpeg-static.dir/src/jdicc.c.o
+[ 19%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jctrans.c.o
+[ 19%] Building C object CMakeFiles/jpeg-static.dir/src/jdinput.c.o
+[ 19%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdapimin.c.o
+[ 19%] Building C object CMakeFiles/jpeg-static.dir/src/jdlhuff.c.o
+[ 19%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdapistd-8.c.o
+[ 19%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdlossls-8.c.o
+[ 19%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdapistd-12.c.o
+[ 20%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdlossls-12.c.o
+[ 20%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdlossls-16.c.o
+[ 21%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdapistd-16.c.o
+[ 21%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdatadst.c.o
+[ 21%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdatasrc.c.o
+[ 21%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdmainct-8.c.o
+[ 21%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdcoefct-8.c.o
+[ 21%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdmainct-12.c.o
+[ 21%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdmainct-16.c.o
+[ 21%] Building C object CMakeFiles/jpeg-static.dir/src/jdmarker.c.o
+[ 21%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdcoefct-12.c.o
+[ 21%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdcolor-8.c.o
+[ 22%] Building C object CMakeFiles/jpeg-static.dir/src/jdmaster.c.o
+[ 22%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdmerge-8.c.o
+[ 22%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdmerge-12.c.o
+[ 23%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdcolor-12.c.o
+[ 23%] Building C object CMakeFiles/jpeg-static.dir/src/jdphuff.c.o
+[ 23%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdpostct-8.c.o
+[ 23%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdpostct-12.c.o
+[ 24%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdpostct-16.c.o
+[ 24%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdsample-8.c.o
+[ 24%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdcolor-16.c.o
+[ 24%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdsample-12.c.o
+[ 24%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jdsample-16.c.o
+[ 24%] Building C object CMakeFiles/jpeg-static.dir/src/jdtrans.c.o
+[ 24%] Building C object CMakeFiles/jpeg-static.dir/src/jerror.c.o
+[ 25%] Building C object CMakeFiles/jpeg-static.dir/src/jfdctflt.c.o
+[ 25%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jddctmgr-8.c.o
+[ 25%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jfdctfst-8.c.o
+[ 25%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jddctmgr-12.c.o
+[ 25%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jfdctfst-12.c.o
+[ 25%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jfdctint-8.c.o
+[ 25%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jddiffct-8.c.o
+[ 25%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jfdctint-12.c.o
+[ 26%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jidctflt-8.c.o
+[ 27%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jddiffct-12.c.o
+[ 27%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jidctflt-12.c.o
+[ 27%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jidctfst-8.c.o
+[ 27%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jddiffct-16.c.o
+[ 27%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jidctfst-12.c.o
+[ 27%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdhuff.c.o
+[ 27%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jidctint-8.c.o
+[ 27%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdicc.c.o
+[ 27%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdinput.c.o
+[ 27%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdlhuff.c.o
+[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdlossls-8.c.o
+[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdlossls-12.c.o
+[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdlossls-16.c.o
+[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdmainct-8.c.o
+[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdmainct-12.c.o
+[ 28%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdmainct-16.c.o
+[ 29%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdmarker.c.o
+[ 29%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jidctint-12.c.o
+[ 29%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdmaster.c.o
+[ 29%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdmerge-8.c.o
+[ 30%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jidctred-8.c.o
+[ 30%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jidctred-12.c.o
+[ 30%] Building C object CMakeFiles/jpeg-static.dir/src/jmemmgr.c.o
+[ 30%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdmerge-12.c.o
+[ 30%] Building C object CMakeFiles/jpeg-static.dir/src/jmemnobs.c.o
+[ 30%] Building C object CMakeFiles/jpeg-static.dir/src/jpeg_nbits.c.o
+[ 30%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jquant1-8.c.o
+[ 31%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jquant1-12.c.o
+[ 31%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdphuff.c.o
+[ 31%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jquant2-8.c.o
+[ 31%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdpostct-8.c.o
+[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdpostct-12.c.o
+[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdpostct-16.c.o
+[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdsample-8.c.o
+[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdsample-12.c.o
+[ 32%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jquant2-12.c.o
+[ 32%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jdsample-16.c.o
+[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdtrans.c.o
+[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jerror.c.o
+[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jfdctflt.c.o
+[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jfdctfst-8.c.o
+[ 33%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jutils-8.c.o
+[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jfdctfst-12.c.o
+[ 33%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jutils-12.c.o
+[ 33%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jfdctint-8.c.o
+[ 33%] Building C object CMakeFiles/jpeg-static.dir/src/wrapper/jutils-16.c.o
+[ 34%] Building C object CMakeFiles/jpeg-static.dir/src/jaricom.c.o
+[ 35%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jfdctint-12.c.o
+[ 35%] Building C object CMakeFiles/jpeg-static.dir/src/jcarith.c.o
+[ 35%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jidctflt-8.c.o
+[ 35%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jidctflt-12.c.o
+[ 35%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jidctfst-8.c.o
+[ 35%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jidctfst-12.c.o
+[ 35%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jidctint-8.c.o
+[ 35%] Building C object CMakeFiles/jpeg-static.dir/src/jdarith.c.o
+[ 35%] Linking C static library libjpeg.a
+[ 35%] Built target jpeg-static
+[ 36%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jidctint-12.c.o
+[ 36%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jidctred-8.c.o
+[ 36%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jidctred-12.c.o
+[ 36%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jmemmgr.c.o
+[ 36%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jmemnobs.c.o
+[ 37%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jpeg_nbits.c.o
+[ 37%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jquant1-8.c.o
+[ 37%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jquant1-12.c.o
+[ 37%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jquant2-8.c.o
+[ 37%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jquant2-12.c.o
+[ 37%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jutils-8.c.o
+[ 38%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jutils-12.c.o
+[ 38%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/wrapper/jutils-16.c.o
+[ 38%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jaricom.c.o
+[ 38%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jcarith.c.o
+[ 38%] Building C object sharedlib/spng/CMakeFiles/spng.dir/__/__/src/spng/spng.c.o
+[ 38%] Building C object sharedlib/CMakeFiles/jpeg.dir/__/src/jdarith.c.o
+[ 38%] Linking C shared library ../libjpeg.so
+[ 38%] Built target jpeg
+[ 39%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/adler32.c.o
+[ 39%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/compress.c.o
+[ 39%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/crc32.c.o
+[ 39%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/deflate.c.o
+[ 39%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/inffast.c.o
+[ 39%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/inflate.c.o
+[ 39%] Built target spng
+[ 39%] Building C object sharedlib/CMakeFiles/jpegtran.dir/__/src/jpegtran.c.o
+[ 40%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/inftrees.c.o
+[ 41%] Building C object sharedlib/CMakeFiles/jpegtran.dir/__/src/cdjpeg.c.o
+[ 41%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/trees.c.o
+[ 41%] Building C object sharedlib/CMakeFiles/jpegtran.dir/__/src/rdswitch.c.o
+[ 41%] Building C object sharedlib/CMakeFiles/jpegtran.dir/__/src/transupp.c.o
+[ 41%] Building C object sharedlib/spng/CMakeFiles/zlib.dir/__/__/src/spng/zlib/zutil.c.o
+[ 41%] Built target zlib
+[ 41%] Building C object sharedlib/CMakeFiles/example.dir/__/src/example.c.o
+[ 41%] Linking C executable ../example
+[ 41%] Built target example
+[ 41%] Building C object sharedlib/CMakeFiles/jcstest.dir/__/src/jcstest.c.o
+[ 42%] Linking C executable ../jcstest
+[ 42%] Built target jcstest
+[ 42%] Building C object src/md5/CMakeFiles/md5cmp.dir/md5cmp.c.o
+[ 42%] Building C object src/md5/CMakeFiles/md5cmp.dir/md5.c.o
+[ 42%] Building C object src/md5/CMakeFiles/md5cmp.dir/md5hl.c.o
+[ 43%] Linking C executable ../../test/md5cmp
+[ 43%] Built target md5cmp
+[ 43%] Building C object src/md5/CMakeFiles/md5sum.dir/md5sum.c.o
+[ 43%] Building C object src/md5/CMakeFiles/md5sum.dir/md5.c.o
+[ 43%] Building C object src/md5/CMakeFiles/md5sum.dir/md5hl.c.o
+[ 43%] Linking C executable ../../test/md5sum
+[ 43%] Built target md5sum
+[ 43%] Building C object CMakeFiles/turbojpeg.dir/src/jcapimin.c.o
+[ 44%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcapistd-8.c.o
+[ 44%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcapistd-12.c.o
+[ 44%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcapistd-16.c.o
+[ 44%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jccoefct-8.c.o
+[ 44%] Linking C executable ../jpegtran
+[ 44%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jccoefct-12.c.o
+[ 44%] Built target jpegtran
+[ 44%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcapimin.c.o
+[ 44%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcapistd-8.c.o
+[ 44%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jccolor-8.c.o
+[ 45%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcapistd-12.c.o
+[ 45%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcapistd-16.c.o
+[ 45%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jccoefct-8.c.o
+[ 45%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jccoefct-12.c.o
+[ 45%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jccolor-8.c.o
+[ 46%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jccolor-12.c.o
+[ 47%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jccolor-12.c.o
+[ 47%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jccolor-16.c.o
+[ 47%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcdctmgr-8.c.o
+[ 47%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jccolor-16.c.o
+[ 47%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcdctmgr-12.c.o
+[ 47%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcdiffct-8.c.o
+[ 47%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcdctmgr-8.c.o
+[ 47%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcdiffct-12.c.o
+[ 48%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcdiffct-16.c.o
+[ 48%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcdctmgr-12.c.o
+[ 48%] Building C object CMakeFiles/turbojpeg.dir/src/jchuff.c.o
+[ 48%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcdiffct-8.c.o
+[ 48%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcdiffct-12.c.o
+[ 49%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcdiffct-16.c.o
+[ 49%] Building C object CMakeFiles/turbojpeg-static.dir/src/jchuff.c.o
+[ 49%] Building C object CMakeFiles/turbojpeg.dir/src/jcicc.c.o
+[ 49%] Building C object CMakeFiles/turbojpeg.dir/src/jcinit.c.o
+[ 49%] Building C object CMakeFiles/turbojpeg.dir/src/jclhuff.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jclossls-8.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcicc.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jclossls-12.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcinit.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg-static.dir/src/jclhuff.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jclossls-16.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jclossls-8.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcmainct-8.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcmainct-12.c.o
+[ 50%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcmainct-16.c.o
+[ 51%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jclossls-12.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg.dir/src/jcmarker.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jclossls-16.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcmainct-8.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcmainct-12.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcmainct-16.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg.dir/src/jcmaster.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcmarker.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg.dir/src/jcomapi.c.o
+[ 52%] Building C object CMakeFiles/turbojpeg.dir/src/jcparam.c.o
+[ 53%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcmaster.c.o
+[ 53%] Building C object CMakeFiles/turbojpeg.dir/src/jcphuff.c.o
+[ 53%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcomapi.c.o
+[ 53%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcparam.c.o
+[ 53%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcprepct-8.c.o
+[ 54%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcprepct-12.c.o
+[ 54%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcphuff.c.o
+[ 54%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcprepct-16.c.o
+[ 54%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcsample-8.c.o
+[ 54%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcprepct-8.c.o
+[ 55%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcprepct-12.c.o
+[ 55%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcsample-12.c.o
+[ 55%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcprepct-16.c.o
+[ 55%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcsample-8.c.o
+[ 55%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jcsample-16.c.o
+[ 55%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcsample-12.c.o
+[ 55%] Building C object CMakeFiles/turbojpeg.dir/src/jctrans.c.o
+[ 56%] Building C object CMakeFiles/turbojpeg.dir/src/jdapimin.c.o
+[ 56%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jcsample-16.c.o
+[ 56%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdapistd-8.c.o
+[ 56%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdapistd-12.c.o
+[ 56%] Building C object CMakeFiles/turbojpeg-static.dir/src/jctrans.c.o
+[ 57%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdapimin.c.o
+[ 57%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdapistd-16.c.o
+[ 57%] Building C object CMakeFiles/turbojpeg.dir/src/jdatadst.c.o
+[ 57%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdapistd-8.c.o
+[ 58%] Building C object CMakeFiles/turbojpeg.dir/src/jdatasrc.c.o
+[ 58%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdcoefct-8.c.o
+[ 58%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdapistd-12.c.o
+[ 58%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdapistd-16.c.o
+[ 58%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdatadst.c.o
+[ 58%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdcoefct-12.c.o
+[ 58%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdatasrc.c.o
+[ 59%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdcoefct-8.c.o
+[ 59%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdcolor-8.c.o
+[ 59%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdcoefct-12.c.o
+[ 59%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdcolor-8.c.o
+[ 59%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdcolor-12.c.o
+[ 59%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdcolor-12.c.o
+[ 59%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdcolor-16.c.o
+[ 59%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdcolor-16.c.o
+[ 60%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jddctmgr-8.c.o
+[ 60%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jddctmgr-12.c.o
+[ 60%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jddiffct-8.c.o
+[ 60%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jddiffct-12.c.o
+[ 60%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jddiffct-16.c.o
+[ 60%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jddctmgr-8.c.o
+[ 61%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jddctmgr-12.c.o
+[ 61%] Building C object CMakeFiles/turbojpeg.dir/src/jdhuff.c.o
+[ 61%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jddiffct-8.c.o
+[ 61%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jddiffct-12.c.o
+[ 61%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jddiffct-16.c.o
+[ 61%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdhuff.c.o
+[ 62%] Building C object CMakeFiles/turbojpeg.dir/src/jdicc.c.o
+[ 62%] Building C object CMakeFiles/turbojpeg.dir/src/jdinput.c.o
+[ 62%] Building C object CMakeFiles/turbojpeg.dir/src/jdlhuff.c.o
+[ 62%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdlossls-8.c.o
+[ 63%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdicc.c.o
+[ 63%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdlossls-12.c.o
+[ 63%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdinput.c.o
+[ 63%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdlossls-16.c.o
+[ 63%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdlhuff.c.o
+[ 64%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdmainct-8.c.o
+[ 64%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdlossls-8.c.o
+[ 64%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdmainct-12.c.o
+[ 64%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdlossls-12.c.o
+[ 64%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdlossls-16.c.o
+[ 64%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdmainct-16.c.o
+[ 65%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdmainct-8.c.o
+[ 65%] Building C object CMakeFiles/turbojpeg.dir/src/jdmarker.c.o
+[ 65%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdmainct-12.c.o
+[ 65%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdmainct-16.c.o
+[ 65%] Building C object CMakeFiles/turbojpeg.dir/src/jdmaster.c.o
+[ 65%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdmarker.c.o
+[ 66%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdmerge-8.c.o
+[ 66%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdmaster.c.o
+[ 66%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdmerge-8.c.o
+[ 66%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdmerge-12.c.o
+[ 67%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdmerge-12.c.o
+[ 67%] Building C object CMakeFiles/turbojpeg.dir/src/jdphuff.c.o
+[ 67%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdpostct-8.c.o
+[ 67%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdpostct-12.c.o
+[ 67%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdpostct-16.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdsample-8.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdphuff.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdsample-12.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdpostct-8.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdpostct-12.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdpostct-16.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jdsample-16.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdsample-8.c.o
+[ 68%] Building C object CMakeFiles/turbojpeg.dir/src/jdtrans.c.o
+[ 69%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdsample-12.c.o
+[ 69%] Building C object CMakeFiles/turbojpeg.dir/src/jerror.c.o
+[ 69%] Building C object CMakeFiles/turbojpeg.dir/src/jfdctflt.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jfdctfst-8.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jdsample-16.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jfdctfst-12.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jfdctint-8.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jfdctint-12.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jidctflt-8.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdtrans.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jidctflt-12.c.o
+[ 70%] Building C object CMakeFiles/turbojpeg-static.dir/src/jerror.c.o
+[ 71%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jidctfst-8.c.o
+[ 71%] Building C object CMakeFiles/turbojpeg-static.dir/src/jfdctflt.c.o
+[ 72%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jfdctfst-8.c.o
+[ 72%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jidctfst-12.c.o
+[ 72%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jfdctfst-12.c.o
+[ 72%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jidctint-8.c.o
+[ 72%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jfdctint-8.c.o
+[ 72%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jfdctint-12.c.o
+[ 72%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jidctflt-8.c.o
+[ 72%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jidctflt-12.c.o
+[ 73%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jidctfst-8.c.o
+[ 73%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jidctfst-12.c.o
+[ 73%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jidctint-8.c.o
+[ 73%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jidctint-12.c.o
+[ 73%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jidctint-12.c.o
+[ 73%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jidctred-8.c.o
+[ 74%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jidctred-12.c.o
+[ 74%] Building C object CMakeFiles/turbojpeg.dir/src/jmemmgr.c.o
+[ 74%] Building C object CMakeFiles/turbojpeg.dir/src/jmemnobs.c.o
+[ 74%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jidctred-8.c.o
+[ 74%] Building C object CMakeFiles/turbojpeg.dir/src/jpeg_nbits.c.o
+[ 74%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jquant1-8.c.o
+[ 74%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jidctred-12.c.o
+[ 75%] Building C object CMakeFiles/turbojpeg-static.dir/src/jmemmgr.c.o
+[ 75%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jquant1-12.c.o
+[ 75%] Building C object CMakeFiles/turbojpeg-static.dir/src/jmemnobs.c.o
+[ 75%] Building C object CMakeFiles/turbojpeg-static.dir/src/jpeg_nbits.c.o
+[ 75%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jquant1-8.c.o
+[ 76%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jquant2-8.c.o
+[ 76%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jquant1-12.c.o
+[ 76%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jquant2-8.c.o
+[ 76%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jquant2-12.c.o
+[ 77%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jquant2-12.c.o
+[ 77%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jutils-8.c.o
+[ 77%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jutils-12.c.o
+[ 77%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/jutils-16.c.o
+[ 77%] Building C object CMakeFiles/turbojpeg.dir/src/jaricom.c.o
+[ 78%] Building C object CMakeFiles/turbojpeg.dir/src/jcarith.c.o
+[ 78%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jutils-8.c.o
+[ 78%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jutils-12.c.o
+[ 78%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/jutils-16.c.o
+[ 78%] Building C object CMakeFiles/turbojpeg.dir/src/jdarith.c.o
+[ 78%] Building C object CMakeFiles/turbojpeg-static.dir/src/jaricom.c.o
+[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/src/jcarith.c.o
+[ 79%] Building C object CMakeFiles/turbojpeg.dir/src/turbojpeg.c.o
+[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdarith.c.o
+[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/src/turbojpeg.c.o
+[ 79%] Building C object CMakeFiles/turbojpeg.dir/src/transupp.c.o
+[ 79%] Building C object CMakeFiles/turbojpeg-static.dir/src/transupp.c.o
+[ 79%] Building C object CMakeFiles/turbojpeg.dir/src/jdatadst-tj.c.o
+[ 79%] Building C object CMakeFiles/turbojpeg.dir/src/jdatasrc-tj.c.o
+[ 80%] Building C object CMakeFiles/turbojpeg.dir/src/rdbmp.c.o
+[ 80%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/rdpng-8.c.o
+[ 80%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdatadst-tj.c.o
+[ 80%] Building C object CMakeFiles/turbojpeg-static.dir/src/jdatasrc-tj.c.o
+[ 80%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/rdpng-12.c.o
+[ 81%] Building C object CMakeFiles/turbojpeg-static.dir/src/rdbmp.c.o
+[ 81%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/rdpng-8.c.o
+[ 81%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/rdpng-16.c.o
+[ 81%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/rdppm-8.c.o
+[ 81%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/rdpng-12.c.o
+[ 81%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/rdpng-16.c.o
+[ 82%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/rdppm-12.c.o
+[ 82%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/rdppm-8.c.o
+[ 82%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/rdppm-16.c.o
+[ 82%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/rdppm-12.c.o
+[ 82%] Building C object CMakeFiles/turbojpeg.dir/src/wrbmp.c.o
+[ 83%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/rdppm-16.c.o
+[ 83%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/wrpng-8.c.o
+[ 83%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/wrpng-12.c.o
+[ 83%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrbmp.c.o
+[ 83%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/wrpng-16.c.o
+[ 83%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/wrpng-8.c.o
+[ 84%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/wrppm-8.c.o
+[ 84%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/wrpng-12.c.o
+[ 84%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/wrppm-12.c.o
+[ 84%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/wrpng-16.c.o
+[ 84%] Building C object CMakeFiles/turbojpeg.dir/src/wrapper/wrppm-16.c.o
 [ 84%] Linking C shared library libturbojpeg.so
-[ 84%] Building C object CMakeFiles/turbojpeg-static.dir/turbojpeg.c.o
+[ 84%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/wrppm-8.c.o
 [ 84%] Built target turbojpeg
-[ 85%] Building C object CMakeFiles/cjpeg-static.dir/cjpeg.c.o
-[ 85%] Building C object CMakeFiles/cjpeg-static.dir/cdjpeg.c.o
-[ 85%] Building C object CMakeFiles/cjpeg-static.dir/rdbmp.c.o
-[ 85%] Building C object CMakeFiles/cjpeg-static.dir/rdgif.c.o
-[ 85%] Building C object CMakeFiles/cjpeg-static.dir/rdppm.c.o
-[ 86%] Building C object CMakeFiles/cjpeg-static.dir/rdswitch.c.o
-[ 86%] Building C object CMakeFiles/cjpeg-static.dir/rdtarga.c.o
-[ 86%] Linking C executable cjpeg-static
-[ 86%] Built target cjpeg-static
-[ 86%] Building C object CMakeFiles/djpeg-static.dir/djpeg.c.o
-[ 86%] Building C object CMakeFiles/djpeg-static.dir/cdjpeg.c.o
-[ 87%] Building C object CMakeFiles/djpeg-static.dir/rdcolmap.c.o
-[ 87%] Building C object CMakeFiles/djpeg-static.dir/rdswitch.c.o
-[ 87%] Building C object CMakeFiles/djpeg-static.dir/wrbmp.c.o
-[ 88%] Building C object CMakeFiles/turbojpeg-static.dir/transupp.c.o
-[ 88%] Building C object CMakeFiles/djpeg-static.dir/wrgif.c.o
-[ 89%] Building C object CMakeFiles/djpeg-static.dir/wrppm.c.o
-[ 89%] Building C object CMakeFiles/djpeg-static.dir/wrtarga.c.o
-[ 89%] Linking C executable djpeg-static
-[ 89%] Built target djpeg-static
-[ 89%] Building C object CMakeFiles/jpegtran-static.dir/jpegtran.c.o
-[ 89%] Building C object CMakeFiles/jpegtran-static.dir/cdjpeg.c.o
-[ 89%] Building C object CMakeFiles/jpegtran-static.dir/rdswitch.c.o
-[ 90%] Building C object CMakeFiles/jpegtran-static.dir/transupp.c.o
-[ 90%] Building C object CMakeFiles/turbojpeg-static.dir/jdatadst-tj.c.o
-[ 90%] Building C object CMakeFiles/turbojpeg-static.dir/jdatasrc-tj.c.o
-[ 90%] Building C object CMakeFiles/turbojpeg-static.dir/rdbmp.c.o
-[ 91%] Building C object CMakeFiles/turbojpeg-static.dir/rdppm.c.o
-[ 91%] Building C object CMakeFiles/turbojpeg-static.dir/wrbmp.c.o
-[ 91%] Building C object CMakeFiles/turbojpeg-static.dir/wrppm.c.o
+[ 85%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/wrppm-12.c.o
+[ 85%] Building C object CMakeFiles/turbojpeg-static.dir/src/wrapper/wrppm-16.c.o
+[ 85%] Building C object CMakeFiles/cjpeg-static.dir/src/cjpeg.c.o
+[ 85%] Linking C static library libturbojpeg.a
+[ 85%] Built target turbojpeg-static
+[ 85%] Building C object CMakeFiles/cjpeg-static.dir/src/cdjpeg.c.o
+[ 85%] Building C object CMakeFiles/cjpeg-static.dir/src/rdbmp.c.o
+[ 85%] Building C object CMakeFiles/cjpeg-static.dir/src/rdgif.c.o
+[ 86%] Building C object CMakeFiles/cjpeg-static.dir/src/wrapper/rdpng-8.c.o
+[ 86%] Building C object CMakeFiles/cjpeg-static.dir/src/wrapper/rdpng-12.c.o
+[ 86%] Building C object CMakeFiles/cjpeg-static.dir/src/wrapper/rdpng-16.c.o
+[ 86%] Building C object CMakeFiles/djpeg-static.dir/src/djpeg.c.o
+[ 86%] Building C object CMakeFiles/djpeg-static.dir/src/cdjpeg.c.o
+[ 86%] Building C object CMakeFiles/cjpeg-static.dir/src/wrapper/rdppm-8.c.o
+[ 86%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/rdcolmap-8.c.o
+[ 87%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/rdcolmap-12.c.o
+[ 87%] Building C object CMakeFiles/djpeg-static.dir/src/rdswitch.c.o
+[ 87%] Building C object CMakeFiles/djpeg-static.dir/src/wrbmp.c.o
+[ 87%] Building C object CMakeFiles/cjpeg-static.dir/src/wrapper/rdppm-12.c.o
+[ 87%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/wrgif-8.c.o
+[ 87%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/wrgif-12.c.o
+[ 88%] Building C object CMakeFiles/cjpeg-static.dir/src/wrapper/rdppm-16.c.o
+[ 88%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/wrpng-8.c.o
+[ 89%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/wrpng-12.c.o
+[ 89%] Building C object CMakeFiles/cjpeg-static.dir/src/rdswitch.c.o
+[ 89%] Building C object CMakeFiles/cjpeg-static.dir/src/rdtarga.c.o
+[ 89%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/wrpng-16.c.o
+[ 89%] Linking C executable cjpeg-static
+[ 89%] Built target cjpeg-static
+[ 89%] Building C object CMakeFiles/jpegtran-static.dir/src/jpegtran.c.o
+[ 89%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/wrppm-8.c.o
+[ 89%] Building C object CMakeFiles/jpegtran-static.dir/src/cdjpeg.c.o
+[ 90%] Building C object CMakeFiles/jpegtran-static.dir/src/rdswitch.c.o
+[ 90%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/wrppm-12.c.o
+[ 90%] Building C object CMakeFiles/jpegtran-static.dir/src/transupp.c.o
+[ 90%] Building C object CMakeFiles/djpeg-static.dir/src/wrapper/wrppm-16.c.o
+[ 90%] Building C object CMakeFiles/djpeg-static.dir/src/wrtarga.c.o
+[ 91%] Linking C executable djpeg-static
+[ 91%] Built target djpeg-static
+[ 91%] Building C object CMakeFiles/example-static.dir/src/example.c.o
+[ 91%] Linking C executable example-static
+[ 91%] Built target example-static
+[ 91%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/cjpeg.c.o
+[ 91%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/cdjpeg.c.o
+[ 91%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/rdbmp.c.o
+[ 91%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/rdgif.c.o
+[ 91%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/wrapper/rdpng-8.c.o
 [ 91%] Linking C executable jpegtran-static
 [ 91%] Built target jpegtran-static
-[ 92%] Building C object CMakeFiles/example-static.dir/example.c.o
-[ 92%] Linking C static library libturbojpeg.a
-[ 92%] Linking C executable example-static
-[ 92%] Built target turbojpeg-static
-[ 92%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/cjpeg.c.o
-[ 92%] Built target example-static
-[ 92%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/djpeg.c.o
-[ 92%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/cdjpeg.c.o
-[ 92%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/rdbmp.c.o
-[ 92%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/cdjpeg.c.o
-[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/rdcolmap.c.o
-[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/rdswitch.c.o
-[ 93%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/rdgif.c.o
-[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/wrbmp.c.o
-[ 94%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/rdppm.c.o
-[ 94%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/wrgif.c.o
-[ 95%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/wrppm.c.o
-[ 95%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/rdswitch.c.o
-[ 95%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/wrtarga.c.o
-[ 95%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/rdtarga.c.o
-[ 95%] Linking C executable ../djpeg
-[ 95%] Built target djpeg
+[ 91%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/djpeg.c.o
+[ 92%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/wrapper/rdpng-12.c.o
+[ 92%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/cdjpeg.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/rdcolmap-8.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/rdcolmap-12.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/wrapper/rdpng-16.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/rdswitch.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrbmp.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/wrapper/rdppm-8.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/wrgif-8.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/wrgif-12.c.o
+[ 93%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/wrapper/rdppm-12.c.o
+[ 94%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/wrpng-8.c.o
+[ 94%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/wrpng-12.c.o
+[ 94%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/wrapper/rdppm-16.c.o
+[ 94%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/wrpng-16.c.o
+[ 94%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/wrppm-8.c.o
+[ 94%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/rdswitch.c.o
+[ 95%] Building C object sharedlib/CMakeFiles/cjpeg.dir/__/src/rdtarga.c.o
+[ 95%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/wrppm-12.c.o
 [ 95%] Linking C executable ../cjpeg
-[ 95%] Building C object sharedlib/CMakeFiles/jpegtran.dir/__/jpegtran.c.o
+[ 95%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrapper/wrppm-16.c.o
 [ 95%] Built target cjpeg
-[ 95%] Building C object sharedlib/CMakeFiles/example.dir/__/example.c.o
-[ 95%] Linking C executable ../example
-[ 95%] Built target example
-[ 95%] Building C object sharedlib/CMakeFiles/jpegtran.dir/__/cdjpeg.c.o
-[ 95%] Building C object sharedlib/CMakeFiles/jcstest.dir/__/jcstest.c.o
-[ 95%] Building C object sharedlib/CMakeFiles/jpegtran.dir/__/rdswitch.c.o
-[ 95%] Linking C executable ../jcstest
-[ 95%] Built target jcstest
-[ 95%] Building C object CMakeFiles/tjunittest.dir/tjunittest.c.o
-[ 96%] Building C object sharedlib/CMakeFiles/jpegtran.dir/__/transupp.c.o
-[ 96%] Building C object CMakeFiles/tjunittest.dir/tjutil.c.o
-[ 96%] Building C object CMakeFiles/tjunittest.dir/md5/md5.c.o
-[ 96%] Building C object CMakeFiles/tjunittest.dir/md5/md5hl.c.o
-[ 97%] Linking C executable tjunittest
-[ 97%] Linking C executable ../jpegtran
-[ 97%] Built target tjunittest
-[ 97%] Building C object CMakeFiles/tjbench.dir/tjbench.c.o
-[ 97%] Built target jpegtran
-[ 97%] Building C object CMakeFiles/tjbench.dir/tjutil.c.o
-[ 97%] Building C object CMakeFiles/tjexample.dir/tjexample.c.o
-[ 98%] Linking C executable tjexample
-[ 98%] Built target tjexample
-[ 98%] Building C object CMakeFiles/tjunittest-static.dir/tjunittest.c.o
-[ 98%] Linking C executable tjbench
-[ 98%] Built target tjbench
-[ 99%] Building C object CMakeFiles/tjbench-static.dir/tjbench.c.o
-[ 99%] Building C object CMakeFiles/tjunittest-static.dir/tjutil.c.o
-[ 99%] Building C object CMakeFiles/tjunittest-static.dir/md5/md5.c.o
-[100%] Building C object CMakeFiles/tjunittest-static.dir/md5/md5hl.c.o
+[ 96%] Building C object sharedlib/CMakeFiles/djpeg.dir/__/src/wrtarga.c.o
+[ 97%] Building C object CMakeFiles/tjunittest.dir/src/tjunittest.c.o
+[ 97%] Linking C executable ../djpeg
+[ 97%] Built target djpeg
+[ 98%] Building C object CMakeFiles/tjcomp.dir/src/tjcomp.c.o
+[ 98%] Linking C executable tjcomp
+[ 98%] Built target tjcomp
+[ 98%] Building C object CMakeFiles/tjdecomp.dir/src/tjdecomp.c.o
+[ 98%] Linking C executable tjdecomp
+[ 98%] Built target tjdecomp
+[ 98%] Building C object CMakeFiles/tjtran.dir/src/tjtran.c.o
+[ 98%] Linking C executable tjtran
+[ 98%] Built target tjtran
+[ 99%] Building C object CMakeFiles/tjbench.dir/src/tjbench.c.o
+[ 99%] Building C object CMakeFiles/tjunittest.dir/src/tjutil.c.o
+[ 99%] Building C object CMakeFiles/tjunittest.dir/src/md5/md5.c.o
+[ 99%] Building C object CMakeFiles/tjunittest.dir/src/md5/md5hl.c.o
+[ 99%] Linking C executable tjunittest
+[ 99%] Built target tjunittest
+[100%] Building C object CMakeFiles/tjunittest-static.dir/src/tjunittest.c.o
+[100%] Building C object CMakeFiles/tjbench.dir/src/tjutil.c.o
+[100%] Linking C executable tjbench
+[100%] Built target tjbench
+[100%] Building C object CMakeFiles/tjbench-static.dir/src/tjbench.c.o
+[100%] Building C object CMakeFiles/tjunittest-static.dir/src/tjutil.c.o
+[100%] Building C object CMakeFiles/tjunittest-static.dir/src/md5/md5.c.o
+[100%] Building C object CMakeFiles/tjunittest-static.dir/src/md5/md5hl.c.o
 [100%] Linking C executable tjunittest-static
-[100%] Built target tjunittest-static
-[100%] Building C object CMakeFiles/tjbench-static.dir/tjutil.c.o
+[100%] Building C object CMakeFiles/tjbench-static.dir/src/tjutil.c.o
 [100%] Linking C executable tjbench-static
+[100%] Built target tjunittest-static
 [100%] Built target tjbench-static
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c: In function 'jpeg_gen_optimal_table':
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c:1046:22: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
- 1046 |     bits[codesize[i]]++;
-      |     ~~~~~~~~~~~~~~~~~^~
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c:949:9: note: at offset 33 into destination object 'bits' of size 33
-  949 |   UINT8 bits[MAX_CLEN + 1];     /* bits[k] = # of symbols with code length k */
-      |         ^~~~
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c: In function 'jpeg_gen_optimal_table':
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c:1046:22: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
- 1046 |     bits[codesize[i]]++;
-      |     ~~~~~~~~~~~~~~~~~^~
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c:949:9: note: at offset 33 into destination object 'bits' of size 33
-  949 |   UINT8 bits[MAX_CLEN + 1];     /* bits[k] = # of symbols with code length k */
-      |         ^~~~
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c: In function 'jpeg_gen_optimal_table':
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c:1046:22: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
- 1046 |     bits[codesize[i]]++;
-      |     ~~~~~~~~~~~~~~~~~^~
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c:949:9: note: at offset 33 into destination object 'bits' of size 33
-  949 |   UINT8 bits[MAX_CLEN + 1];     /* bits[k] = # of symbols with code length k */
-      |         ^~~~
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c: In function 'jpeg_gen_optimal_table':
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c:1046:22: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
- 1046 |     bits[codesize[i]]++;
-      |     ~~~~~~~~~~~~~~~~~^~
-/home/chirag/qnx-porter/ports-aarch64le/libjpeg-turbo/work/src/jchuff.c:949:9: note: at offset 33 into destination object 'bits' of size 33
-  949 |   UINT8 bits[MAX_CLEN + 1];     /* bits[k] = # of symbols with code length k */
-      |         ^~~~

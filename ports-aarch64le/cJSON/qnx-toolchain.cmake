@@ -15,8 +15,8 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
 set(CMAKE_C_FLAGS_INIT "-g ")
 set(CMAKE_CXX_FLAGS_INIT "-g ")
-set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/stubs")
-set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/stubs")
+set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/stubs -N8M")
+set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/stubs -N8M")
 # Flags after the project's own (appended by the compiler wrappers in -): none
 # Libraries the agent adds go at the end of every link line, after the objects that need them.
 set(CMAKE_C_STANDARD_LIBRARIES "")

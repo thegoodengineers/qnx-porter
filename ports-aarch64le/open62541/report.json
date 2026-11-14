@@ -1,26 +1,52 @@
 {
   "library": "open62541",
   "url": "https://github.com/open62541/open62541.git",
-  "version": "v1.4.6",
-  "commit": "50ae40d3c98a5ff0458ee2b5ae92bea53e11af4e",
+  "version": "v1.5.10",
+  "commit": "93c3bdfc9ea4718b503c6cbf57876237addd0f2c",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
-  "rounds": 1,
+  "rounds": 2,
   "tests_passed": 0,
   "tests_total": 0,
   "tests_ran": true,
-  "patches_kept": 0,
-  "patches_by_rule": 0,
+  "patches_kept": 2,
+  "patches_by_rule": 2,
   "patches_by_model": 0,
-  "patches": [],
+  "patches": [
+    {
+      "number": 1,
+      "rule": "add-include",
+      "source": "rule",
+      "reason": "`LIST_ENTRY` is a BSD list macro from <sys/queue.h>, which QNX 8.0 ships; arch/posix/eventloop_posix.h uses it without including that header.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'",
+      "files": [
+        "arch/posix/eventloop_posix.h"
+      ],
+      "path": "patches/0001-add-include-eventloop-posix-h.patch",
+      "kept": true
+    },
+    {
+      "number": 2,
+      "rule": "add-include",
+      "source": "rule",
+      "reason": "`LIST_ENTRY` is a BSD list macro from <sys/queue.h>, which QNX 8.0 ships; arch/posix/eventloop_posix_interrupt.c uses it without including that header.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:23:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'",
+      "files": [
+        "arch/posix/eventloop_posix_interrupt.c"
+      ],
+      "path": "patches/0002-add-include-eventloop-posix-interrupt-c.patch",
+      "kept": true
+    }
+  ],
   "blocked_on": [],
-  "minutes": 9.7,
+  "minutes": 15.6,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T14:35:05+00:00"
+  "finished": "2026-11-14T01:10:06+00:00"
 }

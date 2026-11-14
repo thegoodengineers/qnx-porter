@@ -32,10 +32,10 @@ Making check in test
 make[1]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/work/build/test'
 Making check in default
 make[2]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/work/build/test/default'
-make  aead_aegis128l aead_aegis256 aead_aes256gcm aead_aes256gcm2 aead_chacha20poly1305 aead_chacha20poly13052 aead_xchacha20poly1305 auth auth2 auth3 auth5 auth6 auth7 box box2 box7 box8 box_easy box_easy2 box_seal box_seed chacha20 codecs core1 core2 core3 core4 core5 core6 ed25519_convert generichash generichash2 generichash3 hash hash3 kdf keygen kx metamorphic misuse onetimeauth onetimeauth2 onetimeauth7 pwhash_argon2i pwhash_argon2id randombytes scalarmult scalarmult2 scalarmult5 scalarmult6 scalarmult7 scalarmult8 secretbox secretbox2 secretbox7 secretbox8 secretbox_easy secretbox_easy2 secretstream_xchacha20poly1305 shorthash sign sodium_core sodium_utils sodium_version stream stream2 stream3 stream4 verify1 sodium_utils2 sodium_utils3 core_ed25519 core_ristretto255 kdf_hkdf pwhash_scrypt pwhash_scrypt_ll scalarmult_ed25519 scalarmult_ristretto255 siphashx24 xchacha20
+make  aead_aegis128l aead_aegis256 aead_aes256gcm aead_aes256gcm2 aead_chacha20poly1305 aead_chacha20poly13052 aead_xchacha20poly1305 auth auth2 auth3 auth5 auth6 auth7 box box2 box7 box8 box_easy box_easy2 box_seal box_seed chacha20 codecs codecs2 codecs3 core_keccak1600 core1 core2 core3 core4 core5 core6 ed25519_convert generichash generichash2 generichash3 hash hash3 hash_sha3256 hash_sha3512 ipcrypt kdf kem kem_mlkem768 kem_xwing keygen kx metamorphic misuse onetimeauth onetimeauth2 onetimeauth7 pwhash_argon2i pwhash_argon2id pwhash_argon2id2 randombytes scalarmult scalarmult2 scalarmult5 scalarmult6 scalarmult7 scalarmult8 secretbox secretbox2 secretbox7 secretbox8 secretbox_easy secretbox_easy2 secretstream_xchacha20poly1305 shorthash sign sodium_core sodium_utils sodium_version stream stream2 stream3 stream4 verify1 xof_shake128 xof_shake256 xof_turboshake128 xof_turboshake256 xof2 sodium_utils2 sodium_utils3 sodium_utils4 core_ed25519 core_ristretto255 kdf_hkdf kdf_hkdf2 kdf_hkdf3 kdf_hkdf4 pwhash_scrypt stream5 stream6 pwhash_scrypt_ll scalarmult_ed25519 scalarmult_ristretto255 siphashx24 xchacha20
 make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/work/build/test/default'
-  CC       aead_aegis128l.o
   CC       aead_aegis256.o
+  CC       aead_aegis128l.o
   CC       aead_aes256gcm.o
   CC       aead_aes256gcm2.o
   CC       aead_chacha20poly1305.o
@@ -57,6 +57,9 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/w
   CC       box_seed.o
   CC       chacha20.o
   CC       codecs.o
+  CC       codecs2.o
+  CC       codecs3.o
+  CC       core_keccak1600.o
   CC       core1.o
   CC       core2.o
   CC       core3.o
@@ -69,7 +72,13 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/w
   CC       generichash3.o
   CC       hash.o
   CC       hash3.o
+  CC       hash_sha3256.o
+  CC       hash_sha3512.o
+  CC       ipcrypt.o
   CC       kdf.o
+  CC       kem.o
+  CC       kem_mlkem768.o
+  CC       kem_xwing.o
   CC       keygen.o
   CC       kx.o
   CC       metamorphic.o
@@ -79,6 +88,7 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/w
   CC       onetimeauth7.o
   CC       pwhash_argon2i.o
   CC       pwhash_argon2id.o
+  CC       pwhash_argon2id2.o
   CC       randombytes.o
   CC       scalarmult.o
   CC       scalarmult2.o
@@ -103,12 +113,23 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/w
   CC       stream3.o
   CC       stream4.o
   CC       verify1.o
+  CC       xof_shake128.o
+  CC       xof_shake256.o
+  CC       xof_turboshake128.o
+  CC       xof_turboshake256.o
+  CC       xof2.o
   CC       sodium_utils2.o
   CC       sodium_utils3.o
+  CC       sodium_utils4.o
   CC       core_ed25519.o
   CC       core_ristretto255.o
   CC       kdf_hkdf.o
+  CC       kdf_hkdf2.o
+  CC       kdf_hkdf3.o
+  CC       kdf_hkdf4.o
   CC       pwhash_scrypt.o
+  CC       stream5.o
+  CC       stream6.o
   CC       pwhash_scrypt_ll.o
   CC       scalarmult_ed25519.o
   CC       scalarmult_ristretto255.o
@@ -137,6 +158,9 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/w
   CCLD     box_seed
   CCLD     chacha20
   CCLD     codecs
+  CCLD     codecs2
+  CCLD     codecs3
+  CCLD     core_keccak1600
   CCLD     core1
   CCLD     core2
   CCLD     core3
@@ -149,7 +173,13 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/w
   CCLD     generichash3
   CCLD     hash
   CCLD     hash3
+  CCLD     hash_sha3256
+  CCLD     hash_sha3512
+  CCLD     ipcrypt
   CCLD     kdf
+  CCLD     kem
+  CCLD     kem_mlkem768
+  CCLD     kem_xwing
   CCLD     keygen
   CCLD     kx
   CCLD     metamorphic
@@ -159,6 +189,7 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/w
   CCLD     onetimeauth7
   CCLD     pwhash_argon2i
   CCLD     pwhash_argon2id
+  CCLD     pwhash_argon2id2
   CCLD     randombytes
   CCLD     scalarmult
   CCLD     scalarmult2
@@ -183,12 +214,23 @@ make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/w
   CCLD     stream3
   CCLD     stream4
   CCLD     verify1
+  CCLD     xof_shake128
+  CCLD     xof_shake256
+  CCLD     xof_turboshake128
+  CCLD     xof_turboshake256
+  CCLD     xof2
   CCLD     sodium_utils2
   CCLD     sodium_utils3
+  CCLD     sodium_utils4
   CCLD     core_ed25519
   CCLD     core_ristretto255
   CCLD     kdf_hkdf
+  CCLD     kdf_hkdf2
+  CCLD     kdf_hkdf3
+  CCLD     kdf_hkdf4
   CCLD     pwhash_scrypt
+  CCLD     stream5
+  CCLD     stream6
   CCLD     pwhash_scrypt_ll
   CCLD     scalarmult_ed25519
   CCLD     scalarmult_ristretto255
@@ -199,7 +241,7 @@ make  check-TESTS
 make[3]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/work/build/test/default'
 make[4]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libsodium/work/build/test/default'
 ============================================================================
-Testsuite summary for libsodium 1.0.20
+Testsuite summary for libsodium 1.0.22
 ============================================================================
 # TOTAL: 0
 # PASS:  0

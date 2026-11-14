@@ -1,0 +1,113 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libsamplerate/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libsamplerate/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libsamplerate/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libsamplerate/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+-- Checking for module 'sndfile'
+--   No package 'sndfile' found
+-- Checking processor clipping capabilities...
+-- Checking processor clipping capabilities... disabled
+-- Performing Test HAVE_VISIBILITY
+-- Performing Test HAVE_VISIBILITY - Success
+-- Looking for sys/times.h
+-- Looking for sys/times.h - found
+-- Looking for alarm
+-- Looking for alarm - found
+-- Looking for signal
+-- Looking for signal - found
+-- Looking for SIGALRM
+-- Looking for SIGALRM - found
+-- Checking for module 'fftw3'
+--   No package 'fftw3' found
+-- Could NOT find ALSA (missing: ALSA_LIBRARY ALSA_INCLUDE_DIR) 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libsamplerate/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libsamplerate/work/build -j 2 -- -k
+[  1%] Building C object src/CMakeFiles/samplerate.dir/samplerate.c.o
+[  3%] Building C object src/CMakeFiles/samplerate.dir/src_linear.c.o
+[  4%] Building C object src/CMakeFiles/samplerate.dir/src_sinc.c.o
+[  6%] Building C object src/CMakeFiles/samplerate.dir/src_zoh.c.o
+[  8%] Linking C static library libsamplerate.a
+[  8%] Built target samplerate
+[ 11%] Building C object tests/CMakeFiles/termination_test.dir/termination_test.c.o
+[ 11%] Building C object tests/CMakeFiles/misc_test.dir/misc_test.c.o
+[ 13%] Building C object tests/CMakeFiles/misc_test.dir/util.c.o
+[ 14%] Building C object tests/CMakeFiles/termination_test.dir/util.c.o
+[ 16%] Linking C executable misc_test
+[ 18%] Built target misc_test
+[ 18%] Linking C executable termination_test
+[ 19%] Building C object tests/CMakeFiles/callback_hang_test.dir/callback_hang_test.c.o
+[ 19%] Built target termination_test
+[ 21%] Building C object tests/CMakeFiles/callback_hang_test.dir/util.c.o
+[ 22%] Building C object tests/CMakeFiles/downsample_test.dir/downsample_test.c.o
+[ 24%] Building C object tests/CMakeFiles/downsample_test.dir/util.c.o
+[ 26%] Linking C executable callback_hang_test
+[ 26%] Built target callback_hang_test
+[ 27%] Linking C executable downsample_test
+[ 29%] Building C object tests/CMakeFiles/simple_test.dir/simple_test.c.o
+[ 29%] Built target downsample_test
+[ 31%] Building C object tests/CMakeFiles/callback_test.dir/callback_test.c.o
+[ 32%] Building C object tests/CMakeFiles/simple_test.dir/util.c.o
+[ 34%] Building C object tests/CMakeFiles/callback_test.dir/util.c.o
+[ 36%] Linking C executable simple_test
+[ 37%] Linking C executable callback_test
+[ 37%] Built target simple_test
+[ 39%] Building C object tests/CMakeFiles/reset_test.dir/reset_test.c.o
+[ 39%] Built target callback_test
+[ 40%] Building C object tests/CMakeFiles/clone_test.dir/clone_test.c.o
+[ 42%] Building C object tests/CMakeFiles/reset_test.dir/util.c.o
+[ 44%] Building C object tests/CMakeFiles/clone_test.dir/util.c.o
+[ 45%] Linking C executable reset_test
+[ 47%] Linking C executable clone_test
+[ 47%] Built target reset_test
+[ 49%] Built target clone_test
+[ 49%] Building C object tests/CMakeFiles/nullptr_test.dir/nullptr_test.c.o
+[ 50%] Building C object tests/CMakeFiles/multi_channel_test.dir/multi_channel_test.c.o
+[ 52%] Building C object tests/CMakeFiles/nullptr_test.dir/util.c.o
+[ 54%] Linking C executable nullptr_test
+[ 55%] Building C object tests/CMakeFiles/multi_channel_test.dir/calc_snr.c.o
+[ 57%] Building C object tests/CMakeFiles/multi_channel_test.dir/util.c.o
+[ 57%] Built target nullptr_test
+[ 59%] Building C object tests/CMakeFiles/varispeed_test.dir/varispeed_test.c.o
+[ 60%] Linking C executable multi_channel_test
+[ 62%] Building C object tests/CMakeFiles/varispeed_test.dir/calc_snr.c.o
+[ 62%] Built target multi_channel_test
+[ 63%] Building C object tests/CMakeFiles/float_short_test.dir/float_short_test.c.o
+[ 65%] Building C object tests/CMakeFiles/varispeed_test.dir/util.c.o
+[ 67%] Linking C executable float_short_test
+[ 68%] Linking C executable varispeed_test
+[ 68%] Built target float_short_test
+[ 68%] Built target varispeed_test
+[ 70%] Building C object tests/CMakeFiles/snr_bw_test.dir/snr_bw_test.c.o
+[ 72%] Building C object tests/CMakeFiles/throughput_test.dir/throughput_test.c.o
+[ 73%] Building C object tests/CMakeFiles/snr_bw_test.dir/calc_snr.c.o
+[ 75%] Building C object tests/CMakeFiles/snr_bw_test.dir/util.c.o
+[ 77%] Building C object tests/CMakeFiles/throughput_test.dir/util.c.o
+[ 78%] Linking C executable snr_bw_test
+[ 80%] Linking C executable throughput_test
+[ 80%] Built target snr_bw_test
+[ 81%] Building C object tests/CMakeFiles/multichan_throughput_test.dir/multichan_throughput_test.c.o
+[ 81%] Built target throughput_test
+[ 83%] Building C object tests/CMakeFiles/src-evaluate.dir/src-evaluate.c.o
+[ 85%] Building C object tests/CMakeFiles/src-evaluate.dir/util.c.o
+[ 86%] Building C object tests/CMakeFiles/multichan_throughput_test.dir/util.c.o
+[ 88%] Building C object tests/CMakeFiles/src-evaluate.dir/calc_snr.c.o
+[ 90%] Linking C executable src-evaluate
+[ 91%] Linking C executable multichan_throughput_test
+[ 91%] Built target src-evaluate
+[ 93%] Building C object examples/CMakeFiles/timewarp-file.dir/timewarp-file.c.o
+[ 93%] Built target multichan_throughput_test
+[ 95%] Building C object examples/CMakeFiles/varispeed-play.dir/varispeed-play.c.o
+[ 96%] Linking C executable timewarp-file
+[ 98%] Building C object examples/CMakeFiles/varispeed-play.dir/audio_out.c.o
+[ 98%] Built target timewarp-file
+[100%] Linking C executable varispeed-play
+[100%] Built target varispeed-play

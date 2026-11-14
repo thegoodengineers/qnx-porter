@@ -1,7 +1,5 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libpng/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libpng/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libpng/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libpng/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libpng/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libpng/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libpng/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libpng/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libpng/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
--- The ASM compiler identification is QCC
--- Found assembler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
@@ -9,9 +7,12 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libpng/work/src -B /home/chir
 -- Detecting C compile features - done
 -- Building for target architecture: aarch64
 -- Found ZLIB: /home/chirag/qnx800/target/qnx/aarch64le/usr/lib/libz.so (found version "1.2.13") 
+-- Looking for pow in m
+-- Looking for pow in m - found
 -- Performing Test HAVE_LD_VERSION_SCRIPT
 -- Performing Test HAVE_LD_VERSION_SCRIPT - Success
 -- Found AWK program: /usr/bin/gawk
+-- Creating standard configuration
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libpng/work/build
@@ -22,88 +23,78 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libpng/work/build -j 2 -- -k
-[  1%] Built target pngprefix_h
-[  2%] Built target pnglibconf_c
-[  3%] Generating scripts/symbols.out
-[  4%] Built target png_scripts_pnglibconf_c
-[  4%] Building C object CMakeFiles/png-fix-itxt.dir/contrib/tools/png-fix-itxt.c.o
-[  4%] Built target png_scripts_symbols_out
-[  5%] Generating pnglibconf.out
-[  6%] Linking C executable png-fix-itxt
-[  7%] Built target pnglibconf_out
+[  1%] Generating pnglibconf.out
+[  2%] Building C object CMakeFiles/png-fix-itxt.dir/contrib/tools/png-fix-itxt.c.o
+[  4%] Generating scripts/symbols.out
+[  5%] Linking C executable png-fix-itxt
+[  7%] Generating pnglibconf.h
 [  7%] Built target png-fix-itxt
-[  8%] Generating scripts/symbols.chk
-[  9%] Generating scripts/prefix.out
-[ 10%] Built target png_scripts_symbols_chk
-[ 11%] Generating pnglibconf.h
-[ 13%] Built target png_scripts_prefix_out
-[ 15%] Built target pnglibconf_h
-[ 17%] Generating scripts/sym.out
-[ 17%] Generating scripts/vers.out
-[ 20%] Built target png_scripts_sym_out
-[ 23%] Built target png_scripts_vers_out
-[ 24%] Generating scripts/intprefix.out
-[ 25%] Generating libpng.vers
-[ 25%] Built target png_genvers
-[ 26%] Generating libpng.sym
-[ 26%] Built target png_gensym
-[ 29%] Built target png_scripts_intprefix_out
-[ 42%] Built target png_genfiles
-[ 43%] Building C object CMakeFiles/png_static.dir/png.c.o
-[ 44%] Building C object CMakeFiles/png_shared.dir/png.c.o
-[ 45%] Building C object CMakeFiles/png_shared.dir/pngerror.c.o
-[ 46%] Building C object CMakeFiles/png_static.dir/pngerror.c.o
-[ 47%] Building C object CMakeFiles/png_shared.dir/pngget.c.o
-[ 48%] Building C object CMakeFiles/png_static.dir/pngget.c.o
-[ 49%] Building C object CMakeFiles/png_shared.dir/pngmem.c.o
-[ 50%] Building C object CMakeFiles/png_shared.dir/pngpread.c.o
-[ 51%] Building C object CMakeFiles/png_static.dir/pngmem.c.o
-[ 52%] Building C object CMakeFiles/png_static.dir/pngpread.c.o
-[ 53%] Building C object CMakeFiles/png_shared.dir/pngread.c.o
-[ 54%] Building C object CMakeFiles/png_static.dir/pngread.c.o
-[ 55%] Building C object CMakeFiles/png_shared.dir/pngrio.c.o
-[ 56%] Building C object CMakeFiles/png_shared.dir/pngrtran.c.o
-[ 57%] Building C object CMakeFiles/png_static.dir/pngrio.c.o
-[ 58%] Building C object CMakeFiles/png_static.dir/pngrtran.c.o
-[ 59%] Building C object CMakeFiles/png_shared.dir/pngrutil.c.o
-[ 60%] Building C object CMakeFiles/png_static.dir/pngrutil.c.o
-[ 61%] Building C object CMakeFiles/png_shared.dir/pngset.c.o
-[ 62%] Building C object CMakeFiles/png_static.dir/pngset.c.o
-[ 63%] Building C object CMakeFiles/png_shared.dir/pngtrans.c.o
-[ 64%] Building C object CMakeFiles/png_static.dir/pngtrans.c.o
-[ 65%] Building C object CMakeFiles/png_shared.dir/pngwio.c.o
-[ 66%] Building C object CMakeFiles/png_shared.dir/pngwrite.c.o
-[ 67%] Building C object CMakeFiles/png_static.dir/pngwio.c.o
-[ 68%] Building C object CMakeFiles/png_static.dir/pngwrite.c.o
-[ 69%] Building C object CMakeFiles/png_shared.dir/pngwtran.c.o
-[ 70%] Building C object CMakeFiles/png_static.dir/pngwtran.c.o
-[ 71%] Building C object CMakeFiles/png_shared.dir/pngwutil.c.o
-[ 72%] Building C object CMakeFiles/png_static.dir/pngwutil.c.o
-[ 73%] Building C object CMakeFiles/png_shared.dir/arm/arm_init.c.o
-[ 74%] Building C object CMakeFiles/png_shared.dir/arm/filter_neon_intrinsics.c.o
-[ 75%] Building C object CMakeFiles/png_static.dir/arm/arm_init.c.o
-[ 76%] Building C object CMakeFiles/png_static.dir/arm/filter_neon_intrinsics.c.o
-[ 77%] Building C object CMakeFiles/png_shared.dir/arm/palette_neon_intrinsics.c.o
-[ 78%] Building C object CMakeFiles/png_static.dir/arm/palette_neon_intrinsics.c.o
-[ 79%] Linking C static library libpng16.a
-[ 80%] Linking C shared library libpng16.so
-[ 88%] Built target png_shared
-[ 88%] Built target png_static
-[ 89%] Building C object CMakeFiles/pngtest.dir/pngtest.c.o
-[ 90%] Building C object CMakeFiles/pngvalid.dir/contrib/libtests/pngvalid.c.o
-[ 91%] Linking C executable pngtest
-[ 91%] Built target pngtest
-[ 92%] Building C object CMakeFiles/pngstest.dir/contrib/libtests/pngstest.c.o
-[ 93%] Linking C executable pngstest
-[ 93%] Built target pngstest
-[ 94%] Building C object CMakeFiles/pngunknown.dir/contrib/libtests/pngunknown.c.o
-[ 95%] Linking C executable pngunknown
-[ 95%] Built target pngunknown
-[ 96%] Building C object CMakeFiles/pngimage.dir/contrib/libtests/pngimage.c.o
-[ 97%] Linking C executable pngimage
-[ 97%] Built target pngimage
-[ 98%] Building C object CMakeFiles/pngfix.dir/contrib/tools/pngfix.c.o
-[ 99%] Linking C executable pngfix
-[ 99%] Built target pngfix
+[  8%] Generating scripts/prefix.out
+[ 10%] Generating scripts/symbols.chk
+[ 11%] Generating scripts/sym.out
+[ 13%] Generating scripts/vers.out
+[ 14%] Generating scripts/intprefix.out
+[ 16%] Generating libpng.sym
+[ 17%] Generating libpng.vers
+[ 22%] Built target png_genfiles
+[ 23%] Building C object CMakeFiles/png_shared.dir/png.c.o
+[ 25%] Building C object CMakeFiles/png_static.dir/png.c.o
+[ 26%] Building C object CMakeFiles/png_shared.dir/pngerror.c.o
+[ 28%] Building C object CMakeFiles/png_static.dir/pngerror.c.o
+[ 29%] Building C object CMakeFiles/png_shared.dir/pngget.c.o
+[ 31%] Building C object CMakeFiles/png_static.dir/pngget.c.o
+[ 32%] Building C object CMakeFiles/png_shared.dir/pngmem.c.o
+[ 34%] Building C object CMakeFiles/png_static.dir/pngmem.c.o
+[ 35%] Building C object CMakeFiles/png_shared.dir/pngpread.c.o
+[ 37%] Building C object CMakeFiles/png_static.dir/pngpread.c.o
+[ 38%] Building C object CMakeFiles/png_shared.dir/pngread.c.o
+[ 40%] Building C object CMakeFiles/png_static.dir/pngread.c.o
+[ 41%] Building C object CMakeFiles/png_shared.dir/pngrio.c.o
+[ 43%] Building C object CMakeFiles/png_shared.dir/pngrtran.c.o
+[ 44%] Building C object CMakeFiles/png_static.dir/pngrio.c.o
+[ 46%] Building C object CMakeFiles/png_static.dir/pngrtran.c.o
+[ 47%] Building C object CMakeFiles/png_shared.dir/pngrutil.c.o
+[ 49%] Building C object CMakeFiles/png_static.dir/pngrutil.c.o
+[ 50%] Building C object CMakeFiles/png_shared.dir/pngset.c.o
+[ 52%] Building C object CMakeFiles/png_static.dir/pngset.c.o
+[ 53%] Building C object CMakeFiles/png_shared.dir/pngtrans.c.o
+[ 55%] Building C object CMakeFiles/png_static.dir/pngtrans.c.o
+[ 56%] Building C object CMakeFiles/png_shared.dir/pngwio.c.o
+[ 58%] Building C object CMakeFiles/png_shared.dir/pngwrite.c.o
+[ 59%] Building C object CMakeFiles/png_static.dir/pngwio.c.o
+[ 61%] Building C object CMakeFiles/png_static.dir/pngwrite.c.o
+[ 62%] Building C object CMakeFiles/png_shared.dir/pngwtran.c.o
+[ 64%] Building C object CMakeFiles/png_static.dir/pngwtran.c.o
+[ 65%] Building C object CMakeFiles/png_shared.dir/pngwutil.c.o
+[ 67%] Building C object CMakeFiles/png_static.dir/pngwutil.c.o
+[ 68%] Building C object CMakeFiles/png_shared.dir/arm/arm_init.c.o
+[ 70%] Building C object CMakeFiles/png_shared.dir/arm/filter_neon_intrinsics.c.o
+[ 71%] Building C object CMakeFiles/png_static.dir/arm/arm_init.c.o
+[ 73%] Building C object CMakeFiles/png_static.dir/arm/filter_neon_intrinsics.c.o
+[ 74%] Building C object CMakeFiles/png_shared.dir/arm/palette_neon_intrinsics.c.o
+[ 76%] Building C object CMakeFiles/png_static.dir/arm/palette_neon_intrinsics.c.o
+[ 77%] Linking C shared library libpng16.so
+[ 77%] Built target png_shared
+[ 79%] Building C object CMakeFiles/pngtest.dir/pngtest.c.o
+[ 80%] Linking C static library libpng16.a
+[ 80%] Built target png_static
+[ 82%] Building C object CMakeFiles/pnggetset.dir/contrib/libtests/pnggetset.c.o
+[ 83%] Linking C executable pngtest
+[ 83%] Built target pngtest
+[ 85%] Building C object CMakeFiles/pngvalid.dir/contrib/libtests/pngvalid.c.o
+[ 86%] Linking C executable pnggetset
+[ 86%] Built target pnggetset
+[ 88%] Building C object CMakeFiles/pngstest.dir/contrib/libtests/pngstest.c.o
+[ 89%] Linking C executable pngstest
+[ 89%] Built target pngstest
+[ 91%] Building C object CMakeFiles/pngunknown.dir/contrib/libtests/pngunknown.c.o
+[ 92%] Linking C executable pngunknown
+[ 92%] Built target pngunknown
+[ 94%] Building C object CMakeFiles/pngimage.dir/contrib/libtests/pngimage.c.o
+[ 95%] Linking C executable pngimage
+[ 95%] Built target pngimage
+[ 97%] Building C object CMakeFiles/pngfix.dir/contrib/tools/pngfix.c.o
+[ 98%] Linking C executable pngfix
+[ 98%] Built target pngfix
 [100%] Linking C executable pngvalid
 [100%] Built target pngvalid

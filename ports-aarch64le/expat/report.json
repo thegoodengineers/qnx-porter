@@ -1,8 +1,8 @@
 {
   "library": "expat",
   "url": "https://github.com/libexpat/libexpat.git",
-  "version": "R_2_6_4",
-  "commit": "2691aff4304a6d7e053199c205620136481b9dd1",
+  "version": "R_2_10_0",
+  "commit": "a70841d9ffa64ddde29ab824ed6305035ebe4c47",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -10,17 +10,18 @@
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
   "rounds": 1,
-  "tests_passed": 2,
-  "tests_total": 2,
+  "tests_passed": 1,
+  "tests_total": 1,
   "tests_ran": true,
   "patches_kept": 0,
   "patches_by_rule": 0,
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 6.7,
+  "minutes": 7.1,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T13:09:52+00:00"
+  "finished": "2026-11-13T23:01:10+00:00"
 }

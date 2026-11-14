@@ -5,7 +5,7 @@ make[1]: Nothing to be done for 'check'.
 Making check in tests
 make  check-TESTS
 ============================================================================
-Testsuite summary for libmodbus 3.1.11
+Testsuite summary for libmodbus 3.2.0
 ============================================================================
 # TOTAL: 0
 # PASS:  0

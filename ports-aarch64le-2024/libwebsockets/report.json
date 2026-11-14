@@ -1,0 +1,45 @@
+{
+  "library": "libwebsockets",
+  "url": "https://github.com/warmcat/libwebsockets.git",
+  "version": "v4.3.3",
+  "commit": "4415e84c095857629863804e941b9e1c2e9347ef",
+  "build_system": "cmake",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "",
+  "build_result": "failed",
+  "rounds": 2,
+  "tests_passed": 0,
+  "tests_total": 0,
+  "tests_ran": false,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "no-werror",
+      "source": "rule",
+      "reason": "A warning that has no -W switch of its own (here: \"BYTE_ORDER\" redefined [-Werror]) is made an error by the project's -Werror. The only way to keep it a warning is -Wno-error; the warning is still printed in the build log.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/src/lib/plat/unix/./private-lib-plat-unix.h:67: error: \"BYTE_ORDER\" redefined [-Werror]",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-no-werror.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [
+    {
+      "kind": "undeclared",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/src/lib/plat/unix/./private-lib-plat-unix.h:141:24: error: 'TCPCTL_KEEPCNT' undeclared (first use in this function); did you mean 'TCPCTL_KEEPINIT'?",
+      "hint": ""
+    }
+  ],
+  "minutes": 0.8,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T14:25:22+00:00"
+}

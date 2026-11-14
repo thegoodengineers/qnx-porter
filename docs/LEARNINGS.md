@@ -214,6 +214,21 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
   - libjpeg-turbo registers 574 tests on aarch64 against 590 on x86_64;
   - nng 80/86 against 82/86.
 
+## 14 Nov 2026: aarch64 on QEMU at the newest release tags
+- [Verified] Same 61 libraries and tags as the x86_64 run 8, on the emulated aarch64 target: 58 of 61 built,
+  1546 of 1642 tests passed in 43 libraries (`results/runs/campaign-aarch64-3.log`; the 2024-tag results moved to
+  `ports-aarch64le-2024/`). The run started at 00:50 and its log was last written at 10:43 IST, with the machine
+  kept otherwise idle.
+- [Verified] The main-stack rule did not fire for cJSON on aarch64 (18/19): QNX's aarch64 malloc takes five frames
+  (`pthread_mutex_trylock`, `forksafe_mutex_trylock`, `arena_trylock`, `arena_get`, `malloc`), so a 12-frame
+  backtrace held only six `cJSON_Duplicate_rec` frames, under the rule's eight. gdb now prints 24 frames; the
+  cJSON rerun applied the rule and passed 19/19.
+- [Verified] aarch64 and x86_64 now differ in four libraries only: mbedtls 147/148 (the PBKDF2 suite was killed at
+  the 300 s per-test limit on the emulated CPU; 148/148 on x86_64), flac 6/10 against 7/10, libsrtp 9/12 against
+  8/12, libjpeg-turbo 646 tests registered against 662.
+- [Verified] After `wsl --shutdown`, the bridge the targets use is gone until `sudo scripts/qemu_target.sh net`
+  runs again; without it the target boots but never answers ssh.
+
 ## Still to do
 1. Offer the two test fixes upstream (json-c, libconfig): `printf("%s", NULL)` in their tests is undefined C.
 2. Runs with the language model on for the long tail (needs `QNX_PORTER_API_KEY` / `QNX_PORTER_MODEL`).

@@ -1,8 +1,8 @@
 {
   "library": "zlib",
   "url": "https://github.com/madler/zlib.git",
-  "version": "v1.3.1",
-  "commit": "51b7f2abdade71cd9bb0e7a373ef2610ec6f9daf",
+  "version": "v1.4",
+  "commit": "99623ef7097352da7993ba614161fd6a311e046e",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -10,8 +10,8 @@
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
   "rounds": 1,
-  "tests_passed": 2,
-  "tests_total": 2,
+  "tests_passed": 4,
+  "tests_total": 4,
   "tests_ran": true,
   "patches_kept": 0,
   "patches_by_rule": 0,
@@ -20,7 +20,57 @@
   "blocked_on": [],
   "minutes": 1.0,
   "note": "",
-  "tests_not_runnable": [],
+  "model_usage": null,
+  "tests_not_runnable": [
+    {
+      "name": "zlib_install",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_find_package_configure",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_find_package_build",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_find_package_test",
+      "needs": "ctest"
+    },
+    {
+      "name": "zlib_find_package_no_components_configure",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_find_package_wrong_components_configure",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_add_subdirectory_configure",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_add_subdirectory_build",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_add_subdirectory_test",
+      "needs": "ctest"
+    },
+    {
+      "name": "zlib_add_subdirectory_exclude_configure",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_add_subdirectory_exclude_build",
+      "needs": "cmake"
+    },
+    {
+      "name": "zlib_add_subdirectory_exclude_test",
+      "needs": "ctest"
+    }
+  ],
   "crashes": [],
-  "finished": "2026-11-12T13:25:48+00:00"
+  "finished": "2026-11-13T23:14:36+00:00"
 }

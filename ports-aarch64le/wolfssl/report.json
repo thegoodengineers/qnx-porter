@@ -1,51 +1,40 @@
 {
   "library": "wolfssl",
   "url": "https://github.com/wolfSSL/wolfssl.git",
-  "version": "v5.7.4-stable",
-  "commit": "bdd62314f00fca0e216bf8c963c8eeff6327e0cb",
+  "version": "v5.9.4-stable",
+  "commit": "3c5eead44904df64e6a5a1f4ebdce377d35a849a",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
-  "rounds": 3,
+  "rounds": 2,
   "tests_passed": 1,
   "tests_total": 1,
   "tests_ran": true,
-  "patches_kept": 2,
-  "patches_by_rule": 2,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
   "patches_by_model": 0,
   "patches": [
     {
       "number": 1,
-      "rule": "no-werror",
-      "source": "rule",
-      "reason": "Warning -Wstringop-overflow= is promoted to an error by the project's -Werror. Keep it a warning (still printed in the build log) instead of editing the library's code; QNX's headers and qcc raise warnings a glibc build does not.",
-      "error": "/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/src/src/tls.c:1078:50: error: writing 16 bytes into a region of size 0 [-Werror=stringop-overflow=]",
-      "files": [
-        "qnx-toolchain.cmake"
-      ],
-      "path": "patches/0001-no-werror.patch",
-      "kept": true
-    },
-    {
-      "number": 2,
       "rule": "link-libsocket",
       "source": "rule",
-      "reason": "`recv` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
-      "error": "/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/src/src/wolfio.c:1152:(.text+0x18): undefined reference to `recv'",
+      "reason": "`socket` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/src/wolfcrypt/src/wc_port.c:6187:(.text+0x21b0): undefined reference to `socket'",
       "files": [
         "qnx-toolchain.cmake"
       ],
-      "path": "patches/0002-link-libsocket.patch",
+      "path": "patches/0001-link-libsocket.patch",
       "kept": true
     }
   ],
   "blocked_on": [],
-  "minutes": 5.8,
+  "minutes": 7.1,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T13:50:19+00:00"
+  "finished": "2026-11-13T23:42:50+00:00"
 }

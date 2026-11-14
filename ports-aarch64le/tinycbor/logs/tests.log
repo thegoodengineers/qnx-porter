@@ -1,0 +1,4 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  tst_c90 (exit 0)
+
+1/1 tests passed on the QNX target

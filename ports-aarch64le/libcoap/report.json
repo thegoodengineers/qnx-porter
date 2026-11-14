@@ -1,8 +1,8 @@
 {
   "library": "libcoap",
   "url": "https://github.com/obgm/libcoap.git",
-  "version": "v4.3.5",
-  "commit": "7cf7465b784baded4de183290c547d582becfd28",
+  "version": "v4.3.5b",
+  "commit": "851533c3cf63d16984d370ce39d586ecb3694971",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -31,9 +31,10 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 1.7,
+  "minutes": 3.7,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T14:21:40+00:00"
+  "finished": "2026-11-14T00:40:18+00:00"
 }

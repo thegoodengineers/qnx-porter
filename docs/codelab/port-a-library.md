@@ -518,7 +518,7 @@ You should see (from
 ```
 
 The same test crashes the same way. In the aarch64 core the top frame is `__generic_strlen`, aarch64 libc's
-`strlen` ([`ports-aarch64le/json-c/logs/crashes.log`](https://github.com/thegoodengineers/qnx-porter/blob/main/ports-aarch64le/json-c/logs/crashes.log)).
+`strlen` ([`ports-aarch64le-2024/json-c/logs/crashes.log`](https://github.com/thegoodengineers/qnx-porter/blob/main/ports-aarch64le-2024/json-c/logs/crashes.log)).
 Our aarch64 port took 8.1 minutes, against 0.8 minutes on x86_64 under KVM (the `Time` rows of the two
 `REPORT.md` files).
 

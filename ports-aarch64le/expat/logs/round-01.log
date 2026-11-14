@@ -1,16 +1,10 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat -B /home/chirag/qnx-porter/ports-aarch64le/expat/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/expat/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/expat/work/qnx-run -DEXPAT_BUILD_DOCS=OFF
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat -B /home/chirag/qnx-porter/ports-aarch64le/expat/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/expat/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/expat/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/expat/work/qnx-run -DEXPAT_BUILD_DOCS=OFF -DEXPAT_DEV_URANDOM=ON
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
--- The CXX compiler identification is QCC 12.2.0
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
 -- Looking for dlfcn.h
 -- Looking for dlfcn.h - found
 -- Looking for fcntl.h
@@ -34,28 +28,36 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat -B /home
 -- Looking for unistd.h
 -- Looking for unistd.h - found
 -- Looking for getpagesize
--- Looking for getpagesize - found
+-- Looking for getpagesize - not found
 -- Looking for mmap
 -- Looking for mmap - found
 -- Looking for getrandom
 -- Looking for getrandom - not found
--- Looking for arc4random_buf
--- Looking for arc4random_buf - not found
--- Looking for arc4random
--- Looking for arc4random - not found
+-- Performing Test HAVE_ARC4RANDOM_BUF
+-- Performing Test HAVE_ARC4RANDOM_BUF - Failed
+-- Performing Test HAVE_ARC4RANDOM
+-- Performing Test HAVE_ARC4RANDOM - Failed
 -- Looking for 4 include files stdlib.h, ..., float.h
 -- Looking for 4 include files stdlib.h, ..., float.h - found
 -- Performing Test HAVE_OFF_T
 -- Performing Test HAVE_OFF_T - Success
+-- Performing Test HAVE_GETENTROPY
+-- Performing Test HAVE_GETENTROPY - Failed
 -- Performing Test HAVE_SYSCALL_GETRANDOM
 -- Performing Test HAVE_SYSCALL_GETRANDOM - Failed
--- Performing Test FLAG_NO_STRICT_ALIASING
--- Performing Test FLAG_NO_STRICT_ALIASING - Success
+-- Performing Test _FLAG_DETECTION_UNUSABLE
+-- Performing Test _FLAG_DETECTION_UNUSABLE - Failed
+-- Performing Test FLAG_WSTRICT_ALIASING
+-- Performing Test FLAG_WSTRICT_ALIASING - Success
+-- Performing Test FLAG_WIMPLICIT_FALLTHROUGH
+-- Performing Test FLAG_WIMPLICIT_FALLTHROUGH - Success
 -- Performing Test FLAG_VISIBILITY
 -- Performing Test FLAG_VISIBILITY - Success
 -- Looking for cos in m
 -- Looking for cos in m - found
 -- ===========================================================================
+-- 
+-- CMake version in use ......... 3.22.1
 -- 
 -- Configuration
 --   Generator .................. Unix Makefiles
@@ -75,19 +77,19 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat -B /home
 -- 
 --   Features
 --     // Advanced options, changes not advised
---     Attributes info .......... OFF
 --     Context bytes ............ 1024
 --     DTD support .............. ON
 --     General entities ......... ON
 --     Large size ............... OFF
---     Minimum size ............. OFF
 --     Namespace support ........ ON
 -- 
 --   Entropy sources
+--     arc4random ............... 
+--     arc4random_buf ........... 
+--     getentropy ............... 
 --     getrandom ................ 
 --     syscall SYS_getrandom .... 
---     libbsd ................... OFF
---     /dev/random .............. ON
+--     /dev/urandom ............. ON
 -- 
 -- Continue with
 --   make
@@ -105,171 +107,121 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/expat/work/build -j 2 -- -k
-[  3%] Building C object CMakeFiles/runtests.dir/tests/acc_tests.c.o
-[  3%] Building C object CMakeFiles/expat.dir/lib/xmlparse.c.o
-[  5%] Building C object CMakeFiles/runtests.dir/tests/alloc_tests.c.o
-[  7%] Building C object CMakeFiles/runtests.dir/tests/basic_tests.c.o
-[  9%] Building C object CMakeFiles/expat.dir/lib/xmlrole.c.o
-[ 11%] Building C object CMakeFiles/runtests.dir/tests/chardata.c.o
-[ 13%] Building C object CMakeFiles/runtests.dir/tests/common.c.o
-[ 15%] Building C object CMakeFiles/expat.dir/lib/xmltok.c.o
-[ 16%] Building C object CMakeFiles/runtests.dir/tests/dummy.c.o
-[ 18%] Building C object CMakeFiles/runtests.dir/tests/handlers.c.o
-[ 20%] Building C object CMakeFiles/runtests.dir/tests/memcheck.c.o
-[ 22%] Building C object CMakeFiles/runtests.dir/tests/minicheck.c.o
-[ 24%] Building C object CMakeFiles/runtests.dir/tests/misc_tests.c.o
-[ 26%] Building C object CMakeFiles/runtests.dir/tests/ns_tests.c.o
-[ 28%] Building C object CMakeFiles/runtests.dir/tests/nsalloc_tests.c.o
-[ 30%] Building C object CMakeFiles/runtests.dir/tests/runtests.c.o
-[ 32%] Building C object CMakeFiles/runtests.dir/tests/structdata.c.o
-[ 33%] Building C object CMakeFiles/runtests.dir/lib/xmlparse.c.o
-[ 35%] Linking C static library libexpat.a
-[ 35%] Built target expat
-[ 37%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/acc_tests_cxx.cpp.o
-[ 39%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/alloc_tests_cxx.cpp.o
-[ 41%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/basic_tests_cxx.cpp.o
-[ 43%] Building C object CMakeFiles/runtests.dir/lib/xmlrole.c.o
-[ 45%] Building C object CMakeFiles/runtests.dir/lib/xmltok.c.o
-[ 47%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/chardata_cxx.cpp.o
-[ 49%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/common_cxx.cpp.o
-[ 50%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/dummy_cxx.cpp.o
-[ 52%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/handlers_cxx.cpp.o
-[ 54%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/memcheck_cxx.cpp.o
-[ 56%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/minicheck_cxx.cpp.o
-[ 58%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/misc_tests_cxx.cpp.o
-[ 60%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/ns_tests_cxx.cpp.o
-[ 62%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/nsalloc_tests_cxx.cpp.o
-[ 64%] Linking C executable tests/runtests
-[ 64%] Built target runtests
-[ 66%] Building C object CMakeFiles/benchmark.dir/tests/benchmark/benchmark.c.o
-[ 67%] Linking C executable tests/benchmark/benchmark
-[ 69%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/runtests_cxx.cpp.o
-[ 69%] Built target benchmark
-[ 71%] Building C object CMakeFiles/xmlwf.dir/xmlwf/codepage.c.o
-[ 73%] Building CXX object CMakeFiles/runtests_cxx.dir/tests/structdata_cxx.cpp.o
-[ 75%] Building C object CMakeFiles/xmlwf.dir/xmlwf/readfilemap.c.o
-[ 77%] Building C object CMakeFiles/xmlwf.dir/xmlwf/xmlfile.c.o
-[ 79%] Building C object CMakeFiles/runtests_cxx.dir/lib/xmlparse.c.o
-[ 81%] Building C object CMakeFiles/xmlwf.dir/xmlwf/xmlwf.c.o
-[ 83%] Linking C executable xmlwf/xmlwf
-[ 83%] Built target xmlwf
-[ 84%] Building C object CMakeFiles/element_declarations.dir/examples/element_declarations.c.o
-[ 86%] Linking C executable examples/element_declarations
-[ 86%] Built target element_declarations
-[ 88%] Building C object CMakeFiles/elements.dir/examples/elements.c.o
-[ 90%] Linking C executable examples/elements
-[ 90%] Built target elements
-[ 92%] Building C object CMakeFiles/outline.dir/examples/outline.c.o
-[ 94%] Linking C executable examples/outline
-[ 94%] Built target outline
-[ 96%] Building C object CMakeFiles/runtests_cxx.dir/lib/xmlrole.c.o
-[ 98%] Building C object CMakeFiles/runtests_cxx.dir/lib/xmltok.c.o
-[100%] Linking CXX executable tests/runtests_cxx
-[100%] Built target runtests_cxx
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c: In function 'writeRandomBytes_dev_urandom':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:831:18: warning: implicit declaration of function 'open'; did you mean 'fopen'? [-Wimplicit-function-declaration]
-  831 |   const int fd = open("/dev/urandom", O_RDONLY);
-      |                  ^~~~
-      |                  fopen
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:840:38: warning: implicit declaration of function 'read'; did you mean 'fread'? [-Wimplicit-function-declaration]
-  840 |     const ssize_t bytesWrittenMore = read(fd, currentTarget, bytesToWrite);
-      |                                      ^~~~
-      |                                      fread
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:849:3: warning: implicit declaration of function 'close'; did you mean 'fclose'? [-Wimplicit-function-declaration]
-  849 |   close(fd);
-      |   ^~~~~
-      |   fclose
+[  2%] Building C object CMakeFiles/runtests.dir/tests/acc_tests.c.o
+[  4%] Building C object CMakeFiles/expat.dir/lib/xcs.c.o
+[  6%] Building C object CMakeFiles/expat.dir/lib/xmlparse.c.o
+[  9%] Building C object CMakeFiles/runtests.dir/tests/alloc_tests.c.o
+[ 11%] Building C object CMakeFiles/runtests.dir/tests/basic_tests.c.o
+[ 13%] Building C object CMakeFiles/runtests.dir/tests/chardata.c.o
+[ 15%] Building C object CMakeFiles/expat.dir/lib/xmlrole.c.o
+[ 18%] Building C object CMakeFiles/runtests.dir/tests/common.c.o
+[ 20%] Building C object CMakeFiles/runtests.dir/tests/dummy.c.o
+[ 22%] Building C object CMakeFiles/runtests.dir/tests/handlers.c.o
+[ 25%] Building C object CMakeFiles/expat.dir/lib/xmltok.c.o
+[ 27%] Building C object CMakeFiles/runtests.dir/tests/hash_tests.c.o
+[ 29%] Building C object CMakeFiles/runtests.dir/tests/entities_tests.c.o
+[ 31%] Building C object CMakeFiles/runtests.dir/tests/memcheck.c.o
+[ 34%] Building C object CMakeFiles/runtests.dir/tests/minicheck.c.o
+[ 36%] Building C object CMakeFiles/runtests.dir/tests/misc_tests.c.o
+[ 38%] Building C object CMakeFiles/runtests.dir/tests/ns_tests.c.o
+[ 40%] Building C object CMakeFiles/runtests.dir/tests/nsalloc_tests.c.o
+[ 43%] Building C object CMakeFiles/runtests.dir/tests/props_tests.c.o
+[ 45%] Building C object CMakeFiles/runtests.dir/tests/runtests.c.o
+[ 47%] Building C object CMakeFiles/runtests.dir/tests/structdata.c.o
+[ 50%] Building C object CMakeFiles/runtests.dir/tests/xcs_tests.c.o
+[ 52%] Building C object CMakeFiles/runtests.dir/lib/xcs.c.o
+[ 54%] Building C object CMakeFiles/runtests.dir/lib/xmlparse.c.o
+[ 56%] Building C object CMakeFiles/expat.dir/lib/random_dev_urandom.c.o
+[ 59%] Linking C static library libexpat.a
+[ 59%] Built target expat
+[ 61%] Building C object CMakeFiles/runtests.dir/lib/xmlrole.c.o
+[ 63%] Building C object CMakeFiles/runtests.dir/lib/xmltok.c.o
+[ 65%] Building C object CMakeFiles/runtests.dir/lib/random_dev_urandom.c.o
+[ 68%] Building C object CMakeFiles/xmlwf.dir/lib/xcs.c.o
+[ 70%] Building C object CMakeFiles/xmlwf.dir/xmlwf/codepage.c.o
+[ 72%] Building C object CMakeFiles/xmlwf.dir/xmlwf/readfilemap.c.o
+[ 75%] Building C object CMakeFiles/xmlwf.dir/xmlwf/xmlfile.c.o
+[ 77%] Linking C executable tests/runtests
+[ 79%] Building C object CMakeFiles/xmlwf.dir/xmlwf/xmlwf.c.o
+[ 79%] Built target runtests
+[ 81%] Building C object CMakeFiles/element_declarations.dir/examples/element_declarations.c.o
+[ 84%] Linking C executable examples/element_declarations
+[ 84%] Built target element_declarations
+[ 86%] Building C object CMakeFiles/elements.dir/examples/elements.c.o
+[ 88%] Linking C executable examples/elements
+[ 88%] Built target elements
+[ 90%] Building C object CMakeFiles/outline.dir/examples/outline.c.o
+[ 93%] Linking C executable examples/outline
+[ 95%] Linking C executable xmlwf/xmlwf
+[ 95%] Built target outline
+[ 97%] Building C object CMakeFiles/benchmark.dir/tests/benchmark/benchmark.c.o
+[ 97%] Built target xmlwf
+[100%] Linking C executable tests/benchmark/benchmark
+[100%] Built target benchmark
 /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c: In function 'generate_hash_secret_salt':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:981:37: warning: implicit declaration of function 'getpid' [-Wimplicit-function-declaration]
-  981 |   entropy = gather_time_entropy() ^ getpid();
-      |                                     ^~~~~~
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c: In function 'writeRandomBytes_dev_urandom':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:831:18: warning: implicit declaration of function 'open'; did you mean 'fopen'? [-Wimplicit-function-declaration]
-  831 |   const int fd = open("/dev/urandom", O_RDONLY);
-      |                  ^~~~
-      |                  fopen
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:840:38: warning: implicit declaration of function 'read'; did you mean 'fread'? [-Wimplicit-function-declaration]
-  840 |     const ssize_t bytesWrittenMore = read(fd, currentTarget, bytesToWrite);
-      |                                      ^~~~
-      |                                      fread
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:849:3: warning: implicit declaration of function 'close'; did you mean 'fclose'? [-Wimplicit-function-declaration]
-  849 |   close(fd);
-      |   ^~~~~
-      |   fclose
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:1179:19: warning: implicit declaration of function 'getpid' [-Wimplicit-function-declaration]
+ 1179 |   entropy.k[1] ^= getpid();
+      |                   ^~~~~~
 /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c: In function 'generate_hash_secret_salt':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:981:37: warning: implicit declaration of function 'getpid' [-Wimplicit-function-declaration]
-  981 |   entropy = gather_time_entropy() ^ getpid();
-      |                                     ^~~~~~
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/tests/benchmark/benchmark.c: In function 'main':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/tests/benchmark/benchmark.c:86:7: warning: implicit declaration of function 'stat' [-Wimplicit-function-declaration]
-   86 |   if (stat(argv[j + 1], &fileAttr) != 0) {
-      |       ^~~~
-cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-In file included from /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:82:
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:1179:19: warning: implicit declaration of function 'getpid' [-Wimplicit-function-declaration]
+ 1179 |   entropy.k[1] ^= getpid();
+      |                   ^~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/random_dev_urandom.c: In function 'writeRandomBytes_dev_urandom':
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/random_dev_urandom.c:52:18: warning: implicit declaration of function 'open' [-Wimplicit-function-declaration]
+   52 |   const int fd = open("/dev/urandom", O_RDONLY | O_CLOEXEC);
+      |                  ^~~~
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/random_dev_urandom.c:63:38: warning: implicit declaration of function 'read' [-Wimplicit-function-declaration]
+   63 |     const ssize_t bytesWrittenMore = read(fd, currentTarget, bytesToWrite);
+      |                                      ^~~~
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/random_dev_urandom.c:72:3: warning: implicit declaration of function 'close' [-Wimplicit-function-declaration]
+   72 |   close(fd);
+      |   ^~~~~
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/random_dev_urandom.c: In function 'writeRandomBytes_dev_urandom':
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/random_dev_urandom.c:52:18: warning: implicit declaration of function 'open' [-Wimplicit-function-declaration]
+   52 |   const int fd = open("/dev/urandom", O_RDONLY | O_CLOEXEC);
+      |                  ^~~~
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/random_dev_urandom.c:63:38: warning: implicit declaration of function 'read' [-Wimplicit-function-declaration]
+   63 |     const ssize_t bytesWrittenMore = read(fd, currentTarget, bytesToWrite);
+      |                                      ^~~~
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/random_dev_urandom.c:72:3: warning: implicit declaration of function 'close' [-Wimplicit-function-declaration]
+   72 |   close(fd);
+      |   ^~~~~
+In file included from /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:85:
 /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c: In function 'filemap':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmltchar.h:73:17: warning: implicit declaration of function 'open'; did you mean 'fopen'? [-Wimplicit-function-declaration]
-   73 | #  define topen open
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmltchar.h:75:17: warning: implicit declaration of function 'open'; did you mean 'fopen'? [-Wimplicit-function-declaration]
+   75 | #  define topen open
       |                 ^~~~
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:95:8: note: in expansion of macro 'topen'
-   95 |   fd = topen(name, O_RDONLY | O_BINARY);
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:98:8: note: in expansion of macro 'topen'
+   98 |   fd = topen(name, O_RDONLY | O_BINARY);
       |        ^~~~~
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:100:7: warning: implicit declaration of function 'fstat' [-Wimplicit-function-declaration]
-  100 |   if (fstat(fd, &sb) < 0) {
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:103:7: warning: implicit declaration of function 'fstat' [-Wimplicit-function-declaration]
+  103 |   if (fstat(fd, &sb) < 0) {
       |       ^~~~~
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:102:5: warning: implicit declaration of function 'close'; did you mean 'fclose'? [-Wimplicit-function-declaration]
-  102 |     close(fd);
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:105:5: warning: implicit declaration of function 'close'; did you mean 'fclose'? [-Wimplicit-function-declaration]
+  105 |     close(fd);
       |     ^~~~~
       |     fclose
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:59:22: warning: implicit declaration of function 'read'; did you mean 'fread'? [-Wimplicit-function-declaration]
-   59 | #  define EXPAT_read read
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:62:22: warning: implicit declaration of function 'read'; did you mean 'fread'? [-Wimplicit-function-declaration]
+   62 | #  define EXPAT_read read
       |                      ^~~~
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:129:7: note: in expansion of macro 'EXPAT_read'
-  129 |   n = EXPAT_read(fd, p, (EXPAT_read_req_t)nbytes);
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/readfilemap.c:132:7: note: in expansion of macro 'EXPAT_read'
+  132 |   n = EXPAT_read(fd, p, (EXPAT_read_req_t)nbytes);
       |       ^~~~~~~~~~
-In file included from /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:56:
+In file included from /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:62:
 /home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c: In function 'processStream':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmltchar.h:73:17: warning: implicit declaration of function 'open'; did you mean 'fopen'? [-Wimplicit-function-declaration]
-   73 | #  define topen open
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmltchar.h:75:17: warning: implicit declaration of function 'open'; did you mean 'fopen'? [-Wimplicit-function-declaration]
+   75 | #  define topen open
       |                 ^~~~
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:188:10: note: in expansion of macro 'topen'
-  188 |     fd = topen(filename, O_BINARY | O_RDONLY);
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:213:10: note: in expansion of macro 'topen'
+  213 |     fd = topen(filename, O_BINARY | O_RDONLY);
       |          ^~~~~
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:199:9: warning: implicit declaration of function 'close'; did you mean 'fclose'? [-Wimplicit-function-declaration]
-  199 |         close(fd);
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:224:9: warning: implicit declaration of function 'close'; did you mean 'fclose'? [-Wimplicit-function-declaration]
+  224 |         close(fd);
       |         ^~~~~
       |         fclose
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:204:13: warning: implicit declaration of function 'read'; did you mean 'fread'? [-Wimplicit-function-declaration]
-  204 |     nread = read(fd, buf, g_read_size_bytes);
-      |             ^~~~
-      |             fread
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c: In function 'writeRandomBytes_dev_urandom':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:831:18: warning: implicit declaration of function 'open'; did you mean 'fopen'? [-Wimplicit-function-declaration]
-  831 |   const int fd = open("/dev/urandom", O_RDONLY);
-      |                  ^~~~
-      |                  fopen
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:840:38: warning: implicit declaration of function 'read'; did you mean 'fread'? [-Wimplicit-function-declaration]
-  840 |     const ssize_t bytesWrittenMore = read(fd, currentTarget, bytesToWrite);
-      |                                      ^~~~
-      |                                      fread
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:849:3: warning: implicit declaration of function 'close'; did you mean 'fclose'? [-Wimplicit-function-declaration]
-  849 |   close(fd);
-      |   ^~~~~
-      |   fclose
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c: In function 'generate_hash_secret_salt':
-/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/lib/xmlparse.c:981:37: warning: implicit declaration of function 'getpid' [-Wimplicit-function-declaration]
-  981 |   entropy = gather_time_entropy() ^ getpid();
-      |                                     ^~~~~~
-cc: warning - lang-c++ is deprecated
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:75:22: warning: implicit declaration of function 'read'; did you mean 'fread'? [-Wimplicit-function-declaration]
+   75 | #  define EXPAT_read read
+      |                      ^~~~
+/home/chirag/qnx-porter/ports-aarch64le/expat/work/src/expat/xmlwf/xmlfile.c:229:13: note: in expansion of macro 'EXPAT_read'
+  229 |     nread = EXPAT_read(fd, buf, (EXPAT_read_req_t)g_read_size_bytes);
+      |             ^~~~~~~~~~

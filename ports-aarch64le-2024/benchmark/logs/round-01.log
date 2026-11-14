@@ -1,0 +1,151 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src -B /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/qnx-run -DBENCHMARK_ENABLE_TESTING=OFF
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Git: /usr/bin/git (found version "2.34.1") 
+-- Google Benchmark version: v1.9.1, normalized to 1.9.1
+-- Looking for shm_open in rt
+-- Looking for shm_open in rt - found
+-- Performing Test HAVE_CXX_FLAG_WALL
+-- Performing Test HAVE_CXX_FLAG_WALL - Success
+-- Performing Test HAVE_CXX_FLAG_WEXTRA
+-- Performing Test HAVE_CXX_FLAG_WEXTRA - Success
+-- Performing Test HAVE_CXX_FLAG_WSHADOW
+-- Performing Test HAVE_CXX_FLAG_WSHADOW - Success
+-- Performing Test HAVE_CXX_FLAG_WFLOAT_EQUAL
+-- Performing Test HAVE_CXX_FLAG_WFLOAT_EQUAL - Success
+-- Performing Test HAVE_CXX_FLAG_WOLD_STYLE_CAST
+-- Performing Test HAVE_CXX_FLAG_WOLD_STYLE_CAST - Success
+-- Performing Test HAVE_CXX_FLAG_WCONVERSION
+-- Performing Test HAVE_CXX_FLAG_WCONVERSION - Success
+-- Performing Test HAVE_CXX_FLAG_WERROR
+-- Performing Test HAVE_CXX_FLAG_WERROR - Success
+-- Performing Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE
+-- Performing Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE - Success
+-- Performing Test HAVE_CXX_FLAG_PEDANTIC
+-- Performing Test HAVE_CXX_FLAG_PEDANTIC - Success
+-- Performing Test HAVE_CXX_FLAG_PEDANTIC_ERRORS
+-- Performing Test HAVE_CXX_FLAG_PEDANTIC_ERRORS - Success
+-- Performing Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32
+-- Performing Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32 - Failed
+-- Performing Test HAVE_CXX_FLAG_FSTRICT_ALIASING
+-- Performing Test HAVE_CXX_FLAG_FSTRICT_ALIASING - Success
+-- Performing Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS
+-- Performing Test HAVE_CXX_FLAG_WNO_DEPRECATED_DECLARATIONS - Success
+-- Performing Test HAVE_CXX_FLAG_WNO_DEPRECATED
+-- Performing Test HAVE_CXX_FLAG_WNO_DEPRECATED - Success
+-- Performing Test HAVE_CXX_FLAG_WSTRICT_ALIASING
+-- Performing Test HAVE_CXX_FLAG_WSTRICT_ALIASING - Success
+-- Performing Test HAVE_CXX_FLAG_WD654
+-- Performing Test HAVE_CXX_FLAG_WD654 - Failed
+-- Performing Test HAVE_CXX_FLAG_WTHREAD_SAFETY
+-- Performing Test HAVE_CXX_FLAG_WTHREAD_SAFETY - Failed
+-- Performing Test HAVE_CXX_FLAG_COVERAGE
+-- Performing Test HAVE_CXX_FLAG_COVERAGE - Failed
+-- Cross-compiling to test HAVE_STD_REGEX
+-- Performing Test HAVE_STD_REGEX -- success
+-- Cross-compiling to test HAVE_GNU_POSIX_REGEX
+-- Performing Test HAVE_GNU_POSIX_REGEX -- failed to compile
+-- Cross-compiling to test HAVE_POSIX_REGEX
+-- Performing Test HAVE_POSIX_REGEX -- failed to compile
+-- Cross-compiling to test HAVE_STEADY_CLOCK
+-- Performing Test HAVE_STEADY_CLOCK -- success
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Check if compiler accepts -pthread
+-- Check if compiler accepts -pthread - yes
+-- Found Threads: TRUE  
+-- Cross-compiling to test HAVE_PTHREAD_AFFINITY
+-- Performing Test HAVE_PTHREAD_AFFINITY -- failed to compile
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/build
+CMake Warning at cmake/CXXFeatureCheck.cmake:49 (message):
+  If you see build failures due to cross compilation, try setting
+  HAVE_STD_REGEX to 0
+Call Stack (most recent call first):
+  CMakeLists.txt:312 (cxx_feature_check)
+
+
+CMake Warning at cmake/CXXFeatureCheck.cmake:49 (message):
+  If you see build failures due to cross compilation, try setting
+  HAVE_STEADY_CLOCK to 0
+Call Stack (most recent call first):
+  CMakeLists.txt:323 (cxx_feature_check)
+
+
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/build -j 2 -- -k
+[  4%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o
+[  9%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark.cc.o
+[ 13%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_name.cc.o
+[ 18%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_register.cc.o
+[ 22%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o
+[ 27%] Building CXX object src/CMakeFiles/benchmark.dir/check.cc.o
+[ 31%] Building CXX object src/CMakeFiles/benchmark.dir/colorprint.cc.o
+[ 36%] Building CXX object src/CMakeFiles/benchmark.dir/commandlineflags.cc.o
+[ 40%] Building CXX object src/CMakeFiles/benchmark.dir/complexity.cc.o
+[ 45%] Building CXX object src/CMakeFiles/benchmark.dir/console_reporter.cc.o
+[ 50%] Building CXX object src/CMakeFiles/benchmark.dir/counter.cc.o
+[ 54%] Building CXX object src/CMakeFiles/benchmark.dir/csv_reporter.cc.o
+[ 59%] Building CXX object src/CMakeFiles/benchmark.dir/json_reporter.cc.o
+[ 63%] Building CXX object src/CMakeFiles/benchmark.dir/perf_counters.cc.o
+[ 68%] Building CXX object src/CMakeFiles/benchmark.dir/reporter.cc.o
+[ 72%] Building CXX object src/CMakeFiles/benchmark.dir/statistics.cc.o
+[ 77%] Building CXX object src/CMakeFiles/benchmark.dir/string_util.cc.o
+[ 81%] Building CXX object src/CMakeFiles/benchmark.dir/sysinfo.cc.o
+[ 86%] Building CXX object src/CMakeFiles/benchmark.dir/timers.cc.o
+[ 90%] Linking CXX static library libbenchmark.a
+[ 90%] Built target benchmark
+[ 95%] Building CXX object src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o
+[100%] Linking CXX static library libbenchmark_main.a
+[100%] Built target benchmark_main
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated

@@ -1,8 +1,8 @@
 {
   "library": "cglm",
   "url": "https://github.com/recp/cglm.git",
-  "version": "v0.9.4",
-  "commit": "1796cc5ce298235b615dc7a4750b8c3ba56a05dd",
+  "version": "v0.9.7",
+  "commit": "888aca08d5bdf38e873ec23d6cac42d7f23a669c",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -18,9 +18,10 @@
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 2.6,
+  "minutes": 2.7,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-13T05:56:19+00:00"
+  "finished": "2026-11-14T04:34:15+00:00"
 }

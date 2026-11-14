@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libcoap/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libcoap/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libcoap/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libcoap/work/qnx-run -DENABLE_DTLS=OFF -DENABLE_DOCS=OFF
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libcoap/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libcoap/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libcoap/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libcoap/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libcoap/work/qnx-run -DENABLE_DTLS=OFF -DENABLE_DOCS=OFF
 -- The CXX compiler identification is QCC 12.2.0
 -- The C compiler identification is QCC 12.2.0
 -- Detecting CXX compiler ABI info
@@ -120,7 +120,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libcoap/work/src -B /home/chi
 -- PACKAGE VERSION..................4.3.5
 -- PACKAGE SOURCE...................5c01e27-dirty
 -- LIBRARY API VERSION..............3
--- LIBRARY ABI VERSION..............3.2.0
+-- LIBRARY ABI VERSION..............3.2.2
 -- ENABLE_DTLS:.....................OFF
 -- ENABLE_TCP:......................ON
 -- ENABLE_IPV4:.....................ON
@@ -136,6 +136,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libcoap/work/src -B /home/chi
 -- ENABLE_THREAD_RECURSIVE_CHECK....OFF
 -- ENABLE_DOCS:.....................OFF
 -- ENABLE_EXAMPLES:.................ON
+-- ENABLE_SANITIZER:................OFF
 -- DTLS_BACKEND:....................default
 -- WITH_GNUTLS:.....................OFF
 -- WITH_TINYDTLS:...................OFF

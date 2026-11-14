@@ -1,0 +1,18 @@
+Subject: [qnx-porter 0001] qnx-source
+Source: deterministic rule
+Reason: `PATH_MAX` is in <limits.h>, which src/cmocka.c already includes, so a strict feature-test macro hid it. -D_QNX_SOURCE exposes POSIX and QNX extensions in QNX's headers, as _GNU_SOURCE does on glibc.
+Error: /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/src/cmocka.c:4346:30: error: 'PATH_MAX' undeclared (first use in this function)
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -13,8 +13,8 @@
+ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+-set(CMAKE_C_FLAGS_INIT "-g ")
+-set(CMAKE_CXX_FLAGS_INIT "-g ")
++set(CMAKE_C_FLAGS_INIT "-g -D_QNX_SOURCE")
++set(CMAKE_CXX_FLAGS_INIT "-g -D_QNX_SOURCE")
+ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/stubs")
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none

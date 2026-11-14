@@ -1,8 +1,8 @@
 {
   "library": "tinyxml2",
   "url": "https://github.com/leethomason/tinyxml2.git",
-  "version": "10.0.0",
-  "commit": "321ea883b7190d4e85cae5512a12e5eaa8f8731f",
+  "version": "11.0.0",
+  "commit": "9148bdf719e997d1f474be6bcc7943881046dba1",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -33,7 +33,8 @@
   "blocked_on": [],
   "minutes": 1.9,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T13:03:08+00:00"
+  "finished": "2026-11-13T22:54:02+00:00"
 }

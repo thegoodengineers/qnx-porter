@@ -31,13 +31,13 @@ on a QNX 8.0 target.
   through QNX's `on -u`, and QNX's `timeout` caps each test.
 - **Results** (README headline, written by `scripts/ports_csv.py`):
 
-  > aarch64le: 57 of 61 libraries built for QNX 8.0; 1314 of 1350 of their own tests passed on a QNX 8.0 target
-  > (33 libraries with tests that ran); 27 patches, 27 by rules (29 of the 31 libraries oss.qnx.com does not
+  > aarch64le: 58 of 61 libraries built for QNX 8.0; 1546 of 1642 of their own tests passed on a QNX 8.0 target
+  > (43 libraries with tests that ran); 32 patches, 32 by rules (29 of the 31 libraries oss.qnx.com does not
   > list built); x86_64: 58 of 61 libraries built for QNX 8.0; 1563 of 1658 of their own tests passed on a QNX
   > 8.0 target (43 libraries with tests that ran); 31 patches, 31 by rules (29 of the 31 libraries oss.qnx.com
   > does not list built).
 
-  x86_64 is at the newest release tag of each library, aarch64 at the 2024 tags. For example, on x86_64
+  Both architectures are at the newest release tag of each library. For example, on x86_64
   mbedtls 4.2.0 passed 148/148 of its tests on QNX and json-c 0.19 28/28 (`results/ports.csv`).
 - **Crash triage from QNX core dumps.** When a test crashes on the target, the core is copied back and read
   with the SDP's own gdb. A `printf("%s", NULL)`, which glibc prints as `(null)` and QNX's libc faults on, is

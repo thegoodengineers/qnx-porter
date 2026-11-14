@@ -1,14 +1,14 @@
-# libpng v1.6.44 on QNX 8.0 (aarch64le)
+# libpng v1.6.59 on QNX 8.0 (aarch64le)
 
 | | |
 |---|---|
-| Upstream | https://github.com/pnggroup/libpng.git at `v1.6.44` (`f5e92d76973a`) |
+| Upstream | https://github.com/pnggroup/libpng.git at `v1.6.59` (`cd952f49f95b`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 2 round(s) |
 | Library's own tests | 0/0 passed on `QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 4.3 min |
+| Time | 2.5 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

@@ -1,8 +1,8 @@
-# tinyxml2 10.0.0 on QNX 8.0 (aarch64le)
+# tinyxml2 11.0.0 on QNX 8.0 (aarch64le)
 
 | | |
 |---|---|
-| Upstream | https://github.com/leethomason/tinyxml2.git at `10.0.0` (`321ea883b719`) |
+| Upstream | https://github.com/leethomason/tinyxml2.git at `11.0.0` (`9148bdf719e9`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

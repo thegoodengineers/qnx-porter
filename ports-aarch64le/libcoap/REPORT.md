@@ -1,14 +1,14 @@
-# libcoap v4.3.5 on QNX 8.0 (aarch64le)
+# libcoap v4.3.5b on QNX 8.0 (aarch64le)
 
 | | |
 |---|---|
-| Upstream | https://github.com/obgm/libcoap.git at `v4.3.5` (`7cf7465b784b`) |
+| Upstream | https://github.com/obgm/libcoap.git at `v4.3.5b` (`851533c3cf63`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 2 round(s) |
 | Library's own tests | 0/0 passed on `QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 1.7 min |
+| Time | 3.7 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

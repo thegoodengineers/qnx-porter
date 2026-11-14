@@ -1,0 +1,29 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-run
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build -j 2 -- -k
+Consolidate compiler generated dependencies of target config
+Consolidate compiler generated dependencies of target config++
+[ 24%] Built target config
+Consolidate compiler generated dependencies of target libtinytest
+[ 29%] Built target libtinytest
+Consolidate compiler generated dependencies of target c_example1
+[ 35%] Built target c_example1
+[ 62%] Built target config++
+Consolidate compiler generated dependencies of target c_example2
+Consolidate compiler generated dependencies of target c_example3
+[ 67%] Built target c_example2
+[ 72%] Built target c_example3
+Consolidate compiler generated dependencies of target c++_example1
+Consolidate compiler generated dependencies of target c++_example2
+[ 78%] Built target c++_example1
+[ 83%] Built target c++_example2
+Consolidate compiler generated dependencies of target c++_example4
+Consolidate compiler generated dependencies of target c++_example3
+[ 89%] Built target c++_example4
+[ 94%] Built target c++_example3
+Consolidate compiler generated dependencies of target libconfig_tests
+[ 97%] Building C object tests/CMakeFiles/libconfig_tests.dir/tests.c.o
+[100%] Linking C executable ../out/libconfig_tests
+[100%] Built target libconfig_tests

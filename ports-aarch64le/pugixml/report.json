@@ -1,8 +1,8 @@
 {
   "library": "pugixml",
   "url": "https://github.com/zeux/pugixml.git",
-  "version": "v1.14",
-  "commit": "db78afc2b7d8f043b4bc6b185635d949ea2ed2a8",
+  "version": "v1.16",
+  "commit": "c8033ce9d039e7f9d134877c363397b3cfe20816",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -18,9 +18,10 @@
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 2.0,
+  "minutes": 1.9,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T13:01:11+00:00"
+  "finished": "2026-11-13T22:52:04+00:00"
 }

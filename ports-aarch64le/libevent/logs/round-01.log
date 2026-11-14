@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/qnx-run -DEVENT__DISABLE_OPENSSL=ON -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_BENCHMARK=ON
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/qnx-run -DEVENT__DISABLE_OPENSSL=ON -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_BENCHMARK=ON
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -299,7 +299,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src -B /home/ch
 -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3") 
 -- Generating regress tests...
 -- 
---         ---( Libevent 2.1.12-stable )---
+--         ---( Libevent 2.1.13-stable )---
 -- 
 -- Available event backends: SELECT;POLL
 -- CMAKE_BINARY_DIR:         /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build
@@ -333,8 +333,8 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -j 2 -- -k
+[  1%] Building C object CMakeFiles/event_core_shared.dir/buffer.c.o
 [  2%] Building C object CMakeFiles/event_core_static.dir/buffer.c.o
-[  2%] Building C object CMakeFiles/event_core_shared.dir/buffer.c.o
 [  3%] Building C object CMakeFiles/event_core_shared.dir/bufferevent.c.o
 [  3%] Building C object CMakeFiles/event_core_static.dir/bufferevent.c.o
 [  3%] Building C object CMakeFiles/event_core_shared.dir/bufferevent_filter.c.o
@@ -355,7 +355,7 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -j 2
 [ 13%] Building C object CMakeFiles/event_core_shared.dir/evutil_time.c.o
 [ 14%] Building C object CMakeFiles/event_core_shared.dir/listener.c.o
 [ 15%] Building C object CMakeFiles/event_core_static.dir/evthread.c.o
-[ 16%] Building C object CMakeFiles/event_core_static.dir/evutil.c.o
+[ 17%] Building C object CMakeFiles/event_core_static.dir/evutil.c.o
 [ 17%] Building C object CMakeFiles/event_core_shared.dir/log.c.o
 [ 17%] Building C object CMakeFiles/event_core_shared.dir/signal.c.o
 [ 18%] Building C object CMakeFiles/event_core_shared.dir/strlcpy.c.o
@@ -365,7 +365,7 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -j 2
 [ 20%] Building C object CMakeFiles/event_core_static.dir/evutil_time.c.o
 [ 21%] Building C object CMakeFiles/event_core_static.dir/listener.c.o
 [ 21%] Building C object CMakeFiles/event_core_static.dir/log.c.o
-[ 23%] Building C object CMakeFiles/event_core_static.dir/signal.c.o
+[ 22%] Building C object CMakeFiles/event_core_static.dir/signal.c.o
 [ 23%] Building C object CMakeFiles/event_core_static.dir/strlcpy.c.o
 [ 23%] Building C object CMakeFiles/event_core_static.dir/select.c.o
 [ 24%] Building C object CMakeFiles/event_core_static.dir/poll.c.o

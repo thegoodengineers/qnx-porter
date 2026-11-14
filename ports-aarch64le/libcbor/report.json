@@ -1,8 +1,8 @@
 {
   "library": "libcbor",
   "url": "https://github.com/PJK/libcbor.git",
-  "version": "v0.11.0",
-  "commit": "170bee2b82cdb7b2ed25af301f62cb6efdd40ec1",
+  "version": "v0.14.0",
+  "commit": "6730c20ab487c0b4dc5fb3fea918937085355bac",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -10,17 +10,18 @@
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
   "rounds": 1,
-  "tests_passed": 0,
-  "tests_total": 0,
+  "tests_passed": 28,
+  "tests_total": 28,
   "tests_ran": true,
   "patches_kept": 0,
   "patches_by_rule": 0,
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 1.0,
+  "minutes": 2.7,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T11:51:08+00:00"
+  "finished": "2026-11-13T19:32:48+00:00"
 }

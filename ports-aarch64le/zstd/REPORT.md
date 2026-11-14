@@ -1,14 +1,14 @@
-# zstd v1.5.6 on QNX 8.0 (aarch64le)
+# zstd v1.5.7 on QNX 8.0 (aarch64le)
 
 | | |
 |---|---|
-| Upstream | https://github.com/facebook/zstd.git at `v1.5.6` (`794ea1b0afca`) |
+| Upstream | https://github.com/facebook/zstd.git at `v1.5.7` (`f8745da6ff1a`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |
 | Library's own tests | 1/4 passed on `QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le` |
 | Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 12.4 min |
+| Time | 12.9 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

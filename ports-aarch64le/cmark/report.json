@@ -1,8 +1,8 @@
 {
   "library": "cmark",
   "url": "https://github.com/commonmark/cmark.git",
-  "version": "0.31.1",
-  "commit": "bb3678d7a73cb02d35c8876ecd097072636200a8",
+  "version": "0.31.2",
+  "commit": "eec0eeba6d31189fd828314576494566d539b1e3",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -18,8 +18,9 @@
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 1.0,
+  "minutes": 0.9,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [
     {
       "name": "html_normalization",
@@ -39,5 +40,5 @@
     }
   ],
   "crashes": [],
-  "finished": "2026-11-12T13:24:47+00:00"
+  "finished": "2026-11-13T23:13:37+00:00"
 }

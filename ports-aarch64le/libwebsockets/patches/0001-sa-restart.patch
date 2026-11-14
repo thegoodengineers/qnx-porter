@@ -1,0 +1,18 @@
+Subject: [qnx-porter 0001] sa-restart
+Source: deterministic rule
+Reason: QNX 8.0's <signal.h> lists SA_RESTART as not supported yet. Defining it as 0 lets the code build; system calls interrupted by a signal then return EINTR instead of restarting, which the library's tests on QNX show it handles or not.
+Error: /home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/src/lib/core-net/stub.c:723:31: error: 'SA_RESTART' undeclared (first use in this function); did you mean 'ERESTART'?
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -13,8 +13,8 @@
+ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+-set(CMAKE_C_FLAGS_INIT "-g ")
+-set(CMAKE_CXX_FLAGS_INIT "-g ")
++set(CMAKE_C_FLAGS_INIT "-g -DSA_RESTART=0")
++set(CMAKE_CXX_FLAGS_INIT "-g -DSA_RESTART=0")
+ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/stubs")
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/libwebsockets/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none

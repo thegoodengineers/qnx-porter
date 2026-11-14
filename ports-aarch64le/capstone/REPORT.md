@@ -1,14 +1,14 @@
-# capstone 5.0.3 on QNX 8.0 (aarch64le)
+# capstone 5.0.9 on QNX 8.0 (aarch64le)
 
 | | |
 |---|---|
-| Upstream | https://github.com/capstone-engine/capstone.git at `5.0.3` (`5cca00533dad`) |
+| Upstream | https://github.com/capstone-engine/capstone.git at `5.0.9` (`022575848782`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |
 | Library's own tests | 24/24 passed on `QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le` |
 | Patches kept | 1 (1 by rule, 0 by model) |
-| Time | 12.0 min |
+| Time | 16.6 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

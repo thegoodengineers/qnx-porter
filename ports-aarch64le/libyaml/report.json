@@ -18,9 +18,10 @@
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 1.0,
+  "minutes": 0.9,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T12:58:26+00:00"
+  "finished": "2026-11-13T22:47:40+00:00"
 }

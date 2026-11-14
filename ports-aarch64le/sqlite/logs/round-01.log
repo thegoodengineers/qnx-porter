@@ -1,173 +1,149 @@
 $ env -C /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/build /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/configure --host=aarch64-unknown-nto-qnx8.0.0 --disable-shared CC=/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc CXX=/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-g++ AR=/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ar RANLIB=/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ranlib CFLAGS=-O2 -g CXXFLAGS=-O2 -g LDFLAGS=-L/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/stubs LIBS= QNX_PORTER_LATE_FLAGS= --disable-tcl --disable-editline --disable-readline
-checking build system type... x86_64-pc-linux-gnu
-checking host system type... aarch64-unknown-nto-qnx8.0.0
-checking for aarch64-unknown-nto-qnx8.0.0-gcc... /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc
-checking whether the C compiler works... yes
-checking for C compiler default output file name... a.out
-checking for suffix of executables... 
-checking whether we are cross compiling... yes
-checking for suffix of object files... o
-checking whether we are using the GNU C compiler... yes
-checking whether /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc accepts -g... yes
-checking for /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc option to accept ISO C89... none needed
-checking for a sed that does not truncate output... /usr/bin/sed
-checking for grep that handles long lines and -e... /usr/bin/grep
-checking for egrep... /usr/bin/grep -E
-checking for fgrep... /usr/bin/grep -F
-checking for ld used by /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc... /home/chirag/qnx800/host/linux/x86_64/usr/bin/ntoaarch64-ld
-checking if the linker (/home/chirag/qnx800/host/linux/x86_64/usr/bin/ntoaarch64-ld) is GNU ld... yes
-checking for BSD- or MS-compatible name lister (nm)... /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-nm -B
-checking the name lister (/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-nm -B) interface... BSD nm
-checking whether ln -s works... yes
-checking the maximum length of command line arguments... 1572864
-checking whether the shell understands some XSI constructs... yes
-checking whether the shell understands "+="... yes
-checking for /home/chirag/qnx800/host/linux/x86_64/usr/bin/ntoaarch64-ld option to reload object files... -r
-checking for aarch64-unknown-nto-qnx8.0.0-objdump... aarch64-unknown-nto-qnx8.0.0-objdump
-checking how to recognize dependent libraries... pass_all
-checking for aarch64-unknown-nto-qnx8.0.0-ar... /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ar
-checking for aarch64-unknown-nto-qnx8.0.0-strip... aarch64-unknown-nto-qnx8.0.0-strip
-checking for aarch64-unknown-nto-qnx8.0.0-ranlib... /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ranlib
-checking command to parse /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-nm -B output from /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc object... ok
-checking how to run the C preprocessor... /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -E
-checking for ANSI C header files... yes
-checking for sys/types.h... yes
-checking for sys/stat.h... yes
-checking for stdlib.h... yes
-checking for string.h... yes
-checking for memory.h... yes
-checking for strings.h... yes
-checking for inttypes.h... yes
-checking for stdint.h... yes
-checking for unistd.h... yes
-checking for dlfcn.h... yes
-checking for objdir... .libs
-checking if /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc supports -fno-rtti -fno-exceptions... no
-checking for /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc option to produce PIC... -fPIC -shared -DPIC
-checking if /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc PIC flag -fPIC -shared -DPIC works... yes
-checking if /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc static flag -static works... yes
-checking if /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc supports -c -o file.o... yes
-checking if /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc supports -c -o file.o... (cached) yes
-checking whether the /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc linker (/home/chirag/qnx800/host/linux/x86_64/usr/bin/ntoaarch64-ld) supports shared libraries... yes
-checking dynamic linker characteristics... ldqnx.so
-checking how to hardcode library paths into programs... immediate
-checking whether stripping libraries is possible... yes
-checking if libtool supports shared libraries... yes
-checking whether to build shared libraries... no
-checking whether to build static libraries... yes
-checking for a BSD-compatible install... /usr/bin/install -c
-checking for special C compiler options needed for large files... no
-checking for _FILE_OFFSET_BITS value needed for large files... no
-checking for int8_t... yes
-checking for int16_t... yes
-checking for int32_t... yes
-checking for int64_t... yes
-checking for intptr_t... yes
-checking for uint8_t... yes
-checking for uint16_t... yes
-checking for uint32_t... yes
-checking for uint64_t... yes
-checking for uintptr_t... yes
-checking for sys/types.h... (cached) yes
-checking for stdlib.h... (cached) yes
-checking for stdint.h... (cached) yes
-checking for inttypes.h... (cached) yes
-checking malloc.h usability... yes
-checking malloc.h presence... yes
-checking for malloc.h... yes
-checking for fdatasync... yes
-checking for gmtime_r... yes
-checking for isnan... no
-checking for localtime_r... yes
-checking for localtime_s... no
-checking for malloc_usable_size... yes
-checking for strchrnul... no
-checking for usleep... yes
-checking for utime... yes
-checking for pread... yes
-checking for pread64... no
-checking for pwrite... yes
-checking for pwrite64... no
-checking for tclsh9.0... no
-checking for tclsh8.6... tclsh8.6
-using tclsh at "tclsh8.6"
-unable to run tests because of --disable-tcl
-configure: Version set to 3.47
-configure: Release set to 3.47.2
-checking for WASI SDK directory... no
-checking for gcc... gcc
-checking whether to support threadsafe operation... yes
-checking for library containing pthread_create... none required
-checking for library containing pthread_mutexattr_init... none required
-checking whether to support shared library linked as release mode or not... no
-checking whether to use an in-ram database for temporary tables... no
-checking if executables have the .exe suffix... unknown
-not using linenoise
-checking for library containing fdatasync... none required
-checking build type... release
-checking zlib.h usability... yes
-checking zlib.h presence... yes
-checking for zlib.h... yes
-checking for library containing deflate... -lz
-checking for library containing dlopen... none required
-checking whether to support math functions... yes
-checking for library containing ceil... -lm
-checking whether to support JSON functions... yes
-checking whether to support MEMSYS5... no
-checking whether to support MEMSYS3... no
-checking whether to support FTS3... no
-checking whether to support FTS4... no
-checking whether to support FTS5... no
-checking whether to support LIMIT on UPDATE and DELETE statements... no
-checking whether to support GEOPOLY... no
-checking whether to support RTREE... no
-checking whether to support SESSION... no
-configure: creating ./config.status
-config.status: creating Makefile
-config.status: creating sqlite3.pc
-config.status: creating sqlite_cfg.h
-config.status: executing libtool commands
+Configuring SQLite version 3.54.1
+Host System...aarch64-unknown-nto-qnx
+Build System...x86_64-pc-linux-gnu
+Source dir = /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src
+Build dir  = /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/build
+C compiler... /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -O2 -g 
+C++ compiler... /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-g++ -O2 -g 
+Build C compiler...cc
+Checking for stdlib.h...ok
+Checking for sys/types.h...ok
+Checking if -D_FILE_OFFSET_BITS=64 is needed...no
+SQLITE_DEBUG build? no
+Looking for install ... /usr/bin/install
+Checking for int8_t...ok
+Checking for int16_t...ok
+Checking for int32_t...ok
+Checking for int64_t...ok
+Checking for intptr_t...ok
+Checking for uint8_t...ok
+Checking for uint16_t...ok
+Checking for uint32_t...ok
+Checking for uint64_t...ok
+Checking for uintptr_t...ok
+Checking for gmtime_r...ok
+Checking for isnan...not found
+Checking for localtime_r...ok
+Checking for localtime_s...not found
+Checking for usleep...ok
+Checking for utime...ok
+Checking for pread...ok
+Checking for pread64...not found
+Checking for pwrite...ok
+Checking for pwrite64...not found
+Checking libs for fdatasync...none needed
+Checking libs for nanosleep...none needed
+Checking for sys/types.h...(cached) ok
+Checking for sys/stat.h...ok
+Checking for dlfcn.h...ok
+Checking for unistd.h...ok
+Checking for stdlib.h...(cached) ok
+Checking for malloc.h...ok
+Checking for memory.h...ok
+Checking for string.h...ok
+Checking for strings.h...ok
+Checking for inttypes.h...ok
+Checking for zlib.h...ok
+Checking libs for deflate...-lz
+Use amalgamation for builds? yes
+Use gcov? no
+test-runner flags: no
+Use #line macros in the amalgamation: no
+Checking whether the C compiler accepts -fsanitize=address...yes
+Checking whether the C compiler accepts -fsanitize=bounds-strict...yes
+
+    NOTE: Tcl is disabled via --disable-tcl. This means that none
+    of the Tcl-based components will be built, including tests
+    and sqlite3_analyzer.
+
+Checking for Tcl to use for code generation... 
+Checking for dirent.h...ok
+Checking for sys/time.h...ok
+Checking for realpath...ok
+Tcl for code generation: jimsh
+Out-of tree build: not checking for EMSDK.
+Statically link tclsqlite3? no
+Statically link CLI shell? no
+Checking for AVX2 flags for vec1... no
+Checking whether the C compiler accepts -rpath /usr/local/lib...no
+Checking whether the C compiler accepts -Wl,-rpath,/usr/local/lib...yes
+Support threadsafe operation? Checking for libs...
+Checking libs for pthread_create...none needed
+Checking libs for pthread_mutexattr_init...none needed
+Checking libs for dlopen...none needed
+Loadable extension support enabled. 
+Checking libs for ceil...-lm
+Enabling math SQL functions
+ICU support is disabled.
+Checking for line-editing capability...
+Readline support explicitly disabled with --disable-readline
+Line-editing support for the sqlite3 shell: none
+Build shared library? no
+Build static library? yes
+Feature flags...
+  - fts3
+  - fts4
+  - fts5
+  - geopoly
+  - rtree
+  - session
+  - update-limit
+  - memsys5
+  - memsys3
+  - scanstatus
+  - column-metadata
+  - dbpage
+  - dbstat
+  - carray
+  + json
+Library feature flags: -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_PERCENTILE -DSQLITE_HAVE_ZLIB=1 -DSQLITE_THREADSAFE=1
+Shell options: -DSQLITE_DQS=0 -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PERCENTILE -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION -DSQLITE_HAVE_ZLIB=1 -DSQLITE_STRICT_SUBTYPE=1
+Created Makefile from ../src/Makefile.in
+Created sqlite3.pc from ../src/sqlite3.pc.in
+Created sqlite_cfg.h
 $ make -k -j 2 -C /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/build
 make: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/build'
-gcc  -g -o mksourceid /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mksourceid.c
-sh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/cktclsh.sh 8.4 tclsh8.6
-touch has_tclsh84
-gcc  -g -o mkkeywordhash -DSQLITE_ENABLE_MATH_FUNCTIONS   /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkkeywordhash.c
-./mkkeywordhash >keywordhash.h
-gcc  -g -o lemon /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/lemon.c
-tclsh8.6 /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkshellc.tcl >shell.c
-gcc  -g -o src-verify /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/src-verify.c
-tclsh8.6 /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mksqlite3h.tcl /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src >sqlite3.h
+cc -g -o jimsh -O1 -DHAVE_REALPATH /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/autosetup/jimsh0.c
+touch .main.mk.checks
+cc -g -o mkkeywordhash -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_PERCENTILE -DSQLITE_HAVE_ZLIB=1 -DSQLITE_THREADSAFE=1   /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkkeywordhash.c
+cc -g -o lemon /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/lemon.c
 cp /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/lempar.c .
+cc -g -o src-verify /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/src-verify.c
+cc -g -o mksourceid /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mksourceid.c
+./mkkeywordhash > keywordhash.h
 cp /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/parse.y .
-./lemon -DSQLITE_ENABLE_MATH_FUNCTIONS   -S parse.y
+./lemon -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_PERCENTILE -DSQLITE_HAVE_ZLIB=1 -DSQLITE_THREADSAFE=1   -S parse.y
 cp /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts5/fts5parse.y .
 rm -f fts5parse.h
 ./lemon  -S fts5parse.y
-cat parse.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbe.c | tclsh8.6 /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkopcodeh.tcl >opcodes.h
-tclsh8.6 /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts5/tool/mkfts5c.tcl
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mksqlite3h.tcl /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src -o sqlite3.h
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkctimec.tcl
+Overwriting ctime.c...
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkpragmatab.tcl
+Overwriting pragma.h with new pragma table...
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkcombo.tcl /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/qrf/qrf.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/qrf/qrf.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/tclsqlite.c -o tclsqlite-ex.c
+cat parse.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbe.c | ./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkopcodeh.tcl >opcodes.h
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkshellc.tcl shell.c
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts5/tool/mkfts5c.tcl
 cp /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts5/fts5.h .
-tclsh8.6 /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkopcodec.tcl opcodes.h >opcodes.c
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mkopcodec.tcl opcodes.h >opcodes.c
 rm -rf tsrc
 mkdir tsrc
-cp -f /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/alter.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/analyze.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/attach.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/auth.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/backup.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/bitvec.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/btmutex.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/btree.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/btree.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/btreeInt.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/build.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/callback.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/complete.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/ctime.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/date.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/dbpage.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/dbstat.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/delete.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/expr.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/fault.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/fkey.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/func.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/global.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/hash.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/hash.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/hwtime.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/insert.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/json.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/legacy.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/loadext.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/main.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/malloc.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem0.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem1.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem2.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem3.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem5.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/memdb.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/memjournal.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/msvc.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex_noop.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex_unix.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex_w32.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/notify.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_common.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_setup.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_kv.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_unix.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_win.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_win.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pager.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pager.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/parse.y /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pcache.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pcache.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pcache1.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pragma.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pragma.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/prepare.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/printf.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/random.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/resolve.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/rowset.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/select.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/status.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/shell.c.in /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/sqlite.h.in /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/sqlite3ext.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/sqliteInt.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/sqliteLimit.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/table.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/tclsqlite.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/threads.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/tokenize.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/treeview.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/trigger.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/utf.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/update.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/upsert.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/util.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vacuum.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbe.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbe.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbeapi.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbeaux.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbeblob.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbemem.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbesort.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbetrace.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbevtab.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbeInt.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vtab.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vxworks.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/wal.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/wal.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/walker.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/where.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/wherecode.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/whereexpr.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/whereInt.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/window.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3Int.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_aux.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_expr.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_hash.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_hash.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_icu.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_porter.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_snippet.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_tokenizer.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_tokenizer.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_tokenizer1.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_tokenize_vtab.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_unicode.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_unicode2.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_write.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu/sqliteicu.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu/icu.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree/rtree.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree/rtree.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree/geopoly.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session/sqlite3session.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session/sqlite3session.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/userauth/userauth.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/userauth/sqlite3userauth.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rbu/sqlite3rbu.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rbu/sqlite3rbu.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/misc/stmt.c keywordhash.h opcodes.c opcodes.h parse.c parse.h sqlite_cfg.h shell.c sqlite3.h tsrc
-rm tsrc/sqlite.h.in tsrc/parse.y
-tclsh8.6 /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/vdbe-compress.tcl  <tsrc/vdbe.c >vdbe.new
-mv vdbe.new tsrc/vdbe.c
+cp -f /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/alter.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/analyze.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/attach.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/auth.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/backup.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/bitvec.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/btmutex.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/btree.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/btree.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/btreeInt.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/build.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/callback.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/carray.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/complete.c ctime.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/date.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/dbpage.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/dbstat.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/delete.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/expr.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/fault.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/fkey.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/func.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/global.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/hash.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/hash.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/hwtime.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/insert.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/json.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/legacy.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/loadext.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/main.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/malloc.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem0.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem1.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem2.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem3.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mem5.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/memdb.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/memjournal.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/msvc.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex_noop.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex_unix.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/mutex_w32.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/notify.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_common.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_setup.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_kv.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_unix.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_win.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/os_win.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pager.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pager.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/parse.y /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pcache.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pcache.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pcache1.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/pragma.c pragma.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/prepare.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/printf.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/random.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/resolve.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/rowset.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/select.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/status.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/shell.c.in /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/sqlite.h.in /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/sqlite3ext.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/sqliteInt.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/sqliteLimit.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/table.c tclsqlite-ex.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/threads.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/tokenize.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/treeview.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/trigger.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/utf.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/update.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/upsert.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/util.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vacuum.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbe.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbe.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbeapi.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbeaux.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbeblob.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbemem.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbesort.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbetrace.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbevtab.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vdbeInt.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vtab.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/vxworks.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/wal.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/wal.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/walker.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/where.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/wherecode.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/whereexpr.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/whereInt.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src/window.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3Int.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_aux.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_expr.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_hash.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_hash.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_icu.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_porter.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_snippet.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_tokenizer.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_tokenizer.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_tokenizer1.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_tokenize_vtab.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_unicode.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_unicode2.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3/fts3_write.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu/sqliteicu.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu/icu.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree/rtree.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree/rtree.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree/geopoly.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session/sqlite3session.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session/sqlite3session.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rbu/sqlite3rbu.h /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rbu/sqlite3rbu.c /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/misc/stmt.c keywordhash.h opcodes.c opcodes.h parse.c parse.h sqlite_cfg.h shell.c sqlite3.h tsrc
+rm -f tsrc/sqlite.h.in tsrc/parse.y
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/vdbe-compress.tcl  <tsrc/vdbe.c >vdbe.new
+mv -f vdbe.new tsrc/vdbe.c
 cp fts5.c fts5.h tsrc
 touch .target_source
-tclsh8.6 /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mksqlite3c.tcl --linemacros=0 
+./jimsh /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/tool/mksqlite3c.tcl --linemacros=0 
 cp tsrc/sqlite3ext.h .
 cp /home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session/sqlite3session.h .
-./libtool --mode=compile --tag=CC /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -O2 -g -DSQLITE_OS_UNIX=1 -I. -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3 -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/async -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS    -DSQLITE_HAVE_ZLIB=1  -DSQLITE_TEMP_STORE=1 -c sqlite3.c
-./libtool --mode=link /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -O2 -g -DSQLITE_OS_UNIX=1 -I. -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3 -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/async -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS    -DSQLITE_HAVE_ZLIB=1  -L/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/stubs  -DHAVE_READLINE=0  -DHAVE_EDITLINE=0 -DHAVE_LINENOISE=0 -DSQLITE_DQS=0 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_STRICT_SUBTYPE=1 -o sqlite3 \
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -DNDEBUG -fPIC -O2 -g  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_PERCENTILE -DSQLITE_HAVE_ZLIB=1 -DSQLITE_THREADSAFE=1    -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -I. -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3 -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/misc -c sqlite3.c
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -DNDEBUG -fPIC -O2 -g  -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_ENABLE_PERCENTILE -DSQLITE_HAVE_ZLIB=1 -DSQLITE_THREADSAFE=1    -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -I. -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3 -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/misc  -o sqlite3 \
 	shell.c sqlite3.c \
-	 -lm -lz   -rpath "/usr/local/lib"
-libtool: compile:  /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -O2 -g -DSQLITE_OS_UNIX=1 -I. -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3 -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/async -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_HAVE_ZLIB=1 -DSQLITE_TEMP_STORE=1 -c sqlite3.c -o sqlite3.o
-libtool: link: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -O2 -g -DSQLITE_OS_UNIX=1 -I. -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3 -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/async -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS -DSQLITE_HAVE_ZLIB=1 -DHAVE_READLINE=0 -DHAVE_EDITLINE=0 -DHAVE_LINENOISE=0 -DSQLITE_DQS=0 -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_STRICT_SUBTYPE=1 -o sqlite3 shell.c sqlite3.c  -L/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/stubs -lm -lz -Wl,-rpath -Wl,/usr/local/lib
-./libtool --mode=link /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -O2 -g -DSQLITE_OS_UNIX=1 -I. -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/src -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/rtree -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/icu -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/fts3 -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/async -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/session -I/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/src/ext/userauth -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNDEBUG -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_MATH_FUNCTIONS    -DSQLITE_HAVE_ZLIB=1  -L/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/stubs  -no-undefined -o libsqlite3.la sqlite3.lo -lm -lz   \
-	 -rpath "/usr/local/lib" -version-info "8:6:8"
-libtool: link: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ar cru .libs/libsqlite3.a  sqlite3.o
-libtool: link: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ranlib .libs/libsqlite3.a
-libtool: link: ( cd ".libs" && rm -f "libsqlite3.la" && ln -s "../libsqlite3.la" "libsqlite3.la" )
+	 \
+	 -DSQLITE_DQS=0 -DSQLITE_ENABLE_BYTECODE_VTAB -DSQLITE_ENABLE_DBPAGE_VTAB -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_EXPLAIN_COMMENTS -DSQLITE_ENABLE_FTS4 -DSQLITE_ENABLE_OFFSET_SQL_FUNC -DSQLITE_ENABLE_PERCENTILE -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_STMTVTAB -DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION -DSQLITE_HAVE_ZLIB=1 -DSQLITE_STRICT_SUBTYPE=1  \
+	-Wl,-rpath,/usr/local/lib  -lm  -lz   -L/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/stubs 
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ar cr libsqlite3.a sqlite3.o
 make: Leaving directory '/home/chirag/qnx-porter/ports-aarch64le/sqlite/work/build'

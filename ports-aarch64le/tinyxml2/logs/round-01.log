@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/src -B /home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/src -B /home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/tinyxml2/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info

@@ -1,41 +1,82 @@
-$ make -k -j 2 -C /home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src CC=/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc CXX=/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-g++ AR=/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ar
-make: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src'
-.config file not yet created
-make -f ./Makefile.configure OUT='>&9' configure 9> .config
-make[1]: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src'
-make[1]: Leaving directory '/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborencoder.o src/cborencoder.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborerrorstrings.o src/cborerrorstrings.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborencoder_close_container_checked.o src/cborencoder_close_container_checked.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborencoder_float.o src/cborencoder_float.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborparser.o src/cborparser.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborparser_float.o src/cborparser_float.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborpretty.o src/cborpretty.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborparser_dup_string.o src/cborparser_dup_string.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborpretty_stdio.o src/cborpretty_stdio.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cbortojson.o src/cbortojson.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o src/cborvalidation.o src/cborvalidation.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborerrorstrings.pic.o src/cborerrorstrings.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborencoder.pic.o src/cborencoder.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborencoder_close_container_checked.pic.o src/cborencoder_close_container_checked.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborencoder_float.pic.o src/cborencoder_float.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborparser.pic.o src/cborparser.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborparser_float.pic.o src/cborparser_float.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborpretty.pic.o src/cborpretty.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborparser_dup_string.pic.o src/cborparser_dup_string.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborpretty_stdio.pic.o src/cborpretty_stdio.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cbortojson.pic.o src/cbortojson.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion -fPIC  -c -o src/cborvalidation.pic.o src/cborvalidation.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc  -I./src -std=gnu99 -Wall -Wextra -DWITHOUT_OPEN_MEMSTREAM -Werror=incompatible-pointer-types -Werror=implicit-function-declaration -Werror=int-conversion  -c -o tools/cbordump/cbordump.o tools/cbordump/cbordump.c
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ar cqs lib/libtinycbor.a src/cborerrorstrings.o src/cborencoder.o src/cborencoder_close_container_checked.o src/cborencoder_float.o src/cborparser.o src/cborparser_float.o src/cborpretty.o src/cborparser_dup_string.o src/cborpretty_stdio.o src/cbortojson.o src/cborvalidation.o
-sed > tinycbor.pc < tinycbor.pc.in \
-	-e 's,@prefix@,/usr/local,' \
-	-e 's,@exec_prefix@,/usr/local,' \
-	-e 's,@libdir@,/usr/local/lib,' \
-	-e 's,@includedir@,/usr/local/include,' \
-	-e 's,@version@,0.6.0,'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -shared -Wl,-soname,libtinycbor.so.0.6 -o lib/libtinycbor.so.0.6.0 -Wl,--gc-sections src/cborerrorstrings.pic.o src/cborencoder.pic.o src/cborencoder_close_container_checked.pic.o src/cborencoder_float.pic.o src/cborparser.pic.o src/cborparser_float.pic.o src/cborpretty.pic.o src/cborparser_dup_string.pic.o src/cborpretty_stdio.pic.o src/cbortojson.pic.o src/cborvalidation.pic.o -lm
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-gcc -o bin/cbordump -Wl,--gc-sections tools/cbordump/cbordump.o lib/libtinycbor.a -lm
-cd lib ; ln -sf libtinycbor.so.0.6.0 libtinycbor.so ; ln -sf libtinycbor.so.0.6.0 libtinycbor.so.0.6
-make: Leaving directory '/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src'
-Makefile:104: warning: funopen and fopencookie unavailable, open_memstream can not be implemented and conversion to JSON will not work properly!
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src -B /home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Failed
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+-- Looking for open_memstream
+-- Looking for open_memstream - not found
+-- Performing Test HAVE_OPEN_FUNOPEN
+-- Performing Test HAVE_OPEN_FUNOPEN - Failed
+-- Performing Test HAVE_OPEN_FUNOPEN_SSIZE
+-- Performing Test HAVE_OPEN_FUNOPEN_SSIZE - Failed
+-- Looking for fopencookie
+-- Looking for fopencookie - not found
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+-- Checking for module 'libcjson'
+--   No package 'libcjson' found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/build
+CMake Warning at CMakeLists.txt:177 (message):
+  funopen and fopencookie unavailable, open_memstream can not be implemented
+  and conversion to JSON will not work properly!
+
+
+CMake Warning at tests/CMakeLists.txt:10 (find_package):
+  By not providing "FindQt6.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "Qt6", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "Qt6" with any of
+  the following names:
+
+    Qt6Config.cmake
+    qt6-config.cmake
+
+  Add the installation prefix of "Qt6" to CMAKE_PREFIX_PATH or set "Qt6_DIR"
+  to a directory containing one of the above files.  If "Qt6" provides a
+  separate development package or SDK, be sure it has been installed.
+
+
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/build -j 2 -- -k
+[ 12%] Building C object CMakeFiles/tinycbor.dir/src/cborencoder.c.o
+[ 12%] Building C object CMakeFiles/tinycbor.dir/src/cborencoder_close_container_checked.c.o
+[ 18%] Building C object CMakeFiles/tinycbor.dir/src/cborerrorstrings.c.o
+[ 25%] Building C object CMakeFiles/tinycbor.dir/src/cborparser.c.o
+[ 31%] Building C object CMakeFiles/tinycbor.dir/src/cborpretty.c.o
+[ 37%] Building C object CMakeFiles/tinycbor.dir/src/cborvalidation.c.o
+[ 43%] Building C object CMakeFiles/tinycbor.dir/src/cborparser_dup_string.c.o
+[ 50%] Building C object CMakeFiles/tinycbor.dir/src/cborpretty_stdio.c.o
+[ 56%] Building C object CMakeFiles/tinycbor.dir/src/cbortojson.c.o
+[ 62%] Building C object CMakeFiles/tinycbor.dir/src/cborencoder_float.c.o
+[ 68%] Building C object CMakeFiles/tinycbor.dir/src/cborparser_float.c.o
+/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src/src/cbortojson.c: In function 'text_string_to_escaped':
+/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src/src/cbortojson.c:399:20: error: implicit declaration of function 'strdup'; did you mean 'strcmp'? [-Werror=implicit-function-declaration]
+  399 |             *str = strdup("");  // wasteful, but very atypical
+      |                    ^~~~~~
+      |                    strcmp
+/home/chirag/qnx-porter/ports-aarch64le/tinycbor/work/src/src/cbortojson.c:399:18: error: assignment to 'char *' from 'int' makes pointer from integer without a cast [-Werror=int-conversion]
+  399 |             *str = strdup("");  // wasteful, but very atypical
+      |                  ^
+cc1: some warnings being treated as errors
+gmake[2]: *** [CMakeFiles/tinycbor.dir/build.make:188: CMakeFiles/tinycbor.dir/src/cbortojson.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/tinycbor.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:166: CMakeFiles/tinycbor.dir/all] Error 2
+gmake[1]: Target 'all' not remade because of errors.
+gmake: *** [Makefile:146: all] Error 2
+gmake: Target 'default_target' not remade because of errors.
+[exit 2]

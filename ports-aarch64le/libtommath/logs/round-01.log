@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libtommath/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libtommath/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libtommath/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libtommath/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libtommath/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -16,8 +16,8 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build -j
 [  1%] Building C object CMakeFiles/libtommath.dir/bn_mp_2expt.c.o
 [  2%] Building C object CMakeFiles/libtommath.dir/bn_mp_abs.c.o
 [  3%] Building C object CMakeFiles/libtommath.dir/bn_mp_add.c.o
-[  3%] Building C object CMakeFiles/libtommath.dir/bn_mp_add_d.c.o
 [  4%] Building C object CMakeFiles/libtommath.dir/bn_mp_addmod.c.o
+[  4%] Building C object CMakeFiles/libtommath.dir/bn_mp_add_d.c.o
 [  5%] Building C object CMakeFiles/libtommath.dir/bn_mp_and.c.o
 [  5%] Building C object CMakeFiles/libtommath.dir/bn_mp_clamp.c.o
 [  6%] Building C object CMakeFiles/libtommath.dir/bn_mp_clear.c.o
@@ -112,20 +112,20 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build -j
 [ 62%] Building C object CMakeFiles/libtommath.dir/bn_mp_reduce_setup.c.o
 [ 63%] Building C object CMakeFiles/libtommath.dir/bn_mp_root_n.c.o
 [ 63%] Building C object CMakeFiles/libtommath.dir/bn_mp_rshd.c.o
+[ 64%] Building C object CMakeFiles/libtommath.dir/bn_mp_sbin_size.c.o
 [ 65%] Building C object CMakeFiles/libtommath.dir/bn_mp_set.c.o
-[ 65%] Building C object CMakeFiles/libtommath.dir/bn_mp_sbin_size.c.o
 [ 65%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_double.c.o
 [ 66%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_i32.c.o
 [ 67%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_i64.c.o
 [ 67%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_l.c.o
-[ 68%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_u64.c.o
 [ 68%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_u32.c.o
+[ 68%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_u64.c.o
 [ 69%] Building C object CMakeFiles/libtommath.dir/bn_mp_set_ul.c.o
 [ 70%] Building C object CMakeFiles/libtommath.dir/bn_mp_shrink.c.o
-[ 70%] Building C object CMakeFiles/libtommath.dir/bn_mp_signed_rsh.c.o
+[ 71%] Building C object CMakeFiles/libtommath.dir/bn_mp_signed_rsh.c.o
 [ 71%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqr.c.o
-[ 72%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqrt.c.o
 [ 72%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqrmod.c.o
+[ 72%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqrt.c.o
 [ 73%] Building C object CMakeFiles/libtommath.dir/bn_mp_sqrtmod_prime.c.o
 [ 74%] Building C object CMakeFiles/libtommath.dir/bn_mp_sub.c.o
 [ 74%] Building C object CMakeFiles/libtommath.dir/bn_mp_sub_d.c.o
@@ -144,8 +144,8 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build -j
 [ 82%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_exptmod.c.o
 [ 83%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_exptmod_fast.c.o
 [ 84%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_get_bit.c.o
-[ 84%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_invmod_fast.c.o
 [ 85%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_invmod_slow.c.o
+[ 85%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_invmod_fast.c.o
 [ 86%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_karatsuba_mul.c.o
 [ 86%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_karatsuba_sqr.c.o
 [ 87%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_log.c.o
@@ -167,7 +167,7 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libtommath/work/build -j
 [ 97%] Building C object CMakeFiles/libtommath.dir/bn_s_mp_toom_sqr.c.o
 [ 98%] Linking C static library libtommath.a
 [ 98%] Built target libtommath
-[ 99%] Building C object demo/CMakeFiles/test-ltm.dir/shared.c.o
 [ 99%] Building C object demo/CMakeFiles/test-ltm.dir/test.c.o
+[ 99%] Building C object demo/CMakeFiles/test-ltm.dir/shared.c.o
 [100%] Linking C executable test-ltm
 [100%] Built target test-ltm

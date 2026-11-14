@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src -B /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/qnx-run -DBENCHMARK_ENABLE_TESTING=OFF
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src -B /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/qnx-run -DBENCHMARK_ENABLE_TESTING=ON -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
@@ -6,9 +6,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src -B /home/c
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 -- Found Git: /usr/bin/git (found version "2.34.1") 
--- Google Benchmark version: v1.9.1, normalized to 1.9.1
--- Looking for shm_open in rt
--- Looking for shm_open in rt - found
+-- Google Benchmark version: v1.10.0, normalized to 1.10.0
 -- Performing Test HAVE_CXX_FLAG_WALL
 -- Performing Test HAVE_CXX_FLAG_WALL - Success
 -- Performing Test HAVE_CXX_FLAG_WEXTRA
@@ -21,14 +19,14 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src -B /home/c
 -- Performing Test HAVE_CXX_FLAG_WOLD_STYLE_CAST - Success
 -- Performing Test HAVE_CXX_FLAG_WCONVERSION
 -- Performing Test HAVE_CXX_FLAG_WCONVERSION - Success
+-- Performing Test HAVE_CXX_FLAG_WFORMAT_2
+-- Performing Test HAVE_CXX_FLAG_WFORMAT_2 - Success
 -- Performing Test HAVE_CXX_FLAG_WERROR
 -- Performing Test HAVE_CXX_FLAG_WERROR - Success
--- Performing Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE
--- Performing Test HAVE_CXX_FLAG_WSUGGEST_OVERRIDE - Success
--- Performing Test HAVE_CXX_FLAG_PEDANTIC
--- Performing Test HAVE_CXX_FLAG_PEDANTIC - Success
 -- Performing Test HAVE_CXX_FLAG_PEDANTIC_ERRORS
 -- Performing Test HAVE_CXX_FLAG_PEDANTIC_ERRORS - Success
+-- Performing Test HAVE_CXX_FLAG_PEDANTIC
+-- Performing Test HAVE_CXX_FLAG_PEDANTIC - Success
 -- Performing Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32
 -- Performing Test HAVE_CXX_FLAG_WSHORTEN_64_TO_32 - Failed
 -- Performing Test HAVE_CXX_FLAG_FSTRICT_ALIASING
@@ -39,8 +37,6 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src -B /home/c
 -- Performing Test HAVE_CXX_FLAG_WNO_DEPRECATED - Success
 -- Performing Test HAVE_CXX_FLAG_WSTRICT_ALIASING
 -- Performing Test HAVE_CXX_FLAG_WSTRICT_ALIASING - Success
--- Performing Test HAVE_CXX_FLAG_WD654
--- Performing Test HAVE_CXX_FLAG_WD654 - Failed
 -- Performing Test HAVE_CXX_FLAG_WTHREAD_SAFETY
 -- Performing Test HAVE_CXX_FLAG_WTHREAD_SAFETY - Failed
 -- Performing Test HAVE_CXX_FLAG_COVERAGE
@@ -62,23 +58,53 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src -B /home/c
 -- Found Threads: TRUE  
 -- Cross-compiling to test HAVE_PTHREAD_AFFINITY
 -- Performing Test HAVE_PTHREAD_AFFINITY -- failed to compile
+-- Looking for Google Test sources
+-- Looking for Google Test sources in /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src/googletest
+-- Did not find Google Test sources! Fetching from web...
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/build/third_party/googletest
+[ 11%] Creating directories for 'googletest'
+[ 22%] Performing download step (git clone) for 'googletest'
+[ 33%] Performing update step for 'googletest'
+[ 44%] No patch step for 'googletest'
+[ 55%] No configure step for 'googletest'
+[ 66%] No build step for 'googletest'
+[ 77%] No install step for 'googletest'
+[ 88%] No test step for 'googletest'
+[100%] Completed 'googletest'
+[100%] Built target googletest
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test HAVE_CXX_FLAG_WNO_UNUSED_VARIABLE
+-- Performing Test HAVE_CXX_FLAG_WNO_UNUSED_VARIABLE - Success
+-- Performing Test BENCHMARK_HAS_O3_FLAG
+-- Performing Test BENCHMARK_HAS_O3_FLAG - Success
+-- Performing Test BENCHMARK_HAS_DEPRECATED_DECLARATIONS_FLAG
+-- Performing Test BENCHMARK_HAS_DEPRECATED_DECLARATIONS_FLAG - Success
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/build
-CMake Warning at cmake/CXXFeatureCheck.cmake:49 (message):
+CMake Warning at cmake/CXXFeatureCheck.cmake:50 (message):
   If you see build failures due to cross compilation, try setting
   HAVE_STD_REGEX to 0
 Call Stack (most recent call first):
-  CMakeLists.txt:312 (cxx_feature_check)
+  CMakeLists.txt:320 (cxx_feature_check)
 
 
-CMake Warning at cmake/CXXFeatureCheck.cmake:49 (message):
+CMake Warning at cmake/CXXFeatureCheck.cmake:50 (message):
   If you see build failures due to cross compilation, try setting
   HAVE_STEADY_CLOCK to 0
 Call Stack (most recent call first):
-  CMakeLists.txt:323 (cxx_feature_check)
+  CMakeLists.txt:331 (cxx_feature_check)
 
 
+Cloning into 'src'...
+HEAD is now at b514bdc Update version strings to 1.15.2 (#4583)
 CMake Warning:
   Manually-specified variables were not used by the project:
 
@@ -86,30 +112,198 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/benchmark/work/build -j 2 -- -k
-[  4%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o
-[  9%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark.cc.o
-[ 13%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_name.cc.o
-[ 18%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_register.cc.o
-[ 22%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o
-[ 27%] Building CXX object src/CMakeFiles/benchmark.dir/check.cc.o
-[ 31%] Building CXX object src/CMakeFiles/benchmark.dir/colorprint.cc.o
-[ 36%] Building CXX object src/CMakeFiles/benchmark.dir/commandlineflags.cc.o
-[ 40%] Building CXX object src/CMakeFiles/benchmark.dir/complexity.cc.o
-[ 45%] Building CXX object src/CMakeFiles/benchmark.dir/console_reporter.cc.o
-[ 50%] Building CXX object src/CMakeFiles/benchmark.dir/counter.cc.o
-[ 54%] Building CXX object src/CMakeFiles/benchmark.dir/csv_reporter.cc.o
-[ 59%] Building CXX object src/CMakeFiles/benchmark.dir/json_reporter.cc.o
-[ 63%] Building CXX object src/CMakeFiles/benchmark.dir/perf_counters.cc.o
-[ 68%] Building CXX object src/CMakeFiles/benchmark.dir/reporter.cc.o
-[ 72%] Building CXX object src/CMakeFiles/benchmark.dir/statistics.cc.o
-[ 77%] Building CXX object src/CMakeFiles/benchmark.dir/string_util.cc.o
-[ 81%] Building CXX object src/CMakeFiles/benchmark.dir/sysinfo.cc.o
-[ 86%] Building CXX object src/CMakeFiles/benchmark.dir/timers.cc.o
-[ 90%] Linking CXX static library libbenchmark.a
-[ 90%] Built target benchmark
-[ 95%] Building CXX object src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o
-[100%] Linking CXX static library libbenchmark_main.a
-[100%] Built target benchmark_main
+[  1%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark.cc.o
+[  1%] Building CXX object third_party/googletest/build/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+[  2%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_api_internal.cc.o
+[  3%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_name.cc.o
+[  3%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_register.cc.o
+[  4%] Building CXX object src/CMakeFiles/benchmark.dir/benchmark_runner.cc.o
+[  5%] Linking CXX static library ../../../../lib/libgtest.a
+[  5%] Built target gtest
+[  6%] Building CXX object src/CMakeFiles/benchmark.dir/check.cc.o
+[  7%] Building CXX object src/CMakeFiles/benchmark.dir/colorprint.cc.o
+[  7%] Building CXX object src/CMakeFiles/benchmark.dir/commandlineflags.cc.o
+[  8%] Building CXX object src/CMakeFiles/benchmark.dir/complexity.cc.o
+[  8%] Building CXX object third_party/googletest/build/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o
+[  9%] Building CXX object src/CMakeFiles/benchmark.dir/console_reporter.cc.o
+[ 10%] Building CXX object src/CMakeFiles/benchmark.dir/counter.cc.o
+[ 10%] Building CXX object src/CMakeFiles/benchmark.dir/csv_reporter.cc.o
+[ 11%] Linking CXX static library ../../../../lib/libgmock.a
+[ 11%] Built target gmock
+[ 12%] Building CXX object src/CMakeFiles/benchmark.dir/json_reporter.cc.o
+[ 13%] Building CXX object src/CMakeFiles/benchmark.dir/perf_counters.cc.o
+[ 13%] Building CXX object src/CMakeFiles/benchmark.dir/reporter.cc.o
+[ 14%] Building CXX object src/CMakeFiles/benchmark.dir/statistics.cc.o
+[ 15%] Building CXX object src/CMakeFiles/benchmark.dir/string_util.cc.o
+[ 16%] Building CXX object src/CMakeFiles/benchmark.dir/sysinfo.cc.o
+[ 16%] Building CXX object src/CMakeFiles/benchmark.dir/timers.cc.o
+[ 17%] Building CXX object third_party/googletest/build/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o
+[ 18%] Linking CXX static library libbenchmark.a
+[ 19%] Linking CXX static library ../../../../lib/libgmock_main.a
+[ 19%] Built target gmock_main
+[ 19%] Built target benchmark
+[ 19%] Building CXX object src/CMakeFiles/benchmark_main.dir/benchmark_main.cc.o
+[ 19%] Building CXX object test/CMakeFiles/output_test_helper.dir/output_test_helper.cc.o
+[ 20%] Linking CXX static library libbenchmark_main.a
+[ 20%] Built target benchmark_main
+[ 21%] Building CXX object test/CMakeFiles/benchmark_test.dir/benchmark_test.cc.o
+[ 21%] Linking CXX executable benchmark_test
+[ 21%] Built target benchmark_test
+[ 22%] Building CXX object test/CMakeFiles/spec_arg_test.dir/spec_arg_test.cc.o
+[ 23%] Linking CXX executable spec_arg_test
+[ 23%] Built target spec_arg_test
+[ 24%] Building CXX object test/CMakeFiles/spec_arg_verbosity_test.dir/spec_arg_verbosity_test.cc.o
+[ 24%] Linking CXX executable spec_arg_verbosity_test
+[ 24%] Built target spec_arg_verbosity_test
+[ 25%] Building CXX object test/CMakeFiles/benchmark_setup_teardown_test.dir/benchmark_setup_teardown_test.cc.o
+[ 26%] Linking CXX executable benchmark_setup_teardown_test
+[ 26%] Built target benchmark_setup_teardown_test
+[ 26%] Building CXX object test/CMakeFiles/filter_test.dir/filter_test.cc.o
+[ 27%] Linking CXX static library liboutput_test_helper.a
+[ 27%] Built target output_test_helper
+[ 27%] Building CXX object test/CMakeFiles/benchmark_min_time_flag_time_test.dir/benchmark_min_time_flag_time_test.cc.o
+[ 28%] Linking CXX executable filter_test
+[ 28%] Built target filter_test
+[ 29%] Building CXX object test/CMakeFiles/benchmark_min_time_flag_iters_test.dir/benchmark_min_time_flag_iters_test.cc.o
+[ 30%] Linking CXX executable benchmark_min_time_flag_time_test
+[ 30%] Built target benchmark_min_time_flag_time_test
+[ 31%] Building CXX object test/CMakeFiles/options_test.dir/options_test.cc.o
+[ 32%] Linking CXX executable benchmark_min_time_flag_iters_test
+[ 32%] Built target benchmark_min_time_flag_iters_test
+[ 33%] Building CXX object test/CMakeFiles/basic_test.dir/basic_test.cc.o
+[ 34%] Linking CXX executable options_test
+[ 34%] Built target options_test
+[ 34%] Building CXX object test/CMakeFiles/repetitions_test.dir/repetitions_test.cc.o
+[ 34%] Linking CXX executable basic_test
+[ 34%] Built target basic_test
+[ 35%] Building CXX object test/CMakeFiles/skip_with_error_test.dir/skip_with_error_test.cc.o
+[ 36%] Linking CXX executable repetitions_test
+[ 36%] Built target repetitions_test
+[ 37%] Building CXX object test/CMakeFiles/donotoptimize_test.dir/donotoptimize_test.cc.o
+[ 38%] Linking CXX executable donotoptimize_test
+[ 38%] Linking CXX executable skip_with_error_test
+[ 38%] Built target donotoptimize_test
+[ 39%] Building CXX object test/CMakeFiles/fixture_test.dir/fixture_test.cc.o
+[ 39%] Built target skip_with_error_test
+[ 40%] Building CXX object test/CMakeFiles/register_benchmark_test.dir/register_benchmark_test.cc.o
+[ 41%] Linking CXX executable fixture_test
+[ 41%] Built target fixture_test
+[ 42%] Building CXX object test/CMakeFiles/map_test.dir/map_test.cc.o
+[ 43%] Linking CXX executable map_test
+[ 43%] Built target map_test
+[ 44%] Building CXX object test/CMakeFiles/multiple_ranges_test.dir/multiple_ranges_test.cc.o
+[ 45%] Linking CXX executable register_benchmark_test
+[ 45%] Built target register_benchmark_test
+[ 45%] Building CXX object test/CMakeFiles/args_product_test.dir/args_product_test.cc.o
+[ 45%] Linking CXX executable multiple_ranges_test
+[ 45%] Built target multiple_ranges_test
+[ 46%] Building CXX object test/CMakeFiles/link_main_test.dir/link_main_test.cc.o
+[ 47%] Linking CXX executable args_product_test
+[ 47%] Built target args_product_test
+[ 48%] Building CXX object test/CMakeFiles/reporter_output_test.dir/reporter_output_test.cc.o
+[ 50%] Linking CXX executable link_main_test
+[ 50%] Built target link_main_test
+[ 50%] Building CXX object test/CMakeFiles/templated_fixture_test.dir/templated_fixture_test.cc.o
+[ 51%] Linking CXX executable templated_fixture_test
+[ 51%] Built target templated_fixture_test
+[ 52%] Building CXX object test/CMakeFiles/templated_fixture_method_test.dir/templated_fixture_method_test.cc.o
+[ 53%] Linking CXX executable templated_fixture_method_test
+[ 53%] Built target templated_fixture_method_test
+[ 54%] Building CXX object test/CMakeFiles/user_counters_test.dir/user_counters_test.cc.o
+[ 55%] Linking CXX executable user_counters_test
+[ 55%] Linking CXX executable reporter_output_test
+[ 55%] Built target user_counters_test
+[ 56%] Building CXX object test/CMakeFiles/user_counters_threads_test.dir/user_counters_threads_test.cc.o
+[ 56%] Built target reporter_output_test
+[ 56%] Building CXX object test/CMakeFiles/perf_counters_test.dir/perf_counters_test.cc.o
+[ 57%] Linking CXX executable user_counters_threads_test
+[ 57%] Built target user_counters_threads_test
+[ 57%] Building CXX object test/CMakeFiles/internal_threading_test.dir/internal_threading_test.cc.o
+[ 58%] Linking CXX executable perf_counters_test
+[ 58%] Built target perf_counters_test
+[ 59%] Building CXX object test/CMakeFiles/manual_threading_test.dir/manual_threading_test.cc.o
+[ 60%] Linking CXX executable internal_threading_test
+[ 60%] Built target internal_threading_test
+[ 61%] Building CXX object test/CMakeFiles/report_aggregates_only_test.dir/report_aggregates_only_test.cc.o
+[ 61%] Linking CXX executable manual_threading_test
+[ 61%] Built target manual_threading_test
+[ 62%] Building CXX object test/CMakeFiles/display_aggregates_only_test.dir/display_aggregates_only_test.cc.o
+[ 62%] Linking CXX executable report_aggregates_only_test
+[ 62%] Built target report_aggregates_only_test
+[ 62%] Building CXX object test/CMakeFiles/user_counters_tabular_test.dir/user_counters_tabular_test.cc.o
+[ 62%] Linking CXX executable display_aggregates_only_test
+[ 62%] Built target display_aggregates_only_test
+[ 62%] Building CXX object test/CMakeFiles/user_counters_thousands_test.dir/user_counters_thousands_test.cc.o
+[ 63%] Linking CXX executable user_counters_thousands_test
+[ 64%] Linking CXX executable user_counters_tabular_test
+[ 64%] Built target user_counters_thousands_test
+[ 65%] Building CXX object test/CMakeFiles/memory_manager_test.dir/memory_manager_test.cc.o
+[ 65%] Built target user_counters_tabular_test
+[ 65%] Building CXX object test/CMakeFiles/profiler_manager_test.dir/profiler_manager_test.cc.o
+[ 66%] Linking CXX executable profiler_manager_test
+[ 67%] Linking CXX executable memory_manager_test
+[ 67%] Built target profiler_manager_test
+[ 67%] Built target memory_manager_test
+[ 67%] Building CXX object test/CMakeFiles/profiler_manager_iterations_test.dir/profiler_manager_iterations_test.cc.o
+[ 68%] Building CXX object test/CMakeFiles/profiler_manager_state_test.dir/profiler_manager_state_test.cc.o
+[ 69%] Linking CXX executable profiler_manager_state_test
+[ 70%] Linking CXX executable profiler_manager_iterations_test
+[ 70%] Built target profiler_manager_state_test
+[ 71%] Building CXX object test/CMakeFiles/complexity_test.dir/complexity_test.cc.o
+[ 71%] Built target profiler_manager_iterations_test
+[ 71%] Building CXX object test/CMakeFiles/locale_impermeability_test.dir/locale_impermeability_test.cc.o
+[ 72%] Linking CXX executable locale_impermeability_test
+[ 72%] Built target locale_impermeability_test
+[ 73%] Building CXX object test/CMakeFiles/scoped_pause_test.dir/scoped_pause_test.cc.o
+[ 73%] Linking CXX executable complexity_test
+[ 73%] Built target complexity_test
+[ 74%] Building CXX object test/CMakeFiles/benchmark_gtest.dir/benchmark_gtest.cc.o
+[ 75%] Linking CXX executable scoped_pause_test
+[ 75%] Built target scoped_pause_test
+[ 76%] Building CXX object test/CMakeFiles/benchmark_name_gtest.dir/benchmark_name_gtest.cc.o
+[ 77%] Linking CXX executable benchmark_name_gtest
+[ 77%] Built target benchmark_name_gtest
+[ 77%] Building CXX object test/CMakeFiles/benchmark_random_interleaving_gtest.dir/benchmark_random_interleaving_gtest.cc.o
+[ 78%] Linking CXX executable benchmark_random_interleaving_gtest
+[ 78%] Built target benchmark_random_interleaving_gtest
+[ 79%] Building CXX object test/CMakeFiles/commandlineflags_gtest.dir/commandlineflags_gtest.cc.o
+[ 80%] Linking CXX executable benchmark_gtest
+[ 80%] Built target benchmark_gtest
+[ 81%] Building CXX object test/CMakeFiles/statistics_gtest.dir/statistics_gtest.cc.o
+[ 82%] Linking CXX executable statistics_gtest
+[ 82%] Built target statistics_gtest
+[ 82%] Building CXX object test/CMakeFiles/string_util_gtest.dir/string_util_gtest.cc.o
+[ 83%] Linking CXX executable commandlineflags_gtest
+[ 83%] Built target commandlineflags_gtest
+[ 84%] Building CXX object test/CMakeFiles/perf_counters_gtest.dir/perf_counters_gtest.cc.o
+[ 85%] Linking CXX executable string_util_gtest
+[ 85%] Built target string_util_gtest
+[ 86%] Linking CXX executable perf_counters_gtest
+[ 87%] Building CXX object test/CMakeFiles/reporter_list_gtest.dir/reporter_list_gtest.cc.o
+[ 87%] Built target perf_counters_gtest
+[ 88%] Building CXX object test/CMakeFiles/time_unit_gtest.dir/time_unit_gtest.cc.o
+[ 89%] Linking CXX executable time_unit_gtest
+[ 89%] Built target time_unit_gtest
+[ 90%] Building CXX object test/CMakeFiles/min_time_parse_gtest.dir/min_time_parse_gtest.cc.o
+[ 91%] Linking CXX executable reporter_list_gtest
+[ 91%] Built target reporter_list_gtest
+[ 92%] Building CXX object test/CMakeFiles/profiler_manager_gtest.dir/profiler_manager_gtest.cc.o
+[ 93%] Linking CXX executable min_time_parse_gtest
+[ 93%] Built target min_time_parse_gtest
+[ 94%] Building CXX object test/CMakeFiles/benchmark_setup_teardown_cb_types_gtest.dir/benchmark_setup_teardown_cb_types_gtest.cc.o
+[ 95%] Linking CXX executable profiler_manager_gtest
+[ 95%] Built target profiler_manager_gtest
+[ 96%] Building CXX object test/CMakeFiles/memory_results_gtest.dir/memory_results_gtest.cc.o
+[ 96%] Linking CXX executable benchmark_setup_teardown_cb_types_gtest
+[ 96%] Built target benchmark_setup_teardown_cb_types_gtest
+[ 97%] Building CXX object test/CMakeFiles/memory_manager_ordering_gtest.dir/memory_manager_ordering_gtest.cc.o
+[ 97%] Linking CXX executable memory_results_gtest
+[ 97%] Built target memory_results_gtest
+[ 98%] Building CXX object test/CMakeFiles/cxx11_test.dir/cxx11_test.cc.o
+[100%] Linking CXX executable cxx11_test
+[100%] Built target cxx11_test
+[100%] Linking CXX executable memory_manager_ordering_gtest
+[100%] Built target memory_manager_ordering_gtest
 cc: warning - lang-c++ is deprecated
 cc: warning: ignoring '-pthread' as it is unnecessary for qnx
 cc: warning - lang-c++ is deprecated
@@ -149,3 +343,248 @@ cc: warning: ignoring '-pthread' as it is unnecessary for qnx
 cc: warning - lang-c++ is deprecated
 cc: warning: ignoring '-pthread' as it is unnecessary for qnx
 cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning - lang-c++ is deprecated
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx
+cc: warning: ignoring '-pthread' as it is unnecessary for qnx

@@ -1,8 +1,8 @@
 {
   "library": "mosquitto",
   "url": "https://github.com/eclipse/mosquitto.git",
-  "version": "v2.0.20",
-  "commit": "a196c2b244f248072a6b3ac8fb3f00ce0ff63dea",
+  "version": "v2.1.2",
+  "commit": "99fa50f30e325609394c324c8ff71cfbbe95d8ab",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -13,27 +13,52 @@
   "tests_passed": 0,
   "tests_total": 0,
   "tests_ran": true,
-  "patches_kept": 1,
-  "patches_by_rule": 1,
+  "patches_kept": 3,
+  "patches_by_rule": 3,
   "patches_by_model": 0,
   "patches": [
     {
       "number": 1,
-      "rule": "link-libsocket",
+      "rule": "add-include",
       "source": "rule",
-      "reason": "`connect` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
-      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `connect'",
+      "reason": "`ntohl` is a macro in QNX's <arpa/inet.h>, and neither libc nor libsocket exports it as a function. apps/db_dump/db_dump.c did not include the header, so the compiler took it for an undeclared function, and the link failed.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/apps/db_dump/db_dump.c:507:(.text.startup+0x510): undefined reference to `ntohl'",
+      "files": [
+        "apps/db_dump/db_dump.c"
+      ],
+      "path": "patches/0001-add-include-db-dump-c.patch",
+      "kept": true
+    },
+    {
+      "number": 2,
+      "rule": "link-libm",
+      "source": "rule",
+      "reason": "`__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src/cJSON.c:607:(.text+0x4f4): undefined reference to `__isinf'",
       "files": [
         "qnx-toolchain.cmake"
       ],
-      "path": "patches/0001-link-libsocket.patch",
+      "path": "patches/0002-link-libm.patch",
+      "kept": true
+    },
+    {
+      "number": 3,
+      "rule": "link-libsocket",
+      "source": "rule",
+      "reason": "`__inet_ntop` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
+      "error": "/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/ctrl_shell.dir/ctrl_shell.c.o: undefined reference to symbol '__inet_ntop@@libsocket.so.4'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0003-link-libsocket.patch",
       "kept": true
     }
   ],
   "blocked_on": [],
-  "minutes": 2.9,
-  "note": "",
+  "minutes": 10.2,
+  "note": "2.1 needs cJSON (our QNX port of it) and, on QNX, TLS: without it 2.1 has random bytes only from Linux getrandom(); OpenSSL from the SDP. Its tests need CUnit and a Python broker harness",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T14:24:35+00:00"
+  "finished": "2026-11-14T00:50:41+00:00"
 }

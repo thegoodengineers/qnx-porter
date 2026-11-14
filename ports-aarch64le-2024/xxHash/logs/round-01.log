@@ -1,0 +1,29 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/xxHash/work/src/cmake_unofficial -B /home/chirag/qnx-porter/ports-aarch64le/xxHash/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/qnx-run
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- xxHash build type: Release
+-- Architecture: x86_64
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/xxHash/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/xxHash/work/build -j 2 -- -k
+[ 12%] Building C object CMakeFiles/xxhash.dir/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/src/xxhash.c.o
+[ 25%] Linking C static library libxxhash.a
+[ 25%] Built target xxhash
+[ 50%] Building C object CMakeFiles/xxhsum.dir/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/src/cli/xsum_os_specific.c.o
+[ 50%] Building C object CMakeFiles/xxhsum.dir/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/src/cli/xxhsum.c.o
+[ 62%] Building C object CMakeFiles/xxhsum.dir/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/src/cli/xsum_output.c.o
+[ 75%] Building C object CMakeFiles/xxhsum.dir/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/src/cli/xsum_sanity_check.c.o
+[ 87%] Building C object CMakeFiles/xxhsum.dir/home/chirag/qnx-porter/ports-aarch64le/xxHash/work/src/cli/xsum_bench.c.o
+[100%] Linking C executable xxhsum
+[100%] Built target xxhsum

@@ -1,0 +1,79 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/capstone/work/src -B /home/chirag/qnx-porter/ports-aarch64le/capstone/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/capstone/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/capstone/work/qnx-run
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/capstone/work/build
+Enabling CAPSTONE_ARM_SUPPORT
+Enabling CAPSTONE_ARM64_SUPPORT
+Enabling CAPSTONE_M68K_SUPPORT
+Enabling CAPSTONE_MIPS_SUPPORT
+Enabling CAPSTONE_PPC_SUPPORT
+Enabling CAPSTONE_SPARC_SUPPORT
+Enabling CAPSTONE_SYSZ_SUPPORT
+Enabling CAPSTONE_XCORE_SUPPORT
+Enabling CAPSTONE_X86_SUPPORT
+Enabling CAPSTONE_TMS320C64X_SUPPORT
+Enabling CAPSTONE_M680X_SUPPORT
+Enabling CAPSTONE_EVM_SUPPORT
+Enabling CAPSTONE_MOS65XX_SUPPORT
+Enabling CAPSTONE_WASM_SUPPORT
+Enabling CAPSTONE_BPF_SUPPORT
+Enabling CAPSTONE_RISCV_SUPPORT
+Enabling CAPSTONE_SH_SUPPORT
+Enabling CAPSTONE_TRICORE_SUPPORT
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/capstone/work/build -j 2 -- -k
+Consolidate compiler generated dependencies of target capstone
+[ 52%] Built target capstone
+Consolidate compiler generated dependencies of target test_basic
+Consolidate compiler generated dependencies of target test_detail
+[ 54%] Built target test_detail
+[ 54%] Built target test_basic
+Consolidate compiler generated dependencies of target test_iter
+Consolidate compiler generated dependencies of target test_skipdata
+[ 54%] Building C object CMakeFiles/test_iter.dir/tests/test_iter.c.o
+[ 55%] Built target test_skipdata
+Consolidate compiler generated dependencies of target test_arm
+[ 56%] Built target test_arm
+Consolidate compiler generated dependencies of target test_arm64
+[ 58%] Built target test_arm64
+Consolidate compiler generated dependencies of target test_mips
+[ 59%] Built target test_mips
+Consolidate compiler generated dependencies of target test_ppc
+[ 60%] Built target test_ppc
+Consolidate compiler generated dependencies of target test_x86
+[ 61%] Built target test_x86
+Consolidate compiler generated dependencies of target test_customized_mnem
+[ 62%] Built target test_customized_mnem
+Consolidate compiler generated dependencies of target test_sparc
+[ 64%] Built target test_sparc
+Consolidate compiler generated dependencies of target test_systemz
+[ 65%] Built target test_systemz
+Consolidate compiler generated dependencies of target test_xcore
+[ 67%] Built target test_xcore
+Consolidate compiler generated dependencies of target test_m68k
+[ 69%] Built target test_m68k
+Consolidate compiler generated dependencies of target test_tms320c64x
+[ 70%] Built target test_tms320c64x
+Consolidate compiler generated dependencies of target test_m680x
+[ 71%] Built target test_m680x
+Consolidate compiler generated dependencies of target test_evm
+[ 73%] Built target test_evm
+Consolidate compiler generated dependencies of target test_wasm
+[ 74%] Built target test_wasm
+Consolidate compiler generated dependencies of target test_mos65xx
+[ 75%] Built target test_mos65xx
+Consolidate compiler generated dependencies of target test_bpf
+[ 77%] Built target test_bpf
+Consolidate compiler generated dependencies of target test_riscv
+[ 79%] Built target test_riscv
+Consolidate compiler generated dependencies of target test_sh
+[ 80%] Built target test_sh
+Consolidate compiler generated dependencies of target test_tricore
+[ 82%] Built target test_tricore
+Consolidate compiler generated dependencies of target test_arm_regression
+[ 83%] Linking C executable test_iter
+[ 84%] Built target test_arm_regression
+Consolidate compiler generated dependencies of target fuzz_disasm
+[ 86%] Built target fuzz_disasm
+Consolidate compiler generated dependencies of target cstool
+[100%] Built target cstool
+[100%] Built target test_iter

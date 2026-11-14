@@ -1,0 +1,578 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libuv/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libuv/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libuv/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libuv/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libuv/work/qnx-run -DLIBUV_BUILD_TESTS=ON
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test UV_LINT_W4
+-- Performing Test UV_LINT_W4 - Failed
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC - Failed
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC - Failed
+-- Performing Test UV_LINT_NO_HIDES_LOCAL
+-- Performing Test UV_LINT_NO_HIDES_LOCAL - Failed
+-- Performing Test UV_LINT_NO_HIDES_PARAM
+-- Performing Test UV_LINT_NO_HIDES_PARAM - Failed
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL - Failed
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC - Failed
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC - Failed
+-- Performing Test UV_LINT_WALL
+-- Performing Test UV_LINT_WALL - Success
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER - Success
+-- Performing Test UV_LINT_STRICT_PROTOTYPES
+-- Performing Test UV_LINT_STRICT_PROTOTYPES - Success
+-- Performing Test UV_LINT_EXTRA
+-- Performing Test UV_LINT_EXTRA - Success
+-- Performing Test UV_LINT_UTF8_MSVC
+-- Performing Test UV_LINT_UTF8_MSVC - Failed
+-- Performing Test UV_F_STRICT_ALIASING
+-- Performing Test UV_F_STRICT_ALIASING - Success
+-- summary of build options:
+    Install prefix:  /usr/local
+    Target system:   QNX
+    Compiler:
+      C compiler:    /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc (QCC)
+      CFLAGS:         -g
+
+-- clang-tidy not found: install clang-tidy or set -DCLANG_TIDY_EXE to run tidy analysis on this platform
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libuv/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libuv/work/build -j 2 -- -k
+[  0%] Building C object CMakeFiles/uv_a.dir/src/fs-poll.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/fs-poll.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/idna.c.o
+[  0%] Building C object CMakeFiles/uv_a.dir/src/idna.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/inet.c.o
+[  0%] Building C object CMakeFiles/uv_a.dir/src/inet.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/random.c.o
+[  0%] Building C object CMakeFiles/uv_a.dir/src/random.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/strscpy.c.o
+[  0%] Building C object CMakeFiles/uv_a.dir/src/strscpy.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/strtok.c.o
+[  1%] Building C object CMakeFiles/uv_a.dir/src/strtok.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/thread-common.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/thread-common.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/threadpool.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/threadpool.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/timer.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/timer.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/uv-common.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/uv-common.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/uv-data-getter-setters.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/uv-data-getter-setters.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/version.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/version.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/unix/async.c.o
+[  4%] Building C object CMakeFiles/uv_a.dir/src/unix/async.c.o
+[  4%] Building C object CMakeFiles/uv.dir/src/unix/core.c.o
+[  4%] Building C object CMakeFiles/uv_a.dir/src/unix/core.c.o
+[  5%] Building C object CMakeFiles/uv.dir/src/unix/dl.c.o
+[  5%] Building C object CMakeFiles/uv_a.dir/src/unix/dl.c.o
+[  5%] Building C object CMakeFiles/uv.dir/src/unix/fs.c.o
+[  5%] Building C object CMakeFiles/uv_a.dir/src/unix/fs.c.o
+[  5%] Building C object CMakeFiles/uv.dir/src/unix/getaddrinfo.c.o
+[  5%] Building C object CMakeFiles/uv_a.dir/src/unix/getaddrinfo.c.o
+[  5%] Building C object CMakeFiles/uv.dir/src/unix/getnameinfo.c.o
+[  5%] Building C object CMakeFiles/uv_a.dir/src/unix/getnameinfo.c.o
+[  5%] Building C object CMakeFiles/uv.dir/src/unix/loop-watcher.c.o
+[  5%] Building C object CMakeFiles/uv_a.dir/src/unix/loop-watcher.c.o
+[  5%] Building C object CMakeFiles/uv.dir/src/unix/loop.c.o
+[  7%] Building C object CMakeFiles/uv_a.dir/src/unix/loop.c.o
+[  7%] Building C object CMakeFiles/uv.dir/src/unix/pipe.c.o
+[  7%] Building C object CMakeFiles/uv_a.dir/src/unix/pipe.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/poll.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/unix/poll.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/process.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/unix/process.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/random-devurandom.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/unix/random-devurandom.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/signal.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/unix/signal.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/stream.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/unix/stream.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/tcp.c.o
+[ 10%] Building C object CMakeFiles/uv_a.dir/src/unix/tcp.c.o
+[ 10%] Building C object CMakeFiles/uv.dir/src/unix/thread.c.o
+[ 10%] Building C object CMakeFiles/uv_a.dir/src/unix/thread.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/tty.c.o
+[ 11%] Building C object CMakeFiles/uv_a.dir/src/unix/tty.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/udp.c.o
+[ 11%] Building C object CMakeFiles/uv_a.dir/src/unix/udp.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/posix-hrtime.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/posix-poll.c.o
+[ 11%] Building C object CMakeFiles/uv_a.dir/src/unix/posix-hrtime.c.o
+[ 11%] Building C object CMakeFiles/uv_a.dir/src/unix/posix-poll.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/qnx.c.o
+[ 11%] Building C object CMakeFiles/uv_a.dir/src/unix/qnx.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/bsd-ifaddrs.c.o
+[ 13%] Building C object CMakeFiles/uv_a.dir/src/unix/bsd-ifaddrs.c.o
+[ 13%] Building C object CMakeFiles/uv.dir/src/unix/no-proctitle.c.o
+[ 14%] Building C object CMakeFiles/uv.dir/src/unix/no-fsevents.c.o
+[ 14%] Building C object CMakeFiles/uv_a.dir/src/unix/no-proctitle.c.o
+[ 14%] Linking C shared library libuv.so
+[ 14%] Building C object CMakeFiles/uv_a.dir/src/unix/no-fsevents.c.o
+[ 14%] Built target uv
+[ 14%] Linking C static library libuv.a
+[ 16%] Building C object CMakeFiles/uv_run_tests.dir/test/runner-unix.c.o
+[ 16%] Built target uv_a
+[ 16%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/runner-unix.c.o
+[ 16%] Building C object CMakeFiles/uv_run_tests.dir/test/blackhole-server.c.o
+[ 16%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-async-pummel.c.o
+[ 16%] Building C object CMakeFiles/uv_run_tests.dir/test/echo-server.c.o
+[ 16%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-async.c.o
+[ 16%] Building C object CMakeFiles/uv_run_tests.dir/test/run-tests.c.o
+[ 17%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-fs-stat.c.o
+[ 17%] Building C object CMakeFiles/uv_run_tests.dir/test/runner.c.o
+[ 17%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-getaddrinfo.c.o
+[ 17%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-loop-count.c.o
+[ 17%] Building C object CMakeFiles/uv_run_tests.dir/test/test-active.c.o
+[ 17%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-queue-work.c.o
+[ 17%] Building C object CMakeFiles/uv_run_tests.dir/test/test-async-null-cb.c.o
+[ 17%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-million-async.c.o
+[ 19%] Building C object CMakeFiles/uv_run_tests.dir/test/test-async.c.o
+[ 19%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-million-timers.c.o
+[ 19%] Building C object CMakeFiles/uv_run_tests.dir/test/test-barrier.c.o
+[ 19%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-multi-accept.c.o
+[ 19%] Building C object CMakeFiles/uv_run_tests.dir/test/test-callback-stack.c.o
+[ 19%] Building C object CMakeFiles/uv_run_tests.dir/test/test-close-fd.c.o
+[ 19%] Building C object CMakeFiles/uv_run_tests.dir/test/test-close-order.c.o
+[ 20%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-ping-pongs.c.o
+[ 20%] Building C object CMakeFiles/uv_run_tests.dir/test/test-condvar.c.o
+[ 20%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-ping-udp.c.o
+[ 20%] Building C object CMakeFiles/uv_run_tests.dir/test/test-connect-unspecified.c.o
+[ 20%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-pound.c.o
+[ 22%] Building C object CMakeFiles/uv_run_tests.dir/test/test-connection-fail.c.o
+[ 22%] Building C object CMakeFiles/uv_run_tests.dir/test/test-cwd-and-chdir.c.o
+[ 22%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-pump.c.o
+[ 22%] Building C object CMakeFiles/uv_run_tests.dir/test/test-default-loop-close.c.o
+[ 22%] Building C object CMakeFiles/uv_run_tests.dir/test/test-delayed-accept.c.o
+[ 22%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-sizes.c.o
+[ 22%] Building C object CMakeFiles/uv_run_tests.dir/test/test-dlerror.c.o
+[ 22%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-spawn.c.o
+[ 22%] Building C object CMakeFiles/uv_run_tests.dir/test/test-eintr-handling.c.o
+[ 22%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-tcp-write-batch.c.o
+[ 22%] Building C object CMakeFiles/uv_run_tests.dir/test/test-embed.c.o
+[ 23%] Building C object CMakeFiles/uv_run_tests.dir/test/test-emfile.c.o
+[ 25%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-thread.c.o
+[ 25%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/benchmark-udp-pummel.c.o
+[ 25%] Building C object CMakeFiles/uv_run_tests.dir/test/test-env-vars.c.o
+[ 25%] Building C object CMakeFiles/uv_run_tests.dir/test/test-error.c.o
+[ 25%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fail-always.c.o
+[ 25%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/blackhole-server.c.o
+[ 25%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fork.c.o
+[ 25%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/echo-server.c.o
+[ 25%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/run-benchmarks.c.o
+[ 25%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fs-copyfile.c.o
+[ 25%] Building C object CMakeFiles/uv_run_benchmarks_a.dir/test/runner.c.o
+[ 25%] Linking C executable uv_run_benchmarks_a
+[ 25%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fs-event.c.o
+[ 25%] Built target uv_run_benchmarks_a
+[ 26%] Building C object CMakeFiles/uv_run_tests_a.dir/test/runner-unix.c.o
+[ 27%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fs-poll.c.o
+[ 27%] Building C object CMakeFiles/uv_run_tests_a.dir/test/blackhole-server.c.o
+[ 27%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fs.c.o
+[ 27%] Building C object CMakeFiles/uv_run_tests_a.dir/test/echo-server.c.o
+[ 27%] Building C object CMakeFiles/uv_run_tests_a.dir/test/run-tests.c.o
+[ 27%] Building C object CMakeFiles/uv_run_tests_a.dir/test/runner.c.o
+[ 27%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-active.c.o
+[ 27%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-async-null-cb.c.o
+[ 29%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-async.c.o
+[ 29%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-barrier.c.o
+[ 29%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-callback-stack.c.o
+[ 29%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-close-fd.c.o
+[ 29%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-close-order.c.o
+[ 29%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-condvar.c.o
+[ 29%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-connect-unspecified.c.o
+[ 30%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-connection-fail.c.o
+[ 30%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-cwd-and-chdir.c.o
+[ 30%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-default-loop-close.c.o
+[ 30%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-delayed-accept.c.o
+[ 30%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-dlerror.c.o
+[ 30%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-eintr-handling.c.o
+[ 30%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-embed.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-emfile.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-env-vars.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-error.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fs-readdir.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fail-always.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fork.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fs-fd-hash.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests.dir/test/test-fs-open-flags.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests.dir/test/test-get-currentexe.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fs-copyfile.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests.dir/test/test-get-loadavg.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests.dir/test/test-get-memory.c.o
+[ 32%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fs-event.c.o
+[ 33%] Building C object CMakeFiles/uv_run_tests.dir/test/test-get-passwd.c.o
+[ 35%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fs-poll.c.o
+[ 35%] Building C object CMakeFiles/uv_run_tests.dir/test/test-getaddrinfo.c.o
+[ 35%] Building C object CMakeFiles/uv_run_tests.dir/test/test-gethostname.c.o
+[ 35%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fs.c.o
+[ 35%] Building C object CMakeFiles/uv_run_tests.dir/test/test-getnameinfo.c.o
+[ 35%] Building C object CMakeFiles/uv_run_tests.dir/test/test-getsockname.c.o
+[ 35%] Building C object CMakeFiles/uv_run_tests.dir/test/test-getters-setters.c.o
+[ 35%] Building C object CMakeFiles/uv_run_tests.dir/test/test-gettimeofday.c.o
+[ 36%] Building C object CMakeFiles/uv_run_tests.dir/test/test-handle-fileno.c.o
+[ 36%] Building C object CMakeFiles/uv_run_tests.dir/test/test-homedir.c.o
+[ 36%] Building C object CMakeFiles/uv_run_tests.dir/test/test-hrtime.c.o
+[ 36%] Building C object CMakeFiles/uv_run_tests.dir/test/test-idle.c.o
+[ 36%] Building C object CMakeFiles/uv_run_tests.dir/test/test-idna.c.o
+[ 36%] Building C object CMakeFiles/uv_run_tests.dir/test/test-iouring-pollhup.c.o
+[ 36%] Building C object CMakeFiles/uv_run_tests.dir/test/test-ip4-addr.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests.dir/test/test-ip6-addr.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests.dir/test/test-ip-name.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fs-readdir.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests.dir/test/test-ipc-heavy-traffic-deadlock-bug.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests.dir/test/test-ipc-send-recv.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fs-fd-hash.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-fs-open-flags.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-get-currentexe.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests.dir/test/test-ipc.c.o
+[ 38%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-get-loadavg.c.o
+[ 39%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-get-memory.c.o
+[ 39%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-get-passwd.c.o
+[ 39%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-getaddrinfo.c.o
+[ 39%] Building C object CMakeFiles/uv_run_tests.dir/test/test-loop-alive.c.o
+[ 39%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-gethostname.c.o
+[ 39%] Building C object CMakeFiles/uv_run_tests.dir/test/test-loop-close.c.o
+[ 39%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-getnameinfo.c.o
+[ 41%] Building C object CMakeFiles/uv_run_tests.dir/test/test-loop-configure.c.o
+[ 41%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-getsockname.c.o
+[ 41%] Building C object CMakeFiles/uv_run_tests.dir/test/test-loop-handles.c.o
+[ 41%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-getters-setters.c.o
+[ 41%] Building C object CMakeFiles/uv_run_tests.dir/test/test-loop-oom.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-gettimeofday.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests.dir/test/test-loop-stop.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-handle-fileno.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests.dir/test/test-loop-time.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-homedir.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests.dir/test/test-metrics.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-hrtime.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-idle.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-idna.c.o
+[ 42%] Building C object CMakeFiles/uv_run_tests.dir/test/test-multiple-listen.c.o
+[ 44%] Building C object CMakeFiles/uv_run_tests.dir/test/test-mutexes.c.o
+[ 44%] Building C object CMakeFiles/uv_run_tests.dir/test/test-not-readable-nor-writable-on-read-error.c.o
+[ 44%] Building C object CMakeFiles/uv_run_tests.dir/test/test-not-writable-after-shutdown.c.o
+[ 44%] Building C object CMakeFiles/uv_run_tests.dir/test/test-osx-resident-set-memory.c.o
+[ 44%] Building C object CMakeFiles/uv_run_tests.dir/test/test-osx-select.c.o
+[ 44%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pass-always.c.o
+[ 44%] Building C object CMakeFiles/uv_run_tests.dir/test/test-ping-pong.c.o
+[ 45%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-bind-error.c.o
+[ 45%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-close-stdout-read-stdin.c.o
+[ 45%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-connect-error.c.o
+[ 45%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-iouring-pollhup.c.o
+[ 45%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-connect-multiple.c.o
+[ 47%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-ip4-addr.c.o
+[ 47%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-connect-prepare.c.o
+[ 47%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-ip6-addr.c.o
+[ 47%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-getsockname.c.o
+[ 47%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-ip-name.c.o
+[ 47%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-ipc-heavy-traffic-deadlock-bug.c.o
+[ 47%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-pending-instances.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-sendmsg.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-ipc-send-recv.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-server-close.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-set-fchmod.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-ipc.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-set-non-blocking.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests.dir/test/test-pipe-write.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests.dir/test/test-platform-output.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests.dir/test/test-poll-close-doesnt-corrupt-stack.c.o
+[ 48%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-loop-alive.c.o
+[ 50%] Building C object CMakeFiles/uv_run_tests.dir/test/test-poll-close.c.o
+[ 50%] Building C object CMakeFiles/uv_run_tests.dir/test/test-poll-closesocket.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-loop-close.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests.dir/test/test-poll-multiple-handles.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-loop-configure.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests.dir/test/test-poll-oob.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-loop-handles.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests.dir/test/test-poll.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-loop-oom.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-loop-stop.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-loop-time.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-metrics.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests.dir/test/test-process-priority.c.o
+[ 51%] Building C object CMakeFiles/uv_run_tests.dir/test/test-process-title-threadsafe.c.o
+[ 52%] Building C object CMakeFiles/uv_run_tests.dir/test/test-process-title.c.o
+[ 52%] Building C object CMakeFiles/uv_run_tests.dir/test/test-queue-foreach-delete.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-multiple-listen.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests.dir/test/test-random.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-mutexes.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests.dir/test/test-readable-on-eof.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-not-readable-nor-writable-on-read-error.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests.dir/test/test-ref.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-not-writable-after-shutdown.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-osx-resident-set-memory.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-osx-select.c.o
+[ 54%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pass-always.c.o
+[ 55%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-ping-pong.c.o
+[ 55%] Building C object CMakeFiles/uv_run_tests.dir/test/test-run-nowait.c.o
+[ 55%] Building C object CMakeFiles/uv_run_tests.dir/test/test-run-once.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests.dir/test/test-semaphore.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-bind-error.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests.dir/test/test-shutdown-close.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-close-stdout-read-stdin.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests.dir/test/test-shutdown-eof.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-connect-error.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests.dir/test/test-shutdown-simultaneous.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-connect-multiple.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests.dir/test/test-shutdown-twice.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-connect-prepare.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests.dir/test/test-signal-multiple-loops.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-getsockname.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests.dir/test/test-signal-pending-on-close.c.o
+[ 57%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-pending-instances.c.o
+[ 58%] Building C object CMakeFiles/uv_run_tests.dir/test/test-signal.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-sendmsg.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-server-close.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-set-fchmod.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests.dir/test/test-sizeof.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-set-non-blocking.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests.dir/test/test-socket-buffer-size.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-pipe-write.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests.dir/test/test-spawn.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-platform-output.c.o
+[ 60%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-poll-close-doesnt-corrupt-stack.c.o
+[ 61%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-poll-close.c.o
+[ 61%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-poll-closesocket.c.o
+[ 61%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-poll-multiple-handles.c.o
+[ 61%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-poll-oob.c.o
+[ 61%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-poll.c.o
+[ 61%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-process-priority.c.o
+[ 61%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-process-title-threadsafe.c.o
+[ 63%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-process-title.c.o
+[ 63%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-queue-foreach-delete.c.o
+[ 63%] Building C object CMakeFiles/uv_run_tests.dir/test/test-stdio-over-pipes.c.o
+[ 63%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-random.c.o
+[ 63%] Building C object CMakeFiles/uv_run_tests.dir/test/test-io-64-safe.c.o
+[ 63%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-readable-on-eof.c.o
+[ 63%] Building C object CMakeFiles/uv_run_tests.dir/test/test-strscpy.c.o
+[ 63%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-ref.c.o
+[ 64%] Building C object CMakeFiles/uv_run_tests.dir/test/test-strtok.c.o
+[ 64%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-alloc-cb-fail.c.o
+[ 64%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-bind-error.c.o
+[ 64%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-run-nowait.c.o
+[ 64%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-run-once.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-semaphore.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-bind6-error.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-shutdown-close.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-shutdown-eof.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-close-accept.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-close-after-read-timeout.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-shutdown-simultaneous.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-shutdown-twice.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-close-while-connecting.c.o
+[ 66%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-signal-multiple-loops.c.o
+[ 67%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-close.c.o
+[ 67%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-close-reset.c.o
+[ 67%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-signal-pending-on-close.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-signal.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-connect-error-after-write.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-connect-error.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-connect-timeout.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-sizeof.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-connect6-error.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-socket-buffer-size.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-spawn.c.o
+[ 69%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-create-socket-early.c.o
+[ 70%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-flags.c.o
+[ 70%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-oob.c.o
+[ 70%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-open.c.o
+[ 70%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-read-stop.c.o
+[ 70%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-reuseport.c.o
+[ 70%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-read-stop-start.c.o
+[ 70%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-rst.c.o
+[ 72%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-shutdown-after-write.c.o
+[ 72%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-stdio-over-pipes.c.o
+[ 72%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-try-write.c.o
+[ 72%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-write-in-a-row.c.o
+[ 72%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-io-64-safe.c.o
+[ 72%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-try-write-error.c.o
+[ 72%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-strscpy.c.o
+[ 72%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-unexpected-read.c.o
+[ 73%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-strtok.c.o
+[ 73%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-alloc-cb-fail.c.o
+[ 73%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-write-after-connect.c.o
+[ 73%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-write-fail.c.o
+[ 73%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-bind-error.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests.dir/test/test-write-cancel.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-bind6-error.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-write-in-read-cb-backend-timeout.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-close-accept.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-write-queue-order.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-close-after-read-timeout.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-write-to-half-open-connection.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-close-while-connecting.c.o
+[ 75%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tcp-writealot.c.o
+[ 76%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-close.c.o
+[ 76%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-close-reset.c.o
+[ 76%] Building C object CMakeFiles/uv_run_tests.dir/test/test-test-macros.c.o
+[ 76%] Building C object CMakeFiles/uv_run_tests.dir/test/test-thread-affinity.c.o
+[ 76%] Building C object CMakeFiles/uv_run_tests.dir/test/test-thread-equal.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests.dir/test/test-thread.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-connect-error-after-write.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-connect-error.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests.dir/test/test-thread-name.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-connect-timeout.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests.dir/test/test-thread-priority.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests.dir/test/test-threadpool-cancel.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-connect6-error.c.o
+[ 77%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-create-socket-early.c.o
+[ 79%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-flags.c.o
+[ 79%] Building C object CMakeFiles/uv_run_tests.dir/test/test-threadpool.c.o
+[ 79%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-oob.c.o
+[ 79%] Building C object CMakeFiles/uv_run_tests.dir/test/test-timer-again.c.o
+[ 79%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-open.c.o
+[ 79%] Building C object CMakeFiles/uv_run_tests.dir/test/test-timer-from-check.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests.dir/test/test-timer.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-read-stop.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-reuseport.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-read-stop-start.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tmpdir.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-rst.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tty-duplicate-key.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tty-escape-sequence-processing.c.o
+[ 80%] Building C object CMakeFiles/uv_run_tests.dir/test/test-tty.c.o
+[ 82%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-shutdown-after-write.c.o
+[ 82%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-try-write.c.o
+[ 82%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-alloc-cb-fail.c.o
+[ 82%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-write-in-a-row.c.o
+[ 82%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-try-write-error.c.o
+[ 82%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-bind.c.o
+[ 83%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-connect.c.o
+[ 83%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-unexpected-read.c.o
+[ 83%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-write-after-connect.c.o
+[ 83%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-connect6.c.o
+[ 83%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-write-fail.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-write-cancel.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-create-socket-early.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-dgram-too-big.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-ipv6.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-write-in-read-cb-backend-timeout.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-mmsg.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-write-queue-order.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-write-to-half-open-connection.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tcp-writealot.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-multicast-interface.c.o
+[ 85%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-test-macros.c.o
+[ 86%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-multicast-interface6.c.o
+[ 86%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-thread-affinity.c.o
+[ 86%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-multicast-join.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-thread-equal.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-thread.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-multicast-join6.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-thread-name.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-multicast-ttl.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-thread-priority.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-open.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-threadpool-cancel.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-options.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-send-and-recv.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-threadpool.c.o
+[ 88%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-timer-again.c.o
+[ 89%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-send-fail.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-timer-from-check.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-send-hang-loop.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-timer.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-send-immediate.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-sendmmsg-error.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-send-unreachable.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-recv-cb-close-pollerr.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tmpdir.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-recvmsg-unreachable-error.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tty-duplicate-key.c.o
+[ 91%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tty-escape-sequence-processing.c.o
+[ 92%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-try-send.c.o
+[ 92%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-tty.c.o
+[ 92%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-recv-in-a-row.c.o
+[ 92%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-alloc-cb-fail.c.o
+[ 92%] Building C object CMakeFiles/uv_run_tests.dir/test/test-udp-reuseport.c.o
+[ 92%] Building C object CMakeFiles/uv_run_tests.dir/test/test-uname.c.o
+[ 94%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-bind.c.o
+[ 94%] Building C object CMakeFiles/uv_run_tests.dir/test/test-walk-handles.c.o
+[ 94%] Building C object CMakeFiles/uv_run_tests.dir/test/test-watcher-cross-stop.c.o
+[ 94%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-connect.c.o
+[ 94%] Linking C executable uv_run_tests
+[ 94%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-connect6.c.o
+[ 94%] Built target uv_run_tests
+[ 94%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-create-socket-early.c.o
+[ 94%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-dgram-too-big.c.o
+[ 94%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-ipv6.c.o
+[ 94%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-mmsg.c.o
+[ 95%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-multicast-interface.c.o
+[ 95%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-multicast-interface6.c.o
+[ 95%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-multicast-join.c.o
+[ 95%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-multicast-join6.c.o
+[ 95%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-multicast-ttl.c.o
+[ 95%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-open.c.o
+[ 95%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-options.c.o
+[ 97%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-send-and-recv.c.o
+[ 97%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-send-fail.c.o
+[ 97%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-send-hang-loop.c.o
+[ 97%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-send-immediate.c.o
+[ 97%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-sendmmsg-error.c.o
+[ 97%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-send-unreachable.c.o
+[ 97%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-recv-cb-close-pollerr.c.o
+[ 98%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-recvmsg-unreachable-error.c.o
+[ 98%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-try-send.c.o
+[ 98%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-recv-in-a-row.c.o
+[ 98%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-udp-reuseport.c.o
+[ 98%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-uname.c.o
+[ 98%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-walk-handles.c.o
+[ 98%] Building C object CMakeFiles/uv_run_tests_a.dir/test/test-watcher-cross-stop.c.o
+[100%] Linking C executable uv_run_tests_a
+[100%] Built target uv_run_tests_a
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c: In function 'uv__io_poll':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c:208:12: warning: 'user_timeout' may be used uninitialized [-Wmaybe-uninitialized]
+  208 |         if (timeout > 0)
+      |            ^
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c:148:7: note: 'user_timeout' was declared here
+  148 |   int user_timeout;
+      |       ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c: In function 'uv__io_poll':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c:208:12: warning: 'user_timeout' may be used uninitialized [-Wmaybe-uninitialized]
+  208 |         if (timeout > 0)
+      |            ^
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c:148:7: note: 'user_timeout' was declared here
+  148 |   int user_timeout;
+      |       ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:41:1: warning: 'get_mem_info' defined but not used [-Wunused-function]
+   41 | get_mem_info(uint64_t* totalmem, uint64_t* freemem) {
+      | ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:41:1: warning: 'get_mem_info' defined but not used [-Wunused-function]
+   41 | get_mem_info(uint64_t* totalmem, uint64_t* freemem) {
+      | ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-get-passwd.c: In function 'run_test_get_passwd':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-get-passwd.c:77:31: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'gid_t' {aka 'int'} [-Wsign-compare]
+   77 |   if (pwd.uid != 0 && pwd.gid != getgid())
+      |                               ^~
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-get-passwd.c: In function 'run_test_get_passwd':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-get-passwd.c:77:31: warning: comparison of integer expressions of different signedness: 'long unsigned int' and 'gid_t' {aka 'int'} [-Wsign-compare]
+   77 |   if (pwd.uid != 0 && pwd.gid != getgid())
+      |                               ^~
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-tty.c: In function 'run_test_tty_pty_partial':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-tty.c:528:9: warning: implicit declaration of function 'openpty'; did you mean 'openat'? [-Wimplicit-function-declaration]
+  528 |     if (openpty(&master_fd, &slave_fd, NULL, NULL, NULL))
+      |         ^~~~~~~
+      |         openat
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-tty.c: In function 'run_test_tty_pty_partial':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/test/test-tty.c:528:9: warning: implicit declaration of function 'openpty'; did you mean 'openat'? [-Wimplicit-function-declaration]
+  528 |     if (openpty(&master_fd, &slave_fd, NULL, NULL, NULL))
+      |         ^~~~~~~
+      |         openat

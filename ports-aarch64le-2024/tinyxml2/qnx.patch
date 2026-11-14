@@ -1,0 +1,23 @@
+diff --git a/xmltest.cpp b/xmltest.cpp
+index ae97604..e0233d0 100755
+--- a/xmltest.cpp
++++ b/xmltest.cpp
+@@ -21,6 +21,9 @@
+ 	#include <sys/types.h>
+ #endif
+ 
++/* qnx-porter: glibc prints "(null)" for a NULL %s argument; QNX's libc faults (it is undefined C). */
++static const char *qnx_porter_str(const char *s) { return s ? s : "(null)"; }
++
+ using namespace tinyxml2;
+ using namespace std;
+ int gPass = 0;
+@@ -51,7 +54,7 @@ bool XMLTest (const char* testString, const char* expected, const char* found, b
+ 			printf( "%s\n", found );
+ 		}
+ 		else {
+-			printf (" %s [%s][%s]\n", testString, expected, found);
++			printf (" %s [%s][%s]\n", qnx_porter_str(testString), qnx_porter_str(expected), qnx_porter_str(found));
+ 		}
+ 	}
+ 

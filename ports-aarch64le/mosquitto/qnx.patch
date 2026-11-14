@@ -1,0 +1,12 @@
+diff --git a/apps/db_dump/db_dump.c b/apps/db_dump/db_dump.c
+index 9cf48c8..61c82b7 100644
+--- a/apps/db_dump/db_dump.c
++++ b/apps/db_dump/db_dump.c
+@@ -37,6 +37,7 @@ Contributors:
+ #include <uthash.h>
+ 
+ #include "db_dump.h"
++#include <arpa/inet.h>  /* qnx-porter: needed on QNX */
+ 
+ #ifdef __ANDROID__
+ #include <sys/endian.h>

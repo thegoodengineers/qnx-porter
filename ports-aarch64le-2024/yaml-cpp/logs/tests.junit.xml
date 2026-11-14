@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="qnx-target" tests="1" failures="1" skipped="0"><testcase name="yaml-cpp::test" classname="qnx-target"><failure message="exit 1">[ RUN      ] NodeSpecTest.Ex7_16_FlowMappingEntries
+[       OK ] NodeSpecTest.Ex7_16_FlowMappingEntries (1 ms)
+[ RUN      ] NodeSpecTest.Ex7_17_FlowMappingSeparateValues
+[       OK ] NodeSpecTest.Ex7_17_FlowMappingSeparateValues (3 ms)
+[ RUN      ] NodeSpecTest.Ex7_18_FlowMappingAdjacentValues
+[       OK ] NodeSpecTest.Ex7_18_FlowMappingAdjacentValues (1 ms)
+[ RUN      ] NodeSpecTest.Ex7_19_SinglePairFlowMappings
+[       OK ] NodeSpecTest.Ex7_19_SinglePairFlowMappings (1 ms)
+[ RUN      ] NodeSpecTest.Ex7_20_SinglePairExplicitEntry
+[       OK ] NodeSpecTest.Ex7_20_SinglePairExplicitEntry (1 ms)
+[ RUN      ] NodeSpecTest.Ex7_21_SinglePairImplicitEntries
+[       OK ] NodeSpecTest.Ex7_21_SinglePairImplicitEntries (2 ms)
+[ RUN      ] NodeSpecTest.Ex7_22_InvalidImplicitKeys
+[       OK ] NodeSpecTest.Ex7_22_InvalidImplicitKeys (3 ms)
+[ RUN      ] NodeSpecTest.Ex7_23_FlowContent
+[       OK ] NodeSpecTest.Ex7_23_FlowContent (2 ms)
+[ RUN      ] NodeSpecTest.Ex7_24_FlowNodes
+[       OK ] NodeSpecTest.Ex7_24_FlowNodes (2 ms)
+[ RUN      ] NodeSpecTest.Ex8_1_BlockScalarHeader
+[       OK ] NodeSpecTest.Ex8_1_BlockScalarHeader (1 ms)
+[ RUN      ] NodeSpecTest.Ex8_2_BlockIndentationHeader
+[       OK ] NodeSpecTest.Ex8_2_BlockIndentationHeader (1 ms)
+[ RUN      ] NodeSpecTest.Ex8_3a_InvalidBlockScalarIndentationIndicators
+[       OK ] NodeSpecTest.Ex8_3a_InvalidBlockScalarIndentationIndicators (3 ms)
+[ RUN      ] NodeSpecTest.Ex8_3b_InvalidBlockScalarIndentationIndicators
+[       OK ] NodeSpecTest.Ex8_3b_InvalidBlockScalarIndentationIndicators (3 ms)
+[ RUN      ] NodeSpecTest.Ex8_3c_InvalidBlockScalarIndentationIndicators
+[       OK ] NodeSpecTest.Ex8_3c_InvalidBlockScalarIndentationIndicators (6 ms)
+[ RUN      ] NodeSpecTest.Ex8_4_ChompingFinalLineBreak
+[       OK ] NodeSpecTest.Ex8_4_ChompingFinalLineBreak (1 ms)
+[ RUN      ] NodeSpecTest.Ex8_6_EmptyScalarChomping
+[       OK ] NodeSpecTest.Ex8_6_EmptyScalarChomping (1 ms)
+[ RUN      ] NodeSpecTest.Ex8_7_LiteralScalar
+[       OK ] NodeSpecTest.Ex8_7_LiteralScalar (0 ms)
+[ RUN      ] NodeSpecTest.Ex8_8_LiteralContent
+[       OK ] NodeSpecTest.Ex8_8_LiteralContent (0 ms)
+[ RUN      ] NodeSpecTest.Ex8_9_FoldedScalar
+[       OK ] NodeSpecTest.Ex8_9_FoldedScalar (0 ms)
+[ RUN      ] NodeSpecTest.Ex8_10_FoldedLines
+[       OK ] NodeSpecTest.Ex8_10_FoldedLines (0 ms)
+[ RUN      ] NodeSpecTest.Ex8_11_MoreIndentedLines
+[       OK ] NodeSpecTest.Ex8_11_MoreIndentedLines (0 ms)
+[ RUN      ] NodeSpecTest.Ex8_12_EmptySeparationLines
+[       OK ] NodeSpecTest.Ex8_12_EmptySeparationLines (1 ms)
+[ RUN      ] NodeSpecTest.Ex8_13_FinalEmptyLines
+[       OK ] NodeSpecTest.Ex8_13_FinalEmptyLines (1 ms)
+[ RUN      ] NodeSpecTest.Ex8_14_BlockSequence
+[       OK ] NodeSpecTest.Ex8_14_BlockSequence (1 ms)
+[ RUN      ] NodeSpecTest.Ex8_15_BlockSequenceEntryTypes
+[       OK ] NodeSpecTest.Ex8_15_BlockSequenceEntryTypes (2 ms)
+[ RUN      ] NodeSpecTest.Ex8_16_BlockMappings
+[       OK ] NodeSpecTest.Ex8_16_BlockMappings (2 ms)
+[ RUN      ] NodeSpecTest.Ex8_17_ExplicitBlockMappingEntries
+[       OK ] NodeSpecTest.Ex8_17_ExplicitBlockMappingEntries (2 ms)
+[ RUN      ] NodeSpecTest.Ex8_18_ImplicitBlockMappingEntries
+[       OK ] NodeSpecTest.Ex8_18_ImplicitBlockMappingEntries (4 ms)
+[ RUN      ] NodeSpecTest.Ex8_19_CompactBlockMappings
+[       OK ] NodeSpecTest.Ex8_19_CompactBlockMappings (2 ms)
+[ RUN      ] NodeSpecTest.Ex8_20_BlockNodeTypes
+[       OK ] NodeSpecTest.Ex8_20_BlockNodeTypes (2 ms)
+[ RUN      ] NodeSpecTest.Ex8_22_BlockCollectionNodes
+[       OK ] NodeSpecTest.Ex8_22_BlockCollectionNodes (3 ms)
+[ RUN      ] NodeSpecTest.FlowMapNotClosed
+[       OK ] NodeSpecTest.FlowMapNotClosed (3 ms)
+[----------] 109 tests from NodeSpecTest (396 ms total)
+
+[----------] 7 tests from NodeEmitterTest
+[ RUN      ] NodeEmitterTest.SimpleFlowSeqNode
+[       OK ] NodeEmitterTest.SimpleFlowSeqNode (3 ms)
+[ RUN      ] NodeEmitterTest.NestFlowSeqNode
+[       OK ] NodeEmitterTest.NestFlowSeqNode (2 ms)
+[ RUN      ] NodeEmitterTest.MixBlockFlowSeqNode
+[       OK ] NodeEmitterTest.MixBlockFlowSeqNode (2 ms)
+[ RUN      ] NodeEmitterTest.NestBlockFlowMapListNode
+[       OK ] NodeEmitterTest.NestBlockFlowMapListNode (2 ms)
+[ RUN      ] NodeEmitterTest.NestBlockMixMapListNode
+[       OK ] NodeEmitterTest.NestBlockMixMapListNode (4 ms)
+[ RUN      ] NodeEmitterTest.NestBlockMapListNode
+[       OK ] NodeEmitterTest.NestBlockMapListNode (2 ms)
+[ RUN      ] NodeEmitterTest.NestFlowMapListNode
+[       OK ] NodeEmitterTest.NestFlowMapListNode (1 ms)
+[----------] 7 tests from NodeEmitterTest (25 ms total)
+
+[----------] 8 tests from OstreamWrapperTest
+[ RUN      ] OstreamWrapperTest.BufferNoWrite
+[       OK ] OstreamWrapperTest.BufferNoWrite (0 ms)
+[ RUN      ] OstreamWrapperTest.BufferWriteStr
+[       OK ] OstreamWrapperTest.BufferWriteStr (0 ms)
+[ RUN      ] OstreamWrapperTest.BufferWriteCStr
+[       OK ] OstreamWrapperTest.BufferWriteCStr (0 ms)
+[ RUN      ] OstreamWrapperTest.StreamNoWrite
+[       OK ] OstreamWrapperTest.StreamNoWrite (0 ms)
+[ RUN      ] OstreamWrapperTest.StreamWriteStr
+[       OK ] OstreamWrapperTest.StreamWriteStr (0 ms)
+[ RUN      ] OstreamWrapperTest.StreamWriteCStr
+[       OK ] OstreamWrapperTest.StreamWriteCStr (1 ms)
+[ RUN      ] OstreamWrapperTest.Position
+[       OK ] OstreamWrapperTest.Position (0 ms)
+[ RUN      ] OstreamWrapperTest.Comment
+[       OK ] OstreamWrapperTest.Comment (0 ms)
+[----------] 8 tests from OstreamWrapperTest (12 ms total)
+
+[----------] 5 tests from ParserTest
+[ RUN      ] ParserTest.Empty
+[       OK ] ParserTest.Empty (0 ms)
+[ RUN      ] ParserTest.CVE_2017_5950
+[       OK ] ParserTest.CVE_2017_5950 (106 ms)
+[ RUN      ] ParserTest.CVE_2018_20573
+[       OK ] ParserTest.CVE_2018_20573 (95 ms)
+[ RUN      ] ParserTest.CVE_2018_20574
+[       OK ] ParserTest.CVE_2018_20574 (94 ms)
+[ RUN      ] ParserTest.CVE_2019_6285
+[       OK ] ParserTest.CVE_2019_6285 (84 ms)
+[----------] 5 tests from ParserTest (386 ms total)
+
+[----------] 12 tests from RegExTest
+[ RUN      ] RegExTest.Empty
+[       OK ] RegExTest.Empty (0 ms)
+[ RUN      ] RegExTest.Range
+[       OK ] RegExTest.Range (160 ms)
+[ RUN      ] RegExTest.EmptyString
+[       OK ] RegExTest.EmptyString (0 ms)
+[ RUN      ] RegExTest.SingleCharacterString
+[       OK ] RegExTest.SingleCharacterString (9 ms)
+[ RUN      ] RegExTest.MultiCharacterString
+[       OK ] RegExTest.MultiCharacterString (0 ms)
+[ RUN      ] RegExTest.OperatorNot
+[       OK ] RegExTest.OperatorNot (0 ms)
+[ RUN      ] RegExTest.OperatorOr
+[       OK ] RegExTest.OperatorOr (1501 ms)
+[ RUN      ] RegExTest.OperatorOrShortCircuits
+[       OK ] RegExTest.OperatorOrShortCircuits (1 ms)
+[ RUN      ] RegExTest.OperatorAnd
+[       OK ] RegExTest.OperatorAnd (1 ms)
+[ RUN      ] RegExTest.OperatorAndShortCircuits
+[       OK ] RegExTest.OperatorAndShortCircuits (4 ms)
+[ RUN      ] RegExTest.OperatorPlus
+[       OK ] RegExTest.OperatorPlus (0 ms)
+[ RUN      ] RegExTest.StringOr
+[       OK ] RegExTest.StringOr (1 ms)
+[----------] 12 tests from RegExTest (1693 ms total)
+
+[----------] Global test environment tear-down
+[==========] 992 tests from 15 test suites ran. (7200 ms total)
+[  PASSED  ] 991 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] NodeTest.FloatingPrecisionDouble
+
+ 1 FAILED TEST
+  YOU HAVE 8 DISABLED TESTS
+</failure></testcase></testsuite>

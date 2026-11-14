@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="qnx-target" tests="87" failures="2" skipped="0"><testcase name="cxx11_test" classname="qnx-target" /><testcase name="benchmark" classname="qnx-target" /><testcase name="spec_arg" classname="qnx-target" /><testcase name="spec_arg_verbosity" classname="qnx-target" /><testcase name="benchmark_setup_teardown" classname="qnx-target" /><testcase name="min_time_flag_time" classname="qnx-target" /><testcase name="min_time_flag_iters" classname="qnx-target" /><testcase name="filter_simple" classname="qnx-target" /><testcase name="filter_simple_list_only" classname="qnx-target" /><testcase name="filter_simple_negative" classname="qnx-target" /><testcase name="filter_simple_negative_list_only" classname="qnx-target" /><testcase name="filter_suffix" classname="qnx-target" /><testcase name="filter_suffix_list_only" classname="qnx-target" /><testcase name="filter_suffix_negative" classname="qnx-target" /><testcase name="filter_suffix_negative_list_only" classname="qnx-target" /><testcase name="filter_regex_all" classname="qnx-target" /><testcase name="filter_regex_all_list_only" classname="qnx-target" /><testcase name="filter_regex_all_negative" classname="qnx-target" /><testcase name="filter_regex_all_negative_list_only" classname="qnx-target" /><testcase name="filter_regex_blank" classname="qnx-target" /><testcase name="filter_regex_blank_list_only" classname="qnx-target" /><testcase name="filter_regex_blank_negative" classname="qnx-target" /><testcase name="filter_regex_blank_negative_list_only" classname="qnx-target" /><testcase name="filter_regex_none" classname="qnx-target" /><testcase name="filter_regex_none_list_only" classname="qnx-target" /><testcase name="filter_regex_none_negative" classname="qnx-target" /><testcase name="filter_regex_none_negative_list_only" classname="qnx-target" /><testcase name="filter_regex_wildcard" classname="qnx-target" /><testcase name="filter_regex_wildcard_list_only" classname="qnx-target" /><testcase name="filter_regex_wildcard_negative" classname="qnx-target" /><testcase name="filter_regex_wildcard_negative_list_only" classname="qnx-target" /><testcase name="filter_regex_begin" classname="qnx-target" /><testcase name="filter_regex_begin_list_only" classname="qnx-target" /><testcase name="filter_regex_begin_negative" classname="qnx-target" /><testcase name="filter_regex_begin_negative_list_only" classname="qnx-target" /><testcase name="filter_regex_begin2" classname="qnx-target" /><testcase name="filter_regex_begin2_list_only" classname="qnx-target" /><testcase name="filter_regex_begin2_negative" classname="qnx-target" /><testcase name="filter_regex_begin2_negative_list_only" classname="qnx-target" /><testcase name="filter_regex_end" classname="qnx-target" /><testcase name="filter_regex_end_list_only" classname="qnx-target" /><testcase name="filter_regex_end_negative" classname="qnx-target" /><testcase name="filter_regex_end_negative_list_only" classname="qnx-target" /><testcase name="options_benchmarks" classname="qnx-target" /><testcase name="basic_benchmark" classname="qnx-target" /><testcase name="repetitions_benchmark" classname="qnx-target" /><testcase name="skip_with_error_test" classname="qnx-target" /><testcase name="donotoptimize_test" classname="qnx-target" /><testcase name="fixture_test" classname="qnx-target" /><testcase name="register_benchmark_test" classname="qnx-target" /><testcase name="map_test" classname="qnx-target" /><testcase name="multiple_ranges_test" classname="qnx-target" /><testcase name="args_product_test" classname="qnx-target" /><testcase name="link_main_test" classname="qnx-target" /><testcase name="reporter_output_test" classname="qnx-target" /><testcase name="templated_fixture_test" classname="qnx-target" /><testcase name="templated_fixture_method_test" classname="qnx-target" /><testcase name="user_counters_test" classname="qnx-target" /><testcase name="user_counters_threads_test" classname="qnx-target" /><testcase name="perf_counters_test" classname="qnx-target" /><testcase name="internal_threading_test" classname="qnx-target" /><testcase name="manual_threading_test" classname="qnx-target" /><testcase name="report_aggregates_only_test" classname="qnx-target" /><testcase name="display_aggregates_only_test" classname="qnx-target" /><testcase name="user_counters_tabular_test" classname="qnx-target" /><testcase name="user_counters_thousands_test" classname="qnx-target" /><testcase name="memory_manager_test" classname="qnx-target" /><testcase name="profiler_manager_test" classname="qnx-target" /><testcase name="profiler_manager_iterations" classname="qnx-target" /><testcase name="profiler_manager_state" classname="qnx-target" /><testcase name="complexity_benchmark" classname="qnx-target" /><testcase name="locale_impermeability_test" classname="qnx-target"><failure message="exit 134">Running benchmarks...
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  can not set locale
+</failure></testcase><testcase name="scoped_pause_test" classname="qnx-target" /><testcase name="benchmark_gtest" classname="qnx-target" /><testcase name="benchmark_name_gtest" classname="qnx-target" /><testcase name="benchmark_random_interleaving_gtest" classname="qnx-target" /><testcase name="commandlineflags_gtest" classname="qnx-target" /><testcase name="statistics_gtest" classname="qnx-target" /><testcase name="string_util_gtest" classname="qnx-target"><failure message="exit 1">Running main() from gmock_main.cc
+[==========] Running 47 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 4 tests from StringUtilTest
+[ RUN      ] StringUtilTest.stoul
+[       OK ] StringUtilTest.stoul (12 ms)
+[ RUN      ] StringUtilTest.stoi
+[       OK ] StringUtilTest.stoi (4 ms)
+[ RUN      ] StringUtilTest.stod
+[       OK ] StringUtilTest.stod (6 ms)
+[ RUN      ] StringUtilTest.StrSplit
+[       OK ] StringUtilTest.StrSplit (2 ms)
+[----------] 4 tests from StringUtilTest (33 ms total)
+
+[----------] 16 tests from HumanReadableTests/HumanReadableFixture
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/0
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/0 (19 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/1
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/1 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/2
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/2 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/3
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/3 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/4
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/4 (2 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/5
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/5 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/6
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/6 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/7
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/7 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/8
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/8 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/9
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/9 (0 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/10
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/10 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/11
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/11 (1 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/12
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/12 (0 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/13
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/13 (2 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/14
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/14 (0 ms)
+[ RUN      ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/15
+[       OK ] HumanReadableTests/HumanReadableFixture.HumanReadableNumber/15 (1 ms)
+[----------] 16 tests from HumanReadableTests/HumanReadableFixture (65 ms total)
+
+[----------] 27 tests from HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/0
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/0 (1 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/1
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/1 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/2
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/2 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/3
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/3 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/4
+/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src/test/string_util_gtest.cc:259: Failure
+Expected equality of these values:
+  str
+    Which is: "976.563*2^10"
+  std::get&lt;2&gt;(GetParam())
+    Which is: "976.562*2^10"
+
+[  FAILED  ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/4, where GetParam() = (1e+06, 1024, "976.562*2^10") (12 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/5
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/5 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/6
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/6 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/7
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/7 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/8
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/8 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/9
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/9 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/10
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/10 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/11
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/11 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/12
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/12 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/13
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/13 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/14
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/14 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/15
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/15 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/16
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/16 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/17
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/17 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/18
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/18 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/19
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/19 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/20
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/20 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/21
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/21 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/22
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/22 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/23
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/23 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/24
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/24 (0 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/25
+/home/chirag/qnx-porter/ports-aarch64le/benchmark/work/src/test/string_util_gtest.cc:259: Failure
+Expected equality of these values:
+  str
+    Which is: "976.563e-6"
+  std::get&lt;2&gt;(GetParam())
+    Which is: "976.562e-6"
+
+[  FAILED  ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/25, where GetParam() = (0.0009765625, 1000, "976.562e-6") (2 ms)
+[ RUN      ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/26
+[       OK ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/26 (0 ms)
+[----------] 27 tests from HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture (90 ms total)
+
+[----------] Global test environment tear-down
+[==========] 47 tests from 3 test suites ran. (208 ms total)
+[  PASSED  ] 45 tests.
+[  FAILED  ] 2 tests, listed below:
+[  FAILED  ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/4, where GetParam() = (1e+06, 1024, "976.562*2^10")
+[  FAILED  ] HumanReadableStringifyExponentTests/HumanReadableStringifyExponentFixture.HumanReadableNumberStringifyExponent/25, where GetParam() = (0.0009765625, 1000, "976.562e-6")
+
+ 2 FAILED TESTS
+</failure></testcase><testcase name="perf_counters_gtest" classname="qnx-target" /><testcase name="reporter_list_gtest" classname="qnx-target" /><testcase name="time_unit_gtest" classname="qnx-target" /><testcase name="min_time_parse_gtest" classname="qnx-target" /><testcase name="profiler_manager_gtest" classname="qnx-target" /><testcase name="benchmark_setup_teardown_cb_types_gtest" classname="qnx-target" /><testcase name="memory_results_gtest" classname="qnx-target" /><testcase name="memory_manager_ordering_gtest" classname="qnx-target" /></testsuite>

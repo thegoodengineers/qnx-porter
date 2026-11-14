@@ -13,8 +13,8 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
-set(CMAKE_C_FLAGS_INIT "-g ")
-set(CMAKE_CXX_FLAGS_INIT "-g ")
+set(CMAKE_C_FLAGS_INIT "-g -I/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/qnx-compat -include /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/qnx-compat/endian.h -D_QNX_PORTER_ENDIAN")
+set(CMAKE_CXX_FLAGS_INIT "-g -I/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/qnx-compat -include /home/chirag/qnx-porter/ports-aarch64le/can-utils/work/qnx-compat/endian.h -D_QNX_PORTER_ENDIAN")
 set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/stubs")
 set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/can-utils/work/stubs")
 # Flags after the project's own (appended by the compiler wrappers in -): none

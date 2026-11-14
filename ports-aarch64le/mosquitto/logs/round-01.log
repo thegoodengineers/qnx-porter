@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src -B /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/qnx-run -DWITH_TLS=OFF -DWITH_CJSON=OFF -DDOCUMENTATION=OFF
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src -B /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/qnx-run -DWITH_WEBSOCKETS=OFF -DWITH_DOCS=OFF -DWITH_TESTS=OFF
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
@@ -11,17 +11,27 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src -B /home/c
 -- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+-- Found OpenSSL: /home/chirag/qnx800/target/qnx/aarch64le/usr/lib/libcrypto.so (found version "3.0.20")  
 -- WITH_DLT = OFF
+-- Found cJSON: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/deps/usr/local/include  
+-- Could NOT find argon2 (missing: ARGON2_INCLUDE_DIR ARGON2_LIBRARY) 
+-- Found LineEditing: /home/chirag/qnx800/target/qnx/aarch64le/usr/lib/libreadline.so  
 -- Looking for pthread.h
 -- Looking for pthread.h - found
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
 -- Found Threads: TRUE  
--- Looking for getaddrinfo_a in anl
--- Looking for getaddrinfo_a in anl - not found
+-- Looking for include file sys/event.h
+-- Looking for include file sys/event.h - not found
+-- Found SQLite3: /home/chirag/qnx800/target/qnx/usr/include (found version "3.50.4") 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/build
+CMake Warning at CMakeLists.txt:124 (message):
+  LTO/IPO is not supported: CMake doesn't support IPO for current CXX
+  compiler
+
+
 CMake Warning:
   Manually-specified variables were not used by the project:
 
@@ -29,269 +39,279 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/build -j 2 -- -k
-[  0%] Building C object lib/CMakeFiles/libmosquitto.dir/actions.c.o
-[  0%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/alias_mosq.c.o
-[  1%] Building C object src/CMakeFiles/mosquitto.dir/bridge.c.o
-[  2%] Building C object lib/CMakeFiles/libmosquitto.dir/callbacks.c.o
-[  3%] Building C object lib/CMakeFiles/libmosquitto.dir/connect.c.o
-[  3%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_auth.c.o
-[  4%] Building C object src/CMakeFiles/mosquitto.dir/bridge_topic.c.o
-[  5%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_connack.c.o
-[  6%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_disconnect.c.o
-[  7%] Building C object src/CMakeFiles/mosquitto.dir/conf.c.o
-[  7%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_ping.c.o
-[  8%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_pubackcomp.c.o
-[  9%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_publish.c.o
-[ 10%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_pubrec.c.o
-[ 10%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_pubrel.c.o
-[ 11%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_suback.c.o
-[ 12%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_unsuback.c.o
-[ 12%] Building C object lib/CMakeFiles/libmosquitto.dir/helpers.c.o
-[ 13%] Building C object lib/CMakeFiles/libmosquitto.dir/logging_mosq.c.o
-[ 14%] Building C object lib/CMakeFiles/libmosquitto.dir/loop.c.o
-[ 15%] Building C object lib/CMakeFiles/libmosquitto.dir/memory_mosq.c.o
-[ 15%] Building C object lib/CMakeFiles/libmosquitto.dir/messages_mosq.c.o
+[  1%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/base64_common.c.o
+[  1%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell.dir/ctrl_shell.c.o
+[  1%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/cjson_common.c.o
+[  1%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/file_common.c.o
+[  2%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/memory_common.c.o
+[  2%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/mqtt_common.c.o
+[  2%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell.dir/ctrl_shell_broker.c.o
+[  2%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/password_common.c.o
+[  3%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell.dir/ctrl_shell_client.c.o
+[  3%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell.dir/ctrl_shell_completion_tree.c.o
+[  4%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/property_common.c.o
+[  4%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell.dir/ctrl_shell_dynsec.c.o
+[  4%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/random_common.c.o
+[  5%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell.dir/ctrl_shell_post_connect.c.o
+[  5%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/strings_common.c.o
+[  6%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/time_common.c.o
+[  6%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell.dir/ctrl_shell_pre_connect.c.o
+[  6%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell.dir/ctrl_shell_printf.c.o
+[  6%] Built target ctrl_shell
+[  7%] Building C object apps/mosquitto_ctrl/CMakeFiles/ctrl_shell_io.dir/ctrl_shell_io.c.o
+[  7%] Built target ctrl_shell_io
+[  7%] Building C object apps/mosquitto_signal/CMakeFiles/mosquitto_signal.dir/mosquitto_signal.c.o
+[  7%] Building C object apps/mosquitto_signal/CMakeFiles/mosquitto_signal.dir/signal_unix.c.o
+[  8%] Linking C executable mosquitto_signal
+[  8%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/topic_common.c.o
+[  8%] Built target mosquitto_signal
+[  8%] Building C object libcommon/CMakeFiles/libmosquitto_common.dir/utf8_common.c.o
+[  8%] Built target libmosquitto_common
+[  8%] Building C object lib/CMakeFiles/libmosquitto.dir/actions_publish.c.o
+[  9%] Building C object src/CMakeFiles/mosquitto.dir/acl_file.c.o
+[  9%] Building C object src/CMakeFiles/mosquitto.dir/__/plugins/acl-file/acl_check.c.o
+[  9%] Building C object lib/CMakeFiles/libmosquitto.dir/actions_subscribe.c.o
+[  9%] Building C object src/CMakeFiles/mosquitto.dir/__/plugins/acl-file/acl_parse.c.o
+[ 10%] Building C object lib/CMakeFiles/libmosquitto.dir/actions_unsubscribe.c.o
+[ 11%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/alias_mosq.c.o
+[ 11%] Building C object lib/CMakeFiles/libmosquitto.dir/alias_mosq.c.o
+[ 11%] Building C object src/CMakeFiles/mosquitto.dir/bridge.c.o
+[ 11%] Building C object lib/CMakeFiles/libmosquitto.dir/callbacks.c.o
+[ 12%] Building C object lib/CMakeFiles/libmosquitto.dir/connect.c.o
+[ 12%] Building C object lib/CMakeFiles/libmosquitto.dir/extended_auth.c.o
+[ 12%] Building C object src/CMakeFiles/mosquitto.dir/bridge_topic.c.o
+[ 12%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_auth.c.o
+[ 13%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_connack.c.o
+[ 14%] Building C object src/CMakeFiles/mosquitto.dir/broker_control.c.o
+[ 14%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_disconnect.c.o
+[ 14%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_ping.c.o
+[ 15%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_pubackcomp.c.o
+[ 15%] Building C object src/CMakeFiles/mosquitto.dir/conf.c.o
+[ 15%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_publish.c.o
 [ 15%] Building C object src/CMakeFiles/mosquitto.dir/conf_includedir.c.o
+[ 15%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_pubrec.c.o
 [ 16%] Building C object src/CMakeFiles/mosquitto.dir/context.c.o
-[ 17%] Building C object lib/CMakeFiles/libmosquitto.dir/misc_mosq.c.o
-[ 18%] Building C object lib/CMakeFiles/libmosquitto.dir/mosquitto.c.o
-[ 18%] Building C object lib/CMakeFiles/libmosquitto.dir/net_mosq_ocsp.c.o
-[ 19%] Building C object src/CMakeFiles/mosquitto.dir/control.c.o
-[ 20%] Building C object lib/CMakeFiles/libmosquitto.dir/net_mosq.c.o
-[ 21%] Building C object lib/CMakeFiles/libmosquitto.dir/options.c.o
-[ 22%] Building C object lib/CMakeFiles/libmosquitto.dir/packet_datatypes.c.o
-[ 22%] Building C object src/CMakeFiles/mosquitto.dir/database.c.o
-[ 22%] Building C object lib/CMakeFiles/libmosquitto.dir/packet_mosq.c.o
-[ 23%] Building C object lib/CMakeFiles/libmosquitto.dir/property_mosq.c.o
-[ 24%] Building C object lib/CMakeFiles/libmosquitto.dir/read_handle.c.o
-[ 24%] Building C object lib/CMakeFiles/libmosquitto.dir/send_connect.c.o
-[ 25%] Building C object src/CMakeFiles/mosquitto.dir/handle_auth.c.o
+[ 17%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_pubrel.c.o
+[ 17%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_suback.c.o
+[ 17%] Building C object lib/CMakeFiles/libmosquitto.dir/handle_unsuback.c.o
+[ 17%] Building C object src/CMakeFiles/mosquitto.dir/control.c.o
+[ 17%] Building C object src/CMakeFiles/mosquitto.dir/control_common.c.o
+[ 18%] Building C object src/CMakeFiles/mosquitto.dir/database.c.o
+[ 19%] Building C object lib/CMakeFiles/libmosquitto.dir/helpers.c.o
+[ 19%] Building C object lib/CMakeFiles/libmosquitto.dir/http_client.c.o
+[ 19%] Building C object lib/CMakeFiles/libmosquitto.dir/libmosquitto.c.o
+[ 20%] Building C object lib/CMakeFiles/libmosquitto.dir/logging_mosq.c.o
+[ 20%] Building C object lib/CMakeFiles/libmosquitto.dir/loop.c.o
+[ 20%] Building C object lib/CMakeFiles/libmosquitto.dir/messages_mosq.c.o
+[ 20%] Building C object src/CMakeFiles/mosquitto.dir/handle_auth.c.o
+[ 21%] Building C object lib/CMakeFiles/libmosquitto.dir/net_mosq_ocsp.c.o
+[ 21%] Building C object src/CMakeFiles/mosquitto.dir/handle_connack.c.o
+[ 21%] Building C object lib/CMakeFiles/libmosquitto.dir/net_mosq.c.o
+[ 22%] Building C object src/CMakeFiles/mosquitto.dir/handle_connect.c.o
+[ 22%] Building C object lib/CMakeFiles/libmosquitto.dir/net_ws.c.o
+[ 23%] Building C object lib/CMakeFiles/libmosquitto.dir/options.c.o
+[ 23%] Building C object lib/CMakeFiles/libmosquitto.dir/packet_datatypes.c.o
+[ 23%] Building C object src/CMakeFiles/mosquitto.dir/handle_disconnect.c.o
+[ 23%] Building C object lib/CMakeFiles/libmosquitto.dir/packet_mosq.c.o
+[ 23%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_ping.c.o
+[ 24%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_pubackcomp.c.o
+[ 25%] Building C object lib/CMakeFiles/libmosquitto.dir/property_mosq.c.o
+[ 25%] Building C object src/CMakeFiles/mosquitto.dir/handle_publish.c.o
+[ 25%] Building C object lib/CMakeFiles/libmosquitto.dir/read_handle.c.o
+[ 25%] Building C object lib/CMakeFiles/libmosquitto.dir/send_connect.c.o
+[ 25%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_pubrec.c.o
 [ 26%] Building C object lib/CMakeFiles/libmosquitto.dir/send_disconnect.c.o
+[ 27%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_pubrel.c.o
 [ 27%] Building C object lib/CMakeFiles/libmosquitto.dir/send_mosq.c.o
-[ 28%] Building C object src/CMakeFiles/mosquitto.dir/handle_connack.c.o
-[ 28%] Building C object lib/CMakeFiles/libmosquitto.dir/send_publish.c.o
-[ 29%] Building C object src/CMakeFiles/mosquitto.dir/handle_connect.c.o
-[ 30%] Building C object lib/CMakeFiles/libmosquitto.dir/send_subscribe.c.o
-[ 31%] Building C object lib/CMakeFiles/libmosquitto.dir/send_unsubscribe.c.o
-[ 32%] Building C object lib/CMakeFiles/libmosquitto.dir/socks_mosq.c.o
-[ 32%] Building C object src/CMakeFiles/mosquitto.dir/handle_disconnect.c.o
-[ 32%] Building C object lib/CMakeFiles/libmosquitto.dir/srv_mosq.c.o
-[ 33%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_ping.c.o
-[ 34%] Building C object lib/CMakeFiles/libmosquitto.dir/strings_mosq.c.o
-[ 35%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_pubackcomp.c.o
-[ 36%] Building C object lib/CMakeFiles/libmosquitto.dir/thread_mosq.c.o
-[ 36%] Building C object src/CMakeFiles/mosquitto.dir/handle_publish.c.o
-[ 36%] Building C object lib/CMakeFiles/libmosquitto.dir/time_mosq.c.o
-[ 37%] Building C object lib/CMakeFiles/libmosquitto.dir/tls_mosq.c.o
-[ 38%] Building C object lib/CMakeFiles/libmosquitto.dir/utf8_mosq.c.o
-[ 39%] Building C object lib/CMakeFiles/libmosquitto.dir/util_mosq.c.o
-[ 40%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_pubrec.c.o
-[ 41%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_pubrel.c.o
-[ 41%] Building C object lib/CMakeFiles/libmosquitto.dir/util_topic.c.o
-[ 41%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_suback.c.o
-[ 42%] Building C object src/CMakeFiles/mosquitto.dir/handle_subscribe.c.o
-[ 43%] Building C object lib/CMakeFiles/libmosquitto.dir/will_mosq.c.o
-[ 44%] Linking C shared library libmosquitto.so
-[ 45%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_unsuback.c.o
-[ 46%] Building C object src/CMakeFiles/mosquitto.dir/handle_unsubscribe.c.o
-[ 46%] Built target libmosquitto
-[ 47%] Building C object plugins/message-timestamp/CMakeFiles/mosquitto_message_timestamp.dir/mosquitto_message_timestamp.c.o
-[ 47%] Linking C shared module mosquitto_message_timestamp.so
-[ 47%] Building C object src/CMakeFiles/mosquitto.dir/keepalive.c.o
-[ 47%] Built target mosquitto_message_timestamp
-[ 48%] Building C object plugins/payload-modification/CMakeFiles/mosquitto_payload_modification.dir/mosquitto_payload_modification.c.o
-[ 49%] Building C object src/CMakeFiles/mosquitto.dir/logging.c.o
-[ 50%] Linking C shared module mosquitto_payload_modification.so
-[ 50%] Built target mosquitto_payload_modification
-[ 51%] Building C object src/CMakeFiles/mosquitto.dir/loop.c.o
-[ 51%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/memory_mosq.c.o
-[ 52%] Building C object src/CMakeFiles/mosquitto.dir/memory_public.c.o
-[ 53%] Building C object src/CMakeFiles/mosquitto.dir/mosquitto.c.o
-[ 54%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/misc_mosq.c.o
-[ 54%] Building C object src/CMakeFiles/mosquitto.dir/mux.c.o
-[ 55%] Building C object src/CMakeFiles/mosquitto.dir/mux_epoll.c.o
-[ 56%] Building C object src/CMakeFiles/mosquitto.dir/mux_poll.c.o
-[ 56%] Building C object src/CMakeFiles/mosquitto.dir/net.c.o
-[ 57%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/net_mosq_ocsp.c.o
-[ 58%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/net_mosq.c.o
-[ 59%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/packet_datatypes.c.o
-[ 59%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/packet_mosq.c.o
-[ 60%] Building C object src/CMakeFiles/mosquitto.dir/password_mosq.c.o
-[ 61%] Building C object src/CMakeFiles/mosquitto.dir/persist_read_v234.c.o
-[ 61%] Building C object src/CMakeFiles/mosquitto.dir/persist_read_v5.c.o
-[ 62%] Building C object src/CMakeFiles/mosquitto.dir/persist_read.c.o
-[ 63%] Building C object src/CMakeFiles/mosquitto.dir/persist_write_v5.c.o
-[ 63%] Building C object src/CMakeFiles/mosquitto.dir/persist_write.c.o
-[ 64%] Building C object src/CMakeFiles/mosquitto.dir/plugin.c.o
-[ 65%] Building C object src/CMakeFiles/mosquitto.dir/plugin_public.c.o
-[ 66%] Building C object src/CMakeFiles/mosquitto.dir/property_broker.c.o
-[ 66%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/property_mosq.c.o
-[ 67%] Building C object src/CMakeFiles/mosquitto.dir/read_handle.c.o
-[ 68%] Building C object src/CMakeFiles/mosquitto.dir/retain.c.o
-[ 68%] Building C object src/CMakeFiles/mosquitto.dir/security.c.o
-[ 69%] Building C object src/CMakeFiles/mosquitto.dir/security_default.c.o
-[ 70%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_mosq.c.o
-[ 71%] Building C object src/CMakeFiles/mosquitto.dir/send_auth.c.o
-[ 71%] Building C object src/CMakeFiles/mosquitto.dir/send_connack.c.o
-[ 72%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_connect.c.o
-[ 73%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_disconnect.c.o
-[ 74%] Building CXX object lib/cpp/CMakeFiles/mosquittopp.dir/mosquittopp.cpp.o
-[ 74%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_publish.c.o
-[ 75%] Building C object src/CMakeFiles/mosquitto.dir/send_suback.c.o
-[ 76%] Building C object src/CMakeFiles/mosquitto.dir/signals.c.o
-[ 77%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_subscribe.c.o
-[ 78%] Linking CXX shared library libmosquittopp.so
-[ 78%] Building C object src/CMakeFiles/mosquitto.dir/send_unsuback.c.o
-[ 78%] Built target mosquittopp
-[ 78%] Building C object client/CMakeFiles/mosquitto_pub.dir/pub_client.c.o
-[ 79%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_unsubscribe.c.o
-[ 80%] Building C object src/CMakeFiles/mosquitto.dir/session_expiry.c.o
-[ 80%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/strings_mosq.c.o
-[ 81%] Building C object client/CMakeFiles/mosquitto_pub.dir/pub_shared.c.o
-[ 82%] Building C object src/CMakeFiles/mosquitto.dir/subs.c.o
-[ 83%] Building C object client/CMakeFiles/mosquitto_pub.dir/client_shared.c.o
-[ 84%] Building C object client/CMakeFiles/mosquitto_pub.dir/client_props.c.o
-[ 84%] Linking C executable mosquitto_pub
-[ 84%] Building C object client/CMakeFiles/mosquitto_sub.dir/sub_client.c.o
-[ 85%] Building C object client/CMakeFiles/mosquitto_sub.dir/sub_client_output.c.o
-[ 86%] Building C object src/CMakeFiles/mosquitto.dir/sys_tree.c.o
-[ 87%] Building C object client/CMakeFiles/mosquitto_sub.dir/client_shared.c.o
-[ 88%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/time_mosq.c.o
-[ 88%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/tls_mosq.c.o
-[ 89%] Building C object src/CMakeFiles/mosquitto.dir/topic_tok.c.o
-[ 90%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/util_mosq.c.o
-[ 90%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/util_topic.c.o
-[ 91%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/utf8_mosq.c.o
-[ 92%] Building C object src/CMakeFiles/mosquitto.dir/websockets.c.o
-[ 92%] Building C object src/CMakeFiles/mosquitto.dir/will_delay.c.o
-[ 92%] Building C object client/CMakeFiles/mosquitto_sub.dir/client_props.c.o
-[ 93%] Linking C executable mosquitto_sub
-[ 94%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/will_mosq.c.o
-[ 95%] Building C object client/CMakeFiles/mosquitto_rr.dir/rr_client.c.o
-[ 96%] Linking C executable mosquitto
-[ 97%] Building C object client/CMakeFiles/mosquitto_rr.dir/pub_shared.c.o
-[ 97%] Building C object client/CMakeFiles/mosquitto_rr.dir/sub_client_output.c.o
-[ 98%] Building C object client/CMakeFiles/mosquitto_rr.dir/client_shared.c.o
-[ 99%] Building C object client/CMakeFiles/mosquitto_rr.dir/client_props.c.o
-[100%] Linking C executable mosquitto_rr
+[ 27%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_suback.c.o
+[ 27%] Building C object lib/CMakeFiles/libmosquitto.dir/send_publish.c.o
+[ 27%] Building C object src/CMakeFiles/mosquitto.dir/handle_subscribe.c.o
+[ 28%] Building C object lib/CMakeFiles/libmosquitto.dir/send_subscribe.c.o
+[ 29%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/handle_unsuback.c.o
+[ 29%] Building C object lib/CMakeFiles/libmosquitto.dir/send_unsubscribe.c.o
+[ 29%] Building C object src/CMakeFiles/mosquitto.dir/handle_unsubscribe.c.o
+[ 29%] Building C object lib/CMakeFiles/libmosquitto.dir/socks_mosq.c.o
+[ 30%] Building C object lib/CMakeFiles/libmosquitto.dir/srv_mosq.c.o
+[ 30%] Building C object src/CMakeFiles/mosquitto.dir/http_serv.c.o
+[ 31%] Building C object src/CMakeFiles/mosquitto.dir/__/common/json_help.c.o
+[ 31%] Building C object lib/CMakeFiles/libmosquitto.dir/thread_mosq.c.o
+[ 31%] Building C object src/CMakeFiles/mosquitto.dir/keepalive.c.o
+[ 31%] Building C object lib/CMakeFiles/libmosquitto.dir/tls_mosq.c.o
+[ 31%] Building C object src/CMakeFiles/mosquitto.dir/listeners.c.o
+[ 32%] Building C object lib/CMakeFiles/libmosquitto.dir/util_mosq.c.o
+[ 32%] Building C object lib/CMakeFiles/libmosquitto.dir/will_mosq.c.o
+[ 33%] Building C object src/CMakeFiles/mosquitto.dir/logging.c.o
+[ 33%] Linking C shared library libmosquitto.so
+[ 33%] Building C object src/CMakeFiles/mosquitto.dir/loop.c.o
+[ 33%] Built target libmosquitto
+[ 33%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/db_dump.c.o
+[ 33%] Building C object src/CMakeFiles/mosquitto.dir/mosquitto.c.o
+[ 34%] Building C object src/CMakeFiles/mosquitto.dir/mux.c.o
+[ 34%] Building C object src/CMakeFiles/mosquitto.dir/mux_epoll.c.o
+[ 34%] Building C object src/CMakeFiles/mosquitto.dir/mux_kqueue.c.o
+[ 35%] Building C object src/CMakeFiles/mosquitto.dir/mux_poll.c.o
+[ 35%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/json.c.o
+[ 35%] Building C object src/CMakeFiles/mosquitto.dir/net.c.o
+[ 36%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/print.c.o
+[ 36%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/stubs.c.o
+[ 36%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/__/__/common/json_help.c.o
+[ 36%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/net_mosq_ocsp.c.o
+[ 37%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/__/__/lib/packet_datatypes.c.o
+[ 38%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/net_mosq.c.o
+[ 38%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/__/__/lib/property_mosq.c.o
+[ 38%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/__/__/src/persist_read.c.o
+[ 38%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/net_ws.c.o
+[ 38%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/packet_datatypes.c.o
+[ 39%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/packet_mosq.c.o
+[ 40%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/__/__/src/persist_read_v234.c.o
+[ 40%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/__/__/src/persist_read_v5.c.o
+[ 40%] Building C object src/CMakeFiles/mosquitto.dir/password_file.c.o
+[ 40%] Building C object src/CMakeFiles/mosquitto.dir/__/plugins/password-file/password_check.c.o
+[ 40%] Building C object apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/__/__/src/topic_tok.c.o
+[ 41%] Building C object src/CMakeFiles/mosquitto.dir/__/plugins/password-file/password_parse.c.o
+[ 42%] Linking C executable mosquitto_db_dump
+[ 42%] Building C object src/CMakeFiles/mosquitto.dir/persist_read_v234.c.o
+[ 42%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/mosquitto_ctrl.c.o
+[ 43%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/broker.c.o
+[ 43%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/client.c.o
+[ 43%] Building C object src/CMakeFiles/mosquitto.dir/persist_read_v5.c.o
+[ 43%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/dynsec.c.o
+[ 44%] Building C object src/CMakeFiles/mosquitto.dir/persist_read.c.o
+[ 45%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/dynsec_client.c.o
+[ 45%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/dynsec_group.c.o
+[ 45%] Building C object src/CMakeFiles/mosquitto.dir/persist_write_v5.c.o
+[ 45%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/dynsec_role.c.o
+[ 46%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/__/mosquitto_passwd/get_password.c.o
+[ 46%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/options.c.o
+[ 46%] Building C object src/CMakeFiles/mosquitto.dir/persist_write.c.o
+[ 46%] Building C object apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/__/__/common/json_help.c.o
+[ 47%] Building C object src/CMakeFiles/mosquitto.dir/plugin_callbacks.c.o
+[ 48%] Linking C executable mosquitto_ctrl
+[ 48%] Building C object apps/mosquitto_passwd/CMakeFiles/mosquitto_passwd.dir/mosquitto_passwd.c.o
+[ 48%] Building C object src/CMakeFiles/mosquitto.dir/plugin_v5.c.o
+[ 49%] Building C object apps/mosquitto_passwd/CMakeFiles/mosquitto_passwd.dir/get_password.c.o
+[ 49%] Building C object src/CMakeFiles/mosquitto.dir/plugin_v4.c.o
+[ 49%] Linking C executable mosquitto_passwd
+[ 50%] Building C object src/CMakeFiles/mosquitto.dir/plugin_v3.c.o
+[ 50%] Building C object src/CMakeFiles/mosquitto.dir/plugin_v2.c.o
+[ 50%] Building C object src/CMakeFiles/mosquitto.dir/plugin_init.c.o
+[ 51%] Building C object src/CMakeFiles/mosquitto.dir/plugin_cleanup.c.o
+[ 51%] Building C object src/CMakeFiles/mosquitto.dir/plugin_persist.c.o
+[ 51%] Building C object src/CMakeFiles/mosquitto.dir/plugin_acl_check.c.o
+[ 52%] Building C object src/CMakeFiles/mosquitto.dir/plugin_basic_auth.c.o
+[ 52%] Building C object src/CMakeFiles/mosquitto.dir/plugin_connect.c.o
+[ 52%] Building C object src/CMakeFiles/mosquitto.dir/plugin_disconnect.c.o
+[ 53%] Building C object src/CMakeFiles/mosquitto.dir/plugin_client_offline.c.o
+[ 53%] Building C object src/CMakeFiles/mosquitto.dir/plugin_extended_auth.c.o
+[ 53%] Building CXX object lib/cpp/CMakeFiles/mosquittopp.dir/mosquittopp.cpp.o
+[ 53%] Building C object src/CMakeFiles/mosquitto.dir/plugin_message.c.o
+[ 54%] Building C object src/CMakeFiles/mosquitto.dir/plugin_psk_key.c.o
+[ 54%] Building C object src/CMakeFiles/mosquitto.dir/plugin_public.c.o
+[ 54%] Building C object src/CMakeFiles/mosquitto.dir/plugin_reload.c.o
+[ 55%] Building C object src/CMakeFiles/mosquitto.dir/plugin_subscribe.c.o
+[ 55%] Building C object src/CMakeFiles/mosquitto.dir/plugin_tick.c.o
+[ 56%] Linking CXX shared library libmosquittopp.so
+[ 56%] Building C object src/CMakeFiles/mosquitto.dir/plugin_unsubscribe.c.o
+[ 56%] Built target mosquittopp
+[ 56%] Building C object client/CMakeFiles/mosquitto_pub.dir/pub_client.c.o
+[ 57%] Building C object src/CMakeFiles/mosquitto.dir/property_broker.c.o
+[ 57%] Building C object src/CMakeFiles/mosquitto.dir/proxy_v1.c.o
+[ 58%] Building C object client/CMakeFiles/mosquitto_pub.dir/pub_shared.c.o
+[ 58%] Building C object client/CMakeFiles/mosquitto_pub.dir/client_shared.c.o
+[ 58%] Building C object src/CMakeFiles/mosquitto.dir/proxy_v2.c.o
+[ 59%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/property_mosq.c.o
+[ 59%] Building C object src/CMakeFiles/mosquitto.dir/psk_file.c.o
+[ 59%] Building C object src/CMakeFiles/mosquitto.dir/read_handle.c.o
+[ 59%] Building C object client/CMakeFiles/mosquitto_pub.dir/client_props.c.o
+[ 60%] Building C object src/CMakeFiles/mosquitto.dir/retain.c.o
+[ 61%] Linking C executable mosquitto_pub
+[ 61%] Building C object client/CMakeFiles/mosquitto_sub.dir/sub_client.c.o
+[ 61%] Building C object client/CMakeFiles/mosquitto_sub.dir/sub_client_output.c.o
+[ 61%] Building C object src/CMakeFiles/mosquitto.dir/security_default.c.o
+[ 61%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_mosq.c.o
+[ 62%] Building C object client/CMakeFiles/mosquitto_sub.dir/client_shared.c.o
+[ 63%] Building C object src/CMakeFiles/mosquitto.dir/send_auth.c.o
+[ 63%] Building C object src/CMakeFiles/mosquitto.dir/send_connack.c.o
+[ 64%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_connect.c.o
+[ 64%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_disconnect.c.o
+[ 64%] Building C object client/CMakeFiles/mosquitto_sub.dir/client_props.c.o
+[ 64%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_publish.c.o
+[ 64%] Linking C executable mosquitto_sub
+[ 65%] Building C object src/CMakeFiles/mosquitto.dir/send_suback.c.o
+[ 65%] Building C object client/CMakeFiles/mosquitto_rr.dir/rr_client.c.o
+[ 65%] Building C object src/CMakeFiles/mosquitto.dir/signals.c.o
+[ 65%] Building C object client/CMakeFiles/mosquitto_rr.dir/pub_shared.c.o
+[ 65%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_subscribe.c.o
+[ 66%] Building C object client/CMakeFiles/mosquitto_rr.dir/sub_client_output.c.o
+[ 67%] Building C object src/CMakeFiles/mosquitto.dir/send_unsuback.c.o
+[ 67%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/send_unsubscribe.c.o
+[ 67%] Building C object src/CMakeFiles/mosquitto.dir/session_expiry.c.o
+[ 68%] Building C object src/CMakeFiles/mosquitto.dir/subs.c.o
+[ 68%] Building C object client/CMakeFiles/mosquitto_rr.dir/client_shared.c.o
+[ 68%] Building C object client/CMakeFiles/mosquitto_rr.dir/client_props.c.o
+[ 69%] Linking C executable mosquitto_rr
+[ 69%] Building C object src/CMakeFiles/mosquitto.dir/sys_tree.c.o
+[ 69%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/tls_mosq.c.o
+[ 70%] Building C object src/CMakeFiles/mosquitto.dir/topic_tok.c.o
+[ 70%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/util_mosq.c.o
+[ 70%] Building C object src/CMakeFiles/mosquitto.dir/watchdog.c.o
+[ 71%] Building C object src/CMakeFiles/mosquitto.dir/websockets.c.o
+[ 71%] Building C object src/CMakeFiles/mosquitto.dir/will_delay.c.o
+[ 71%] Building C object src/CMakeFiles/mosquitto.dir/__/lib/will_mosq.c.o
+[ 72%] Linking C executable mosquitto
+/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/loop.c: In function 'mosquitto_loop':
+/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/loop.c:132:33: warning: conversion from 'time_t' {aka 'long int'} to 'suseconds_t' {aka 'int'} may change value [-Wconversion]
+  132 |         local_timeout.tv_usec = (timeout_ms-local_timeout.tv_sec*1000)*1000;
+      |                                 ^
+/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/apps/db_dump/db_dump.c: In function 'main':
+/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/apps/db_dump/db_dump.c:507:30: warning: implicit declaration of function 'ntohl' [-Wimplicit-function-declaration]
+  507 |                 db_version = ntohl(i32temp);
+      |                              ^~~~~
+/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/mux_poll.c: In function 'mux_poll__handle':
+/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/mux_poll.c:207:19: warning: conversion from 'time_t' {aka 'long int'} to 'int' may change value [-Wconversion]
+  207 |         timeout = db.next_event_ms;
+      |                   ^~
+/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/mux_poll.c:211:51: warning: conversion from 'size_t' {aka 'long unsigned int'} to 'nfds_t' {aka 'unsigned int'} may change value [-Wconversion]
+  211 |         fdcount = poll(pollfds, pollfd_current_max+1, timeout);
+      |                                 ~~~~~~~~~~~~~~~~~~^~
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto_db_dump.dir/db_dump.c.o: in function `main':
+/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/apps/db_dump/db_dump.c:507:(.text.startup+0x510): undefined reference to `ntohl'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/deps/usr/local/lib/libcjson.a(cJSON.c.o): in function `print_number':
+/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src/cJSON.c:607:(.text+0x4f4): undefined reference to `__isinf'
+gmake[2]: *** [apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/build.make:285: apps/db_dump/mosquitto_db_dump] Error 1
+gmake[2]: Target 'apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:948: apps/db_dump/CMakeFiles/mosquitto_db_dump.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/ctrl_shell.dir/ctrl_shell.c.o: undefined reference to symbol '__inet_ntop@@libsocket.so.4'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx800/target/qnx/aarch64le/lib/libsocket.so.4: error adding symbols: DSO missing from command line
+gmake[2]: *** [apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/build.make:289: apps/mosquitto_ctrl/mosquitto_ctrl] Error 1
+gmake[2]: Target 'apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1029: apps/mosquitto_ctrl/CMakeFiles/mosquitto_ctrl.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/deps/usr/local/lib/libcjson.a(cJSON.c.o): in function `print_number':
+/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src/cJSON.c:607:(.text+0x4f4): undefined reference to `__isinf'
+gmake[2]: *** [apps/mosquitto_passwd/CMakeFiles/mosquitto_passwd.dir/build.make:140: apps/mosquitto_passwd/mosquitto_passwd] Error 1
+gmake[2]: Target 'apps/mosquitto_passwd/CMakeFiles/mosquitto_passwd.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1055: apps/mosquitto_passwd/CMakeFiles/mosquitto_passwd.dir/all] Error 2
 cc: warning - lang-c++ is deprecated
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `__inet_pton'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `socketpair'
-gmake[2]: *** [client/CMakeFiles/mosquitto_pub.dir/build.make:146: client/mosquitto_pub] Error 1
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/deps/usr/local/lib/libcjson.a(cJSON.c.o): in function `print_number':
+/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src/cJSON.c:607:(.text+0x4f4): undefined reference to `__isinf'
+gmake[2]: *** [client/CMakeFiles/mosquitto_pub.dir/build.make:173: client/mosquitto_pub] Error 1
 gmake[2]: Target 'client/CMakeFiles/mosquitto_pub.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:327: client/CMakeFiles/mosquitto_pub.dir/all] Error 2
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `__inet_pton'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `socketpair'
-gmake[2]: *** [client/CMakeFiles/mosquitto_sub.dir/build.make:146: client/mosquitto_sub] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:842: client/CMakeFiles/mosquitto_pub.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/deps/usr/local/lib/libcjson.a(cJSON.c.o): in function `print_number':
+/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src/cJSON.c:607:(.text+0x4f4): undefined reference to `__isinf'
+gmake[2]: *** [client/CMakeFiles/mosquitto_sub.dir/build.make:173: client/mosquitto_sub] Error 1
 gmake[2]: Target 'client/CMakeFiles/mosquitto_sub.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:353: client/CMakeFiles/mosquitto_sub.dir/all] Error 2
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/bridge.c.o: in function `bridge__connect':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/bridge.c:456:(.text+0x5b8): undefined reference to `gai_strerror'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/bridge.c:478:(.text+0x83c): undefined reference to `gai_strerror'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/bridge.c.o: in function `bridge_check':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/bridge.c:772:(.text+0x12ac): undefined reference to `getsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/bridge.c.o: in function `bridge_check_pending':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/bridge.c:710:(.text+0x1410): undefined reference to `getsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/conf.c.o: in function `conf__attempt_resolve':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/conf.c:93:(.text+0x154): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/conf.c:95:(.text+0x168): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/conf.c:106:(.text+0x1ec): undefined reference to `gai_strerror'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/mux_poll.c.o: in function `loop_handle_reads_writes':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/mux_poll.c:294:(.text+0x648): undefined reference to `getsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__broker_init':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:76:(.text+0x14): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__socket_accept':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:126:(.text+0x9c): undefined reference to `accept'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:180:(.text+0x170): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:142:(.text+0x208): undefined reference to `accept'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:146:(.text+0x228): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__socket_listen_unix':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:844:(.text+0x358): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:860:(.text+0x3b4): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:868:(.text+0x3d4): undefined reference to `listen'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__socket_listen_tcp':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:719:(.text+0x480): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:737:(.text+0x508): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:755:(.text+0x568): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:759:(.text+0x584): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__bind_interface':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:631:(.text+0x5a0): undefined reference to `getifaddrs'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:659:(.text+0x66c): undefined reference to `freeifaddrs'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__socket_listen_tcp':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:787:(.text+0x684): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:801:(.text+0x698): undefined reference to `listen'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:803:(.text+0x6cc): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__bind_interface':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:682:(.text+0x6f4): undefined reference to `freeifaddrs'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__socket_listen_tcp':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:809:(.text+0x744): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__bind_interface':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:682:(.text+0x7a0): undefined reference to `freeifaddrs'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__socket_listen_tcp':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:777:(.text+0x7dc): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__bind_interface':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:675:(.text+0x834): undefined reference to `freeifaddrs'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__socket_listen_tcp':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:796:(.text+0x88c): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:746:(.text+0x8f0): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:809:(.text+0x998): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:721:(.text+0x9a8): undefined reference to `gai_strerror'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/net.c.o: in function `net__socket_get_address':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:953:(.text+0xa44): undefined reference to `getpeername'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:958:(.text+0xac4): undefined reference to `__inet_ntop'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:965:(.text+0xaf4): undefined reference to `__inet_ntop'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/src/net.c:972:(.text+0xb18): undefined reference to `getsockname'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/__/lib/net_mosq.c.o: in function `net__try_connect_unix':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:501:(.text+0x300): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:508:(.text+0x344): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/__/lib/net_mosq.c.o: in function `net__try_connect_tcp':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:405:(.text+0x3c4): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:412:(.text+0x3e4): undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:421:(.text+0x408): undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:454:(.text+0x44c): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:475:(.text+0x490): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:477:(.text+0x49c): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:436:(.text+0x4c8): undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:454:(.text+0x51c): undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:475:(.text+0x574): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:477:(.text+0x580): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:475:(.text+0x59c): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:414:(.text+0x5c4): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:475:(.text+0x600): undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/__/lib/net_mosq.c.o:/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:477: more undefined references to `freeaddrinfo' follow
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/__/lib/net_mosq.c.o: in function `net__socket_connect':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:920:(.text+0x6d0): undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/__/lib/net_mosq.c.o: in function `net__write':
-/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src/lib/net_mosq.c:1021:(.text+0x774): undefined reference to `send'
-gmake[2]: *** [src/CMakeFiles/mosquitto.dir/build.make:1265: src/mosquitto] Error 1
-gmake[2]: Target 'src/CMakeFiles/mosquitto.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:405: src/CMakeFiles/mosquitto.dir/all] Error 2
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `connect'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `socket'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `send'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `freeaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `bind'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `__inet_pton'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `setsockopt'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `getaddrinfo'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libmosquitto.so.2.0.20: undefined reference to `socketpair'
-gmake[2]: *** [client/CMakeFiles/mosquitto_rr.dir/build.make:162: client/mosquitto_rr] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:869: client/CMakeFiles/mosquitto_sub.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/deps/usr/local/lib/libcjson.a(cJSON.c.o): in function `print_number':
+/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src/cJSON.c:607:(.text+0x4f4): undefined reference to `__isinf'
+gmake[2]: *** [client/CMakeFiles/mosquitto_rr.dir/build.make:189: client/mosquitto_rr] Error 1
 gmake[2]: Target 'client/CMakeFiles/mosquitto_rr.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:379: client/CMakeFiles/mosquitto_rr.dir/all] Error 2
+gmake[1]: *** [CMakeFiles/Makefile2:896: client/CMakeFiles/mosquitto_rr.dir/all] Error 2
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: CMakeFiles/mosquitto.dir/bridge.c.o: undefined reference to symbol 'getsockopt@@libsocket.so.4'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx800/target/qnx/aarch64le/lib/libsocket.so.4: error adding symbols: DSO missing from command line
+gmake[2]: *** [src/CMakeFiles/mosquitto.dir/build.make:1725: src/mosquitto] Error 1
+gmake[2]: Target 'src/CMakeFiles/mosquitto.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:922: src/CMakeFiles/mosquitto.dir/all] Error 2
 gmake[1]: Target 'all' not remade because of errors.
 gmake: *** [Makefile:146: all] Error 2
 gmake: Target 'default_target' not remade because of errors.

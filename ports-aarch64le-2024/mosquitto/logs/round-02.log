@@ -1,0 +1,55 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/src -B /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/qnx-run -DWITH_TLS=OFF -DWITH_CJSON=OFF -DDOCUMENTATION=OFF
+-- The C compiler identification is QCC 12.2.0
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- WITH_DLT = OFF
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Looking for getaddrinfo_a in anl
+-- Looking for getaddrinfo_a in anl - not found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/mosquitto/work/build -j 2 -- -k
+Consolidate compiler generated dependencies of target libmosquitto
+Consolidate compiler generated dependencies of target mosquitto
+[  1%] Linking C shared library libmosquitto.so
+[  2%] Linking C executable mosquitto
+[ 32%] Built target libmosquitto
+Consolidate compiler generated dependencies of target mosquitto_message_timestamp
+[ 32%] Linking C shared module mosquitto_message_timestamp.so
+[ 84%] Built target mosquitto
+Consolidate compiler generated dependencies of target mosquitto_payload_modification
+[ 85%] Built target mosquitto_message_timestamp
+[ 86%] Linking C shared module mosquitto_payload_modification.so
+Consolidate compiler generated dependencies of target mosquittopp
+[ 87%] Linking CXX shared library libmosquittopp.so
+[ 88%] Built target mosquitto_payload_modification
+Consolidate compiler generated dependencies of target mosquitto_pub
+[ 88%] Linking C executable mosquitto_pub
+[ 89%] Built target mosquittopp
+[ 92%] Built target mosquitto_pub
+Consolidate compiler generated dependencies of target mosquitto_sub
+Consolidate compiler generated dependencies of target mosquitto_rr
+[ 93%] Linking C executable mosquitto_sub
+[ 94%] Linking C executable mosquitto_rr
+[ 96%] Built target mosquitto_sub
+[100%] Built target mosquitto_rr

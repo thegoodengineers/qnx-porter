@@ -1,0 +1,15 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/yyjson/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  test_allocator (exit 0)
+PASS  test_err_code (exit 0)
+PASS  test_json_merge_patch (exit 0)
+PASS  test_json_mut_val (exit 0)
+PASS  test_json_patch (exit 0)
+PASS  test_json_pointer (exit 0)
+PASS  test_json_reader (exit 0)
+PASS  test_json_val (exit 0)
+PASS  test_json_writer (exit 0)
+PASS  test_number (exit 0)
+PASS  test_roundtrip (exit 0)
+PASS  test_string (exit 0)
+
+12/12 tests passed on the QNX target

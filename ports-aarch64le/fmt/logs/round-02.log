@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src -B /home/chirag/qnx-porter/ports-aarch64le/fmt/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/fmt/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/fmt/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src -B /home/chirag/qnx-porter/ports-aarch64le/fmt/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/fmt/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/fmt/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/fmt/work/qnx-run
 -- CMake version: 3.22.1
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting CXX compiler ABI info
@@ -6,7 +6,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src -B /home/chirag/
 -- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- {fmt} version: 11.0.2
+-- {fmt} version: 12.2.1
 -- Build type: Release
 -- Target 'doc' disabled because doxygen not found
 -- Looking for C++ include pthread.h
@@ -14,9 +14,13 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src -B /home/chirag/
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
 -- Found Threads: TRUE  
--- Looking for strptime
--- Looking for strptime - found
 -- FMT_PEDANTIC: OFF
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/fmt/work/build
@@ -27,183 +31,91 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/fmt/work/build -j 2 -- -k
-Consolidate compiler generated dependencies of target gtest
 [  1%] Building CXX object CMakeFiles/fmt.dir/src/format.cc.o
-[  4%] Built target gtest
+Consolidate compiler generated dependencies of target gtest
+[  3%] Built target gtest
 [  5%] Building CXX object CMakeFiles/fmt.dir/src/os.cc.o
 Consolidate compiler generated dependencies of target format-impl-test
 [  6%] Linking CXX executable ../bin/format-impl-test
-[ 15%] Built target format-impl-test
-Consolidate compiler generated dependencies of target compile-fp-test
-[ 16%] Linking CXX executable ../bin/compile-fp-test
-[ 23%] Built target compile-fp-test
+[ 14%] Built target format-impl-test
+Consolidate compiler generated dependencies of target no-builtin-types-test
+[ 15%] Linking CXX executable ../bin/no-builtin-types-test
+[ 22%] Built target no-builtin-types-test
 Consolidate compiler generated dependencies of target scan-test
-[ 24%] Linking CXX executable ../bin/scan-test
-[ 31%] Built target scan-test
+[ 23%] Linking CXX executable ../bin/scan-test
+[ 29%] Built target scan-test
 Consolidate compiler generated dependencies of target unicode-test
-[ 32%] Linking CXX executable ../bin/unicode-test
-[ 39%] Built target unicode-test
+[ 31%] Linking CXX executable ../bin/unicode-test
+[ 37%] Built target unicode-test
 Consolidate compiler generated dependencies of target posix-mock-test
-[ 41%] Linking CXX executable ../bin/posix-mock-test
-[ 47%] Built target posix-mock-test
-[ 49%] Linking CXX static library libfmt.a
-[ 49%] Built target fmt
-Consolidate compiler generated dependencies of target perf-sanity
+[ 38%] Linking CXX executable ../bin/posix-mock-test
+[ 45%] Built target posix-mock-test
+[ 46%] Linking CXX static library libfmt.a
+[ 46%] Built target fmt
+[ 48%] Building CXX object CMakeFiles/fmt-c.dir/src/fmt-c.cc.o
 Consolidate compiler generated dependencies of target test-main
-[ 54%] Built target test-main
-[ 56%] Linking CXX executable ../bin/perf-sanity
-Consolidate compiler generated dependencies of target args-test
-[ 57%] Linking CXX executable ../bin/args-test
-[ 58%] Built target perf-sanity
-Consolidate compiler generated dependencies of target base-test
-[ 60%] Linking CXX executable ../bin/base-test
-[ 61%] Built target args-test
-Consolidate compiler generated dependencies of target assert-test
-[ 63%] Linking CXX executable ../bin/assert-test
-[ 64%] Built target assert-test
-Consolidate compiler generated dependencies of target chrono-test
-[ 65%] Linking CXX executable ../bin/chrono-test
-[ 67%] Built target base-test
-Consolidate compiler generated dependencies of target color-test
-[ 68%] Linking CXX executable ../bin/color-test
-[ 69%] Built target color-test
-Consolidate compiler generated dependencies of target gtest-extra-test
-[ 71%] Linking CXX executable ../bin/gtest-extra-test
-[ 72%] Built target chrono-test
-Consolidate compiler generated dependencies of target format-test
-[ 73%] Linking CXX executable ../bin/format-test
-[ 75%] Built target gtest-extra-test
-Consolidate compiler generated dependencies of target ostream-test
-[ 76%] Linking CXX executable ../bin/ostream-test
-[ 78%] Built target ostream-test
-Consolidate compiler generated dependencies of target compile-test
-[ 79%] Linking CXX executable ../bin/compile-test
-[ 80%] Built target format-test
-Consolidate compiler generated dependencies of target printf-test
-[ 82%] Linking CXX executable ../bin/printf-test
-[ 83%] Built target compile-test
-Consolidate compiler generated dependencies of target ranges-test
-[ 84%] Linking CXX executable ../bin/ranges-test
-[ 89%] Built target printf-test
-[ 89%] Built target ranges-test
-Consolidate compiler generated dependencies of target xchar-test
-[ 90%] Linking CXX executable ../bin/xchar-test
-[ 91%] Built target xchar-test
-Consolidate compiler generated dependencies of target enforce-checks-test
-[ 93%] Linking CXX executable ../bin/enforce-checks-test
-Consolidate compiler generated dependencies of target std-test
-[ 94%] Linking CXX executable ../bin/std-test
-[ 95%] Built target enforce-checks-test
+[ 53%] Built target test-main
+Consolidate compiler generated dependencies of target perf-sanity
+[ 54%] Linking CXX executable ../bin/perf-sanity
+[ 55%] Built target perf-sanity
+[ 57%] Linking CXX static library libfmt-c.a
 Consolidate compiler generated dependencies of target os-test
-[ 97%] Linking CXX executable ../bin/os-test
-[ 98%] Built target os-test
-[100%] Built target std-test
+[ 58%] Linking CXX executable ../bin/os-test
+[ 58%] Built target fmt-c
+Consolidate compiler generated dependencies of target args-test
+[ 59%] Linking CXX executable ../bin/args-test
+[ 61%] Built target os-test
+[ 62%] Built target args-test
+Consolidate compiler generated dependencies of target base-test
+[ 63%] Linking CXX executable ../bin/base-test
+Consolidate compiler generated dependencies of target assert-test
+[ 64%] Linking CXX executable ../bin/assert-test
+[ 66%] Built target assert-test
+Consolidate compiler generated dependencies of target chrono-test
+[ 67%] Linking CXX executable ../bin/chrono-test
+[ 68%] Built target base-test
+Consolidate compiler generated dependencies of target color-test
+[ 70%] Linking CXX executable ../bin/color-test
+[ 71%] Built target chrono-test
+Consolidate compiler generated dependencies of target gtest-extra-test
+[ 72%] Linking CXX executable ../bin/gtest-extra-test
+[ 74%] Built target color-test
+Consolidate compiler generated dependencies of target format-test
+[ 75%] Linking CXX executable ../bin/format-test
+[ 76%] Built target gtest-extra-test
+Consolidate compiler generated dependencies of target ostream-test
+[ 77%] Linking CXX executable ../bin/ostream-test
+[ 79%] Built target ostream-test
+Consolidate compiler generated dependencies of target compile-test
+[ 80%] Linking CXX executable ../bin/compile-test
+[ 81%] Built target compile-test
+Consolidate compiler generated dependencies of target printf-test
+[ 83%] Linking CXX executable ../bin/printf-test
+[ 84%] Built target format-test
+Consolidate compiler generated dependencies of target ranges-test
+[ 85%] Linking CXX executable ../bin/ranges-test
+[ 88%] Built target ranges-test
+Consolidate compiler generated dependencies of target std-test
+[ 89%] Linking CXX executable ../bin/std-test
+[ 90%] Built target printf-test
+Consolidate compiler generated dependencies of target xchar-test
+[ 92%] Built target std-test
+[ 93%] Linking CXX executable ../bin/xchar-test
+Consolidate compiler generated dependencies of target enforce-checks-test
+[ 94%] Linking CXX executable ../bin/enforce-checks-test
+[ 96%] Built target enforce-checks-test
+Consolidate compiler generated dependencies of target c-test
+[ 97%] Linking CXX executable ../bin/c-test
+[ 98%] Built target c-test
+[100%] Built target xchar-test
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
-In file included from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/construct_at.h:23,
-                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__string/constexpr_c_functions.h:14,
-                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__algorithm/copy_move_common.h:18,
-                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__algorithm/copy.h:12,
-                 from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/algorithm:1794,
-                 from /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format-inl.h:12,
-                 from /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/src/format.cc:8:
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:860:39:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = wchar_t]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = wchar_t; long unsigned int SIZE = 500; Allocator = std::__2::allocator<wchar_t>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:860:39:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = wchar_t; long unsigned int SIZE = 500; Allocator = std::__2::allocator<wchar_t>]':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = int; long unsigned int SIZE = 500; Allocator = std::__2::allocator<int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:860:39:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In static member function 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = int; long unsigned int SIZE = 500; Allocator = std::__2::allocator<int>]':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
 cc: warning - lang-c++ is deprecated
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:860:39,
-    inlined from 'constexpr void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/base.h:918:35,
-    inlined from 'constexpr void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/base.h:909:16,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:924:63,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:900:17,
-    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:908:9,
-    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2929:69,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2919:13,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2907:24,
-    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:3017:29:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:860:39,
-    inlined from 'constexpr void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/base.h:918:35,
-    inlined from 'constexpr void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/base.h:909:16,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:924:63,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:900:17,
-    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:908:9,
-    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2929:69,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2919:13,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2907:24,
-    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:3020:27:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
-In function 'void* std::__2::__libcpp_operator_new(_Args ...) [with _Args = {long unsigned int}]',
-    inlined from 'void* std::__2::__libcpp_allocate(size_t, size_t)' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:295:31,
-    inlined from '_Tp* std::__2::allocator<_Tp>::allocate(size_t) [with _Tp = unsigned int]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator.h:125:54,
-    inlined from 'static void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::grow(fmt::v11::detail::buffer<T>&, size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:860:39,
-    inlined from 'constexpr void fmt::v11::detail::buffer<T>::try_reserve(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/base.h:918:35,
-    inlined from 'constexpr void fmt::v11::detail::buffer<T>::try_resize(size_t) [with T = unsigned int]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/base.h:909:16,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::resize(size_t) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:924:63,
-    inlined from 'void fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::move(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:900:17,
-    inlined from 'fmt::v11::basic_memory_buffer<T, SIZE, Allocator>::basic_memory_buffer(fmt::v11::basic_memory_buffer<T, SIZE, Allocator>&&) [with T = unsigned int; long unsigned int SIZE = 32; Allocator = std::__2::allocator<unsigned int>]' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:908:9,
-    inlined from 'void fmt::v11::detail::bigint::square()' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2929:69,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2919:13,
-    inlined from 'void fmt::v11::detail::bigint::assign_pow10(int)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:2907:24,
-    inlined from 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)' at /home/chirag/qnx-porter/ports-aarch64le/fmt/work/src/include/fmt/format.h:3034:29:
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:273:24: warning: argument 1 value '18446744073709551612' exceeds maximum object size 9223372036854775807 [-Walloc-size-larger-than=]
-  273 |   return ::operator new(__args...);
-      |          ~~~~~~~~~~~~~~^~~~~~~~~~~
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new: In function 'void fmt::v11::detail::format_dragon(basic_fp<__int128 unsigned>, unsigned int, int, buffer<char>&, int&)':
-/home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:207:66: note: in a call to allocation function 'void* operator new(size_t)' declared here
-  207 | _LIBCPP_NODISCARD_AFTER_CXX17 _LIBCPP_OVERRIDABLE_FUNC_VIS void* operator new(std::size_t __sz) _THROW_BAD_ALLOC;
-      |                                                                  ^~~~~~~~
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated

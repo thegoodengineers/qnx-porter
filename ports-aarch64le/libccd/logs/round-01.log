@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libccd/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libccd/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libccd/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libccd/work/qnx-run -DBUILD_TESTING=ON
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libccd/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libccd/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libccd/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libccd/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libccd/work/qnx-run -DBUILD_TESTING=ON
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
@@ -25,18 +25,18 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libccd/work/build -j 2 -- -k
-[  7%] Building C object src/testsuites/cu/CMakeFiles/cu.dir/cu.c.o
+[  3%] Building C object src/testsuites/cu/CMakeFiles/cu.dir/cu.c.o
 [  7%] Building C object src/CMakeFiles/ccd.dir/ccd.c.o
 [ 11%] Linking C static library libcu.a
 [ 11%] Built target cu
 [ 14%] Building C object src/CMakeFiles/ccd.dir/mpr.c.o
-[ 18%] Building C object src/CMakeFiles/ccd.dir/polytope.c.o
-[ 22%] Building C object src/CMakeFiles/ccd.dir/support.c.o
+[ 18%] Building C object src/CMakeFiles/ccd.dir/support.c.o
+[ 22%] Building C object src/CMakeFiles/ccd.dir/polytope.c.o
 [ 25%] Building C object src/CMakeFiles/ccd.dir/vec3.c.o
 [ 29%] Linking C static library libccd.a
 [ 29%] Built target ccd
-[ 33%] Building C object src/testsuites/CMakeFiles/bench.dir/bench.c.o
-[ 37%] Building C object src/testsuites/CMakeFiles/main.dir/main.c.o
+[ 33%] Building C object src/testsuites/CMakeFiles/main.dir/main.c.o
+[ 37%] Building C object src/testsuites/CMakeFiles/bench.dir/bench.c.o
 [ 40%] Building C object src/testsuites/CMakeFiles/main.dir/common.c.o
 [ 44%] Building C object src/testsuites/CMakeFiles/main.dir/support.c.o
 [ 48%] Building C object src/testsuites/CMakeFiles/bench.dir/support.c.o

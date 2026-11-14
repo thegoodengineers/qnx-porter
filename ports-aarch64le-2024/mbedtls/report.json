@@ -1,0 +1,39 @@
+{
+  "library": "mbedtls",
+  "url": "https://github.com/Mbed-TLS/mbedtls.git",
+  "version": "v3.6.2",
+  "commit": "107ea89daaefb9867ea9121002fbbdf926780e98",
+  "build_system": "cmake",
+  "arch": "aarch64le",
+  "sdp": "QNX SDP 8.0",
+  "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
+  "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
+  "build_result": "built",
+  "rounds": 2,
+  "tests_passed": 130,
+  "tests_total": 130,
+  "tests_ran": true,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
+  "patches_by_model": 0,
+  "patches": [
+    {
+      "number": 1,
+      "rule": "link-libsocket",
+      "source": "rule",
+      "reason": "`__inet_pton` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/src/library/x509_crt.c:2867:(.text+0x860): undefined reference to `__inet_pton'",
+      "files": [
+        "qnx-toolchain.cmake"
+      ],
+      "path": "patches/0001-link-libsocket.patch",
+      "kept": true
+    }
+  ],
+  "blocked_on": [],
+  "minutes": 19.0,
+  "note": "",
+  "tests_not_runnable": [],
+  "crashes": [],
+  "finished": "2026-11-12T12:10:07+00:00"
+}

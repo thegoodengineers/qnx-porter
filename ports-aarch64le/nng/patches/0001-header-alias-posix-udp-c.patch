@@ -4,7 +4,7 @@ Reason: <sys/errno.h> is a glibc alias QNX 8.0 does not ship; POSIX's <errno.h> 
 Error: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/src/platform/posix/posix_udp.c:14:10: fatal error: sys/errno.h: No such file or directory
 ---
 diff --git a/src/platform/posix/posix_udp.c b/src/platform/posix/posix_udp.c
-index 4ef4c68..c876c4d 100644
+index c0357b5..f052ce4 100644
 --- a/src/platform/posix/posix_udp.c
 +++ b/src/platform/posix/posix_udp.c
 @@ -11,7 +11,7 @@
@@ -13,6 +13,6 @@ index 4ef4c68..c876c4d 100644
  #include "platform/posix/posix_impl.h"
 -#include <sys/errno.h>
 +#include <errno.h>
+ #include <sys/types.h>
  
  #ifdef NNG_PLATFORM_POSIX
- #include "platform/posix/posix_pollq.h"

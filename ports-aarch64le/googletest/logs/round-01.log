@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src -B /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/googletest/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/googletest/work/qnx-run -Dgtest_build_tests=ON
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src -B /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/googletest/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/googletest/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/googletest/work/qnx-run -Dgtest_build_tests=ON
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
@@ -11,7 +11,6 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src -B /home/
 -- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
 -- Looking for pthread.h
 -- Looking for pthread.h - found
 -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
@@ -27,13 +26,13 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build -j 2 -- -k
+[  0%] Building CXX object googletest/CMakeFiles/gtest_no_exception.dir/src/gtest-all.cc.o
 [  1%] Building CXX object googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
-[  1%] Building CXX object googletest/CMakeFiles/gtest_no_exception.dir/src/gtest-all.cc.o
-[  3%] Linking CXX static library ../lib/libgtest.a
-[  3%] Linking CXX static library ../lib/libgtest_no_exception.a
-[  3%] Built target gtest
-[  3%] Built target gtest_no_exception
-[  4%] Building CXX object googletest/CMakeFiles/gtest_main_no_exception.dir/src/gtest-all.cc.o
+[  2%] Linking CXX static library ../lib/libgtest.a
+[  2%] Built target gtest
+[  3%] Building CXX object googletest/CMakeFiles/gtest_main_no_exception.dir/src/gtest-all.cc.o
+[  4%] Linking CXX static library ../lib/libgtest_no_exception.a
+[  4%] Built target gtest_no_exception
 [  5%] Building CXX object googletest/CMakeFiles/gtest_main_no_rtti.dir/src/gtest-all.cc.o
 [  7%] Building CXX object googletest/CMakeFiles/gtest_main_no_exception.dir/src/gtest_main.cc.o
 [  7%] Building CXX object googletest/CMakeFiles/gtest_main_no_rtti.dir/src/gtest_main.cc.o
@@ -43,11 +42,11 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build -j
 [  9%] Built target gtest_main_no_rtti
 [ 10%] Building CXX object googletest/CMakeFiles/gtest-death-test_ex_nocatch_test.dir/test/googletest-death-test_ex_test.cc.o
 [ 11%] Building CXX object googletest/CMakeFiles/gtest-death-test_ex_catch_test.dir/test/googletest-death-test_ex_test.cc.o
-[ 12%] Linking CXX executable gtest-death-test_ex_nocatch_test
+[ 13%] Linking CXX executable gtest-death-test_ex_nocatch_test
 [ 13%] Linking CXX executable gtest-death-test_ex_catch_test
-[ 13%] Built target gtest-death-test_ex_catch_test
 [ 13%] Built target gtest-death-test_ex_nocatch_test
-[ 14%] Building CXX object googletest/CMakeFiles/gtest_no_rtti_unittest.dir/test/gtest_unittest.cc.o
+[ 13%] Built target gtest-death-test_ex_catch_test
+[ 15%] Building CXX object googletest/CMakeFiles/gtest_no_rtti_unittest.dir/test/gtest_unittest.cc.o
 [ 15%] Building CXX object googletest/CMakeFiles/gtest_dll.dir/src/gtest-all.cc.o
 [ 16%] Building CXX object googletest/CMakeFiles/gtest_dll.dir/src/gtest_main.cc.o
 [ 17%] Linking CXX shared library ../lib/libgtest_dll.so
@@ -115,19 +114,19 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build -j
 [ 54%] Built target googletest-options-test
 [ 55%] Building CXX object googletest/CMakeFiles/googletest-param-test-test.dir/test/googletest-param-test-test.cc.o
 [ 56%] Linking CXX executable gtest_no_rtti_unittest
-[ 56%] Building CXX object googletest/CMakeFiles/googletest-port-test.dir/test/googletest-port-test.cc.o
-[ 57%] Linking CXX executable googletest-port-test
-[ 57%] Built target googletest-port-test
-[ 58%] Building CXX object googletest/CMakeFiles/gtest_pred_impl_unittest.dir/test/gtest_pred_impl_unittest.cc.o
-[ 59%] Linking CXX executable gtest_pred_impl_unittest
-[ 59%] Built target gtest_pred_impl_unittest
-[ 60%] Building CXX object googletest/CMakeFiles/gtest_premature_exit_test.dir/test/gtest_premature_exit_test.cc.o
-[ 61%] Building CXX object googletest/CMakeFiles/googletest-param-test-test.dir/test/googletest-param-test2-test.cc.o
+[ 57%] Building CXX object googletest/CMakeFiles/googletest-param-test-test.dir/test/googletest-param-test2-test.cc.o
+[ 57%] Building CXX object googletest/CMakeFiles/googletest-port-test.dir/test/googletest-port-test.cc.o
+[ 58%] Linking CXX executable googletest-port-test
+[ 58%] Built target googletest-port-test
+[ 59%] Building CXX object googletest/CMakeFiles/gtest_pred_impl_unittest.dir/test/gtest_pred_impl_unittest.cc.o
+[ 60%] Linking CXX executable googletest-param-test-test
+[ 60%] Built target googletest-param-test-test
+[ 61%] Building CXX object googletest/CMakeFiles/gtest_premature_exit_test.dir/test/gtest_premature_exit_test.cc.o
 [ 62%] Linking CXX executable gtest_premature_exit_test
 [ 62%] Built target gtest_premature_exit_test
 [ 63%] Building CXX object googletest/CMakeFiles/googletest-printers-test.dir/test/googletest-printers-test.cc.o
-[ 64%] Linking CXX executable googletest-param-test-test
-[ 64%] Built target googletest-param-test-test
+[ 64%] Linking CXX executable gtest_pred_impl_unittest
+[ 64%] Built target gtest_pred_impl_unittest
 [ 65%] Building CXX object googletest/CMakeFiles/gtest_prod_test.dir/test/gtest_prod_test.cc.o
 [ 65%] Building CXX object googletest/CMakeFiles/gtest_prod_test.dir/test/production.cc.o
 [ 66%] Linking CXX executable gtest_prod_test
@@ -145,10 +144,10 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build -j
 [ 73%] Linking CXX executable googletest-test-part-test
 [ 73%] Built target googletest-test-part-test
 [ 74%] Building CXX object googletest/CMakeFiles/gtest_throw_on_failure_ex_test.dir/test/gtest_throw_on_failure_ex_test.cc.o
-[ 75%] Linking CXX executable gtest_throw_on_failure_ex_test
-[ 75%] Built target gtest_throw_on_failure_ex_test
-[ 76%] Building CXX object googletest/CMakeFiles/gtest-typed-test_test.dir/test/gtest-typed-test_test.cc.o
-[ 77%] Linking CXX executable googletest-printers-test
+[ 75%] Linking CXX executable googletest-printers-test
+[ 76%] Linking CXX executable gtest_throw_on_failure_ex_test
+[ 76%] Built target gtest_throw_on_failure_ex_test
+[ 77%] Building CXX object googletest/CMakeFiles/gtest-typed-test_test.dir/test/gtest-typed-test_test.cc.o
 [ 77%] Built target googletest-printers-test
 [ 78%] Building CXX object googletest/CMakeFiles/gtest_unittest.dir/test/gtest_unittest.cc.o
 [ 79%] Building CXX object googletest/CMakeFiles/gtest-typed-test_test.dir/test/gtest-typed-test2_test.cc.o
@@ -203,15 +202,15 @@ cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_exception.a(gtest-all.cc.o): in function `testing::internal::RE::~RE()':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:689:(.text+0x7190): undefined reference to `regfree'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:690:(.text+0x7198): undefined reference to `regfree'
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:706:(.text+0x6c40): undefined reference to `regfree'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:707:(.text+0x6c48): undefined reference to `regfree'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_exception.a(gtest-all.cc.o): in function `testing::internal::RE::FullMatch(char const*, testing::internal::RE const&)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:699:(.text+0x71f8): undefined reference to `regexec'
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:716:(.text+0x6ca8): undefined reference to `regexec'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_exception.a(gtest-all.cc.o): in function `testing::internal::RE::PartialMatch(char const*, testing::internal::RE const&)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:708:(.text+0x7268): undefined reference to `regexec'
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:725:(.text+0x6d18): undefined reference to `regexec'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_exception.a(gtest-all.cc.o): in function `testing::internal::RE::Init(char const*)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:732:(.text+0x26dc8): undefined reference to `regcomp'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:743:(.text+0x26df8): undefined reference to `regcomp'
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:749:(.text+0x2c09c): undefined reference to `regcomp'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:760:(.text+0x2c2f4): undefined reference to `regcomp'
 gmake[2]: *** [googletest/CMakeFiles/googletest-catch-exceptions-no-ex-test_.dir/build.make:98: googletest/googletest-catch-exceptions-no-ex-test_] Error 1
 gmake[2]: Target 'googletest/CMakeFiles/googletest-catch-exceptions-no-ex-test_.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:1194: googletest/CMakeFiles/googletest-catch-exceptions-no-ex-test_.dir/all] Error 2
@@ -236,10 +235,10 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
     inlined from 'MyType::~MyType()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:69:7,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 1>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 1>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'std::__2::__tuple_leaf<0, testing::internal::ValueArray<MyType, MyType, MyType>, false>::~__tuple_leaf()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:305:7,
     inlined from 'std::__2::__tuple_impl<std::__2::__tuple_indices<0>, testing::internal::ValueArray<MyType, MyType, MyType> >::~__tuple_impl()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:463:37,
     inlined from 'std::__2::tuple<testing::internal::ValueArray<MyType, MyType, MyType> >::~tuple()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:533:28,
@@ -255,10 +254,10 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
     inlined from 'MyType::~MyType()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:69:7,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'std::__2::__tuple_leaf<0, testing::internal::ValueArray<MyType, MyType, MyType>, false>::~__tuple_leaf()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:305:7,
     inlined from 'std::__2::__tuple_impl<std::__2::__tuple_indices<0>, testing::internal::ValueArray<MyType, MyType, MyType> >::~__tuple_impl()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:463:37,
     inlined from 'std::__2::tuple<testing::internal::ValueArray<MyType, MyType, MyType> >::~tuple()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:533:28,
@@ -274,10 +273,10 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
     inlined from 'MyType::~MyType()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:69:7,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 1>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 1>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'testing::internal::ParamGenerator<MyType> gtest_MyInstantiationValueParamTest_EvalGenerator_()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:88:1:
 /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:282:20: warning: 'void operator delete(void*, size_t)' called on a pointer to an unallocated object '7308895158021355380' [-Wfree-nonheap-object]
   282 |   ::operator delete(__args...);
@@ -290,10 +289,10 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
     inlined from 'MyType::~MyType()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:69:7,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'testing::internal::ParamGenerator<MyType> gtest_MyInstantiationValueParamTest_EvalGenerator_()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:88:1:
 /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:282:20: warning: 'void operator delete(void*, size_t)' called on a pointer to an unallocated object '7308895158389796463' [-Wfree-nonheap-object]
   282 |   ::operator delete(__args...);
@@ -306,10 +305,10 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
     inlined from 'MyType::~MyType()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:69:7,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 1>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 1>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'testing::internal::ParamGenerator<MyType> gtest_MyInstantiationValueParamTest_EvalGenerator_()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:88:1:
 /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:282:20: warning: 'void operator delete(void*, size_t)' called on a pointer to an unallocated object '7308895158021355380' [-Wfree-nonheap-object]
   282 |   ::operator delete(__args...);
@@ -322,10 +321,10 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
     inlined from 'MyType::~MyType()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:69:7,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<MyType, MyType, MyType>, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<MyType, MyType, MyType>, std::__2::integer_sequence<long unsigned int, 0, 1, 2> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<MyType, MyType, MyType>::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<MyType, MyType, MyType>::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'testing::internal::ParamGenerator<MyType> gtest_MyInstantiationValueParamTest_EvalGenerator_()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-list-tests-unittest_.cc:88:1:
 /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:282:20: warning: 'void operator delete(void*, size_t)' called on a pointer to an unallocated object '7308895158389796463' [-Wfree-nonheap-object]
   282 |   ::operator delete(__args...);
@@ -338,15 +337,15 @@ cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_no_exception.a(gtest-all.cc.o): in function `testing::internal::RE::~RE()':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:689:(.text+0x7190): undefined reference to `regfree'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:690:(.text+0x7198): undefined reference to `regfree'
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:706:(.text+0x6c40): undefined reference to `regfree'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:707:(.text+0x6c48): undefined reference to `regfree'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_no_exception.a(gtest-all.cc.o): in function `testing::internal::RE::FullMatch(char const*, testing::internal::RE const&)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:699:(.text+0x71f8): undefined reference to `regexec'
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:716:(.text+0x6ca8): undefined reference to `regexec'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_no_exception.a(gtest-all.cc.o): in function `testing::internal::RE::PartialMatch(char const*, testing::internal::RE const&)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:708:(.text+0x7268): undefined reference to `regexec'
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:725:(.text+0x6d18): undefined reference to `regexec'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_no_exception.a(gtest-all.cc.o): in function `testing::internal::RE::Init(char const*)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:732:(.text+0x26dc8): undefined reference to `regcomp'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:743:(.text+0x26df8): undefined reference to `regcomp'
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:749:(.text+0x2c09c): undefined reference to `regcomp'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:760:(.text+0x2c2f4): undefined reference to `regcomp'
 gmake[2]: *** [googletest/CMakeFiles/googletest-throw-on-failure-test_.dir/build.make:98: googletest/googletest-throw-on-failure-test_] Error 1
 gmake[2]: Target 'googletest/CMakeFiles/googletest-throw-on-failure-test_.dir/build' not remade because of errors.
 gmake[1]: *** [CMakeFiles/Makefile2:1430: googletest/CMakeFiles/googletest-throw-on-failure-test_.dir/all] Error 2
@@ -354,8 +353,8 @@ cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/gtest_unittest.cc: In function 'void __static_initialization_and_destruction_0(int, int)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/gtest_unittest.cc:7775:1: note: variable tracking size limit exceeded with '-fvar-tracking-assignments', retrying without
- 7775 | }
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/gtest_unittest.cc:7870:1: note: variable tracking size limit exceeded with '-fvar-tracking-assignments', retrying without
+ 7870 | }
       | ^
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
@@ -377,21 +376,6 @@ cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
-cc: warning - lang-c++ is deprecated
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_rtti.a(gtest-all.cc.o): in function `testing::internal::RE::~RE()':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:689:(.text+0x7190): undefined reference to `regfree'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:690:(.text+0x7198): undefined reference to `regfree'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_rtti.a(gtest-all.cc.o): in function `testing::internal::RE::FullMatch(char const*, testing::internal::RE const&)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:699:(.text+0x71f8): undefined reference to `regexec'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_rtti.a(gtest-all.cc.o): in function `testing::internal::RE::PartialMatch(char const*, testing::internal::RE const&)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:708:(.text+0x7268): undefined reference to `regexec'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_rtti.a(gtest-all.cc.o): in function `testing::internal::RE::Init(char const*)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:732:(.text+0x26dc8): undefined reference to `regcomp'
-/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:743:(.text+0x26df8): undefined reference to `regcomp'
-gmake[2]: *** [googletest/CMakeFiles/gtest_no_rtti_unittest.dir/build.make:98: googletest/gtest_no_rtti_unittest] Error 1
-gmake[2]: Target 'googletest/CMakeFiles/gtest_no_rtti_unittest.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:1090: googletest/CMakeFiles/gtest_no_rtti_unittest.dir/all] Error 2
-cc: warning - lang-c++ is deprecated
 In file included from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/construct_at.h:23,
                  from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator_traits.h:14,
                  from /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocate_at_least.h:13,
@@ -406,14 +390,14 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'static void std::__2::allocator_traits<_Alloc>::deallocate(allocator_type&, pointer, size_type) [with _Alloc = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator_traits.h:289:19,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::integer_sequence<long unsigned int, 0> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::integer_sequence<long unsigned int, 0> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'std::__2::__tuple_leaf<0, testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, false>::~__tuple_leaf()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:305:7,
     inlined from 'std::__2::__tuple_impl<std::__2::__tuple_indices<0, 1>, testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, CustomParamNameFunctor>::~__tuple_impl()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:463:37,
     inlined from 'std::__2::tuple<testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, CustomParamNameFunctor>::~tuple()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:533:28,
-    inlined from 'std::__2::string gtest_CustomParamNameFunctorCustomFunctorNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-param-test-test.cc:923:1:
+    inlined from 'std::__2::string gtest_CustomParamNameFunctorCustomFunctorNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-param-test-test.cc:991:1:
 /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:282:20: warning: 'void operator delete(void*, size_t)' called on a pointer to an unallocated object '5652703027978466630' [-Wfree-nonheap-object]
   282 |   ::operator delete(__args...);
       |   ~~~~~~~~~~~~~~~~~^~~~~~~~~~~
@@ -424,14 +408,14 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'static void std::__2::allocator_traits<_Alloc>::deallocate(allocator_type&, pointer, size_type) [with _Alloc = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator_traits.h:289:19,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::integer_sequence<long unsigned int, 0> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::integer_sequence<long unsigned int, 0> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'std::__2::__tuple_leaf<0, testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, false>::~__tuple_leaf()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:305:7,
     inlined from 'std::__2::__tuple_impl<std::__2::__tuple_indices<0, 1>, testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, gtest_CustomParamNameLambdaCustomLambdaNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)::<lambda(const testing::TestParamInfo<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >&)> >::~__tuple_impl()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:463:37,
     inlined from 'std::__2::tuple<testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, gtest_CustomParamNameLambdaCustomLambdaNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)::<lambda(const testing::TestParamInfo<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >&)> >::~tuple()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:533:28,
-    inlined from 'std::__2::string gtest_CustomParamNameLambdaCustomLambdaNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-param-test-test.cc:953:1:
+    inlined from 'std::__2::string gtest_CustomParamNameLambdaCustomLambdaNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-param-test-test.cc:1021:1:
 /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:282:20: warning: 'void operator delete(void*, size_t)' called on a pointer to an unallocated object '7011648753638400332' [-Wfree-nonheap-object]
   282 |   ::operator delete(__args...);
       |   ~~~~~~~~~~~~~~~~~^~~~~~~~~~~
@@ -442,14 +426,14 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'static void std::__2::allocator_traits<_Alloc>::deallocate(allocator_type&, pointer, size_type) [with _Alloc = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator_traits.h:289:19,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::integer_sequence<long unsigned int, 0> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::integer_sequence<long unsigned int, 0> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'std::__2::__tuple_leaf<0, testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, false>::~__tuple_leaf()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:305:7,
     inlined from 'std::__2::__tuple_impl<std::__2::__tuple_indices<0, 1>, testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > (*)(const testing::TestParamInfo<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >&)>::~__tuple_impl()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:463:37,
     inlined from 'std::__2::tuple<testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > (*)(const testing::TestParamInfo<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >&)>::~tuple()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:533:28,
-    inlined from 'std::__2::string gtest_CustomParamNameFunctionPCustomFunctionNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-param-test-test.cc:944:1:
+    inlined from 'std::__2::string gtest_CustomParamNameFunctionPCustomFunctionNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-param-test-test.cc:1012:1:
 /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:282:20: warning: 'void operator delete(void*, size_t)' called on a pointer to an unallocated object '7957695015192261958' [-Wfree-nonheap-object]
   282 |   ::operator delete(__args...);
       |   ~~~~~~~~~~~~~~~~~^~~~~~~~~~~
@@ -460,17 +444,32 @@ In function 'void std::__2::__libcpp_operator_delete(_Args ...) [with _Args = {v
     inlined from 'static void std::__2::allocator_traits<_Alloc>::deallocate(allocator_type&, pointer, size_type) [with _Alloc = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/__memory/allocator_traits.h:289:19,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1105:33,
     inlined from 'std::__2::basic_string<_CharT, _Traits, _Allocator>::~basic_string() [with _CharT = char; _Traits = std::__2::char_traits<char>; _Allocator = std::__2::allocator<char>]' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/string:1102:40,
-    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1172:8,
-    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::integer_sequence<long unsigned int, 0> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1185:8,
-    inlined from 'testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1225:7,
-    inlined from 'testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:804:7,
+    inlined from 'testing::internal::FlatTupleElemBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, 0>::~FlatTupleElemBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1166:8,
+    inlined from 'testing::internal::FlatTupleBase<testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::integer_sequence<long unsigned int, 0> >::~FlatTupleBase()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1179:8,
+    inlined from 'testing::internal::FlatTuple<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~FlatTuple()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-internal.h:1219:21,
+    inlined from 'testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >::~ValueArray()' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/include/gtest/internal/gtest-param-util.h:806:21,
     inlined from 'std::__2::__tuple_leaf<0, testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, false>::~__tuple_leaf()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:305:7,
     inlined from 'std::__2::__tuple_impl<std::__2::__tuple_indices<0, 1>, testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > (*)(const testing::TestParamInfo<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >&)>::~__tuple_impl()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:463:37,
     inlined from 'std::__2::tuple<testing::internal::ValueArray<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >, std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > (*)(const testing::TestParamInfo<std::__2::basic_string<char, std::__2::char_traits<char>, std::__2::allocator<char> > >&)>::~tuple()' at /home/chirag/qnx800/target/qnx/usr/include/c++/v1/tuple:533:28,
-    inlined from 'std::__2::string gtest_CustomParamNameFunctionCustomFunctionNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-param-test-test.cc:940:1:
+    inlined from 'std::__2::string gtest_CustomParamNameFunctionCustomFunctionNamingTest_EvalGenerateName_(const testing::TestParamInfo<std::__2::basic_string<char> >&)' at /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/googletest-param-test-test.cc:1008:1:
 /home/chirag/qnx800/target/qnx/usr/include/c++/v1/new:282:20: warning: 'void operator delete(void*, size_t)' called on a pointer to an unallocated object '7957695015192261958' [-Wfree-nonheap-object]
   282 |   ::operator delete(__args...);
       |   ~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+cc: warning - lang-c++ is deprecated
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_rtti.a(gtest-all.cc.o): in function `testing::internal::RE::~RE()':
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:706:(.text+0x6c40): undefined reference to `regfree'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:707:(.text+0x6c48): undefined reference to `regfree'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_rtti.a(gtest-all.cc.o): in function `testing::internal::RE::FullMatch(char const*, testing::internal::RE const&)':
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:716:(.text+0x6ca8): undefined reference to `regexec'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_rtti.a(gtest-all.cc.o): in function `testing::internal::RE::PartialMatch(char const*, testing::internal::RE const&)':
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:725:(.text+0x6d18): undefined reference to `regexec'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: ../lib/libgtest_main_no_rtti.a(gtest-all.cc.o): in function `testing::internal::RE::Init(char const*)':
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:749:(.text+0x2c09c): undefined reference to `regcomp'
+/home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/src/gtest-port.cc:760:(.text+0x2c2f4): undefined reference to `regcomp'
+gmake[2]: *** [googletest/CMakeFiles/gtest_no_rtti_unittest.dir/build.make:98: googletest/gtest_no_rtti_unittest] Error 1
+gmake[2]: Target 'googletest/CMakeFiles/gtest_no_rtti_unittest.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1090: googletest/CMakeFiles/gtest_no_rtti_unittest.dir/all] Error 2
+cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
@@ -505,8 +504,8 @@ cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated
 /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/gtest_unittest.cc: In function 'void __static_initialization_and_destruction_0(int, int)':
-/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/gtest_unittest.cc:7775:1: note: variable tracking size limit exceeded with '-fvar-tracking-assignments', retrying without
- 7775 | }
+/home/chirag/qnx-porter/ports-aarch64le/googletest/work/src/googletest/test/gtest_unittest.cc:7870:1: note: variable tracking size limit exceeded with '-fvar-tracking-assignments', retrying without
+ 7870 | }
       | ^
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated

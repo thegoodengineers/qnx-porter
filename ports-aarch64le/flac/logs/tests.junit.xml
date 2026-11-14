@@ -299,7 +299,76 @@ is writable = 1
 ERROR: iterator claims file is writable when tester thinks it should not be; are you running as root?
 
 ERROR during test_libFLAC++
-</failure></testcase><testcase name="grabbag" classname="qnx-target" /><testcase name="generate_streams" classname="qnx-target" /><testcase name="flac" classname="qnx-target"><failure message="exit None">round-trip test (rt-4-16-unsigned-4777.raw) encode...  decode...  compare...  OK
+</failure></testcase><testcase name="grabbag" classname="qnx-target" /><testcase name="generate_streams" classname="qnx-target" /><testcase name="flac" classname="qnx-target"><failure message="exit None">fractional block size test (blocksize=4608 samples=1024) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=1025) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=1026) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=2046) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=2047) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=2048) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=2049) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=2050) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4094) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4095) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4096) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4097) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4098) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4606) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4607) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4608) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4609) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=4610) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=8190) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=8191) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=8192) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=8193) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=8194) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=16382) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=16383) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=16384) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=16385) encode...  decode...  compare...  OK
+fractional block size test (blocksize=4608 samples=16386) encode...  decode...  compare...  OK
+round-trip test (rt-1-16-signed-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-16-signed-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-16-signed-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-16-unsigned-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-16-unsigned-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-16-unsigned-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-24-signed-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-24-signed-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-24-signed-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-24-unsigned-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-24-unsigned-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-24-unsigned-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-8-signed-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-8-signed-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-8-signed-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-8-unsigned-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-8-unsigned-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-1-8-unsigned-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-16-signed-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-16-signed-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-16-signed-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-16-unsigned-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-16-unsigned-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-16-unsigned-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-24-signed-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-24-signed-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-24-signed-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-24-unsigned-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-24-unsigned-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-24-unsigned-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-8-signed-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-8-signed-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-8-signed-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-8-unsigned-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-8-unsigned-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-2-8-unsigned-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-4-16-signed-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-4-16-signed-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-4-16-signed-4777.raw) encode...  decode...  compare...  OK
+round-trip test (rt-4-16-unsigned-1.raw) encode...  decode...  compare...  OK
+round-trip test (rt-4-16-unsigned-111.raw) encode...  decode...  compare...  OK
+round-trip test (rt-4-16-unsigned-4777.raw) encode...  decode...  compare...  OK
 round-trip test (rt-4-24-signed-1.raw) encode...  decode...  compare...  OK
 round-trip test (rt-4-24-signed-111.raw) encode...  decode...  compare...  OK
 round-trip test (rt-4-24-signed-4777.raw) encode...  decode...  compare...  OK
@@ -378,78 +447,59 @@ round-trip test (rt-4-8-4777.wav) encode...  decode...  compare...  OK
 round-trip test (rt-8-12-1.wav) encode...  decode...  compare...  OK
 round-trip test (rt-8-12-111.wav) encode...  decode...  compare...  OK
 round-trip test (rt-8-12-4777.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-16-1.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-16-111.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-16-4777.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-20-1.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-20-111.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-20-4777.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-24-1.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-24-111.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-24-4777.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-8-1.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-8-111.wav) encode...  decode...  compare...  OK
-round-trip test (rt-8-8-4777.wav) encode...  decode...  compare...  OK
-round-trip test (rt-1-12-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-12-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-12-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-16-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-16-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-16-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-20-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-20-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-20-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-24-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-24-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-24-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-8-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-8-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-1-8-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-12-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-12-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-12-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-16-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-16-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-16-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-20-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-20-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-20-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-24-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-24-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-24-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-8-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-8-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-2-8-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-12-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-12-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-12-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-16-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-16-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-16-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-20-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-20-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-20-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-24-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-24-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-24-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-8-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-8-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-4-8-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-12-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-12-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-12-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-16-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-16-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-16-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-20-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-20-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-20-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-24-1.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-24-111.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-24-4777.w64) encode...  decode...  compare...  OK
-round-trip test (rt-8-8-1.w64) encode...  
+round-trip test (rt-8-16-1.wav) encode...  
 killed on the target after 300 s
-</failure></testcase><testcase name="metaflac" classname="qnx-target" /><testcase name="replaygain" classname="qnx-target" /><testcase name="seeking" classname="qnx-target" /><testcase name="streams" classname="qnx-target"><failure message="exit None">noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=18 ): encode... decode... compare... OK
+</failure></testcase><testcase name="metaflac" classname="qnx-target" /><testcase name="replaygain" classname="qnx-target" /><testcase name="seeking" classname="qnx-target" /><testcase name="streams" classname="qnx-target"><failure message="exit None">sine24-15 (--channels=2 --bps=24 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine24-16 (--channels=2 --bps=24 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine24-17 (--channels=2 --bps=24 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine24-18 (--channels=2 --bps=24 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine24-19 (--channels=2 --bps=24 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+Testing 32-bit sine wave streams...
+sine32-00 (--channels=1 --bps=32 -0 -l 16 --lax -m -e --sample-rate=48000): encode... decode... compare... OK
+sine32-01 (--channels=1 --bps=32 -0 -l 16 --lax -m -e --sample-rate=96000): encode... decode... compare... OK
+sine32-02 (--channels=1 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-03 (--channels=1 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-04 (--channels=1 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-10 (--channels=2 --bps=32 -0 -l 16 --lax -m -e --sample-rate=48000): encode... decode... compare... OK
+sine32-11 (--channels=2 --bps=32 -0 -l 16 --lax -m -e --sample-rate=48000): encode... decode... compare... OK
+sine32-12 (--channels=2 --bps=32 -0 -l 16 --lax -m -e --sample-rate=96000): encode... decode... compare... OK
+sine32-13 (--channels=2 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-14 (--channels=2 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-15 (--channels=2 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-16 (--channels=2 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-17 (--channels=2 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-18 (--channels=2 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+sine32-19 (--channels=2 --bps=32 -0 -l 16 --lax -m -e): encode... decode... compare... OK
+Testing blocksize variations...
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=16 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=17 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=18 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=18 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=18 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=18 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=18 ): encode... decode... compare... OK
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=18 ): encode... decode... compare... OK
 noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=18 ): encode... decode... compare... OK
 noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=18 ): encode... decode... compare... OK
 noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=18 ): encode... decode... compare... OK
@@ -547,56 +597,6 @@ noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=26 ): encode... 
 noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=26 ): encode... decode... compare... OK
 noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=26 ): encode... decode... compare... OK
 noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=26 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=26 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=26 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=26 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=26 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=26 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=27 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=28 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 16 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 17 --lax --blocksize=29 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 0 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 1 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 2 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 3 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 4 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 5 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 7 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 9 --lax --blocksize=30 ): encode... decode... compare... OK
-noise8m32 (--channels=1 --bps=8 -8 -p -e -l 15 --lax --blocksize=30 ): encode... decode... 
+noise8m32 (--channels=1 --bps=8 -8 -p -e -l 8 --lax --blocksize=26 ): encode... 
 killed on the target after 300 s
 </failure></testcase><testcase name="compression" classname="qnx-target" /></testsuite>

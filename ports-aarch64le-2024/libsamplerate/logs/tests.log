@@ -1,0 +1,96 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/libsamplerate/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  misc_test (exit 0)
+FAIL  termination_test (exit 139)
+    Zero Order Hold interpolator:
+    	init_term_test   (SRC ratio =  0.9999) .......... ok
+    	init_term_test   (SRC ratio =  1.0001) .......... ok
+    	init_term_test   (SRC ratio =  0.7890) .......... ok
+    	init_term_test   (SRC ratio =  1.2000) .......... ok
+    	init_term_test   (SRC ratio =  0.3333) .......... ok
+    	init_term_test   (SRC ratio =  3.1000) .......... ok
+    	init_term_test   (SRC ratio =  0.1250) .......... ok
+    	init_term_test   (SRC ratio =  8.0000) .......... ok
+    	init_term_test   (SRC ratio =  0.0999) .......... ok
+    	init_term_test   (SRC ratio =  9.9900) .......... ok
+    	init_term_test   (SRC ratio =  0.1000) .......... ok
+    	init_term_test   (SRC ratio = 10.0000) .......... ok
+    
+    	stream_test      (SRC ratio =  0.9999) .......... ok
+    	stream_test      (SRC ratio =  1.0001) .......... ok
+    	stream_test      (SRC ratio =  0.7890) .......... ok
+    	stream_test      (SRC ratio =  1.2000) .......... ok
+    	stream_test      (SRC ratio =  0.3333) .......... ok
+    	stream_test      (SRC ratio =  3.1000) .......... ok
+    	stream_test      (SRC ratio =  0.1250) .......... ok
+    	stream_test      (SRC ratio =  8.0000) .......... ok
+    	stream_test      (SRC ratio =  0.0999) .......... ok
+    	stream_test      (SRC ratio =  9.9900) .......... ok
+    	stream_test      (SRC ratio =  0.1000) .......... ok
+    	stream_test      (SRC ratio = 10.0000) .......... ok
+    
+        Linear interpolator:
+    	init_term_test   (SRC ratio =  0.9999) .......... ok
+    	init_term_test   (SRC ratio =  1.0001) .......... ok
+    	init_term_test   (SRC ratio =  0.7890) .......... ok
+    	init_term_test   (SRC ratio =  1.2000) .......... ok
+    	init_term_test   (SRC ratio =  0.3333) .......... ok
+    	init_term_test   (SRC ratio =  3.1000) .......... ok
+    	init_term_test   (SRC ratio =  0.1250) .......... ok
+    	init_term_test   (SRC ratio =  8.0000) .......... ok
+    	init_term_test   (SRC ratio =  0.0999) .......... ok
+    	init_term_test   (SRC ratio =  9.9900) .......... ok
+    	init_term_test   (SRC ratio =  0.1000) .......... ok
+    	init_term_test   (SRC ratio = 10.0000) .......... ok
+    
+    	stream_test      (SRC ratio =  0.9999) .......... ok
+    	stream_test      (SRC ratio =  1.0001) .......... ok
+    	stream_test      (SRC ratio =  0.7890) .......... ok
+    	stream_test      (SRC ratio =  1.2000) .......... ok
+    	stream_test      (SRC ratio =  0.3333) .......... ok
+    	stream_test      (SRC ratio =  3.1000) .......... ok
+    	stream_test      (SRC ratio =  0.1250) .......... ok
+    	stream_test      (SRC ratio =  8.0000) .......... ok
+    	stream_test      (SRC ratio =  0.0999) .......... ok
+    	stream_test      (SRC ratio =  9.9900) .......... ok
+    	stream_test      (SRC ratio =  0.1000) .......... ok
+    	stream_test      (SRC ratio = 10.0000) .......... ok
+    
+        Sinc interpolator:
+    	init_term_test   (SRC ratio =  0.9999) .......... ok
+    	init_term_test   (SRC ratio =  1.0001) .......... ok
+    	init_term_test   (SRC ratio =  0.7890) .......... ok
+    	init_term_test   (SRC ratio =  1.2000) .......... ok
+    	init_term_test   (SRC ratio =  0.3333) .......... ok
+    	init_term_test   (SRC ratio =  3.1000) .......... ok
+    	init_term_test   (SRC ratio =  0.1250) .......... ok
+    	init_term_test   (SRC ratio =  8.0000) .......... ok
+    	init_term_test   (SRC ratio =  0.0999) .......... ok
+    	init_term_test   (SRC ratio =  9.9900) .......... ok
+    	init_term_test   (SRC ratio =  0.1000) .......... ok
+    	init_term_test   (SRC ratio = 10.0000) .......... ok
+    
+    	stream_test      (SRC ratio =  0.9999) .......... ok
+    	stream_test      (SRC ratio =  1.0001) .......... ok
+    	stream_test      (SRC ratio =  0.7890) .......... ok
+    	stream_test      (SRC ratio =  1.2000) .......... ok
+    	stream_test      (SRC ratio =  0.3333) .......... ok
+    	stream_test      (SRC ratio =  3.1000) .......... ok
+    	stream_test      (SRC ratio =  0.1250) .......... ok
+    	stream_test      (SRC ratio =  8.0000) .......... ok
+    	stream_test      (SRC ratio =  0.0999) .......... ok
+    	stream_test      (SRC ratio =  9.9900) .......... ok
+    	stream_test      (SRC ratio =  0.1000) .......... ok
+    	stream_test      (SRC ratio = 10.0000) ..........
+PASS  callback_hang_test (exit 0)
+PASS  downsample_test (exit 0)
+PASS  simple_test (exit 0)
+PASS  callback_test (exit 0)
+PASS  reset_test (exit 0)
+PASS  clone_test (exit 0)
+PASS  nullptr_test (exit 0)
+PASS  multi_channel_test (exit 0)
+PASS  varispeed_test (exit 0)
+PASS  float_short_test (exit 0)
+PASS  snr_bw_test (exit 0)
+
+12/13 tests passed on the QNX target

@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/qnx-run -DEVENT__DISABLE_OPENSSL=ON -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_BENCHMARK=ON
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libevent/work/qnx-run -DEVENT__DISABLE_OPENSSL=ON -DEVENT__DISABLE_MBEDTLS=ON -DEVENT__DISABLE_BENCHMARK=ON
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -302,7 +302,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src -B /home/ch
 -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3") 
 -- Generating regress tests...
 -- 
---         ---( Libevent 2.1.12-stable )---
+--         ---( Libevent 2.1.13-stable )---
 -- 
 -- Available event backends: SELECT;POLL
 -- CMAKE_BINARY_DIR:         /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build
@@ -342,8 +342,8 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -j 2
 [  3%] Building C object CMakeFiles/event_core_static.dir/bufferevent.c.o
 [  3%] Building C object CMakeFiles/event_core_shared.dir/bufferevent_filter.c.o
 [  4%] Building C object CMakeFiles/event_core_shared.dir/bufferevent_pair.c.o
-[  5%] Building C object CMakeFiles/event_core_shared.dir/bufferevent_ratelim.c.o
-[  6%] Building C object CMakeFiles/event_core_static.dir/bufferevent_filter.c.o
+[  5%] Building C object CMakeFiles/event_core_static.dir/bufferevent_filter.c.o
+[  6%] Building C object CMakeFiles/event_core_shared.dir/bufferevent_ratelim.c.o
 [  7%] Building C object CMakeFiles/event_core_static.dir/bufferevent_pair.c.o
 [  7%] Building C object CMakeFiles/event_core_static.dir/bufferevent_ratelim.c.o
 [  7%] Building C object CMakeFiles/event_core_shared.dir/bufferevent_sock.c.o
@@ -421,7 +421,7 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -j 2
 [ 53%] Building C object CMakeFiles/event_shared.dir/log.c.o
 [ 54%] Building C object CMakeFiles/event_shared.dir/signal.c.o
 [ 55%] Building C object CMakeFiles/event_shared.dir/strlcpy.c.o
-[ 56%] Building C object CMakeFiles/event_shared.dir/select.c.o
+[ 55%] Building C object CMakeFiles/event_shared.dir/select.c.o
 [ 56%] Building C object CMakeFiles/event_static.dir/evdns.c.o
 [ 57%] Building C object CMakeFiles/event_shared.dir/poll.c.o
 [ 58%] Building C object CMakeFiles/event_shared.dir/event_tagging.c.o
@@ -430,16 +430,16 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -j 2
 [ 59%] Building C object CMakeFiles/event_shared.dir/evdns.c.o
 [ 60%] Linking C static library lib/libevent.a
 [ 60%] Built target event_static
-[ 61%] Building C object CMakeFiles/event_shared.dir/evrpc.c.o
-[ 62%] Building C object CMakeFiles/event-read-fifo.dir/sample/event-read-fifo.c.o
-[ 62%] Linking C executable bin/event-read-fifo
-[ 62%] Built target event-read-fifo
-[ 63%] Building C object CMakeFiles/hello-world.dir/sample/hello-world.c.o
-[ 63%] Linking C executable bin/hello-world
-[ 63%] Built target hello-world
-[ 63%] Building C object CMakeFiles/signal-test.dir/sample/signal-test.c.o
-[ 64%] Linking C executable bin/signal-test
-[ 64%] Built target signal-test
+[ 61%] Building C object CMakeFiles/event-read-fifo.dir/sample/event-read-fifo.c.o
+[ 61%] Linking C executable bin/event-read-fifo
+[ 61%] Built target event-read-fifo
+[ 62%] Building C object CMakeFiles/hello-world.dir/sample/hello-world.c.o
+[ 62%] Linking C executable bin/hello-world
+[ 62%] Built target hello-world
+[ 62%] Building C object CMakeFiles/signal-test.dir/sample/signal-test.c.o
+[ 63%] Linking C executable bin/signal-test
+[ 63%] Built target signal-test
+[ 64%] Building C object CMakeFiles/event_shared.dir/evrpc.c.o
 [ 65%] Building C object CMakeFiles/http-connect.dir/sample/http-connect.c.o
 [ 66%] Linking C executable bin/http-connect
 [ 66%] Built target http-connect
@@ -470,41 +470,41 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build -j 2
 [ 77%] Building C object CMakeFiles/test-init.dir/test/test-init.c.o
 [ 78%] Linking C executable bin/test-init
 [ 78%] Built target test-init
-[ 79%] Building C object CMakeFiles/test-time.dir/test/test-time.c.o
-[ 80%] Linking C executable bin/test-time
-[ 80%] Built target test-time
-[ 80%] Building C object CMakeFiles/test-weof.dir/test/test-weof.c.o
-[ 81%] Linking C executable bin/test-weof
-[ 81%] Built target test-weof
-[ 81%] Building C object CMakeFiles/test-dumpevents.dir/test/test-dumpevents.c.o
-[ 82%] Linking C executable bin/test-dumpevents
-[ 82%] Built target test-dumpevents
-[ 83%] Building C object CMakeFiles/test-ratelim.dir/test/test-ratelim.c.o
-[ 83%] Linking C executable bin/test-ratelim
-[ 83%] Built target test-ratelim
-[ 84%] Building C object CMakeFiles/regress.dir/test/regress.gen.c.o
-[ 85%] Building C object CMakeFiles/regress.dir/test/regress_buffer.c.o
-[ 85%] Building C object CMakeFiles/regress.dir/test/regress_bufferevent.c.o
-[ 86%] Building C object CMakeFiles/regress.dir/test/regress_dns.c.o
-[ 87%] Building C object CMakeFiles/regress.dir/test/regress_et.c.o
-[ 87%] Building C object CMakeFiles/regress.dir/test/regress_finalize.c.o
-[ 88%] Building C object CMakeFiles/regress.dir/test/regress_http.c.o
-[ 89%] Building C object CMakeFiles/regress.dir/test/regress_listener.c.o
-[ 89%] Building C object CMakeFiles/regress.dir/test/regress_main.c.o
-[ 90%] Building C object CMakeFiles/regress.dir/test/regress_minheap.c.o
-[ 91%] Building C object CMakeFiles/regress.dir/test/regress_rpc.c.o
-[ 91%] Building C object CMakeFiles/regress.dir/test/regress_testutils.c.o
-[ 92%] Building C object CMakeFiles/regress.dir/test/regress_util.c.o
-[ 93%] Building C object CMakeFiles/regress.dir/test/tinytest.c.o
-[ 93%] Building C object CMakeFiles/regress.dir/test/regress_thread.c.o
-[ 94%] Building C object CMakeFiles/regress.dir/test/regress_zlib.c.o
-[ 95%] Building C object CMakeFiles/event_extra_static.dir/event_tagging.c.o
-[ 96%] Linking C executable bin/regress
+[ 79%] Building C object CMakeFiles/regress.dir/test/regress.gen.c.o
+[ 80%] Building C object CMakeFiles/regress.dir/test/regress_buffer.c.o
+[ 80%] Building C object CMakeFiles/regress.dir/test/regress_bufferevent.c.o
+[ 81%] Building C object CMakeFiles/regress.dir/test/regress_dns.c.o
+[ 82%] Building C object CMakeFiles/regress.dir/test/regress_et.c.o
+[ 82%] Building C object CMakeFiles/regress.dir/test/regress_finalize.c.o
+[ 83%] Building C object CMakeFiles/regress.dir/test/regress_http.c.o
+[ 84%] Building C object CMakeFiles/regress.dir/test/regress_listener.c.o
+[ 84%] Building C object CMakeFiles/regress.dir/test/regress_main.c.o
+[ 85%] Building C object CMakeFiles/regress.dir/test/regress_minheap.c.o
+[ 86%] Building C object CMakeFiles/regress.dir/test/regress_rpc.c.o
+[ 86%] Building C object CMakeFiles/regress.dir/test/regress_testutils.c.o
+[ 87%] Building C object CMakeFiles/regress.dir/test/regress_util.c.o
+[ 88%] Building C object CMakeFiles/regress.dir/test/tinytest.c.o
+[ 88%] Building C object CMakeFiles/regress.dir/test/regress_thread.c.o
+[ 89%] Building C object CMakeFiles/regress.dir/test/regress_zlib.c.o
+[ 90%] Building C object CMakeFiles/test-time.dir/test/test-time.c.o
+[ 91%] Linking C executable bin/test-time
+[ 91%] Built target test-time
+[ 91%] Building C object CMakeFiles/test-weof.dir/test/test-weof.c.o
+[ 92%] Linking C executable bin/test-weof
+[ 92%] Built target test-weof
+[ 92%] Building C object CMakeFiles/test-dumpevents.dir/test/test-dumpevents.c.o
+[ 93%] Linking C executable bin/test-dumpevents
+[ 93%] Built target test-dumpevents
+[ 94%] Building C object CMakeFiles/test-ratelim.dir/test/test-ratelim.c.o
+[ 94%] Linking C executable bin/test-ratelim
+[ 95%] Linking C executable bin/regress
+[ 95%] Built target test-ratelim
+[ 96%] Building C object CMakeFiles/event_extra_static.dir/event_tagging.c.o
 [ 97%] Built target regress
 [ 97%] Building C object CMakeFiles/event_pthreads_static.dir/evthread_pthread.c.o
-[ 97%] Building C object CMakeFiles/event_extra_static.dir/http.c.o
 [ 98%] Linking C static library lib/libevent_pthreads.a
 [ 98%] Built target event_pthreads_static
+[ 98%] Building C object CMakeFiles/event_extra_static.dir/http.c.o
 [ 99%] Building C object CMakeFiles/event_extra_static.dir/evdns.c.o
 [100%] Building C object CMakeFiles/event_extra_static.dir/evrpc.c.o
 [100%] Linking C static library lib/libevent_extra.a

@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/src -B /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/qnx-run -DENABLE_PROGRAMS=OFF
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/src -B /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -6,10 +6,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/src -B /home/chi
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
--- Looking for pthread.h
--- Looking for pthread.h - found
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Perl: /usr/bin/perl (found version "5.34.0") 
 -- Found Threads: TRUE  
 -- Configuring done
 -- Generating done
@@ -21,433 +18,649 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/mbedtls/work/build -j 2 -- -k
-[  0%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/asn1_helpers.c.o
-[  0%] Building C object CMakeFiles/mbedtls_test_helpers.dir/tests/src/test_helpers/ssl_helpers.c.o
-[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/bignum_helpers.c.o
-[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/certs.c.o
-[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/hash.c.o
-[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/platform_builtin_keys.c.o
-[  1%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_aead.c.o
-[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_asymmetric_encryption.c.o
-[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_cipher.c.o
-[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_key_agreement.c.o
-[  2%] Built target mbedtls_test_helpers
+[  0%] Built target mbedtls_test_certs_header
+[  0%] Built target mbedtls_test_keys_header
+[  1%] Built target tls13-compat.sh
+[  1%] Built target handshake-generated.sh
+[  1%] Built target tf_psa_crypto_test_keys_header
+[  1%] Built target libtfpsacrypto_generated_files_target
+Consolidate compiler generated dependencies of target platform
+Consolidate compiler generated dependencies of target extras
+[  2%] Built target platform
+[  3%] Built target extras
+Consolidate compiler generated dependencies of target utilities
+[  3%] Built target generate_psa_constant_names_generated_c
+[  4%] Built target utilities
+[  5%] Built target test_suite_psa_generated_data
+[  5%] Built target test_suite_bignum_generated_data
+[  5%] Built target test_suite_tf_psa_crypto_config_generated_data
+[  6%] Built target test_suite_ecp_generated_data
+[  6%] Built target libmbedtls_generated_files_target
+[  7%] Built target libmbedx509_generated_files_target
+[  7%] Built target test_suite_config_generated_data
+[  7%] Built target generate_query_config_c
+[  7%] Building C object CMakeFiles/mbedtls_test_helpers.dir/tests/src/certs.c.o
+[  7%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/asn1_helpers.c.o
+[  7%] Building C object CMakeFiles/mbedtls_test_helpers.dir/tests/src/ssl_context_reset_verifier.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/bignum_codepath_check.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test_helpers.dir/tests/src/test_helpers/ssl_helpers.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/bignum_helpers.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/hash.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/platform_builtin_keys.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/test_driver_aead.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/test_driver_asymmetric_encryption.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/test_driver_cipher.c.o
+[  8%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/test_driver_key_agreement.c.o
+[  9%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/test_driver_key_management.c.o
+[  9%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/test_driver_mac.c.o
+[  9%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/test_driver_pake.c.o
+[  9%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/test_driver_signature.c.o
+[  9%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/drivers/xof.c.o
+[  9%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/fake_external_rng_for_test.c.o
+[  9%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/fork_helpers.c.o
+[  9%] Built target mbedtls_test_helpers
+Consolidate compiler generated dependencies of target tf_psa_crypto_test
+[ 13%] Built target tf_psa_crypto_test
 Consolidate compiler generated dependencies of target everest
-[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_key_management.c.o
-[  2%] Built target everest
-Consolidate compiler generated dependencies of target p256m
-[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_mac.c.o
-[  2%] Built target p256m
-[  2%] Built target test_suite_psa_generated_data
-[  2%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_pake.c.o
-[  2%] Built target test_suite_bignum_generated_data
-[  3%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/drivers/test_driver_signature.c.o
-[  3%] Built target test_suite_config_generated_data
-[  3%] Built target test_suite_ecp_generated_data
-[  3%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/fake_external_rng_for_test.c.o
-[  3%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/helpers.c.o
-[  3%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_crypto_helpers.c.o
-[  3%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_crypto_stubs.c.o
-[  4%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_exercise_key.c.o
-Consolidate compiler generated dependencies of target mbedcrypto
-[ 20%] Built target mbedcrypto
-[ 20%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_memory_poisoning_wrappers.c.o
-[ 20%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/psa_test_wrappers.c.o
-[ 20%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/random.c.o
-[ 20%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/test_memory.c.o
-[ 21%] Building C object CMakeFiles/mbedtls_test.dir/tests/src/threading_helpers.c.o
-Consolidate compiler generated dependencies of target mbedx509
-[ 23%] Built target mbedx509
-Consolidate compiler generated dependencies of target mbedtls
-[ 26%] Built target mbedtls
-[ 26%] Built target mbedtls_test
-Consolidate compiler generated dependencies of target test_suite_aes.cfb
+[ 13%] Built target everest
+Consolidate compiler generated dependencies of target p256-m
+[ 13%] Built target p256-m
+Consolidate compiler generated dependencies of target builtin
+[ 19%] Built target builtin
+Consolidate compiler generated dependencies of target pqcp
+[ 19%] Built target pqcp
+[ 19%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/helpers.c.o
+[ 20%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/pk_helpers.c.o
+[ 20%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/psa_crypto_helpers.c.o
+Consolidate compiler generated dependencies of target tfpsacrypto
+[ 22%] Built target tfpsacrypto
+[ 22%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/psa_crypto_stubs.c.o
+Consolidate compiler generated dependencies of target aead_demo
+[ 22%] Linking C executable aead_demo
+[ 22%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/psa_exercise_key.c.o
+[ 22%] Built target aead_demo
+Consolidate compiler generated dependencies of target crypto_examples
+[ 22%] Linking C executable crypto_examples
+[ 22%] Built target crypto_examples
+Consolidate compiler generated dependencies of target generate_random_uuid
+[ 22%] Linking C executable generate_random_uuid
+[ 22%] Built target generate_random_uuid
+Consolidate compiler generated dependencies of target hmac_demo
+[ 22%] Linking C executable hmac_demo
+[ 22%] Built target hmac_demo
+Consolidate compiler generated dependencies of target key_ladder_demo
+[ 22%] Linking C executable key_ladder_demo
+[ 22%] Built target key_ladder_demo
+Consolidate compiler generated dependencies of target psa_constant_names
+[ 22%] Linking C executable psa_constant_names
+[ 22%] Built target psa_constant_names
+Consolidate compiler generated dependencies of target psa_hash
+[ 23%] Linking C executable psa_hash
+[ 23%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/psa_memory_poisoning_wrappers.c.o
+[ 23%] Built target psa_hash
+Consolidate compiler generated dependencies of target benchmark
+[ 23%] Linking C executable benchmark
+[ 23%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/random.c.o
+[ 23%] Built target benchmark
+Consolidate compiler generated dependencies of target which_aes
+[ 23%] Linking C executable which_aes
+[ 23%] Built target which_aes
+Consolidate compiler generated dependencies of target tf_psa_crypto_zeroize
+[ 23%] Linking C executable tf_psa_crypto_zeroize
+[ 23%] Built target tf_psa_crypto_zeroize
+Consolidate compiler generated dependencies of target fuzz_pubkey
+[ 23%] Linking C executable fuzz_pubkey
+[ 23%] Built target fuzz_pubkey
+[ 23%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/test_memory.c.o
+Consolidate compiler generated dependencies of target fuzz_privkey
+[ 23%] Linking C executable fuzz_privkey
+[ 24%] Built target fuzz_privkey
 Consolidate compiler generated dependencies of target test_suite_aes.cbc
-[ 26%] Linking C executable test_suite_aes.cbc
-[ 26%] Linking C executable test_suite_aes.cfb
-[ 26%] Built target test_suite_aes.cfb
-[ 27%] Built target test_suite_aes.cbc
+[ 24%] Linking C executable test_suite_aes.cbc
+[ 25%] Building C object CMakeFiles/mbedtls_test.dir/framework/tests/src/threading_helpers.c.o
+[ 25%] Built target test_suite_aes.cbc
+Consolidate compiler generated dependencies of target test_suite_aes.cfb
+[ 25%] Linking C executable test_suite_aes.cfb
+[ 25%] Built target test_suite_aes.cfb
 Consolidate compiler generated dependencies of target test_suite_aes.ctr
+[ 25%] Linking C executable test_suite_aes.ctr
+[ 25%] Built target mbedtls_test
 Consolidate compiler generated dependencies of target test_suite_aes.ecb
-[ 27%] Linking C executable test_suite_aes.ctr
-[ 27%] Linking C executable test_suite_aes.ecb
-[ 28%] Built target test_suite_aes.ctr
-[ 28%] Built target test_suite_aes.ecb
+[ 25%] Linking C executable test_suite_aes.ecb
+[ 26%] Built target test_suite_aes.ctr
 Consolidate compiler generated dependencies of target test_suite_aes.ofb
+[ 26%] Linking C executable test_suite_aes.ofb
+[ 26%] Built target test_suite_aes.ecb
 Consolidate compiler generated dependencies of target test_suite_aes.rest
-[ 29%] Linking C executable test_suite_aes.rest
-[ 29%] Linking C executable test_suite_aes.ofb
-[ 29%] Built target test_suite_aes.rest
-[ 30%] Built target test_suite_aes.ofb
+[ 26%] Linking C executable test_suite_aes.rest
+[ 27%] Built target test_suite_aes.ofb
 Consolidate compiler generated dependencies of target test_suite_aes.xts
-[ 30%] Linking C executable test_suite_aes.xts
+[ 27%] Linking C executable test_suite_aes.xts
+[ 27%] Built target test_suite_aes.rest
 Consolidate compiler generated dependencies of target test_suite_alignment
-[ 30%] Linking C executable test_suite_alignment
-[ 30%] Built target test_suite_aes.xts
-[ 31%] Built target test_suite_alignment
+[ 27%] Linking C executable test_suite_alignment
+[ 27%] Built target test_suite_aes.xts
 Consolidate compiler generated dependencies of target test_suite_aria
+[ 27%] Linking C executable test_suite_aria
+[ 28%] Built target test_suite_alignment
 Consolidate compiler generated dependencies of target test_suite_asn1parse
-[ 31%] Linking C executable test_suite_aria
-[ 31%] Linking C executable test_suite_asn1parse
-[ 31%] Built target test_suite_aria
+[ 29%] Linking C executable test_suite_asn1parse
+[ 29%] Built target test_suite_aria
 Consolidate compiler generated dependencies of target test_suite_asn1write
-[ 32%] Built target test_suite_asn1parse
-[ 32%] Linking C executable test_suite_asn1write
+[ 29%] Linking C executable test_suite_asn1write
+[ 29%] Built target test_suite_asn1parse
 Consolidate compiler generated dependencies of target test_suite_base64
-[ 32%] Linking C executable test_suite_base64
-[ 32%] Built target test_suite_asn1write
+[ 29%] Linking C executable test_suite_base64
+[ 29%] Built target test_suite_asn1write
 Consolidate compiler generated dependencies of target test_suite_bignum.generated
-[ 33%] Built target test_suite_base64
-[ 34%] Linking C executable test_suite_bignum.generated
+[ 29%] Linking C executable test_suite_bignum.generated
+[ 29%] Built target test_suite_base64
 Consolidate compiler generated dependencies of target test_suite_bignum.misc
-[ 34%] Linking C executable test_suite_bignum.misc
-[ 34%] Built target test_suite_bignum.generated
+[ 29%] Linking C executable test_suite_bignum.misc
+[ 30%] Built target test_suite_bignum.generated
 Consolidate compiler generated dependencies of target test_suite_bignum_core.generated
-[ 34%] Built target test_suite_bignum.misc
-[ 35%] Linking C executable test_suite_bignum_core.generated
+[ 30%] Linking C executable test_suite_bignum_core.generated
+[ 30%] Built target test_suite_bignum.misc
 Consolidate compiler generated dependencies of target test_suite_bignum_core.misc
-[ 35%] Linking C executable test_suite_bignum_core.misc
-[ 35%] Built target test_suite_bignum_core.generated
+[ 30%] Linking C executable test_suite_bignum_core.misc
+[ 31%] Built target test_suite_bignum_core.generated
 Consolidate compiler generated dependencies of target test_suite_bignum_mod.generated
-[ 35%] Built target test_suite_bignum_core.misc
-[ 35%] Linking C executable test_suite_bignum_mod.generated
+[ 31%] Built target test_suite_bignum_core.misc
+[ 31%] Linking C executable test_suite_bignum_mod.generated
 Consolidate compiler generated dependencies of target test_suite_bignum_mod.misc
-[ 35%] Linking C executable test_suite_bignum_mod.misc
-[ 36%] Built target test_suite_bignum_mod.generated
-[ 36%] Built target test_suite_bignum_mod.misc
+[ 31%] Linking C executable test_suite_bignum_mod.misc
+[ 32%] Built target test_suite_bignum_mod.generated
 Consolidate compiler generated dependencies of target test_suite_bignum_mod_raw
+[ 32%] Built target test_suite_bignum_mod.misc
+[ 32%] Linking C executable test_suite_bignum_mod_raw
 Consolidate compiler generated dependencies of target test_suite_bignum_mod_raw.generated
-[ 36%] Linking C executable test_suite_bignum_mod_raw
-[ 36%] Linking C executable test_suite_bignum_mod_raw.generated
-[ 37%] Built target test_suite_bignum_mod_raw
-[ 37%] Built target test_suite_bignum_mod_raw.generated
+[ 32%] Linking C executable test_suite_bignum_mod_raw.generated
+[ 33%] Built target test_suite_bignum_mod_raw
 Consolidate compiler generated dependencies of target test_suite_bignum_random
+[ 34%] Linking C executable test_suite_bignum_random
+[ 34%] Built target test_suite_bignum_mod_raw.generated
 Consolidate compiler generated dependencies of target test_suite_block_cipher
-[ 38%] Linking C executable test_suite_bignum_random
-[ 38%] Linking C executable test_suite_block_cipher
-[ 39%] Built target test_suite_bignum_random
-[ 39%] Built target test_suite_block_cipher
-Consolidate compiler generated dependencies of target test_suite_block_cipher.psa
+[ 34%] Linking C executable test_suite_block_cipher
+[ 34%] Built target test_suite_bignum_random
 Consolidate compiler generated dependencies of target test_suite_camellia
-[ 39%] Linking C executable test_suite_block_cipher.psa
-[ 39%] Linking C executable test_suite_camellia
-[ 39%] Built target test_suite_block_cipher.psa
-[ 40%] Built target test_suite_camellia
+[ 34%] Built target test_suite_block_cipher
+[ 34%] Linking C executable test_suite_camellia
 Consolidate compiler generated dependencies of target test_suite_ccm
+[ 34%] Linking C executable test_suite_ccm
+[ 34%] Built target test_suite_camellia
 Consolidate compiler generated dependencies of target test_suite_chacha20
-[ 40%] Linking C executable test_suite_ccm
-[ 40%] Linking C executable test_suite_chacha20
-[ 40%] Built target test_suite_ccm
-[ 41%] Built target test_suite_chacha20
+[ 34%] Linking C executable test_suite_chacha20
+[ 35%] Built target test_suite_ccm
 Consolidate compiler generated dependencies of target test_suite_chachapoly
+[ 36%] Linking C executable test_suite_chachapoly
+[ 36%] Built target test_suite_chacha20
+[ 36%] Built target test_suite_chachapoly
 Consolidate compiler generated dependencies of target test_suite_cipher.aes
-[ 41%] Linking C executable test_suite_chachapoly
-[ 41%] Linking C executable test_suite_cipher.aes
-[ 41%] Built target test_suite_chachapoly
-[ 42%] Built target test_suite_cipher.aes
-Consolidate compiler generated dependencies of target test_suite_cipher.camellia
 Consolidate compiler generated dependencies of target test_suite_cipher.aria
-[ 43%] Linking C executable test_suite_cipher.aria
-[ 43%] Linking C executable test_suite_cipher.camellia
-[ 43%] Built target test_suite_cipher.camellia
-[ 43%] Built target test_suite_cipher.aria
+[ 36%] Linking C executable test_suite_cipher.aes
+[ 36%] Linking C executable test_suite_cipher.aria
+[ 36%] Built target test_suite_cipher.aes
+Consolidate compiler generated dependencies of target test_suite_cipher.camellia
+[ 36%] Linking C executable test_suite_cipher.camellia
+[ 36%] Built target test_suite_cipher.aria
 Consolidate compiler generated dependencies of target test_suite_cipher.ccm
+[ 36%] Linking C executable test_suite_cipher.ccm
+[ 37%] Built target test_suite_cipher.camellia
 Consolidate compiler generated dependencies of target test_suite_cipher.chacha20
-[ 44%] Linking C executable test_suite_cipher.ccm
-[ 44%] Linking C executable test_suite_cipher.chacha20
-[ 44%] Built target test_suite_cipher.ccm
-[ 44%] Built target test_suite_cipher.chacha20
+[ 37%] Built target test_suite_cipher.ccm
+[ 38%] Linking C executable test_suite_cipher.chacha20
 Consolidate compiler generated dependencies of target test_suite_cipher.chachapoly
-Consolidate compiler generated dependencies of target test_suite_cipher.des
-[ 44%] Linking C executable test_suite_cipher.des
-[ 44%] Linking C executable test_suite_cipher.chachapoly
-[ 45%] Built target test_suite_cipher.des
-[ 45%] Built target test_suite_cipher.chachapoly
+[ 38%] Linking C executable test_suite_cipher.chachapoly
+[ 38%] Built target test_suite_cipher.chacha20
+Consolidate compiler generated dependencies of target test_suite_cipher.constant_time
+[ 38%] Linking C executable test_suite_cipher.constant_time
+[ 38%] Built target test_suite_cipher.chachapoly
 Consolidate compiler generated dependencies of target test_suite_cipher.gcm
+[ 38%] Linking C executable test_suite_cipher.gcm
+[ 38%] Built target test_suite_cipher.constant_time
 Consolidate compiler generated dependencies of target test_suite_cipher.misc
-[ 45%] Linking C executable test_suite_cipher.gcm
-[ 45%] Linking C executable test_suite_cipher.misc
-[ 46%] Built target test_suite_cipher.gcm
-[ 46%] Built target test_suite_cipher.misc
-Consolidate compiler generated dependencies of target test_suite_cipher.nist_kw
-Consolidate compiler generated dependencies of target test_suite_cipher.null
-[ 46%] Linking C executable test_suite_cipher.nist_kw
-[ 47%] Linking C executable test_suite_cipher.null
-[ 47%] Built target test_suite_cipher.null
-[ 48%] Built target test_suite_cipher.nist_kw
+[ 38%] Linking C executable test_suite_cipher.misc
+[ 39%] Built target test_suite_cipher.gcm
 Consolidate compiler generated dependencies of target test_suite_cipher.padding
-[ 48%] Linking C executable test_suite_cipher.padding
+[ 39%] Linking C executable test_suite_cipher.padding
+[ 39%] Built target test_suite_cipher.misc
 Consolidate compiler generated dependencies of target test_suite_cmac
-[ 48%] Linking C executable test_suite_cmac
-[ 49%] Built target test_suite_cmac
-[ 49%] Built target test_suite_cipher.padding
+[ 39%] Linking C executable test_suite_cmac
+[ 39%] Built target test_suite_cipher.padding
 Consolidate compiler generated dependencies of target test_suite_common
+[ 39%] Linking C executable test_suite_common
+[ 40%] Built target test_suite_cmac
 Consolidate compiler generated dependencies of target test_suite_config.crypto_combinations
-[ 49%] Linking C executable test_suite_common
-[ 49%] Linking C executable test_suite_config.crypto_combinations
-[ 49%] Built target test_suite_common
-[ 50%] Built target test_suite_config.crypto_combinations
+[ 40%] Linking C executable test_suite_config.crypto_combinations
+[ 40%] Built target test_suite_common
 Consolidate compiler generated dependencies of target test_suite_config.psa_boolean
-Consolidate compiler generated dependencies of target test_suite_config.mbedtls_boolean
-[ 50%] Linking C executable test_suite_config.psa_boolean
-[ 50%] Linking C executable test_suite_config.mbedtls_boolean
-[ 51%] Built target test_suite_config.psa_boolean
-[ 51%] Built target test_suite_config.mbedtls_boolean
+[ 40%] Linking C executable test_suite_config.psa_boolean
+[ 41%] Built target test_suite_config.crypto_combinations
 Consolidate compiler generated dependencies of target test_suite_config.psa_combinations
-Consolidate compiler generated dependencies of target test_suite_config.tls_combinations
-[ 52%] Linking C executable test_suite_config.psa_combinations
-[ 52%] Linking C executable test_suite_config.tls_combinations
-[ 52%] Built target test_suite_config.psa_combinations
-[ 52%] Built target test_suite_config.tls_combinations
+[ 41%] Linking C executable test_suite_config.psa_combinations
+[ 42%] Built target test_suite_config.psa_boolean
 Consolidate compiler generated dependencies of target test_suite_constant_time
-Consolidate compiler generated dependencies of target test_suite_constant_time_hmac
-[ 52%] Linking C executable test_suite_constant_time
-[ 52%] Linking C executable test_suite_constant_time_hmac
-[ 53%] Built target test_suite_constant_time
-[ 53%] Built target test_suite_constant_time_hmac
+[ 42%] Linking C executable test_suite_constant_time
+[ 42%] Built target test_suite_config.psa_combinations
 Consolidate compiler generated dependencies of target test_suite_ctr_drbg
-Consolidate compiler generated dependencies of target test_suite_debug
-[ 53%] Linking C executable test_suite_ctr_drbg
-[ 53%] Linking C executable test_suite_debug
-[ 54%] Built target test_suite_ctr_drbg
-[ 54%] Built target test_suite_debug
-Consolidate compiler generated dependencies of target test_suite_des
-Consolidate compiler generated dependencies of target test_suite_dhm
-[ 54%] Linking C executable test_suite_des
-[ 55%] Linking C executable test_suite_dhm
-[ 56%] Built target test_suite_des
-[ 56%] Built target test_suite_dhm
-Consolidate compiler generated dependencies of target test_suite_ecdh
+[ 42%] Built target test_suite_constant_time
+[ 42%] Linking C executable test_suite_ctr_drbg
+Consolidate compiler generated dependencies of target test_suite_dispatch_transparent.dilithium_py
+[ 43%] Linking C executable test_suite_dispatch_transparent.dilithium_py
+[ 44%] Built target test_suite_ctr_drbg
+Consolidate compiler generated dependencies of target test_suite_dispatch_transparent.key
+[ 44%] Linking C executable test_suite_dispatch_transparent.key
+[ 44%] Built target test_suite_dispatch_transparent.dilithium_py
+Consolidate compiler generated dependencies of target test_suite_dispatch_transparent.mldsa_multipart
+[ 44%] Linking C executable test_suite_dispatch_transparent.mldsa_multipart
+[ 44%] Built target test_suite_dispatch_transparent.key
+Consolidate compiler generated dependencies of target test_suite_dispatch_transparent.sign
+[ 44%] Linking C executable test_suite_dispatch_transparent.sign
+[ 44%] Built target test_suite_dispatch_transparent.mldsa_multipart
 Consolidate compiler generated dependencies of target test_suite_ecdsa
-[ 56%] Linking C executable test_suite_ecdh
-[ 57%] Linking C executable test_suite_ecdsa
-[ 57%] Built target test_suite_ecdh
-[ 57%] Built target test_suite_ecdsa
+[ 44%] Linking C executable test_suite_ecdsa
+[ 45%] Built target test_suite_dispatch_transparent.sign
 Consolidate compiler generated dependencies of target test_suite_ecjpake
+[ 46%] Linking C executable test_suite_ecjpake
+[ 46%] Built target test_suite_ecdsa
 Consolidate compiler generated dependencies of target test_suite_ecp
-[ 57%] Linking C executable test_suite_ecjpake
-[ 57%] Linking C executable test_suite_ecp
-[ 57%] Built target test_suite_ecjpake
+[ 46%] Linking C executable test_suite_ecp
+[ 46%] Built target test_suite_ecjpake
 Consolidate compiler generated dependencies of target test_suite_ecp.generated
-[ 58%] Built target test_suite_ecp
-[ 58%] Linking C executable test_suite_ecp.generated
+[ 46%] Linking C executable test_suite_ecp.generated
+[ 46%] Built target test_suite_ecp
 Consolidate compiler generated dependencies of target test_suite_entropy
-[ 58%] Linking C executable test_suite_entropy
-[ 58%] Built target test_suite_ecp.generated
-Consolidate compiler generated dependencies of target test_suite_error
-[ 59%] Built target test_suite_entropy
-[ 59%] Linking C executable test_suite_error
+[ 46%] Linking C executable test_suite_entropy
+[ 46%] Built target test_suite_ecp.generated
 Consolidate compiler generated dependencies of target test_suite_gcm.aes128_de
-[ 59%] Linking C executable test_suite_gcm.aes128_de
-[ 59%] Built target test_suite_error
+[ 46%] Linking C executable test_suite_gcm.aes128_de
+[ 46%] Built target test_suite_entropy
 Consolidate compiler generated dependencies of target test_suite_gcm.aes128_en
-[ 60%] Linking C executable test_suite_gcm.aes128_en
-[ 61%] Built target test_suite_gcm.aes128_de
+[ 46%] Linking C executable test_suite_gcm.aes128_en
+[ 47%] Built target test_suite_gcm.aes128_de
 Consolidate compiler generated dependencies of target test_suite_gcm.aes192_de
-[ 61%] Linking C executable test_suite_gcm.aes192_de
-[ 61%] Built target test_suite_gcm.aes128_en
+[ 48%] Linking C executable test_suite_gcm.aes192_de
+[ 48%] Built target test_suite_gcm.aes128_en
 Consolidate compiler generated dependencies of target test_suite_gcm.aes192_en
-[ 61%] Linking C executable test_suite_gcm.aes192_en
-[ 61%] Built target test_suite_gcm.aes192_de
+[ 48%] Linking C executable test_suite_gcm.aes192_en
+[ 48%] Built target test_suite_gcm.aes192_de
 Consolidate compiler generated dependencies of target test_suite_gcm.aes256_de
-[ 61%] Linking C executable test_suite_gcm.aes256_de
-[ 62%] Built target test_suite_gcm.aes192_en
+[ 48%] Linking C executable test_suite_gcm.aes256_de
+[ 48%] Built target test_suite_gcm.aes192_en
 Consolidate compiler generated dependencies of target test_suite_gcm.aes256_en
-[ 62%] Linking C executable test_suite_gcm.aes256_en
-[ 62%] Built target test_suite_gcm.aes256_de
+[ 48%] Linking C executable test_suite_gcm.aes256_en
+[ 48%] Built target test_suite_gcm.aes256_de
 Consolidate compiler generated dependencies of target test_suite_gcm.camellia
-[ 62%] Linking C executable test_suite_gcm.camellia
-[ 63%] Built target test_suite_gcm.aes256_en
+[ 49%] Built target test_suite_gcm.aes256_en
+[ 49%] Linking C executable test_suite_gcm.camellia
 Consolidate compiler generated dependencies of target test_suite_gcm.misc
-[ 63%] Linking C executable test_suite_gcm.misc
-[ 63%] Built target test_suite_gcm.camellia
-Consolidate compiler generated dependencies of target test_suite_hkdf
-[ 64%] Linking C executable test_suite_hkdf
-[ 65%] Built target test_suite_gcm.misc
+[ 50%] Linking C executable test_suite_gcm.misc
+[ 50%] Built target test_suite_gcm.camellia
 Consolidate compiler generated dependencies of target test_suite_hmac_drbg.misc
-[ 65%] Linking C executable test_suite_hmac_drbg.misc
-[ 65%] Built target test_suite_hkdf
+[ 50%] Linking C executable test_suite_hmac_drbg.misc
+[ 50%] Built target test_suite_gcm.misc
 Consolidate compiler generated dependencies of target test_suite_hmac_drbg.no_reseed
-[ 66%] Linking C executable test_suite_hmac_drbg.no_reseed
-[ 66%] Built target test_suite_hmac_drbg.misc
+[ 50%] Linking C executable test_suite_hmac_drbg.no_reseed
+[ 50%] Built target test_suite_hmac_drbg.misc
 Consolidate compiler generated dependencies of target test_suite_hmac_drbg.nopr
-[ 66%] Linking C executable test_suite_hmac_drbg.nopr
-[ 66%] Built target test_suite_hmac_drbg.no_reseed
+[ 50%] Linking C executable test_suite_hmac_drbg.nopr
+[ 50%] Built target test_suite_hmac_drbg.no_reseed
 Consolidate compiler generated dependencies of target test_suite_hmac_drbg.pr
-[ 66%] Linking C executable test_suite_hmac_drbg.pr
-[ 66%] Built target test_suite_hmac_drbg.nopr
+[ 50%] Linking C executable test_suite_hmac_drbg.pr
+[ 51%] Built target test_suite_hmac_drbg.nopr
+[ 51%] Built target test_suite_hmac_drbg.pr
 Consolidate compiler generated dependencies of target test_suite_lmots
-[ 66%] Linking C executable test_suite_lmots
-[ 67%] Built target test_suite_hmac_drbg.pr
+[ 51%] Linking C executable test_suite_lmots
 Consolidate compiler generated dependencies of target test_suite_lms
-[ 67%] Linking C executable test_suite_lms
-[ 67%] Built target test_suite_lmots
-[ 68%] Built target test_suite_lms
-Consolidate compiler generated dependencies of target test_suite_md.psa
+[ 51%] Linking C executable test_suite_lms
+[ 51%] Built target test_suite_lmots
 Consolidate compiler generated dependencies of target test_suite_md
-[ 68%] Linking C executable test_suite_md.psa
-[ 68%] Linking C executable test_suite_md
-[ 69%] Built target test_suite_md.psa
+[ 51%] Linking C executable test_suite_md
+[ 52%] Built target test_suite_lms
 Consolidate compiler generated dependencies of target test_suite_mdx
-[ 70%] Linking C executable test_suite_mdx
-[ 70%] Built target test_suite_md
+[ 52%] Linking C executable test_suite_mdx
+[ 52%] Built target test_suite_md
 Consolidate compiler generated dependencies of target test_suite_memory_buffer_alloc
-[ 70%] Linking C executable test_suite_memory_buffer_alloc
-[ 70%] Built target test_suite_mdx
-Consolidate compiler generated dependencies of target test_suite_mps
-[ 70%] Linking C executable test_suite_mps
-[ 70%] Built target test_suite_memory_buffer_alloc
-[ 71%] Built target test_suite_mps
-Consolidate compiler generated dependencies of target test_suite_net
+[ 52%] Linking C executable test_suite_memory_buffer_alloc
+[ 53%] Built target test_suite_mdx
 Consolidate compiler generated dependencies of target test_suite_nist_kw
-[ 71%] Linking C executable test_suite_net
-[ 71%] Linking C executable test_suite_nist_kw
-[ 71%] Built target test_suite_net
+[ 53%] Linking C executable test_suite_nist_kw
+[ 53%] Built target test_suite_memory_buffer_alloc
 Consolidate compiler generated dependencies of target test_suite_oid
-[ 71%] Linking C executable test_suite_oid
-[ 72%] Built target test_suite_nist_kw
+[ 53%] Linking C executable test_suite_oid
+[ 53%] Built target test_suite_nist_kw
 Consolidate compiler generated dependencies of target test_suite_pem
-[ 72%] Linking C executable test_suite_pem
-[ 72%] Built target test_suite_oid
+[ 53%] Linking C executable test_suite_pem
+[ 54%] Built target test_suite_oid
 Consolidate compiler generated dependencies of target test_suite_pk
-[ 73%] Linking C executable test_suite_pk
-[ 74%] Built target test_suite_pem
-Consolidate compiler generated dependencies of target test_suite_pkcs12
-[ 74%] Linking C executable test_suite_pkcs12
-[ 74%] Built target test_suite_pk
-Consolidate compiler generated dependencies of target test_suite_pkcs1_v15
-[ 74%] Linking C executable test_suite_pkcs1_v15
-[ 74%] Built target test_suite_pkcs12
-Consolidate compiler generated dependencies of target test_suite_pkcs1_v21
-[ 74%] Linking C executable test_suite_pkcs1_v21
-[ 75%] Built target test_suite_pkcs1_v15
+[ 54%] Linking C executable test_suite_pk
+[ 54%] Built target test_suite_pem
+Consolidate compiler generated dependencies of target test_suite_pk.pk_can_do_psa
+[ 54%] Linking C executable test_suite_pk.pk_can_do_psa
+[ 54%] Built target test_suite_pk
 Consolidate compiler generated dependencies of target test_suite_pkcs5
-[ 75%] Linking C executable test_suite_pkcs5
-[ 75%] Built target test_suite_pkcs1_v21
-[ 76%] Built target test_suite_pkcs5
+[ 54%] Linking C executable test_suite_pkcs5
+[ 55%] Built target test_suite_pk.pk_can_do_psa
 Consolidate compiler generated dependencies of target test_suite_pkparse
-Consolidate compiler generated dependencies of target test_suite_pkcs7
-[ 76%] Linking C executable test_suite_pkparse
-[ 76%] Linking C executable test_suite_pkcs7
-[ 77%] Built target test_suite_pkparse
+[ 55%] Linking C executable test_suite_pkparse
+[ 55%] Built target test_suite_pkcs5
 Consolidate compiler generated dependencies of target test_suite_pkwrite
-[ 78%] Linking C executable test_suite_pkwrite
-[ 78%] Built target test_suite_pkcs7
+[ 55%] Linking C executable test_suite_pkwrite
+[ 55%] Built target test_suite_pkparse
 Consolidate compiler generated dependencies of target test_suite_platform
-[ 78%] Linking C executable test_suite_platform
-[ 78%] Built target test_suite_pkwrite
+[ 55%] Linking C executable test_suite_platform
+[ 55%] Built target test_suite_pkwrite
 Consolidate compiler generated dependencies of target test_suite_platform_printf
-[ 79%] Linking C executable test_suite_platform_printf
-[ 79%] Built target test_suite_platform
+[ 55%] Linking C executable test_suite_platform_printf
+[ 56%] Built target test_suite_platform
+Consolidate compiler generated dependencies of target test_suite_platform_threading
+[ 57%] Linking C executable test_suite_platform_threading
+[ 57%] Built target test_suite_platform_printf
+Consolidate compiler generated dependencies of target test_suite_platform_unix
+[ 57%] Linking C executable test_suite_platform_unix
+[ 57%] Built target test_suite_platform_threading
 Consolidate compiler generated dependencies of target test_suite_platform_util
-[ 79%] Linking C executable test_suite_platform_util
-[ 79%] Built target test_suite_platform_printf
+[ 57%] Linking C executable test_suite_platform_util
+[ 57%] Built target test_suite_platform_unix
 Consolidate compiler generated dependencies of target test_suite_poly1305
-[ 79%] Linking C executable test_suite_poly1305
-[ 79%] Built target test_suite_platform_util
+[ 57%] Linking C executable test_suite_poly1305
+[ 57%] Built target test_suite_platform_util
+Consolidate compiler generated dependencies of target test_suite_pqcp_mldsa.dilithium_py
+[ 57%] Linking C executable test_suite_pqcp_mldsa.dilithium_py
+[ 58%] Built target test_suite_poly1305
+Consolidate compiler generated dependencies of target test_suite_pqcp_mldsa.misc
+[ 59%] Linking C executable test_suite_pqcp_mldsa.misc
+[ 59%] Built target test_suite_pqcp_mldsa.dilithium_py
+Consolidate compiler generated dependencies of target test_suite_psa_crypto.concurrent
+[ 59%] Linking C executable test_suite_psa_crypto.concurrent
+[ 59%] Built target test_suite_pqcp_mldsa.misc
 Consolidate compiler generated dependencies of target test_suite_psa_crypto
-[ 79%] Linking C executable test_suite_psa_crypto
-[ 80%] Built target test_suite_poly1305
+[ 59%] Linking C executable test_suite_psa_crypto
+[ 59%] Built target test_suite_psa_crypto.concurrent
 Consolidate compiler generated dependencies of target test_suite_psa_crypto.pbkdf2
-[ 80%] Linking C executable test_suite_psa_crypto.pbkdf2
-[ 80%] Built target test_suite_psa_crypto
+[ 59%] Linking C executable test_suite_psa_crypto.pbkdf2
+[ 59%] Built target test_suite_psa_crypto
+Consolidate compiler generated dependencies of target test_suite_psa_crypto.persistent
+[ 59%] Linking C executable test_suite_psa_crypto.persistent
+[ 60%] Built target test_suite_psa_crypto.pbkdf2
+Consolidate compiler generated dependencies of target test_suite_psa_crypto.pkcs1_v15_constant_time
+[ 60%] Linking C executable test_suite_psa_crypto.pkcs1_v15_constant_time
+[ 60%] Built target test_suite_psa_crypto.persistent
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_attributes
-[ 80%] Linking C executable test_suite_psa_crypto_attributes
-[ 81%] Built target test_suite_psa_crypto.pbkdf2
+[ 60%] Linking C executable test_suite_psa_crypto_attributes
+[ 60%] Built target test_suite_psa_crypto.pkcs1_v15_constant_time
+Consolidate compiler generated dependencies of target test_suite_psa_crypto_constant_time
+[ 60%] Linking C executable test_suite_psa_crypto_constant_time
+[ 61%] Built target test_suite_psa_crypto_attributes
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_driver_wrappers
-[ 81%] Linking C executable test_suite_psa_crypto_driver_wrappers
-[ 81%] Built target test_suite_psa_crypto_attributes
+[ 61%] Linking C executable test_suite_psa_crypto_driver_wrappers
+[ 61%] Built target test_suite_psa_crypto_constant_time
+Consolidate compiler generated dependencies of target test_suite_psa_crypto_ecp
+[ 61%] Linking C executable test_suite_psa_crypto_ecp
+[ 62%] Built target test_suite_psa_crypto_driver_wrappers
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_entropy
-[ 82%] Linking C executable test_suite_psa_crypto_entropy
-[ 83%] Built target test_suite_psa_crypto_driver_wrappers
+[ 62%] Linking C executable test_suite_psa_crypto_entropy
+[ 62%] Built target test_suite_psa_crypto_ecp
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_generate_key.generated
-[ 83%] Linking C executable test_suite_psa_crypto_generate_key.generated
-[ 83%] Built target test_suite_psa_crypto_generate_key.generated
-[ 83%] Built target test_suite_psa_crypto_entropy
+[ 62%] Linking C executable test_suite_psa_crypto_generate_key.generated
+[ 62%] Built target test_suite_psa_crypto_entropy
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_hash
-[ 83%] Linking C executable test_suite_psa_crypto_hash
+[ 62%] Linking C executable test_suite_psa_crypto_hash
+[ 63%] Built target test_suite_psa_crypto_generate_key.generated
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_init
-[ 83%] Linking C executable test_suite_psa_crypto_init
-[ 83%] Built target test_suite_psa_crypto_init
-[ 84%] Built target test_suite_psa_crypto_hash
+[ 63%] Linking C executable test_suite_psa_crypto_init
+[ 63%] Built target test_suite_psa_crypto_hash
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_low_hash.generated
+[ 63%] Linking C executable test_suite_psa_crypto_low_hash.generated
+[ 64%] Built target test_suite_psa_crypto_init
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_memory
-[ 84%] Linking C executable test_suite_psa_crypto_low_hash.generated
-[ 84%] Linking C executable test_suite_psa_crypto_memory
-[ 84%] Built target test_suite_psa_crypto_memory
+[ 64%] Linking C executable test_suite_psa_crypto_memory
+[ 64%] Built target test_suite_psa_crypto_low_hash.generated
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_metadata
-[ 84%] Linking C executable test_suite_psa_crypto_metadata
-[ 85%] Built target test_suite_psa_crypto_low_hash.generated
+[ 64%] Linking C executable test_suite_psa_crypto_metadata
+[ 65%] Built target test_suite_psa_crypto_memory
+Consolidate compiler generated dependencies of target test_suite_psa_crypto_mldsa.dilithium_py
+[ 65%] Linking C executable test_suite_psa_crypto_mldsa.dilithium_py
+[ 65%] Built target test_suite_psa_crypto_metadata
+Consolidate compiler generated dependencies of target test_suite_psa_crypto_mldsa.misc
+[ 65%] Linking C executable test_suite_psa_crypto_mldsa.misc
+[ 65%] Built target test_suite_psa_crypto_mldsa.dilithium_py
+Consolidate compiler generated dependencies of target test_suite_psa_crypto_mldsa.multipart
+[ 65%] Linking C executable test_suite_psa_crypto_mldsa.multipart
+[ 66%] Built target test_suite_psa_crypto_mldsa.misc
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_not_supported.generated
-[ 86%] Linking C executable test_suite_psa_crypto_not_supported.generated
-[ 87%] Built target test_suite_psa_crypto_metadata
+[ 66%] Linking C executable test_suite_psa_crypto_not_supported.generated
+[ 66%] Built target test_suite_psa_crypto_mldsa.multipart
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_not_supported.misc
-[ 87%] Linking C executable test_suite_psa_crypto_not_supported.misc
-[ 87%] Built target test_suite_psa_crypto_not_supported.generated
+[ 66%] Linking C executable test_suite_psa_crypto_not_supported.misc
+[ 67%] Built target test_suite_psa_crypto_not_supported.generated
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_op_fail.generated
-[ 88%] Linking C executable test_suite_psa_crypto_op_fail.generated
-[ 88%] Built target test_suite_psa_crypto_not_supported.misc
+[ 67%] Linking C executable test_suite_psa_crypto_op_fail.generated
+[ 67%] Built target test_suite_psa_crypto_not_supported.misc
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_op_fail.misc
-[ 88%] Linking C executable test_suite_psa_crypto_op_fail.misc
-[ 88%] Built target test_suite_psa_crypto_op_fail.generated
+[ 67%] Linking C executable test_suite_psa_crypto_op_fail.misc
+[ 68%] Built target test_suite_psa_crypto_op_fail.generated
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_pake
-[ 88%] Linking C executable test_suite_psa_crypto_pake
-[ 88%] Built target test_suite_psa_crypto_op_fail.misc
+[ 68%] Linking C executable test_suite_psa_crypto_pake
+[ 68%] Built target test_suite_psa_crypto_op_fail.misc
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_persistent_key
-[ 88%] Linking C executable test_suite_psa_crypto_persistent_key
-[ 89%] Built target test_suite_psa_crypto_pake
-Consolidate compiler generated dependencies of target test_suite_psa_crypto_se_driver_hal
-[ 89%] Linking C executable test_suite_psa_crypto_se_driver_hal
-[ 89%] Built target test_suite_psa_crypto_persistent_key
-Consolidate compiler generated dependencies of target test_suite_psa_crypto_se_driver_hal_mocks
-[ 89%] Linking C executable test_suite_psa_crypto_se_driver_hal_mocks
-[ 90%] Built target test_suite_psa_crypto_se_driver_hal
-[ 90%] Built target test_suite_psa_crypto_se_driver_hal_mocks
+[ 68%] Linking C executable test_suite_psa_crypto_persistent_key
+[ 68%] Built target test_suite_psa_crypto_pake
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_slot_management
+[ 68%] Linking C executable test_suite_psa_crypto_slot_management
+[ 69%] Built target test_suite_psa_crypto_persistent_key
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_storage_format.current
-[ 90%] Linking C executable test_suite_psa_crypto_slot_management
-[ 91%] Linking C executable test_suite_psa_crypto_storage_format.current
-[ 92%] Built target test_suite_psa_crypto_slot_management
+[ 69%] Linking C executable test_suite_psa_crypto_storage_format.current
+[ 69%] Built target test_suite_psa_crypto_slot_management
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_storage_format.misc
-[ 92%] Linking C executable test_suite_psa_crypto_storage_format.misc
-[ 92%] Built target test_suite_psa_crypto_storage_format.current
+[ 69%] Linking C executable test_suite_psa_crypto_storage_format.misc
+[ 70%] Built target test_suite_psa_crypto_storage_format.current
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_storage_format.v0
-[ 92%] Linking C executable test_suite_psa_crypto_storage_format.v0
-[ 92%] Built target test_suite_psa_crypto_storage_format.misc
+[ 70%] Linking C executable test_suite_psa_crypto_storage_format.v0
+[ 70%] Built target test_suite_psa_crypto_storage_format.misc
 Consolidate compiler generated dependencies of target test_suite_psa_crypto_util
-[ 92%] Linking C executable test_suite_psa_crypto_util
-[ 93%] Built target test_suite_psa_crypto_storage_format.v0
+[ 70%] Linking C executable test_suite_psa_crypto_util
+[ 71%] Built target test_suite_psa_crypto_storage_format.v0
+Consolidate compiler generated dependencies of target test_suite_psa_crypto_xof
+[ 71%] Linking C executable test_suite_psa_crypto_xof
+[ 71%] Built target test_suite_psa_crypto_util
 Consolidate compiler generated dependencies of target test_suite_psa_its
-[ 93%] Linking C executable test_suite_psa_its
-[ 93%] Built target test_suite_psa_crypto_util
+[ 71%] Linking C executable test_suite_psa_its
+[ 71%] Built target test_suite_psa_crypto_xof
 Consolidate compiler generated dependencies of target test_suite_random
-[ 93%] Linking C executable test_suite_random
-[ 94%] Built target test_suite_psa_its
+[ 71%] Linking C executable test_suite_random
+[ 71%] Built target test_suite_psa_its
+Consolidate compiler generated dependencies of target test_suite_rsa.constant_time
+[ 71%] Linking C executable test_suite_rsa.constant_time
+[ 71%] Built target test_suite_random
 Consolidate compiler generated dependencies of target test_suite_rsa
-[ 94%] Linking C executable test_suite_rsa
-[ 94%] Built target test_suite_random
-Consolidate compiler generated dependencies of target test_suite_shax
-[ 95%] Linking C executable test_suite_shax
-[ 96%] Built target test_suite_rsa
+[ 71%] Linking C executable test_suite_rsa
+[ 71%] Built target test_suite_rsa.constant_time
+Consolidate compiler generated dependencies of target test_suite_rsa.pkcs1_v15
+[ 72%] Linking C executable test_suite_rsa.pkcs1_v15
+[ 73%] Built target test_suite_rsa
+Consolidate compiler generated dependencies of target test_suite_rsa.pkcs1_v21
+[ 73%] Linking C executable test_suite_rsa.pkcs1_v21
+[ 73%] Built target test_suite_rsa.pkcs1_v15
+Consolidate compiler generated dependencies of target test_suite_sha1
+[ 73%] Linking C executable test_suite_sha1
+[ 73%] Built target test_suite_rsa.pkcs1_v21
+Consolidate compiler generated dependencies of target test_suite_sha256
+[ 73%] Built target test_suite_sha1
+[ 73%] Linking C executable test_suite_sha256
+Consolidate compiler generated dependencies of target test_suite_sha3.kat
+[ 73%] Linking C executable test_suite_sha3.kat
+[ 73%] Built target test_suite_sha3.kat
+[ 74%] Built target test_suite_sha256
+Consolidate compiler generated dependencies of target test_suite_sha3.misc
+Consolidate compiler generated dependencies of target test_suite_sha3.multi
+[ 75%] Linking C executable test_suite_sha3.misc
+[ 75%] Linking C executable test_suite_sha3.multi
+[ 75%] Built target test_suite_sha3.misc
+Consolidate compiler generated dependencies of target test_suite_sha3.shake_py
+[ 75%] Built target test_suite_sha3.multi
+[ 75%] Linking C executable test_suite_sha3.shake_py
+Consolidate compiler generated dependencies of target test_suite_sha512
+[ 75%] Linking C executable test_suite_sha512
+[ 75%] Built target test_suite_sha3.shake_py
+Consolidate compiler generated dependencies of target test_suite_tf_psa_crypto_version
+[ 75%] Linking C executable test_suite_tf_psa_crypto_version
+[ 76%] Built target test_suite_sha512
+Consolidate compiler generated dependencies of target mbedx509
+[ 78%] Built target mbedx509
+Consolidate compiler generated dependencies of target mbedtls
+[ 81%] Built target mbedtls
+Consolidate compiler generated dependencies of target pem2der
+[ 81%] Linking C executable pem2der
+[ 81%] Built target test_suite_tf_psa_crypto_version
+Consolidate compiler generated dependencies of target strerror
+[ 81%] Linking C executable strerror
+[ 82%] Built target strerror
+Consolidate compiler generated dependencies of target cert_app
+[ 82%] Built target pem2der
+[ 82%] Linking C executable cert_app
+Consolidate compiler generated dependencies of target cert_req
+[ 82%] Linking C executable cert_req
+[ 82%] Built target cert_req
+Consolidate compiler generated dependencies of target cert_write
+[ 82%] Linking C executable cert_write
+[ 82%] Built target cert_app
+Consolidate compiler generated dependencies of target crl_app
+[ 82%] Linking C executable crl_app
+[ 83%] Built target cert_write
+Consolidate compiler generated dependencies of target load_roots
+[ 83%] Linking C executable load_roots
+[ 83%] Built target crl_app
+Consolidate compiler generated dependencies of target req_app
+[ 84%] Linking C executable req_app
+[ 84%] Built target load_roots
+[ 84%] Built target req_app
+Consolidate compiler generated dependencies of target test_suite_config.mbedtls_boolean
+Consolidate compiler generated dependencies of target test_suite_config.tls_combinations
+[ 85%] Linking C executable test_suite_config.mbedtls_boolean
+[ 85%] Linking C executable test_suite_config.tls_combinations
+[ 85%] Built target test_suite_config.tls_combinations
+Consolidate compiler generated dependencies of target test_suite_constant_time_hmac
+[ 85%] Linking C executable test_suite_constant_time_hmac
+[ 85%] Built target test_suite_config.mbedtls_boolean
+Consolidate compiler generated dependencies of target test_suite_debug
+[ 85%] Linking C executable test_suite_debug
+[ 85%] Built target test_suite_constant_time_hmac
+Consolidate compiler generated dependencies of target test_suite_error
+[ 85%] Linking C executable test_suite_error
+[ 85%] Built target test_suite_debug
+Consolidate compiler generated dependencies of target test_suite_mps
+[ 85%] Linking C executable test_suite_mps
+[ 85%] Built target test_suite_error
+[ 85%] Built target test_suite_mps
+Consolidate compiler generated dependencies of target test_suite_net
+[ 85%] Linking C executable test_suite_net
+Consolidate compiler generated dependencies of target test_suite_pkcs7
+[ 86%] Linking C executable test_suite_pkcs7
+[ 87%] Built target test_suite_net
+[ 87%] Built target test_suite_pkcs7
 Consolidate compiler generated dependencies of target test_suite_ssl
-[ 96%] Linking C executable test_suite_ssl
-[ 96%] Built target test_suite_shax
+Consolidate compiler generated dependencies of target test_suite_ssl.records
+[ 87%] Linking C executable test_suite_ssl
+[ 88%] Linking C executable test_suite_ssl.records
+[ 88%] Built target test_suite_ssl
+Consolidate compiler generated dependencies of target test_suite_ssl.tls-defrag
+[ 88%] Linking C executable test_suite_ssl.tls-defrag
+[ 88%] Built target test_suite_ssl.records
 Consolidate compiler generated dependencies of target test_suite_ssl_decrypt.misc
-[ 97%] Linking C executable test_suite_ssl_decrypt.misc
-[ 97%] Built target test_suite_ssl
+[ 88%] Linking C executable test_suite_ssl_decrypt.misc
+[ 88%] Built target test_suite_ssl.tls-defrag
+[ 88%] Built target test_suite_ssl_decrypt.misc
 Consolidate compiler generated dependencies of target test_suite_test_helpers
-[ 97%] Linking C executable test_suite_test_helpers
-[ 97%] Built target test_suite_ssl_decrypt.misc
 Consolidate compiler generated dependencies of target test_suite_timing
-[ 97%] Linking C executable test_suite_timing
-[ 97%] Built target test_suite_test_helpers
+[ 89%] Linking C executable test_suite_timing
+[ 89%] Linking C executable test_suite_test_helpers
+[ 90%] Built target test_suite_test_helpers
 Consolidate compiler generated dependencies of target test_suite_version
-[ 97%] Linking C executable test_suite_version
-[ 98%] Built target test_suite_timing
+[ 90%] Built target test_suite_timing
+[ 90%] Linking C executable test_suite_version
+Consolidate compiler generated dependencies of target test_suite_x509_oid
+[ 90%] Linking C executable test_suite_x509_oid
+[ 90%] Built target test_suite_version
 Consolidate compiler generated dependencies of target test_suite_x509parse
-[ 98%] Linking C executable test_suite_x509parse
-[ 98%] Built target test_suite_version
+[ 90%] Linking C executable test_suite_x509parse
+[ 90%] Built target test_suite_x509_oid
 Consolidate compiler generated dependencies of target test_suite_x509write
-[ 99%] Linking C executable test_suite_x509write
-[100%] Built target test_suite_x509parse
-[100%] Built target test_suite_x509write
+[ 90%] Linking C executable test_suite_x509write
+[ 91%] Built target test_suite_x509parse
+Consolidate compiler generated dependencies of target fuzz_x509crl
+[ 91%] Linking C executable fuzz_x509crl
+[ 91%] Built target test_suite_x509write
+Consolidate compiler generated dependencies of target fuzz_x509crt
+[ 92%] Linking C executable fuzz_x509crt
+[ 92%] Built target fuzz_x509crl
+Consolidate compiler generated dependencies of target fuzz_x509csr
+[ 92%] Linking C executable fuzz_x509csr
+[ 92%] Built target fuzz_x509crt
+Consolidate compiler generated dependencies of target fuzz_pkcs7
+[ 92%] Linking C executable fuzz_pkcs7
+[ 92%] Built target fuzz_x509csr
+Consolidate compiler generated dependencies of target fuzz_client
+[ 92%] Linking C executable fuzz_client
+[ 92%] Built target fuzz_pkcs7
+Consolidate compiler generated dependencies of target fuzz_dtlsclient
+[ 92%] Linking C executable fuzz_dtlsclient
+[ 93%] Built target fuzz_client
+Consolidate compiler generated dependencies of target fuzz_dtlsserver
+[ 93%] Linking C executable fuzz_dtlsserver
+[ 93%] Built target fuzz_dtlsclient
+Consolidate compiler generated dependencies of target fuzz_server
+[ 93%] Linking C executable fuzz_server
+[ 94%] Built target fuzz_dtlsserver
+Consolidate compiler generated dependencies of target dtls_client
+[ 94%] Linking C executable dtls_client
+[ 95%] Built target fuzz_server
+Consolidate compiler generated dependencies of target dtls_server
+[ 95%] Linking C executable dtls_server
+[ 95%] Built target dtls_client
+Consolidate compiler generated dependencies of target mini_client
+[ 95%] Linking C executable mini_client
+[ 96%] Built target dtls_server
+Consolidate compiler generated dependencies of target ssl_client1
+[ 96%] Linking C executable ssl_client1
+[ 97%] Built target mini_client
+Consolidate compiler generated dependencies of target ssl_client2
+[ 98%] Linking C executable ssl_client2
+[ 98%] Built target ssl_client1
+Consolidate compiler generated dependencies of target ssl_context_info
+[ 98%] Linking C executable ssl_context_info
+[ 98%] Built target ssl_client2
+Consolidate compiler generated dependencies of target ssl_fork_server
+[ 98%] Linking C executable ssl_fork_server
+[ 98%] Built target ssl_context_info
+Consolidate compiler generated dependencies of target ssl_mail_client
+[ 98%] Linking C executable ssl_mail_client
+[ 98%] Built target ssl_fork_server
+Consolidate compiler generated dependencies of target ssl_server
+[ 98%] Linking C executable ssl_server
+[ 98%] Built target ssl_mail_client
+Consolidate compiler generated dependencies of target ssl_server2
+[ 98%] Linking C executable ssl_server2
+[ 98%] Built target ssl_server
+Consolidate compiler generated dependencies of target ssl_pthread_server
+[ 98%] Linking C executable ssl_pthread_server
+[ 98%] Built target ssl_server2
+Consolidate compiler generated dependencies of target metatest
+[ 98%] Linking C executable metatest
+[ 99%] Built target ssl_pthread_server
+Consolidate compiler generated dependencies of target query_compile_time_config
+[ 99%] Linking C executable query_compile_time_config
+[ 99%] Built target metatest
+Consolidate compiler generated dependencies of target query_included_headers
+[ 99%] Linking C executable query_included_headers
+[ 99%] Built target query_compile_time_config
+Consolidate compiler generated dependencies of target selftest
+[ 99%] Linking C executable selftest
+[ 99%] Built target query_included_headers
+Consolidate compiler generated dependencies of target udp_proxy
+[ 99%] Linking C executable udp_proxy
+[ 99%] Built target selftest
+Consolidate compiler generated dependencies of target zeroize
+[100%] Linking C executable zeroize
+[100%] Built target udp_proxy
+[100%] Built target zeroize

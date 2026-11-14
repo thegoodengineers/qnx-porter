@@ -1,3 +1,11 @@
 $ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/libdeflate/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  test_checksums (exit 0)
+PASS  test_custom_malloc (exit 0)
+PASS  test_incomplete_codes (exit 0)
+PASS  test_invalid_streams (exit 0)
+PASS  test_litrunlen_overflow (exit 0)
+PASS  test_overread (exit 0)
+PASS  test_slow_decompression (exit 0)
+PASS  test_trailing_bytes (exit 0)
 
-0/0 tests passed on the QNX target
+8/8 tests passed on the QNX target
