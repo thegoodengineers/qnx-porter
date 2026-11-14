@@ -68,12 +68,12 @@ published results and `results/runs/campaign-8.log`.
 - **Images.** An image scene shows a PNG, scaled to 1920x1080, for its length.
 
 ## Screenshots
-`video/shots/site-overview.png`, `site-results.png`, `site-mbedtls.png`, `site-weekly.png` and `site-paper.png`
+`video/shots/site-overview.png`, `site-results.png`, `site-weekly.png` and `site-paper.png`
 are 1920x1080 captures of the live site, page content only (no browser toolbar, tabs or bookmarks). They were
 taken with headless Chrome, which renders only the page:
 ```bash
 B=https://thegoodengineers.github.io/qnx-porter
-for p in overview:index.html results:results.html mbedtls:ports/mbedtls-x86_64.html weekly:upstream.html paper:paper.html; do
+for p in overview:index.html results:results.html weekly:upstream.html paper:paper.html; do
   google-chrome --headless=new --hide-scrollbars --force-device-scale-factor=1 --window-size=1920,1080 \
     --virtual-time-budget=8000 --screenshot="video/shots/site-${p%%:*}.png" "$B/${p#*:}"
 done
