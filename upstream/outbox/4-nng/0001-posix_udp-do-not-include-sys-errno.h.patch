@@ -1,0 +1,29 @@
+From 0a7b5aa5d23fa1e2c1edd4ad31977424fa4054cd Mon Sep 17 00:00:00 2001
+From: Chirag <118997601+Chirag6722@users.noreply.github.com>
+Date: Sat, 14 Nov 2026 16:50:20 +0530
+Subject: [PATCH] posix_udp: do not include <sys/errno.h>
+
+<sys/errno.h> is not a POSIX header. glibc ships it as an alias for
+<errno.h>, but other C libraries do not ship it at all, and the build
+stops at this include (seen with QNX 8.0). The file already includes
+POSIX's <errno.h> a few lines below, which declares everything it uses,
+so the <sys/errno.h> line can go.
+---
+ src/platform/posix/posix_udp.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/platform/posix/posix_udp.c b/src/platform/posix/posix_udp.c
+index c0357b5..91e8ee4 100644
+--- a/src/platform/posix/posix_udp.c
++++ b/src/platform/posix/posix_udp.c
+@@ -11,7 +11,6 @@
+ #include "core/nng_impl.h"
+ #include "nng/nng.h"
+ #include "platform/posix/posix_impl.h"
+-#include <sys/errno.h>
+ #include <sys/types.h>
+ 
+ #ifdef NNG_PLATFORM_POSIX
+-- 
+2.54.0.windows.1
+

@@ -1,0 +1,35 @@
+From c6ab78f220fb4806b9d41f6b9d0977ea4d358b6c Mon Sep 17 00:00:00 2001
+From: Chirag <118997601+Chirag6722@users.noreply.github.com>
+Date: Fri, 13 Nov 2026 09:34:11 +0530
+Subject: [PATCH] Open the saved working directory with O_DIRECTORY in QNX
+ death tests
+
+On QNX, ExecDeathTestSpawnChild() saves the current directory with
+open(".", O_RDONLY), spawns the child, and goes back with fchdir().
+QNX 8.0's fchdir() needs a descriptor opened with O_DIRECTORY: its C
+library reference lists ENOTDIR for a descriptor that "wasn't opened
+with O_DIRECTORY". The fchdir() check then aborts the test program, so
+every "threadsafe" death test aborts on QNX 8.0.
+
+O_DIRECTORY is POSIX and only asks open() to confirm that "." is a
+directory, which it always is, so the change is safe wherever the code
+runs.
+---
+ googletest/src/gtest-death-test.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/googletest/src/gtest-death-test.cc b/googletest/src/gtest-death-test.cc
+index 15472f1..f809e2e 100644
+--- a/googletest/src/gtest-death-test.cc
++++ b/googletest/src/gtest-death-test.cc
+@@ -1260,7 +1260,7 @@ static pid_t ExecDeathTestSpawnChild(char* const* argv, int close_fd) {
+ #ifdef GTEST_OS_QNX
+   // Obtains the current directory and sets it to be closed in the child
+   // process.
+-  const int cwd_fd = open(".", O_RDONLY);
++  const int cwd_fd = open(".", O_RDONLY | O_DIRECTORY);
+   GTEST_DEATH_TEST_CHECK_(cwd_fd != -1);
+   GTEST_DEATH_TEST_CHECK_SYSCALL_(fcntl(cwd_fd, F_SETFD, FD_CLOEXEC));
+   // We need to execute the test program in the same environment where
+
+base-commit: b514bdc898e2951020cbdca1304b75f5950d1f59
