@@ -10,3 +10,4 @@ dist/
 ports-rust*/*/work/
 ports-rust*/.cargo-target-*/
 ports-model/*/work/
+ports*/*/logs/*.kev

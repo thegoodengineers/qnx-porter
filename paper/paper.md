@@ -40,7 +40,7 @@ We built qnx-porter for the QNX Global Hackathon to make that work routine. Give
 
 ## 3 Design
 
-Figure 1 shows the pipeline for one library. Each box names the source file that implements it; the whole tool is 3050 lines of Python with no runtime dependencies, and 169 tests run in CI without QNX.
+Figure 1 shows the pipeline for one library. Each box names the source file that implements it; the whole tool is 3198 lines of Python with no runtime dependencies, and 174 tests run in CI without QNX.
 
 ![Figure 1: The qnx-porter pipeline for one library. Blue: steps every port takes. Green: deterministic rules. Orange: steps whose output is kept only if a later check proves it (a rebuild, or more tests passing).](fig/pipeline.png)
 

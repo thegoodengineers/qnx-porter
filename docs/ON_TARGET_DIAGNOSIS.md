@@ -21,8 +21,8 @@ After QNX's `timeout` has killed the test, qnx-porter copies the `.kev` file bac
 `traceprinter`, and counts, per thread of the stuck processes, how often it was scheduled (`THRUNNING`) and which
 kernel calls it made. Kernel-call events carry no pid, so each one is attributed to the thread that the last
 `THRUNNING` event put on that CPU. The REPORT.md section "Hang on QNX" shows the first three; `logs/hangs.log` has
-all of them, and `logs/hang-1.kev` to `hang-3.kev` keep the first three raw traces (about 50 MB each for 2 s)
-for QNX's IDE or `traceprinter`; later ones keep only the summary.
+all of them. The first three raw traces stay in the run's `logs/` as `hang-1.kev` to `hang-3.kev` (about 35 to 50 MB
+each for 2 s, not committed) for QNX's IDE or `traceprinter`; later ones keep only the summary.
 
 A thread with no kernel calls in the window is waiting, and `pidin` says on what (`CONDVAR`, `REPLY <pid>`,
 `RECEIVE`, ...). A thread with thousands of calls is spinning.
@@ -30,30 +30,36 @@ A thread with no kernel calls in the window is waiting, and `pidin` says on what
 ### A real case: nng 2.1.0's tests
 nng v2.1.0 builds for QNX, but 61 of its 64 tests run until they are killed (x86_64 target, 14 Nov 2026,
 `campaign.yaml` gives nng a 60 s limit). With the watcher, 60 of those 61 got a snapshot; the 61st,
-`nng.cplusplus_pair`, has a 15 s limit, under the watcher's 20 s minimum. This is `nng.core.aio_test`, as the test
-log has it:
+`nng.cplusplus_pair`, has a 15 s limit, under the watcher's 20 s minimum. The run is committed:
+[`ports/nng/REPORT.md`](../ports/nng/REPORT.md) and [`ports/nng/logs/hangs.log`](../ports/nng/logs/hangs.log).
+This is `nng.core.aio_test`, as REPORT.md has it:
 ```
-### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
      pid tid name               STATE          Blocked                      kernel call
- 7409686   1 aio_test           REPLY          1                            msg_sendv
+13250582   1 aio_test           REPLY          1                            msg_sendv
      pid tid name               STATE          Blocked                      kernel call
- 7413784   1 aio_test           CONDVAR        (0x5daeff7610)               sync_condvar_wa
- 7413784   2 aio_test           READY          143370
- 7413784   3 aio_test           SIGWAITINFO                                 signal_waitinfo
- 7413784   4 aio_test           SIGWAITINFO                                 signal_waitinfo
- 7413784   5 aio_test           SIGWAITINFO                                 signal_waitinfo
+13254680   1 aio_test           CONDVAR        (0x37fdf8e610)               sync_condvar_wa
+13254680   2 aio_test           RUNNING                                     msg_sendv
+13254680   3 aio_test           SIGWAITINFO                                 signal_waitinfo
+13254680   4 aio_test           SIGWAITINFO                                 signal_waitinfo
+13254680   5 aio_test           SIGWAITINFO                                 signal_waitinfo
 
 killed on the target after 60 s
-qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
-pid 7413784 tid 2: ran 139726 time(s), 277593 kernel call(s) (MSG_SENDV x138797, SYNC_CONDVAR_SIGNAL x69398, SIGNAL_ACTION x69398)
-pid(s) 7409686: no thread ran during the trace
+```
+Kernel trace (`tracelogger`, read with `traceprinter`), per thread:
+```
+pid 13254680 tid 2: ran 93655 time(s), 185539 kernel call(s) (MSG_SENDV x92769, SYNC_CONDVAR_SIGNAL x46385, SIGNAL_ACTION x46385)
+pid(s) 13250582: no thread ran during the trace
 ```
 The first process is the test framework's parent, waiting on the kernel (pid 1) for its child. In the child, the
-main thread waits on a condition variable, and thread 2 is not blocked at all: in 2 s it was scheduled about 140,000
-times and made about 280,000 kernel calls, half of them `MSG_SENDV` (on QNX a `read()` is a message to the
-resource manager that owns the file). Across the 60 snapshots the picture is the same in 59: the main thread in
-`CONDVAR`, thread 2 running with 135,792 to 300,581 kernel calls in the 2 s, `MSG_SENDV` first. The other one,
-`nng.sp.reconnect_stress_test`, differs: its main thread made 997 `TIMER_TIMEOUT` calls and nothing spun.
+main thread waits on a condition variable, and thread 2 is not blocked at all: in 2 s it was scheduled 93,655
+times and made 185,539 kernel calls, half of them `MSG_SENDV` (on QNX a `read()` is a message to the resource
+manager that owns the file). Across the 60 snapshots the picture is the same in 59: the main thread in `CONDVAR`,
+thread 2 running with 141,731 to 267,831 kernel calls in the 2 s, `MSG_SENDV` first. An earlier run the same day,
+before the report step was fixed, showed the same in 59 of 60 (135,792 to 300,581 calls;
+[`results/runs/nng-hang-run1-tests.log`](../results/runs/nng-hang-run1-tests.log)). The other one,
+`nng.sp.reconnect_stress_test`, differs: its main thread sleeps (`NANOSLEEP`, 960 `TIMER_TIMEOUT` calls) while 12
+worker threads lock and unlock mutexes (1,816 to 26,602 kernel calls each). That is a stress test still at work,
+not one thread stuck in a loop.
 
 That matches the poller loop described in [qnx-reports/pipe-pollhup.md](qnx-reports/pipe-pollhup.md):
 on QNX 8.0, `poll()` on a pipe whose writer has closed keeps reporting `POLLIN` and never `POLLHUP`, so nng's poller

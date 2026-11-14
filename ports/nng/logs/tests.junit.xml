@@ -1,10 +1,34 @@
 <?xml version='1.0' encoding='utf-8'?>
 <testsuite name="qnx-target" tests="64" failures="61" skipped="0"><testcase name="nng.core.aio_test" classname="qnx-target"><failure message="exit None">Test sleep:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+13250582   1 aio_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+13254680   1 aio_test           CONDVAR        (0x37fdf8e610)               sync_condvar_wa
+13254680   2 aio_test           RUNNING                                     msg_sendv
+13254680   3 aio_test           SIGWAITINFO                                 signal_waitinfo
+13254680   4 aio_test           SIGWAITINFO                                 signal_waitinfo
+13254680   5 aio_test           SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 13254680 tid 2: ran 93655 time(s), 185539 kernel call(s) (MSG_SENDV x92769, SYNC_CONDVAR_SIGNAL x46385, SIGNAL_ACTION x46385)
+pid(s) 13250582: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.args_test" classname="qnx-target"><failure message="exit None">Test simple options:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+15302678   1 args_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+15306776   1 args_test          CONDVAR        (0x5c21743560)               sync_condvar_wa
+15306776   2 args_test          RUNNING                                                      
+15306776   3 args_test          SIGWAITINFO                                 signal_waitinfo
+15306776   4 args_test          SIGWAITINFO                                 signal_waitinfo
+15306776   5 args_test          SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 15306776 tid 2: ran 101187 time(s), 200695 kernel call(s) (MSG_SENDV x100347, SYNC_CONDVAR_SIGNAL x50174, SIGNAL_ACTION x50174)
+pid(s) 15302678: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.buf_size_test" classname="qnx-target"><failure message="exit None">Test buffer options:
   buf_size_test.c:26: nng_pair1_open(&amp;s1): expected success, got Hunky dory (0)... ok
   Case recv-buffer:
@@ -19,40 +43,133 @@ killed on the target after 180 s
     buf_size_test.c:34: val == 1234... ok
     buf_size_test.c:37: nng_socket_set_int(s1, opt, -5) fails with Invalid argument... ok
     buf_size_test.c:40: nng_socket_set_int(s1, opt, 0x100000) fails with Invalid argument... ok
-    buf_size_test.c:42: nng_socket_close(s1)
-killed on the target after 180 s
+    buf_size_test.c:42: nng_socket_close(s1)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+16642070   1 buf_size_test      CONDVAR        (0x154dd1d470)               sync_condvar_wa
+16642070   2 buf_size_test      REPLY                                       msg_sendv
+16642070   3 buf_size_test      SIGWAITINFO                                 signal_waitinfo
+16642070   4 buf_size_test      SIGWAITINFO                                 signal_waitinfo
+16642070   5 buf_size_test      SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 16642070 tid 2: ran 102023 time(s), 202328 kernel call(s) (MSG_SENDV x101164, SYNC_CONDVAR_SIGNAL x50582, SIGNAL_ACTION x50582)
 </failure></testcase><testcase name="nng.core.errors_test" classname="qnx-target"><failure message="exit None">Test known errors:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+17592342   1 errors_test        REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+17596440   1 errors_test        CONDVAR        (0x1f7035e4f0)               sync_condvar_wa
+17596440   2 errors_test        READY                                       msg_sendv
+17596440   3 errors_test        SIGWAITINFO                                 signal_waitinfo
+17596440   4 errors_test        SIGWAITINFO                                 signal_waitinfo
+17596440   5 errors_test        SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 17596440 tid 2: ran 104761 time(s), 207929 kernel call(s) (MSG_SENDV x103965, SYNC_CONDVAR_SIGNAL x51982, SIGNAL_ACTION x51982)
+pid(s) 17592342: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.id_test" classname="qnx-target"><failure message="exit None">Test basic:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+17936407   1 id_test            REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+17940504   1 id_test            CONDVAR        (0x171573b510)               sync_condvar_wa
+17940504   2 id_test            RUNNING                                                      
+17940504   3 id_test            SIGWAITINFO                                 signal_waitinfo
+17940504   4 id_test            SIGWAITINFO                                 signal_waitinfo
+17940504   5 id_test            SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 17940504 tid 2: ran 108048 time(s), 214347 kernel call(s) (MSG_SENDV x107173, SYNC_CONDVAR_SIGNAL x53587, SIGNAL_ACTION x53587)
+pid(s) 17936407: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.idhash_test" classname="qnx-target"><failure message="exit None">Test id basic:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+18276374   1 idhash_test        REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+18280472   1 idhash_test        CONDVAR        (0x179c7cc540)               sync_condvar_wa
+18280472   2 idhash_test        REPLY                                                        
+18280472   3 idhash_test        SIGWAITINFO                                 signal_waitinfo
+18280472   4 idhash_test        SIGWAITINFO                                 signal_waitinfo
+18280472   5 idhash_test        SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 18280472 tid 2: ran 97824 time(s), 193937 kernel call(s) (MSG_SENDV x96969, SYNC_CONDVAR_SIGNAL x48484, SIGNAL_ACTION x48484)
+pid(s) 18276374: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.init_test" classname="qnx-target"><failure message="exit None">Test init parameter:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+18616342   1 init_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+18620440   1 init_test          CONDVAR        (0x2a8a4e7540)               sync_condvar_wa
+18620440   2 init_test          RUNNING                                                      
+18620440   3 init_test          SIGWAITINFO                                 signal_waitinfo
+18620440   4 init_test          SIGWAITINFO                                 signal_waitinfo
+18620440   5 init_test          SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 18620440 tid 2: ran 104505 time(s), 207264 kernel call(s) (MSG_SENDV x103632, SYNC_CONDVAR_SIGNAL x51816, SIGNAL_ACTION x51816)
+pid(s) 18616342: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.list_test" classname="qnx-target"><failure message="exit None">Test list empty:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+18960406   1 list_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+18964504   1 list_test          CONDVAR        (0x5f278c14b0)               sync_condvar_wa
+18964504   2 list_test          RUNNING        143370                                        
+18964504   3 list_test          SIGWAITINFO                                 signal_waitinfo
+18964504   4 list_test          SIGWAITINFO                                 signal_waitinfo
+18964504   5 list_test          SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 18964504 tid 2: ran 86883 time(s), 172224 kernel call(s) (MSG_SENDV x86112, SYNC_CONDVAR_SIGNAL x43056, SIGNAL_ACTION x43056)
+pid(s) 18960406: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.log_test" classname="qnx-target"><failure message="exit None">Test log stderr:
-[DEBUG ]: 13:08:48.301: NNG-DATE: Date changed to 2026-11-13, TZ is +0000
-[INFO  ]: 13:08:48.300: something wicked
-[ERROR ]: 13:08:48.302: This is an error message
-[WARN  ]: 13:08:48.303: This is a warning message
-[NOTICE]: 13:08:48.303: This is a notice message
-[INFO  ]: 13:08:48.303: This is an info message
-[DEBUG ]: 13:08:48.303: This is a debug message
-[NOTICE]: 13:08:48.303: TESTMSG: This notice has a msg id
-[ERROR ]: 13:08:48.304: MONO: Uncolored messages
-[ERROR ]: 13:08:48.304: MONO: Also uncolored messages
-[NONE  ]: 13:08:48.305: WTF: This should be NONE
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+19300375   1 log_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+19304472   1 log_test           CONDVAR        (0x20dfa834d0)               sync_condvar_wa
+19304472   2 log_test           READY          143370                       msg_sendv
+19304472   3 log_test           SIGWAITINFO                                 signal_waitinfo
+19304472   4 log_test           SIGWAITINFO                                 signal_waitinfo
+19304472   5 log_test           SIGWAITINFO                                 signal_waitinfo
+[DEBUG ]: 13:42:36.881: NNG-DATE: Date changed to 2026-11-14, TZ is +0000
+[INFO  ]: 13:42:36.880: something wicked
+[ERROR ]: 13:42:36.881: This is an error message
+[WARN  ]: 13:42:36.881: This is a warning message
+[NOTICE]: 13:42:36.881: This is a notice message
+[INFO  ]: 13:42:36.882: This is an info message
+[DEBUG ]: 13:42:36.882: This is a debug message
+[NOTICE]: 13:42:36.883: TESTMSG: This notice has a msg id
+[ERROR ]: 13:42:36.883: MONO: Uncolored messages
+[ERROR ]: 13:42:36.883: MONO: Also uncolored messages
+[NONE  ]: 13:42:36.884: WTF: This should be NONE
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 19304472 tid 2: ran 105319 time(s), 208944 kernel call(s) (MSG_SENDV x104472, SYNC_CONDVAR_SIGNAL x52236, SIGNAL_ACTION x52236)
+pid(s) 19300375: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.message_test" classname="qnx-target"><failure message="exit None">Test msg option:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+19640342   1 message_test       REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+19644440   1 message_test       CONDVAR        (0x3abc050630)               sync_condvar_wa
+19644440   2 message_test       RUNNING                                                      
+19644440   3 message_test       SIGWAITINFO                                 signal_waitinfo
+19644440   4 message_test       SIGWAITINFO                                 signal_waitinfo
+19644440   5 message_test       SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 19644440 tid 2: ran 101418 time(s), 201109 kernel call(s) (MSG_SENDV x100555, SYNC_CONDVAR_SIGNAL x50277, SIGNAL_ACTION x50277)
+pid(s) 19640342: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.reconnect_test" classname="qnx-target"><failure message="exit None">Test dial before listen:
   reconnect_test.c:20: nng_pair1_open(&amp;(s1)): expected success, got Hunky dory (0)... ok
   reconnect_test.c:21: nng_pair1_open(&amp;(s2)): expected success, got Hunky dory (0)... ok
@@ -65,17 +182,65 @@ killed on the target after 180 s
   reconnect_test.c:33: length 6 want 6... ok
   reconnect_test.c:33: hello == hello... ok
   reconnect_test.c:35: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
-  reconnect_test.c:36: nng_socket_close(s2): expected success, got Hunky dory
-killed on the target after 180 s
+  reconnect_test.c:36: nng_socket_close(s2): expected success, got Hunky dory### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+19980310   1 reconnect_test     REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+19984408   1 reconnect_test     CONDVAR        (0x3d567f24c0)               sync_condvar_wa
+19984408   2 reconnect_test     RUNNING                                                      
+19984408   3 reconnect_test     SIGWAITINFO                                 signal_waitinfo
+19984408   4 reconnect_test     SIGWAITINFO                                 signal_waitinfo
+19984408   5 reconnect_test     SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 19984408 tid 2: ran 103616 time(s), 205475 kernel call(s) (MSG_SENDV x102737, SYNC_CONDVAR_SIGNAL x51369, SIGNAL_ACTION x51369)
+pid(s) 19980310: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.sock_test" classname="qnx-target"><failure message="exit None">Test recv timeout:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+20320278   1 sock_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+20324376   1 sock_test          CONDVAR        (0x3dc14dd5e0)               sync_condvar_wa
+20324376   2 sock_test          RUNNING                                                      
+20324376   3 sock_test          SIGWAITINFO                                 signal_waitinfo
+20324376   4 sock_test          SIGWAITINFO                                 signal_waitinfo
+20324376   5 sock_test          SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 20324376 tid 2: ran 104065 time(s), 206453 kernel call(s) (MSG_SENDV x103227, SYNC_CONDVAR_SIGNAL x51613, SIGNAL_ACTION x51613)
+pid(s) 20320278: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.sockaddr_test" classname="qnx-target"><failure message="exit None">Test nng_sockaddr_ipc:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+20660246   1 sockaddr_test      REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+20664344   1 sockaddr_test      CONDVAR        (0x12bf04b520)               sync_condvar_wa
+20664344   2 sockaddr_test      READY                                       msg_sendv
+20664344   3 sockaddr_test      SIGWAITINFO                                 signal_waitinfo
+20664344   4 sockaddr_test      SIGWAITINFO                                 signal_waitinfo
+20664344   5 sockaddr_test      SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 20664344 tid 2: ran 126236 time(s), 250743 kernel call(s) (MSG_SENDV x125371, SYNC_CONDVAR_SIGNAL x62686, SIGNAL_ACTION x62686)
+pid(s) 20660246: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.synch_test" classname="qnx-target"><failure message="exit None">Test mutex lock unlock:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+21004310   1 synch_test         REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+21008408   1 synch_test         CONDVAR        (0x15822c84f0)               sync_condvar_wa
+21008408   2 synch_test         REPLY                                                        
+21008408   3 synch_test         SIGWAITINFO                                 signal_waitinfo
+21008408   4 synch_test         SIGWAITINFO                                 signal_waitinfo
+21008408   5 synch_test         SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 21008408 tid 2: ran 132547 time(s), 263453 kernel call(s) (MSG_SENDV x131726, SYNC_CONDVAR_SIGNAL x65864, SIGNAL_ACTION x65863)
+pid(s) 21004310: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.stats_test" classname="qnx-target"><failure message="exit None">Test socket stats:
   stats_test.c:26: nng_pair1_open(&amp;(s1)): expected success, got Hunky dory (0)... ok
   stats_test.c:27: nng_pair1_open(&amp;(s2)): expected success, got Hunky dory (0)... ok
@@ -94,14 +259,50 @@ killed on the target after 180 s
   stats_test.c:44: item != NULL... ok
   stats_test.c:45: nng_stat_value(item) == 1... ok
   stats_test.c:46: nng_stat_unit(item) == NNG_UNIT_MESSAGES... ok
-  stats_test.c:47: nng_socket_close(s1): expected success, got Hunky dory (0).
-killed on the target after 180 s
+  stats_test.c:47: nng_socket_close(s1): expected success, got Hunky dory (0).### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+21344279   1 stats_test         REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+21348376   1 stats_test         CONDVAR        (0x49634654a0)               sync_condvar_wa
+21348376   2 stats_test         RUNNING        143370                                        
+21348376   3 stats_test         SIGWAITINFO                                 signal_waitinfo
+21348376   4 stats_test         SIGWAITINFO                                 signal_waitinfo
+21348376   5 stats_test         SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 21348376 tid 2: ran 121847 time(s), 242049 kernel call(s) (MSG_SENDV x121025, SYNC_CONDVAR_SIGNAL x60512, SIGNAL_ACTION x60512)
+pid(s) 21344279: no thread ran during the trace
 </failure></testcase><testcase name="nng.core.url_test" classname="qnx-target"><failure message="exit None">Test url host:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+21684246   1 url_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+21688344   1 url_test           CONDVAR        (0x3555821680)               sync_condvar_wa
+21688344   2 url_test           READY                                       msg_sendv
+21688344   3 url_test           SIGWAITINFO                                 signal_waitinfo
+21688344   4 url_test           SIGWAITINFO                                 signal_waitinfo
+21688344   5 url_test           SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 21688344 tid 2: ran 132525 time(s), 263460 kernel call(s) (MSG_SENDV x131730, SYNC_CONDVAR_SIGNAL x65865, SIGNAL_ACTION x65865)
+pid(s) 21684246: no thread ran during the trace
 </failure></testcase><testcase name="nng.platform.files_test" classname="qnx-target"><failure message="exit None">Test permissions:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+22024214   1 files_test         REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+22028312   1 files_test         CONDVAR        (0x4567b07510)               sync_condvar_wa
+22028312   2 files_test         RUNNING                                                      
+22028312   3 files_test         SIGWAITINFO                                 signal_waitinfo
+22028312   4 files_test         SIGWAITINFO                                 signal_waitinfo
+22028312   5 files_test         SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 22028312 tid 2: ran 129355 time(s), 257072 kernel call(s) (MSG_SENDV x128536, SYNC_CONDVAR_SIGNAL x64268, SIGNAL_ACTION x64268)
+pid(s) 22024214: no thread ran during the trace
 </failure></testcase><testcase name="nng.platform.ipc_stream_test" classname="qnx-target"><failure message="exit None">Test ipc stream:
   ipc_stream_test.c:40: nng_aio_alloc(&amp;daio, NULL, NULL): expected success, got Hunky dory (0)... ok
   ipc_stream_test.c:41: nng_aio_alloc(&amp;laio, NULL, NULL): expected success, got Hunky dory (0)... ok
@@ -113,14 +314,50 @@ killed on the target after 180 s
   ipc_stream_test.c:49: nng_stream_dialer_alloc(&amp;d, url): expected success, got Hunky dory (0)... ok
   ipc_stream_test.c:54: nng_aio_result(daio): expected success, got Hunky dory (0)... ok
   ipc_stream_test.c:56: nng_aio_result(laio): expected success, got Hunky dory (0)... ok
-  ipc_stream_test.c:60: c1 != NULL... ok
-killed on the target after 180 s
+  ipc_stream_test.c:60: c1 != NULL... ok### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+22364182   1 ipc_stream_test    REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+22368280   1 ipc_stream_test    CONDVAR        (0x56608bd530)               sync_condvar_wa
+22368280   2 ipc_stream_test    RUNNING                                                      
+22368280   3 ipc_stream_test    SIGWAITINFO                                 signal_waitinfo
+22368280   4 ipc_stream_test    SIGWAITINFO                                 signal_waitinfo
+22368280   5 ipc_stream_test    SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 22368280 tid 2: ran 122403 time(s), 243128 kernel call(s) (MSG_SENDV x121564, SYNC_CONDVAR_SIGNAL x60782, SIGNAL_ACTION x60782)
+pid(s) 22364182: no thread ran during the trace
 </failure></testcase><testcase name="nng.platform.platform_test" classname="qnx-target"><failure message="exit None">Test sleep:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+22708246   1 platform_test      REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+22712344   1 platform_test      CONDVAR        (0x3007614500)               sync_condvar_wa
+22712344   2 platform_test      REPLY          143370                                        
+22712344   3 platform_test      SIGWAITINFO                                 signal_waitinfo
+22712344   4 platform_test      SIGWAITINFO                                 signal_waitinfo
+22712344   5 platform_test      SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 22712344 tid 2: ran 121366 time(s), 241053 kernel call(s) (MSG_SENDV x120527, SYNC_CONDVAR_SIGNAL x60263, SIGNAL_ACTION x60263)
+pid(s) 22708246: no thread ran during the trace
 </failure></testcase><testcase name="nng.platform.resolver_test" classname="qnx-target"><failure message="exit None">Test resolve google dns:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+23048214   1 resolver_test      REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+23052312   1 resolver_test      CONDVAR        (0x1adc861530)               sync_condvar_wa
+23052312   2 resolver_test      RUNNING                                     msg_sendv
+23052312   3 resolver_test      SIGWAITINFO                                 signal_waitinfo
+23052312   4 resolver_test      SIGWAITINFO                                 signal_waitinfo
+23052312   5 resolver_test      SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 23052312 tid 2: ran 127207 time(s), 252832 kernel call(s) (MSG_SENDV x126416, SYNC_CONDVAR_SIGNAL x63208, SIGNAL_ACTION x63208)
+pid(s) 23048214: no thread ran during the trace
 </failure></testcase><testcase name="nng.platform.tcp_stream_test" classname="qnx-target"><failure message="exit None">Test tcp stream:
   tcp_stream_test.c:41: nng_aio_alloc(&amp;daio, NULL, NULL): expected success, got Hunky dory (0)... ok
   tcp_stream_test.c:42: nng_aio_alloc(&amp;laio, NULL, NULL): expected success, got Hunky dory (0)... ok
@@ -147,8 +384,20 @@ killed on the target after 180 s
   tcp_stream_test.c:103: memcmp(buf1, buf2, 5) == 0... ok
   tcp_stream_test.c:106: sap1-&gt;s_in.sa_family == NNG_AF_INET... ok
   tcp_stream_test.c:109: sap2-&gt;s_in.sa_family == NNG_AF_INET... ok
-  tcp_stream_test.c
-killed on the target after 180 s
+  tcp_stream_test.c### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+23388182   1 tcp_stream_test    REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+23392280   1 tcp_stream_test    CONDVAR        (0x2b6fe70540)               sync_condvar_wa
+23392280   2 tcp_stream_test    REPLY                                                        
+23392280   3 tcp_stream_test    SIGWAITINFO                                 signal_waitinfo
+23392280   4 tcp_stream_test    SIGWAITINFO                                 signal_waitinfo
+23392280   5 tcp_stream_test    SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 23392280 tid 2: ran 133582 time(s), 265505 kernel call(s) (MSG_SENDV x132753, SYNC_CONDVAR_SIGNAL x66376, SIGNAL_ACTION x66376)
+pid(s) 23388182: no thread ran during the trace
 </failure></testcase><testcase name="nng.platform.udp_test" classname="qnx-target"><failure message="exit None">Test udp pair:
   udp_test.c:49: nng_udp_open(&amp;u1, &amp;sa1): expected success, got Hunky dory (0)... ok
   udp_test.c:50: nng_udp_open(&amp;u2, &amp;sa2): expected success, got Hunky dory (0)... ok
@@ -161,11 +410,32 @@ killed on the target after 180 s
   udp_test.c:66: nng_aio_set_iov(aio2, 1, &amp;iov2): expected success, got Hunky dory (0)... ok
   udp_test.c:67: nng_aio_set_input(aio2, 0, &amp;from): expected success, got Hunky dory (0)... ok
   udp_test.c:74: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
-  udp_test.c:75: nng_aio_result(aio2)
-killed on the target after 180 s
-</failure></testcase><testcase name="nng.platform.posix_ipcwinsec_test" classname="qnx-target"><failure message="exit None">Test ipc security descriptor:
+  udp_test.c:75: nng_aio_result(aio2)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+23728150   1 udp_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+23732248   1 udp_test           CONDVAR        (0x337dd3f530)               sync_condvar_wa
+23732248   2 udp_test           RUNNING                                                      
+23732248   3 udp_test           SIGWAITINFO                                 signal_waitinfo
+23732248   4 udp_test           SIGWAITINFO                                 signal_waitinfo
+23732248   5 udp_test           SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 23732248 tid 2: ran 123303 time(s), 244924 kernel call(s) (MSG_SENDV x122462, SYNC_CONDVAR_SIGNAL x61231, SIGNAL_ACTION x61231)
+pid(s) 23728150: no thread ran during the trace
+</failure></testcase><testcase name="nng.platform.posix_ipcwinsec_test" classname="qnx-target"><failure message="exit None">Test ipc security descriptor:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+24068118   1 six_ipcwinsec_test CONDVAR        (0x41fdb49470)               sync_condvar_wa
+24068118   2 six_ipcwinsec_test READY                                                        
+24068118   3 six_ipcwinsec_test SIGWAITINFO                                 signal_waitinfo
+24068118   4 six_ipcwinsec_test SIGWAITINFO                                 signal_waitinfo
+24068118   5 six_ipcwinsec_test SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 24068118 tid 2: ran 130240 time(s), 258884 kernel call(s) (MSG_SENDV x129442, SYNC_CONDVAR_SIGNAL x64721, SIGNAL_ACTION x64721)
 </failure></testcase><testcase name="nng.sp.pipe_test" classname="qnx-target"><failure message="exit None">Test pipe msg id:
   pipe_test.c:128: nng_mtx_alloc(&amp;push-&gt;lk): expected success, got Hunky dory (0)... ok
   pipe_test.c:129: nng_cv_alloc(&amp;push-&gt;cv, push-&gt;lk): expected success, got Hunky dory (0)... ok
@@ -201,11 +471,35 @@ killed on the target after 180 s
   pipe_test.c:183: expect(push, &amp;push-&gt;err, 0)... ok
   pipe_test.c:210: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
   pipe_test.c:211: nng_msg_append(msg, "hello", strlen("hello") + 1): expected success, got Hunky dory (0)... ok
-  pipe_test.c:212: nng_sendmsg(push.s, msg, 0)
-killed on the target after 180 s
-</failure></testcase><testcase name="nng.sp.device_test" classname="qnx-target"><failure message="exit None">Test device not cooked:
+  pipe_test.c:212: nng_sendmsg(push.s, msg, 0)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+24387606   1 pipe_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+24391704   1 pipe_test          CONDVAR        (0x16632cc4e0)               sync_condvar_wa
+24391704   2 pipe_test          RUNNING                                     msg_sendv
+24391704   3 pipe_test          SIGWAITINFO                                 signal_waitinfo
+24391704   4 pipe_test          SIGWAITINFO                                 signal_waitinfo
+24391704   5 pipe_test          SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 24391704 tid 2: ran 129683 time(s), 257739 kernel call(s) (MSG_SENDV x128869, SYNC_CONDVAR_SIGNAL x64435, SIGNAL_ACTION x64435)
+pid(s) 24387606: no thread ran during the trace
+</failure></testcase><testcase name="nng.sp.device_test" classname="qnx-target"><failure message="exit None">Test device not cooked:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+24727574   1 device_test        REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+24731672   1 device_test        CONDVAR        (0x4d714ed4f0)               sync_condvar_wa
+24731672   2 device_test        RUNNING                                                      
+24731672   3 device_test        SIGWAITINFO                                 signal_waitinfo
+24731672   4 device_test        SIGWAITINFO                                 signal_waitinfo
+24731672   5 device_test        SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 24731672 tid 2: ran 126429 time(s), 251185 kernel call(s) (MSG_SENDV x125593, SYNC_CONDVAR_SIGNAL x62796, SIGNAL_ACTION x62796)
+pid(s) 24727574: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.multistress_test" classname="qnx-target"><failure message="exit None">Test multi stress:
   multistress_test.c:836: c-&gt;nfail == 0... ok
   multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
@@ -326,8 +620,17 @@ killed on the target after 180 s
   multistress_test.c:836: c-&gt;nfail == 0... ok
   multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
   multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
-  multistress_test.c:840: nng_socket_close(c-&gt;sock)
-killed on the target after 180 s
+  multistress_test.c:840: nng_socket_close(c-&gt;sock)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+25067542   1 multistress_test   CONDVAR        (0x5a9dd96470)               sync_condvar_wa
+25067542   2 multistress_test   RUNNING                                                      
+25067542   3 multistress_test   SIGWAITINFO                                 signal_waitinfo
+25067542   4 multistress_test   SIGWAITINFO                                 signal_waitinfo
+25067542   5 multistress_test   SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 25067542 tid 2: ran 93313 time(s), 184980 kernel call(s) (MSG_SENDV x92490, SYNC_CONDVAR_SIGNAL x46245, SIGNAL_ACTION x46245)
 </failure></testcase><testcase name="nng.sp.nonblock_test" classname="qnx-target"><failure message="exit None">Test nonblocking:
   nonblock_test.c:102: nng_rep0_open(&amp;rep): expected success, got Hunky dory (0)... ok
   nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
@@ -349,18 +652,18 @@ killed on the target after 180 s
   nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
   nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
   nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
-  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i])
-killed on the target after 180 s
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i])### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+25387030   1 nonblock_test      CONDVAR        (0x54e0092470)               sync_condvar_wa
+25387030   2 nonblock_test      RUNNING        143370                       msg_sendv
+25387030   3 nonblock_test      SIGWAITINFO                                 signal_waitinfo
+25387030   4 nonblock_test      SIGWAITINFO                                 signal_waitinfo
+25387030   5 nonblock_test      SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 25387030 tid 2: ran 132129 time(s), 262617 kernel call(s) (MSG_SENDV x131310, SYNC_CONDVAR_SIGNAL x65653, SIGNAL_ACTION x65653, MSG_RECEIVEV x1)
 </failure></testcase><testcase name="nng.sp.scalability_test" classname="qnx-target"><failure message="exit None">  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
-  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
   scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
   scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
   scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
@@ -498,12 +801,19 @@ killed on the target after 180 s
   scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
   scalability_test.c:102: nng_socket_close(rep): expected success, got Hunky dory (0)... ok
   SUCCESS: All conditions have passed.
-  Duration: 0.268545 secs
+  Duration: 0.280916 secs
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+25706518   1 scalability_test   CONDVAR        (0x359830f470)               sync_condvar_wa
+25706518   2 scalability_test   RUNNING                                     msg_sendv
+25706518   3 scalability_test   SIGWAITINFO                                 signal_waitinfo
+25706518   4 scalability_test   SIGWAITINFO                                 signal_waitinfo
+25706518   5 scalability_test   SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
-</failure></testcase><testcase name="nng.sp.reconnect_stress_test" classname="qnx-target"><failure message="exit None">  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 25706518 tid 2: ran 131186 time(s), 260732 kernel call(s) (MSG_SENDV x130366, SYNC_CONDVAR_SIGNAL x65183, SIGNAL_ACTION x65183)
+</failure></testcase><testcase name="nng.sp.reconnect_stress_test" classname="qnx-target"><failure message="exit None">  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
   reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
   reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
   reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
@@ -610,47 +920,49 @@ killed on the target after 180 s
   reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
   reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
   reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
-  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS)
-killed on the target after 180 s
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+26026006   1 onnect_stress_test REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+26030104   1 onnect_stress_test NANOSLEEP                                   timer_timeout
+26030104   2 onnect_stress_test SIGWAITINFO                                 signal_waitinfo
+26030104   3 onnect_stress_test SIGWAITINFO                                 signal_waitinfo
+26030104   4 onnect_stress_test SIGWAITINFO                                 signal_waitinfo
+26030104   5 onnect_stress_test SIGWAITINFO                                 signal_waitinfo
+26030104   6 onnect_stress_test CONDVAR        (0x4fc9c53e70)               sync_condvar_wa
+26030104   7 onnect_stress_test CONDVAR        (0x4fc9c53e70)               sync_condvar_wa
+26030104   8 onnect_stress_test CONDVAR        (0x4fc9c53e70)               sync_condvar_wa
+26030104   9 onnect_stress_test CONDVAR        (0x4fc9c53e70)               sync_condvar_wa
+26030104  10 onnect_stress_test RUNNING                                                      
+26030104  11 onnect_stress_test MUTEX                                       sync_mutex_lock
+26030104  12 onnect_stress_test MUTEX          (0x5f83b578f8) 26030104-10 # sync_mutex_lock
+26030104  13 onnect_stress_test MUTEX          (0x5f83b578f8) 26030104-12 # sync_mutex_lock
+26030104  14 onnect_stress_test MUTEX          (0x5f83b578f8) 26030104-11 # sync_mutex_lock
+26030104  15 onnect_stress_test MUTEX                                                        
+26030104  16 onnect_stress_test MUTEX          (0x5f83b578f8) 26030104-17 #                  
+26030104  17 onnect_stress_test MUTEX          (0x5f83b578f8) 26030104-13 # sync_mutex_lock
+26030104  18 onnect_stress_test CONDVAR        (0x4fc9c53d50)               sync_condvar_wa
+26030104  19 onnect_stress_test CONDVAR        (0x5f83b57c48)               sync_condvar_wa
+26030104  20 onnect_stress_test CONDVAR        (0x5f83b57ce8)               sync_condvar_wa
+26030104  21 onnect_stress_test CONDVAR        (0x5f83b57d88)               sync_condvar_wa
+26030104  22 onnect_stress_test CONDVAR        (0x5f83b57e28)               sync_condvar_wa
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 26030104 tid 1: ran 1322 time(s), 960 kernel call(s) (TIMER_TIMEOUT x960)
+pid 26030104 tid 10: ran 11476 time(s), 26178 kernel call(s) (SYNC_MUTEX_UNLOCK x9957, SYNC_MUTEX_LOCK x9383, SYNC_CONDVAR_SIGNAL x6838)
+pid 26030104 tid 11: ran 11496 time(s), 26292 kernel call(s) (SYNC_MUTEX_UNLOCK x9985, SYNC_MUTEX_LOCK x9404, SYNC_CONDVAR_SIGNAL x6903)
+pid 26030104 tid 12: ran 11637 time(s), 26602 kernel call(s) (SYNC_MUTEX_UNLOCK x10065, SYNC_MUTEX_LOCK x9444, SYNC_CONDVAR_SIGNAL x7092, TIMER_TIMEOUT x1)
+pid 26030104 tid 13: ran 11451 time(s), 26444 kernel call(s) (SYNC_MUTEX_UNLOCK x10043, SYNC_MUTEX_LOCK x9440, SYNC_CONDVAR_SIGNAL x6959, TIMER_TIMEOUT x2)
+pid 26030104 tid 14: ran 11551 time(s), 26186 kernel call(s) (SYNC_MUTEX_UNLOCK x9996, SYNC_MUTEX_LOCK x9419, SYNC_CONDVAR_SIGNAL x6770, TIMER_TIMEOUT x1)
+pid 26030104 tid 15: ran 11601 time(s), 26563 kernel call(s) (SYNC_MUTEX_UNLOCK x10084, SYNC_MUTEX_LOCK x9473, SYNC_CONDVAR_SIGNAL x7006)
+pid 26030104 tid 16: ran 11429 time(s), 26310 kernel call(s) (SYNC_MUTEX_UNLOCK x10018, SYNC_MUTEX_LOCK x9418, SYNC_CONDVAR_SIGNAL x6874)
+pid 26030104 tid 17: ran 11680 time(s), 26340 kernel call(s) (SYNC_MUTEX_UNLOCK x10018, SYNC_MUTEX_LOCK x9439, SYNC_CONDVAR_SIGNAL x6882, TIMER_TIMEOUT x1)
+pid 26030104 tid 19: ran 3093 time(s), 6288 kernel call(s) (TIMER_TIMEOUT x2463, SYNC_CONDVAR_WAIT x2463, SYNC_CONDVAR_SIGNAL x557, SYNC_MUTEX_UNLOCK x415)
+pid 26030104 tid 20: ran 3103 time(s), 6233 kernel call(s) (TIMER_TIMEOUT x2483, SYNC_CONDVAR_WAIT x2483, SYNC_CONDVAR_SIGNAL x556, SYNC_MUTEX_UNLOCK x363)
+pid 26030104 tid 21: ran 2294 time(s), 4688 kernel call(s) (TIMER_TIMEOUT x1805, SYNC_CONDVAR_WAIT x1805, SYNC_CONDVAR_SIGNAL x480, SYNC_MUTEX_UNLOCK x304)
+pid 26030104 tid 22: ran 785 time(s), 1816 kernel call(s) (SYNC_CONDVAR_SIGNAL x476, TIMER_TIMEOUT x339, SYNC_CONDVAR_WAIT x339, SYNC_MUTEX_UNLOCK x336)
+pid(s) 26026006: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.bus0.bus_test" classname="qnx-target"><failure message="exit None">Test bus send drop stats:
   bus_test.c:498: nng_bus0_open(&amp;bus): expected success, got Hunky dory (0)... ok
   bus_test.c:499: nng_socket_set_int(bus, NNG_OPT_SENDBUF, 1): expected success, got Hunky dory (0)... ok
@@ -731,17 +1043,65 @@ killed on the target after 180 s
   nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
   nuts.h:332: st != NULL... ok
   nuts.h:334: st != NULL... ok
-  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER
-killed on the target after 180 s
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+26365974   1 bus_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+26370072   1 bus_test           CONDVAR        (0x5cca0585b0)               sync_condvar_wa
+26370072   2 bus_test           RUNNING                                                      
+26370072   3 bus_test           SIGWAITINFO                                 signal_waitinfo
+26370072   4 bus_test           SIGWAITINFO                                 signal_waitinfo
+26370072   5 bus_test           SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 26370072 tid 2: ran 119998 time(s), 238453 kernel call(s) (MSG_SENDV x119227, SYNC_CONDVAR_SIGNAL x59613, SIGNAL_ACTION x59613)
+pid(s) 26365974: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.pair0.pair0_test" classname="qnx-target"><failure message="exit None">Test pair0 identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+26705942   1 pair0_test         REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+26710040   1 pair0_test         CONDVAR        (0x3fbe2e0590)               sync_condvar_wa
+26710040   2 pair0_test         REPLY                                                        
+26710040   3 pair0_test         SIGWAITINFO                                 signal_waitinfo
+26710040   4 pair0_test         SIGWAITINFO                                 signal_waitinfo
+26710040   5 pair0_test         SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 26710040 tid 2: ran 123208 time(s), 244771 kernel call(s) (MSG_SENDV x122385, SYNC_CONDVAR_SIGNAL x61193, SIGNAL_ACTION x61193)
+pid(s) 26705942: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.pair1.pair1_test" classname="qnx-target"><failure message="exit None">Test pair1 mono identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+27045911   1 pair1_test         REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+27050008   1 pair1_test         CONDVAR        (0x18ffa3d5d0)               sync_condvar_wa
+27050008   2 pair1_test         RUNNING                                                      
+27050008   3 pair1_test         SIGWAITINFO                                 signal_waitinfo
+27050008   4 pair1_test         SIGWAITINFO                                 signal_waitinfo
+27050008   5 pair1_test         SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 27050008 tid 2: ran 106912 time(s), 212212 kernel call(s) (MSG_SENDV x106106, SYNC_CONDVAR_SIGNAL x53053, SIGNAL_ACTION x53053)
+pid(s) 27045911: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.pair1.pair1_poly_test" classname="qnx-target"><failure message="exit None">Test pair1 poly identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+27385878   1 pair1_poly_test    REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+27389976   1 pair1_poly_test    CONDVAR        (0x33808b2510)               sync_condvar_wa
+27389976   2 pair1_poly_test    RUNNING                                                      
+27389976   3 pair1_poly_test    SIGWAITINFO                                 signal_waitinfo
+27389976   4 pair1_poly_test    SIGWAITINFO                                 signal_waitinfo
+27389976   5 pair1_poly_test    SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 27389976 tid 2: ran 101884 time(s), 202237 kernel call(s) (MSG_SENDV x101119, SYNC_CONDVAR_SIGNAL x50559, SIGNAL_ACTION x50559)
+pid(s) 27385878: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.pipeline0.pull_test" classname="qnx-target"><failure message="exit None">Test pull stats:
   pull_test.c:273: nng_push0_open(&amp;push): expected success, got Hunky dory (0)... ok
   pull_test.c:274: raw ? nng_pull0_open_raw(&amp;pull) : nng_pull0_open(&amp;pull): expected success, got Hunky dory (0)... ok
@@ -764,11 +1124,6 @@ killed on the target after 180 s
   nuts.h:336: nng_stat_unit(st) == unit... ok
   pull_test.c:288: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 0, false)... ok
   pull_test.c:290: nng_send(push, "held", strlen("held") + 1, 0): expected success, got Hunky dory (0)... ok
-  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
-  nuts.h:332: st != NULL... ok
-  nuts.h:334: st != NULL... ok
-  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
-  nuts.h:336: nng_stat_unit(st) == unit... ok
   nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
   nuts.h:332: st != NULL... ok
   nuts.h:334: st != NULL... ok
@@ -877,20 +1232,26 @@ killed on the target after 180 s
   nuts.h:336: nng_stat_unit(st) == unit... ok
   pull_test.c:298: nuts_stat_wait(pull, "rx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
   nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
-killed on the target after 180 s
-</failure></testcase><testcase name="nng.sp.protocol.pipeline0.push_test" classname="qnx-target"><failure message="exit None">  push_test.c:516: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 0, false)... ok
-  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
   nuts.h:332: st != NULL... ok
   nuts.h:334: st != NULL... ok
   nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
   nuts.h:336: nng_stat_unit(st) == unit... ok
-  push_test.c:517: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 0, false)... ok
-  push_test.c:521: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
-  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
-  nuts.h:332: st != NULL... ok
-  nuts.h:334: st != NULL... ok
-  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
-  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:299: nuts_stat_wait(pull, "rx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+  pull_test.c:301: nng_socket_close(push)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+27725847   1 pull_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+27729944   1 pull_test          CONDVAR        (0x5ae13c0560)               sync_condvar_wa
+27729944   2 pull_test          RUNNING        143370                                        
+27729944   3 pull_test          SIGWAITINFO                                 signal_waitinfo
+27729944   4 pull_test          SIGWAITINFO                                 signal_waitinfo
+27729944   5 pull_test          SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 27729944 tid 2: ran 121079 time(s), 240531 kernel call(s) (MSG_SENDV x120265, SYNC_CONDVAR_SIGNAL x60133, SIGNAL_ACTION x60133)
+pid(s) 27725847: no thread ran during the trace
+</failure></testcase><testcase name="nng.sp.protocol.pipeline0.push_test" classname="qnx-target"><failure message="exit None">  nuts.h:336: nng_stat_unit(st) == unit... ok
   push_test.c:524: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 1, false)... ok
   push_test.c:527: nng_aio_result(aio) fails with Operation canceled... ok
   push_test.c:528: nng_aio_get_msg(aio) == msg... ok
@@ -1026,17 +1387,65 @@ killed on the target after 180 s
   nuts.h:336: nng_stat_unit(st) == unit... ok
   push_test.c:549: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
   push_test.c:551: nng_socket_close(push): expected success, got Hunky dory (0)... ok
-  push_test.c:552: nng_socket_close(pull): e
-killed on the target after 180 s
+  push_test.c:552: nng_socket_close(pull): e### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+28065814   1 push_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+28069912   1 push_test          CONDVAR        (0x44d9f285c0)               sync_condvar_wa
+28069912   2 push_test          RUNNING                                                      
+28069912   3 push_test          SIGWAITINFO                                 signal_waitinfo
+28069912   4 push_test          SIGWAITINFO                                 signal_waitinfo
+28069912   5 push_test          SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 28069912 tid 2: ran 121633 time(s), 241624 kernel call(s) (MSG_SENDV x120812, SYNC_CONDVAR_SIGNAL x60406, SIGNAL_ACTION x60406)
+pid(s) 28065814: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.pubsub0.pub_test" classname="qnx-target"><failure message="exit None">Test pub identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+28409878   1 pub_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+28413976   1 pub_test           CONDVAR        (0x3ac55cb520)               sync_condvar_wa
+28413976   2 pub_test           RUNNING                                                      
+28413976   3 pub_test           SIGWAITINFO                                 signal_waitinfo
+28413976   4 pub_test           SIGWAITINFO                                 signal_waitinfo
+28413976   5 pub_test           SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 28413976 tid 2: ran 125883 time(s), 250109 kernel call(s) (MSG_SENDV x125045, SYNC_CONDVAR_SIGNAL x62524, SIGNAL_ACTION x62524, MSG_SEND_PULSE x8)
+pid(s) 28409878: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.pubsub0.sub_test" classname="qnx-target"><failure message="exit None">Test sub identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+28749847   1 sub_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+28753944   1 sub_test           CONDVAR        (0x132ba53630)               sync_condvar_wa
+28753944   2 sub_test           RUNNING                                                      
+28753944   3 sub_test           SIGWAITINFO                                 signal_waitinfo
+28753944   4 sub_test           SIGWAITINFO                                 signal_waitinfo
+28753944   5 sub_test           SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 28753944 tid 2: ran 115359 time(s), 229032 kernel call(s) (MSG_SENDV x114516, SYNC_CONDVAR_SIGNAL x57258, SIGNAL_ACTION x57258)
+pid(s) 28749847: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.pubsub0.xsub_test" classname="qnx-target"><failure message="exit None">Test xsub identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+29089814   1 xsub_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+29093912   1 xsub_test          CONDVAR        (0x18e10315a0)               sync_condvar_wa
+29093912   2 xsub_test          REPLY                                                        
+29093912   3 xsub_test          SIGWAITINFO                                 signal_waitinfo
+29093912   4 xsub_test          SIGWAITINFO                                 signal_waitinfo
+29093912   5 xsub_test          SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 29093912 tid 2: ran 124091 time(s), 246674 kernel call(s) (MSG_SENDV x123338, SYNC_CONDVAR_SIGNAL x61667, SIGNAL_ACTION x61667, MSG_REPLYV x1)
+pid(s) 29089814: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.reqrep0.req_test" classname="qnx-target"><failure message="exit None">Test req stats:
   req_test.c:1008: nng_req0_open(&amp;req): expected success, got Hunky dory (0)... ok
   req_test.c:1009: nng_rep0_open_raw(&amp;rep): expected success, got Hunky dory (0)... ok
@@ -1118,8 +1527,20 @@ killed on the target after 180 s
   req_test.c:1048: nng_ctx_close(ctx): expected success, got Hunky dory (0)... ok
   req_test.c:1050: nng_socket_close(req): expected success, got Hunky dory (0)... ok
   req_test.c:1051: nng_socket_close(rep): expected success, got Hunky dory (0)... ok
-  SUCCESS: All conditi
-killed on the target after 180 s
+  SUCCESS: All conditi### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+29429782   1 req_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+29433880   1 req_test           CONDVAR        (0x5d3b236650)               sync_condvar_wa
+29433880   2 req_test           REPLY                                                        
+29433880   3 req_test           SIGWAITINFO                                 signal_waitinfo
+29433880   4 req_test           SIGWAITINFO                                 signal_waitinfo
+29433880   5 req_test           SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 29433880 tid 2: ran 128341 time(s), 255177 kernel call(s) (MSG_SENDV x127588, SYNC_CONDVAR_SIGNAL x63794, SIGNAL_ACTION x63794, MSG_RECEIVEV x1)
+pid(s) 29429782: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.reqrep0.rep_test" classname="qnx-target"><failure message="exit None">Test rep ttl stats:
   rep_test.c:784: nng_req0_open_raw(&amp;req): expected success, got Hunky dory (0)... ok
   rep_test.c:785: nng_rep0_open(&amp;rep): expected success, got Hunky dory (0)... ok
@@ -1149,14 +1570,50 @@ killed on the target after 180 s
   nuts.h:334: st != NULL... ok
   nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
   nuts.h:336: nng_stat_unit(st) == unit... ok
-  rep_test.c:800: nuts_stat_wait(rep, "rx_malformed", NNG_UNIT_MESSAGES, 0, false)
-killed on the target after 180 s
+  rep_test.c:800: nuts_stat_wait(rep, "rx_malformed", NNG_UNIT_MESSAGES, 0, false)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+29769750   1 rep_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+29773848   1 rep_test           CONDVAR        (0x10e4d3b5e0)               sync_condvar_wa
+29773848   2 rep_test           READY                                                        
+29773848   3 rep_test           SIGWAITINFO                                 signal_waitinfo
+29773848   4 rep_test           SIGWAITINFO                                 signal_waitinfo
+29773848   5 rep_test           SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 29773848 tid 2: ran 98609 time(s), 195551 kernel call(s) (MSG_SENDV x97775, SYNC_CONDVAR_SIGNAL x48888, SIGNAL_ACTION x48888)
+pid(s) 29769750: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.reqrep0.xrep_test" classname="qnx-target"><failure message="exit None">Test xrep identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+30109719   1 xrep_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+30113816   1 xrep_test          CONDVAR        (0x33ef395570)               sync_condvar_wa
+30113816   2 xrep_test          RUNNING                                                      
+30113816   3 xrep_test          SIGWAITINFO                                 signal_waitinfo
+30113816   4 xrep_test          SIGWAITINFO                                 signal_waitinfo
+30113816   5 xrep_test          SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 30113816 tid 2: ran 98837 time(s), 196067 kernel call(s) (MSG_SENDV x98033, SYNC_CONDVAR_SIGNAL x49017, SIGNAL_ACTION x49017)
+pid(s) 30109719: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.reqrep0.xreq_test" classname="qnx-target"><failure message="exit None">Test xreq identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+30449686   1 xreq_test          REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+30453784   1 xreq_test          CONDVAR        (0x13df444550)               sync_condvar_wa
+30453784   2 xreq_test          REPLY                                                        
+30453784   3 xreq_test          SIGWAITINFO                                 signal_waitinfo
+30453784   4 xreq_test          SIGWAITINFO                                 signal_waitinfo
+30453784   5 xreq_test          SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 30453784 tid 2: ran 129690 time(s), 257669 kernel call(s) (MSG_SENDV x128836, SYNC_CONDVAR_SIGNAL x64415, SIGNAL_ACTION x64415, MSG_RECEIVEV x2)
+pid(s) 30449686: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.reqrep0.reqstress_test" classname="qnx-target"><failure message="exit None">Test req stress:
   reqstress_test.c:323: cases[i].nfail == 0... ok
   reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
@@ -1227,11 +1684,32 @@ killed on the target after 180 s
   reqstress_test.c:323: cases[i].nfail == 0... ok
   reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
   reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
-  reqstress_test.c:323:
-killed on the target after 180 s
-</failure></testcase><testcase name="nng.sp.protocol.survey0.respond_test" classname="qnx-target"><failure message="exit None">Test respond identity:
+  reqstress_test.c:323:### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+30789654   1 reqstress_test     CONDVAR        (0x23347f1470)               sync_condvar_wa
+30789654   2 reqstress_test     RUNNING        143370                                        
+30789654   3 reqstress_test     SIGWAITINFO                                 signal_waitinfo
+30789654   4 reqstress_test     SIGWAITINFO                                 signal_waitinfo
+30789654   5 reqstress_test     SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 30789654 tid 2: ran 71476 time(s), 141731 kernel call(s) (MSG_SENDV x70859, SYNC_CONDVAR_SIGNAL x35428, SIGNAL_ACTION x35427, MSG_SEND_PULSE x8)
+</failure></testcase><testcase name="nng.sp.protocol.survey0.respond_test" classname="qnx-target"><failure message="exit None">Test respond identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+31109142   1 respond_test       REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+31113240   1 respond_test       CONDVAR        (0x51383cd590)               sync_condvar_wa
+31113240   2 respond_test       RUNNING        143370                                        
+31113240   3 respond_test       SIGWAITINFO                                 signal_waitinfo
+31113240   4 respond_test       SIGWAITINFO                                 signal_waitinfo
+31113240   5 respond_test       SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 31113240 tid 2: ran 130581 time(s), 259592 kernel call(s) (MSG_SENDV x129796, SYNC_CONDVAR_SIGNAL x64898, SIGNAL_ACTION x64898)
+pid(s) 31109142: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.survey0.survey_test" classname="qnx-target"><failure message="exit None">Test survey send drop stats:
   survey_test.c:683: nng_surveyor0_open(&amp;surv): expected success, got Hunky dory (0)... ok
   survey_test.c:684: nng_respondent0_open(&amp;resp): expected success, got Hunky dory (0)... ok
@@ -1347,11 +1825,35 @@ killed on the target after 180 s
   nuts.h:334: st != NULL... ok
   nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
   nuts.h:336: nng_stat_unit(st) == unit... ok
-  survey_test.c:690: nuts_stat_wait(surv, "tx_nopipe", NNG_UNIT_MESSAGES, 0, false)
-killed on the target after 180 s
-</failure></testcase><testcase name="nng.sp.protocol.survey0.xrespond_test" classname="qnx-target"><failure message="exit None">Test xrespond identity:
+  survey_test.c:690: nuts_stat_wait(surv, "tx_nopipe", NNG_UNIT_MESSAGES, 0, false)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+31449111   1 survey_test        REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+31453208   1 survey_test        CONDVAR        (0x1af6a135d0)               sync_condvar_wa
+31453208   2 survey_test        RUNNING                                                      
+31453208   3 survey_test        SIGWAITINFO                                 signal_waitinfo
+31453208   4 survey_test        SIGWAITINFO                                 signal_waitinfo
+31453208   5 survey_test        SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 31453208 tid 2: ran 89986 time(s), 178500 kernel call(s) (MSG_SENDV x89251, SYNC_CONDVAR_SIGNAL x44625, SIGNAL_ACTION x44623, MSG_RECEIVEV x1)
+pid(s) 31449111: no thread ran during the trace
+</failure></testcase><testcase name="nng.sp.protocol.survey0.xrespond_test" classname="qnx-target"><failure message="exit None">Test xrespond identity:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+31834134   1 xrespond_test      REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+31838232   1 xrespond_test      CONDVAR        (0x425d9f0570)               sync_condvar_wa
+31838232   2 xrespond_test      READY                                                        
+31838232   3 xrespond_test      SIGWAITINFO                                 signal_waitinfo
+31838232   4 xrespond_test      SIGWAITINFO                                 signal_waitinfo
+31838232   5 xrespond_test      SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 31838232 tid 2: ran 110056 time(s), 218528 kernel call(s) (MSG_SENDV x109264, SYNC_CONDVAR_SIGNAL x54632, SIGNAL_ACTION x54632)
+pid(s) 31834134: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.protocol.survey0.xsurvey_test" classname="qnx-target"><failure message="exit None">Test xsurvey no peer stats:
   xsurvey_test.c:396: nng_surveyor0_open_raw(&amp;surv): expected success, got Hunky dory (0)... ok
   xsurvey_test.c:397: nng_send(surv, "no peers", strlen("no peers") + 1, 0): expected success, got Hunky dory (0)... ok
@@ -1370,23 +1872,95 @@ killed on the target after 180 s
   nuts.h:332: st != NULL... ok
   nuts.h:334: st != NULL... ok
   nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
-  nuts.h:336: nng_stat_unit(st) == unit
-killed on the target after 180 s
+  nuts.h:336: nng_stat_unit(st) == unit### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+32174102   1 xsurvey_test       REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+32178200   1 xsurvey_test       CONDVAR        (0x22f599a560)               sync_condvar_wa
+32178200   2 xsurvey_test       RUNNING                                                      
+32178200   3 xsurvey_test       SIGWAITINFO                                 signal_waitinfo
+32178200   4 xsurvey_test       SIGWAITINFO                                 signal_waitinfo
+32178200   5 xsurvey_test       SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 32178200 tid 2: ran 75610 time(s), 150060 kernel call(s) (MSG_SENDV x75031, SYNC_CONDVAR_SIGNAL x37514, SIGNAL_ACTION x37514, MSG_RECEIVEV x1)
+pid(s) 32174102: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.transport.socket.sockfd_test" classname="qnx-target"><failure message="exit None">Test socket connect fail:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+32514070   1 sockfd_test        REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+32518168   1 sockfd_test        CONDVAR        (0x3c1c6935b0)               sync_condvar_wa
+32518168   2 sockfd_test        RUNNING                                                      
+32518168   3 sockfd_test        SIGWAITINFO                                 signal_waitinfo
+32518168   4 sockfd_test        SIGWAITINFO                                 signal_waitinfo
+32518168   5 sockfd_test        SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 32518168 tid 2: ran 116710 time(s), 231867 kernel call(s) (MSG_SENDV x115933, SYNC_CONDVAR_SIGNAL x57967, SIGNAL_ACTION x57967)
+pid(s) 32514070: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.transport.inproc.inproc_test" classname="qnx-target"><failure message="exit None">Test inproc conn refused:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+32854038   1 inproc_test        REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+32858136   1 inproc_test        CONDVAR        (0x17a4204530)               sync_condvar_wa
+32858136   2 inproc_test        REPLY                                                        
+32858136   3 inproc_test        SIGWAITINFO                                 signal_waitinfo
+32858136   4 inproc_test        SIGWAITINFO                                 signal_waitinfo
+32858136   5 inproc_test        SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 32858136 tid 2: ran 105133 time(s), 208597 kernel call(s) (MSG_SENDV x104299, SYNC_CONDVAR_SIGNAL x52149, SIGNAL_ACTION x52149)
+pid(s) 32854038: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.transport.ipc.ipc_test" classname="qnx-target"><failure message="exit None">Test ipc path too long:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+33194006   1 ipc_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+33198104   1 ipc_test           CONDVAR        (0x5b33151620)               sync_condvar_wa
+33198104   2 ipc_test           READY                                       msg_sendv
+33198104   3 ipc_test           SIGWAITINFO                                 signal_waitinfo
+33198104   4 ipc_test           SIGWAITINFO                                 signal_waitinfo
+33198104   5 ipc_test           SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 33198104 tid 2: ran 127345 time(s), 253087 kernel call(s) (MSG_SENDV x126540, SYNC_CONDVAR_SIGNAL x63274, SIGNAL_ACTION x63272, MSG_RECEIVEV x1)
+pid(s) 33194006: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.transport.tcp.tcp_test" classname="qnx-target"><failure message="exit None">Test tcp conn refused:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+33533974   1 tcp_test           REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+33538072   1 tcp_test           CONDVAR        (0x59be147690)               sync_condvar_wa
+33538072   2 tcp_test           READY                                                        
+33538072   3 tcp_test           SIGWAITINFO                                 signal_waitinfo
+33538072   4 tcp_test           SIGWAITINFO                                 signal_waitinfo
+33538072   5 tcp_test           SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 33538072 tid 2: ran 130942 time(s), 260189 kernel call(s) (MSG_SENDV x130093, SYNC_CONDVAR_SIGNAL x65048, SIGNAL_ACTION x65048)
+pid(s) 33533974: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.transport.udp.udp_tran_test" classname="qnx-target"><failure message="exit None">Test udp wild card connect fail:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+33873942   1 udp_tran_test      REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+33878040   1 udp_tran_test      CONDVAR        (0x52216dd580)               sync_condvar_wa
+33878040   2 udp_tran_test      READY                                       msg_sendv
+33878040   3 udp_tran_test      SIGWAITINFO                                 signal_waitinfo
+33878040   4 udp_tran_test      SIGWAITINFO                                 signal_waitinfo
+33878040   5 udp_tran_test      SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 33878040 tid 2: ran 131424 time(s), 261199 kernel call(s) (MSG_SENDV x130599, SYNC_CONDVAR_SIGNAL x65300, SIGNAL_ACTION x65300)
+pid(s) 33873942: no thread ran during the trace
 </failure></testcase><testcase name="nng.sp.transport.udp.udp_wire_test" classname="qnx-target"><failure message="exit None">Test udp wire bad headers:
   udp_wire_test.c:197: nng_pull0_open(s): expected success, got Hunky dory (0)... ok
   udp_wire_test.c:198: nng_socket_set_ms(*s, NNG_OPT_RECVTIMEO, WIRE_TIMEOUT): expected success, got Hunky dory (0)... ok
@@ -1483,11 +2057,35 @@ killed on the target after 180 s
   udp_wire_test.c:187: events-&gt;added == added... ok
   udp_wire_test.c:188: events-&gt;removed == removed... ok
   udp_wire_test.c:249: nng_socket_close(s): expected success, got Hunky dory (0)... ok
-  SUCCESS: All con
-killed on the target after 180 s
-</failure></testcase><testcase name="nng.sp.transport.ws.ws_test" classname="qnx-target"><failure message="exit None">Test ws dialer bind:
+  SUCCESS: All con### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+34213911   1 udp_wire_test      REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+34218008   1 udp_wire_test      CONDVAR        (0x41a441b560)               sync_condvar_wa
+34218008   2 udp_wire_test      RUNNING                                     msg_sendv
+34218008   3 udp_wire_test      SIGWAITINFO                                 signal_waitinfo
+34218008   4 udp_wire_test      SIGWAITINFO                                 signal_waitinfo
+34218008   5 udp_wire_test      SIGWAITINFO                                 signal_waitinfo
 
-killed on the target after 180 s
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 34218008 tid 2: ran 129167 time(s), 256764 kernel call(s) (MSG_SENDV x128382, SYNC_CONDVAR_SIGNAL x64191, SIGNAL_ACTION x64191)
+pid(s) 34213911: no thread ran during the trace
+</failure></testcase><testcase name="nng.sp.transport.ws.ws_test" classname="qnx-target"><failure message="exit None">Test ws dialer bind:
+### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+34553878   1 ws_test            REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+34557976   1 ws_test            CONDVAR        (0x5a68dbb680)               sync_condvar_wa
+34557976   2 ws_test            RUNNING                                                      
+34557976   3 ws_test            SIGWAITINFO                                 signal_waitinfo
+34557976   4 ws_test            SIGWAITINFO                                 signal_waitinfo
+34557976   5 ws_test            SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 34557976 tid 2: ran 127240 time(s), 252788 kernel call(s) (MSG_SENDV x126394, SYNC_CONDVAR_SIGNAL x63197, SIGNAL_ACTION x63197)
+pid(s) 34553878: no thread ran during the trace
 </failure></testcase><testcase name="nng.supplemental.http_client_test" classname="qnx-target"><failure message="exit None">Test http client request response:
   http_client_test.c:169: nng_stream_listener_alloc(&amp;srv-&gt;listener, "tcp://127.0.0.1:0"): expected success, got Hunky dory (0)... ok
   http_client_test.c:171: nng_stream_listener_listen(srv-&gt;listener): expected success, got Hunky dory (0)... ok
@@ -1498,8 +2096,20 @@ killed on the target after 180 s
   http_client_test.c:199: nng_http_client_alloc(clip, *urlp): expected success, got Hunky dory (0)... ok
   http_client_test.c:202: nng_aio_result(*aiop): expected success, got Hunky dory (0)... ok
   http_client_test.c:204: *connp != NULL... ok
-  http_client_test.c:245: nng_http_set_uri(conn, "/get", NULL): e
-killed on the target after 180 s
+  http_client_test.c:245: nng_http_set_uri(conn, "/get", NULL): e### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+34893846   1 http_client_test   REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+34897944   1 http_client_test   CONDVAR        (0x3abc0ec5d0)               sync_condvar_wa
+34897944   2 http_client_test   REPLY                                                        
+34897944   3 http_client_test   SIGWAITINFO                                 signal_waitinfo
+34897944   4 http_client_test   SIGWAITINFO                                 signal_waitinfo
+34897944   5 http_client_test   SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 34897944 tid 2: ran 134813 time(s), 267831 kernel call(s) (MSG_SENDV x133918, SYNC_CONDVAR_SIGNAL x66956, SIGNAL_ACTION x66956, CONNECT_DETACH x1)
+pid(s) 34893846: no thread ran during the trace
 </failure></testcase><testcase name="nng.supplemental.http_server_test" classname="qnx-target"><failure message="exit None">Test server basic:
   http_server_test.c:335: nng_http_handler_alloc_static( &amp;h, "/home.html", doc1, strlen(doc1), "text/html"): expected success, got Hunky dory (0)... ok
   http_server_test.c:271: nng_url_parse(&amp;st-&gt;url, "http://127.0.0.1:0"): expected success, got Hunky dory (0)... ok
@@ -1523,8 +2133,20 @@ killed on the target after 180 s
   http_server_test.c:362: nng_aio_count(st.aio) == strlen(doc1)... ok
   http_server_test.c:363: memcmp(chunk, doc1, strlen(doc1)) == 0... ok
   SUCCESS: All conditions have passed.
-  Duration: 0.023117
-killed on the target after 180 s
+  Duration: 0.005071### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+35233814   1 http_server_test   REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+35237912   1 http_server_test   CONDVAR        (0x419c29d6f0)               sync_condvar_wa
+35237912   2 http_server_test   RUNNING        143370                                        
+35237912   3 http_server_test   SIGWAITINFO                                 signal_waitinfo
+35237912   4 http_server_test   SIGWAITINFO                                 signal_waitinfo
+35237912   5 http_server_test   SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 35237912 tid 2: ran 132143 time(s), 262690 kernel call(s) (MSG_SENDV x131345, SYNC_CONDVAR_SIGNAL x65673, SIGNAL_ACTION x65672)
+pid(s) 35233814: no thread ran during the trace
 </failure></testcase><testcase name="nng.supplemental.sha1_test" classname="qnx-target" /><testcase name="nng.supplemental.base64_test" classname="qnx-target" /><testcase name="nng.supplemental.wssfile_test" classname="qnx-target" /><testcase name="nng.supplemental.websocket_test" classname="qnx-target"><failure message="exit None">Test websocket stream wildcard:
   websocket_test.c:39: nng_stream_listener_alloc(&amp;l, "ws://127.0.0.1:0/test"): expected success, got Hunky dory (0)... ok
   websocket_test.c:41: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
@@ -1551,10 +2173,52 @@ killed on the target after 180 s
   websocket_test.c:104: nng_aio_count(aio1) == 5... ok
   websocket_test.c:106: nng_aio_result(aio2): expected success, got Hunky dory (0)... ok
   websocket_test.c:107: nng_aio_count(aio2) == 5... ok
-  websocket_test.c:108: memcmp(buf1, buf2, 5) == 0
-killed on the target after 180 s
-</failure></testcase><testcase name="nng.inproc_lat" classname="qnx-target"><failure message="exit None">killed on the target after 30 s
-</failure></testcase><testcase name="nng.inproc_thr" classname="qnx-target"><failure message="exit None">killed on the target after 30 s
-</failure></testcase><testcase name="nng.pubdrop" classname="qnx-target"><failure message="exit None">killed on the target after 300 s
+  websocket_test.c:108: memcmp(buf1, buf2, 5) == 0### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+35762204   1 websocket_test     REPLY          1                            msg_sendv
+     pid tid name               STATE          Blocked                      kernel call      
+35766302   1 websocket_test     CONDVAR        (0x28bd332540)               sync_condvar_wa
+35766302   2 websocket_test     RUNNING                                                      
+35766302   3 websocket_test     SIGWAITINFO                                 signal_waitinfo
+35766302   4 websocket_test     SIGWAITINFO                                 signal_waitinfo
+35766302   5 websocket_test     SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 35766302 tid 2: ran 124079 time(s), 246523 kernel call(s) (MSG_SENDV x123261, SYNC_CONDVAR_SIGNAL x61631, SIGNAL_ACTION x61631)
+pid(s) 35762204: no thread ran during the trace
+</failure></testcase><testcase name="nng.inproc_lat" classname="qnx-target"><failure message="exit None">### qnx-porter hang snapshot, 22 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+36126743   1 inproc_lat         CONDVAR        (0x1a7c4e6450)               sync_condvar_wa
+36126743   2 inproc_lat         RUNNING                                                      
+36126743   3 inproc_lat         SIGWAITINFO                                 signal_waitinfo
+36126743   4 inproc_lat         SIGWAITINFO                                 signal_waitinfo
+36126743   5 inproc_lat         SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 30 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 36126743 tid 2: ran 109931 time(s), 218225 kernel call(s) (MSG_SENDV x109113, SYNC_CONDVAR_SIGNAL x54556, SIGNAL_ACTION x54556)
+</failure></testcase><testcase name="nng.inproc_thr" classname="qnx-target"><failure message="exit None">### qnx-porter hang snapshot, 22 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+36446231   1 inproc_thr         CONDVAR        (0x3803331450)               sync_condvar_wa
+36446231   2 inproc_thr         READY                                       msg_sendv
+36446231   3 inproc_thr         SIGWAITINFO                                 signal_waitinfo
+36446231   4 inproc_thr         SIGWAITINFO                                 signal_waitinfo
+36446231   5 inproc_thr         SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 30 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 36446231 tid 2: ran 128039 time(s), 254443 kernel call(s) (MSG_SENDV x127221, SYNC_CONDVAR_SIGNAL x63611, SIGNAL_ACTION x63611)
+</failure></testcase><testcase name="nng.pubdrop" classname="qnx-target"><failure message="exit None">### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+     pid tid name               STATE          Blocked                      kernel call      
+36765718   1 pubdrop            CONDVAR        (0x360b446450)               sync_condvar_wa
+36765718   2 pubdrop            READY                                       msg_sendv
+36765718   3 pubdrop            SIGWAITINFO                                 signal_waitinfo
+36765718   4 pubdrop            SIGWAITINFO                                 signal_waitinfo
+36765718   5 pubdrop            SIGWAITINFO                                 signal_waitinfo
+
+killed on the target after 60 s
+qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+pid 36765718 tid 2: ran 92457 time(s), 183330 kernel call(s) (MSG_SENDV x91665, SYNC_CONDVAR_SIGNAL x45833, SIGNAL_ACTION x45832)
 </failure></testcase><testcase name="nng.cplusplus_pair" classname="qnx-target"><failure message="exit None">killed on the target after 15 s
 </failure></testcase></testsuite>

@@ -240,7 +240,8 @@ Linux; the programs and outputs are in [docs/qnx-reports/](qnx-reports/).
   and 148/148 with `--out` under the home folder. On the QNX image `/tmp` is a link to `/data/var/tmp`, so the
   link that shows the build tree at its host path (`ln -sP /data/qnx-porter/tmp /tmp`) was never made, and the
   tests ran from moved paths; mbedtls opens its data files at their build-time paths. The link now goes one level
-  deeper when the top folder exists (`/tmp/qnx-porter-demo`).
+  deeper when the top folder exists (`/tmp/qnx-porter-demo`). With that fix, the same `/tmp` port passed 148/148
+  ([`results/runs/mbedtls-tmp-path.log`](../results/runs/mbedtls-tmp-path.log)).
 - [Verified] The `qnx-porter` command on the recording machine was an editable install of the CI runner's checkout,
   not of the repo the video was recorded from. `video/make.sh` now exports `PYTHONPATH` to its own checkout.
 - [Verified] Two QNX `sh` details, found while adding the hang snapshot: a `case` pattern inside `$( )` is a syntax

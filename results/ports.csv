@@ -43,7 +43,7 @@ miniz,3.1.2,cmake,x86_64,built,1,1,0,0,0,1,3.3,QNX qnx-porter 8.0.0 2026/06/05-1
 mosquitto,v2.1.2,cmake,x86_64,built,0,0,3,3,0,2,0.9,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,2026-11-13T18:11:42+00:00,"2.1 needs cJSON (our QNX port of it) and, on QNX, TLS: without it 2.1 has random bytes only from Linux getrandom(); OpenSSL from the SDP. Its tests need CUnit and a Python broker harness",yes,
 msgpack-c,c-7.0.2,cmake,x86_64,built,5,5,0,0,0,1,1.5,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,2026-11-13T17:54:30+00:00,,no,
 nanopb,0.4.9.3,cmake,x86_64,built,,,0,0,0,1,0.0,,2026-11-13T15:57:36+00:00,build only: its tests use scons and protoc,no,
-nng,v2.1.0,cmake,x86_64,built,3,64,1,1,0,2,188.2,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,2026-11-13T15:54:46+00:00,,no,
+nng,v2.1.0,cmake,x86_64,built,3,64,1,1,0,2,69.4,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,2026-11-14T14:41:36+00:00,,no,
 open62541,v1.5.10,cmake,x86_64,built,0,0,2,2,0,2,1.9,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,2026-11-13T18:13:35+00:00,,no,
 opus,v1.6.1,cmake,x86_64,built,0,0,0,0,0,1,0.6,QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64,2026-11-13T17:30:19+00:00,,yes,5 need cmake
 paho.mqtt.c,v1.3.16,cmake,x86_64,built,,,1,1,0,2,0.3,,2026-11-13T15:55:35+00:00,build only: the test suite needs an MQTT broker on the target,no,
