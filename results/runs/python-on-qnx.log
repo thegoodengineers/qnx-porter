@@ -1,0 +1,168 @@
+CPython: the SDP's python3.13; its tests: /home/chirag/cpython-tests at v3.13.7 (bcee1c3)
+our zlib: /home/chirag/py-demo/zlib/work/build/libz.so.1.4, sha256 997a7ddd5d64cfef
+--- $ uname -a
+QNX qnx-porter 8.0.0 2026/06/05-16:26:03EDT x86pc x86_64
+--- with the image's zlib
+python 3.13.7 qnx | zlib compiled 1.2.13 | zlib loaded 1.2.13
+--- with qnx-porter's zlib port first on LD_LIBRARY_PATH
+python 3.13.7 qnx | zlib compiled 1.2.13 | zlib loaded 1.4
+--- CPython's test_zlib and test_gzip, over qnx-porter's zlib
+test_big_buffer (test.test_zlib.ChecksumBigBufferTestCase.test_big_buffer) ... skipped 'not enough memory: 4.0G minimum needed'
+test_adler32empty (test.test_zlib.ChecksumTestCase.test_adler32empty) ... ok
+test_adler32start (test.test_zlib.ChecksumTestCase.test_adler32start) ... ok
+test_crc32_adler32_unsigned (test.test_zlib.ChecksumTestCase.test_crc32_adler32_unsigned) ... ok
+test_crc32empty (test.test_zlib.ChecksumTestCase.test_crc32empty) ... ok
+test_crc32start (test.test_zlib.ChecksumTestCase.test_crc32start) ... ok
+test_penguins (test.test_zlib.ChecksumTestCase.test_penguins) ... ok
+test_same_as_binascii_crc32 (test.test_zlib.ChecksumTestCase.test_same_as_binascii_crc32) ... ok
+test_64bit_compress (test.test_zlib.CompressObjectTestCase.test_64bit_compress) ... ok
+test_badcompresscopy (test.test_zlib.CompressObjectTestCase.test_badcompresscopy) ... ok
+test_baddecompresscopy (test.test_zlib.CompressObjectTestCase.test_baddecompresscopy) ... ok
+test_big_compress_buffer (test.test_zlib.CompressObjectTestCase.test_big_compress_buffer) ... ok
+test_big_decompress_buffer (test.test_zlib.CompressObjectTestCase.test_big_decompress_buffer) ... ok
+test_clear_unconsumed_tail (test.test_zlib.CompressObjectTestCase.test_clear_unconsumed_tail) ... ok
+test_compresscopy (test.test_zlib.CompressObjectTestCase.test_compresscopy) ... ok
+test_compressincremental (test.test_zlib.CompressObjectTestCase.test_compressincremental) ... ok
+test_compressoptions (test.test_zlib.CompressObjectTestCase.test_compressoptions) ... ok
+test_compresspickle (test.test_zlib.CompressObjectTestCase.test_compresspickle) ... ok
+test_decompimax (test.test_zlib.CompressObjectTestCase.test_decompimax) ... ok
+test_decompinc (test.test_zlib.CompressObjectTestCase.test_decompinc) ... ok
+test_decompincflush (test.test_zlib.CompressObjectTestCase.test_decompincflush) ... ok
+test_decompress_eof (test.test_zlib.CompressObjectTestCase.test_decompress_eof) ... ok
+test_decompress_eof_incomplete_stream (test.test_zlib.CompressObjectTestCase.test_decompress_eof_incomplete_stream) ... ok
+test_decompress_incomplete_stream (test.test_zlib.CompressObjectTestCase.test_decompress_incomplete_stream) ... ok
+test_decompress_raw_with_dictionary (test.test_zlib.CompressObjectTestCase.test_decompress_raw_with_dictionary) ... ok
+test_decompress_unused_data (test.test_zlib.CompressObjectTestCase.test_decompress_unused_data) ... ok
+test_decompresscopy (test.test_zlib.CompressObjectTestCase.test_decompresscopy) ... ok
+test_decompressmaxlen (test.test_zlib.CompressObjectTestCase.test_decompressmaxlen) ... ok
+test_decompressmaxlenflush (test.test_zlib.CompressObjectTestCase.test_decompressmaxlenflush) ... ok
+test_decompresspickle (test.test_zlib.CompressObjectTestCase.test_decompresspickle) ... ok
+test_dictionary (test.test_zlib.CompressObjectTestCase.test_dictionary) ... ok
+test_dictionary_streaming (test.test_zlib.CompressObjectTestCase.test_dictionary_streaming) ... ok
+test_empty_flush (test.test_zlib.CompressObjectTestCase.test_empty_flush) ... ok
+test_flush_custom_length (test.test_zlib.CompressObjectTestCase.test_flush_custom_length) ... ok
+test_flush_large_length (test.test_zlib.CompressObjectTestCase.test_flush_large_length) ... ok
+test_flush_with_freed_input (test.test_zlib.CompressObjectTestCase.test_flush_with_freed_input) ... ok
+test_flushes (test.test_zlib.CompressObjectTestCase.test_flushes) ... ok
+test_keywords (test.test_zlib.CompressObjectTestCase.test_keywords) ... ok
+test_large_unconsumed_tail (test.test_zlib.CompressObjectTestCase.test_large_unconsumed_tail) ... ok
+test_large_unused_data (test.test_zlib.CompressObjectTestCase.test_large_unused_data) ... ok
+test_maxlen_custom (test.test_zlib.CompressObjectTestCase.test_maxlen_custom) ... ok
+test_maxlen_large (test.test_zlib.CompressObjectTestCase.test_maxlen_large) ... ok
+test_maxlenmisc (test.test_zlib.CompressObjectTestCase.test_maxlenmisc) ... ok
+test_odd_flush (test.test_zlib.CompressObjectTestCase.test_odd_flush) ... ok
+test_pair (test.test_zlib.CompressObjectTestCase.test_pair) ... ok
+test_wbits (test.test_zlib.CompressObjectTestCase.test_wbits) ... ok
+test_64bit_compress (test.test_zlib.CompressTestCase.test_64bit_compress) ... ok
+test_big_compress_buffer (test.test_zlib.CompressTestCase.test_big_compress_buffer) ... ok
+test_big_decompress_buffer (test.test_zlib.CompressTestCase.test_big_decompress_buffer) ... ok
+test_custom_bufsize (test.test_zlib.CompressTestCase.test_custom_bufsize) ... ok
+test_incomplete_stream (test.test_zlib.CompressTestCase.test_incomplete_stream) ... ok
+test_keywords (test.test_zlib.CompressTestCase.test_keywords) ... ok
+test_large_bufsize (test.test_zlib.CompressTestCase.test_large_bufsize) ... ok
+test_speech (test.test_zlib.CompressTestCase.test_speech) ... ok
+test_speech128 (test.test_zlib.CompressTestCase.test_speech128) ... ok
+test_badargs (test.test_zlib.ExceptionTestCase.test_badargs) ... ok
+test_badcompressobj (test.test_zlib.ExceptionTestCase.test_badcompressobj) ... ok
+test_baddecompressobj (test.test_zlib.ExceptionTestCase.test_baddecompressobj) ... ok
+test_badlevel (test.test_zlib.ExceptionTestCase.test_badlevel) ... ok
+test_decompressobj_badflush (test.test_zlib.ExceptionTestCase.test_decompressobj_badflush) ... ok
+test_disallow_instantiation (test.test_zlib.ExceptionTestCase.test_disallow_instantiation) ... ok
+test_overflow (test.test_zlib.ExceptionTestCase.test_overflow) ... ok
+test_library_version (test.test_zlib.VersionTestCase.test_library_version) ... ok
+testDecompress (test.test_zlib.ZlibDecompressorTest.testDecompress) ... ok
+testDecompress4G (test.test_zlib.ZlibDecompressorTest.testDecompress4G) ... ok
+testDecompressChunks10 (test.test_zlib.ZlibDecompressorTest.testDecompressChunks10) ... ok
+testDecompressUnusedData (test.test_zlib.ZlibDecompressorTest.testDecompressUnusedData) ... ok
+testDecompressorChunksMaxsize (test.test_zlib.ZlibDecompressorTest.testDecompressorChunksMaxsize) ... ok
+testEOFError (test.test_zlib.ZlibDecompressorTest.testEOFError) ... ok
+testPickle (test.test_zlib.ZlibDecompressorTest.testPickle) ... ok
+test_Constructor (test.test_zlib.ZlibDecompressorTest.test_Constructor) ... ok
+test_decompressor_inputbuf_1 (test.test_zlib.ZlibDecompressorTest.test_decompressor_inputbuf_1) ... ok
+test_decompressor_inputbuf_2 (test.test_zlib.ZlibDecompressorTest.test_decompressor_inputbuf_2) ... ok
+test_decompressor_inputbuf_3 (test.test_zlib.ZlibDecompressorTest.test_decompressor_inputbuf_3) ... ok
+test_failure (test.test_zlib.ZlibDecompressorTest.test_failure) ... ok
+test_refleaks_in___init__ (test.test_zlib.ZlibDecompressorTest.test_refleaks_in___init__) ... skipped "object <module 'sys' (built-in)> has no attribute 'gettotalrefcount'"
+test_compress_fast_best_are_exclusive (test.test_gzip.TestCommandLine.test_compress_fast_best_are_exclusive) ... ok
+test_compress_infile_outfile (test.test_gzip.TestCommandLine.test_compress_infile_outfile) ... ok
+test_compress_infile_outfile_default (test.test_gzip.TestCommandLine.test_compress_infile_outfile_default) ... ok
+test_compress_stdin_outfile (test.test_gzip.TestCommandLine.test_compress_stdin_outfile) ... ok
+test_decompress_cannot_have_flags_compression (test.test_gzip.TestCommandLine.test_decompress_cannot_have_flags_compression) ... ok
+test_decompress_infile_outfile (test.test_gzip.TestCommandLine.test_decompress_infile_outfile) ... ok
+test_decompress_infile_outfile_error (test.test_gzip.TestCommandLine.test_decompress_infile_outfile_error) ... ok
+test_decompress_stdin_stdout (test.test_gzip.TestCommandLine.test_decompress_stdin_stdout) ... ok
+test_1647484 (test.test_gzip.TestGzip.test_1647484) ... ok
+test_append (test.test_gzip.TestGzip.test_append) ... ok
+test_bad_gzip_file (test.test_gzip.TestGzip.test_bad_gzip_file) ... ok
+test_buffered_reader (test.test_gzip.TestGzip.test_buffered_reader) ... ok
+test_bytes_filename (test.test_gzip.TestGzip.test_bytes_filename) ... ok
+test_compress (test.test_gzip.TestGzip.test_compress) ... ok
+test_compress_correct_level (test.test_gzip.TestGzip.test_compress_correct_level) ... ok
+test_compress_mtime (test.test_gzip.TestGzip.test_compress_mtime) ... ok
+test_compresslevel_metadata (test.test_gzip.TestGzip.test_compresslevel_metadata) ... ok
+test_decompress (test.test_gzip.TestGzip.test_decompress) ... ok
+test_decompress_limited (test.test_gzip.TestGzip.test_decompress_limited)
+Decompressed data buffering should be limited ... ok
+test_decompress_missing_trailer (test.test_gzip.TestGzip.test_decompress_missing_trailer) ... ok
+test_decompress_truncated_trailer (test.test_gzip.TestGzip.test_decompress_truncated_trailer) ... ok
+test_exclusive_write (test.test_gzip.TestGzip.test_exclusive_write) ... ok
+test_fileobj_and_filename (test.test_gzip.TestGzip.test_fileobj_and_filename) ... ok
+test_fileobj_from_fdopen (test.test_gzip.TestGzip.test_fileobj_from_fdopen) ... ok
+test_fileobj_mode (test.test_gzip.TestGzip.test_fileobj_mode) ... ok
+test_fileobj_with_name (test.test_gzip.TestGzip.test_fileobj_with_name) ... ok
+test_fileobj_without_name (test.test_gzip.TestGzip.test_fileobj_without_name) ... ok
+test_flush_flushes_compressor (test.test_gzip.TestGzip.test_flush_flushes_compressor) ... ok
+test_flush_modes (test.test_gzip.TestGzip.test_flush_modes) ... ok
+test_gzip_BadGzipFile_exception (test.test_gzip.TestGzip.test_gzip_BadGzipFile_exception) ... ok
+test_io_on_closed_object (test.test_gzip.TestGzip.test_io_on_closed_object) ... ok
+test_issue112346 (test.test_gzip.TestGzip.test_issue112346) ... ok
+test_issue44439 (test.test_gzip.TestGzip.test_issue44439) ... ok
+test_many_append (test.test_gzip.TestGzip.test_many_append) ... ok
+test_metadata (test.test_gzip.TestGzip.test_metadata) ... ok
+test_metadata_ascii_name (test.test_gzip.TestGzip.test_metadata_ascii_name) ... ok
+test_mode (test.test_gzip.TestGzip.test_mode) ... ok
+test_mtime (test.test_gzip.TestGzip.test_mtime) ... ok
+test_non_seekable_file (test.test_gzip.TestGzip.test_non_seekable_file) ... ok
+test_paddedfile_getattr (test.test_gzip.TestGzip.test_paddedfile_getattr) ... ok
+test_peek (test.test_gzip.TestGzip.test_peek) ... ok
+test_prepend_error (test.test_gzip.TestGzip.test_prepend_error) ... ok
+test_read (test.test_gzip.TestGzip.test_read) ... ok
+test_read1 (test.test_gzip.TestGzip.test_read1) ... ok
+test_read_large (test.test_gzip.TestGzip.test_read_large) ... ok
+test_read_truncated (test.test_gzip.TestGzip.test_read_truncated) ... ok
+test_read_with_extra (test.test_gzip.TestGzip.test_read_with_extra) ... ok
+test_readline (test.test_gzip.TestGzip.test_readline) ... ok
+test_readlines (test.test_gzip.TestGzip.test_readlines) ... ok
+test_refloop_unraisable (test.test_gzip.TestGzip.test_refloop_unraisable) ... ok
+test_seek_read (test.test_gzip.TestGzip.test_seek_read) ... ok
+test_seek_whence (test.test_gzip.TestGzip.test_seek_whence) ... ok
+test_seek_write (test.test_gzip.TestGzip.test_seek_write) ... ok
+test_textio_readlines (test.test_gzip.TestGzip.test_textio_readlines) ... ok
+test_with_open (test.test_gzip.TestGzip.test_with_open) ... ok
+test_write (test.test_gzip.TestGzip.test_write) ... ok
+test_write_array (test.test_gzip.TestGzip.test_write_array) ... ok
+test_write_bytearray (test.test_gzip.TestGzip.test_write_bytearray) ... ok
+test_write_incompatible_type (test.test_gzip.TestGzip.test_write_incompatible_type) ... ok
+test_write_memoryview (test.test_gzip.TestGzip.test_write_memoryview) ... ok
+test_write_read_with_pathlike_file (test.test_gzip.TestGzip.test_write_read_with_pathlike_file) ... ok
+test_write_seek_write (test.test_gzip.TestGzip.test_write_seek_write) ... ok
+test_zero_padded_file (test.test_gzip.TestGzip.test_zero_padded_file) ... ok
+test_bad_params (test.test_gzip.TestOpen.test_bad_params) ... ok
+test_binary_modes (test.test_gzip.TestOpen.test_binary_modes) ... ok
+test_encoding (test.test_gzip.TestOpen.test_encoding) ... ok
+test_encoding_error_handler (test.test_gzip.TestOpen.test_encoding_error_handler) ... ok
+test_fileobj (test.test_gzip.TestOpen.test_fileobj) ... ok
+test_implicit_binary_modes (test.test_gzip.TestOpen.test_implicit_binary_modes) ... ok
+test_newline (test.test_gzip.TestOpen.test_newline) ... ok
+test_pathlike_file (test.test_gzip.TestOpen.test_pathlike_file) ... ok
+test_text_modes (test.test_gzip.TestOpen.test_text_modes) ... ok
+
+----------------------------------------------------------------------
+Ran 148 tests in 2.545s
+
+OK (skipped=2)
+--- the same tests, over the image's zlib (for comparison)
+----------------------------------------------------------------------
+Ran 148 tests in 3.517s
+
+OK (skipped=2)
