@@ -21,7 +21,8 @@ After QNX's `timeout` has killed the test, qnx-porter copies the `.kev` file bac
 `traceprinter`, and counts, per thread of the stuck processes, how often it was scheduled (`THRUNNING`) and which
 kernel calls it made. Kernel-call events carry no pid, so each one is attributed to the thread that the last
 `THRUNNING` event put on that CPU. The REPORT.md section "Hang on QNX" shows the first three; `logs/hangs.log` has
-all of them, and `logs/hang-<n>.kev` keeps each trace for QNX's IDE or `traceprinter`.
+all of them, and `logs/hang-1.kev` to `hang-3.kev` keep the first three raw traces (about 50 MB each for 2 s)
+for QNX's IDE or `traceprinter`; later ones keep only the summary.
 
 A thread with no kernel calls in the window is waiting, and `pidin` says on what (`CONDVAR`, `REPLY <pid>`,
 `RECEIVE`, ...). A thread with thousands of calls is spinning.

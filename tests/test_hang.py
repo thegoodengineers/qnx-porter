@@ -47,3 +47,11 @@ def test_watcher_snapshots_a_stuck_test_and_leaves_a_finished_one_alone(tmp_path
     assert rc == 0 and hang.MARK not in out and took < 2  # not held open by the sleeping watcher
     rc, out, took = run(["sleep", "20"], 3)
     assert rc == 137 and hang.MARK in out and took < 10
+
+
+def test_read_trace_drops_raw_trace_unless_kept(tmp_path, monkeypatch):
+    monkeypatch.setenv("QNX_HOST", str(tmp_path / "no-sdp"))
+    kept, dropped = tmp_path / "hang-1.kev", tmp_path / "hang-4.kev"
+    assert hang.read_trace(b"kev", kept) == ""
+    assert hang.read_trace(b"kev", dropped, keep=False) == ""
+    assert kept.read_bytes() == b"kev" and not dropped.exists()

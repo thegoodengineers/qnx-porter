@@ -258,7 +258,8 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
         diag = f"{t.root}/hang-{i}"
         rc, out = _run_one(t, work, test["cwd"], cmd, same_path, test["env"], limit, diag)
         if rc is None and hang.MARK in out:
-            h = diagnose_hang(t, diag, out, log_path.with_name(f"hang-{len(hangs) + 1}.kev"))
+            h = diagnose_hang(t, diag, out, log_path.with_name(f"hang-{len(hangs) + 1}.kev"),
+                              keep=len(hangs) < hang.KEEP_TRACES)
             hangs.append({"name": test["name"], **h})
             out += f"\n{hang.MARK.lstrip('# ')}: kernel trace, per thread (traceprinter):\n{h['trace']}\n"
         if shim:
@@ -288,15 +289,15 @@ def run_tests(t: Target, tests: list[dict], work: Path, same_path: bool, log_pat
     return {"passed": passed, "total": total, "not_runnable": not_runnable, "hangs": hangs}
 
 
-def diagnose_hang(t: Target, diag: str, out: str, keep: Path) -> dict:
+def diagnose_hang(t: Target, diag: str, out: str, path: Path, keep: bool = True) -> dict:
     """Fetch the watcher's kernel trace of a test killed at its limit and summarise it (qnx_porter/hang.py)."""
     r = t.ssh(f"cat {shlex.quote(diag)}.kev; rm -f {shlex.quote(diag)}.kev {shlex.quote(diag)}.txt",
               capture_output=True, timeout=120)
-    text = hang.read_trace(r.stdout, keep)
+    text = hang.read_trace(r.stdout, path, keep)
     pids = hang.snapshot_pids(out)
     snap = out.split(hang.MARK, 1)[1].strip().split("\n", 1)[-1] if hang.MARK in out else ""
     return {"pidin": snap, "trace": hang.summary(text, pids) if text else "no trace (traceprinter not found)",
-            "kev": keep.name}
+            "kev": path.name if keep else ""}
 
 
 RESULT_LINE = re.compile(r"^(PASS|FAIL|SKIP|N/A)\s+(\S+) \((.*)\)(.*)$")

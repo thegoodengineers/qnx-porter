@@ -22,6 +22,7 @@ from pathlib import Path
 LEAD = 8           # seconds before the time limit at which the snapshot is taken
 TRACE_SECONDS = 2  # length of the kernel trace
 MIN_LIMIT = 20     # tests with a shorter limit get no watcher
+KEEP_TRACES = 3    # raw .kev files kept per port (about 50 MB each); later hangs keep only the summary
 MARK = "### qnx-porter hang snapshot"
 PIDIN_FORMAT = "%a %b %N %J %B %K"
 EVENT = re.compile(r"^t:0x[0-9a-f]+ CPU:(\d+) (\w+)\s*:(\S+)\s*(.*)$")
@@ -85,11 +86,16 @@ def summary(trace: str, pids: set[int]) -> str:
     return "\n".join(lines)
 
 
-def read_trace(kev: bytes, keep: Path) -> str:
-    """traceprinter's text for a .kev file (kept at `keep`), or a note if the SDP's traceprinter is not found."""
-    keep.write_bytes(kev)
+def read_trace(kev: bytes, path: Path, keep: bool = True) -> str:
+    """traceprinter's text for a .kev file written to `path` (deleted afterwards unless `keep`), or "" if the
+    SDP's traceprinter is not found."""
+    path.write_bytes(kev)
     tp = Path(os.environ.get("QNX_HOST", "")) / "usr" / "bin" / "traceprinter"
-    if not kev or not tp.exists():
-        return ""
-    return subprocess.run([str(tp), "-f", str(keep)], capture_output=True, text=True, errors="replace",
-                          timeout=300).stdout
+    try:
+        if not kev or not tp.exists():
+            return ""
+        return subprocess.run([str(tp), "-f", str(path)], capture_output=True, text=True, errors="replace",
+                              timeout=300).stdout
+    finally:
+        if not keep:
+            path.unlink()
