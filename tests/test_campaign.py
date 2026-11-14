@@ -127,3 +127,25 @@ def test_uses_must_name_a_library_listed_before(tmp_path):
     f.write_text("libraries:\n  - {name: b, url: https://x/b.git, tag: v1}\n"
                  "  - {name: a, url: https://x/a.git, tag: v1, uses: [b]}\n")
     assert rc.load(f)["libraries"][1]["uses"] == ["b"]
+
+
+def test_tidy_deletes_a_finished_build_tree_but_keeps_sources_and_builds_others_use(tmp_path):
+    for name in ("zlib", "cJSON"):
+        (tmp_path / name / "work" / "build").mkdir(parents=True)
+        (tmp_path / name / "work" / "src").mkdir(parents=True)
+    rc.tidy(tmp_path, "zlib", keep={"cJSON"})
+    rc.tidy(tmp_path, "cJSON", keep={"cJSON"})  # mosquitto `uses: [cJSON]`: it links cJSON's build
+    assert not (tmp_path / "zlib" / "work" / "build").exists() and (tmp_path / "zlib" / "work" / "src").exists()
+    assert (tmp_path / "cJSON" / "work" / "build").exists()
+
+
+def test_the_campaign_pauses_while_a_watched_disk_is_low(monkeypatch, capsys):
+    real = rc.low_disk
+    assert real(["/"], 0) == [] and real(["/no/such/path"], 10**9) == []
+    free = iter([[("/mnt/d", 2.5)], [("/mnt/d", 2.5)], []])
+    monkeypatch.setattr(rc, "low_disk", lambda paths, min_gb: next(free))
+    naps = []
+    rc.wait_for_disk(["/mnt/d"], 5, sleep=naps.append)
+    out = capsys.readouterr().out
+    assert len(naps) == 2 and out.count("paused: /mnt/d has 2.5 GiB free (under 5 GiB)") == 1
+    assert "disk space is back" in out
