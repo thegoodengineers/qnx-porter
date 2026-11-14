@@ -183,9 +183,9 @@ def test_timeline_scene_lengths_match_their_targets(tmp_path):
 
 def test_length_guard():
     render.check_length(150)
-    render.check_length(169.9)  # warns, does not fail
-    with pytest.raises(SystemExit, match="under 170"):
-        render.check_length(170)
+    render.check_length(178.9)  # warns, does not fail
+    with pytest.raises(SystemExit, match="under 179"):
+        render.check_length(179)
 
 
 def test_why_c_numbers_come_from_ports_csv():

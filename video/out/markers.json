@@ -2,7 +2,7 @@
  {
   "t": 0.007,
   "shot": "title",
-  "seconds": 7,
+  "seconds": 9,
   "slide": "title"
  },
  {
@@ -20,7 +20,7 @@
  {
   "t": 0.008,
   "shot": "target",
-  "seconds": 10,
+  "seconds": 11,
   "caption": "A real QNX 8.0 target (QEMU image from mkqnximage) and the SDP 8.0 toolchain"
  },
  {
@@ -44,7 +44,7 @@
  {
   "t": 0.469,
   "shot": "mbedtls",
-  "seconds": 22,
+  "seconds": 24,
   "caption": "mbedtls, straight from upstream: the build fails on QNX, a rule fixes it, its own tests run on QNX"
  },
  {
@@ -116,7 +116,7 @@
  {
   "t": 380.276,
   "shot": "campaign",
-  "seconds": 9,
+  "seconds": 10,
   "caption": "The campaign: every library, every number written by scripts/ports_csv.py"
  },
  {
@@ -140,13 +140,13 @@
  {
   "t": 382.066,
   "shot": "campaign",
-  "seconds": 9,
+  "seconds": 10,
   "slide": "results"
  },
  {
   "t": 382.066,
   "shot": "failures",
-  "seconds": 9,
+  "seconds": 10,
   "slide": "failures"
  },
  {
@@ -176,7 +176,7 @@
  {
   "t": 382.087,
   "shot": "crates",
-  "seconds": 6,
+  "seconds": 7,
   "caption": "Rust crates on QNX 8.0: each crate's own tests, run on the target"
  },
  {
@@ -191,7 +191,7 @@
  {
   "t": 382.095,
   "shot": "model",
-  "seconds": 7,
+  "seconds": 8,
   "caption": "The model step, where no rule applies: kept only if the rebuild proves it"
  },
  {
@@ -215,7 +215,7 @@
  {
   "t": 382.112,
   "shot": "rt",
-  "seconds": 7,
+  "seconds": 8,
   "caption": "Real-time check: latency of one call on QNX 8.0 in QEMU (compares libraries; not a hardware figure)"
  },
  {

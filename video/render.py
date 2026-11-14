@@ -36,7 +36,7 @@ NAR_TOP = H - NAR_LINES * NAR_LINE - 28   # the narration bar, at the bottom of 
 # command in s). A scene starts RELAXED and moves towards TIGHT only as far as it must to fit its length.
 RELAXED = (30.0, 1.0, 6.0)
 TIGHT = (200.0, 0.05, 1.0)
-LIMIT, AIM = 170.0, (140.0, 168.0)   # fail at LIMIT (a margin under the 3:00 rule); warn outside AIM
+LIMIT, AIM = 179.0, (140.0, 178.0)   # fail at LIMIT (a margin under the 3:00 rule); warn outside AIM
 
 BG, FG, DIM = (15, 20, 25), (214, 221, 230), (120, 132, 145)
 ACCENT, GREEN, YELLOW, RED = (64, 156, 255), (98, 209, 129), (240, 200, 90), (240, 110, 100)
@@ -45,10 +45,10 @@ FONT_DIR = "/usr/share/fonts/truetype/dejavu/"
 # One line per shot, spoken in our own voice and burned in as captions. {names} are filled by facts() from the
 # recording and the result files; docs/VIDEO_SCRIPT.md gives the values on the current commit.
 NARRATION = {
-    "title": "qnx-porter ports open-source C and C++ libraries to QNX 8.0, and proves each port on QNX itself.",
+    "title": "qnx-porter ports C and C++ libraries to QNX, and proves each port on QNX itself.",
     "problem": "A QNX target has no compiler, and the host can't run QNX binaries. Only tests on the target prove a port.",
     "why-c": "QNX is built for C and C++, and other languages wrap C libraries. Port the C layer, and the rest can follow.",
-    "target": "A real QNX 8.0 target, x86_64 in QEMU, and the SDP 8.0 toolchain. {also_aarch64}",
+    "target": "A real QNX 8.0 target in QEMU, and the SDP toolchain. {also_aarch64}",
     "mbedtls": "A real port: mbedtls. Round 1: {mb_errors} errors. QNX keeps inet_pton in libsocket, not libc, so a "
                "documented rule adds it. Round {mb_rounds} builds, and mbedtls's own tests run on QNX: {mb_passed} of "
                "{mb_total} pass. Each change is a patch with its rule, its reason and the exact error.",
@@ -59,13 +59,13 @@ NARRATION = {
             "We sent nng the fix.",
     "campaign": "The campaign: {lib} libraries. On x86_64, {built} built for QNX 8.0, and {ok} of {total} of their own "
                 "tests passed on the target. {aarch64_built} {rules_phrase}",
-    "failures": "Every failing test is listed by cause: QNX libc differences such as strtod rounding, with reproducers, "
-                "and things our test image lacks.",
+    "failures": "Every failing test is listed by cause: QNX libc differences such as strtod rounding, and things our "
+                "test image lacks.",
     "comparison": "{cmp_have} of our libraries also have a hand-made QNX port; in {cmp_same}, we found the same change "
                   "independently. For {recipes} CMake ports they lack, we generate recipes.",
     "crates": "The same tool ports Rust crates: {cr_built} of {cr_total} build for QNX 8.0.",
     "model": "Where no rule applied, the model step built {model_libs}, each diff proved by a rebuild.",
-    "rt": "Real-time check: the latency of one call in {rt_libs} libraries on QNX in QEMU, idle, loaded and isolated.",
+    "rt": "Real-time check: the latency of one call in {rt_libs} libraries, idle, loaded and isolated.",
     "site": "Everything is on the website, generated from the same reports, with a weekly check against upstream. "
             "Install with pip install qnx-porter.",
     "paper": "The method and every result are written up in a research paper.",

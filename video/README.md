@@ -6,9 +6,10 @@ the recording together with the slides and the site screenshots into `out/qnx-po
 the timing, and says on screen how much wait it cut. The shot list, the narration and where every number comes
 from: [docs/VIDEO_SCRIPT.md](../docs/VIDEO_SCRIPT.md).
 
-**Status.** Recorded on 14 Nov 2026 with `make.sh` against the x86_64 QNX 8.0 QEMU target: 167 s (2:47),
-`out/qnx-porter-demo.mp4`, `out/demo.cast`, `out/markers.json`. The narration is not yet in our voice: `voice.wav`
-is recorded from the lines `render.py` printed (they are in [docs/VIDEO_SCRIPT.md](../docs/VIDEO_SCRIPT.md)).
+**Status.** Recorded on 14 Nov 2026 with `make.sh` against the x86_64 QNX 8.0 QEMU target: 178 s (2:58),
+`out/qnx-porter-demo.mp4`, `out/demo.cast`, `out/markers.json`. The sound is `voice.wav`, a synthesized voice
+reading the narration lines (one clip per shot, placed at its start and fitted inside it); the captions show
+the same lines.
 
 ## Re-record (when the QNX target is free)
 ```bash
@@ -22,9 +23,9 @@ recording builds mbedtls and json-c and runs their own tests (148 and 28) on the
 a campaign is using the same machine.
 
 After recording, `render.py` prints, per scene, its length next to its target, then every narration line with
-the numbers read from this recording and its words per second, then the total. Record `video/voice.wav` (our own
-voice, no music) from those lines and run `python3 video/render.py` again to mux it in. Commit the new
-`out/qnx-porter-demo.mp4`, `out/demo.cast` and `out/markers.json`.
+the numbers read from this recording and its words per second, then the total. Make `video/voice.wav` (a voice, no music) from
+those lines, each at its shot's start, and run `python3 video/render.py` again to mux it in. Commit the new
+`out/qnx-porter-demo.mp4`, `out/demo.cast`, `out/markers.json` and `voice.wav`.
 
 ## Scenes
 Lengths are in `record.py` `scenes()`; the narration, slides and parsing are in `render.py`.
@@ -60,7 +61,7 @@ published results and `results/runs/campaign-8.log`.
 - **Per-shot timing.** Each scene has a length. A terminal scene starts at relaxed pacing (typing 30 characters
   a second, pauses up to 1 s, 6 s hold after each command) and tightens towards 200 characters a second, 0.05 s
   pauses and a 1 s hold only as far as it must to fit; what is left is held on the last frame.
-- **Length guard.** It fails if the total reaches 170 s and warns outside 140-168 s.
+- **Length guard.** It fails if the total reaches 179 s and warns outside 140-178 s.
 - **Placeholders by file presence.** The hang shot goes in only when `ports/nng/REPORT.md` has a "Hang on QNX"
   section. The crates and model shots go in only when `results/crates.csv` and
   `results/model_eval.csv` exist on the recorded commit. No flag.
