@@ -205,7 +205,7 @@ crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatt
 | [mosquitto](ports/mosquitto/REPORT.md) | v2.1.2 | x86_64 | built | none built | 3 (3 / 0) | 0.9 | 2.1 needs cJSON (our QNX port of it) and, on QNX, TLS: without it 2.1 has random bytes only from Linux getrandom(); OpenSSL from the SDP. Its tests need CUnit and a Python broker harness |
 | [msgpack-c](ports/msgpack-c/REPORT.md) | c-7.0.2 | x86_64 | built | 5/5 | 0 (0 / 0) | 1.5 |  |
 | [nanopb](ports/nanopb/REPORT.md) | 0.4.9.3 | x86_64 | built | not run | 0 (0 / 0) | 0.0 | build only: its tests use scons and protoc |
-| [nng](ports/nng/REPORT.md) | v2.1.0 | x86_64 | built | 3/64 | 1 (1 / 0) | 188.2 |  |
+| [nng](ports/nng/REPORT.md) | v2.1.0 | x86_64 | built | 3/64 | 1 (1 / 0) | 69.4 |  |
 | [open62541](ports/open62541/REPORT.md) | v1.5.10 | x86_64 | built | none built | 2 (2 / 0) | 1.9 |  |
 | [opus](ports/opus/REPORT.md) | v1.6.1 | x86_64 | built | none built | 0 (0 / 0) | 0.6 |  |
 | [paho.mqtt.c](ports/paho.mqtt.c/REPORT.md) | v1.3.16 | x86_64 | built | not run | 1 (1 / 0) | 0.3 | build only: the test suite needs an MQTT broker on the target |

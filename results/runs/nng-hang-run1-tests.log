@@ -1,0 +1,2284 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports/nng/work/build); every test command runs on root@172.31.1.11 over ssh
+FAIL  nng.core.aio_test (exit None)
+    Test sleep:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+     7409686   1 aio_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+     7413784   1 aio_test           CONDVAR        (0x5daeff7610)               sync_condvar_wa
+     7413784   2 aio_test           READY          143370                                        
+     7413784   3 aio_test           SIGWAITINFO                                 signal_waitinfo
+     7413784   4 aio_test           SIGWAITINFO                                 signal_waitinfo
+     7413784   5 aio_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 7413784 tid 2: ran 139726 time(s), 277593 kernel call(s) (MSG_SENDV x138797, SYNC_CONDVAR_SIGNAL x69398, SIGNAL_ACTION x69398)
+    pid(s) 7409686: no thread ran during the trace
+FAIL  nng.core.args_test (exit None)
+    Test simple options:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+     7749654   1 args_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+     7753752   1 args_test          CONDVAR        (0x1f4feba560)               sync_condvar_wa
+     7753752   2 args_test          RUNNING        143370                                        
+     7753752   3 args_test          SIGWAITINFO                                 signal_waitinfo
+     7753752   4 args_test          SIGWAITINFO                                 signal_waitinfo
+     7753752   5 args_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 7753752 tid 2: ran 148725 time(s), 295693 kernel call(s) (MSG_SENDV x147847, SYNC_CONDVAR_SIGNAL x73923, SIGNAL_ACTION x73923)
+    pid(s) 7749654: no thread ran during the trace
+FAIL  nng.core.buf_size_test (exit None)
+    Test buffer options:
+      buf_size_test.c:26: nng_pair1_open(&s1): expected success, got Hunky dory (0)... ok
+      Case recv-buffer:
+        buf_size_test.c:32: nng_socket_set_int(s1, opt, 1234): expected success, got Hunky dory (0)... ok
+        buf_size_test.c:33: nng_socket_get_int(s1, opt, &val): expected success, got Hunky dory (0)... ok
+        buf_size_test.c:34: val == 1234... ok
+        buf_size_test.c:37: nng_socket_set_int(s1, opt, -5) fails with Invalid argument... ok
+        buf_size_test.c:40: nng_socket_set_int(s1, opt, 0x100000) fails with Invalid argument... ok
+      Case send-buffer:
+        buf_size_test.c:32: nng_socket_set_int(s1, opt, 1234): expected success, got Hunky dory (0)... ok
+        buf_size_test.c:33: nng_socket_get_int(s1, opt, &val): expected success, got Hunky dory (0)... ok
+        buf_size_test.c:34: val == 1234... ok
+        buf_size_test.c:37: nng_socket_set_int(s1, opt, -5) fails with Invalid argument... ok
+        buf_size_test.c:40: nng_socket_set_int(s1, opt, 0x100000) fails with Invalid argument... ok
+        buf_size_test.c:42: nng_socket_close(s1)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+     8089622   1 buf_size_test      CONDVAR        (0x12ebcc3470)               sync_condvar_wa
+     8089622   2 buf_size_test      READY                                                        
+     8089622   3 buf_size_test      SIGWAITINFO                                 signal_waitinfo
+     8089622   4 buf_size_test      SIGWAITINFO                                 signal_waitinfo
+     8089622   5 buf_size_test      SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 8089622 tid 2: ran 147077 time(s), 292281 kernel call(s) (MSG_SENDV x146141, SYNC_CONDVAR_SIGNAL x73070, SIGNAL_ACTION x73070)
+FAIL  nng.core.errors_test (exit None)
+    Test known errors:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+     8413206   1 errors_test        REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+     8417304   1 errors_test        CONDVAR        (0x166bba84f0)               sync_condvar_wa
+     8417304   2 errors_test        READY                                                        
+     8417304   3 errors_test        SIGWAITINFO                                 signal_waitinfo
+     8417304   4 errors_test        SIGWAITINFO                                 signal_waitinfo
+     8417304   5 errors_test        SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 8417304 tid 2: ran 146242 time(s), 290508 kernel call(s) (MSG_SENDV x145254, SYNC_CONDVAR_SIGNAL x72627, SIGNAL_ACTION x72627)
+    pid(s) 8413206: no thread ran during the trace
+FAIL  nng.core.id_test (exit None)
+    Test basic:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+     8757270   1 id_test            REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+     8761368   1 id_test            CONDVAR        (0x2ff7f97510)               sync_condvar_wa
+     8761368   2 id_test            RUNNING                                                      
+     8761368   3 id_test            SIGWAITINFO                                 signal_waitinfo
+     8761368   4 id_test            SIGWAITINFO                                 signal_waitinfo
+     8761368   5 id_test            SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 8761368 tid 2: ran 150582 time(s), 299292 kernel call(s) (MSG_SENDV x149646, SYNC_CONDVAR_SIGNAL x74823, SIGNAL_ACTION x74823)
+    pid(s) 8757270: no thread ran during the trace
+FAIL  nng.core.idhash_test (exit None)
+    Test id basic:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+     9097239   1 idhash_test        REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+     9101336   1 idhash_test        CONDVAR        (0x5275295540)               sync_condvar_wa
+     9101336   2 idhash_test        RUNNING                                                      
+     9101336   3 idhash_test        SIGWAITINFO                                 signal_waitinfo
+     9101336   4 idhash_test        SIGWAITINFO                                 signal_waitinfo
+     9101336   5 idhash_test        SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 9101336 tid 2: ran 149381 time(s), 296857 kernel call(s) (MSG_SENDV x148429, SYNC_CONDVAR_SIGNAL x74214, SIGNAL_ACTION x74214)
+    pid(s) 9097239: no thread ran during the trace
+FAIL  nng.core.init_test (exit None)
+    Test init parameter:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+     9437207   1 init_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+     9441304   1 init_test          CONDVAR        (0x40d7a3b540)               sync_condvar_wa
+     9441304   2 init_test          RUNNING                                                      
+     9441304   3 init_test          SIGWAITINFO                                 signal_waitinfo
+     9441304   4 init_test          SIGWAITINFO                                 signal_waitinfo
+     9441304   5 init_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 9441304 tid 2: ran 137641 time(s), 273438 kernel call(s) (MSG_SENDV x136719, SYNC_CONDVAR_SIGNAL x68360, SIGNAL_ACTION x68359)
+    pid(s) 9437207: no thread ran during the trace
+FAIL  nng.core.list_test (exit None)
+    Test list empty:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+     9777174   1 list_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+     9781272   1 list_test          CONDVAR        (0x519c61a4b0)               sync_condvar_wa
+     9781272   2 list_test          RUNNING                                                      
+     9781272   3 list_test          SIGWAITINFO                                 signal_waitinfo
+     9781272   4 list_test          SIGWAITINFO                                 signal_waitinfo
+     9781272   5 list_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 9781272 tid 2: ran 138959 time(s), 276157 kernel call(s) (MSG_SENDV x138079, SYNC_CONDVAR_SIGNAL x69039, SIGNAL_ACTION x69039)
+    pid(s) 9777174: no thread ran during the trace
+FAIL  nng.core.log_test (exit None)
+    Test log stderr:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    10117142   1 log_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    10121240   1 log_test           CONDVAR        (0x136c0484d0)               sync_condvar_wa
+    10121240   2 log_test           RUNNING                                                      
+    10121240   3 log_test           SIGWAITINFO                                 signal_waitinfo
+    10121240   4 log_test           SIGWAITINFO                                 signal_waitinfo
+    10121240   5 log_test           SIGWAITINFO                                 signal_waitinfo
+    [DEBUG ]: 11:57:11.526: NNG-DATE: Date changed to 2026-11-14, TZ is +0000
+    [INFO  ]: 11:57:11.526: something wicked
+    [ERROR ]: 11:57:11.527: This is an error message
+    [WARN  ]: 11:57:11.527: This is a warning message
+    [NOTICE]: 11:57:11.527: This is a notice message
+    [INFO  ]: 11:57:11.527: This is an info message
+    [DEBUG ]: 11:57:11.527: This is a debug message
+    [NOTICE]: 11:57:11.527: TESTMSG: This notice has a msg id
+    [ERROR ]: 11:57:11.528: MONO: Uncolored messages
+    [ERROR ]: 11:57:11.528: MONO: Also uncolored messages
+    [NONE  ]: 11:57:11.528: WTF: This should be NONE
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 10121240 tid 2: ran 144983 time(s), 288101 kernel call(s) (MSG_SENDV x144051, SYNC_CONDVAR_SIGNAL x72025, SIGNAL_ACTION x72025)
+    pid(s) 10117142: no thread ran during the trace
+FAIL  nng.core.message_test (exit None)
+    Test msg option:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    10457110   1 message_test       REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    10461208   1 message_test       CONDVAR        (0x24ace7a630)               sync_condvar_wa
+    10461208   2 message_test       READY          143370                                        
+    10461208   3 message_test       SIGWAITINFO                                 signal_waitinfo
+    10461208   4 message_test       SIGWAITINFO                                 signal_waitinfo
+    10461208   5 message_test       SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 10461208 tid 2: ran 144178 time(s), 286568 kernel call(s) (MSG_SENDV x143284, SYNC_CONDVAR_SIGNAL x71642, SIGNAL_ACTION x71642)
+    pid(s) 10457110: no thread ran during the trace
+FAIL  nng.core.reconnect_test (exit None)
+    Test dial before listen:
+      reconnect_test.c:20: nng_pair1_open(&(s1)): expected success, got Hunky dory (0)... ok
+      reconnect_test.c:21: nng_pair1_open(&(s2)): expected success, got Hunky dory (0)... ok
+      reconnect_test.c:25: nng_socket_set_ms(s2, NNG_OPT_RECONNMINT, 10): expected success, got Hunky dory (0)... ok
+      reconnect_test.c:26: nng_socket_set_ms(s2, NNG_OPT_RECONNMAXT, 10): expected success, got Hunky dory (0)... ok
+      reconnect_test.c:28: nng_dial(s2, addr, NULL, NNG_FLAG_NONBLOCK): expected success, got Hunky dory (0)... ok
+      reconnect_test.c:30: nng_listen(s1, addr, NULL, 0): expected success, got Hunky dory (0)... ok
+      reconnect_test.c:32: nng_send(s1, "hello", strlen("hello") + 1, 0): expected success, got Hunky dory (0)... ok
+      reconnect_test.c:33: nng_recv (0 Hunky dory)... ok
+      reconnect_test.c:33: length 6 want 6... ok
+      reconnect_test.c:33: hello == hello... ok
+      reconnect_test.c:35: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+      reconnect_test.c:36: nng_socket_close(s2): expected success, got Hunky dory### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    10801174   1 reconnect_test     REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    10805272   1 reconnect_test     CONDVAR        (0x56780544c0)               sync_condvar_wa
+    10805272   2 reconnect_test     RUNNING                                                      
+    10805272   3 reconnect_test     SIGWAITINFO                                 signal_waitinfo
+    10805272   4 reconnect_test     SIGWAITINFO                                 signal_waitinfo
+    10805272   5 reconnect_test     SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 10805272 tid 2: ran 146531 time(s), 291241 kernel call(s) (MSG_SENDV x145621, SYNC_CONDVAR_SIGNAL x72810, SIGNAL_ACTION x72810)
+    pid(s) 10801174: no thread ran during the trace
+FAIL  nng.core.sock_test (exit None)
+    Test recv timeout:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    11141142   1 sock_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    11145240   1 sock_test          CONDVAR        (0x31af2c85e0)               sync_condvar_wa
+    11145240   2 sock_test          READY          143370                       msg_sendv
+    11145240   3 sock_test          SIGWAITINFO                                 signal_waitinfo
+    11145240   4 sock_test          SIGWAITINFO                                 signal_waitinfo
+    11145240   5 sock_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 11145240 tid 2: ran 146136 time(s), 290447 kernel call(s) (MSG_SENDV x145223, SYNC_CONDVAR_SIGNAL x72612, SIGNAL_ACTION x72612)
+    pid(s) 11141142: no thread ran during the trace
+FAIL  nng.core.sockaddr_test (exit None)
+    Test nng_sockaddr_ipc:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    11481111   1 sockaddr_test      REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    11485208   1 sockaddr_test      CONDVAR        (0x2bba7f7520)               sync_condvar_wa
+    11485208   2 sockaddr_test      READY                                                        
+    11485208   3 sockaddr_test      SIGWAITINFO                                 signal_waitinfo
+    11485208   4 sockaddr_test      SIGWAITINFO                                 signal_waitinfo
+    11485208   5 sockaddr_test      SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 11485208 tid 2: ran 145219 time(s), 288574 kernel call(s) (MSG_SENDV x144287, SIGNAL_ACTION x72144, SYNC_CONDVAR_SIGNAL x72143)
+    pid(s) 11481111: no thread ran during the trace
+FAIL  nng.core.synch_test (exit None)
+    Test mutex lock unlock:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    11821078   1 synch_test         REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    11825176   1 synch_test         CONDVAR        (0x1dc77b54f0)               sync_condvar_wa
+    11825176   2 synch_test         RUNNING                                                      
+    11825176   3 synch_test         SIGWAITINFO                                 signal_waitinfo
+    11825176   4 synch_test         SIGWAITINFO                                 signal_waitinfo
+    11825176   5 synch_test         SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 11825176 tid 2: ran 138730 time(s), 275771 kernel call(s) (MSG_SENDV x137887, SYNC_CONDVAR_SIGNAL x68942, SIGNAL_ACTION x68942)
+    pid(s) 11821078: no thread ran during the trace
+FAIL  nng.core.stats_test (exit None)
+    Test socket stats:
+      stats_test.c:26: nng_pair1_open(&(s1)): expected success, got Hunky dory (0)... ok
+      stats_test.c:27: nng_pair1_open(&(s2)): expected success, got Hunky dory (0)... ok
+      stats_test.c:28: nuts_marry(s1, s2): expected success, got Hunky dory (0)... ok
+      stats_test.c:29: nng_send(s1, "ping", strlen("ping") + 1, 0): expected success, got Hunky dory (0)... ok
+      stats_test.c:30: nng_recv (0 Hunky dory)... ok
+      stats_test.c:30: length 5 want 5... ok
+      stats_test.c:30: ping == ping... ok
+      stats_test.c:33: stats != NULL... ok
+      stats_test.c:36: st1 != NULL... ok
+      stats_test.c:37: st2 != NULL... ok
+      stats_test.c:38: st1 != st2... ok
+      stats_test.c:40: item != NULL... ok
+      stats_test.c:41: nng_stat_value(item) == 1... ok
+      stats_test.c:42: nng_stat_unit(item) == NNG_UNIT_MESSAGES... ok
+      stats_test.c:44: item != NULL... ok
+      stats_test.c:45: nng_stat_value(item) == 1... ok
+      stats_test.c:46: nng_stat_unit(item) == NNG_UNIT_MESSAGES... ok
+      stats_test.c:47: nng_socket_close(s1): expected success, got Hunky dory (0).### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    12161046   1 stats_test         REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    12165144   1 stats_test         CONDVAR        (0x48547744a0)               sync_condvar_wa
+    12165144   2 stats_test         RUNNING                                     msg_sendv
+    12165144   3 stats_test         SIGWAITINFO                                 signal_waitinfo
+    12165144   4 stats_test         SIGWAITINFO                                 signal_waitinfo
+    12165144   5 stats_test         SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 12165144 tid 2: ran 151223 time(s), 300581 kernel call(s) (MSG_SENDV x150291, SYNC_CONDVAR_SIGNAL x75145, SIGNAL_ACTION x75145)
+    pid(s) 12161046: no thread ran during the trace
+FAIL  nng.core.url_test (exit None)
+    Test url host:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    12501014   1 url_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    12505112   1 url_test           CONDVAR        (0x100aca2680)               sync_condvar_wa
+    12505112   2 url_test           READY                                                        
+    12505112   3 url_test           SIGWAITINFO                                 signal_waitinfo
+    12505112   4 url_test           SIGWAITINFO                                 signal_waitinfo
+    12505112   5 url_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 12505112 tid 2: ran 133055 time(s), 264441 kernel call(s) (MSG_SENDV x132221, SYNC_CONDVAR_SIGNAL x66110, SIGNAL_ACTION x66110)
+    pid(s) 12501014: no thread ran during the trace
+FAIL  nng.platform.files_test (exit None)
+    Test permissions:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    12840982   1 files_test         REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    12845080   1 files_test         CONDVAR        (0x1f8a9be510)               sync_condvar_wa
+    12845080   2 files_test         REPLY                                                        
+    12845080   3 files_test         SIGWAITINFO                                 signal_waitinfo
+    12845080   4 files_test         SIGWAITINFO                                 signal_waitinfo
+    12845080   5 files_test         SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 12845080 tid 2: ran 149349 time(s), 296867 kernel call(s) (MSG_SENDV x148433, SYNC_CONDVAR_SIGNAL x74217, SIGNAL_ACTION x74217)
+    pid(s) 12840982: no thread ran during the trace
+FAIL  nng.platform.ipc_stream_test (exit None)
+    Test ipc stream:
+      ipc_stream_test.c:40: nng_aio_alloc(&daio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:41: nng_aio_alloc(&laio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:42: nng_aio_alloc(&maio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:43: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:44: nng_aio_alloc(&aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:46: nng_stream_listener_alloc(&l, url): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:47: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:49: nng_stream_dialer_alloc(&d, url): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:54: nng_aio_result(daio): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:56: nng_aio_result(laio): expected success, got Hunky dory (0)... ok
+      ipc_stream_test.c:60: c1 != NULL... ok### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    13185046   1 ipc_stream_test    REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    13189144   1 ipc_stream_test    CONDVAR        (0x378ad5b530)               sync_condvar_wa
+    13189144   2 ipc_stream_test    RUNNING                                                      
+    13189144   3 ipc_stream_test    SIGWAITINFO                                 signal_waitinfo
+    13189144   4 ipc_stream_test    SIGWAITINFO                                 signal_waitinfo
+    13189144   5 ipc_stream_test    SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 13189144 tid 2: ran 113737 time(s), 225884 kernel call(s) (MSG_SENDV x112942, SYNC_CONDVAR_SIGNAL x56471, SIGNAL_ACTION x56471)
+    pid(s) 13185046: no thread ran during the trace
+FAIL  nng.platform.platform_test (exit None)
+    Test sleep:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    13525014   1 platform_test      REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    13529112   1 platform_test      CONDVAR        (0x39be94f500)               sync_condvar_wa
+    13529112   2 platform_test      RUNNING                                                      
+    13529112   3 platform_test      SIGWAITINFO                                 signal_waitinfo
+    13529112   4 platform_test      SIGWAITINFO                                 signal_waitinfo
+    13529112   5 platform_test      SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 13529112 tid 2: ran 142961 time(s), 284220 kernel call(s) (MSG_SENDV x142110, SYNC_CONDVAR_SIGNAL x71055, SIGNAL_ACTION x71055)
+    pid(s) 13525014: no thread ran during the trace
+FAIL  nng.platform.resolver_test (exit None)
+    Test resolve google dns:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    13864982   1 resolver_test      REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    13869080   1 resolver_test      CONDVAR        (0x31c1bbf530)               sync_condvar_wa
+    13869080   2 resolver_test      READY          143370                       msg_sendv
+    13869080   3 resolver_test      SIGWAITINFO                                 signal_waitinfo
+    13869080   4 resolver_test      SIGWAITINFO                                 signal_waitinfo
+    13869080   5 resolver_test      SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 13869080 tid 2: ran 95819 time(s), 189948 kernel call(s) (MSG_SENDV x94974, SYNC_CONDVAR_SIGNAL x47487, SIGNAL_ACTION x47487)
+    pid(s) 13864982: no thread ran during the trace
+FAIL  nng.platform.tcp_stream_test (exit None)
+    Test tcp stream:
+      tcp_stream_test.c:41: nng_aio_alloc(&daio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:42: nng_aio_alloc(&laio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:43: nng_aio_alloc(&maio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:44: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:45: nng_aio_alloc(&aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:47: nng_stream_listener_alloc(&l, "tcp://127.0.0.1"): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:48: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:49: nng_stream_listener_get_int(l, NNG_OPT_BOUND_PORT, &port): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:50: port > 0... ok
+      tcp_stream_test.c:51: port <= 0xffff... ok
+      tcp_stream_test.c:56: nng_stream_dialer_alloc(&d, uri): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:61: nng_aio_result(daio): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:63: nng_aio_result(laio): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:67: c1 != NULL... ok
+      tcp_stream_test.c:68: c2 != NULL... ok
+      tcp_stream_test.c:71: nng_stream_get_bool(c1, NNG_OPT_TCP_NODELAY, &on): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:72: on... ok
+      tcp_stream_test.c:75: nng_stream_get_bool(c1, NNG_OPT_TCP_KEEPALIVE, &on): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:97: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:98: nng_aio_count(aio1) == 5... ok
+      tcp_stream_test.c:100: nng_aio_result(aio2): expected success, got Hunky dory (0)... ok
+      tcp_stream_test.c:101: nng_aio_count(aio2) == 5... ok
+      tcp_stream_test.c:103: memcmp(buf1, buf2, 5) == 0... ok
+      tcp_stream_test.c:106: sap1->s_in.sa_family == NNG_AF_INET... ok
+      tcp_stream_test.c:109: sap2->s_in.sa_family == NNG_AF_INET... ok
+      tcp_stream_test.c### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    14204950   1 tcp_stream_test    REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    14209048   1 tcp_stream_test    CONDVAR        (0x5da9ff9540)               sync_condvar_wa
+    14209048   2 tcp_stream_test    RUNNING                                                      
+    14209048   3 tcp_stream_test    SIGWAITINFO                                 signal_waitinfo
+    14209048   4 tcp_stream_test    SIGWAITINFO                                 signal_waitinfo
+    14209048   5 tcp_stream_test    SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 14209048 tid 2: ran 146156 time(s), 290500 kernel call(s) (MSG_SENDV x145250, SYNC_CONDVAR_SIGNAL x72625, SIGNAL_ACTION x72625)
+    pid(s) 14204950: no thread ran during the trace
+FAIL  nng.platform.udp_test (exit None)
+    Test udp pair:
+      udp_test.c:49: nng_udp_open(&u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:50: nng_udp_open(&u2, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:52: nng_udp_sockname(u1, &sa1): expected success, got Hunky dory (0)... ok
+      udp_test.c:53: nng_udp_sockname(u2, &sa2): expected success, got Hunky dory (0)... ok
+      udp_test.c:55: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:56: nng_aio_alloc(&aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_test.c:61: nng_aio_set_iov(aio1, 1, &iov1): expected success, got Hunky dory (0)... ok
+      udp_test.c:62: nng_aio_set_input(aio1, 0, &to): expected success, got Hunky dory (0)... ok
+      udp_test.c:66: nng_aio_set_iov(aio2, 1, &iov2): expected success, got Hunky dory (0)... ok
+      udp_test.c:67: nng_aio_set_input(aio2, 0, &from): expected success, got Hunky dory (0)... ok
+      udp_test.c:74: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+      udp_test.c:75: nng_aio_result(aio2)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    14544918   1 udp_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    14549016   1 udp_test           CONDVAR        (0x52c3250530)               sync_condvar_wa
+    14549016   2 udp_test           READY                                       msg_sendv
+    14549016   3 udp_test           SIGWAITINFO                                 signal_waitinfo
+    14549016   4 udp_test           SIGWAITINFO                                 signal_waitinfo
+    14549016   5 udp_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 14549016 tid 2: ran 149931 time(s), 298039 kernel call(s) (MSG_SENDV x149020, SIGNAL_ACTION x74510, SYNC_CONDVAR_SIGNAL x74509)
+    pid(s) 14544918: no thread ran during the trace
+FAIL  nng.platform.posix_ipcwinsec_test (exit None)
+    Test ipc security descriptor:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    14884886   1 six_ipcwinsec_test CONDVAR        (0x3b4e121470)               sync_condvar_wa
+    14884886   2 six_ipcwinsec_test RUNNING                                     msg_sendv
+    14884886   3 six_ipcwinsec_test SIGWAITINFO                                 signal_waitinfo
+    14884886   4 six_ipcwinsec_test SIGWAITINFO                                 signal_waitinfo
+    14884886   5 six_ipcwinsec_test SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 14884886 tid 2: ran 107689 time(s), 213812 kernel call(s) (MSG_SENDV x106906, SYNC_CONDVAR_SIGNAL x53453, SIGNAL_ACTION x53453)
+FAIL  nng.sp.pipe_test (exit None)
+    Test pipe msg id:
+      pipe_test.c:128: nng_mtx_alloc(&push->lk): expected success, got Hunky dory (0)... ok
+      pipe_test.c:129: nng_cv_alloc(&push->cv, push->lk): expected success, got Hunky dory (0)... ok
+      pipe_test.c:130: nng_mtx_alloc(&pull->lk): expected success, got Hunky dory (0)... ok
+      pipe_test.c:131: nng_cv_alloc(&pull->cv, pull->lk): expected success, got Hunky dory (0)... ok
+      pipe_test.c:133: nng_push0_open(&push->s): expected success, got Hunky dory (0)... ok
+      pipe_test.c:134: nng_pull0_open(&pull->s): expected success, got Hunky dory (0)... ok
+      pipe_test.c:136: nng_socket_set_ms(push->s, NNG_OPT_RECONNMINT, 10): expected success, got Hunky dory (0)... ok
+      pipe_test.c:137: nng_socket_set_ms(push->s, NNG_OPT_RECONNMAXT, 10): expected success, got Hunky dory (0)... ok
+      pipe_test.c:138: nng_socket_set_ms(pull->s, NNG_OPT_RECONNMINT, 10): expected success, got Hunky dory (0)... ok
+      pipe_test.c:139: nng_socket_set_ms(pull->s, NNG_OPT_RECONNMAXT, 10): expected success, got Hunky dory (0)... ok
+      pipe_test.c:141: nng_listener_create(&pull->l, pull->s, addr): expected success, got Hunky dory (0)... ok
+      pipe_test.c:142: nng_dialer_create(&push->d, push->s, addr): expected success, got Hunky dory (0)... ok
+      pipe_test.c:143: nng_listener_id(pull->l) > 0... ok
+      pipe_test.c:144: nng_dialer_id(push->d) > 0... ok
+      pipe_test.c:145: nng_dialer_set_ms(push->d, NNG_OPT_RECONNMINT, 10): expected success, got Hunky dory (0)... ok
+      pipe_test.c:146: nng_dialer_set_ms(push->d, NNG_OPT_RECONNMAXT, 10): expected success, got Hunky dory (0)... ok
+      pipe_test.c:148: nng_pipe_notify(push->s, NNG_PIPE_EV_ADD_PRE, notify, push): expected success, got Hunky dory (0)... ok
+      pipe_test.c:149: nng_pipe_notify(push->s, NNG_PIPE_EV_ADD_POST, notify, push): expected success, got Hunky dory (0)... ok
+      pipe_test.c:151: nng_pipe_notify(push->s, NNG_PIPE_EV_REM_POST, notify, push): expected success, got Hunky dory (0)... ok
+      pipe_test.c:153: nng_pipe_notify(pull->s, NNG_PIPE_EV_ADD_PRE, notify, pull): expected success, got Hunky dory (0)... ok
+      pipe_test.c:154: nng_pipe_notify(pull->s, NNG_PIPE_EV_ADD_POST, notify, pull): expected success, got Hunky dory (0)... ok
+      pipe_test.c:156: nng_pipe_notify(pull->s, NNG_PIPE_EV_REM_POST, notify, pull): expected success, got Hunky dory (0)... ok
+      pipe_test.c:174: nng_listener_start(pull->l, 0): expected success, got Hunky dory (0)... ok
+      pipe_test.c:175: nng_dialer_start(push->d, 0): expected success, got Hunky dory (0)... ok
+      pipe_test.c:176: expect(pull, &pull->add_pre, 1)... ok
+      pipe_test.c:177: expect(pull, &pull->add_post, 1)... ok
+      pipe_test.c:178: expect(pull, &pull->rem, 0)... ok
+      pipe_test.c:179: expect(pull, &pull->err, 0)... ok
+      pipe_test.c:180: expect(push, &push->add_pre, 1)... ok
+      pipe_test.c:181: expect(push, &push->add_post, 1)... ok
+      pipe_test.c:182: expect(push, &push->rem, 0)... ok
+      pipe_test.c:183: expect(push, &push->err, 0)... ok
+      pipe_test.c:210: nng_msg_alloc(&msg, 0): expected success, got Hunky dory (0)... ok
+      pipe_test.c:211: nng_msg_append(msg, "hello", strlen("hello") + 1): expected success, got Hunky dory (0)... ok
+      pipe_test.c:212: nng_sendmsg(push.s, msg, 0)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    15204375   1 pipe_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    15208472   1 pipe_test          CONDVAR        (0x36c5c004e0)               sync_condvar_wa
+    15208472   2 pipe_test          RUNNING                                     msg_sendv
+    15208472   3 pipe_test          SIGWAITINFO                                 signal_waitinfo
+    15208472   4 pipe_test          SIGWAITINFO                                 signal_waitinfo
+    15208472   5 pipe_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 15208472 tid 2: ran 103792 time(s), 205924 kernel call(s) (MSG_SENDV x102962, SYNC_CONDVAR_SIGNAL x51481, SIGNAL_ACTION x51481)
+    pid(s) 15204375: no thread ran during the trace
+FAIL  nng.sp.device_test (exit None)
+    Test device not cooked:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    15544342   1 device_test        REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    15548440   1 device_test        CONDVAR        (0x1ab20624f0)               sync_condvar_wa
+    15548440   2 device_test        RUNNING                                                      
+    15548440   3 device_test        SIGWAITINFO                                 signal_waitinfo
+    15548440   4 device_test        SIGWAITINFO                                 signal_waitinfo
+    15548440   5 device_test        SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 15548440 tid 2: ran 146197 time(s), 290713 kernel call(s) (MSG_SENDV x145356, SYNC_CONDVAR_SIGNAL x72678, SIGNAL_ACTION x72677, MSG_REPLYV x1)
+    pid(s) 15544342: no thread ran during the trace
+FAIL  nng.sp.multistress_test (exit None)
+    Test multi stress:
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock): expected success, got Hunky dory (0)... ok
+      multistress_test.c:836: c->nfail == 0... ok
+      multistress_test.c:837: (c->sent == NULL) || (c->nsend > 0)... ok
+      multistress_test.c:838: (c->recd == NULL) || (c->nrecv > 0)... ok
+      multistress_test.c:840: nng_socket_close(c->sock)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    15884310   1 multistress_test   CONDVAR        (0x4c3dc72470)               sync_condvar_wa
+    15884310   2 multistress_test   RUNNING                                                      
+    15884310   3 multistress_test   SIGWAITINFO                                 signal_waitinfo
+    15884310   4 multistress_test   SIGWAITINFO                                 signal_waitinfo
+    15884310   5 multistress_test   SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 15884310 tid 2: ran 131510 time(s), 261312 kernel call(s) (MSG_SENDV x130656, SYNC_CONDVAR_SIGNAL x65328, SIGNAL_ACTION x65328)
+FAIL  nng.sp.nonblock_test (exit None)
+    Test nonblocking:
+      nonblock_test.c:102: nng_rep0_open(&rep): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:104: nng_req0_open(&reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:107: nng_thread_create(&server, repthr, &rep): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i]): expected success, got Hunky dory (0)... ok
+      nonblock_test.c:109: nng_thread_create(&clients[i], reqthr, &reqs[i])### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    16203799   1 nonblock_test      CONDVAR        (0x1791f47470)               sync_condvar_wa
+    16203799   2 nonblock_test      RUNNING        143370                                        
+    16203799   3 nonblock_test      SIGWAITINFO                                 signal_waitinfo
+    16203799   4 nonblock_test      SIGWAITINFO                                 signal_waitinfo
+    16203799   5 nonblock_test      SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 16203799 tid 2: ran 137350 time(s), 272985 kernel call(s) (MSG_SENDV x136493, SYNC_CONDVAR_SIGNAL x68246, SIGNAL_ACTION x68246)
+FAIL  nng.sp.scalability_test (exit None)
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+      scalability_test.c:102: nng_socket_close(rep): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.188013 secs
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    16523286   1 scalability_test   CONDVAR        (0x3ebdb43470)               sync_condvar_wa
+    16523286   2 scalability_test   REPLY                                                        
+    16523286   3 scalability_test   SIGWAITINFO                                 signal_waitinfo
+    16523286   4 scalability_test   SIGWAITINFO                                 signal_waitinfo
+    16523286   5 scalability_test   SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 16523286 tid 2: ran 149513 time(s), 297236 kernel call(s) (MSG_SENDV x148616, SYNC_CONDVAR_SIGNAL x74310, SIGNAL_ACTION x74310)
+FAIL  nng.sp.reconnect_stress_test (exit None)
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:193: nng_aio_alloc(&w->aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:190: nng_surveyor0_open(&w->socket): expected success, got Hunky dory (0)... ok
+      reconnect_stress_test.c:191: nng_socket_set_ms( w->socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    16842774   1 onnect_stress_test REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    16846872   1 onnect_stress_test NANOSLEEP                                   timer_timeout
+    16846872   2 onnect_stress_test SIGWAITINFO                                 signal_waitinfo
+    16846872   3 onnect_stress_test SIGWAITINFO                                 signal_waitinfo
+    16846872   4 onnect_stress_test SIGWAITINFO                                 signal_waitinfo
+    16846872   5 onnect_stress_test SIGWAITINFO                                 signal_waitinfo
+    16846872   6 onnect_stress_test CONDVAR        (0x31fe29ce70)               sync_condvar_wa
+    16846872   7 onnect_stress_test CONDVAR        (0x31fe29ce70)               sync_condvar_wa
+    16846872   8 onnect_stress_test CONDVAR        (0x31fe29ce70)               sync_condvar_wa
+    16846872   9 onnect_stress_test CONDVAR        (0x31fe29ce70)               sync_condvar_wa
+    16846872  10 onnect_stress_test READY          (0x14ec3788f8) 16846872-17 # sync_mutex_lock
+    16846872  11 onnect_stress_test MUTEX          (0x14ec3788f8) 16846872-17 # sync_mutex_lock
+    16846872  12 onnect_stress_test RUNNING                                                      
+    16846872  13 onnect_stress_test MUTEX          (0x14ec3788f8) 16846872-13 # sync_mutex_lock
+    16846872  14 onnect_stress_test RUNNING                                                      
+    16846872  15 onnect_stress_test MUTEX          (0x14ec3788f8) 16846872-17 # sync_mutex_lock
+    16846872  16 onnect_stress_test MUTEX          (0x14ec3788f8) 16846872-17 # sync_mutex_lock
+    16846872  17 onnect_stress_test MUTEX                                       sync_mutex_lock
+    16846872  18 onnect_stress_test CONDVAR        (0x31fe29cd50)               sync_condvar_wa
+    16846872  19 onnect_stress_test CONDVAR                                     sync_condvar_wa
+    16846872  20 onnect_stress_test CONDVAR        (0x14ec378ce8)               sync_condvar_wa
+    16846872  21 onnect_stress_test CONDVAR        (0x14ec378d88)               sync_condvar_wa
+    16846872  22 onnect_stress_test CONDVAR        (0x14ec378e28)               sync_condvar_wa
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 16846872 tid 1: ran 1287 time(s), 997 kernel call(s) (TIMER_TIMEOUT x997)
+    pid 16846872 tid 10: ran 18223 time(s), 39784 kernel call(s) (SYNC_MUTEX_UNLOCK x15150, SYNC_MUTEX_LOCK x14248, SYNC_CONDVAR_SIGNAL x10385, TIMER_TIMEOUT x1)
+    pid 16846872 tid 11: ran 17996 time(s), 39552 kernel call(s) (SYNC_MUTEX_UNLOCK x15074, SYNC_MUTEX_LOCK x14172, SYNC_CONDVAR_SIGNAL x10304, TIMER_TIMEOUT x2)
+    pid 16846872 tid 12: ran 18142 time(s), 39726 kernel call(s) (SYNC_MUTEX_UNLOCK x15160, SYNC_MUTEX_LOCK x14263, SYNC_CONDVAR_SIGNAL x10302, TIMER_TIMEOUT x1)
+    pid 16846872 tid 13: ran 18131 time(s), 39656 kernel call(s) (SYNC_MUTEX_UNLOCK x15112, SYNC_MUTEX_LOCK x14264, SYNC_CONDVAR_SIGNAL x10280)
+    pid 16846872 tid 14: ran 18087 time(s), 39831 kernel call(s) (SYNC_MUTEX_UNLOCK x15148, SYNC_MUTEX_LOCK x14231, SYNC_CONDVAR_SIGNAL x10452)
+    pid 16846872 tid 15: ran 18214 time(s), 39960 kernel call(s) (SYNC_MUTEX_UNLOCK x15217, SYNC_MUTEX_LOCK x14280, SYNC_CONDVAR_SIGNAL x10462, TIMER_TIMEOUT x1)
+    pid 16846872 tid 16: ran 18226 time(s), 39806 kernel call(s) (SYNC_MUTEX_UNLOCK x15166, SYNC_MUTEX_LOCK x14284, SYNC_CONDVAR_SIGNAL x10356)
+    pid 16846872 tid 17: ran 18180 time(s), 39622 kernel call(s) (SYNC_MUTEX_UNLOCK x15114, SYNC_MUTEX_LOCK x14237, SYNC_CONDVAR_SIGNAL x10271)
+    pid 16846872 tid 19: ran 2848 time(s), 5630 kernel call(s) (TIMER_TIMEOUT x2484, SYNC_CONDVAR_WAIT x2484, SYNC_CONDVAR_SIGNAL x313, SYNC_MUTEX_UNLOCK x181)
+    pid 16846872 tid 20: ran 4145 time(s), 8128 kernel call(s) (TIMER_TIMEOUT x3583, SYNC_CONDVAR_WAIT x3583, SYNC_CONDVAR_SIGNAL x432, SYNC_MUTEX_UNLOCK x274)
+    pid 16846872 tid 21: ran 4816 time(s), 9679 kernel call(s) (TIMER_TIMEOUT x3823, SYNC_CONDVAR_WAIT x3823, SYNC_CONDVAR_SIGNAL x859, SYNC_MUTEX_UNLOCK x606)
+    pid 16846872 tid 22: ran 1116 time(s), 2405 kernel call(s) (SYNC_CONDVAR_SIGNAL x584, TIMER_TIMEOUT x541, SYNC_CONDVAR_WAIT x541, SYNC_MUTEX_UNLOCK x373)
+    pid(s) 16842774: no thread ran during the trace
+FAIL  nng.sp.protocol.bus0.bus_test (exit None)
+    Test bus send drop stats:
+      bus_test.c:498: nng_bus0_open(&bus): expected success, got Hunky dory (0)... ok
+      bus_test.c:499: nng_socket_set_int(bus, NNG_OPT_SENDBUF, 1): expected success, got Hunky dory (0)... ok
+      bus_test.c:500: nng_mtx_alloc(&note.mtx): expected success, got Hunky dory (0)... ok
+      bus_test.c:501: nng_cv_alloc(&note.cv, note.mtx): expected success, got Hunky dory (0)... ok
+      bus_test.c:502: nng_pipe_notify( bus, NNG_PIPE_EV_ADD_POST, bus_peer_connected, &note): expected success, got Hunky dory (0)... ok
+      bus_test.c:504: nng_listen(bus, addr, NULL, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:505: nng_aio_alloc(&aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      bus_test.c:507: nng_stream_dialer_alloc(&dialer, addr): expected success, got Hunky dory (0)... ok
+      bus_test.c:510: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      bus_test.c:512: nuts_stream_wait( nuts_stream_recv_start(peer, received, sizeof(received))): expected success, got Hunky dory (0)... ok
+      bus_test.c:514: nuts_stream_wait( nuts_stream_send_start(peer, header, sizeof(header))): expected success, got Hunky dory (0)... ok
+      bus_test.c:521: note.connected... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      bus_test.c:525: nng_msg_alloc(&msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+      bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    17182742   1 bus_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    17186840   1 bus_test           CONDVAR        (0x4a1e1685b0)               sync_condvar_wa
+    17186840   2 bus_test           RUNNING                                                      
+    17186840   3 bus_test           SIGWAITINFO                                 signal_waitinfo
+    17186840   4 bus_test           SIGWAITINFO                                 signal_waitinfo
+    17186840   5 bus_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 17186840 tid 2: ran 142512 time(s), 283171 kernel call(s) (MSG_SENDV x141585, SYNC_CONDVAR_SIGNAL x70793, SIGNAL_ACTION x70793)
+    pid(s) 17182742: no thread ran during the trace
+FAIL  nng.sp.protocol.pair0.pair0_test (exit None)
+    Test pair0 identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    17522711   1 pair0_test         REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    17526808   1 pair0_test         CONDVAR        (0x2f9e827590)               sync_condvar_wa
+    17526808   2 pair0_test         RUNNING                                                      
+    17526808   3 pair0_test         SIGWAITINFO                                 signal_waitinfo
+    17526808   4 pair0_test         SIGWAITINFO                                 signal_waitinfo
+    17526808   5 pair0_test         SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 17526808 tid 2: ran 147647 time(s), 293559 kernel call(s) (MSG_SENDV x146779, SYNC_CONDVAR_SIGNAL x73389, SIGNAL_ACTION x73389, MSG_REPLYV x1)
+    pid(s) 17522711: no thread ran during the trace
+FAIL  nng.sp.protocol.pair1.pair1_test (exit None)
+    Test pair1 mono identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    17862678   1 pair1_test         REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    17866776   1 pair1_test         CONDVAR        (0x44ba0155d0)               sync_condvar_wa
+    17866776   2 pair1_test         RUNNING                                                      
+    17866776   3 pair1_test         SIGWAITINFO                                 signal_waitinfo
+    17866776   4 pair1_test         SIGWAITINFO                                 signal_waitinfo
+    17866776   5 pair1_test         SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 17866776 tid 2: ran 141743 time(s), 281715 kernel call(s) (MSG_SENDV x140857, SYNC_CONDVAR_SIGNAL x70429, SIGNAL_ACTION x70429)
+    pid(s) 17862678: no thread ran during the trace
+FAIL  nng.sp.protocol.pair1.pair1_poly_test (exit None)
+    Test pair1 poly identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    18202646   1 pair1_poly_test    REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    18206744   1 pair1_poly_test    CONDVAR        (0x3c49aa9510)               sync_condvar_wa
+    18206744   2 pair1_poly_test    RUNNING                                     msg_sendv
+    18206744   3 pair1_poly_test    SIGWAITINFO                                 signal_waitinfo
+    18206744   4 pair1_poly_test    SIGWAITINFO                                 signal_waitinfo
+    18206744   5 pair1_poly_test    SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 18206744 tid 2: ran 147183 time(s), 292647 kernel call(s) (MSG_SENDV x146322, SYNC_CONDVAR_SIGNAL x73163, SIGNAL_ACTION x73162)
+    pid(s) 18202646: no thread ran during the trace
+FAIL  nng.sp.protocol.pipeline0.pull_test (exit None)
+    Test pull stats:
+      pull_test.c:273: nng_push0_open(&push): expected success, got Hunky dory (0)... ok
+      pull_test.c:274: raw ? nng_pull0_open_raw(&pull) : nng_pull0_open(&pull): expected success, got Hunky dory (0)... ok
+      pull_test.c:276: nng_socket_set_ms(push, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      pull_test.c:277: nng_socket_set_ms(pull, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      pull_test.c:278: nng_aio_alloc(&aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      pull_test.c:280: nuts_marry(push, pull): expected success, got Hunky dory (0)... ok
+      pull_test.c:282: nng_send(push, "direct", strlen("direct") + 1, 0): expected success, got Hunky dory (0)... ok
+      pull_test.c:284: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:287: nuts_stat_wait(pull, "rx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:288: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 0, false)... ok
+      pull_test.c:290: nng_send(push, "held", strlen("held") + 1, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:291: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+      pull_test.c:292: nng_recv (0 Hunky dory)... ok
+      pull_test.c:292: length 5 want 5... ok
+      pull_test.c:292: held == held... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:293: nuts_stat_wait(pull, "rx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:294: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:296: nuts_stat_wait(push, "tx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:297: nuts_stat_wait(push, "tx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:298: nuts_stat_wait(pull, "rx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:299: nuts_stat_wait(pull, "rx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+      pull_test.c:301: nng_socket_close(push): expected success, got Hunky dory (0)... ok
+      pull_test.c:302: nng_socket_close(pull): expected success, got Hunky dory (0)... ok
+      pull_test.c:273: nng_push0_open(&push): expected success, got Hunky dory (0)... ok
+      pull_test.c:274: raw ? nng_pull0_open_raw(&pull) : nng_pull0_open(&pull): expected success, got Hunky dory (0)... ok
+      pull_test.c:276: nng_socket_set_ms(push, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      pull_test.c:277: nng_socket_set_ms(pull, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      pull_test.c:278: nng_aio_alloc(&aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      pull_test.c:280: nuts_marry(push, pull): expected success, got Hunky dory (0)... ok
+      pull_test.c:282: nng_send(push, "direct", strlen("direct") + 1, 0): expected success, got Hunky dory (0)... ok
+      pull_test.c:284: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:287: nuts_stat_wait(pull, "rx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:288: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 0, false)... ok
+      pull_test.c:290: nng_send(push, "held", strlen("held") + 1, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:291: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+      pull_test.c:292: nng_recv (0 Hunky dory)... ok
+      pull_test.c:292: length 5 want 5... ok
+      pull_test.c:292: held == held... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:293: nuts_stat_wait(pull, "rx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:294: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:296: nuts_stat_wait(push, "tx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:297: nuts_stat_wait(push, "tx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:298: nuts_stat_wait(pull, "rx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      pull_test.c:299: nuts_stat_wait(pull, "rx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+      pull_test.c:301: nng_socket_close(push)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    18542614   1 pull_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    18546712   1 pull_test          CONDVAR        (0x541ae88560)               sync_condvar_wa
+    18546712   2 pull_test          RUNNING                                                      
+    18546712   3 pull_test          SIGWAITINFO                                 signal_waitinfo
+    18546712   4 pull_test          SIGWAITINFO                                 signal_waitinfo
+    18546712   5 pull_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 18546712 tid 2: ran 146042 time(s), 290317 kernel call(s) (MSG_SENDV x145159, SYNC_CONDVAR_SIGNAL x72579, SIGNAL_ACTION x72579)
+    pid(s) 18542614: no thread ran during the trace
+FAIL  nng.sp.protocol.pipeline0.push_test (exit None)
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:524: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 1, false)... ok
+      push_test.c:527: nng_aio_result(aio) fails with Operation canceled... ok
+      push_test.c:528: nng_aio_get_msg(aio) == msg... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:529: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:534: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 2, false)... ok
+      push_test.c:535: nuts_marry(push, pull): expected success, got Hunky dory (0)... ok
+      push_test.c:537: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      push_test.c:538: nng_aio_get_msg(aio) == NULL... ok
+      push_test.c:539: nng_recv (0 Hunky dory)... ok
+      push_test.c:539: length 9 want 9... ok
+      push_test.c:539: buffered == buffered... ok
+      push_test.c:540: nng_recvmsg(pull, &msg, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:542: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:543: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 0, false)... ok
+      push_test.c:545: nng_socket_set_int(push, NNG_OPT_SENDBUF, 0): expected success, got Hunky dory (0)... ok
+      push_test.c:546: nng_send(push, "direct", strlen("direct") + 1, 0): expected success, got Hunky dory (0)... ok
+      push_test.c:547: nng_recv (0 Hunky dory)... ok
+      push_test.c:547: length 7 want 7... ok
+      push_test.c:547: direct == direct... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:548: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:549: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
+      push_test.c:551: nng_socket_close(push): expected success, got Hunky dory (0)... ok
+      push_test.c:552: nng_socket_close(pull): expected success, got Hunky dory (0)... ok
+      push_test.c:507: raw ? nng_push0_open_raw(&push) : nng_push0_open(&push): expected success, got Hunky dory (0)... ok
+      push_test.c:509: nng_pull0_open(&pull): expected success, got Hunky dory (0)... ok
+      push_test.c:510: nng_socket_set_int(push, NNG_OPT_SENDBUF, 1): expected success, got Hunky dory (0)... ok
+      push_test.c:511: nng_socket_set_ms(pull, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      push_test.c:512: nng_aio_alloc(&aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      push_test.c:514: nng_send(push, "buffered", strlen("buffered") + 1, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:515: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:516: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 0, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:517: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 0, false)... ok
+      push_test.c:521: nng_msg_alloc(&msg, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:524: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 1, false)... ok
+      push_test.c:527: nng_aio_result(aio) fails with Operation canceled... ok
+      push_test.c:528: nng_aio_get_msg(aio) == msg... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:529: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:534: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 2, false)... ok
+      push_test.c:535: nuts_marry(push, pull): expected success, got Hunky dory (0)... ok
+      push_test.c:537: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      push_test.c:538: nng_aio_get_msg(aio) == NULL... ok
+      push_test.c:539: nng_recv (0 Hunky dory)... ok
+      push_test.c:539: length 9 want 9... ok
+      push_test.c:539: buffered == buffered... ok
+      push_test.c:540: nng_recvmsg(pull, &msg, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:542: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:543: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 0, false)... ok
+      push_test.c:545: nng_socket_set_int(push, NNG_OPT_SENDBUF, 0): expected success, got Hunky dory (0)... ok
+      push_test.c:546: nng_send(push, "direct", strlen("direct") + 1, 0): expected success, got Hunky dory (0)... ok
+      push_test.c:547: nng_recv (0 Hunky dory)... ok
+      push_test.c:547: length 7 want 7... ok
+      push_test.c:547: direct == direct... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:548: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      push_test.c:549: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
+      push_test.c:551: nng_socket_close(push): expected success, got Hunky dory (0)... ok
+      push_test.c:552: nng_socket_close(pull): e### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    18882582   1 push_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    18886680   1 push_test          CONDVAR        (0x3ebae9f5c0)               sync_condvar_wa
+    18886680   2 push_test          RUNNING                                                      
+    18886680   3 push_test          SIGWAITINFO                                 signal_waitinfo
+    18886680   4 push_test          SIGWAITINFO                                 signal_waitinfo
+    18886680   5 push_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 18886680 tid 2: ran 90414 time(s), 179135 kernel call(s) (MSG_SENDV x89567, SYNC_CONDVAR_SIGNAL x44784, SIGNAL_ACTION x44784)
+    pid(s) 18882582: no thread ran during the trace
+FAIL  nng.sp.protocol.pubsub0.pub_test (exit None)
+    Test pub identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    19222550   1 pub_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    19226648   1 pub_test           CONDVAR        (0x28ba24a520)               sync_condvar_wa
+    19226648   2 pub_test           RUNNING                                                      
+    19226648   3 pub_test           SIGWAITINFO                                 signal_waitinfo
+    19226648   4 pub_test           SIGWAITINFO                                 signal_waitinfo
+    19226648   5 pub_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 19226648 tid 2: ran 146824 time(s), 291801 kernel call(s) (MSG_SENDV x145900, SYNC_CONDVAR_SIGNAL x72950, SIGNAL_ACTION x72950, MSG_RECEIVEV x1)
+    pid(s) 19222550: no thread ran during the trace
+FAIL  nng.sp.protocol.pubsub0.sub_test (exit None)
+    Test sub identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    19562519   1 sub_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    19566616   1 sub_test           CONDVAR        (0x4315997630)               sync_condvar_wa
+    19566616   2 sub_test           RUNNING                                                      
+    19566616   3 sub_test           SIGWAITINFO                                 signal_waitinfo
+    19566616   4 sub_test           SIGWAITINFO                                 signal_waitinfo
+    19566616   5 sub_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 19566616 tid 2: ran 110595 time(s), 219457 kernel call(s) (MSG_SENDV x109729, SYNC_CONDVAR_SIGNAL x54864, SIGNAL_ACTION x54864)
+    pid(s) 19562519: no thread ran during the trace
+FAIL  nng.sp.protocol.pubsub0.xsub_test (exit None)
+    Test xsub identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    19902487   1 xsub_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    19906584   1 xsub_test          CONDVAR        (0x3fb973f5a0)               sync_condvar_wa
+    19906584   2 xsub_test          RUNNING                                                      
+    19906584   3 xsub_test          SIGWAITINFO                                 signal_waitinfo
+    19906584   4 xsub_test          SIGWAITINFO                                 signal_waitinfo
+    19906584   5 xsub_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 19906584 tid 2: ran 82726 time(s), 163859 kernel call(s) (MSG_SENDV x81929, SYNC_CONDVAR_SIGNAL x40965, SIGNAL_ACTION x40965)
+    pid(s) 19902487: no thread ran during the trace
+FAIL  nng.sp.protocol.reqrep0.req_test (exit None)
+    Test req stats:
+      req_test.c:1008: nng_req0_open(&req): expected success, got Hunky dory (0)... ok
+      req_test.c:1009: nng_rep0_open_raw(&rep): expected success, got Hunky dory (0)... ok
+      req_test.c:1010: nng_socket_set_ms(req, NNG_OPT_REQ_RESENDTIME, 60000): expected success, got Hunky dory (0)... ok
+      req_test.c:1011: nng_socket_set_ms(rep, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      req_test.c:1012: nng_socket_set_ms(rep, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      req_test.c:1013: nng_ctx_open(&ctx, req): expected success, got Hunky dory (0)... ok
+      req_test.c:1014: nng_aio_alloc(&aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      req_test.c:1016: nuts_marry(req, rep): expected success, got Hunky dory (0)... ok
+      req_test.c:1019: nng_msg_alloc(&msg, 0): expected success, got Hunky dory (0)... ok
+      req_test.c:1023: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      req_test.c:1024: nng_recvmsg(rep, &msg, 0): expected success, got Hunky dory (0)... ok
+      req_test.c:1019: nng_msg_alloc(&msg, 0): expected success, got Hunky dory (0)... ok
+      req_test.c:1023: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      req_test.c:1024: nng_recvmsg(rep, &msg, 0): expected success, got Hunky dory (0)... ok
+      req_test.c:1030: nng_sendmsg(rep, old, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      req_test.c:1031: nuts_stat_wait(req, "rx_nomatch", NNG_UNIT_MESSAGES, 1, false)... ok
+      req_test.c:1032: nng_msg_dup(&dup, msg): expected success, got Hunky dory (0)... ok
+      req_test.c:1033: nng_sendmsg(rep, msg, 0): expected success, got Hunky dory (0)... ok
+      req_test.c:1034: nng_sendmsg(rep, dup, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      req_test.c:1035: nuts_stat_wait(req, "rx_nomatch", NNG_UNIT_MESSAGES, 2, false)... ok
+      req_test.c:1038: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      req_test.c:1041: nuts_stat_wait(req, "rx_malformed", NNG_UNIT_MESSAGES, 0, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      req_test.c:1042: nuts_stat_wait(req, "tx_retry", NNG_UNIT_MESSAGES, 0, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      req_test.c:1043: nuts_stat_wait(req, "tx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      req_test.c:1044: nuts_stat_wait(req, "tx_bytes", NNG_UNIT_BYTES, 0, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    20242455   1 req_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    20246552   1 req_test           CONDVAR        (0x40d4ba5650)               sync_condvar_wa
+    20246552   2 req_test           RUNNING                                                      
+    20246552   3 req_test           SIGWAITINFO                                 signal_waitinfo
+    20246552   4 req_test           SIGWAITINFO                                 signal_waitinfo
+    20246552   5 req_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 20246552 tid 2: ran 142576 time(s), 283475 kernel call(s) (MSG_SENDV x141739, SYNC_CONDVAR_SIGNAL x70868, SIGNAL_ACTION x70868)
+    pid(s) 20242455: no thread ran during the trace
+FAIL  nng.sp.protocol.reqrep0.rep_test (exit None)
+    Test rep ttl stats:
+      rep_test.c:784: nng_req0_open_raw(&req): expected success, got Hunky dory (0)... ok
+      rep_test.c:785: nng_rep0_open(&rep): expected success, got Hunky dory (0)... ok
+      rep_test.c:786: nng_socket_set_int(rep, NNG_OPT_MAXTTL, 1): expected success, got Hunky dory (0)... ok
+      rep_test.c:787: nng_socket_set_ms(rep, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      rep_test.c:788: nng_socket_set_ms(req, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+      rep_test.c:789: nuts_marry(req, rep): expected success, got Hunky dory (0)... ok
+      rep_test.c:790: nng_msg_alloc(&msg, 0): expected success, got Hunky dory (0)... ok
+      rep_test.c:791: nng_msg_append_u32(msg, 1): expected success, got Hunky dory (0)... ok
+      rep_test.c:792: nng_msg_append_u32(msg, 0x80000001u): expected success, got Hunky dory (0)... ok
+      rep_test.c:793: nng_sendmsg(req, msg, 0): expected success, got Hunky dory (0)... ok
+      rep_test.c:794: nng_msg_alloc(&msg, 0): expected success, got Hunky dory (0)... ok
+      rep_test.c:795: nng_msg_header_append_u32(msg, 0x80000002u): expected success, got Hunky dory (0)... ok
+      rep_test.c:796: nng_msg_append(msg, "valid", 6): expected success, got Hunky dory (0)... ok
+      rep_test.c:797: nng_sendmsg(req, msg, 0): expected success, got Hunky dory (0)... ok
+      rep_test.c:798: nng_recv (0 Hunky dory)... ok
+      rep_test.c:798: length 6 want 6... ok
+      rep_test.c:798: valid == valid... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      rep_test.c:799: nuts_stat_wait(rep, "ttl_drop", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      rep_test.c:800: nuts_stat_wait(rep, "rx_malformed", NNG_UNIT_MESSAGES, 0, false)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    20582423   1 rep_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    20586520   1 rep_test           CONDVAR        (0x28608735e0)               sync_condvar_wa
+    20586520   2 rep_test           RUNNING                                                      
+    20586520   3 rep_test           SIGWAITINFO                                 signal_waitinfo
+    20586520   4 rep_test           SIGWAITINFO                                 signal_waitinfo
+    20586520   5 rep_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 20586520 tid 2: ran 147277 time(s), 292792 kernel call(s) (MSG_SENDV x146397, SYNC_CONDVAR_SIGNAL x73197, SIGNAL_ACTION x73197, MSG_RECEIVEV x1)
+    pid(s) 20582423: no thread ran during the trace
+FAIL  nng.sp.protocol.reqrep0.xrep_test (exit None)
+    Test xrep identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    20922391   1 xrep_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    20926488   1 xrep_test          CONDVAR        (0x5b18ef5570)               sync_condvar_wa
+    20926488   2 xrep_test          RUNNING                                                      
+    20926488   3 xrep_test          SIGWAITINFO                                 signal_waitinfo
+    20926488   4 xrep_test          SIGWAITINFO                                 signal_waitinfo
+    20926488   5 xrep_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 20926488 tid 2: ran 119827 time(s), 238024 kernel call(s) (MSG_SENDV x119012, SYNC_CONDVAR_SIGNAL x59506, SIGNAL_ACTION x59506)
+    pid(s) 20922391: no thread ran during the trace
+FAIL  nng.sp.protocol.reqrep0.xreq_test (exit None)
+    Test xreq identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    21262358   1 xreq_test          REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    21266456   1 xreq_test          CONDVAR        (0x541109a550)               sync_condvar_wa
+    21266456   2 xreq_test          REPLY                                                        
+    21266456   3 xreq_test          SIGWAITINFO                                 signal_waitinfo
+    21266456   4 xreq_test          SIGWAITINFO                                 signal_waitinfo
+    21266456   5 xreq_test          SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 21266456 tid 2: ran 143563 time(s), 285451 kernel call(s) (MSG_SENDV x142723, SYNC_CONDVAR_SIGNAL x71364, SIGNAL_ACTION x71364)
+    pid(s) 21262358: no thread ran during the trace
+FAIL  nng.sp.protocol.reqrep0.reqstress_test (exit None)
+    Test req stress:
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+      reqstress_test.c:323: cases[i].nfail == 0... ok
+      reqstress_test.c:324: cases[i].nsend > 0 || cases[i].nrecv > 0... ok
+      reqstress_test.c:325: nng_socket_close(cases[i].socket)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    21602326   1 reqstress_test     CONDVAR        (0x30f613a470)               sync_condvar_wa
+    21602326   2 reqstress_test     READY                                                        
+    21602326   3 reqstress_test     SIGWAITINFO                                 signal_waitinfo
+    21602326   4 reqstress_test     SIGWAITINFO                                 signal_waitinfo
+    21602326   5 reqstress_test     SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 21602326 tid 2: ran 107256 time(s), 212836 kernel call(s) (MSG_SENDV x106418, SYNC_CONDVAR_SIGNAL x53209, SIGNAL_ACTION x53209)
+FAIL  nng.sp.protocol.survey0.respond_test (exit None)
+    Test respond identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    21921814   1 respond_test       REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    21925912   1 respond_test       CONDVAR        (0x3f26b55590)               sync_condvar_wa
+    21925912   2 respond_test       REPLY                                                        
+    21925912   3 respond_test       SIGWAITINFO                                 signal_waitinfo
+    21925912   4 respond_test       SIGWAITINFO                                 signal_waitinfo
+    21925912   5 respond_test       SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 21925912 tid 2: ran 101808 time(s), 202149 kernel call(s) (MSG_SENDV x101074, SYNC_CONDVAR_SIGNAL x50537, SIGNAL_ACTION x50537, MSG_RECEIVEV x1)
+    pid(s) 21921814: no thread ran during the trace
+FAIL  nng.sp.protocol.survey0.survey_test (exit None)
+    Test survey send drop stats:
+      survey_test.c:683: nng_surveyor0_open(&surv): expected success, got Hunky dory (0)... ok
+      survey_test.c:684: nng_respondent0_open(&resp): expected success, got Hunky dory (0)... ok
+      survey_test.c:685: nuts_marry(surv, resp): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      survey_test.c:689: nuts_stat_wait(surv, "tx_drop", NNG_UNIT_MESSAGES, 1, true)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      survey_test.c:690: nuts_stat_wait(surv, "tx_nopipe", NNG_UNIT_MESSAGES, 0, false)### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    22261783   1 survey_test        REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    22265880   1 survey_test        CONDVAR        (0x5d025a75d0)               sync_condvar_wa
+    22265880   2 survey_test        RUNNING                                                      
+    22265880   3 survey_test        SIGWAITINFO                                 signal_waitinfo
+    22265880   4 survey_test        SIGWAITINFO                                 signal_waitinfo
+    22265880   5 survey_test        SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 22265880 tid 2: ran 145122 time(s), 288522 kernel call(s) (MSG_SENDV x144261, SYNC_CONDVAR_SIGNAL x72130, SIGNAL_ACTION x72130, MSG_RECEIVEV x1)
+    pid(s) 22261783: no thread ran during the trace
+FAIL  nng.sp.protocol.survey0.xrespond_test (exit None)
+    Test xrespond identity:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    22601750   1 xrespond_test      REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    22605848   1 xrespond_test      CONDVAR        (0x1599a3b570)               sync_condvar_wa
+    22605848   2 xrespond_test      REPLY          143370                       msg_sendv
+    22605848   3 xrespond_test      SIGWAITINFO                                 signal_waitinfo
+    22605848   4 xrespond_test      SIGWAITINFO                                 signal_waitinfo
+    22605848   5 xrespond_test      SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 22605848 tid 2: ran 142331 time(s), 282979 kernel call(s) (MSG_SENDV x141489, SYNC_CONDVAR_SIGNAL x70745, SIGNAL_ACTION x70745)
+    pid(s) 22601750: no thread ran during the trace
+FAIL  nng.sp.protocol.survey0.xsurvey_test (exit None)
+    Test xsurvey no peer stats:
+      xsurvey_test.c:396: nng_surveyor0_open_raw(&surv): expected success, got Hunky dory (0)... ok
+      xsurvey_test.c:397: nng_send(surv, "no peers", strlen("no peers") + 1, 0): expected success, got Hunky dory (0)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      xsurvey_test.c:398: nuts_stat_wait(surv, "tx_nopipe", NNG_UNIT_MESSAGES, 1, false)... ok
+      nuts.h:330: nng_stats_get(&stats): expected success, got Hunky dory (0)... ok
+      nuts.h:332: st != NULL... ok
+      nuts.h:334: st != NULL... ok
+      nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+      nuts.h:336: nng_stat_unit(st) == unit... ok
+      xsurvey_test.c:399: nuts_stat_wait(surv, "tx_drop", NNG_UNIT_MESSAGES, 0, false)... ok
+      xsurvey_test.c:400: nng_socket_close(surv): expected success, got Hunky dory (0)... ok
+      SUCCESS: All conditions have passed.
+      Durati### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    22941718   1 xsurvey_test       REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    22945816   1 xsurvey_test       CONDVAR        (0x5e12165560)               sync_condvar_wa
+    22945816   2 xsurvey_test       RUNNING                                                      
+    22945816   3 xsurvey_test       SIGWAITINFO                                 signal_waitinfo
+    22945816   4 xsurvey_test       SIGWAITINFO                                 signal_waitinfo
+    22945816   5 xsurvey_test       SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 22945816 tid 2: ran 138956 time(s), 276247 kernel call(s) (MSG_SENDV x138123, SYNC_CONDVAR_SIGNAL x69062, SIGNAL_ACTION x69062)
+    pid(s) 22941718: no thread ran during the trace
+FAIL  nng.sp.transport.socket.sockfd_test (exit None)
+    Test socket connect fail:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    23281687   1 sockfd_test        REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    23285784   1 sockfd_test        CONDVAR        (0x256362e5b0)               sync_condvar_wa
+    23285784   2 sockfd_test        RUNNING                                                      
+    23285784   3 sockfd_test        SIGWAITINFO                                 signal_waitinfo
+    23285784   4 sockfd_test        SIGWAITINFO                                 signal_waitinfo
+    23285784   5 sockfd_test        SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 23285784 tid 2: ran 85616 time(s), 170228 kernel call(s) (MSG_SENDV x85114, SIGNAL_ACTION x42556, SYNC_CONDVAR_SIGNAL x42555, MSG_RECEIVEV x2)
+    pid(s) 23281687: no thread ran during the trace
+FAIL  nng.sp.transport.inproc.inproc_test (exit None)
+    Test inproc conn refused:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    23621654   1 inproc_test        REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    23625752   1 inproc_test        CONDVAR        (0x275becf530)               sync_condvar_wa
+    23625752   2 inproc_test        RUNNING                                     msg_sendv
+    23625752   3 inproc_test        SIGWAITINFO                                 signal_waitinfo
+    23625752   4 inproc_test        SIGWAITINFO                                 signal_waitinfo
+    23625752   5 inproc_test        SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 23625752 tid 2: ran 144503 time(s), 287368 kernel call(s) (MSG_SENDV x143686, SIGNAL_ACTION x71841, SYNC_CONDVAR_SIGNAL x71840, MSG_RECEIVEV x1)
+    pid(s) 23621654: no thread ran during the trace
+FAIL  nng.sp.transport.ipc.ipc_test (exit None)
+    Test ipc path too long:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    23961622   1 ipc_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    23965720   1 ipc_test           CONDVAR        (0x2046338620)               sync_condvar_wa
+    23965720   2 ipc_test           RUNNING        143370                                        
+    23965720   3 ipc_test           SIGWAITINFO                                 signal_waitinfo
+    23965720   4 ipc_test           SIGWAITINFO                                 signal_waitinfo
+    23965720   5 ipc_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 23965720 tid 2: ran 114047 time(s), 226493 kernel call(s) (MSG_SENDV x113247, SYNC_CONDVAR_SIGNAL x56623, SIGNAL_ACTION x56623)
+    pid(s) 23961622: no thread ran during the trace
+FAIL  nng.sp.transport.tcp.tcp_test (exit None)
+    Test tcp conn refused:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    24301591   1 tcp_test           REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    24305688   1 tcp_test           CONDVAR        (0x34f2323690)               sync_condvar_wa
+    24305688   2 tcp_test           READY          143370                                        
+    24305688   3 tcp_test           SIGWAITINFO                                 signal_waitinfo
+    24305688   4 tcp_test           SIGWAITINFO                                 signal_waitinfo
+    24305688   5 tcp_test           SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 24305688 tid 2: ran 137555 time(s), 273409 kernel call(s) (MSG_SENDV x136705, SYNC_CONDVAR_SIGNAL x68352, SIGNAL_ACTION x68352)
+    pid(s) 24301591: no thread ran during the trace
+FAIL  nng.sp.transport.udp.udp_tran_test (exit None)
+    Test udp wild card connect fail:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    24641558   1 udp_tran_test      REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    24645656   1 udp_tran_test      CONDVAR        (0x52c51f8580)               sync_condvar_wa
+    24645656   2 udp_tran_test      RUNNING                                                      
+    24645656   3 udp_tran_test      SIGWAITINFO                                 signal_waitinfo
+    24645656   4 udp_tran_test      SIGWAITINFO                                 signal_waitinfo
+    24645656   5 udp_tran_test      SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 24645656 tid 2: ran 94240 time(s), 187032 kernel call(s) (MSG_SENDV x93516, SYNC_CONDVAR_SIGNAL x46758, SIGNAL_ACTION x46758)
+    pid(s) 24641558: no thread ran during the trace
+FAIL  nng.sp.transport.udp.udp_wire_test (exit None)
+    Test udp wire bad headers:
+      udp_wire_test.c:197: nng_pull0_open(s): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:198: nng_socket_set_ms(*s, NNG_OPT_RECVTIMEO, WIRE_TIMEOUT): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:161: nng_mtx_alloc(&events->mtx): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:162: nng_cv_alloc(&events->cv, events->mtx): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:163: nng_pipe_notify(s, NNG_PIPE_EV_ADD_POST, wire_event, events): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:165: nng_pipe_notify(s, NNG_PIPE_EV_REM_POST, wire_event, events): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:200: nng_listener_create(&l, *s, "udp4://127.0.0.1:0"): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:202: nng_listener_set_size(l, NNG_OPT_RECVMAXSZ, 64): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:203: nng_listener_set_size(l, NNG_OPT_UDP_MAX_PEERS, max_peers): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:204: nng_listener_start(l, 0): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:205: nng_listener_get_int(l, NNG_OPT_BOUND_PORT, &port): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:82: nng_udp_open(&p->udp, &p->addr): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:83: nng_udp_sockname(p->udp, &p->addr): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:84: nng_aio_alloc(&p->send, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:85: nng_aio_alloc(&p->recv, NULL, NULL): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:115: nng_aio_set_iov(p->recv, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:116: nng_aio_set_input(p->recv, 0, &p->from): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:128: rv == NNG_OK... ok
+      udp_wire_test.c:133: p->len == WIRE_HEADER... ok
+      udp_wire_test.c:134: from == NULL || nng_sockaddr_equal(&p->from, from)... ok
+      udp_wire_test.c:135: p->packet[0] == 1... ok
+      udp_wire_test.c:136: p->packet[1] == op... ok
+      udp_wire_test.c:137: wire_get16(p->packet + 4) == param... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:115: nng_aio_set_iov(p->recv, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:116: nng_aio_set_input(p->recv, 0, &p->from): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:128: rv == NNG_OK... ok
+      udp_wire_test.c:133: p->len == WIRE_HEADER... ok
+      udp_wire_test.c:134: from == NULL || nng_sockaddr_equal(&p->from, from)... ok
+      udp_wire_test.c:135: p->packet[0] == 1... ok
+      udp_wire_test.c:136: p->packet[1] == op... ok
+      udp_wire_test.c:137: wire_get16(p->packet + 4) == param... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:115: nng_aio_set_iov(p->recv, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:116: nng_aio_set_input(p->recv, 0, &p->from): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:128: rv == NNG_OK... ok
+      udp_wire_test.c:133: p->len == WIRE_HEADER... ok
+      udp_wire_test.c:134: from == NULL || nng_sockaddr_equal(&p->from, from)... ok
+      udp_wire_test.c:135: p->packet[0] == 1... ok
+      udp_wire_test.c:136: p->packet[1] == op... ok
+      udp_wire_test.c:137: wire_get16(p->packet + 4) == param... ok
+      udp_wire_test.c:216: wire_get16(p->packet + 2) == NUTS_PROTO(5, 1)... ok
+      udp_wire_test.c:217: wire_get16(p->packet + 6) == 1... ok
+      udp_wire_test.c:187: events->added == added... ok
+      udp_wire_test.c:188: events->removed == removed... ok
+      udp_wire_test.c:102: nng_aio_set_iov(p->send, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:103: nng_aio_set_input(p->send, 0, &dest): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:106: nng_aio_result(p->send): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:115: nng_aio_set_iov(p->recv, 1, &iov): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:116: nng_aio_set_input(p->recv, 0, &p->from): expected success, got Hunky dory (0)... ok
+      udp_wire_test.c:128: rv == NNG_OK... ok
+      udp_wire_test.c:133: p->len == WIRE_HEADER... ok
+      udp_wire_test.c:134: from == NULL || nng_sockaddr_equal(&p->from, from)... ok
+      udp_wire_test.c:135: p->packet[0] == 1... ok
+      udp_wire_test.c:136: p->packet[1] == op... ok
+      udp_wire_test.c:137: wire_get16(p->packet + 4) == param... ok
+      udp_wire_test.c:216: wire_get16(p->packet + 2) == NUTS_PROTO(5, 1)... ok
+      udp_wire_test.c:217: wire_get16(p->packet + 6) == 1... ok
+      udp_wire_test.c:187: events->added == added... ok
+      udp_wire_test.c:188: events->removed == removed... ok
+      udp_wire_test.c:249: nng_socket_close(s): expected success, got Hunky dory (0)... ok
+      SUCCESS: All con### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    25034774   1 udp_wire_test      REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    25038872   1 udp_wire_test      CONDVAR        (0x5a7a672560)               sync_condvar_wa
+    25038872   2 udp_wire_test      RUNNING                                     msg_sendv
+    25038872   3 udp_wire_test      SIGWAITINFO                                 signal_waitinfo
+    25038872   4 udp_wire_test      SIGWAITINFO                                 signal_waitinfo
+    25038872   5 udp_wire_test      SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 25038872 tid 2: ran 101427 time(s), 201159 kernel call(s) (MSG_SENDV x100573, SYNC_CONDVAR_SIGNAL x50285, SIGNAL_ACTION x50285, MSG_SEND_PULSE x8)
+    pid(s) 25034774: no thread ran during the trace
+FAIL  nng.sp.transport.ws.ws_test (exit None)
+    Test ws dialer bind:
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    25374742   1 ws_test            REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    25378840   1 ws_test            CONDVAR        (0x57e7ad4680)               sync_condvar_wa
+    25378840   2 ws_test            REPLY                                       msg_sendv
+    25378840   3 ws_test            SIGWAITINFO                                 signal_waitinfo
+    25378840   4 ws_test            SIGWAITINFO                                 signal_waitinfo
+    25378840   5 ws_test            SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 25378840 tid 2: ran 140181 time(s), 278637 kernel call(s) (MSG_SENDV x139320, SYNC_CONDVAR_SIGNAL x69658, SIGNAL_ACTION x69658, MSG_RECEIVEV x1)
+    pid(s) 25374742: no thread ran during the trace
+FAIL  nng.supplemental.http_client_test (exit None)
+    Test http client request response:
+      http_client_test.c:169: nng_stream_listener_alloc(&srv->listener, "tcp://127.0.0.1:0"): expected success, got Hunky dory (0)... ok
+      http_client_test.c:171: nng_stream_listener_listen(srv->listener): expected success, got Hunky dory (0)... ok
+      http_client_test.c:172: nng_stream_listener_get_int( srv->listener, NNG_OPT_BOUND_PORT, &port): expected success, got Hunky dory (0)... ok
+      http_client_test.c:175: nng_thread_create(&srv->thread, scripted_server_main, srv): expected success, got Hunky dory (0)... ok
+      http_client_test.c:196: nng_url_parse(urlp, urlstr): expected success, got Hunky dory (0)... ok
+      http_client_test.c:197: nng_aio_alloc(aiop, NULL, NULL): expected success, got Hunky dory (0)... ok
+      http_client_test.c:199: nng_http_client_alloc(clip, *urlp): expected success, got Hunky dory (0)... ok
+      http_client_test.c:202: nng_aio_result(*aiop): expected success, got Hunky dory (0)... ok
+      http_client_test.c:204: *connp != NULL... ok
+      http_client_test.c:245: nng_http_set_uri(conn, "/get", NULL): e### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    25718806   1 http_client_test   REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    25722904   1 http_client_test   CONDVAR        (0x5feba215d0)               sync_condvar_wa
+    25722904   2 http_client_test   RUNNING                                                      
+    25722904   3 http_client_test   SIGWAITINFO                                 signal_waitinfo
+    25722904   4 http_client_test   SIGWAITINFO                                 signal_waitinfo
+    25722904   5 http_client_test   SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 25722904 tid 2: ran 124638 time(s), 247649 kernel call(s) (MSG_SENDV x123825, SYNC_CONDVAR_SIGNAL x61912, SIGNAL_ACTION x61912)
+    pid(s) 25718806: no thread ran during the trace
+FAIL  nng.supplemental.http_server_test (exit None)
+    Test server basic:
+      http_server_test.c:335: nng_http_handler_alloc_static( &h, "/home.html", doc1, strlen(doc1), "text/html"): expected success, got Hunky dory (0)... ok
+      http_server_test.c:271: nng_url_parse(&st->url, "http://127.0.0.1:0"): expected success, got Hunky dory (0)... ok
+      http_server_test.c:272: nng_aio_alloc(&st->aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      http_server_test.c:273: nng_http_server_hold(&st->s, st->url): expected success, got Hunky dory (0)... ok
+      http_server_test.c:276: nng_http_server_add_handler(st->s, h): expected success, got Hunky dory (0)... ok
+      http_server_test.c:278: nng_http_server_start(st->s): expected success, got Hunky dory (0)... ok
+      http_server_test.c:279: nng_http_server_get_port(st->s, &port): expected success, got Hunky dory (0)... ok
+      http_server_test.c:283: nng_http_client_alloc(&st->cli, st->url): expected success, got Hunky dory (0)... ok
+      http_server_test.c:287: nng_aio_result(st->aio): expected success, got Hunky dory (0)... ok
+      http_server_test.c:289: st->conn != NULL... ok
+      http_server_test.c:290: nng_http_set_uri(st->conn, "/", NULL): expected success, got Hunky dory (0)... ok
+      http_server_test.c:340: nng_http_set_uri(st.conn, "/home.html", NULL): expected success, got Hunky dory (0)... ok
+      http_server_test.c:344: nng_aio_result(st.aio): expected success, got Hunky dory (0)... ok
+      http_server_test.c:348: nng_aio_result(st.aio): expected success, got Hunky dory (0)... ok
+      http_server_test.c:350: nng_http_get_status(st.conn) == (NNG_HTTP_STATUS_OK)... ok
+      http_server_test.c:353: ptr != NULL... ok
+      http_server_test.c:354: atoi(ptr) == (int) strlen(doc1)... ok
+      http_server_test.c:358: nng_aio_set_iov(st.aio, 1, &iov): expected success, got Hunky dory (0)... ok
+      http_server_test.c:361: nng_aio_result(st.aio): expected success, got Hunky dory (0)... ok
+      http_server_test.c:362: nng_aio_count(st.aio) == strlen(doc1)... ok
+      http_server_test.c:363: memcmp(chunk, doc1, strlen(doc1)) == 0... ok
+      SUCCESS: All conditions have passed.
+      Duration: 0.006609### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    26058774   1 http_server_test   REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    26062872   1 http_server_test   CONDVAR        (0x144ac966f0)               sync_condvar_wa
+    26062872   2 http_server_test   READY                                                        
+    26062872   3 http_server_test   SIGWAITINFO                                 signal_waitinfo
+    26062872   4 http_server_test   SIGWAITINFO                                 signal_waitinfo
+    26062872   5 http_server_test   SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 26062872 tid 2: ran 68655 time(s), 135792 kernel call(s) (MSG_SENDV x67896, SYNC_CONDVAR_SIGNAL x33948, SIGNAL_ACTION x33948)
+    pid(s) 26058774: no thread ran during the trace
+PASS  nng.supplemental.sha1_test (exit 0)
+PASS  nng.supplemental.base64_test (exit 0)
+PASS  nng.supplemental.wssfile_test (exit 0)
+FAIL  nng.supplemental.websocket_test (exit None)
+    Test websocket stream wildcard:
+      websocket_test.c:39: nng_stream_listener_alloc(&l, "ws://127.0.0.1:0/test"): expected success, got Hunky dory (0)... ok
+      websocket_test.c:41: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+      websocket_test.c:44: nng_stream_listener_get_int(l, NNG_OPT_BOUND_PORT, &port): expected success, got Hunky dory (0)... ok
+      websocket_test.c:45: port != 0... ok
+      websocket_test.c:49: nng_stream_dialer_alloc(&d, uri): expected success, got Hunky dory (0)... ok
+      websocket_test.c:50: nng_aio_alloc(&daio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      websocket_test.c:51: nng_aio_alloc(&laio, NULL, NULL): expected success, got Hunky dory (0)... ok
+      websocket_test.c:52: nng_aio_alloc(&aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+      websocket_test.c:53: nng_aio_alloc(&aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+      websocket_test.c:65: nng_aio_result(laio): expected success, got Hunky dory (0)... ok
+      websocket_test.c:66: nng_aio_result(daio): expected success, got Hunky dory (0)... ok
+      websocket_test.c:69: c1 != NULL... ok
+      websocket_test.c:70: c2 != NULL... ok
+      websocket_test.c:74: sap2->s_family == NNG_AF_INET... ok
+      websocket_test.c:75: nuts_be32(sap2->s_in.sa_addr) == 0x7F000001u... ok
+      websocket_test.c:76: sap2->s_in.sa_port != 0... ok
+      websocket_test.c:80: sap1->s_family == sap2->s_family... ok
+      websocket_test.c:81: sap1->s_in.sa_addr == sap2->s_in.sa_addr... ok
+      websocket_test.c:82: sap1->s_in.sa_port == sap2->s_in.sa_port... ok
+      websocket_test.c:92: nng_aio_set_iov(aio1, 1, &iov): expected success, got Hunky dory (0)... ok
+      websocket_test.c:96: nng_aio_set_iov(aio2, 1, &iov): expected success, got Hunky dory (0)... ok
+      websocket_test.c:103: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+      websocket_test.c:104: nng_aio_count(aio1) == 5... ok
+      websocket_test.c:106: nng_aio_result(aio2): expected success, got Hunky dory (0)... ok
+      websocket_test.c:107: nng_aio_count(aio2) == 5... ok
+      websocket_test.c:108: memcmp(buf1, buf2, 5) == 0### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    26583068   1 websocket_test     REPLY          1                            msg_sendv
+         pid tid name               STATE          Blocked                      kernel call      
+    26587166   1 websocket_test     CONDVAR        (0x18be349540)               sync_condvar_wa
+    26587166   2 websocket_test     REPLY                                                        
+    26587166   3 websocket_test     SIGWAITINFO                                 signal_waitinfo
+    26587166   4 websocket_test     SIGWAITINFO                                 signal_waitinfo
+    26587166   5 websocket_test     SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 26587166 tid 2: ran 141478 time(s), 281267 kernel call(s) (MSG_SENDV x140636, SIGNAL_ACTION x70316, SYNC_CONDVAR_SIGNAL x70315)
+    pid(s) 26583068: no thread ran during the trace
+FAIL  nng.inproc_lat (exit None)
+    ### qnx-porter hang snapshot, 22 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    26947606   1 inproc_lat         CONDVAR        (0x56b3cc9450)               sync_condvar_wa
+    26947606   2 inproc_lat         READY                                                        
+    26947606   3 inproc_lat         SIGWAITINFO                                 signal_waitinfo
+    26947606   4 inproc_lat         SIGWAITINFO                                 signal_waitinfo
+    26947606   5 inproc_lat         SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 30 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 26947606 tid 2: ran 111807 time(s), 221980 kernel call(s) (MSG_SENDV x110988, SYNC_CONDVAR_SIGNAL x55496, SIGNAL_ACTION x55496)
+FAIL  nng.inproc_thr (exit None)
+    ### qnx-porter hang snapshot, 22 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    27267094   1 inproc_thr         CONDVAR        (0x2d87d18450)               sync_condvar_wa
+    27267094   2 inproc_thr         RUNNING                                                      
+    27267094   3 inproc_thr         SIGWAITINFO                                 signal_waitinfo
+    27267094   4 inproc_thr         SIGWAITINFO                                 signal_waitinfo
+    27267094   5 inproc_thr         SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 30 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 27267094 tid 2: ran 119115 time(s), 236424 kernel call(s) (MSG_SENDV x118212, SYNC_CONDVAR_SIGNAL x59106, SIGNAL_ACTION x59106)
+FAIL  nng.pubdrop (exit None)
+    ### qnx-porter hang snapshot, 52 s after the start: pidin, then tracelogger -s 2
+         pid tid name               STATE          Blocked                      kernel call      
+    27586582   1 pubdrop            CONDVAR        (0x2df8871450)               sync_condvar_wa
+    27586582   2 pubdrop            RUNNING        143370                                        
+    27586582   3 pubdrop            SIGWAITINFO                                 signal_waitinfo
+    27586582   4 pubdrop            SIGWAITINFO                                 signal_waitinfo
+    27586582   5 pubdrop            SIGWAITINFO                                 signal_waitinfo
+    
+    killed on the target after 60 s
+    qnx-porter hang snapshot: kernel trace, per thread (traceprinter):
+    pid 27586582 tid 2: ran 113250 time(s), 224835 kernel call(s) (MSG_SENDV x112409, SYNC_CONDVAR_SIGNAL x56205, SIGNAL_ACTION x56205, MSG_SEND_PULSE x8)
+FAIL  nng.cplusplus_pair (exit None)
+    killed on the target after 15 s
+
+3/64 tests passed on the QNX target
