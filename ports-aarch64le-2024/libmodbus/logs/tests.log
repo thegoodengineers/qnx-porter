@@ -1,0 +1,35 @@
+$ make -k -C /home/chirag/qnx-porter/ports-aarch64le/libmodbus/work/build check LOG_COMPILER=/home/chirag/qnx-porter/ports-aarch64le/libmodbus/work/qnx-run SH_LOG_COMPILER=/home/chirag/qnx-porter/ports-aarch64le/libmodbus/work/qnx-run
+make: Entering directory '/home/chirag/qnx-porter/ports-aarch64le/libmodbus/work/build'
+Making check in src
+make[1]: Nothing to be done for 'check'.
+Making check in tests
+make  check-TESTS
+FAIL: ./unit-tests.sh
+============================================================================
+Testsuite summary for libmodbus 3.1.11
+============================================================================
+# TOTAL: 1
+# PASS:  0
+# SKIP:  0
+# XFAIL: 0
+# FAIL:  1
+# XPASS: 0
+# ERROR: 0
+============================================================================
+See tests/test-suite.log
+Please report to https://github.com/stephane/libmodbus/issues
+============================================================================
+make: Leaving directory '/home/chirag/qnx-porter/ports-aarch64le/libmodbus/work/build'
+make[3]: *** [Makefile:792: test-suite.log] Error 1
+make[2]: *** [Makefile:900: check-TESTS] Error 2
+make[1]: *** [Makefile:972: check-am] Error 2
+make[1]: Target 'check' not remade because of errors.
+make: *** [Makefile:499: check-recursive] Error 1
+make: Target 'check' not remade because of errors.
+[exit 2]
+
+--- tests/unit-tests.sh.log
+Starting server
+Starting client
+/home/chirag/qnx-porter/ports-aarch64le/libmodbus/work/src/tests/./unit-tests.sh[17]: killall: cannot execute - No such file or directory
+FAIL ./unit-tests.sh (exit status: 255)

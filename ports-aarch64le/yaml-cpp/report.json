@@ -1,20 +1,20 @@
 {
   "library": "yaml-cpp",
   "url": "https://github.com/jbeder/yaml-cpp.git",
-  "version": "0.8.0",
-  "commit": "f7320141120f720aecc4c32be25586e7da9eb978",
+  "version": "yaml-cpp-0.9.0",
+  "commit": "56e3bb550c91fd7005566f19c079cb7a503223cf",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
   "host": "Linux 6.18.33.2-microsoft-standard-WSL2",
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
-  "rounds": 3,
+  "rounds": 2,
   "tests_passed": 0,
   "tests_total": 1,
   "tests_ran": true,
-  "patches_kept": 2,
-  "patches_by_rule": 2,
+  "patches_kept": 1,
+  "patches_by_rule": 1,
   "patches_by_model": 0,
   "patches": [
     {
@@ -28,24 +28,13 @@
       ],
       "path": "patches/0001-signed-char.patch",
       "kept": true
-    },
-    {
-      "number": 2,
-      "rule": "link-libregex",
-      "source": "rule",
-      "reason": "`regfree` (POSIX <regex.h>) is in QNX's libregex, not in libc as on Linux: link with -lregex.",
-      "error": "/home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src/test/gtest-1.11.0/googletest/src/gtest-port.cc:717:(.text+0xafb0): undefined reference to `regfree'",
-      "files": [
-        "qnx-toolchain.cmake"
-      ],
-      "path": "patches/0002-link-libregex.patch",
-      "kept": true
     }
   ],
   "blocked_on": [],
-  "minutes": 20.7,
+  "minutes": 37.3,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-13T06:39:28+00:00"
+  "finished": "2026-11-14T02:25:08+00:00"
 }

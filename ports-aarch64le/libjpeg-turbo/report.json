@@ -1,8 +1,8 @@
 {
   "library": "libjpeg-turbo",
   "url": "https://github.com/libjpeg-turbo/libjpeg-turbo.git",
-  "version": "3.0.4",
-  "commit": "f29eda648547b36aa594c4116c7764a6c8a079b9",
+  "version": "3.2.1",
+  "commit": "7b4993786d856cbccabfc0ed2f923ba000e326cc",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -10,17 +10,18 @@
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
   "rounds": 1,
-  "tests_passed": 574,
-  "tests_total": 574,
+  "tests_passed": 646,
+  "tests_total": 646,
   "tests_ran": true,
   "patches_kept": 0,
   "patches_by_rule": 0,
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 41.6,
+  "minutes": 71.2,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-13T10:16:19+00:00"
+  "finished": "2026-11-14T03:58:43+00:00"
 }

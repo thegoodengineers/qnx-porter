@@ -3,7 +3,7 @@ FAIL  pcre2_test (exit 1)
     (run with ksh: the target has no sh)
     
     PCRE2 C library tests using test data from /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/testdata
-    PCRE2 version 10.44 2024-06-07 (8-bit)
+    PCRE2 version 10.49 2026-09-28 (8-bit)
     
     ---- Testing 8-bit library ----
     
@@ -26,23 +26,69 @@ FAIL  pcre2_test (exit 1)
     Test 7: DFA matching with UTF-8 and Unicode property support
       OK
     Test 8: Internal offsets and code size tests
-    ** pcre2test failed - check testtry
-    /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/RunTest[911]: locale: cannot execute - No such file or directory
-    /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/RunTest[911]: locale: cannot execute - No such file or directory
-    /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/RunTest[911]: locale: cannot execute - No such file or directory
-    /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/RunTest[911]: locale: cannot execute - No such file or directory
+    ** pcre2test failed - check testoutput8/testoutput8-8-2
+    Test 9: Specials for the basic 8-bit library
+      OK
+    Test 10: Specials for the 8-bit library with UTF-8 and UCP support
+      OK
+    Test 11: Specials for the basic 16-bit and 32-bit libraries
+      Skipped when running 8-bit tests
+    Test 12: Specials for the 16-bit and 32-bit libraries UTF and UCP support
+      Skipped when running 8-bit tests
+    Test 13: DFA specials for the basic 16-bit and 32-bit libraries
+      Skipped when running 8-bit tests
+    Test 14: DFA specials for UTF and UCP support
+      OK
+    Test 15: Non-JIT limits and other non-JIT tests
+      OK
+    Test 16: JIT-specific features when JIT is not available
+      OK
+    Test 17: JIT-specific features when JIT is available
+      Skipped because JIT is not available or nojit was specified
+    Test 18: Tests of the POSIX interface, excluding UTF/UCP
+      OK
+    Test 19: Tests of the POSIX interface with UTF/UCP
+      OK
+    Test 20: Serialization and code copy tests
+      OK
+    Test 21: \C tests without UTF (supported for DFA matching)
+      OK
+      OK with DFA
+    Test 22: \C tests with UTF (not supported for DFA matching)
+      OK
+    Test 23: \C disabled test
+      Skipped because \C is not disabled
+    Test 24: Non-UTF pattern conversion tests
+      OK
+    Test 25: UTF pattern conversion tests
+      OK
+    Test 26: Unicode property tests (compatible with Perl >= 5.38)
+      OK
+    Test 27: Auto-generated unicode property tests
+      OK
+    Test 28: EBCDIC-specific tests
+      Skipped when not targetting EBCDIC
+    Test 29: EBCDIC-specific tests (for NL=0x25)
+      Skipped when not targetting EBCDIC
+    
+    ** Tests failed. See output above for details.
+    /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/RunTest[1022]: locale: cannot execute - No such file or directory
+    /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/RunTest[1022]: locale: cannot execute - No such file or directory
+    /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/RunTest[1022]: locale: cannot execute - No such file or directory
+    /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/build/pcre2_test.sh: /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/RunTest[1022]: locale: cannot execute - No such file or directory
     Memory fault (core dumped)
 FAIL  pcre2_grep_test (exit 1)
     (run with ksh: the target has no sh)
-    Testing pcre2grep version 10.44 2024-06-07
+    Testing pcre2grep version 10.49 2026-09-28
     Testing pcre2grep main features
     Testing pcre2grep UTF-8 features
     Testing pcre2grep newline settings
     Testing pcre2grep newline settings with UTF-8 features
     Testing pcre2grep script callouts
-    --- /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/testdata/grepoutputC	2026-11-13 06:12:22.000000000 +0000
-    +++ testtrygrep	2026-11-12 17:32:36.000000000 +0000
-    @@ -1,27 +1,3 @@
+    --- /home/chirag/qnx-porter/ports-aarch64le/pcre2/work/src/testdata/grepoutputC	2026-11-14 04:55:13.000000000 +0000
+    +++ testtrygrep	2026-11-14 04:19:25.000000000 +0000
+    @@ -1,31 +1,7 @@
+     --- Test 1 ---
     -Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
     -The quick brown
     -Arg1: [T] [his] [s] Arg2: |T| () () (0)
@@ -55,6 +101,9 @@ FAIL  pcre2_grep_test (exit 1)
     -The caterpillar sat on the mat
     -Arg1: [T] [he ] [ ] Arg2: |T| () () (0)
     -The snowcat is not an animal
+    -RC=0
+    +RC=1
+     --- Test 2 ---
     -Arg1: [qu] [qu]
     -The quick brown
     -Arg1: [ t] [ t]
@@ -67,13 +116,15 @@ FAIL  pcre2_grep_test (exit 1)
     -The caterpillar sat on the mat
     -Arg1: [sn] [sn]
     -The snowcat is not an animal
+    -RC=0
+    +RC=1
+     --- Test 3 ---
      0:T
      The quick brown
-     0:T
-    @@ -34,24 +10,6 @@
-     The caterpillar sat on the mat
-     0:T
+    @@ -41,25 +17,7 @@
      The snowcat is not an animal
+     RC=0
+     --- Test 4 ---
     -0:T
     -
     -The quick brown
@@ -92,7 +143,9 @@ FAIL  pcre2_grep_test (exit 1)
     -0:T
     -
     -The snowcat is not an animal
-     T
+    -RC=0
+    +RC=1
+     --- Test 5 ---
      T
      T
 PASS  pcre2posix_test (exit 0)

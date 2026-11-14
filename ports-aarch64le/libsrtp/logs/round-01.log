@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -112,20 +112,20 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/build -j 2 
 [ 30%] Building C object CMakeFiles/srtp2.dir/crypto/replay/rdbx.c.o
 [ 31%] Linking C static library libsrtp2.a
 [ 31%] Built target srtp2
+[ 33%] Building C object CMakeFiles/rtp_decoder.dir/test/rtp_decoder.c.o
 [ 35%] Building C object CMakeFiles/aes_calc.dir/crypto/test/aes_calc.c.o
-[ 35%] Building C object CMakeFiles/rtp_decoder.dir/test/rtp_decoder.c.o
 [ 36%] Building C object CMakeFiles/aes_calc.dir/test/getopt_s.c.o
 [ 38%] Building C object CMakeFiles/aes_calc.dir/test/util.c.o
-[ 40%] Linking C executable aes_calc
-[ 40%] Built target aes_calc
-[ 41%] Building C object CMakeFiles/rtp_decoder.dir/test/getopt_s.c.o
-[ 43%] Building C object CMakeFiles/sha1_driver.dir/crypto/test/sha1_driver.c.o
-[ 45%] Building C object CMakeFiles/rtp_decoder.dir/test/util.c.o
-[ 46%] Building C object CMakeFiles/sha1_driver.dir/test/util.c.o
-[ 48%] Linking C executable rtp_decoder
-[ 50%] Linking C executable sha1_driver
-[ 50%] Built target sha1_driver
-[ 51%] Building C object CMakeFiles/datatypes_driver.dir/crypto/test/datatypes_driver.c.o
+[ 40%] Building C object CMakeFiles/rtp_decoder.dir/test/getopt_s.c.o
+[ 41%] Linking C executable aes_calc
+[ 43%] Building C object CMakeFiles/rtp_decoder.dir/test/util.c.o
+[ 43%] Built target aes_calc
+[ 45%] Building C object CMakeFiles/sha1_driver.dir/crypto/test/sha1_driver.c.o
+[ 46%] Linking C executable rtp_decoder
+[ 48%] Building C object CMakeFiles/sha1_driver.dir/test/util.c.o
+[ 50%] Building C object CMakeFiles/datatypes_driver.dir/crypto/test/datatypes_driver.c.o
+[ 51%] Linking C executable sha1_driver
+[ 51%] Built target sha1_driver
 [ 53%] Building C object CMakeFiles/cipher_driver.dir/crypto/test/cipher_driver.c.o
 [ 55%] Building C object CMakeFiles/datatypes_driver.dir/test/util.c.o
 [ 56%] Linking C executable datatypes_driver
@@ -133,20 +133,20 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/build -j 2 
 [ 58%] Building C object CMakeFiles/cipher_driver.dir/test/getopt_s.c.o
 [ 60%] Building C object CMakeFiles/kernel_driver.dir/crypto/test/kernel_driver.c.o
 [ 61%] Linking C executable cipher_driver
+[ 61%] Built target cipher_driver
 [ 63%] Building C object CMakeFiles/kernel_driver.dir/test/getopt_s.c.o
-[ 63%] Built target cipher_driver
 [ 65%] Building C object CMakeFiles/rdbx_driver.dir/test/rdbx_driver.c.o
 [ 66%] Linking C executable kernel_driver
 [ 66%] Built target kernel_driver
 [ 68%] Building C object CMakeFiles/replay_driver.dir/test/replay_driver.c.o
 [ 70%] Building C object CMakeFiles/rdbx_driver.dir/test/getopt_s.c.o
-[ 71%] Building C object CMakeFiles/replay_driver.dir/test/ut_sim.c.o
-[ 73%] Building C object CMakeFiles/rdbx_driver.dir/test/ut_sim.c.o
-[ 75%] Linking C executable replay_driver
-[ 76%] Linking C executable rdbx_driver
-[ 76%] Built target replay_driver
+[ 71%] Building C object CMakeFiles/rdbx_driver.dir/test/ut_sim.c.o
+[ 73%] Building C object CMakeFiles/replay_driver.dir/test/ut_sim.c.o
+[ 75%] Linking C executable rdbx_driver
+[ 76%] Linking C executable replay_driver
 [ 76%] Built target rdbx_driver
-[ 80%] Building C object CMakeFiles/roc_driver.dir/test/roc_driver.c.o
+[ 78%] Building C object CMakeFiles/roc_driver.dir/test/roc_driver.c.o
+[ 78%] Built target replay_driver
 [ 80%] Building C object CMakeFiles/srtp_driver.dir/test/srtp_driver.c.o
 [ 81%] Building C object CMakeFiles/roc_driver.dir/test/ut_sim.c.o
 [ 83%] Linking C executable roc_driver
@@ -158,11 +158,11 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libsrtp/work/build -j 2 
 [ 90%] Built target srtp_driver
 [ 91%] Building C object CMakeFiles/rtpw.dir/test/rtpw.c.o
 [ 93%] Building C object CMakeFiles/rtpw.dir/test/rtp.c.o
-[ 95%] Building C object CMakeFiles/rtpw.dir/test/util.c.o
-[ 96%] Building C object CMakeFiles/rtpw.dir/test/getopt_s.c.o
-[ 98%] Linking C executable test_srtp
+[ 95%] Linking C executable test_srtp
+[ 96%] Building C object CMakeFiles/rtpw.dir/test/util.c.o
+[ 96%] Built target test_srtp
+[ 98%] Building C object CMakeFiles/rtpw.dir/test/getopt_s.c.o
 [100%] Linking C executable rtpw
-[100%] Built target test_srtp
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx800/target/qnx/aarch64le/usr/lib/libpcap.a(pcap.o): in function `get_if_description':
 /builds/workspace/QNXOS_800/build_aarch64/lib/libpcap/build/nto-aarch64-le/../../dist/pcap.c:900:(.text+0xdc0): undefined reference to `socket'
 /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: /home/chirag/qnx800/target/qnx/aarch64le/usr/lib/libpcap.a(pcap.o): in function `pcap_lookupnet':

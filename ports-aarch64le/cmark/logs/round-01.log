@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmark/work/src -B /home/chirag/qnx-porter/ports-aarch64le/cmark/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/cmark/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/cmark/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmark/work/src -B /home/chirag/qnx-porter/ports-aarch64le/cmark/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/cmark/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/cmark/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/cmark/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
@@ -22,8 +22,8 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmark/work/src -B /home/chira
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/cmark/work/build
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/cmark/work/build -j 2 -- -k
-[  3%] Building C object src/CMakeFiles/cmark.dir/blocks.c.o
 [  7%] Building C object src/CMakeFiles/cmark.dir/buffer.c.o
+[  7%] Building C object src/CMakeFiles/cmark.dir/blocks.c.o
 [ 11%] Building C object src/CMakeFiles/cmark.dir/cmark.c.o
 [ 15%] Building C object src/CMakeFiles/cmark.dir/cmark_ctype.c.o
 [ 19%] Building C object src/CMakeFiles/cmark.dir/commonmark.c.o
@@ -47,8 +47,8 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/cmark/work/build -j 2 --
 [ 84%] Building CXX object api_test/CMakeFiles/api_test.dir/cplusplus.cpp.o
 [ 88%] Building C object api_test/CMakeFiles/api_test.dir/harness.c.o
 [ 92%] Linking C executable cmark
+[ 92%] Built target cmark_exe
 [ 96%] Building C object api_test/CMakeFiles/api_test.dir/main.c.o
-[ 96%] Built target cmark_exe
 [100%] Linking CXX executable api_test
 [100%] Built target api_test
 cc: warning - lang-c++ is deprecated

@@ -1,7 +1,7 @@
 Subject: [qnx-porter 0001] link-libm
 Source: deterministic rule
 Reason: `__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.
-Error: /home/chirag/qnx-porter/ports-aarch64le/jansson/work/src/src/value.c:926:(.text+0xa88): undefined reference to `__isinf'
+Error: /home/chirag/qnx-porter/ports-aarch64le/jansson/work/src/src/value.c:925:(.text+0xa78): undefined reference to `__isinf'
 ---
 --- a/qnx-toolchain.cmake
 +++ b/qnx-toolchain.cmake

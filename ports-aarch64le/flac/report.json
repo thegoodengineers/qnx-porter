@@ -1,8 +1,8 @@
 {
   "library": "flac",
   "url": "https://github.com/xiph/flac.git",
-  "version": "1.4.3",
-  "commit": "28e4f0528c76b296c561e922ba67d43751990599",
+  "version": "1.5.0",
+  "commit": "1507800de4b70e21be71f38caa0d9079d0bc6e45",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -31,9 +31,10 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 20.8,
+  "minutes": 22.9,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-13T10:37:10+00:00"
+  "finished": "2026-11-14T04:27:44+00:00"
 }

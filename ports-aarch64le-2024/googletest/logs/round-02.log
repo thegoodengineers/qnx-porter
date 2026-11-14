@@ -1,0 +1,222 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/googletest/work/src -B /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/googletest/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/googletest/work/qnx-run -Dgtest_build_tests=ON
+-- The C compiler identification is QCC 12.2.0
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/googletest/work/build -j 2 -- -k
+Consolidate compiler generated dependencies of target gtest_no_exception
+Consolidate compiler generated dependencies of target gtest
+[  2%] Built target gtest_no_exception
+[  3%] Built target gtest
+Consolidate compiler generated dependencies of target gtest_main_no_rtti
+Consolidate compiler generated dependencies of target gtest_main_no_exception
+[  6%] Built target gtest_main_no_exception
+[  9%] Built target gtest_main_no_rtti
+Consolidate compiler generated dependencies of target gtest-death-test_ex_nocatch_test
+[ 10%] Linking CXX executable gtest-death-test_ex_nocatch_test
+Consolidate compiler generated dependencies of target gtest-death-test_ex_catch_test
+[ 11%] Linking CXX executable gtest-death-test_ex_catch_test
+[ 13%] Built target gtest-death-test_ex_catch_test
+[ 13%] Built target gtest-death-test_ex_nocatch_test
+Consolidate compiler generated dependencies of target gtest_no_rtti_unittest
+Consolidate compiler generated dependencies of target gtest_dll
+[ 14%] Linking CXX executable gtest_no_rtti_unittest
+[ 15%] Linking CXX shared library ../lib/libgtest_dll.so
+[ 17%] Built target gtest_dll
+Consolidate compiler generated dependencies of target googletest-break-on-failure-unittest_
+[ 18%] Linking CXX executable googletest-break-on-failure-unittest_
+[ 19%] Built target googletest-break-on-failure-unittest_
+Consolidate compiler generated dependencies of target googletest-catch-exceptions-no-ex-test_
+[ 20%] Linking CXX executable googletest-catch-exceptions-no-ex-test_
+[ 21%] Built target googletest-catch-exceptions-no-ex-test_
+Consolidate compiler generated dependencies of target googletest-color-test_
+[ 21%] Linking CXX executable googletest-color-test_
+[ 22%] Built target gtest_no_rtti_unittest
+Consolidate compiler generated dependencies of target googletest-env-var-test_
+[ 23%] Linking CXX executable googletest-env-var-test_
+[ 24%] Built target googletest-color-test_
+[ 25%] Built target googletest-env-var-test_
+Consolidate compiler generated dependencies of target googletest-filter-unittest_
+Consolidate compiler generated dependencies of target googletest-list-tests-unittest_
+[ 26%] Linking CXX executable googletest-filter-unittest_
+[ 27%] Linking CXX executable googletest-list-tests-unittest_
+[ 28%] Built target googletest-filter-unittest_
+Consolidate compiler generated dependencies of target googletest-output-test_
+[ 29%] Linking CXX executable googletest-output-test_
+[ 30%] Built target googletest-list-tests-unittest_
+Consolidate compiler generated dependencies of target googletest-shuffle-test_
+[ 31%] Linking CXX executable googletest-shuffle-test_
+[ 32%] Built target googletest-shuffle-test_
+Consolidate compiler generated dependencies of target googletest-throw-on-failure-test_
+[ 33%] Linking CXX executable googletest-throw-on-failure-test_
+[ 34%] Built target googletest-output-test_
+Consolidate compiler generated dependencies of target googletest-uninitialized-test_
+[ 34%] Linking CXX executable googletest-uninitialized-test_
+[ 35%] Built target googletest-throw-on-failure-test_
+Consolidate compiler generated dependencies of target gtest_list_output_unittest_
+[ 35%] Linking CXX executable gtest_list_output_unittest_
+[ 36%] Built target googletest-uninitialized-test_
+Consolidate compiler generated dependencies of target gtest_xml_output_unittest_
+[ 37%] Linking CXX executable gtest_xml_output_unittest_
+[ 38%] Built target gtest_list_output_unittest_
+Consolidate compiler generated dependencies of target gmock
+[ 39%] Built target gmock
+Consolidate compiler generated dependencies of target gtest_main
+[ 41%] Built target gtest_main
+Consolidate compiler generated dependencies of target gtest_environment_test
+[ 42%] Linking CXX executable gtest_environment_test
+[ 43%] Built target gtest_xml_output_unittest_
+Consolidate compiler generated dependencies of target googletest-filepath-test
+[ 44%] Linking CXX executable googletest-filepath-test
+[ 45%] Built target gtest_environment_test
+Consolidate compiler generated dependencies of target googletest-listener-test
+[ 46%] Linking CXX executable googletest-listener-test
+[ 47%] Built target googletest-filepath-test
+Consolidate compiler generated dependencies of target gtest_main_unittest
+[ 48%] Linking CXX executable gtest_main_unittest
+[ 48%] Built target googletest-listener-test
+Consolidate compiler generated dependencies of target googletest-message-test
+[ 49%] Linking CXX executable googletest-message-test
+[ 50%] Built target gtest_main_unittest
+Consolidate compiler generated dependencies of target gtest_no_test_unittest
+[ 51%] Linking CXX executable gtest_no_test_unittest
+[ 52%] Built target googletest-message-test
+Consolidate compiler generated dependencies of target googletest-options-test
+[ 53%] Linking CXX executable googletest-options-test
+[ 54%] Built target gtest_no_test_unittest
+Consolidate compiler generated dependencies of target googletest-param-test-test
+[ 55%] Linking CXX executable googletest-param-test-test
+[ 56%] Built target googletest-options-test
+Consolidate compiler generated dependencies of target googletest-port-test
+[ 57%] Linking CXX executable googletest-port-test
+[ 57%] Built target googletest-port-test
+Consolidate compiler generated dependencies of target gtest_pred_impl_unittest
+[ 58%] Linking CXX executable gtest_pred_impl_unittest
+[ 60%] Built target googletest-param-test-test
+Consolidate compiler generated dependencies of target gtest_premature_exit_test
+[ 61%] Linking CXX executable gtest_premature_exit_test
+[ 62%] Built target gtest_premature_exit_test
+[ 63%] Built target gtest_pred_impl_unittest
+Consolidate compiler generated dependencies of target googletest-printers-test
+Consolidate compiler generated dependencies of target gtest_prod_test
+[ 64%] Linking CXX executable googletest-printers-test
+[ 65%] Linking CXX executable gtest_prod_test
+[ 66%] Built target gtest_prod_test
+Consolidate compiler generated dependencies of target gtest_repeat_test
+[ 67%] Linking CXX executable gtest_repeat_test
+[ 68%] Built target gtest_repeat_test
+Consolidate compiler generated dependencies of target gtest_sole_header_test
+[ 69%] Built target googletest-printers-test
+[ 70%] Linking CXX executable gtest_sole_header_test
+Consolidate compiler generated dependencies of target gtest_stress_test
+[ 70%] Linking CXX executable gtest_stress_test
+[ 71%] Built target gtest_sole_header_test
+Consolidate compiler generated dependencies of target googletest-test-part-test
+[ 72%] Linking CXX executable googletest-test-part-test
+[ 73%] Built target gtest_stress_test
+Consolidate compiler generated dependencies of target gtest_throw_on_failure_ex_test
+[ 74%] Linking CXX executable gtest_throw_on_failure_ex_test
+[ 75%] Built target googletest-test-part-test
+Consolidate compiler generated dependencies of target gtest-typed-test_test
+[ 76%] Linking CXX executable gtest-typed-test_test
+[ 77%] Built target gtest_throw_on_failure_ex_test
+Consolidate compiler generated dependencies of target gtest_unittest
+[ 78%] Linking CXX executable gtest_unittest
+[ 80%] Built target gtest-typed-test_test
+Consolidate compiler generated dependencies of target gtest-unittest-api_test
+[ 80%] Linking CXX executable gtest-unittest-api_test
+[ 81%] Built target gtest-unittest-api_test
+Consolidate compiler generated dependencies of target gtest_skip_in_environment_setup_test
+[ 82%] Linking CXX executable gtest_skip_in_environment_setup_test
+[ 83%] Built target gtest_skip_in_environment_setup_test
+Consolidate compiler generated dependencies of target gtest_skip_test
+[ 84%] Linking CXX executable gtest_skip_test
+[ 85%] Built target gtest_unittest
+Consolidate compiler generated dependencies of target gtest_dll_test_
+[ 86%] Linking CXX executable gtest_dll_test_
+[ 87%] Built target gtest_skip_test
+Consolidate compiler generated dependencies of target googletest-catch-exceptions-ex-test_
+[ 88%] Linking CXX executable googletest-catch-exceptions-ex-test_
+[ 89%] Built target googletest-catch-exceptions-ex-test_
+Consolidate compiler generated dependencies of target gtest_help_test_
+[ 90%] Linking CXX executable gtest_help_test_
+[ 91%] Built target gtest_dll_test_
+Consolidate compiler generated dependencies of target gtest_xml_outfile1_test_
+[ 92%] Linking CXX executable gtest_xml_outfile1_test_
+[ 93%] Built target gtest_help_test_
+Consolidate compiler generated dependencies of target gtest_xml_outfile2_test_
+[ 94%] Linking CXX executable gtest_xml_outfile2_test_
+[ 95%] Built target gtest_xml_outfile1_test_
+Consolidate compiler generated dependencies of target gmock_main
+[ 97%] Built target gmock_main
+[ 98%] Built target gtest_xml_outfile2_test_
+Consolidate compiler generated dependencies of target googletest-death-test-test
+[ 99%] Linking CXX executable googletest-death-test-test
+[100%] Built target googletest-death-test-test
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated

@@ -1,8 +1,8 @@
 {
   "library": "Micro-CDR",
   "url": "https://github.com/eProsima/Micro-CDR.git",
-  "version": "v2.0.1",
-  "commit": "3d1b17703c7cf4f22def2910bc845bdb5152d7b5",
+  "version": "v2.0.2",
+  "commit": "99672492c5ef9fc378a8835b0bce9b2f7fa41306",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -18,9 +18,10 @@
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 0.5,
+  "minutes": 0.9,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T14:35:37+00:00"
+  "finished": "2026-11-14T01:11:00+00:00"
 }

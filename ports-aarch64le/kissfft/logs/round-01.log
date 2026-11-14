@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/kissfft/work/src -B /home/chirag/qnx-porter/ports-aarch64le/kissfft/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/kissfft/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/kissfft/work/qnx-run -DKISSFFT_TEST=OFF -DKISSFFT_TOOLS=OFF
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/kissfft/work/src -B /home/chirag/qnx-porter/ports-aarch64le/kissfft/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/kissfft/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/kissfft/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/kissfft/work/qnx-run -DKISSFFT_TEST=OFF -DKISSFFT_TOOLS=OFF
 -- The C compiler identification is QCC 12.2.0
 -- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
@@ -25,8 +25,8 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/kissfft/work/build -j 2 -- -k
-[ 16%] Building C object CMakeFiles/kissfft.dir/kiss_fft.c.o
 [ 33%] Building C object CMakeFiles/kissfft.dir/kfc.c.o
+[ 33%] Building C object CMakeFiles/kissfft.dir/kiss_fft.c.o
 [ 50%] Building C object CMakeFiles/kissfft.dir/kiss_fftnd.c.o
 [ 66%] Building C object CMakeFiles/kissfft.dir/kiss_fftndr.c.o
 [ 83%] Building C object CMakeFiles/kissfft.dir/kiss_fftr.c.o

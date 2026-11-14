@@ -1,0 +1,18 @@
+Subject: [qnx-porter 0001] signed-char
+Source: deterministic rule
+Reason: Plain char is unsigned on aarch64 (the Arm ABI) and signed on x86_64; the code puts a negative constant in a char, which is fine on x86_64 and a narrowing error on aarch64. -fsigned-char keeps the x86_64 meaning the code was written for, without editing it.
+Error: /home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/src/test/binary_test.cpp:11:38: error: narrowing conversion of '-58' from 'int' to 'char' [-Wnarrowing]
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -13,8 +13,8 @@
+ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+-set(CMAKE_C_FLAGS_INIT "-g ")
+-set(CMAKE_CXX_FLAGS_INIT "-g ")
++set(CMAKE_C_FLAGS_INIT "-g -fsigned-char")
++set(CMAKE_CXX_FLAGS_INIT "-g -fsigned-char")
+ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/stubs")
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/yaml-cpp/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none

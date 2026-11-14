@@ -1,0 +1,179 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/build/cmake -B /home/chirag/qnx-porter/ports-aarch64le/zstd/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/zstd/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/zstd/work/qnx-run -DZSTD_BUILD_TESTS=ON -DZSTD_BUILD_PROGRAMS=ON
+-- The C compiler identification is QCC 12.2.0
+-- The ASM compiler identification is QCC
+-- Found assembler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- ZSTD VERSION: 1.5.6
+-- CMAKE_INSTALL_PREFIX: /usr/local
+-- CMAKE_INSTALL_LIBDIR: lib
+-- ZSTD_LEGACY_SUPPORT defined!
+-- ZSTD_MULTITHREAD_SUPPORT is enabled
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/zstd/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/zstd/work/build -j 2 -- -k
+[  1%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/debug.c.o
+[  2%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/debug.c.o
+[  3%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/entropy_common.c.o
+[  3%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/entropy_common.c.o
+[  4%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/error_private.c.o
+[  4%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/error_private.c.o
+[  5%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/fse_decompress.c.o
+[  6%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/fse_decompress.c.o
+[  7%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/pool.c.o
+[  8%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/pool.c.o
+[  9%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/threading.c.o
+[  9%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/threading.c.o
+[  9%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/xxhash.c.o
+[ 10%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/xxhash.c.o
+[ 11%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/zstd_common.c.o
+[ 12%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/common/zstd_common.c.o
+[ 13%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/fse_compress.c.o
+[ 14%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/fse_compress.c.o
+[ 15%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/hist.c.o
+[ 15%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/hist.c.o
+[ 15%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/huf_compress.c.o
+[ 16%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/huf_compress.c.o
+[ 17%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_compress.c.o
+[ 18%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_compress.c.o
+[ 19%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_compress_literals.c.o
+[ 20%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_compress_literals.c.o
+[ 20%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_compress_sequences.c.o
+[ 21%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_compress_sequences.c.o
+[ 22%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_compress_superblock.c.o
+[ 22%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_compress_superblock.c.o
+[ 23%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_double_fast.c.o
+[ 24%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_double_fast.c.o
+[ 25%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_fast.c.o
+[ 26%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_fast.c.o
+[ 27%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_lazy.c.o
+[ 27%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_lazy.c.o
+[ 28%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_ldm.c.o
+[ 28%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_ldm.c.o
+[ 29%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_opt.c.o
+[ 30%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstd_opt.c.o
+[ 32%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstdmt_compress.c.o
+[ 32%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/compress/zstdmt_compress.c.o
+[ 32%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/decompress/huf_decompress.c.o
+[ 33%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/decompress/huf_decompress.c.o
+[ 34%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/decompress/zstd_ddict.c.o
+[ 34%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/decompress/zstd_ddict.c.o
+[ 35%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/decompress/zstd_decompress.c.o
+[ 36%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/decompress/zstd_decompress.c.o
+[ 37%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/decompress/zstd_decompress_block.c.o
+[ 38%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/decompress/zstd_decompress_block.c.o
+[ 38%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/dictBuilder/cover.c.o
+[ 39%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/dictBuilder/cover.c.o
+[ 40%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/dictBuilder/divsufsort.c.o
+[ 40%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/dictBuilder/divsufsort.c.o
+[ 41%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/dictBuilder/fastcover.c.o
+[ 42%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/dictBuilder/fastcover.c.o
+[ 43%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/dictBuilder/zdict.c.o
+[ 44%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/dictBuilder/zdict.c.o
+[ 45%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v01.c.o
+[ 45%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v01.c.o
+[ 45%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v02.c.o
+[ 46%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v02.c.o
+[ 47%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v03.c.o
+[ 48%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v03.c.o
+[ 49%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v04.c.o
+[ 50%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v04.c.o
+[ 51%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v05.c.o
+[ 50%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v05.c.o
+[ 51%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v06.c.o
+[ 52%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v06.c.o
+[ 53%] Building C object lib/CMakeFiles/libzstd_shared.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v07.c.o
+[ 54%] Building C object lib/CMakeFiles/libzstd_static.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/lib/legacy/zstd_v07.c.o
+[ 55%] Linking C shared library libzstd.so
+[ 56%] Linking C static library libzstd.a
+[ 56%] Built target libzstd_static
+[ 56%] Copying manpage zstd.1
+[ 56%] Built target zstd.1
+[ 57%] Copying manpage zstdgrep.1
+[ 57%] Built target zstdgrep.1
+[ 57%] Built target libzstd_shared
+[ 57%] Copying manpage zstdless.1
+[ 58%] Creating zstdcat.1 symlink
+[ 58%] Built target zstdless.1
+[ 58%] Built target zstdcat.1
+[ 59%] Creating unzstd.1 symlink
+[ 59%] Built target unzstd.1
+[ 60%] Building C object programs/CMakeFiles/zstd-frugal.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/zstdcli.c.o
+[ 60%] Building C object tests/CMakeFiles/datagen.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/datagen.c.o
+[ 61%] Building C object tests/CMakeFiles/datagen.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/lorem.c.o
+[ 62%] Building C object tests/CMakeFiles/datagen.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/tests/loremOut.c.o
+[ 63%] Building C object tests/CMakeFiles/datagen.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/tests/datagencli.c.o
+[ 63%] Linking C executable datagen
+[ 63%] Built target datagen
+[ 64%] Building C object tests/CMakeFiles/fullbench.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/datagen.c.o
+[ 65%] Building C object programs/CMakeFiles/zstd-frugal.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/util.c.o
+[ 66%] Building C object tests/CMakeFiles/fullbench.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/lorem.c.o
+[ 67%] Building C object tests/CMakeFiles/fullbench.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/util.c.o
+[ 67%] Building C object programs/CMakeFiles/zstd-frugal.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/timefn.c.o
+[ 68%] Building C object programs/CMakeFiles/zstd-frugal.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/fileio.c.o
+[ 68%] Building C object tests/CMakeFiles/fullbench.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/timefn.c.o
+[ 69%] Building C object tests/CMakeFiles/fullbench.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/benchfn.c.o
+[ 70%] Building C object tests/CMakeFiles/fullbench.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/benchzstd.c.o
+[ 71%] Building C object programs/CMakeFiles/zstd-frugal.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/fileio_asyncio.c.o
+[ 72%] Building C object tests/CMakeFiles/fullbench.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/tests/fullbench.c.o
+[ 73%] Linking C executable zstd-frugal
+[ 73%] Linking C executable fullbench
+[ 73%] Built target zstd-frugal
+[ 74%] Building C object tests/CMakeFiles/fuzzer.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/datagen.c.o
+[ 74%] Built target fullbench
+[ 75%] Building C object tests/CMakeFiles/zstreamtest.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/datagen.c.o
+[ 76%] Building C object tests/CMakeFiles/fuzzer.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/util.c.o
+[ 77%] Building C object tests/CMakeFiles/zstreamtest.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/util.c.o
+[ 78%] Building C object tests/CMakeFiles/fuzzer.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/timefn.c.o
+[ 78%] Building C object tests/CMakeFiles/zstreamtest.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/timefn.c.o
+[ 78%] Building C object tests/CMakeFiles/fuzzer.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/tests/fuzzer.c.o
+[ 79%] Building C object tests/CMakeFiles/zstreamtest.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/tests/seqgen.c.o
+[ 80%] Building C object tests/CMakeFiles/zstreamtest.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/tests/zstreamtest.c.o
+[ 81%] Building C object tests/CMakeFiles/zstreamtest.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/tests/external_matchfinder.c.o
+[ 82%] Linking C executable zstreamtest
+[ 83%] Linking C executable fuzzer
+[ 83%] Built target zstreamtest
+[ 83%] Built target fuzzer
+[ 83%] Building C object tests/CMakeFiles/paramgrill.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/benchfn.c.o
+[ 84%] Building C object tests/CMakeFiles/paramgrill.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/benchzstd.c.o
+[ 85%] Building C object tests/CMakeFiles/paramgrill.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/datagen.c.o
+[ 86%] Building C object tests/CMakeFiles/paramgrill.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/lorem.c.o
+[ 86%] Building C object tests/CMakeFiles/paramgrill.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/util.c.o
+[ 87%] Building C object tests/CMakeFiles/paramgrill.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/timefn.c.o
+[ 88%] Building C object tests/CMakeFiles/paramgrill.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/tests/paramgrill.c.o
+[ 89%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/benchfn.c.o
+[ 90%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/benchzstd.c.o
+[ 90%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/datagen.c.o
+[ 91%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/dibio.c.o
+[ 92%] Linking C executable paramgrill
+[ 92%] Built target paramgrill
+[ 93%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/fileio.c.o
+[ 94%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/fileio_asyncio.c.o
+[ 94%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/lorem.c.o
+[ 95%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/timefn.c.o
+[ 96%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/util.c.o
+[ 97%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/zstdcli.c.o
+[ 97%] Building C object programs/CMakeFiles/zstd.dir/home/chirag/qnx-porter/ports-aarch64le/zstd/work/src/programs/zstdcli_trace.c.o
+[ 98%] Linking C executable zstd
+[ 98%] Built target zstd
+[ 98%] Creating unzstd symlink
+[ 99%] Creating zstdcat symlink
+[ 99%] Built target unzstd
+[ 99%] Built target zstdcat
+[100%] Creating zstdmt symlink
+[100%] Built target zstdmt

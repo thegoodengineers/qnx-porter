@@ -1,7 +1,7 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/opus/work/src -B /home/chirag/qnx-porter/ports-aarch64le/opus/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/opus/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/opus/work/qnx-run -DOPUS_BUILD_TESTING=ON
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/opus/work/src -B /home/chirag/qnx-porter/ports-aarch64le/opus/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/opus/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/opus/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/opus/work/qnx-run -DOPUS_BUILD_TESTING=ON
 -- Found Git: /usr/bin/git (found version "2.34.1") 
--- Opus package version from git repo: 1.5.2
--- Opus project version: 1.5.2
+-- Opus package version from git repo: 1.6.1
+-- Opus project version: 1.6.1
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -20,6 +20,8 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/opus/work/src -B /home/chirag
 -- Looking for lrintf - found
 -- Looking for lrint
 -- Looking for lrint - found
+-- Looking for elf_aux_info
+-- Looking for elf_aux_info - not found
 -- Check NEON support by compiler
 -- Looking for arm_neon.h
 -- Looking for arm_neon.h - found
@@ -83,7 +85,7 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/opus/work/src -B /home/chirag
 ERRORRuntime cpu capability detection needed for MAY_HAVE_NEON
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/opus/work/build -j 2 -- -k
 [  1%] Building C object CMakeFiles/opus.dir/src/opus_decoder.c.o
-[  0%] Building C object CMakeFiles/opus.dir/src/opus.c.o
+[  1%] Building C object CMakeFiles/opus.dir/src/opus.c.o
 [  1%] Building C object CMakeFiles/opus.dir/src/opus_encoder.c.o
 [  2%] Building C object CMakeFiles/opus.dir/src/extensions.c.o
 [  3%] Building C object CMakeFiles/opus.dir/src/opus_multistream.c.o
@@ -122,8 +124,8 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/opus/work/build -j 2 -- 
 [ 24%] Building C object CMakeFiles/opus.dir/silk/tables_NLSF_CB_NB_MB.c.o
 [ 25%] Building C object CMakeFiles/opus.dir/silk/tables_NLSF_CB_WB.c.o
 [ 25%] Building C object CMakeFiles/opus.dir/silk/tables_other.c.o
+[ 26%] Building C object CMakeFiles/opus.dir/silk/tables_pitch_lag.c.o
 [ 27%] Building C object CMakeFiles/opus.dir/silk/tables_pulses_per_block.c.o
-[ 27%] Building C object CMakeFiles/opus.dir/silk/tables_pitch_lag.c.o
 [ 27%] Building C object CMakeFiles/opus.dir/silk/VAD.c.o
 [ 28%] Building C object CMakeFiles/opus.dir/silk/control_audio_bandwidth.c.o
 [ 29%] Building C object CMakeFiles/opus.dir/silk/quant_LTP_gains.c.o
@@ -227,8 +229,8 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/opus/work/build -j 2 -- 
 [ 92%] Building C object CMakeFiles/opus.dir/silk/arm/NSQ_neon.c.o
 [ 92%] Linking C static library libopus.a
 [ 92%] Built target opus
-[ 92%] Building C object CMakeFiles/test_opus_decode.dir/tests/test_opus_decode.c.o
 [ 93%] Building C object CMakeFiles/test_opus_padding.dir/tests/test_opus_padding.c.o
+[ 93%] Building C object CMakeFiles/test_opus_decode.dir/tests/test_opus_decode.c.o
 [ 94%] Linking C executable test_opus_padding
 [ 94%] Built target test_opus_padding
 [ 95%] Building C object CMakeFiles/test_opus_api.dir/tests/test_opus_api.c.o
@@ -237,11 +239,11 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/opus/work/build -j 2 -- 
 [ 97%] Building C object CMakeFiles/test_opus_encode.dir/tests/test_opus_encode.c.o
 [ 98%] Linking C executable test_opus_api
 [ 98%] Built target test_opus_api
-[ 98%] Building C object CMakeFiles/test_opus_encode.dir/tests/opus_encode_regressions.c.o
 [ 99%] Building C object CMakeFiles/test_opus_extensions.dir/tests/test_opus_extensions.c.o
+[ 99%] Building C object CMakeFiles/test_opus_encode.dir/tests/opus_encode_regressions.c.o
 [100%] Linking C executable test_opus_encode
-[100%] Built target test_opus_encode
 [100%] Linking C executable test_opus_extensions
+[100%] Built target test_opus_encode
 [100%] Built target test_opus_extensions
 /home/chirag/qnx-porter/ports-aarch64le/opus/work/src/silk/arm/NSQ_del_dec_neon_intr.c: In function 'silk_NSQ_del_dec_neon':
 /home/chirag/qnx-porter/ports-aarch64le/opus/work/src/silk/arm/NSQ_del_dec_neon_intr.c:424:55: warning: iteration 80 invokes undefined behavior [-Waggressive-loop-optimizations]

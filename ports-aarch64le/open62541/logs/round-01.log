@@ -1,13 +1,13 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src -B /home/chirag/qnx-porter/ports-aarch64le/open62541/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/open62541/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/open62541/work/qnx-run -DUA_ENABLE_ENCRYPTION=OFF
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src -B /home/chirag/qnx-porter/ports-aarch64le/open62541/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/open62541/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/open62541/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/open62541/work/qnx-run -DUA_ENABLE_ENCRYPTION=OFF
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
--- Found Python3: /usr/bin/python3 (found version "3.10.12") found components:  Interpreter 
+-- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
 -- Found Git: /usr/bin/git (found version "2.34.1") 
--- open62541 Version: v1.4.6
+-- open62541 Version: v1.5.10
 -- The selected architecture is: posix
 -- Could NOT find Sphinx (missing: SPHINX_EXECUTABLE) 
 -- Could NOT find LATEX (missing: LATEX_COMPILER) 
@@ -21,15 +21,15 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/open62541/work/build -j 2 -- -k
-[  0%] Generating src_generated/open62541/transport_generated.c, src_generated/open62541/transport_generated.h, src_generated/open62541/transport_generated_handling.h
-[  1%] Generating src_generated/open62541/types_generated.c, src_generated/open62541/types_generated.h, src_generated/open62541/types_generated_handling.h
+[  0%] Generating src_generated/open62541/transport_generated.c, src_generated/open62541/transport_generated.h
+[  1%] Generating src_generated/open62541/types_generated.c, src_generated/open62541/types_generated.h
 [  1%] Built target open62541-generator-transport
-[  3%] Generating src_generated/open62541/nodeids.h
-[  3%] Built target open62541-generator-types
-[  3%] Generating src_generated/open62541/namespace0_generated.c, src_generated/open62541/namespace0_generated.h
-INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.Reduced.xml
-[  5%] Generating src_generated/open62541/statuscodes.h, src_generated/open62541/statuscodes.c
+[  1%] Generating src_generated/open62541/nodeids.h
+[  1%] Built target open62541-generator-types
+[  3%] Generating src_generated/open62541/statuscodes.h, src_generated/open62541/statuscodes.c
+[  5%] Generating src_generated/open62541/namespace0_generated.c, src_generated/open62541/namespace0_generated.h
 [  5%] Built target open62541-generator-statuscode
+INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.Reduced.xml
 INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.DiagnosticsMinimal.xml
 INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.EventsMinimal.xml
 INFO:__main__:Preprocessing /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/tools/schema/Opc.Ua.NodeSet2.HistorizingMinimal.xml
@@ -39,92 +39,353 @@ INFO:__main__:Generating Code for Backend: open62541
 INFO:__main__:NodeSet generation code successfully printed
 [  5%] Built target open62541-generator-namespace
 [  5%] Built target open62541-code-generation
-[  5%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_log_stdout.c.o
-[  5%] Building C object CMakeFiles/open62541-object.dir/src/ua_types.c.o
-[  7%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_accesscontrol_default.c.o
-[  8%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_nodestore_ziptree.c.o
-[  8%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_nodestore_hashmap.c.o
-[ 10%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_config_default.c.o
-[ 12%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_encoding_binary.c.o
-[ 12%] Building C object CMakeFiles/open62541-plugins.dir/plugins/crypto/ua_pki_none.c.o
-[ 14%] Building C object CMakeFiles/open62541-plugins.dir/plugins/crypto/ua_securitypolicy_none.c.o
-[ 14%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_config_json.c.o
-[ 14%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/types_generated.c.o
-[ 15%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/transport_generated.c.o
-[ 17%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/statuscodes.c.o
-[ 19%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_data_backend_memory.c.o
-[ 19%] Building C object CMakeFiles/open62541-object.dir/src/ua_util.c.o
-[ 21%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_data_gathering_default.c.o
-[ 22%] Building C object CMakeFiles/open62541-object.dir/src/ua_securechannel.c.o
-[ 22%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_database_default.c.o
-[ 22%] Building C object CMakeFiles/open62541-object.dir/src/ua_securechannel_crypto.c.o
-[ 24%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_log_syslog.c.o
-[ 26%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_session.c.o
-[ 26%] Building C object CMakeFiles/open62541-plugins.dir/arch/posix/ua_clock.c.o
-[ 28%] Building C object CMakeFiles/open62541-plugins.dir/arch/win32/ua_clock.c.o
-[ 28%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_nodes.c.o
-[ 28%] Building C object CMakeFiles/open62541-plugins.dir/arch/common/ua_timer.c.o
-[ 29%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_common.c.o
-[ 31%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix.c.o
-[ 33%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server.c.o
-[ 33%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_select.c.o
-[ 35%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_epoll.c.o
-[ 35%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_tcp.c.o
-[ 36%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_ns0.c.o
-[ 38%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_udp.c.o
-[ 38%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_ns0_diagnostics.c.o
-[ 40%] Building C object CMakeFiles/open62541-plugins.dir/arch/eventloop_posix_interrupt.c.o
-[ 43%] Built target open62541-plugins
-[ 45%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_config.c.o
-[ 45%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_binary.c.o
-[ 47%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_utils.c.o
-[ 47%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_async.c.o
+[  7%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_log_stdout.c.o
+[  9%] Building C object CMakeFiles/open62541-object.dir/src/ua_types.c.o
+[  9%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_accesscontrol_default.c.o
+[ 11%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_nodestore_ziptree.c.o
+[ 11%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_config_default.c.o
+[ 13%] Building C object CMakeFiles/open62541-plugins.dir/plugins/crypto/ua_certificategroup_none.c.o
+[ 13%] Building C object CMakeFiles/open62541-plugins.dir/plugins/crypto/ua_securitypolicy_none.c.o
+[ 15%] Building C object CMakeFiles/open62541-plugins.dir/arch/posix/clock_posix.c.o
+[ 15%] Building C object CMakeFiles/open62541-plugins.dir/arch/common/timer.c.o
+[ 15%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_definition.c.o
+[ 16%] Building C object CMakeFiles/open62541-plugins.dir/arch/common/eventloop_common.c.o
+[ 16%] Building C object CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix.c.o
+[ 18%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_encoding_binary.c.o
+[ 20%] Building C object CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix_tcp.c.o
+[ 20%] Building C object CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix_udp.c.o
+[ 22%] Building C object CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix_eth.c.o
+[ 22%] Building C object CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix_interrupt.c.o
+[ 24%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_config_json.c.o
+[ 24%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/types_generated.c.o
+[ 26%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/transport_generated.c.o
+[ 26%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/statuscodes.c.o
+[ 26%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_data_backend_memory.c.o
+[ 28%] Building C object CMakeFiles/open62541-object.dir/src/util/ua_util.c.o
+[ 30%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_data_gathering_default.c.o
+[ 30%] Building C object CMakeFiles/open62541-plugins.dir/plugins/historydata/ua_history_database_default.c.o
+[ 32%] Building C object CMakeFiles/open62541-plugins.dir/plugins/ua_log_syslog.c.o
+[ 32%] Building C object CMakeFiles/open62541-object.dir/src/util/ua_types_lex.c.o
+[ 33%] Building C object CMakeFiles/open62541-object.dir/src/util/ua_encryptedsecret.c.o
+[ 33%] Building C object CMakeFiles/open62541-object.dir/src/ua_securechannel.c.o
+[ 35%] Building C object CMakeFiles/open62541-object.dir/src/ua_securechannel_crypto.c.o
+[ 35%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_session.c.o
+[ 37%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_nodes.c.o
+[ 37%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server.c.o
+[ 39%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_ns0.c.o
+[ 39%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_ns0_diagnostics.c.o
+[ 41%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_ns0_gds.c.o
+[ 41%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_config.c.o
+[ 43%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_binary.c.o
+[ 43%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_utils.c.o
+[ 45%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_server_async.c.o
+[ 45%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription.c.o
+[ 47%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_datachange.c.o
+[ 47%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_event.c.o
+[ 49%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_alarms_conditions.c.o
+[ 49%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services.c.o
 [ 49%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_view.c.o
 [ 50%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_method.c.o
 [ 50%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_session.c.o
 [ 52%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_attribute.c.o
 [ 52%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_discovery.c.o
 [ 54%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_subscription.c.o
-[ 56%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_monitoreditem.c.o
+[ 54%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_monitoreditem.c.o
 [ 56%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_securechannel.c.o
-[ 57%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_nodemanagement.c.o
-[ 57%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_networkmessage.c.o
-[ 59%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_eventloop.c.o
-[ 59%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_connection.c.o
-[ 61%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_dataset.c.o
-[ 63%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_writer.c.o
-[ 63%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_writergroup.c.o
-[ 64%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_reader.c.o
-[ 64%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_readergroup.c.o
-[ 66%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_manager.c.o
-[ 66%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_ns0.c.o
-[ 68%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_keystorage.c.o
-[ 70%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_securitygroup.c.o
-[ 70%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_config.c.o
-[ 71%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client.c.o
-[ 71%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_connect.c.o
-[ 73%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_discovery.c.o
-[ 73%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_highlevel.c.o
-[ 75%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_subscriptions.c.o
-[ 77%] Building C object CMakeFiles/open62541-object.dir/deps/libc_time.c.o
-[ 77%] Building C object CMakeFiles/open62541-object.dir/deps/pcg_basic.c.o
-[ 78%] Building C object CMakeFiles/open62541-object.dir/deps/base64.c.o
-[ 78%] Building C object CMakeFiles/open62541-object.dir/deps/dtoa.c.o
-[ 80%] Building C object CMakeFiles/open62541-object.dir/deps/mp_printf.c.o
-[ 82%] Building C object CMakeFiles/open62541-object.dir/deps/itoa.c.o
-[ 82%] Building C object CMakeFiles/open62541-object.dir/deps/ziptree.c.o
-[ 84%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/namespace0_generated.c.o
-[ 84%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_lex.c.o
-[ 85%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_networkmessage_json.c.o
-[ 85%] Building C object CMakeFiles/open62541-object.dir/deps/cj5.c.o
-[ 87%] Building C object CMakeFiles/open62541-object.dir/deps/parse_num.c.o
-[ 89%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_encoding_json.c.o
-[ 89%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription.c.o
-[ 91%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_monitoreditem.c.o
-[ 91%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_datachange.c.o
-[ 92%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_events.c.o
-[ 92%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_subscription_events_filter.c.o
+[ 56%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_services_nodemanagement.c.o
+[ 58%] Building C object CMakeFiles/open62541-object.dir/deps/libc_time.c.o
+[ 58%] Building C object CMakeFiles/open62541-object.dir/deps/pcg_basic.c.o
+[ 60%] Building C object CMakeFiles/open62541-object.dir/deps/base64.c.o
+[ 60%] Building C object CMakeFiles/open62541-object.dir/deps/dtoa.c.o
+[ 62%] Building C object CMakeFiles/open62541-object.dir/deps/musl_inet_pton.c.o
+[ 62%] Building C object CMakeFiles/open62541-object.dir/deps/mp_printf.c.o
+[ 64%] Building C object CMakeFiles/open62541-object.dir/deps/utf8.c.o
+[ 66%] Building C object CMakeFiles/open62541-object.dir/deps/ziptree.c.o
+[ 66%] Building C object CMakeFiles/open62541-object.dir/deps/itoa.c.o
+[ 66%] Building C object CMakeFiles/open62541-object.dir/deps/parse_num.c.o
+[ 67%] Building C object CMakeFiles/open62541-object.dir/src_generated/open62541/namespace0_generated.c.o
+[ 67%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client.c.o
+[ 69%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_connect.c.o
+[ 69%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_discovery.c.o
+[ 71%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_highlevel.c.o
+[ 71%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_subscriptions.c.o
+[ 73%] Building C object CMakeFiles/open62541-object.dir/src/client/ua_client_util.c.o
+[ 73%] Building C object CMakeFiles/open62541-object.dir/src/util/ua_eventfilter_parser.c.o
+[ 75%] Building C object CMakeFiles/open62541-object.dir/src/util/ua_eventfilter_lex.c.o
+[ 75%] Building C object CMakeFiles/open62541-object.dir/src/util/ua_eventfilter_grammar.c.o
+[ 77%] Building C object CMakeFiles/open62541-object.dir/deps/cj5.c.o
+[ 77%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_encoding_json.c.o
+[ 79%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_encoding_json_105.c.o
+[ 79%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_networkmessage_json.c.o
+[ 81%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_networkmessage_binary.c.o
+[ 81%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_connection.c.o
+[ 83%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_dataset.c.o
+[ 83%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_writer.c.o
+[ 84%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_writergroup.c.o
+[ 84%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_reader.c.o
+[ 86%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_readergroup.c.o
+[ 86%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_manager.c.o
+[ 88%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_ns0.c.o
+[ 88%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_ns0_sks.c.o
+[ 90%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_keystorage.c.o
+[ 90%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_securitygroup.c.o
+[ 92%] Building C object CMakeFiles/open62541-object.dir/src/pubsub/ua_pubsub_config.c.o
+[ 92%] Building C object CMakeFiles/open62541-object.dir/deps/yxml.c.o
+[ 94%] Building C object CMakeFiles/open62541-object.dir/src/ua_types_encoding_xml.c.o
 [ 94%] Building C object CMakeFiles/open62541-object.dir/src/server/ua_discovery.c.o
-[100%] Built target open62541-object
-[100%] Linking C static library bin/libopen62541.a
-[100%] Built target open62541
+[ 98%] Built target open62541-object
+In file included from /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.c:9:
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+  366 |     LIST_ENTRY(UA_DeregisteredListenFD) pointers;
+      |     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:370:47: error: expected ')' before 'UA_DeregisteredListenFD'
+  370 | typedef LIST_HEAD(UA_DeregisteredListenFDList, UA_DeregisteredListenFD) UA_DeregisteredListenFDList;
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                                               )
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:387:5: error: unknown type name 'UA_DeregisteredListenFDList'
+  387 |     UA_DeregisteredListenFDList listenFDs;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/open62541-plugins.dir/build.make:202: CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix.c.o] Error 1
+In file included from /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:10:
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+  366 |     LIST_ENTRY(UA_DeregisteredListenFD) pointers;
+      |     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:370:47: error: expected ')' before 'UA_DeregisteredListenFD'
+  370 | typedef LIST_HEAD(UA_DeregisteredListenFDList, UA_DeregisteredListenFD) UA_DeregisteredListenFDList;
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                                               )
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:387:5: error: unknown type name 'UA_DeregisteredListenFDList'
+  387 |     UA_DeregisteredListenFDList listenFDs;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c: In function 'TCP_delayedReopen':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:83:37: error: 'UA_DeregisteredListenFD' has no member named 'listenFd'
+   83 |     UA_RegisteredFD *rfd = listenRfd->listenFd;
+      |                                     ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:99:5: warning: implicit declaration of function 'LIST_REMOVE'; did you mean 'ZIP_REMOVE'? [-Wimplicit-function-declaration]
+   99 |     LIST_REMOVE(listenRfd, pointers);
+      |     ^~~~~~~~~~~
+      |     ZIP_REMOVE
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:99:28: error: 'pointers' undeclared (first use in this function)
+   99 |     LIST_REMOVE(listenRfd, pointers);
+      |                            ^~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:99:28: note: each undeclared identifier is reported only once for each function it appears in
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:100:31: error: 'UA_DeregisteredListenFD' has no member named 'listenFd'
+  100 |     UA_String_clear(&listenRfd->listenFd->hostname);
+      |                               ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:101:22: error: 'UA_DeregisteredListenFD' has no member named 'listenFd'
+  101 |     UA_free(listenRfd->listenFd);
+      |                      ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:104:23: error: request for member 'lh_first' in something not a structure or union
+  104 |     if(!pcm->listenFDs.lh_first) {
+      |                       ^
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c: In function 'addListenSockets':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:118:5: warning: implicit declaration of function 'LIST_FOREACH' [-Wimplicit-function-declaration]
+  118 |     LIST_FOREACH(listenFd, &pcm->listenFDs, pointers) {
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:118:45: error: 'pointers' undeclared (first use in this function)
+  118 |     LIST_FOREACH(listenFd, &pcm->listenFDs, pointers) {
+      |                                             ^~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:118:54: error: expected ';' before '{' token
+  118 |     LIST_FOREACH(listenFd, &pcm->listenFDs, pointers) {
+      |                                                      ^~
+      |                                                      ;
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c: In function 'removeListenSockets':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:324:49: error: 'pointers' undeclared (first use in this function)
+  324 |         LIST_FOREACH(listenFd, &pcm->listenFDs, pointers) {
+      |                                                 ^~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_tcp.c:324:58: error: expected ';' before '{' token
+  324 |         LIST_FOREACH(listenFd, &pcm->listenFDs, pointers) {
+      |                                                          ^~
+      |                                                          ;
+gmake[2]: *** [CMakeFiles/open62541-plugins.dir/build.make:216: CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix_tcp.c.o] Error 1
+In file included from /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_udp.c:9:
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+  366 |     LIST_ENTRY(UA_DeregisteredListenFD) pointers;
+      |     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:370:47: error: expected ')' before 'UA_DeregisteredListenFD'
+  370 | typedef LIST_HEAD(UA_DeregisteredListenFDList, UA_DeregisteredListenFD) UA_DeregisteredListenFDList;
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                                               )
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:387:5: error: unknown type name 'UA_DeregisteredListenFDList'
+  387 |     UA_DeregisteredListenFDList listenFDs;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/open62541-plugins.dir/build.make:230: CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix_udp.c.o] Error 1
+In file included from /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_eth.c:12:
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+  366 |     LIST_ENTRY(UA_DeregisteredListenFD) pointers;
+      |     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:370:47: error: expected ')' before 'UA_DeregisteredListenFD'
+  370 | typedef LIST_HEAD(UA_DeregisteredListenFDList, UA_DeregisteredListenFD) UA_DeregisteredListenFDList;
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                                               )
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:387:5: error: unknown type name 'UA_DeregisteredListenFDList'
+  387 |     UA_DeregisteredListenFDList listenFDs;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/open62541-plugins.dir/build.make:244: CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix_eth.c.o] Error 1
+In file included from /home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:8:
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:366:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+  366 |     LIST_ENTRY(UA_DeregisteredListenFD) pointers;
+      |     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:370:47: error: expected ')' before 'UA_DeregisteredListenFD'
+  370 | typedef LIST_HEAD(UA_DeregisteredListenFDList, UA_DeregisteredListenFD) UA_DeregisteredListenFDList;
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~~
+      |                                               )
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix.h:387:5: error: unknown type name 'UA_DeregisteredListenFDList'
+  387 |     UA_DeregisteredListenFDList listenFDs;
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:23:5: error: expected specifier-qualifier-list before 'LIST_ENTRY'
+   23 |     LIST_ENTRY(UA_RegisteredSignal) listPointers;
+      |     ^~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:36:5: error: expected specifier-qualifier-list before 'LIST_HEAD'
+   36 |     LIST_HEAD(, UA_RegisteredSignal) signals; /* Registered signals */
+      |     ^~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'executeTriggeredPOSIXInterrupts':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:164:7: error: 'UA_POSIXInterruptManager' has no member named 'dc'
+  164 |     im->dc.callback = NULL; /* Allow to re-arm the delayed callback */
+      |       ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:167:5: warning: implicit declaration of function 'LIST_FOREACH_SAFE' [-Wimplicit-function-declaration]
+  167 |     LIST_FOREACH_SAFE(rs, &im->signals, listPointers, rs_tmp) {
+      |     ^~~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:167:30: error: 'UA_POSIXInterruptManager' has no member named 'signals'
+  167 |     LIST_FOREACH_SAFE(rs, &im->signals, listPointers, rs_tmp) {
+      |                              ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:167:41: error: 'listPointers' undeclared (first use in this function)
+  167 |     LIST_FOREACH_SAFE(rs, &im->signals, listPointers, rs_tmp) {
+      |                                         ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:167:41: note: each undeclared identifier is reported only once for each function it appears in
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:167:62: error: expected ';' before '{' token
+  167 |     LIST_FOREACH_SAFE(rs, &im->signals, listPointers, rs_tmp) {
+      |                                                              ^~
+      |                                                              ;
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'triggerPOSIXInterruptEvent':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:183:5: warning: implicit declaration of function 'LIST_FOREACH' [-Wimplicit-function-declaration]
+  183 |     LIST_FOREACH(rs, &singletonIM->signals, listPointers) {
+      |     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:183:34: error: 'UA_POSIXInterruptManager' has no member named 'signals'
+  183 |     LIST_FOREACH(rs, &singletonIM->signals, listPointers) {
+      |                                  ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:183:45: error: 'listPointers' undeclared (first use in this function)
+  183 |     LIST_FOREACH(rs, &singletonIM->signals, listPointers) {
+      |                                             ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:183:58: error: expected ';' before '{' token
+  183 |     LIST_FOREACH(rs, &singletonIM->signals, listPointers) {
+      |                                                          ^~
+      |                                                          ;
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:191:7: error: 'UA_RegisteredSignal' has no member named 'triggered'
+  191 |     rs->triggered = true;
+      |       ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:201:20: error: 'UA_POSIXInterruptManager' has no member named 'dc'
+  201 |     if(!singletonIM->dc.callback) {
+      |                    ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:202:20: error: 'UA_POSIXInterruptManager' has no member named 'dc'
+  202 |         singletonIM->dc.callback = (UA_Callback)executeTriggeredPOSIXInterrupts;
+      |                    ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:203:20: error: 'UA_POSIXInterruptManager' has no member named 'dc'
+  203 |         singletonIM->dc.application = singletonIM;
+      |                    ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:204:20: error: 'UA_POSIXInterruptManager' has no member named 'dc'
+  204 |         singletonIM->dc.context = NULL;
+      |                    ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:205:74: error: 'UA_POSIXInterruptManager' has no member named 'dc'
+  205 |         UA_EventLoopPOSIX_addDelayedCallback(&el->eventLoop, &singletonIM->dc);
+      |                                                                          ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'activateSignal':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:220:10: error: 'UA_RegisteredSignal' has no member named 'active'
+  220 |     if(rs->active)
+      |          ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:225:21: error: 'UA_RegisteredSignal' has no member named 'signal'
+  225 |     prev = signal(rs->signal, triggerPOSIXInterruptEvent);
+      |                     ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:234:7: error: 'UA_RegisteredSignal' has no member named 'active'
+  234 |     rs->active = true;
+      |       ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'deactivateSignal':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:245:11: error: 'UA_RegisteredSignal' has no member named 'active'
+  245 |     if(!rs->active)
+      |           ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:249:14: error: 'UA_RegisteredSignal' has no member named 'signal'
+  249 |     signal(rs->signal, SIG_DFL);
+      |              ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:251:7: error: 'UA_RegisteredSignal' has no member named 'triggered'
+  251 |     rs->triggered = false;
+      |       ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:252:7: error: 'UA_RegisteredSignal' has no member named 'active'
+  252 |     rs->active = false;
+      |       ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'registerPOSIXInterrupt':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:275:26: error: 'UA_POSIXInterruptManager' has no member named 'signals'
+  275 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                          ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:275:37: error: 'listPointers' undeclared (first use in this function)
+  275 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                                     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:275:50: error: expected ';' before '{' token
+  275 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                                                  ^~
+      |                                                  ;
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:297:7: error: 'UA_RegisteredSignal' has no member named 'signal'
+  297 |     rs->signal = (int)interruptHandle;
+      |       ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:298:7: error: 'UA_RegisteredSignal' has no member named 'signalCallback'
+  298 |     rs->signalCallback = callback;
+      |       ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:299:7: error: 'UA_RegisteredSignal' has no member named 'context'
+  299 |     rs->context = interruptContext;
+      |       ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:302:5: warning: implicit declaration of function 'LIST_INSERT_HEAD' [-Wimplicit-function-declaration]
+  302 |     LIST_INSERT_HEAD(&pim->signals, rs, listPointers);
+      |     ^~~~~~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:302:26: error: 'UA_POSIXInterruptManager' has no member named 'signals'
+  302 |     LIST_INSERT_HEAD(&pim->signals, rs, listPointers);
+      |                          ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'deregisterPOSIXInterrupt':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:321:26: error: 'UA_POSIXInterruptManager' has no member named 'signals'
+  321 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                          ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:321:37: error: 'listPointers' undeclared (first use in this function)
+  321 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                                     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:321:50: error: expected ';' before '{' token
+  321 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                                                  ^~
+      |                                                  ;
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'startPOSIXInterruptManager':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:355:26: error: 'UA_POSIXInterruptManager' has no member named 'signals'
+  355 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                          ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:355:37: error: 'listPointers' undeclared (first use in this function)
+  355 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                                     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:355:50: error: expected ';' before '{' token
+  355 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                                                  ^~
+      |                                                  ;
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'stopPOSIXInterruptManager':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:383:26: error: 'UA_POSIXInterruptManager' has no member named 'signals'
+  383 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                          ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:383:37: error: 'listPointers' undeclared (first use in this function)
+  383 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                                     ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:383:50: error: expected ';' before '{' token
+  383 |     LIST_FOREACH(rs, &pim->signals, listPointers) {
+      |                                                  ^~
+      |                                                  ;
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c: In function 'freePOSIXInterruptmanager':
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:409:31: error: 'UA_POSIXInterruptManager' has no member named 'signals'
+  409 |     LIST_FOREACH_SAFE(rs, &pim->signals, listPointers, rs_tmp) {
+      |                               ^~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:409:42: error: 'listPointers' undeclared (first use in this function)
+  409 |     LIST_FOREACH_SAFE(rs, &pim->signals, listPointers, rs_tmp) {
+      |                                          ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/open62541/work/src/arch/posix/eventloop_posix_interrupt.c:409:63: error: expected ';' before '{' token
+  409 |     LIST_FOREACH_SAFE(rs, &pim->signals, listPointers, rs_tmp) {
+      |                                                               ^~
+      |                                                               ;
+gmake[2]: *** [CMakeFiles/open62541-plugins.dir/build.make:258: CMakeFiles/open62541-plugins.dir/arch/posix/eventloop_posix_interrupt.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/open62541-plugins.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:297: CMakeFiles/open62541-plugins.dir/all] Error 2
+gmake[1]: Target 'all' not remade because of errors.
+gmake: *** [Makefile:146: all] Error 2
+gmake: Target 'default_target' not remade because of errors.
+[exit 2]

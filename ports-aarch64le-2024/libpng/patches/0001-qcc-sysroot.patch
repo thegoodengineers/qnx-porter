@@ -1,0 +1,16 @@
+Subject: [qnx-porter 0001] qcc-sysroot
+Source: deterministic rule
+Reason: The project's own build script passes --sysroot to the compiler, which qcc does not accept. qcc already finds the SDP sysroot through QNX_TARGET, so the toolchain stops setting CMAKE_SYSROOT (libraries are still found through CMAKE_FIND_ROOT_PATH).
+Error: cc: unknown option: '--sysroot=/home/chirag/qnx800/target/qnx'
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -6,7 +6,7 @@
+ set(CMAKE_C_COMPILER_TARGET gcc_ntoaarch64le)
+ set(CMAKE_CXX_COMPILER "/home/chirag/qnx800/host/linux/x86_64/usr/bin/q++")
+ set(CMAKE_CXX_COMPILER_TARGET gcc_ntoaarch64le_cxx)
+-set(CMAKE_SYSROOT "/home/chirag/qnx800/target/qnx")
++
+ set(CMAKE_FIND_ROOT_PATH "/home/chirag/qnx800/target/qnx" "/home/chirag/qnx800/target/qnx/aarch64le" "/home/chirag/qnx-porter/ports-aarch64le/libpng/work")
+ set(CMAKE_LIBRARY_PATH "/stubs")
+ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)

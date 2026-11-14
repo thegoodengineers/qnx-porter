@@ -1,14 +1,14 @@
-# libgpiod v2.2.4 on QNX 8.0 (aarch64le)
+# libgpiod v2.3.2 on QNX 8.0 (aarch64le)
 
 | | |
 |---|---|
-| Upstream | https://github.com/brgl/libgpiod.git at `v2.2.4` (`328d48b8cc90`) |
-| Build system | autotools |
-| Toolchain | QNX SDP 8.0, `qnx-env.sh` in this folder |
+| Upstream | https://github.com/brgl/libgpiod.git at `v2.3.2` (`3435867dd146`) |
+| Build system | meson |
+| Toolchain | QNX SDP 8.0, `qnx-cross.ini` in this folder |
 | Build | **failed** after 1 round(s) |
 | Library's own tests | not run |
 | Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 0.2 min |
+| Time | 0.0 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |
@@ -21,4 +21,4 @@ All kept source changes in one file: `qnx.patch` (apply to the upstream tag with
 Build logs for every round: `logs/`.
 
 ## Still failing
-- `configure: error: linux/const.h header not found (needed to build the library)`
+- `src/meson.build:4:0: ERROR: Meson version is 0.61.2 but project requires >= 0.64.0`

@@ -1,0 +1,174 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libxml2/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libxml2/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libxml2/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libxml2/work/qnx-run -DLIBXML2_WITH_PYTHON=OFF -DLIBXML2_WITH_ZLIB=OFF -DLIBXML2_WITH_LZMA=OFF -DLIBXML2_WITH_ICONV=OFF -DLIBXML2_WITH_ICU=OFF
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Performing Test HAVE_ATTRIBUTE_DESTRUCTOR
+-- Performing Test HAVE_ATTRIBUTE_DESTRUCTOR - Success
+-- Looking for include file arpa/inet.h
+-- Looking for include file arpa/inet.h - found
+-- Looking for class
+-- Looking for class - not found
+-- Looking for include file dlfcn.h
+-- Looking for include file dlfcn.h - found
+-- Looking for dlopen in dl
+-- Looking for dlopen in dl - found
+-- Looking for include file dl.h
+-- Looking for include file dl.h - not found
+-- Looking for include file fcntl.h
+-- Looking for include file fcntl.h - found
+-- Looking for fpclass
+-- Looking for fpclass - not found
+-- Looking for ftime
+-- Looking for ftime - found
+-- Looking for getentropy
+-- Looking for getentropy - not found
+-- Looking for gettimeofday
+-- Looking for gettimeofday - found
+-- Looking for append_history in history
+-- Looking for append_history in history - not found
+-- Looking for readline in readline
+-- Looking for readline in readline - found
+-- Looking for mmap
+-- Looking for mmap - found
+-- Looking for munmap
+-- Looking for munmap - found
+-- Looking for include file netdb.h
+-- Looking for include file netdb.h - found
+-- Looking for include file netinet/in.h
+-- Looking for include file netinet/in.h - found
+-- Looking for include file poll.h
+-- Looking for include file poll.h - found
+-- Looking for shl_load in dld
+-- Looking for shl_load in dld - not found
+-- Looking for stat
+-- Looking for stat - found
+-- Looking for include file stdint.h
+-- Looking for include file stdint.h - found
+-- Looking for include file sys/mman.h
+-- Looking for include file sys/mman.h - found
+-- Looking for include file sys/random.h
+-- Looking for include file sys/random.h - not found
+-- Looking for include file sys/select.h
+-- Looking for include file sys/select.h - found
+-- Looking for include file sys/socket.h
+-- Looking for include file sys/socket.h - found
+-- Looking for include file sys/stat.h
+-- Looking for include file sys/stat.h - found
+-- Looking for include file sys/timeb.h
+-- Looking for include file sys/timeb.h - found
+-- Looking for include file sys/time.h
+-- Looking for include file sys/time.h - found
+-- Looking for include file unistd.h
+-- Looking for include file unistd.h - found
+-- Performing Test XML_SOCKLEN_T_SOCKLEN_T
+-- Performing Test XML_SOCKLEN_T_SOCKLEN_T - Failed
+-- Performing Test XML_SOCKLEN_T_SIZE_T
+-- Performing Test XML_SOCKLEN_T_SIZE_T - Failed
+-- Performing Test XML_SOCKLEN_T_INT
+-- Performing Test XML_SOCKLEN_T_INT - Failed
+-- Looking for include file pthread.h
+-- Looking for include file pthread.h - found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libxml2/work/build
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    BUILD_TESTING
+
+
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libxml2/work/build -j 2 -- -k
+[  1%] Building C object CMakeFiles/LibXml2.dir/c14n.c.o
+[  2%] Building C object CMakeFiles/LibXml2.dir/buf.c.o
+[  4%] Building C object CMakeFiles/LibXml2.dir/catalog.c.o
+[  5%] Building C object CMakeFiles/LibXml2.dir/chvalid.c.o
+[  7%] Building C object CMakeFiles/LibXml2.dir/debugXML.c.o
+[  8%] Building C object CMakeFiles/LibXml2.dir/dict.c.o
+[  9%] Building C object CMakeFiles/LibXml2.dir/encoding.c.o
+[ 11%] Building C object CMakeFiles/LibXml2.dir/entities.c.o
+[ 12%] Building C object CMakeFiles/LibXml2.dir/error.c.o
+[ 14%] Building C object CMakeFiles/LibXml2.dir/globals.c.o
+[ 15%] Building C object CMakeFiles/LibXml2.dir/hash.c.o
+[ 16%] Building C object CMakeFiles/LibXml2.dir/HTMLparser.c.o
+[ 18%] Building C object CMakeFiles/LibXml2.dir/HTMLtree.c.o
+[ 19%] Building C object CMakeFiles/LibXml2.dir/legacy.c.o
+[ 21%] Building C object CMakeFiles/LibXml2.dir/list.c.o
+[ 22%] Building C object CMakeFiles/LibXml2.dir/nanoftp.c.o
+[ 23%] Building C object CMakeFiles/LibXml2.dir/nanohttp.c.o
+[ 25%] Building C object CMakeFiles/LibXml2.dir/parser.c.o
+[ 26%] Building C object CMakeFiles/LibXml2.dir/parserInternals.c.o
+[ 28%] Building C object CMakeFiles/LibXml2.dir/pattern.c.o
+[ 29%] Building C object CMakeFiles/LibXml2.dir/relaxng.c.o
+[ 30%] Building C object CMakeFiles/LibXml2.dir/SAX.c.o
+[ 32%] Building C object CMakeFiles/LibXml2.dir/SAX2.c.o
+[ 33%] Building C object CMakeFiles/LibXml2.dir/schematron.c.o
+[ 35%] Building C object CMakeFiles/LibXml2.dir/threads.c.o
+[ 36%] Building C object CMakeFiles/LibXml2.dir/tree.c.o
+[ 38%] Building C object CMakeFiles/LibXml2.dir/uri.c.o
+[ 39%] Building C object CMakeFiles/LibXml2.dir/valid.c.o
+[ 40%] Building C object CMakeFiles/LibXml2.dir/xinclude.c.o
+[ 42%] Building C object CMakeFiles/LibXml2.dir/xlink.c.o
+[ 43%] Building C object CMakeFiles/LibXml2.dir/xmlIO.c.o
+[ 45%] Building C object CMakeFiles/LibXml2.dir/xmlmemory.c.o
+[ 46%] Building C object CMakeFiles/LibXml2.dir/xmlmodule.c.o
+[ 47%] Building C object CMakeFiles/LibXml2.dir/xmlreader.c.o
+[ 49%] Building C object CMakeFiles/LibXml2.dir/xmlregexp.c.o
+[ 50%] Building C object CMakeFiles/LibXml2.dir/xmlsave.c.o
+[ 52%] Building C object CMakeFiles/LibXml2.dir/xmlschemas.c.o
+[ 53%] Building C object CMakeFiles/LibXml2.dir/xmlschemastypes.c.o
+[ 54%] Building C object CMakeFiles/LibXml2.dir/xmlstring.c.o
+[ 56%] Building C object CMakeFiles/LibXml2.dir/xmlunicode.c.o
+[ 57%] Building C object CMakeFiles/LibXml2.dir/xmlwriter.c.o
+[ 59%] Building C object CMakeFiles/LibXml2.dir/xpath.c.o
+[ 60%] Building C object CMakeFiles/LibXml2.dir/xpointer.c.o
+[ 61%] Building C object CMakeFiles/LibXml2.dir/xzlib.c.o
+[ 63%] Linking C static library libxml2.a
+[ 63%] Built target LibXml2
+[ 66%] Building C object CMakeFiles/xmllint.dir/xmllint.c.o
+[ 66%] Building C object CMakeFiles/xmlcatalog.dir/xmlcatalog.c.o
+[ 67%] Linking C executable xmlcatalog
+[ 67%] Built target xmlcatalog
+[ 69%] Building C object CMakeFiles/runtest.dir/runtest.c.o
+[ 70%] Linking C executable xmllint
+[ 70%] Built target xmllint
+[ 71%] Building C object CMakeFiles/runxmlconf.dir/runxmlconf.c.o
+[ 73%] Linking C executable runxmlconf
+[ 73%] Built target runxmlconf
+[ 74%] Building C object CMakeFiles/runsuite.dir/runsuite.c.o
+[ 76%] Linking C executable runtest
+[ 76%] Built target runtest
+[ 77%] Building C object CMakeFiles/testapi.dir/testapi.c.o
+[ 78%] Linking C executable runsuite
+[ 78%] Built target runsuite
+[ 80%] Building C object CMakeFiles/testchar.dir/testchar.c.o
+[ 81%] Linking C executable testchar
+[ 81%] Built target testchar
+[ 83%] Building C object CMakeFiles/testdict.dir/testdict.c.o
+[ 84%] Linking C executable testdict
+[ 84%] Built target testdict
+[ 85%] Building C object CMakeFiles/testModule.dir/testModule.c.o
+[ 87%] Linking C executable testModule
+[ 87%] Built target testModule
+[ 88%] Building C object CMakeFiles/testlimits.dir/testlimits.c.o
+[ 90%] Linking C executable testlimits
+[ 90%] Built target testlimits
+[ 91%] Building C object CMakeFiles/testparser.dir/testparser.c.o
+[ 92%] Linking C executable testparser
+[ 92%] Built target testparser
+[ 94%] Building C object CMakeFiles/testrecurse.dir/testrecurse.c.o
+[ 95%] Linking C executable testrecurse
+[ 95%] Built target testrecurse
+[ 97%] Building C object CMakeFiles/testThreads.dir/testThreads.c.o
+[ 98%] Linking C executable testThreads
+[ 98%] Built target testThreads
+[100%] Linking C executable testapi
+[100%] Built target testapi

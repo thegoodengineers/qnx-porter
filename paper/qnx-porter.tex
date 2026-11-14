@@ -540,8 +540,12 @@ constant in a \texttt{char} array is a narrowing error. Rule \texttt{signed-char
 \item \textbf{\texttt{\_\_generic\_strlen}.} QNX's aarch64 libc names its \texttt{strlen} frame
 \texttt{\_\_generic\_strlen}, so the \texttt{printf-null} triage did not recognise the crash until it learned the
 name; json-c then passed all its tests on aarch64 too.
+\item \textbf{Backtrace depth.} QNX's aarch64 \texttt{malloc} takes five frames of a crash backtrace, so a
+12-frame backtrace of cJSON's stack overflow held only six recursive frames and the \texttt{main-stack} rule,
+which needs eight, did not fire. The triage now reads 24 frames, and cJSON passed 19 of 19 on aarch64 as well.
 \end{itemize}
-Some differences between the architectures are not explained yet: libsrtp, nng and the number of tests
+mbedtls's PBKDF2 suite exceeds the 300~s per-test limit on the emulated CPU (it passes on x86\_64). Other
+differences between the architectures are not explained yet: libsrtp, flac and the number of tests
 libjpeg-turbo registers differ (Figure~\ref{fig:tests}).
 
 \section{Threats to validity}\label{sec:threats}

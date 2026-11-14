@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/nanopb/work/src -B /home/chirag/qnx-porter/ports-aarch64le/nanopb/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/nanopb/work/qnx-toolchain.cmake
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/nanopb/work/src -B /home/chirag/qnx-porter/ports-aarch64le/nanopb/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/nanopb/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/nanopb/work/qnx-toolchain.cmake
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -18,8 +18,8 @@ CMake Warning:
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/nanopb/work/build -j 2 -- -k
 [ 25%] Building C object CMakeFiles/protobuf-nanopb-static.dir/pb_common.c.o
+[ 25%] Built target nanopb_generator
 [ 50%] Building C object CMakeFiles/protobuf-nanopb-static.dir/pb_encode.c.o
-[ 50%] Built target nanopb_generator
 [ 75%] Building C object CMakeFiles/protobuf-nanopb-static.dir/pb_decode.c.o
 [100%] Linking C static library libprotobuf-nanopb.a
 [100%] Built target protobuf-nanopb-static

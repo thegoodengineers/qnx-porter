@@ -1,3 +1,20 @@
 $ meson introspect --tests /home/chirag/qnx-porter/ports-aarch64le/inih/work/build; every test command runs on root@172.31.1.12 over ssh
+PASS  test_multi (exit 0)
+PASS  test_multi_max_line (exit 0)
+PASS  test_single (exit 0)
+PASS  test_disallow_inline_comments (exit 0)
+PASS  test_stop_on_first_error (exit 0)
+PASS  test_handler_lineno (exit 0)
+PASS  test_string (exit 0)
+PASS  test_heap (exit 0)
+PASS  test_heap_max_line (exit 0)
+PASS  test_heap_realloc (exit 0)
+PASS  test_heap_realloc_max_line (exit 0)
+PASS  test_heap_string (exit 0)
+PASS  test_call_handler_on_new_section (exit 0)
+PASS  test_allow_no_value (exit 0)
+PASS  test_alloc (exit 0)
+PASS  test_file_error (exit 0)
+PASS  test_INIReaderExample (exit 0)
 
-0/0 tests passed on the QNX target
+17/17 tests passed on the QNX target

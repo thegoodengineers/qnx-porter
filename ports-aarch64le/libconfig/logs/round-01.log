@@ -1,16 +1,25 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
--- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
+-- The CXX compiler identification is QCC 12.2.0
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
 -- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+-- CMake version: 3.22.1
+-- Set version info for config: VERSION=15.0.1, SOVERSION=15
+-- Set version info for config++: VERSION=15.0.1, SOVERSION=15
+-- Looking for uselocale
+-- Looking for uselocale - not found
+-- Looking for newlocale
+-- Looking for newlocale - not found
+-- Looking for freelocale
+-- Looking for freelocale - not found
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build
@@ -21,24 +30,24 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build -j 2 -- -k
-[  2%] Building C object lib/CMakeFiles/config.dir/grammar.c.o
-[  5%] Building C object lib/CMakeFiles/config++.dir/grammar.c.o
-[  8%] Building C object lib/CMakeFiles/config.dir/libconfig.c.o
-[ 10%] Building C object lib/CMakeFiles/config++.dir/libconfig.c.o
-[ 13%] Building C object lib/CMakeFiles/config++.dir/scanctx.c.o
-[ 16%] Building C object lib/CMakeFiles/config.dir/scanctx.c.o
-[ 18%] Building C object lib/CMakeFiles/config++.dir/scanner.c.o
-[ 21%] Building C object lib/CMakeFiles/config.dir/scanner.c.o
-[ 24%] Building C object lib/CMakeFiles/config++.dir/strbuf.c.o
+[  2%] Building C object lib/CMakeFiles/config++.dir/grammar.c.o
+[  5%] Building C object lib/CMakeFiles/config.dir/grammar.c.o
+[  8%] Building C object lib/CMakeFiles/config++.dir/libconfig.c.o
+[ 10%] Building C object lib/CMakeFiles/config.dir/libconfig.c.o
+[ 13%] Building C object lib/CMakeFiles/config.dir/scanctx.c.o
+[ 16%] Building C object lib/CMakeFiles/config++.dir/scanctx.c.o
+[ 18%] Building C object lib/CMakeFiles/config.dir/scanner.c.o
+[ 21%] Building C object lib/CMakeFiles/config++.dir/scanner.c.o
 [ 27%] Building C object lib/CMakeFiles/config.dir/strbuf.c.o
-[ 29%] Building C object lib/CMakeFiles/config++.dir/strvec.c.o
+[ 27%] Building C object lib/CMakeFiles/config++.dir/strbuf.c.o
+[ 32%] Building C object lib/CMakeFiles/config++.dir/strvec.c.o
 [ 32%] Building C object lib/CMakeFiles/config.dir/strvec.c.o
-[ 35%] Building C object lib/CMakeFiles/config++.dir/util.c.o
-[ 37%] Building C object lib/CMakeFiles/config.dir/util.c.o
-[ 40%] Building C object lib/CMakeFiles/config++.dir/wincompat.c.o
-[ 43%] Building CXX object lib/CMakeFiles/config++.dir/libconfigcpp.cc.o
-[ 45%] Building C object lib/CMakeFiles/config.dir/wincompat.c.o
-[ 48%] Linking C static library ../out/libconfig.a
+[ 35%] Building C object lib/CMakeFiles/config.dir/util.c.o
+[ 37%] Building C object lib/CMakeFiles/config++.dir/util.c.o
+[ 43%] Building C object lib/CMakeFiles/config++.dir/wincompat.c.o
+[ 43%] Building C object lib/CMakeFiles/config.dir/wincompat.c.o
+[ 45%] Linking C static library ../out/libconfig.a
+[ 48%] Building CXX object lib/CMakeFiles/config++.dir/libconfigcpp.cc.o
 [ 48%] Built target config
 [ 51%] Building C object tinytest/CMakeFiles/libtinytest.dir/tinytest.c.o
 [ 54%] Linking C static library ../out/liblibtinytest.a
@@ -57,33 +66,33 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build -j 
 [ 75%] Built target libconfig_tests
 [ 78%] Linking CXX static library ../out/libconfig++.a
 [ 78%] Built target config++
-[ 83%] Building CXX object examples/c++/CMakeFiles/c++_example1.dir/example1.cpp.o
+[ 81%] Building CXX object examples/c++/CMakeFiles/c++_example1.dir/example1.cpp.o
 [ 83%] Building CXX object examples/c++/CMakeFiles/c++_example2.dir/example2.cpp.o
-[ 86%] Linking CXX executable ../../out/c++_example2
-[ 86%] Built target c++_example2
-[ 89%] Building CXX object examples/c++/CMakeFiles/c++_example3.dir/example3.cpp.o
-[ 91%] Linking CXX executable ../../out/c++_example1
-[ 91%] Built target c++_example1
+[ 89%] Linking CXX executable ../../out/c++_example2
+[ 89%] Linking CXX executable ../../out/c++_example1
+[ 89%] Built target c++_example1
+[ 89%] Built target c++_example2
+[ 91%] Building CXX object examples/c++/CMakeFiles/c++_example3.dir/example3.cpp.o
 [ 94%] Building CXX object examples/c++/CMakeFiles/c++_example4.dir/example4.cpp.o
-[ 97%] Linking CXX executable ../../out/c++_example3
-[ 97%] Built target c++_example3
 [100%] Linking CXX executable ../../out/c++_example4
+[100%] Linking CXX executable ../../out/c++_example3
+[100%] Built target c++_example3
 [100%] Built target c++_example4
 /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c: In function '__config_locale_override':
-/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c:100:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
-  100 | #warning "No way to modify calling thread's locale!"
-      |  ^~~~~~~
-/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c: In function '__config_locale_restore':
-/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c:121:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
-  121 | #warning "No way to modify calling thread's locale!"
-      |  ^~~~~~~
 /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c: In function '__config_locale_override':
-/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c:100:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
-  100 | #warning "No way to modify calling thread's locale!"
+/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c:118:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
+  118 | #warning "No way to modify calling thread's locale!"
+      |  ^~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c:118:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
+  118 | #warning "No way to modify calling thread's locale!"
       |  ^~~~~~~
 /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c: In function '__config_locale_restore':
-/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c:121:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
-  121 | #warning "No way to modify calling thread's locale!"
+/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c: In function '__config_locale_restore':
+/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c:138:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
+  138 | #warning "No way to modify calling thread's locale!"
+      |  ^~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src/lib/libconfig.c:138:2: warning: #warning "No way to modify calling thread's locale!" [-Wcpp]
+  138 | #warning "No way to modify calling thread's locale!"
       |  ^~~~~~~
 cc: warning - lang-c++ is deprecated
 cc: warning - lang-c++ is deprecated

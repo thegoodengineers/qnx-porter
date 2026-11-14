@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/qnx-run -DUNIT_TESTING=ON
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/qnx-run -DUNIT_TESTING=ON
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -7,8 +7,8 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chir
 -- Detecting C compile features - done
 -- Performing Test REQUIRED_FLAGS_WERROR
 -- Performing Test REQUIRED_FLAGS_WERROR - Success
--- Performing Test WITH_STD_GNU99_FLAG
--- Performing Test WITH_STD_GNU99_FLAG - Success
+-- Performing Test WITH_STD_C99_FLAG
+-- Performing Test WITH_STD_C99_FLAG - Success
 -- Performing Test WITH_WPEDANTIC_FLAG
 -- Performing Test WITH_WPEDANTIC_FLAG - Success
 -- Performing Test WITH_WALL_FLAG
@@ -19,6 +19,8 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chir
 -- Performing Test WITH_WMISSING_PROTOTYPES_FLAG - Success
 -- Performing Test WITH_WCAST_ALIGN_FLAG
 -- Performing Test WITH_WCAST_ALIGN_FLAG - Success
+-- Performing Test WITH_WCAST_QUAL_FLAG
+-- Performing Test WITH_WCAST_QUAL_FLAG - Success
 -- Performing Test WITH_WERROR_ADDRESS_FLAG
 -- Performing Test WITH_WERROR_ADDRESS_FLAG - Success
 -- Performing Test WITH_WSTRICT_PROTOTYPES_FLAG
@@ -29,16 +31,14 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chir
 -- Performing Test WITH_WWRITE_STRINGS_FLAG - Success
 -- Performing Test WITH_WERROR_WRITE_STRINGS_FLAG
 -- Performing Test WITH_WERROR_WRITE_STRINGS_FLAG - Success
+-- Performing Test WITH_WIMPLICIT_FUNCTION_DECLARATION_FLAG
+-- Performing Test WITH_WIMPLICIT_FUNCTION_DECLARATION_FLAG - Success
 -- Performing Test WITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG
 -- Performing Test WITH_WERROR_IMPLICIT_FUNCTION_DECLARATION_FLAG - Success
 -- Performing Test WITH_WPOINTER_ARITH_FLAG
 -- Performing Test WITH_WPOINTER_ARITH_FLAG - Success
 -- Performing Test WITH_WERROR_POINTER_ARITH_FLAG
 -- Performing Test WITH_WERROR_POINTER_ARITH_FLAG - Success
--- Performing Test WITH_WDECLARATION_AFTER_STATEMENT_FLAG
--- Performing Test WITH_WDECLARATION_AFTER_STATEMENT_FLAG - Success
--- Performing Test WITH_WERROR_DECLARATION_AFTER_STATEMENT_FLAG
--- Performing Test WITH_WERROR_DECLARATION_AFTER_STATEMENT_FLAG - Success
 -- Performing Test WITH_WRETURN_TYPE_FLAG
 -- Performing Test WITH_WRETURN_TYPE_FLAG - Success
 -- Performing Test WITH_WERROR_RETURN_TYPE_FLAG
@@ -57,6 +57,22 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chir
 -- Performing Test WITH_WNO_FORMAT_ZERO_LENGTH_FLAG - Success
 -- Performing Test WITH_WMISSING_FIELD_INITIALIZERS_FLAG
 -- Performing Test WITH_WMISSING_FIELD_INITIALIZERS_FLAG - Success
+-- Performing Test WITH_WOLD_STYLE_DEFINITION_FLAG
+-- Performing Test WITH_WOLD_STYLE_DEFINITION_FLAG - Success
+-- Performing Test WITH_WERROR_OLD_STYLE_DEFINITION_FLAG
+-- Performing Test WITH_WERROR_OLD_STYLE_DEFINITION_FLAG - Success
+-- Performing Test WITH_WIMPLICIT_INT_FLAG
+-- Performing Test WITH_WIMPLICIT_INT_FLAG - Success
+-- Performing Test WITH_WERROR_IMPLICIT_INT_FLAG
+-- Performing Test WITH_WERROR_IMPLICIT_INT_FLAG - Success
+-- Performing Test WITH_WINT_CONVERSION_FLAG
+-- Performing Test WITH_WINT_CONVERSION_FLAG - Success
+-- Performing Test WITH_WERROR_INT_CONVERSION_FLAG
+-- Performing Test WITH_WERROR_INT_CONVERSION_FLAG - Success
+-- Performing Test WITH_WFLOAT_CONVERSION_FLAG
+-- Performing Test WITH_WFLOAT_CONVERSION_FLAG - Success
+-- Performing Test WITH_WERROR_FLOAT_CONVERSION_FLAG
+-- Performing Test WITH_WERROR_FLOAT_CONVERSION_FLAG - Success
 -- Performing Test REQUIRED_FLAGS_WFORMAT
 -- Performing Test REQUIRED_FLAGS_WFORMAT - Success
 -- Performing Test WITH_WFORMAT_SECURITY_FLAG
@@ -85,6 +101,8 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chir
 -- Looking for signal.h - found
 -- Looking for stdarg.h
 -- Looking for stdarg.h - found
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
 -- Looking for stddef.h
 -- Looking for stddef.h - found
 -- Looking for stdint.h
@@ -139,6 +157,8 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chir
 -- Looking for strcmp - found
 -- Looking for clock_gettime
 -- Looking for clock_gettime - found
+-- Performing Test HAVE_BUILTIN_ALIGN_DOWN
+-- Performing Test HAVE_BUILTIN_ALIGN_DOWN - Failed
 -- Looking for sprintf
 -- Looking for sprintf - found
 -- Looking for vsnprintf
@@ -152,123 +172,51 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src -B /home/chir
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/build
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/build -j 2 -- -k
-[  3%] Building C object src/CMakeFiles/cmocka.dir/cmocka.c.o
-[  3%] Building C object src/CMakeFiles/cmocka-static.dir/cmocka.c.o
+[  0%] Building C object src/CMakeFiles/cmocka.dir/cmocka.c.o
+[  1%] Building C object src/CMakeFiles/cmocka-static.dir/cmocka.c.o
+[  2%] Building C object example/CMakeFiles/calculator.dir/calculator.c.o
+[  3%] Linking C executable calculator
+[  3%] Built target calculator
 [  4%] Linking C static library libcmocka.a
-[  6%] Linking C static library libcmocka-static.a
-[  6%] Built target cmocka
-[  6%] Built target cmocka-static
-[  8%] Building C object example/CMakeFiles/simple_test.dir/simple_test.c.o
-[  9%] Building C object example/CMakeFiles/allocate_module_test.dir/allocate_module.c.o
-[ 11%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro.c.o
-[ 13%] Building C object example/CMakeFiles/allocate_module_test.dir/allocate_module_test.c.o
-[ 14%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro_test.c.o
-[ 16%] Linking C executable allocate_module_test
-[ 18%] Linking C executable assert_macro_test
-[ 18%] Built target allocate_module_test
-[ 19%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module.c.o
-[ 19%] Built target assert_macro_test
-[ 21%] Building C object tests/CMakeFiles/test_alloc.dir/test_alloc.c.o
-[ 22%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module_test.c.o
-[ 24%] Linking C executable test_alloc
-[ 26%] Linking C executable assert_module_test
-[ 26%] Built target test_alloc
-[ 26%] Built target assert_module_test
-[ 27%] Building C object tests/CMakeFiles/test_group_setup_assert.dir/test_group_setup_assert.c.o
-[ 29%] Building C object tests/CMakeFiles/test_group_setup_fail.dir/test_group_setup_fail.c.o
-[ 31%] Linking C executable test_group_setup_assert
-[ 32%] Linking C executable test_group_setup_fail
-[ 32%] Built target test_group_setup_assert
-[ 32%] Built target test_group_setup_fail
-[ 34%] Building C object tests/CMakeFiles/test_fixtures.dir/test_fixtures.c.o
-[ 36%] Building C object tests/CMakeFiles/test_group_fixtures.dir/test_group_fixtures.c.o
-[ 37%] Linking C executable test_group_fixtures
-[ 39%] Linking C executable test_fixtures
-[ 39%] Built target test_group_fixtures
-[ 39%] Built target test_fixtures
-[ 40%] Building C object tests/CMakeFiles/test_groups.dir/test_groups.c.o
-[ 42%] Building C object tests/CMakeFiles/test_float_macros.dir/test_float_macros.c.o
-[ 44%] Linking C executable test_groups
-[ 45%] Linking C executable test_float_macros
-[ 45%] Built target test_groups
-[ 45%] Built target test_float_macros
-[ 49%] Building C object tests/CMakeFiles/test_assert_macros.dir/test_assert_macros.c.o
-[ 49%] Building C object tests/CMakeFiles/test_double_macros.dir/test_double_macros.c.o
-[ 50%] Linking C executable test_double_macros
-[ 52%] Linking C executable test_assert_macros
-[ 52%] Built target test_double_macros
-[ 52%] Built target test_assert_macros
-[ 54%] Building C object tests/CMakeFiles/test_assert_macros_fail.dir/test_assert_macros_fail.c.o
-[ 55%] Building C object tests/CMakeFiles/test_basics.dir/test_basics.c.o
-[ 57%] Linking C executable test_assert_macros_fail
-[ 59%] Linking C executable test_basics
-[ 59%] Built target test_assert_macros_fail
-[ 60%] Building C object tests/CMakeFiles/test_skip.dir/test_skip.c.o
-[ 60%] Built target test_basics
-[ 62%] Building C object tests/CMakeFiles/test_strmatch.dir/test_strmatch.c.o
-[ 63%] Linking C executable test_skip
-[ 63%] Built target test_skip
-[ 65%] Building C object tests/CMakeFiles/test_setup_fail.dir/test_setup_fail.c.o
-[ 67%] Linking C executable test_setup_fail
-[ 67%] Built target test_setup_fail
-[ 68%] Building C object tests/CMakeFiles/test_ordering.dir/test_ordering.c.o
-[ 70%] Linking C executable test_ordering
-[ 70%] Built target test_ordering
-[ 72%] Building C object tests/CMakeFiles/test_ordering_fail.dir/test_ordering_fail.c.o
-[ 73%] Linking C executable test_ordering_fail
-[ 73%] Built target test_ordering_fail
-[ 75%] Building C object tests/CMakeFiles/test_returns.dir/test_returns.c.o
-[ 77%] Linking C executable test_returns
-[ 77%] Built target test_returns
-[ 78%] Building C object tests/CMakeFiles/test_returns_fail.dir/test_returns_fail.c.o
-[ 80%] Linking C executable test_returns_fail
-[ 80%] Built target test_returns_fail
-[ 81%] Building C object tests/CMakeFiles/test_string.dir/test_string.c.o
-[ 83%] Building C object tests/CMakeFiles/test_wildcard.dir/test_wildcard.c.o
-[ 85%] Linking C executable test_wildcard
-[ 85%] Built target test_wildcard
-[ 86%] Building C object tests/CMakeFiles/test_skip_filter.dir/test_skip_filter.c.o
-[ 88%] Linking C executable test_skip_filter
-[ 88%] Built target test_skip_filter
-[ 90%] Building C object tests/CMakeFiles/test_cmockery.dir/test_cmockery.c.o
-[ 91%] Linking C executable test_cmockery
-[ 91%] Built target test_cmockery
-[ 93%] Building C object tests/CMakeFiles/test_exception_handler.dir/test_exception_handler.c.o
-[ 95%] Linking C executable test_exception_handler
-[ 95%] Built target test_exception_handler
-[ 96%] Linking C executable test_strmatch
-[ 96%] Built target test_strmatch
-In file included from /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/example/simple_test.c:5:
-/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/include/cmocka.h:137:28: error: conflicting types for 'uintptr_t'; have 'unsigned int'
-  137 |       typedef unsigned int uintptr_t;
-      |                            ^~~~~~~~~
-In file included from /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/example/simple_test.c:4:
-/home/chirag/qnx800/target/qnx/usr/include/stdint.h:38:33: note: previous declaration of 'uintptr_t' with type 'uintptr_t' {aka 'long unsigned int'}
-   38 | typedef _Uintptrt               uintptr_t;
-      |                                 ^~~~~~~~~
-gmake[2]: *** [example/CMakeFiles/simple_test.dir/build.make:76: example/CMakeFiles/simple_test.dir/simple_test.c.o] Error 1
-gmake[2]: Target 'example/CMakeFiles/simple_test.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:1672: example/CMakeFiles/simple_test.dir/all] Error 2
-In file included from /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/tests/test_string.c:21:
-/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/include/cmocka.h:137:28: error: conflicting types for 'uintptr_t'; have 'unsigned int'
-  137 |       typedef unsigned int uintptr_t;
-      |                            ^~~~~~~~~
-In file included from /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/tests/test_string.c:19:
-/home/chirag/qnx800/target/qnx/usr/include/stdint.h:38:33: note: previous declaration of 'uintptr_t' with type 'uintptr_t' {aka 'long unsigned int'}
-   38 | typedef _Uintptrt               uintptr_t;
-      |                                 ^~~~~~~~~
-gmake[2]: *** [tests/CMakeFiles/test_string.dir/build.make:76: tests/CMakeFiles/test_string.dir/test_string.c.o] Error 1
-gmake[2]: Target 'tests/CMakeFiles/test_string.dir/build' not remade because of errors.
-gmake[1]: *** [CMakeFiles/Makefile2:1542: tests/CMakeFiles/test_string.dir/all] Error 2
-/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/tests/test_cmockery.c: In function 'main':
-/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/tests/test_cmockery.c:31:5: warning: '_run_tests' is deprecated [-Wdeprecated-declarations]
-   31 |     return run_tests(tests);
-      |     ^~~~~~
-In file included from /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/include/cmockery/cmockery.h:1,
-                 from /home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/tests/test_cmockery.c:20:
-/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/include/cmocka.h:2389:23: note: declared here
- 2389 | CMOCKA_DEPRECATED int _run_tests(const UnitTest * const tests,
-      |                       ^~~~~~~~~~
+[  4%] Built target cmocka
+[  4%] Building C object example/CMakeFiles/calculator_test.dir/calculator.c.o
+[  4%] Building C object example/CMakeFiles/simple_test.dir/simple_test.c.o
+[  5%] Linking C executable simple_test
+[  5%] Built target simple_test
+[  5%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro.c.o
+[  6%] Building C object example/CMakeFiles/calculator_test.dir/calculator_test.c.o
+[  7%] Building C object example/CMakeFiles/assert_macro_test.dir/assert_macro_test.c.o
+[  7%] Linking C executable assert_macro_test
+[  7%] Built target assert_macro_test
+[  8%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module.c.o
+[  9%] Building C object example/CMakeFiles/assert_module_test.dir/assert_module_test.c.o
+[ 10%] Linking C executable calculator_test
+[ 10%] Linking C executable assert_module_test
+[ 10%] Built target calculator_test
+[ 11%] Building C object example/CMakeFiles/set_parameters_test.dir/set_parameters.c.o
+[ 11%] Built target assert_module_test
+[ 12%] Building C object example/CMakeFiles/set_errno_tests.dir/set_errno.c.o
+[ 13%] Linking C executable set_parameters_test
+[ 13%] Linking C executable set_errno_tests
+[ 13%] Built target set_parameters_test
+[ 13%] Building C object example/CMakeFiles/output_override_test.dir/output_override_test.c.o
+[ 13%] Built target set_errno_tests
+[ 14%] Building C object example/CMakeFiles/expect_check_data_example.dir/expect_check_data_example.c.o
+[ 15%] Linking C executable output_override_test
+[ 15%] Built target output_override_test
+[ 16%] Building C object example/CMakeFiles/expect_check_data_advanced.dir/expect_check_data_advanced.c.o
+[ 17%] Linking C executable expect_check_data_example
+[ 17%] Built target expect_check_data_example
+[ 17%] Linking C executable expect_check_data_advanced
+[ 17%] Built target expect_check_data_advanced
+/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/src/cmocka.c: In function 'cm_get_output':
+/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/src/cmocka.c:4346:30: error: 'PATH_MAX' undeclared (first use in this function)
+ 4346 |         if (len > 0 && len < PATH_MAX) {
+      |                              ^~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/cmocka/work/src/src/cmocka.c:4346:30: note: each undeclared identifier is reported only once for each function it appears in
+gmake[2]: *** [src/CMakeFiles/cmocka-static.dir/build.make:76: src/CMakeFiles/cmocka-static.dir/cmocka.c.o] Error 1
+gmake[2]: Target 'src/CMakeFiles/cmocka-static.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:1142: src/CMakeFiles/cmocka-static.dir/all] Error 2
 gmake[1]: Target 'all' not remade because of errors.
 gmake: *** [Makefile:166: all] Error 2
 gmake: Target 'default_target' not remade because of errors.

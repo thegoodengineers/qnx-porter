@@ -1,8 +1,8 @@
 {
   "library": "jansson",
   "url": "https://github.com/akheron/jansson.git",
-  "version": "v2.14",
-  "commit": "684e18c927e89615c2d501737e90018f4930d6c5",
+  "version": "v2.15.1",
+  "commit": "dbb5fb3636e155fccfce4cd215de752779bd6971",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -10,8 +10,8 @@
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
   "rounds": 2,
-  "tests_passed": 209,
-  "tests_total": 213,
+  "tests_passed": 211,
+  "tests_total": 215,
   "tests_ran": true,
   "patches_kept": 1,
   "patches_by_rule": 1,
@@ -22,7 +22,7 @@
       "rule": "link-libm",
       "source": "rule",
       "reason": "`__isinf` is in QNX's libm, not in libc: QNX's <math.h> implements isinf/isfinite/isnan as calls to __isinf etc. in libm, where glibc needs no library. Link with -lm.",
-      "error": "/home/chirag/qnx-porter/ports-aarch64le/jansson/work/src/src/value.c:926:(.text+0xa88): undefined reference to `__isinf'",
+      "error": "/home/chirag/qnx-porter/ports-aarch64le/jansson/work/src/src/value.c:925:(.text+0xa78): undefined reference to `__isinf'",
       "files": [
         "qnx-toolchain.cmake"
       ],
@@ -31,9 +31,10 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 6.9,
+  "minutes": 5.1,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T12:57:27+00:00"
+  "finished": "2026-11-13T22:46:45+00:00"
 }

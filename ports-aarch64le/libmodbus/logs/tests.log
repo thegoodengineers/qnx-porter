@@ -6,7 +6,7 @@ Making check in tests
 make  check-TESTS
 FAIL: ./unit-tests.sh
 ============================================================================
-Testsuite summary for libmodbus 3.1.11
+Testsuite summary for libmodbus 3.2.0
 ============================================================================
 # TOTAL: 1
 # PASS:  0
@@ -20,11 +20,11 @@ See tests/test-suite.log
 Please report to https://github.com/stephane/libmodbus/issues
 ============================================================================
 make: Leaving directory '/home/chirag/qnx-porter/ports-aarch64le/libmodbus/work/build'
-make[3]: *** [Makefile:792: test-suite.log] Error 1
-make[2]: *** [Makefile:900: check-TESTS] Error 2
-make[1]: *** [Makefile:972: check-am] Error 2
+make[3]: *** [Makefile:818: test-suite.log] Error 1
+make[2]: *** [Makefile:926: check-TESTS] Error 2
+make[1]: *** [Makefile:998: check-am] Error 2
 make[1]: Target 'check' not remade because of errors.
-make: *** [Makefile:499: check-recursive] Error 1
+make: *** [Makefile:500: check-recursive] Error 1
 make: Target 'check' not remade because of errors.
 [exit 2]
 

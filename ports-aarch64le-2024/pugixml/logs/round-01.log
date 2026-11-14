@@ -1,0 +1,98 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/src -B /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/pugixml/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/pugixml/work/qnx-run -DPUGIXML_BUILD_TESTS=ON
+-- The CXX compiler identification is QCC 12.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/pugixml/work/build -j 2 -- -k
+[  2%] Building CXX object CMakeFiles/pugixml-static.dir/src/pugixml.cpp.o
+[  4%] Linking CXX static library libpugixml.a
+[  4%] Built target pugixml-static
+[  9%] Building CXX object CMakeFiles/pugixml-check.dir/tests/main.cpp.o
+[  9%] Building CXX object CMakeFiles/pugixml-check.dir/tests/allocator.cpp.o
+[ 11%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test.cpp.o
+[ 13%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_compact.cpp.o
+[ 16%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_deprecated.cpp.o
+[ 18%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_document.cpp.o
+[ 20%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_dom_modify.cpp.o
+[ 23%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_dom_text.cpp.o
+[ 25%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_dom_traverse.cpp.o
+[ 27%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_guard.cpp.o
+[ 30%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_iosfwd_1.cpp.o
+[ 32%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_iosfwd_2.cpp.o
+[ 34%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_iostream_1.cpp.o
+[ 37%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_iostream_2.cpp.o
+[ 39%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_only_1.cpp.o
+[ 41%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_only_2.cpp.o
+[ 44%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_string_1.cpp.o
+[ 46%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_string_2.cpp.o
+[ 48%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_header_string_iostream.cpp.o
+[ 51%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_memory.cpp.o
+[ 53%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_parse.cpp.o
+[ 55%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_parse_doctype.cpp.o
+[ 58%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_unicode.cpp.o
+[ 60%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_version.cpp.o
+[ 62%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_write.cpp.o
+[ 65%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath.cpp.o
+[ 67%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_api.cpp.o
+[ 69%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_functions.cpp.o
+[ 72%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_operators.cpp.o
+[ 74%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_parse.cpp.o
+[ 76%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_paths.cpp.o
+[ 79%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_paths_abbrev_w3c.cpp.o
+[ 81%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_paths_w3c.cpp.o
+[ 83%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_variables.cpp.o
+[ 86%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_xalan_1.cpp.o
+[ 88%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_xalan_2.cpp.o
+[ 90%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_xalan_3.cpp.o
+[ 93%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_xalan_4.cpp.o
+[ 95%] Building CXX object CMakeFiles/pugixml-check.dir/tests/test_xpath_xalan_5.cpp.o
+[ 97%] Building CXX object CMakeFiles/pugixml-check.dir/tests/writer_string.cpp.o
+[100%] Linking CXX executable pugixml-check
+[100%] Built target pugixml-check
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated
+cc: warning - lang-c++ is deprecated

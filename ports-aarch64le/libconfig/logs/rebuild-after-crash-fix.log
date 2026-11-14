@@ -1,4 +1,7 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libconfig/work/qnx-run
+-- CMake version: 3.22.1
+-- Set version info for config: VERSION=15.0.1, SOVERSION=15
+-- Set version info for config++: VERSION=15.0.1, SOVERSION=15
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libconfig/work/build
@@ -8,22 +11,22 @@ Consolidate compiler generated dependencies of target config++
 [ 24%] Built target config
 Consolidate compiler generated dependencies of target libtinytest
 [ 29%] Built target libtinytest
+[ 56%] Built target config++
 Consolidate compiler generated dependencies of target c_example1
-[ 35%] Built target c_example1
-[ 62%] Built target config++
+[ 62%] Built target c_example1
 Consolidate compiler generated dependencies of target c_example2
-Consolidate compiler generated dependencies of target c_example3
 [ 67%] Built target c_example2
+Consolidate compiler generated dependencies of target c_example3
 [ 72%] Built target c_example3
 Consolidate compiler generated dependencies of target c++_example1
-Consolidate compiler generated dependencies of target c++_example2
 [ 78%] Built target c++_example1
-[ 83%] Built target c++_example2
-Consolidate compiler generated dependencies of target c++_example4
+Consolidate compiler generated dependencies of target c++_example2
 Consolidate compiler generated dependencies of target c++_example3
-[ 89%] Built target c++_example4
-[ 94%] Built target c++_example3
+[ 83%] Built target c++_example2
+[ 89%] Built target c++_example3
+Consolidate compiler generated dependencies of target c++_example4
 Consolidate compiler generated dependencies of target libconfig_tests
+[ 94%] Built target c++_example4
 [ 97%] Building C object tests/CMakeFiles/libconfig_tests.dir/tests.c.o
 [100%] Linking C executable ../out/libconfig_tests
 [100%] Built target libconfig_tests

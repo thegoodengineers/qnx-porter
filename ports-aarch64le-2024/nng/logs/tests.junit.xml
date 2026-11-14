@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite name="qnx-target" tests="86" failures="6" skipped="0"><testcase name="nng.core.aio_test" classname="qnx-target" /><testcase name="nng.core.buf_size_test" classname="qnx-target" /><testcase name="nng.core.errors_test" classname="qnx-target" /><testcase name="nng.core.id_test" classname="qnx-target" /><testcase name="nng.core.init_test" classname="qnx-target" /><testcase name="nng.core.list_test" classname="qnx-target" /><testcase name="nng.core.log_test" classname="qnx-target" /><testcase name="nng.core.message_test" classname="qnx-target" /><testcase name="nng.core.reconnect_test" classname="qnx-target" /><testcase name="nng.core.sock_test" classname="qnx-target" /><testcase name="nng.core.sockaddr_test" classname="qnx-target"><failure message="exit 1">Test nng_sockaddr_ipc:
+  sockaddr_test.c:27: Check strcmp(nng_str_sockaddr(&amp;sa, addr, sizeof(addr)), "/tmp/something") == 0... ok
+  SUCCESS: All conditions have passed.
+  Duration: 0.001970 secs
+
+Test nng_sockaddr_abstract:
+  sockaddr_test.c:39: Check strcmp(nng_str_sockaddr(&amp;sa, addr, sizeof(addr)), "abstract[something]") == 0... ok
+  SUCCESS: All conditions have passed.
+  Duration: 0.000307 secs
+
+Test nng_sockaddr_inproc:
+  ERROR: Test interrupted by SIGSEGV.
+
+Test nng_sockaddr_in:
+  sockaddr_test.c:64: Check strcmp(nng_str_sockaddr(&amp;sa, addr, sizeof(addr)), "127.0.0.1:80") == 0... ok
+  SUCCESS: All conditions have passed.
+  Duration: 0.000943 secs
+
+Test nng_sockaddr_in6:
+  ERROR: Test interrupted by SIGSEGV.
+
+Test nng_sockaddr_in6 v4 mapped:
+  ERROR: Test interrupted by SIGSEGV.
+
+Test nng_sockaddr_in6 link local:
+  ERROR: Test interrupted by SIGSEGV.
+
+Test nng_sockaddr_in6 zero:
+  ERROR: Test interrupted by SIGSEGV.
+
+Test nng_sockaddr_in6 subnet:
+  ERROR: Test interrupted by SIGSEGV.
+
+Test nng_sockaddr_zt:
+  ERROR: Test interrupted by SIGSEGV.
+
+Summary:
+  Count of all unit tests:       10
+  Count of run unit tests:       10
+  Count of failed unit tests:     7
+  Count of skipped unit tests:    0
+FAILED: 7 of 10 unit tests have failed.
+</failure></testcase><testcase name="nng.core.stats_test" classname="qnx-target" /><testcase name="nng.core.url_test" classname="qnx-target" /><testcase name="nng.platform.platform_test" classname="qnx-target" /><testcase name="nng.platform.resolver_test" classname="qnx-target" /><testcase name="nng.platform.udp_test" classname="qnx-target"><failure message="exit 1">    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+  udp_test.c:198: Check nng_udp_open(&amp;u1, &amp;sa1) succeeds... ok
+  udp_test.c:199: Check nng_udp_sockname(u1, &amp;sa1) succeeds... ok
+  udp_test.c:201: Check nng_aio_alloc(&amp;aio1, NULL, NULL) succeeds... ok
+  udp_test.c:205: Check nng_aio_set_iov(aio1, 1, &amp;iov1) succeeds... ok
+  udp_test.c:210: Check nng_aio_result(aio1) fails with Address invalid... ok
+  SUCCESS: All conditions have passed.
+  Duration: 0.018856 secs
+
+Test udp send ipc address:
+    INFO: NNG-TRAN: Registered transport: inproc
+    INFO: NNG-TRAN: Registered transport: ipc
+    INFO: NNG-TRAN: Registered transport: unix
+    INFO: NNG-TRAN: Registered transport: tcp
+    INFO: NNG-TRAN: Registered transport: tcp4
+    INFO: NNG-TRAN: Registered transport: tcp6
+    INFO: NNG-TRAN: Registered transport: tls+tcp
+    INFO: NNG-TRAN: Registered transport: tls+tcp4
+    INFO: NNG-TRAN: Registered transport: tls+tcp6
+    INFO: NNG-TRAN: Registered transport: ws
+    INFO: NNG-TRAN: Registered transport: ws4
+    INFO: NNG-TRAN: Registered transport: ws6
+    INFO: NNG-TRAN: Registered transport: wss
+    INFO: NNG-TRAN: Registered transport: wss4
+    INFO: NNG-TRAN: Registered transport: wss6
+    INFO: NNG-TRAN: Registered transport: socket
+    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+  udp_test.c:237: Check nng_udp_open(&amp;u1, &amp;sa1) succeeds... ok
+  udp_test.c:238: Check nng_udp_sockname(u1, &amp;sa1) succeeds... ok
+  udp_test.c:240: Check nng_aio_alloc(&amp;aio1, NULL, NULL) succeeds... ok
+  udp_test.c  ERROR: Test interrupted by SIGABRT.
+
+Test udp bogus bind:
+  ERROR: Test interrupted by SIGABRT.
+
+Test udp duplicate bind:
+    INFO: NNG-TRAN: Registered transport: inproc
+    INFO: NNG-TRAN: Registered transport: ipc
+    INFO: NNG-TRAN: Registered transport: unix
+    INFO: NNG-TRAN: Registered transport: tcp
+    INFO: NNG-TRAN: Registered transport: tcp4
+    INFO: NNG-TRAN: Registered transport: tcp6
+    INFO: NNG-TRAN: Registered transport: tls+tcp
+    INFO: NNG-TRAN: Registered transport: tls+tcp4
+    INFO: NNG-TRAN: Registered transport: tls+tcp6
+    INFO: NNG-TRAN: Registered transport: ws
+    INFO: NNG-TRAN: Registered transport: ws4
+    INFO: NNG-TRAN: Registered transport: ws6
+    INFO: NNG-TRAN: Registered transport: wss
+    INFO: NNG-TRAN: Registered transport: wss4
+    INFO: NNG-TRAN: Registered transport: wss6
+    INFO: NNG-TRAN: Registered transport: socket
+    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+  udp_test.c:285: Check nng_udp_open(&amp;u1, &amp;sa) succeeds... ok
+  udp_test.c:286: Check nng_udp_sockname(u1, &amp;sa) succeeds... ok
+  udp_test.c:287: Check nng_udp_open(&amp;u2, &amp;sa) fails with Address in use... ok
+  SUCCESS: All conditions have passed.
+  Duration: 0.025115 secs
+
+Test udp multicast membership:
+    INFO: NNG-TRAN: Registered transport: inproc
+    INFO: NNG-TRAN: Registered transport: ipc
+    INFO: NNG-TRAN: Registered transport: unix
+    INFO: NNG-TRAN: Registered transport: tcp
+    INFO: NNG-TRAN: Registered transport: tcp4
+    INFO: NNG-TRAN: Registered transport: tcp6
+    INFO: NNG-TRAN: Registered transport: tls+tcp
+    INFO: NNG-TRAN: Registered transport: tls+tcp4
+    INFO: NNG-TRAN: Registered transport: tls+tcp6
+    INFO: NNG-TRAN: Registered transport: ws
+    INFO: NNG-TRAN: Registered transport: ws4
+    INFO: NNG-TRAN: Registered transport: ws6
+    INFO: NNG-TRAN: Registered transport: wss
+    INFO: NNG-TRAN: Registered transport: wss4
+    INFO: NNG-TRAN: Registered transport: wss6
+    INFO: NNG-TRAN: Registered transport: socket
+    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+  udp_test.c:304: Check nng_udp_open(&amp;u1, &amp;sa) succeeds... ok
+  udp_test.c:305: Check nng_udp_sockname(u1, &amp;sa) succeeds... ok
+  udp_test.c:306: Check nng_udp_multicast_membership(u1, &amp;mc, true) succeeds... ok
+  udp_test.c:307: Check nng_udp_multicast_membership(u1, &amp;mc, false) succeeds... ok
+  SUCCESS: All conditions have passed.
+  Duration: 0.024266 secs
+
+Test udp multicast send recv:
+    INFO: NNG-TRAN: Registered transport: inproc
+    INFO: NNG-TRAN: Registered transport: ipc
+    INFO: NNG-TRAN: Registered transport: unix
+    INFO: NNG-TRAN: Registered transport: tcp
+    INFO: NNG-TRAN: Registered transport: tcp4
+    INFO: NNG-TRAN: Registered transport: tcp6
+    INFO: NNG-TRAN: Registered transport: tls+tcp
+    INFO: NNG-TRAN: Registered transport: tls+tcp4
+    INFO: NNG-TRAN: Registered transport: tls+tcp6
+    INFO: NNG-TRAN: Registered transport: ws
+    INFO: NNG-TRAN: Registered transport: ws4
+    INFO: NNG-TRAN: Registered transport: ws6
+    INFO: NNG-TRAN: Registered transport: wss
+    INFO: NNG-TRAN: Registered transport: wss4
+    INFO: NNG-TRAN: Registered transport: wss6
+    INFO: NNG-TRAN: Registered transport: socket
+    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+  udp_test.c:336: Check nng_udp_open(&amp;u1, &amp;sa1) succeeds... ok
+  udp_test.c:337: Check nng_udp_sockname(u1, &amp;sa1) succeeds... ok
+  udp_test.c:338: Check nng_udp_open(&amp;u2, &amp;sa2) succeeds... ok
+  udp_test.c:339: Check nng_udp_sockname(u2, &amp;sa2) succeeds... ok
+  udp_test.c:340: Check nng_udp_multicast_membership(u1, &amp;mc, true) succeeds... ok
+  udp_test.c:341: Check nng_udp_multicast_membership(u2, &amp;mc, true) succeeds... ok
+  udp_test.c:342: Check nng_aio_alloc(&amp;aio1, NULL, NULL) succeeds... ok
+  udp_test.c:343: Check nng_aio_alloc(&amp;aio2, NULL, NULL) succeeds... ok
+  udp_test.c:347: Check nng_aio_set_iov(aio1, 1, &amp;iov1) succeeds... ok
+  udp_test.c:348: Check nng_aio_set_input(aio1, 0, &amp;sa2) succeeds... ok
+  udp_test.c:352: Check nng_aio_set_iov(aio2, 1, &amp;iov2) succeeds... ok
+  udp_test.c:353: Check nng_aio_set_input(aio2, 0, &amp;ra2) succeeds... ok
+  udp_test.c:359: Check nng_aio_result(aio1) succeeds... ok
+  udp_test.c:360: Check nng_aio_result(aio2) succeeds... ok
+  udp_test.c:362: Check multi == multi... ok
+  SUCCESS: All conditions have passed.
+  Duration: 0.026330 secs
+
+Test udp send v6 from v4:
+    INFO: NNG-TRAN: Registered transport: inproc
+    INFO: NNG-TRAN: Registered transport: ipc
+    INFO: NNG-TRAN: Registered transport: unix
+    INFO: NNG-TRAN: Registered transport: tcp
+    INFO: NNG-TRAN: Registered transport: tcp4
+    INFO: NNG-TRAN: Registered transport: tcp6
+    INFO: NNG-TRAN: Registered transport: tls+tcp
+    INFO: NNG-TRAN: Registered transport: tls+tcp4
+    INFO: NNG-TRAN: Registered transport: tls+tcp6
+    INFO: NNG-TRAN: Registered transport: ws
+    INFO: NNG-TRAN: Registered transport: ws4
+    INFO: NNG-TRAN: Registered transport: ws6
+    INFO: NNG-TRAN: Registered transport: wss
+    INFO: NNG-TRAN: Registered transport: wss4
+    INFO: NNG-TRAN: Registered transport: wss6
+    INFO: NNG-TRAN: Registered transport: socket
+    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
+  udp_test.c:386: Check nng_aio_alloc(&amp;aio1, NULL, NULL) succeeds... ok
+  udp_test.c:387: Check nng_udp_open(&amp;u1, &amp;sa) succeeds... ok
+  udp_test.c:401: Check (rv == NNG_EADDRINVAL) || (rv == NNG_ENOTSUP) || (rv == NNG_EUNREACHABLE)... ok
+  SUCCESS: All conditions have passed.
+  Duration: 0.023448 secs
+
+Summary:
+  Count of all unit tests:        9
+  Count of run unit tests:        9
+  Count of failed unit tests:     2
+  Count of skipped unit tests:    0
+FAILED: 2 of 9 unit tests have failed.
+</failure></testcase><testcase name="nng.platform.posix_ipcwinsec_test" classname="qnx-target" /><testcase name="nng.sp.protocol.bus0.bus_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pair0.pair0_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pair1.pair1_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pair1.pair1_poly_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pipeline0.pull_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pipeline0.push_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pubsub0.pub_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pubsub0.sub_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pubsub0.xsub_test" classname="qnx-target" /><testcase name="nng.sp.protocol.reqrep0.req_test" classname="qnx-target" /><testcase name="nng.sp.protocol.reqrep0.rep_test" classname="qnx-target" /><testcase name="nng.sp.protocol.reqrep0.xrep_test" classname="qnx-target" /><testcase name="nng.sp.protocol.reqrep0.xreq_test" classname="qnx-target" /><testcase name="nng.sp.protocol.survey0.respond_test" classname="qnx-target" /><testcase name="nng.sp.protocol.survey0.survey_test" classname="qnx-target" /><testcase name="nng.sp.protocol.survey0.xrespond_test" classname="qnx-target" /><testcase name="nng.sp.protocol.survey0.xsurvey_test" classname="qnx-target" /><testcase name="nng.sp.transport.socket.sockfd_test" classname="qnx-target" /><testcase name="nng.sp.transport.ipc.ipc_test" classname="qnx-target" /><testcase name="nng.sp.transport.tcp.tcp_test" classname="qnx-target" /><testcase name="nng.sp.transport.ws.ws_test" classname="qnx-target" /><testcase name="nng.supplemental.base64_test" classname="qnx-target" /><testcase name="nng.supplemental.sha1_test" classname="qnx-target" /><testcase name="nng.supplemental.idhash_test" classname="qnx-target" /><testcase name="nng.supplemental.wssfile_test" classname="qnx-target" /><testcase name="nng.supplemental.websocket_test" classname="qnx-target" /><testcase name="nng.inproc_lat" classname="qnx-target" /><testcase name="nng.inproc_thr" classname="qnx-target" /><testcase name="nng.compat.compat.nanomsg.compat_msg_test" classname="qnx-target" /><testcase name="nng.compat.compat.nanomsg.compat_tcp_test" classname="qnx-target" /><testcase name="nng.device" classname="qnx-target" /><testcase name="nng.files" classname="qnx-target" /><testcase name="nng.httpclient" classname="qnx-target"><failure message="exit 2">=== RUN: HTTP Client
+
+  Given a TCP connection to example.com ✔✔✔✘
+  Given a client ✔✔✔
+    One off exchange works ✔✔✘✔✔✔
+    Connection reuse works ✔✔✔✘✔✔✔
+  Client times out ⚠
+  Given a client (chunked) ✔✔✔
+    One off exchange works ✔✔✘✔✔✔
+
+
+Failures:
+
+  * Assertion Failed (Given a TCP connection to example.com)
+  File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
+  Line: 37
+  Test: nng_aio_result(aio) == 0
+  
+  * Assertion Failed (One off exchange works)
+  File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
+  Line: 37
+  Test: nng_aio_result(aio) == 0
+  
+  * Assertion Failed (Connection reuse works)
+  File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
+  Line: 37
+  Test: nng_aio_result(aio) == 0
+  
+  * Assertion Failed (One off exchange works)
+  File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
+  Line: 37
+  Test: nng_aio_result(aio) == 0
+  
+
+
+29 assertions thus far (one or more sections skipped)
+
+--- FAIL: HTTP Client (0.42s)
+FAIL
+FAIL    /home/chirag/qnx-porter/ports-aarch64le/nng/work/build/tests/httpclient   0.430s
+</failure></testcase><testcase name="nng.httpserver" classname="qnx-target" /><testcase name="nng.inproc" classname="qnx-target"><failure message="exit None">=== RUN: Inproc Transport
+
+  Given transport ✔✔✔✔
+    Scheme is correct ✔✔✔✔✔✔
+    Connection refused works ✔✔✔✔✔✔✔✔
+    Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
+    Listen and accept ✔✔✔✔✔✔✔✔✔
+    Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
+    Send and recv large data ✔
+killed on the target after 5 s
+</failure></testcase><testcase name="nng.ipc" classname="qnx-target"><failure message="exit None">=== RUN: IPC Transport
+
+  Given transport ✔✔✔✔
+    Scheme is correct ✔✔✔✔✔✔
+    Connection refused works ✔✔✔✔✔✔✔✔
+    Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
+    Listen and accept ✔✔✔✔✔✔✔✔✔
+    Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
+    Send and recv large data ✔
+killed on the target after 5 s
+</failure></testcase><testcase name="nng.ipcsupp" classname="qnx-target" /><testcase name="nng.multistress" classname="qnx-target" /><testcase name="nng.nonblock" classname="qnx-target" /><testcase name="nng.options" classname="qnx-target" /><testcase name="nng.pipe" classname="qnx-target" /><testcase name="nng.pollfd" classname="qnx-target" /><testcase name="nng.scalability" classname="qnx-target" /><testcase name="nng.synch" classname="qnx-target" /><testcase name="nng.tls" classname="qnx-target" /><testcase name="nng.tcpsupp" classname="qnx-target" /><testcase name="nng.tcp" classname="qnx-target" /><testcase name="nng.tcp6" classname="qnx-target" /><testcase name="nng.ws" classname="qnx-target"><failure message="exit None">=== RUN: WebSocket Transport
+
+  Given transport ✔✔✔✔
+    Scheme is correct ✔✔✔✔✔✔
+    Connection refused works ✔✔✔✔✔✔✔✔
+    Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
+    Listen and accept ✔✔✔✔✔✔✔✔✔
+    Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
+    Send and recv large data ✔
+killed on the target after 30 s
+</failure></testcase><testcase name="nng.wss" classname="qnx-target" /><testcase name="nng.reqctx" classname="qnx-target" /><testcase name="nng.reqstress" classname="qnx-target" /><testcase name="nng.compat_block" classname="qnx-target" /><testcase name="nng.compat_bug777" classname="qnx-target" /><testcase name="nng.compat_bus" classname="qnx-target" /><testcase name="nng.compat_cmsg" classname="qnx-target" /><testcase name="nng.compat_msg" classname="qnx-target" /><testcase name="nng.compat_iovec" classname="qnx-target" /><testcase name="nng.compat_device" classname="qnx-target" /><testcase name="nng.compat_pair" classname="qnx-target" /><testcase name="nng.compat_pipeline" classname="qnx-target" /><testcase name="nng.compat_poll" classname="qnx-target" /><testcase name="nng.compat_reqrep" classname="qnx-target" /><testcase name="nng.compat_survey" classname="qnx-target" /><testcase name="nng.compat_reqttl" classname="qnx-target" /><testcase name="nng.compat_shutdown" classname="qnx-target" /><testcase name="nng.compat_surveyttl" classname="qnx-target" /><testcase name="nng.compat_options" classname="qnx-target" /><testcase name="nng.cplusplus_pair" classname="qnx-target" /></testsuite>

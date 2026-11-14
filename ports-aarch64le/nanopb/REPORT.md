@@ -1,8 +1,8 @@
-# nanopb 0.4.9 on QNX 8.0 (aarch64le)
+# nanopb 0.4.9.3 on QNX 8.0 (aarch64le)
 
 | | |
 |---|---|
-| Upstream | https://github.com/nanopb/nanopb.git at `0.4.9` (`98bf4db69897`) |
+| Upstream | https://github.com/nanopb/nanopb.git at `0.4.9.3` (`93550bb52a62`) |
 | Build system | cmake |
 | Toolchain | QNX SDP 8.0, `qnx-toolchain.cmake` in this folder |
 | Build | **built** after 1 round(s) |

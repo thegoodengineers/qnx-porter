@@ -1,4 +1,5 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/capstone/work/src -B /home/chirag/qnx-porter/ports-aarch64le/capstone/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/capstone/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/capstone/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/capstone/work/src -B /home/chirag/qnx-porter/ports-aarch64le/capstone/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/capstone/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/capstone/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/capstone/work/qnx-run
+-- PROJECT_VERSION: 5.0.9 CAPSTONE_VERSION: 5.0.9
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/capstone/work/build
@@ -22,16 +23,17 @@ Enabling CAPSTONE_SH_SUPPORT
 Enabling CAPSTONE_TRICORE_SUPPORT
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/capstone/work/build -j 2 -- -k
 Consolidate compiler generated dependencies of target capstone
-[ 52%] Built target capstone
+[ 51%] Built target capstone
 Consolidate compiler generated dependencies of target test_basic
+[ 52%] Built target capstone_static
+[ 53%] Built target test_basic
 Consolidate compiler generated dependencies of target test_detail
-[ 54%] Built target test_detail
-[ 54%] Built target test_basic
-Consolidate compiler generated dependencies of target test_iter
 Consolidate compiler generated dependencies of target test_skipdata
-[ 54%] Building C object CMakeFiles/test_iter.dir/tests/test_iter.c.o
+[ 54%] Built target test_detail
 [ 55%] Built target test_skipdata
+Consolidate compiler generated dependencies of target test_iter
 Consolidate compiler generated dependencies of target test_arm
+[ 55%] Building C object CMakeFiles/test_iter.dir/tests/test_iter.c.o
 [ 56%] Built target test_arm
 Consolidate compiler generated dependencies of target test_arm64
 [ 58%] Built target test_arm64
@@ -59,18 +61,18 @@ Consolidate compiler generated dependencies of target test_evm
 [ 73%] Built target test_evm
 Consolidate compiler generated dependencies of target test_wasm
 [ 74%] Built target test_wasm
+[ 75%] Linking C executable test_iter
 Consolidate compiler generated dependencies of target test_mos65xx
-[ 75%] Built target test_mos65xx
+[ 76%] Built target test_mos65xx
 Consolidate compiler generated dependencies of target test_bpf
-[ 77%] Built target test_bpf
+[ 78%] Built target test_bpf
 Consolidate compiler generated dependencies of target test_riscv
-[ 79%] Built target test_riscv
+[ 80%] Built target test_riscv
 Consolidate compiler generated dependencies of target test_sh
-[ 80%] Built target test_sh
+[ 81%] Built target test_sh
 Consolidate compiler generated dependencies of target test_tricore
-[ 82%] Built target test_tricore
+[ 83%] Built target test_tricore
 Consolidate compiler generated dependencies of target test_arm_regression
-[ 83%] Linking C executable test_iter
 [ 84%] Built target test_arm_regression
 Consolidate compiler generated dependencies of target fuzz_disasm
 [ 86%] Built target fuzz_disasm

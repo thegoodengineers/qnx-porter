@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libyaml/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libyaml/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libyaml/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libyaml/work/qnx-run -DBUILD_TESTING=ON
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libyaml/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libyaml/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libyaml/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libyaml/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libyaml/work/qnx-run -DBUILD_TESTING=ON
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -9,8 +9,8 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libyaml/work/src -B /home/chi
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libyaml/work/build
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libyaml/work/build -j 2 -- -k
-[  2%] Building C object CMakeFiles/yaml.dir/src/api.c.o
 [  5%] Building C object CMakeFiles/yaml.dir/src/dumper.c.o
+[  5%] Building C object CMakeFiles/yaml.dir/src/api.c.o
 [  8%] Building C object CMakeFiles/yaml.dir/src/emitter.c.o
 [ 11%] Building C object CMakeFiles/yaml.dir/src/loader.c.o
 [ 14%] Building C object CMakeFiles/yaml.dir/src/parser.c.o
@@ -19,39 +19,39 @@ $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libyaml/work/build -j 2 
 [ 22%] Building C object CMakeFiles/yaml.dir/src/writer.c.o
 [ 25%] Linking C static library libyaml.a
 [ 25%] Built target yaml
+[ 28%] Building C object tests/CMakeFiles/example-deconstructor.dir/example-deconstructor.c.o
 [ 31%] Building C object tests/CMakeFiles/example-deconstructor-alt.dir/example-deconstructor-alt.c.o
-[ 31%] Building C object tests/CMakeFiles/example-deconstructor.dir/example-deconstructor.c.o
 [ 34%] Linking C executable ../example-deconstructor-alt
-[ 34%] Built target example-deconstructor-alt
 [ 37%] Linking C executable ../example-deconstructor
+[ 37%] Built target example-deconstructor-alt
 [ 40%] Building C object tests/CMakeFiles/example-reformatter.dir/example-reformatter.c.o
 [ 40%] Built target example-deconstructor
 [ 42%] Building C object tests/CMakeFiles/example-reformatter-alt.dir/example-reformatter-alt.c.o
 [ 45%] Linking C executable ../example-reformatter
-[ 45%] Built target example-reformatter
 [ 48%] Linking C executable ../example-reformatter-alt
+[ 48%] Built target example-reformatter
 [ 51%] Building C object tests/CMakeFiles/run-dumper.dir/run-dumper.c.o
 [ 51%] Built target example-reformatter-alt
-[ 54%] Building C object tests/CMakeFiles/run-emitter.dir/run-emitter.c.o
-[ 57%] Linking C executable ../run-dumper
-[ 60%] Linking C executable ../run-emitter
-[ 60%] Built target run-dumper
-[ 62%] Building C object tests/CMakeFiles/run-emitter-test-suite.dir/run-emitter-test-suite.c.o
+[ 54%] Linking C executable ../run-dumper
+[ 57%] Building C object tests/CMakeFiles/run-emitter.dir/run-emitter.c.o
+[ 57%] Built target run-dumper
+[ 60%] Building C object tests/CMakeFiles/run-emitter-test-suite.dir/run-emitter-test-suite.c.o
+[ 62%] Linking C executable ../run-emitter
 [ 62%] Built target run-emitter
-[ 65%] Building C object tests/CMakeFiles/run-loader.dir/run-loader.c.o
-[ 68%] Linking C executable ../run-loader
-[ 68%] Built target run-loader
-[ 71%] Linking C executable ../run-emitter-test-suite
-[ 74%] Building C object tests/CMakeFiles/run-parser.dir/run-parser.c.o
-[ 74%] Built target run-emitter-test-suite
-[ 77%] Building C object tests/CMakeFiles/run-parser-test-suite.dir/run-parser-test-suite.c.o
-[ 80%] Linking C executable ../run-parser
+[ 65%] Linking C executable ../run-emitter-test-suite
+[ 68%] Building C object tests/CMakeFiles/run-loader.dir/run-loader.c.o
+[ 68%] Built target run-emitter-test-suite
+[ 71%] Building C object tests/CMakeFiles/run-parser.dir/run-parser.c.o
+[ 74%] Linking C executable ../run-loader
+[ 77%] Linking C executable ../run-parser
+[ 77%] Built target run-loader
+[ 80%] Building C object tests/CMakeFiles/run-parser-test-suite.dir/run-parser-test-suite.c.o
 [ 80%] Built target run-parser
 [ 82%] Building C object tests/CMakeFiles/run-scanner.dir/run-scanner.c.o
-[ 85%] Linking C executable ../run-parser-test-suite
-[ 88%] Linking C executable ../run-scanner
-[ 88%] Built target run-parser-test-suite
+[ 85%] Linking C executable ../run-scanner
+[ 88%] Linking C executable ../run-parser-test-suite
 [ 88%] Built target run-scanner
+[ 88%] Built target run-parser-test-suite
 [ 91%] Building C object tests/CMakeFiles/test-reader.dir/test-reader.c.o
 [ 94%] Building C object tests/CMakeFiles/test-version.dir/test-version.c.o
 [ 97%] Linking C executable ../test-version

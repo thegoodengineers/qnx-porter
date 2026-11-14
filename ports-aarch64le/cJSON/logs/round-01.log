@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src -B /home/chirag/qnx-porter/ports-aarch64le/cJSON/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/cJSON/work/src -B /home/chirag/qnx-porter/ports-aarch64le/cJSON/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/cJSON/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -16,71 +16,71 @@ CMake Warning:
     BUILD_TESTING
 
 
-$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/cJSON/work/build -j 2 -- -k
-[  2%] Building C object CMakeFiles/cjson.dir/cJSON.c.o
-[  4%] Building C object tests/CMakeFiles/unity.dir/unity/src/unity.c.o
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/cJSON/work/build -j 4 -- -k
+[  2%] Building C object tests/CMakeFiles/unity.dir/unity/src/unity.c.o
+[  4%] Building C object CMakeFiles/cjson.dir/cJSON.c.o
 [  6%] Linking C static library libunity.a
 [  6%] Built target unity
 [  8%] Linking C static library libcjson.a
 [  8%] Built target cjson
-[ 11%] Building C object CMakeFiles/cJSON_test.dir/test.c.o
-[ 13%] Building C object tests/CMakeFiles/parse_examples.dir/parse_examples.c.o
-[ 15%] Linking C executable cJSON_test
-[ 15%] Built target cJSON_test
-[ 17%] Building C object tests/CMakeFiles/parse_number.dir/parse_number.c.o
-[ 20%] Linking C executable parse_examples
-[ 20%] Built target parse_examples
-[ 22%] Building C object tests/CMakeFiles/parse_hex4.dir/parse_hex4.c.o
-[ 24%] Linking C executable parse_number
-[ 24%] Built target parse_number
-[ 26%] Building C object tests/CMakeFiles/parse_string.dir/parse_string.c.o
-[ 28%] Linking C executable parse_hex4
-[ 28%] Built target parse_hex4
+[ 11%] Building C object tests/CMakeFiles/parse_examples.dir/parse_examples.c.o
+[ 13%] Building C object CMakeFiles/cJSON_test.dir/test.c.o
+[ 15%] Building C object tests/CMakeFiles/parse_number.dir/parse_number.c.o
+[ 17%] Building C object tests/CMakeFiles/parse_hex4.dir/parse_hex4.c.o
+[ 20%] Linking C executable cJSON_test
+[ 20%] Built target cJSON_test
+[ 22%] Building C object tests/CMakeFiles/parse_string.dir/parse_string.c.o
+[ 24%] Linking C executable parse_hex4
+[ 26%] Linking C executable parse_number
+[ 26%] Built target parse_hex4
+[ 28%] Linking C executable parse_examples
+[ 28%] Built target parse_number
 [ 31%] Building C object tests/CMakeFiles/parse_array.dir/parse_array.c.o
-[ 33%] Linking C executable parse_string
-[ 33%] Built target parse_string
-[ 35%] Building C object tests/CMakeFiles/parse_object.dir/parse_object.c.o
-[ 37%] Linking C executable parse_array
-[ 37%] Built target parse_array
-[ 40%] Building C object tests/CMakeFiles/parse_value.dir/parse_value.c.o
-[ 42%] Linking C executable parse_object
-[ 42%] Built target parse_object
-[ 44%] Building C object tests/CMakeFiles/print_string.dir/print_string.c.o
-[ 46%] Linking C executable parse_value
-[ 46%] Built target parse_value
-[ 48%] Linking C executable print_string
-[ 51%] Building C object tests/CMakeFiles/print_number.dir/print_number.c.o
-[ 51%] Built target print_string
-[ 53%] Building C object tests/CMakeFiles/print_array.dir/print_array.c.o
-[ 55%] Linking C executable print_array
-[ 55%] Built target print_array
-[ 57%] Building C object tests/CMakeFiles/print_object.dir/print_object.c.o
-[ 60%] Linking C executable print_number
-[ 60%] Built target print_number
-[ 62%] Building C object tests/CMakeFiles/print_value.dir/print_value.c.o
-[ 64%] Linking C executable print_object
-[ 64%] Built target print_object
+[ 33%] Building C object tests/CMakeFiles/parse_object.dir/parse_object.c.o
+[ 35%] Linking C executable parse_string
+[ 35%] Built target parse_examples
+[ 37%] Building C object tests/CMakeFiles/parse_value.dir/parse_value.c.o
+[ 37%] Built target parse_string
+[ 40%] Building C object tests/CMakeFiles/print_string.dir/print_string.c.o
+[ 42%] Linking C executable print_string
+[ 44%] Linking C executable parse_array
+[ 44%] Built target print_string
+[ 46%] Building C object tests/CMakeFiles/print_number.dir/print_number.c.o
+[ 46%] Built target parse_array
+[ 48%] Building C object tests/CMakeFiles/print_array.dir/print_array.c.o
+[ 51%] Linking C executable parse_object
+[ 53%] Linking C executable parse_value
+[ 53%] Built target parse_object
+[ 53%] Built target parse_value
+[ 55%] Building C object tests/CMakeFiles/print_object.dir/print_object.c.o
+[ 57%] Building C object tests/CMakeFiles/print_value.dir/print_value.c.o
+[ 60%] Linking C executable print_object
+[ 62%] Linking C executable print_number
+[ 62%] Built target print_object
+[ 64%] Linking C executable print_value
 [ 66%] Building C object tests/CMakeFiles/misc_tests.dir/misc_tests.c.o
-[ 68%] Linking C executable print_value
+[ 68%] Linking C executable print_array
+[ 68%] Built target print_number
 [ 68%] Built target print_value
 [ 71%] Building C object tests/CMakeFiles/parse_with_opts.dir/parse_with_opts.c.o
-[ 73%] Linking C executable misc_tests
-[ 75%] Linking C executable parse_with_opts
-[ 75%] Built target misc_tests
-[ 75%] Built target parse_with_opts
-[ 77%] Building C object tests/CMakeFiles/compare_tests.dir/compare_tests.c.o
-[ 80%] Building C object tests/CMakeFiles/cjson_add.dir/cjson_add.c.o
+[ 71%] Built target print_array
+[ 73%] Building C object tests/CMakeFiles/compare_tests.dir/compare_tests.c.o
+[ 75%] Building C object tests/CMakeFiles/cjson_add.dir/cjson_add.c.o
+[ 77%] Linking C executable parse_with_opts
+[ 77%] Built target parse_with_opts
+[ 80%] Building C object tests/CMakeFiles/readme_examples.dir/readme_examples.c.o
 [ 82%] Linking C executable compare_tests
 [ 82%] Built target compare_tests
-[ 84%] Building C object tests/CMakeFiles/readme_examples.dir/readme_examples.c.o
+[ 84%] Building C object tests/CMakeFiles/minify_tests.dir/minify_tests.c.o
 [ 86%] Linking C executable cjson_add
 [ 86%] Built target cjson_add
-[ 88%] Building C object tests/CMakeFiles/minify_tests.dir/minify_tests.c.o
-[ 91%] Linking C executable readme_examples
-[ 91%] Built target readme_examples
-[ 93%] Building C object fuzzing/CMakeFiles/fuzz_main.dir/fuzz_main.c.o
-[ 95%] Building C object fuzzing/CMakeFiles/fuzz_main.dir/cjson_read_fuzzer.c.o
+[ 88%] Building C object fuzzing/CMakeFiles/fuzz_main.dir/fuzz_main.c.o
+[ 91%] Linking C executable misc_tests
+[ 91%] Built target misc_tests
+[ 93%] Building C object fuzzing/CMakeFiles/fuzz_main.dir/cjson_read_fuzzer.c.o
+[ 95%] Linking C executable fuzz_main
+[ 95%] Built target fuzz_main
+[ 97%] Linking C executable readme_examples
+[ 97%] Built target readme_examples
 [100%] Linking C executable minify_tests
 [100%] Built target minify_tests
-[100%] Linking C executable fuzz_main
-[100%] Built target fuzz_main

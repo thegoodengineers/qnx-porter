@@ -1,0 +1,172 @@
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libuv/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libuv/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libuv/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libuv/work/qnx-run -DLIBUV_BUILD_TESTS=ON
+-- The C compiler identification is QCC 12.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test UV_LINT_W4
+-- Performing Test UV_LINT_W4 - Failed
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER_MSVC - Failed
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_CONSTANT_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_EMPTY_TU_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_FILE_SCOPE_MSVC - Failed
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC
+-- Performing Test UV_LINT_NO_NONSTANDARD_NONSTATIC_DLIMPORT_MSVC - Failed
+-- Performing Test UV_LINT_NO_HIDES_LOCAL
+-- Performing Test UV_LINT_NO_HIDES_LOCAL - Failed
+-- Performing Test UV_LINT_NO_HIDES_PARAM
+-- Performing Test UV_LINT_NO_HIDES_PARAM - Failed
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL
+-- Performing Test UV_LINT_NO_HIDES_GLOBAL - Failed
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC
+-- Performing Test UV_LINT_NO_CONDITIONAL_ASSIGNMENT_MSVC - Failed
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC
+-- Performing Test UV_LINT_NO_UNSAFE_MSVC - Failed
+-- Performing Test UV_LINT_WALL
+-- Performing Test UV_LINT_WALL - Success
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER
+-- Performing Test UV_LINT_NO_UNUSED_PARAMETER - Success
+-- Performing Test UV_LINT_STRICT_PROTOTYPES
+-- Performing Test UV_LINT_STRICT_PROTOTYPES - Success
+-- Performing Test UV_LINT_EXTRA
+-- Performing Test UV_LINT_EXTRA - Success
+-- Performing Test UV_LINT_UTF8_MSVC
+-- Performing Test UV_LINT_UTF8_MSVC - Failed
+-- Performing Test UV_F_STRICT_ALIASING
+-- Performing Test UV_F_STRICT_ALIASING - Success
+-- summary of build options:
+    Install prefix:  /usr/local
+    Target system:   QNX
+    Compiler:
+      C compiler:    /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc (QCC)
+      CFLAGS:         -g
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libuv/work/build
+$ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libuv/work/build -j 2 -- -k
+[  0%] Building C object CMakeFiles/uv.dir/src/fs-poll.c.o
+[  0%] Building C object CMakeFiles/uv_a.dir/src/fs-poll.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/idna.c.o
+[  0%] Building C object CMakeFiles/uv_a.dir/src/idna.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/inet.c.o
+[  0%] Building C object CMakeFiles/uv_a.dir/src/inet.c.o
+[  0%] Building C object CMakeFiles/uv.dir/src/random.c.o
+[  0%] Building C object CMakeFiles/uv_a.dir/src/random.c.o
+[  1%] Building C object CMakeFiles/uv.dir/src/strscpy.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/strscpy.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/strtok.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/strtok.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/thread-common.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/thread-common.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/threadpool.c.o
+[  2%] Building C object CMakeFiles/uv_a.dir/src/threadpool.c.o
+[  2%] Building C object CMakeFiles/uv.dir/src/timer.c.o
+[  3%] Building C object CMakeFiles/uv_a.dir/src/timer.c.o
+[  4%] Building C object CMakeFiles/uv_a.dir/src/uv-common.c.o
+[  4%] Building C object CMakeFiles/uv.dir/src/uv-common.c.o
+[  4%] Building C object CMakeFiles/uv.dir/src/uv-data-getter-setters.c.o
+[  4%] Building C object CMakeFiles/uv_a.dir/src/uv-data-getter-setters.c.o
+[  4%] Building C object CMakeFiles/uv.dir/src/version.c.o
+[  4%] Building C object CMakeFiles/uv_a.dir/src/version.c.o
+[  4%] Building C object CMakeFiles/uv.dir/src/unix/async.c.o
+[  4%] Building C object CMakeFiles/uv_a.dir/src/unix/async.c.o
+[  5%] Building C object CMakeFiles/uv.dir/src/unix/core.c.o
+[  6%] Building C object CMakeFiles/uv_a.dir/src/unix/core.c.o
+[  6%] Building C object CMakeFiles/uv.dir/src/unix/dl.c.o
+[  6%] Building C object CMakeFiles/uv_a.dir/src/unix/dl.c.o
+[  6%] Building C object CMakeFiles/uv.dir/src/unix/fs.c.o
+[  6%] Building C object CMakeFiles/uv_a.dir/src/unix/fs.c.o
+[  6%] Building C object CMakeFiles/uv.dir/src/unix/getaddrinfo.c.o
+[  6%] Building C object CMakeFiles/uv.dir/src/unix/getnameinfo.c.o
+[  6%] Building C object CMakeFiles/uv_a.dir/src/unix/getaddrinfo.c.o
+[  7%] Building C object CMakeFiles/uv.dir/src/unix/loop-watcher.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/unix/getnameinfo.c.o
+[  8%] Building C object CMakeFiles/uv_a.dir/src/unix/loop-watcher.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/loop.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/pipe.c.o
+[  8%] Building C object CMakeFiles/uv.dir/src/unix/poll.c.o
+[  9%] Building C object CMakeFiles/uv.dir/src/unix/process.c.o
+[  9%] Building C object CMakeFiles/uv_a.dir/src/unix/loop.c.o
+[  9%] Building C object CMakeFiles/uv_a.dir/src/unix/pipe.c.o
+[  9%] Building C object CMakeFiles/uv.dir/src/unix/random-devurandom.c.o
+[  9%] Building C object CMakeFiles/uv.dir/src/unix/signal.c.o
+[  9%] Building C object CMakeFiles/uv_a.dir/src/unix/poll.c.o
+[ 10%] Building C object CMakeFiles/uv_a.dir/src/unix/process.c.o
+[ 10%] Building C object CMakeFiles/uv.dir/src/unix/stream.c.o
+[ 10%] Building C object CMakeFiles/uv_a.dir/src/unix/random-devurandom.c.o
+[ 10%] Building C object CMakeFiles/uv_a.dir/src/unix/signal.c.o
+[ 10%] Building C object CMakeFiles/uv.dir/src/unix/tcp.c.o
+[ 10%] Building C object CMakeFiles/uv_a.dir/src/unix/stream.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/thread.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/tty.c.o
+[ 11%] Building C object CMakeFiles/uv_a.dir/src/unix/tcp.c.o
+[ 11%] Building C object CMakeFiles/uv.dir/src/unix/udp.c.o
+[ 12%] Building C object CMakeFiles/uv_a.dir/src/unix/thread.c.o
+[ 12%] Building C object CMakeFiles/uv.dir/src/unix/posix-hrtime.c.o
+[ 12%] Building C object CMakeFiles/uv_a.dir/src/unix/tty.c.o
+[ 12%] Building C object CMakeFiles/uv.dir/src/unix/posix-poll.c.o
+[ 12%] Building C object CMakeFiles/uv_a.dir/src/unix/udp.c.o
+[ 13%] Building C object CMakeFiles/uv.dir/src/unix/qnx.c.o
+[ 13%] Building C object CMakeFiles/uv.dir/src/unix/bsd-ifaddrs.c.o
+[ 13%] Building C object CMakeFiles/uv.dir/src/unix/no-proctitle.c.o
+[ 13%] Building C object CMakeFiles/uv.dir/src/unix/no-fsevents.c.o
+[ 13%] Building C object CMakeFiles/uv_a.dir/src/unix/posix-hrtime.c.o
+[ 14%] Building C object CMakeFiles/uv_a.dir/src/unix/posix-poll.c.o
+[ 14%] Building C object CMakeFiles/uv_a.dir/src/unix/qnx.c.o
+[ 14%] Building C object CMakeFiles/uv_a.dir/src/unix/bsd-ifaddrs.c.o
+[ 14%] Building C object CMakeFiles/uv_a.dir/src/unix/no-proctitle.c.o
+[ 14%] Building C object CMakeFiles/uv_a.dir/src/unix/no-fsevents.c.o
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c: In function 'uv__io_poll':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c:230:12: warning: 'user_timeout' may be used uninitialized [-Wmaybe-uninitialized]
+  230 |         if (timeout > 0)
+      |            ^
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c:148:7: note: 'user_timeout' was declared here
+  148 |   int user_timeout;
+      |       ^~~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c: In function 'uv_uptime':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:117:19: error: 'struct qtime_entry' has no member named 'nsec'
+  117 |   *uptime = (qtime->nsec / 1000000000.0);
+      |                   ^~
+In file included from /home/chirag/qnx800/target/qnx/usr/include/sys/procfs.h:34,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/memmsg.h:39,
+                 from /home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:28:
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c: In function 'uv_cpu_info':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:124:57: error: 'struct syspage_entry' has no member named 'new_cpuinfo'; did you mean 'cpuinfo'?
+  124 |     (struct cpuinfo_entry*)_SYSPAGE_ENTRY(_syspage_ptr, new_cpuinfo);
+      |                                                         ^~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/uv.dir/build.make:524: CMakeFiles/uv.dir/src/unix/qnx.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/uv.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:847: CMakeFiles/uv.dir/all] Error 2
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c: In function 'uv_uptime':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:117:19: error: 'struct qtime_entry' has no member named 'nsec'
+  117 |   *uptime = (qtime->nsec / 1000000000.0);
+      |                   ^~
+In file included from /home/chirag/qnx800/target/qnx/usr/include/sys/procfs.h:34,
+                 from /home/chirag/qnx800/target/qnx/usr/include/sys/memmsg.h:39,
+                 from /home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:28:
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c: In function 'uv_cpu_info':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/qnx.c:124:57: error: 'struct syspage_entry' has no member named 'new_cpuinfo'; did you mean 'cpuinfo'?
+  124 |     (struct cpuinfo_entry*)_SYSPAGE_ENTRY(_syspage_ptr, new_cpuinfo);
+      |                                                         ^~~~~~~~~~~
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c: In function 'uv__io_poll':
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c:230:12: warning: 'user_timeout' may be used uninitialized [-Wmaybe-uninitialized]
+  230 |         if (timeout > 0)
+      |            ^
+/home/chirag/qnx-porter/ports-aarch64le/libuv/work/src/src/unix/posix-poll.c:148:7: note: 'user_timeout' was declared here
+  148 |   int user_timeout;
+      |       ^~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/uv_a.dir/build.make:524: CMakeFiles/uv_a.dir/src/unix/qnx.c.o] Error 1
+gmake[2]: Target 'CMakeFiles/uv_a.dir/build' not remade because of errors.
+gmake[1]: *** [CMakeFiles/Makefile2:873: CMakeFiles/uv_a.dir/all] Error 2
+gmake[1]: Target 'all' not remade because of errors.
+gmake: *** [Makefile:146: all] Error 2
+gmake: Target 'default_target' not remade because of errors.
+[exit 2]

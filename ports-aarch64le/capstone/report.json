@@ -1,8 +1,8 @@
 {
   "library": "capstone",
   "url": "https://github.com/capstone-engine/capstone.git",
-  "version": "5.0.3",
-  "commit": "5cca00533dadfe53181f1de3525f859769f69b65",
+  "version": "5.0.9",
+  "commit": "022575848782a4801fd150fdbc927effcbca0864",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -31,9 +31,10 @@
     }
   ],
   "blocked_on": [],
-  "minutes": 12.0,
+  "minutes": 16.6,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-13T06:12:17+00:00"
+  "finished": "2026-11-14T04:55:08+00:00"
 }

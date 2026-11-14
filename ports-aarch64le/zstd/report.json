@@ -1,8 +1,8 @@
 {
   "library": "zstd",
   "url": "https://github.com/facebook/zstd.git",
-  "version": "v1.5.6",
-  "commit": "794ea1b0afca0f020f4e57b6732332231fb23c70",
+  "version": "v1.5.7",
+  "commit": "f8745da6ff1ad1e7bab384bd1f9d742439278e99",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -18,9 +18,10 @@
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 12.4,
+  "minutes": 12.9,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T13:39:15+00:00"
+  "finished": "2026-11-13T23:28:31+00:00"
 }

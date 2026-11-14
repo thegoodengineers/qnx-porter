@@ -1,17 +1,11 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libogg/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libogg/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libogg/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libogg/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libogg/work/src -B /home/chirag/qnx-porter/ports-aarch64le/libogg/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/libogg/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/libogg/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/libogg/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
--- The CXX compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /home/chirag/qnx800/host/linux/x86_64/usr/bin/q++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Configuring libogg 1.3.5
+-- Configuring ogg 1.3.6
 -- Looking for include file inttypes.h
 -- Looking for include file inttypes.h - found
 -- Looking for include file stdint.h
@@ -50,13 +44,13 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/libogg/work/src -B /home/chir
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/libogg/work/build
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/libogg/work/build -j 2 -- -k
-[ 14%] Building C object CMakeFiles/test_bitwise.dir/src/bitwise.c.o
 [ 28%] Building C object CMakeFiles/ogg.dir/src/bitwise.c.o
+[ 28%] Building C object CMakeFiles/test_bitwise.dir/src/bitwise.c.o
 [ 42%] Building C object CMakeFiles/ogg.dir/src/framing.c.o
 [ 57%] Linking C executable test_bitwise
-[ 71%] Linking C static library libogg.a
-[ 71%] Built target test_bitwise
-[ 71%] Built target ogg
-[ 85%] Building C object CMakeFiles/test_framing.dir/src/framing.c.o
+[ 57%] Built target test_bitwise
+[ 71%] Building C object CMakeFiles/test_framing.dir/src/framing.c.o
+[ 85%] Linking C static library libogg.a
+[ 85%] Built target ogg
 [100%] Linking C executable test_framing
 [100%] Built target test_framing

@@ -1,4 +1,4 @@
-$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/zlib/work/src -B /home/chirag/qnx-porter/ports-aarch64le/zlib/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/zlib/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/zlib/work/qnx-run
+$ cmake -S /home/chirag/qnx-porter/ports-aarch64le/zlib/work/src -B /home/chirag/qnx-porter/ports-aarch64le/zlib/work/build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=ON -DCMAKE_PROJECT_INCLUDE=/home/chirag/qnx-porter/ports-aarch64le/zlib/work/enable-testing.cmake -DCMAKE_TOOLCHAIN_FILE=/home/chirag/qnx-porter/ports-aarch64le/zlib/work/qnx-toolchain.cmake -DCMAKE_CROSSCOMPILING_EMULATOR=/home/chirag/qnx-porter/ports-aarch64le/zlib/work/qnx-run
 -- The C compiler identification is QCC 12.2.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
@@ -15,12 +15,12 @@ $ cmake -S /home/chirag/qnx-porter/ports-aarch64le/zlib/work/src -B /home/chirag
 -- Check size of off64_t - done
 -- Looking for fseeko
 -- Looking for fseeko - found
+-- Looking for stdarg.h
+-- Looking for stdarg.h - found
 -- Looking for unistd.h
 -- Looking for unistd.h - found
--- Renaming
---     /home/chirag/qnx-porter/ports-aarch64le/zlib/work/src/zconf.h
--- to 'zconf.h.included' because this file is included with zlib
--- but CMake generates it automatically in the build directory.
+-- Performing Test HAVE___ATTR__VIS_HIDDEN
+-- Performing Test HAVE___ATTR__VIS_HIDDEN - Failed
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/chirag/qnx-porter/ports-aarch64le/zlib/work/build
@@ -31,49 +31,55 @@ CMake Warning:
 
 
 $ cmake --build /home/chirag/qnx-porter/ports-aarch64le/zlib/work/build -j 2 -- -k
-[  5%] Building C object CMakeFiles/zlibstatic.dir/adler32.c.o
-[  5%] Building C object CMakeFiles/zlib.dir/adler32.c.o
-[  7%] Building C object CMakeFiles/zlib.dir/compress.c.o
-[ 10%] Building C object CMakeFiles/zlibstatic.dir/compress.c.o
-[ 12%] Building C object CMakeFiles/zlib.dir/crc32.c.o
-[ 15%] Building C object CMakeFiles/zlibstatic.dir/crc32.c.o
-[ 17%] Building C object CMakeFiles/zlib.dir/deflate.c.o
-[ 20%] Building C object CMakeFiles/zlibstatic.dir/deflate.c.o
-[ 22%] Building C object CMakeFiles/zlib.dir/gzclose.c.o
-[ 25%] Building C object CMakeFiles/zlib.dir/gzlib.c.o
-[ 27%] Building C object CMakeFiles/zlibstatic.dir/gzclose.c.o
-[ 30%] Building C object CMakeFiles/zlibstatic.dir/gzlib.c.o
-[ 32%] Building C object CMakeFiles/zlib.dir/gzread.c.o
-[ 35%] Building C object CMakeFiles/zlibstatic.dir/gzread.c.o
-[ 37%] Building C object CMakeFiles/zlib.dir/gzwrite.c.o
-[ 40%] Building C object CMakeFiles/zlibstatic.dir/gzwrite.c.o
-[ 42%] Building C object CMakeFiles/zlib.dir/inflate.c.o
-[ 45%] Building C object CMakeFiles/zlibstatic.dir/inflate.c.o
-[ 47%] Building C object CMakeFiles/zlib.dir/infback.c.o
-[ 50%] Building C object CMakeFiles/zlibstatic.dir/infback.c.o
-[ 52%] Building C object CMakeFiles/zlib.dir/inftrees.c.o
-[ 55%] Building C object CMakeFiles/zlibstatic.dir/inftrees.c.o
-[ 57%] Building C object CMakeFiles/zlib.dir/inffast.c.o
-[ 60%] Building C object CMakeFiles/zlibstatic.dir/inffast.c.o
-[ 62%] Building C object CMakeFiles/zlib.dir/trees.c.o
-[ 65%] Building C object CMakeFiles/zlibstatic.dir/trees.c.o
-[ 67%] Building C object CMakeFiles/zlib.dir/uncompr.c.o
+[  2%] Building C object CMakeFiles/zlib.dir/adler32.c.o
+[  4%] Building C object CMakeFiles/zlibstatic.dir/adler32.c.o
+[  9%] Building C object CMakeFiles/zlibstatic.dir/compress.c.o
+[  9%] Building C object CMakeFiles/zlib.dir/compress.c.o
+[ 11%] Building C object CMakeFiles/zlibstatic.dir/crc32.c.o
+[ 13%] Building C object CMakeFiles/zlib.dir/crc32.c.o
+[ 15%] Building C object CMakeFiles/zlib.dir/deflate.c.o
+[ 18%] Building C object CMakeFiles/zlibstatic.dir/deflate.c.o
+[ 20%] Building C object CMakeFiles/zlib.dir/gzclose.c.o
+[ 22%] Building C object CMakeFiles/zlib.dir/gzlib.c.o
+[ 25%] Building C object CMakeFiles/zlibstatic.dir/gzclose.c.o
+[ 27%] Building C object CMakeFiles/zlibstatic.dir/gzlib.c.o
+[ 29%] Building C object CMakeFiles/zlib.dir/gzread.c.o
+[ 31%] Building C object CMakeFiles/zlibstatic.dir/gzread.c.o
+[ 34%] Building C object CMakeFiles/zlib.dir/gzwrite.c.o
+[ 36%] Building C object CMakeFiles/zlibstatic.dir/gzwrite.c.o
+[ 38%] Building C object CMakeFiles/zlib.dir/inflate.c.o
+[ 40%] Building C object CMakeFiles/zlibstatic.dir/inflate.c.o
+[ 43%] Building C object CMakeFiles/zlib.dir/infback.c.o
+[ 45%] Building C object CMakeFiles/zlibstatic.dir/infback.c.o
+[ 47%] Building C object CMakeFiles/zlib.dir/inftrees.c.o
+[ 50%] Building C object CMakeFiles/zlib.dir/inffast.c.o
+[ 52%] Building C object CMakeFiles/zlibstatic.dir/inftrees.c.o
+[ 54%] Building C object CMakeFiles/zlibstatic.dir/inffast.c.o
+[ 56%] Building C object CMakeFiles/zlib.dir/trees.c.o
+[ 59%] Building C object CMakeFiles/zlibstatic.dir/trees.c.o
+[ 61%] Building C object CMakeFiles/zlib.dir/uncompr.c.o
+[ 63%] Building C object CMakeFiles/zlib.dir/zutil.c.o
+[ 65%] Linking C shared library libz.so
+[ 65%] Built target zlib
+[ 68%] Building C object test/CMakeFiles/zlib_example.dir/example.c.o
 [ 70%] Building C object CMakeFiles/zlibstatic.dir/uncompr.c.o
-[ 72%] Building C object CMakeFiles/zlib.dir/zutil.c.o
-[ 75%] Building C object CMakeFiles/zlibstatic.dir/zutil.c.o
-[ 77%] Linking C shared library libz.so
-[ 80%] Linking C static library libz.a
-[ 80%] Built target zlib
-[ 82%] Building C object CMakeFiles/example.dir/test/example.c.o
-[ 85%] Built target zlibstatic
-[ 85%] Linking C executable example
-[ 87%] Building C object CMakeFiles/minigzip.dir/test/minigzip.c.o
-[ 87%] Built target example
-[ 90%] Building C object CMakeFiles/example64.dir/test/example.c.o
-[ 92%] Linking C executable minigzip
-[ 92%] Built target minigzip
-[ 95%] Building C object CMakeFiles/minigzip64.dir/test/minigzip.c.o
-[ 97%] Linking C executable minigzip64
-[100%] Linking C executable example64
-[100%] Built target minigzip64
-[100%] Built target example64
+[ 72%] Building C object CMakeFiles/zlibstatic.dir/zutil.c.o
+[ 75%] Linking C static library libz.a
+[ 77%] Linking C executable zlib_example
+[ 77%] Built target zlibstatic
+[ 79%] Building C object test/CMakeFiles/minigzip.dir/minigzip.c.o
+[ 79%] Built target zlib_example
+[ 81%] Building C object test/CMakeFiles/zlib_example64.dir/example.c.o
+[ 84%] Linking C executable minigzip
+[ 84%] Built target minigzip
+[ 86%] Building C object test/CMakeFiles/zlib_examplestatic.dir/example.c.o
+[ 88%] Linking C executable zlib_example64
+[ 88%] Built target zlib_example64
+[ 90%] Building C object test/CMakeFiles/minigzipstatic.dir/minigzip.c.o
+[ 93%] Linking C executable zlib_examplestatic
+[ 93%] Built target zlib_examplestatic
+[ 95%] Linking C executable minigzipstatic
+[ 97%] Building C object test/CMakeFiles/zlib_example64static.dir/example.c.o
+[ 97%] Built target minigzipstatic
+[100%] Linking C executable zlib_example64static
+[100%] Built target zlib_example64static

@@ -19,5 +19,5 @@ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/libuv
 set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/libuv/work/stubs")
 # Flags after the project's own (appended by the compiler wrappers in -): none
 # Libraries the agent adds go at the end of every link line, after the objects that need them.
-set(CMAKE_C_STANDARD_LIBRARIES "")
-set(CMAKE_CXX_STANDARD_LIBRARIES "")
+set(CMAKE_C_STANDARD_LIBRARIES "-lm")
+set(CMAKE_CXX_STANDARD_LIBRARIES "-lm")

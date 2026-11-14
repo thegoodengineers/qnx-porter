@@ -1,0 +1,115 @@
+$ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/libevent/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  test-changelist__SELECT (exit 0)
+PASS  test-eof__SELECT (exit 0)
+PASS  test-closed__SELECT (exit 0)
+PASS  test-fdleak__SELECT (exit 0)
+PASS  test-init__SELECT (exit 0)
+PASS  test-time__SELECT (exit 0)
+PASS  test-weof__SELECT (exit 0)
+PASS  test-dumpevents__SELECT (exit 0)
+FAIL  regress__SELECT (exit 1)
+    FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 88 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (3)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 72 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (2)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 71 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (1)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 87 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (0)]
+    [Lost connection!] 
+      [fork FAILED]
+    2/300 TESTS FAILED. (47 skipped)
+FAIL  regress__SELECT_debug (exit 1)
+    FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 78 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (3)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 77 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (2)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 62 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (1)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 87 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (0)]
+    [Lost connection!] 
+      [fork FAILED]
+    2/300 TESTS FAILED. (47 skipped)
+PASS  test-changelist__POLL (exit 0)
+PASS  test-eof__POLL (exit 0)
+PASS  test-closed__POLL (exit 0)
+PASS  test-fdleak__POLL (exit 0)
+PASS  test-init__POLL (exit 0)
+PASS  test-time__POLL (exit 0)
+PASS  test-weof__POLL (exit 0)
+PASS  test-dumpevents__POLL (exit 0)
+FAIL  regress__POLL (exit 1)
+    FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 79 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (3)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 82 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (2)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 83 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (1)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 98 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (0)]
+    [Lost connection!] 
+      [fork FAILED]
+    2/301 TESTS FAILED. (46 skipped)
+FAIL  regress__POLL_debug (exit 1)
+    FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 96 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (3)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1883: assert(n_read_and_drain_cb > 100): 87 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (2)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1883: assert(n_read_and_drain_cb > 100): 83 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (1)]
+    
+      FAIL /home/chirag/qnx-porter/ports-aarch64le/libevent/work/src/test/regress.c:1882: assert(n_write_a_byte_cb > 100): 85 vs 100main/active_later: 
+      [active_later FAILED]
+    
+      [RETRYING active_later (0)]
+    [Lost connection!] 
+      [fork FAILED]
+    2/301 TESTS FAILED. (46 skipped)
+PASS  test-ratelim__group_lim (exit 0)
+PASS  test-ratelim__con_lim (exit 0)
+PASS  test-ratelim__group_con_lim (exit 0)
+PASS  test-ratelim__group_con_lim_drain (exit 0)
+
+20/24 tests passed on the QNX target

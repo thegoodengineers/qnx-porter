@@ -1,0 +1,18 @@
+Subject: [qnx-porter 0001] qnx-source
+Source: deterministic rule
+Reason: C++ sees only `struct stat`, not the POSIX function `stat()`: in strict -std=c++NN mode QNX's headers hide POSIX extensions (here sys/stat.h declares stat() only under __EXT_POSIX1_198808). -D_QNX_SOURCE exposes them, as _GNU_SOURCE does on glibc.
+Error: /home/chirag/qnx-porter/ports-aarch64le/spdlog/work/src/include/spdlog/details/os-inl.h:188:45: error: no matching function for call to 'stat::stat(const std::__2::basic_string<char>::value_type*, stat*)'
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -13,8 +13,8 @@
+ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+-set(CMAKE_C_FLAGS_INIT "-g ")
+-set(CMAKE_CXX_FLAGS_INIT "-g ")
++set(CMAKE_C_FLAGS_INIT "-g -D_QNX_SOURCE")
++set(CMAKE_CXX_FLAGS_INIT "-g -D_QNX_SOURCE")
+ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/spdlog/work/stubs")
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/spdlog/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none

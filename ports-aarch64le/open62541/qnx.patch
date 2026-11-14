@@ -1,0 +1,24 @@
+diff --git a/arch/posix/eventloop_posix.h b/arch/posix/eventloop_posix.h
+index 2a2c6ea..0276e62 100644
+--- a/arch/posix/eventloop_posix.h
++++ b/arch/posix/eventloop_posix.h
+@@ -17,6 +17,7 @@
+ #include "../common/timer.h"
+ #include "../common/eventloop_common.h"
+ #include "../../deps/mp_printf.h"
++#include <sys/queue.h>  /* qnx-porter: needed on QNX */
+ 
+ #if !defined(__QNX__)
+ # include "../deps/open62541_queue.h"
+diff --git a/arch/posix/eventloop_posix_interrupt.c b/arch/posix/eventloop_posix_interrupt.c
+index 5a29ab6..0df5e1f 100644
+--- a/arch/posix/eventloop_posix_interrupt.c
++++ b/arch/posix/eventloop_posix_interrupt.c
+@@ -7,6 +7,7 @@
+ 
+ #include "eventloop_posix.h"
+ #include <signal.h>
++#include <sys/queue.h>  /* qnx-porter: needed on QNX */
+ 
+ #if defined(UA_ARCHITECTURE_POSIX) && !defined(UA_ARCHITECTURE_LWIP) || defined(UA_ARCHITECTURE_WIN32)
+ /* Different implementation approaches:

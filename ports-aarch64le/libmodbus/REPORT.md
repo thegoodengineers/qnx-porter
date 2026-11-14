@@ -1,8 +1,8 @@
-# libmodbus v3.1.11 on QNX 8.0 (aarch64le)
+# libmodbus v3.2.0 on QNX 8.0 (aarch64le)
 
 | | |
 |---|---|
-| Upstream | https://github.com/stephane/libmodbus.git at `v3.1.11` (`5190e5e14178`) |
+| Upstream | https://github.com/stephane/libmodbus.git at `v3.2.0` (`a9b025d12289`) |
 | Build system | autotools |
 | Toolchain | QNX SDP 8.0, `qnx-env.sh` in this folder |
 | Build | **built** after 1 round(s) |

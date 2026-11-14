@@ -1,8 +1,8 @@
 {
   "library": "msgpack-c",
   "url": "https://github.com/msgpack/msgpack-c.git",
-  "version": "c-6.1.0",
-  "commit": "445880108a1d171f755ff6ac77e03fbebbb23729",
+  "version": "c-7.0.2",
+  "commit": "e17beb371b59459a13b48e166a11e123bda5bf93",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -10,17 +10,18 @@
   "target": "QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le",
   "build_result": "built",
   "rounds": 1,
-  "tests_passed": 0,
-  "tests_total": 0,
+  "tests_passed": 5,
+  "tests_total": 5,
   "tests_ran": true,
   "patches_kept": 0,
   "patches_by_rule": 0,
   "patches_by_model": 0,
   "patches": [],
   "blocked_on": [],
-  "minutes": 0.3,
+  "minutes": 1.5,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T12:58:48+00:00"
+  "finished": "2026-11-13T22:49:13+00:00"
 }

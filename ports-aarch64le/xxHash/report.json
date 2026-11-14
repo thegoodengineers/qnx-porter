@@ -1,8 +1,8 @@
 {
   "library": "xxHash",
   "url": "https://github.com/Cyan4973/xxHash.git",
-  "version": "v0.8.2",
-  "commit": "bbb27a5efb85b92a0486cf361a8635715a53f6ba",
+  "version": "v0.8.4",
+  "commit": "c87183a77d67f7d37e3d2d1b7eaac5e7c695e4f0",
   "build_system": "cmake",
   "arch": "aarch64le",
   "sdp": "QNX SDP 8.0",
@@ -20,7 +20,8 @@
   "blocked_on": [],
   "minutes": 0.5,
   "note": "",
+  "model_usage": null,
   "tests_not_runnable": [],
   "crashes": [],
-  "finished": "2026-11-12T13:40:52+00:00"
+  "finished": "2026-11-13T23:31:57+00:00"
 }

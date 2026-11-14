@@ -1,7 +1,7 @@
 Subject: [qnx-porter 0002] link-libsocket
 Source: deterministic rule
 Reason: `setsockopt` is in QNX's libsocket, not in libc as on Linux: link with -lsocket.
-Error: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: lib/libevent_extra-2.1.so.7.0.1: undefined reference to `setsockopt'
+Error: /home/chirag/qnx800/host/linux/x86_64/usr/bin/aarch64-unknown-nto-qnx8.0.0-ld: lib/libevent_extra-2.1.so.7.0.2: undefined reference to `setsockopt'
 ---
 --- a/qnx-toolchain.cmake
 +++ b/qnx-toolchain.cmake

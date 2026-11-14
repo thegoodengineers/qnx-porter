@@ -1,3 +1,8 @@
 $ ctest --show-only=json-v1 (in /home/chirag/qnx-porter/ports-aarch64le/msgpack-c/work/build); every test command runs on root@172.31.1.12 over ssh
+PASS  buffer_c (exit 0)
+PASS  fixint_c (exit 0)
+PASS  msgpack_c (exit 0)
+PASS  pack_unpack_c (exit 0)
+PASS  streaming_c (exit 0)
 
-0/0 tests passed on the QNX target
+5/5 tests passed on the QNX target

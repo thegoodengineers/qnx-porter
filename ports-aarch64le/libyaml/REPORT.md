@@ -8,7 +8,7 @@
 | Build | **built** after 1 round(s) |
 | Library's own tests | 2/2 passed on `QNX qnx-porter-aarch64le 8.0.0 2026/06/05-16:21:14EDT QEMU_virt aarch64le` |
 | Patches kept | 0 (0 by rule, 0 by model) |
-| Time | 1.0 min |
+| Time | 0.9 min |
 
 ## Every change, with its reason
 | # | Rule | From | Status | Files | Reason |

@@ -49,7 +49,7 @@ is missing, with numbers: [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
 - **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
   Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.
 - **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
-- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->aarch64le: 57 of 61 libraries built for QNX 8.0; 1314 of 1350 of their own tests passed on a QNX 8.0 target (33 libraries with tests that ran); 27 patches, 27 by rules (29 of the 31 libraries oss.qnx.com does not list built); x86_64: 58 of 61 libraries built for QNX 8.0; 1563 of 1658 of their own tests passed on a QNX 8.0 target (43 libraries with tests that ran); 31 patches, 31 by rules (29 of the 31 libraries oss.qnx.com does not list built).<!-- headline:end -->
+- **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->aarch64le: 58 of 61 libraries built for QNX 8.0; 1546 of 1642 of their own tests passed on a QNX 8.0 target (43 libraries with tests that ran); 32 patches, 32 by rules (29 of the 31 libraries oss.qnx.com does not list built); x86_64: 58 of 61 libraries built for QNX 8.0; 1563 of 1658 of their own tests passed on a QNX 8.0 target (43 libraries with tests that ran); 31 patches, 31 by rules (29 of the 31 libraries oss.qnx.com does not list built).<!-- headline:end -->
   See [Results](#results-on-qnx-80).
 - **Results:** [`results/ports.csv`](results/ports.csv), written by `scripts/ports_csv.py` from each
   port's own `ports/<library>/report.json`. No number in this README or the video comes from anywhere else.
@@ -131,11 +131,17 @@ A port qnx-porter makes can be the starting point for an `APKBUILD`. We have not
 architectures:
 - **x86_64:** on 13 Nov 2026, at the newest release tag of each library ([`campaign.yaml`](campaign.yaml)),
   with tests on QNX 8.0 x86_64 in QEMU under KVM. Log: [`results/runs/campaign-8.log`](results/runs/campaign-8.log).
-- **aarch64le:** on 12–13 Nov 2026, at the 2024 tags ([`campaign-2024.yaml`](campaign-2024.yaml)), with tests on
-  QNX 8.0 aarch64 on QEMU `virt`, fully emulated. The table's Version column says which tag each row is.
+- **aarch64le:** on 14 Nov 2026, at the same newest release tags, with tests on QNX 8.0 aarch64 on QEMU `virt`,
+  fully emulated. Log: [`results/runs/campaign-aarch64-3.log`](results/runs/campaign-aarch64-3.log) (the run,
+  then a rerun of cJSON after the main-stack rule was made to read 24 backtrace frames).
 
-The x86_64 results at the 2024 tags (run 7, 12 Nov 2026) are kept in [`ports-2024/`](ports-2024/): the codelab,
-the video and the upstream drafts quote them.
+The two architectures differ in four libraries only: mbedtls 147/148 on aarch64 (its PBKDF2 suite was killed at
+the 300 s per-test limit on the emulated target; it passes on x86_64), flac 6/10 against 7/10, libsrtp 9/12
+against 8/12, and libjpeg-turbo 646/646 against 662/662 (`results/ports.csv`).
+
+The results at the 2024 tags (12–13 Nov 2026) are kept in [`ports-2024/`](ports-2024/) (x86_64, run 7) and
+[`ports-aarch64le-2024/`](ports-aarch64le-2024/) (aarch64): the codelab, the video and the upstream drafts quote
+them.
 
 Both targets were built with `mkqnximage`. Rules only, no language model. The
 libraries are infrastructure an embedded team reaches for: parsers (JSON, XML, YAML, CBOR, TOML), compression,
@@ -208,67 +214,67 @@ crypto and TLS, messaging (MQTT, nng, OPC UA, CoAP, Modbus), logging and formatt
 | [yyjson](ports/yyjson/REPORT.md) | 0.13.0 | x86_64 | built | 12/12 | 0 (0 / 0) | 2.0 |  |
 | [zlib](ports/zlib/REPORT.md) | v1.4 | x86_64 | built | 4/4 | 0 (0 / 0) | 0.3 |  |
 | [zstd](ports/zstd/REPORT.md) | v1.5.7 | x86_64 | built | 1/4 | 0 (0 / 0) | 10.0 |  |
-| [BLAKE3](ports-aarch64le/BLAKE3/REPORT.md) | 1.5.4 | aarch64le | built | none built | 0 (0 / 0) | 0.4 | portable C: its CMake has SIMD flags only for compilers it knows, not qcc |
-| [Micro-CDR](ports-aarch64le/Micro-CDR/REPORT.md) | v2.0.1 | aarch64le | built | none built | 0 (0 / 0) | 0.5 |  |
-| [benchmark](ports-aarch64le/benchmark/REPORT.md) | v1.9.1 | aarch64le | built | not run | 0 (0 / 0) | 6.5 |  |
-| [c-ares](ports-aarch64le/c-ares/REPORT.md) | v1.34.3 | aarch64le | built | none built | 0 (0 / 0) | 1.8 |  |
-| [cJSON](ports-aarch64le/cJSON/REPORT.md) | v1.7.18 | aarch64le | built | 19/19 | 0 (0 / 0) | 2.2 |  |
-| [can-utils](ports-aarch64le/can-utils/REPORT.md) | v2023.03 | aarch64le | failed | not run | 0 (0 / 0) | 0.0 | Linux SocketCAN tools: expected not to port |
-| [capstone](ports-aarch64le/capstone/REPORT.md) | 5.0.3 | aarch64le | built | 24/24 | 1 (1 / 0) | 12.0 |  |
-| [cglm](ports-aarch64le/cglm/REPORT.md) | v0.9.4 | aarch64le | built | 1/1 | 0 (0 / 0) | 2.6 |  |
-| [cmark](ports-aarch64le/cmark/REPORT.md) | 0.31.1 | aarch64le | built | 1/1 | 0 (0 / 0) | 1.0 |  |
-| [cmocka](ports-aarch64le/cmocka/REPORT.md) | cmocka-1.1.7 | aarch64le | built | 46/46 | 1 (1 / 0) | 2.6 |  |
-| [expat](ports-aarch64le/expat/REPORT.md) | R_2_6_4 | aarch64le | built | 2/2 | 0 (0 / 0) | 6.7 |  |
-| [flac](ports-aarch64le/flac/REPORT.md) | 1.4.3 | aarch64le | built | 6/10 | 1 (1 / 0) | 20.8 |  |
-| [flatcc](ports-aarch64le/flatcc/REPORT.md) | v0.6.1 | aarch64le | built | not run | 0 (0 / 0) | 0.2 | build only: its tests run the just-built flatcc compiler on the build host |
-| [fmt](ports-aarch64le/fmt/REPORT.md) | 11.0.2 | aarch64le | built | 17/20 | 1 (1 / 0) | 11.4 |  |
-| [googletest](ports-aarch64le/googletest/REPORT.md) | v1.15.2 | aarch64le | built | 25/27 | 1 (1 / 0) | 26.9 |  |
-| [inih](ports-aarch64le/inih/REPORT.md) | r58 | aarch64le | built | none built | 0 (0 / 0) | 0.4 |  |
-| [jansson](ports-aarch64le/jansson/REPORT.md) | v2.14 | aarch64le | built | 209/213 | 1 (1 / 0) | 6.9 |  |
-| [json-c](ports-aarch64le/json-c/REPORT.md) | json-c-0.18-20240915 | aarch64le | built | 25/25 | 1 (1 / 0) | 8.1 |  |
-| [kissfft](ports-aarch64le/kissfft/REPORT.md) | 131.1.0 | aarch64le | built | none built | 0 (0 / 0) | 0.4 |  |
-| [libcbor](ports-aarch64le/libcbor/REPORT.md) | v0.11.0 | aarch64le | built | none built | 0 (0 / 0) | 1.0 |  |
-| [libccd](ports-aarch64le/libccd/REPORT.md) | v2.1 | aarch64le | built | 3/3 | 0 (0 / 0) | 3.5 |  |
-| [libcoap](ports-aarch64le/libcoap/REPORT.md) | v4.3.5 | aarch64le | built | none built | 1 (1 / 0) | 1.7 |  |
-| [libconfig](ports-aarch64le/libconfig/REPORT.md) | v1.7.3 | aarch64le | built | 1/1 | 1 (1 / 0) | 3.9 |  |
-| [libdeflate](ports-aarch64le/libdeflate/REPORT.md) | v1.22 | aarch64le | built | none built | 0 (0 / 0) | 0.6 |  |
-| [libevent](ports-aarch64le/libevent/REPORT.md) | release-2.1.12-stable | aarch64le | built | 20/24 | 2 (2 / 0) | 16.5 |  |
-| [libgpiod](ports-aarch64le/libgpiod/REPORT.md) | v2.2.4 | aarch64le | failed | not run | 0 (0 / 0) | 0.2 | Linux GPIO character-device API: expected not to port |
-| [libjpeg-turbo](ports-aarch64le/libjpeg-turbo/REPORT.md) | 3.0.4 | aarch64le | built | 574/574 | 0 (0 / 0) | 41.6 |  |
-| [libmodbus](ports-aarch64le/libmodbus/REPORT.md) | v3.1.11 | aarch64le | built | 0/1 | 0 (0 / 0) | 1.2 |  |
-| [libogg](ports-aarch64le/libogg/REPORT.md) | v1.3.5 | aarch64le | built | 2/2 | 0 (0 / 0) | 1.5 |  |
-| [libpng](ports-aarch64le/libpng/REPORT.md) | v1.6.44 | aarch64le | built | none built | 1 (1 / 0) | 4.3 |  |
-| [libsamplerate](ports-aarch64le/libsamplerate/REPORT.md) | 0.2.2 | aarch64le | built | 12/13 | 0 (0 / 0) | 3.4 |  |
-| [libsodium](ports-aarch64le/libsodium/REPORT.md) | 1.0.20-RELEASE | aarch64le | built | 80/80 | 0 (0 / 0) | 15.4 |  |
-| [libsrtp](ports-aarch64le/libsrtp/REPORT.md) | v2.6.0 | aarch64le | built | 9/12 | 1 (1 / 0) | 10.9 |  |
-| [libtommath](ports-aarch64le/libtommath/REPORT.md) | v1.3.0 | aarch64le | built | 1/1 | 0 (0 / 0) | 3.2 |  |
-| [libuv](ports-aarch64le/libuv/REPORT.md) | v1.49.2 | aarch64le | failed | not run | 0 (0 / 0) | 0.4 |  |
-| [libwebsockets](ports-aarch64le/libwebsockets/REPORT.md) | v4.3.3 | aarch64le | failed | not run | 1 (1 / 0) | 0.8 |  |
-| [libxml2](ports-aarch64le/libxml2/REPORT.md) | v2.13.5 | aarch64le | built | 7/8 | 0 (0 / 0) | 13.5 |  |
-| [libyaml](ports-aarch64le/libyaml/REPORT.md) | 0.2.5 | aarch64le | built | 2/2 | 0 (0 / 0) | 1.0 |  |
-| [lz4](ports-aarch64le/lz4/REPORT.md) | v1.10.0 | aarch64le | built | none built | 0 (0 / 0) | 1.0 |  |
-| [mbedtls](ports-aarch64le/mbedtls/REPORT.md) | v3.6.2 | aarch64le | built | 130/130 | 1 (1 / 0) | 19.0 |  |
-| [miniz](ports-aarch64le/miniz/REPORT.md) | 3.0.2 | aarch64le | built | none built | 0 (0 / 0) | 0.5 |  |
-| [mosquitto](ports-aarch64le/mosquitto/REPORT.md) | v2.0.20 | aarch64le | built | none built | 1 (1 / 0) | 2.9 |  |
-| [msgpack-c](ports-aarch64le/msgpack-c/REPORT.md) | c-6.1.0 | aarch64le | built | none built | 0 (0 / 0) | 0.3 |  |
-| [nanopb](ports-aarch64le/nanopb/REPORT.md) | 0.4.9 | aarch64le | built | not run | 0 (0 / 0) | 0.1 | build only: its tests use scons and protoc |
-| [nng](ports-aarch64le/nng/REPORT.md) | v1.9.0 | aarch64le | built | 80/86 | 1 (1 / 0) | 142.5 |  |
-| [open62541](ports-aarch64le/open62541/REPORT.md) | v1.4.6 | aarch64le | built | none built | 0 (0 / 0) | 9.7 |  |
-| [opus](ports-aarch64le/opus/REPORT.md) | v1.5.2 | aarch64le | built | none built | 0 (0 / 0) | 3.5 |  |
-| [paho.mqtt.c](ports-aarch64le/paho.mqtt.c/REPORT.md) | v1.3.14 | aarch64le | built | not run | 3 (3 / 0) | 0.5 | build only: the test suite needs an MQTT broker on the target |
-| [pcre2](ports-aarch64le/pcre2/REPORT.md) | pcre2-10.44 | aarch64le | built | 1/3 | 0 (0 / 0) | 2.5 |  |
-| [pugixml](ports-aarch64le/pugixml/REPORT.md) | v1.14 | aarch64le | built | 0/1 | 0 (0 / 0) | 2.0 |  |
-| [spdlog](ports-aarch64le/spdlog/REPORT.md) | v1.15.0 | aarch64le | built | none built | 1 (1 / 0) | 1.2 |  |
-| [sqlite](ports-aarch64le/sqlite/REPORT.md) | version-3.47.2 | aarch64le | built | not run | 0 (0 / 0) | 3.2 | build only: its test suite needs Tcl on the target |
-| [tinycbor](ports-aarch64le/tinycbor/REPORT.md) | v0.6.0 | aarch64le | built | not run | 0 (0 / 0) | 0.1 |  |
-| [tinyxml2](ports-aarch64le/tinyxml2/REPORT.md) | 10.0.0 | aarch64le | built | 1/1 | 1 (1 / 0) | 1.9 |  |
-| [tomlplusplus](ports-aarch64le/tomlplusplus/REPORT.md) | v3.4.0 | aarch64le | built | none built | 0 (0 / 0) | 2.3 |  |
-| [wolfssl](ports-aarch64le/wolfssl/REPORT.md) | v5.7.4-stable | aarch64le | built | 1/1 | 2 (2 / 0) | 5.8 |  |
-| [xxHash](ports-aarch64le/xxHash/REPORT.md) | v0.8.2 | aarch64le | built | none built | 0 (0 / 0) | 0.5 |  |
-| [yaml-cpp](ports-aarch64le/yaml-cpp/REPORT.md) | 0.8.0 | aarch64le | built | 0/1 | 2 (2 / 0) | 20.7 |  |
-| [yyjson](ports-aarch64le/yyjson/REPORT.md) | 0.10.0 | aarch64le | built | 12/12 | 1 (1 / 0) | 7.5 |  |
-| [zlib](ports-aarch64le/zlib/REPORT.md) | v1.3.1 | aarch64le | built | 2/2 | 0 (0 / 0) | 1.0 |  |
-| [zstd](ports-aarch64le/zstd/REPORT.md) | v1.5.6 | aarch64le | built | 1/4 | 0 (0 / 0) | 12.4 |  |
+| [BLAKE3](ports-aarch64le/BLAKE3/REPORT.md) | 1.8.7 | aarch64le | built | none built | 0 (0 / 0) | 0.6 | portable C: its CMake has SIMD flags only for compilers it knows, not qcc |
+| [Micro-CDR](ports-aarch64le/Micro-CDR/REPORT.md) | v2.0.2 | aarch64le | built | none built | 0 (0 / 0) | 0.9 |  |
+| [benchmark](ports-aarch64le/benchmark/REPORT.md) | v1.10.0 | aarch64le | built | 85/87 | 0 (0 / 0) | 21.0 |  |
+| [c-ares](ports-aarch64le/c-ares/REPORT.md) | v1.34.9 | aarch64le | built | 2/3 | 0 (0 / 0) | 11.3 |  |
+| [cJSON](ports-aarch64le/cJSON/REPORT.md) | v1.7.19 | aarch64le | built | 19/19 | 1 (1 / 0) | 3.6 |  |
+| [can-utils](ports-aarch64le/can-utils/REPORT.md) | v2025.01 | aarch64le | failed | not run | 2 (2 / 0) | 0.1 | Linux SocketCAN tools: expected not to port |
+| [capstone](ports-aarch64le/capstone/REPORT.md) | 5.0.9 | aarch64le | built | 24/24 | 1 (1 / 0) | 16.6 |  |
+| [cglm](ports-aarch64le/cglm/REPORT.md) | v0.9.7 | aarch64le | built | 1/1 | 0 (0 / 0) | 2.7 |  |
+| [cmark](ports-aarch64le/cmark/REPORT.md) | 0.31.2 | aarch64le | built | 1/1 | 0 (0 / 0) | 0.9 |  |
+| [cmocka](ports-aarch64le/cmocka/REPORT.md) | cmocka-2.0.2 | aarch64le | built | 88/89 | 1 (1 / 0) | 7.5 |  |
+| [expat](ports-aarch64le/expat/REPORT.md) | R_2_10_0 | aarch64le | built | 1/1 | 0 (0 / 0) | 7.1 |  |
+| [flac](ports-aarch64le/flac/REPORT.md) | 1.5.0 | aarch64le | built | 6/10 | 1 (1 / 0) | 22.9 |  |
+| [flatcc](ports-aarch64le/flatcc/REPORT.md) | v0.6.4 | aarch64le | built | not run | 0 (0 / 0) | 0.2 | build only: its tests run the just-built flatcc compiler on the build host |
+| [fmt](ports-aarch64le/fmt/REPORT.md) | 12.2.1 | aarch64le | built | 20/21 | 1 (1 / 0) | 21.8 |  |
+| [googletest](ports-aarch64le/googletest/REPORT.md) | v1.18.0 | aarch64le | built | 25/27 | 1 (1 / 0) | 49.4 |  |
+| [inih](ports-aarch64le/inih/REPORT.md) | r63 | aarch64le | built | 17/17 | 0 (0 / 0) | 1.0 |  |
+| [jansson](ports-aarch64le/jansson/REPORT.md) | v2.15.1 | aarch64le | built | 211/215 | 1 (1 / 0) | 5.1 |  |
+| [json-c](ports-aarch64le/json-c/REPORT.md) | json-c-0.19-20260627 | aarch64le | built | 28/28 | 1 (1 / 0) | 5.1 |  |
+| [kissfft](ports-aarch64le/kissfft/REPORT.md) | 131.2.0 | aarch64le | built | none built | 0 (0 / 0) | 0.5 |  |
+| [libcbor](ports-aarch64le/libcbor/REPORT.md) | v0.14.0 | aarch64le | built | 28/28 | 0 (0 / 0) | 2.7 |  |
+| [libccd](ports-aarch64le/libccd/REPORT.md) | v2.1 | aarch64le | built | 3/3 | 0 (0 / 0) | 3.8 |  |
+| [libcoap](ports-aarch64le/libcoap/REPORT.md) | v4.3.5b | aarch64le | built | none built | 1 (1 / 0) | 3.7 |  |
+| [libconfig](ports-aarch64le/libconfig/REPORT.md) | v1.8.3 | aarch64le | built | 1/1 | 1 (1 / 0) | 3.1 |  |
+| [libdeflate](ports-aarch64le/libdeflate/REPORT.md) | v1.26 | aarch64le | built | 8/8 | 0 (0 / 0) | 1.0 |  |
+| [libevent](ports-aarch64le/libevent/REPORT.md) | release-2.1.13-stable | aarch64le | built | 20/24 | 2 (2 / 0) | 18.9 |  |
+| [libgpiod](ports-aarch64le/libgpiod/REPORT.md) | v2.3.2 | aarch64le | failed | not run | 0 (0 / 0) | 0.0 | Linux GPIO character-device API: expected not to port |
+| [libjpeg-turbo](ports-aarch64le/libjpeg-turbo/REPORT.md) | 3.2.1 | aarch64le | built | 646/646 | 0 (0 / 0) | 71.2 |  |
+| [libmodbus](ports-aarch64le/libmodbus/REPORT.md) | v3.2.0 | aarch64le | built | 0/1 | 0 (0 / 0) | 1.2 |  |
+| [libogg](ports-aarch64le/libogg/REPORT.md) | v1.3.6 | aarch64le | built | 2/2 | 0 (0 / 0) | 0.7 |  |
+| [libpng](ports-aarch64le/libpng/REPORT.md) | v1.6.59 | aarch64le | built | none built | 1 (1 / 0) | 2.5 |  |
+| [libsamplerate](ports-aarch64le/libsamplerate/REPORT.md) | 0.2.2 | aarch64le | built | 12/13 | 0 (0 / 0) | 3.7 |  |
+| [libsodium](ports-aarch64le/libsodium/REPORT.md) | 1.0.22-RELEASE | aarch64le | built | 101/101 | 0 (0 / 0) | 10.9 |  |
+| [libsrtp](ports-aarch64le/libsrtp/REPORT.md) | v2.8.1 | aarch64le | built | 9/12 | 1 (1 / 0) | 10.8 |  |
+| [libtommath](ports-aarch64le/libtommath/REPORT.md) | v1.3.0 | aarch64le | built | 1/1 | 0 (0 / 0) | 3.1 |  |
+| [libuv](ports-aarch64le/libuv/REPORT.md) | v1.53.0 | aarch64le | built | 0/2 | 1 (1 / 0) | 12.7 |  |
+| [libwebsockets](ports-aarch64le/libwebsockets/REPORT.md) | v5.1.0 | aarch64le | failed | not run | 1 (1 / 0) | 3.8 |  |
+| [libxml2](ports-aarch64le/libxml2/REPORT.md) | v2.15.4 | aarch64le | built | 7/8 | 0 (0 / 0) | 10.4 |  |
+| [libyaml](ports-aarch64le/libyaml/REPORT.md) | 0.2.5 | aarch64le | built | 2/2 | 0 (0 / 0) | 0.9 |  |
+| [lz4](ports-aarch64le/lz4/REPORT.md) | v1.11.1 | aarch64le | built | none built | 0 (0 / 0) | 0.9 |  |
+| [mbedtls](ports-aarch64le/mbedtls/REPORT.md) | v4.2.0 | aarch64le | built | 147/148 | 1 (1 / 0) | 47.7 |  |
+| [miniz](ports-aarch64le/miniz/REPORT.md) | 3.1.2 | aarch64le | built | 1/1 | 0 (0 / 0) | 1.9 |  |
+| [mosquitto](ports-aarch64le/mosquitto/REPORT.md) | v2.1.2 | aarch64le | built | none built | 3 (3 / 0) | 10.2 | 2.1 needs cJSON (our QNX port of it) and, on QNX, TLS: without it 2.1 has random bytes only from Linux getrandom(); OpenSSL from the SDP. Its tests need CUnit and a Python broker harness |
+| [msgpack-c](ports-aarch64le/msgpack-c/REPORT.md) | c-7.0.2 | aarch64le | built | 5/5 | 0 (0 / 0) | 1.5 |  |
+| [nanopb](ports-aarch64le/nanopb/REPORT.md) | 0.4.9.3 | aarch64le | built | not run | 0 (0 / 0) | 0.1 | build only: its tests use scons and protoc |
+| [nng](ports-aarch64le/nng/REPORT.md) | v2.1.0 | aarch64le | built | 3/64 | 1 (1 / 0) | 74.0 |  |
+| [open62541](ports-aarch64le/open62541/REPORT.md) | v1.5.10 | aarch64le | built | none built | 2 (2 / 0) | 15.6 |  |
+| [opus](ports-aarch64le/opus/REPORT.md) | v1.6.1 | aarch64le | built | none built | 0 (0 / 0) | 2.9 |  |
+| [paho.mqtt.c](ports-aarch64le/paho.mqtt.c/REPORT.md) | v1.3.16 | aarch64le | built | not run | 1 (1 / 0) | 0.6 | build only: the test suite needs an MQTT broker on the target |
+| [pcre2](ports-aarch64le/pcre2/REPORT.md) | pcre2-10.49 | aarch64le | built | 1/3 | 0 (0 / 0) | 6.9 |  |
+| [pugixml](ports-aarch64le/pugixml/REPORT.md) | v1.16 | aarch64le | built | 0/1 | 0 (0 / 0) | 1.9 |  |
+| [spdlog](ports-aarch64le/spdlog/REPORT.md) | v1.17.0 | aarch64le | built | 1/1 | 1 (1 / 0) | 14.8 |  |
+| [sqlite](ports-aarch64le/sqlite/REPORT.md) | version-3.54.1 | aarch64le | built | not run | 0 (0 / 0) | 11.7 | build only: its test suite needs Tcl on the target |
+| [tinycbor](ports-aarch64le/tinycbor/REPORT.md) | v7.1 | aarch64le | built | 1/1 | 2 (2 / 0) | 0.6 |  |
+| [tinyxml2](ports-aarch64le/tinyxml2/REPORT.md) | 11.0.0 | aarch64le | built | 1/1 | 1 (1 / 0) | 1.9 |  |
+| [tomlplusplus](ports-aarch64le/tomlplusplus/REPORT.md) | v3.4.0 | aarch64le | built | none built | 0 (0 / 0) | 1.2 |  |
+| [wolfssl](ports-aarch64le/wolfssl/REPORT.md) | v5.9.4-stable | aarch64le | built | 1/1 | 1 (1 / 0) | 7.1 |  |
+| [xxHash](ports-aarch64le/xxHash/REPORT.md) | v0.8.4 | aarch64le | built | none built | 0 (0 / 0) | 0.5 |  |
+| [yaml-cpp](ports-aarch64le/yaml-cpp/REPORT.md) | yaml-cpp-0.9.0 | aarch64le | built | 0/1 | 1 (1 / 0) | 37.3 |  |
+| [yyjson](ports-aarch64le/yyjson/REPORT.md) | 0.13.0 | aarch64le | built | 12/12 | 0 (0 / 0) | 6.8 |  |
+| [zlib](ports-aarch64le/zlib/REPORT.md) | v1.4 | aarch64le | built | 4/4 | 0 (0 / 0) | 1.0 |  |
+| [zstd](ports-aarch64le/zstd/REPORT.md) | v1.5.7 | aarch64le | built | 1/4 | 0 (0 / 0) | 12.9 |  |
 <!-- results:end -->
 
 **What the failures are.** Each one was reproduced outside the campaign before being named. Details are in

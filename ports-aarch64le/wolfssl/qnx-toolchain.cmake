@@ -2,9 +2,9 @@
 set(CMAKE_SYSTEM_NAME QNX)
 set(CMAKE_SYSTEM_VERSION 8.0.0)
 set(CMAKE_SYSTEM_PROCESSOR aarch64)
-set(CMAKE_C_COMPILER "/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/wrap/qcc")
+set(CMAKE_C_COMPILER "/home/chirag/qnx800/host/linux/x86_64/usr/bin/qcc")
 set(CMAKE_C_COMPILER_TARGET gcc_ntoaarch64le)
-set(CMAKE_CXX_COMPILER "/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/wrap/q++")
+set(CMAKE_CXX_COMPILER "/home/chirag/qnx800/host/linux/x86_64/usr/bin/q++")
 set(CMAKE_CXX_COMPILER_TARGET gcc_ntoaarch64le_cxx)
 set(CMAKE_SYSROOT "/home/chirag/qnx800/target/qnx")
 set(CMAKE_FIND_ROOT_PATH "/home/chirag/qnx800/target/qnx" "/home/chirag/qnx800/target/qnx/aarch64le" "/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work")
@@ -17,7 +17,7 @@ set(CMAKE_C_FLAGS_INIT "-g ")
 set(CMAKE_CXX_FLAGS_INIT "-g ")
 set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/stubs")
 set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/stubs")
-# Flags after the project's own (appended by the compiler wrappers in /home/chirag/qnx-porter/ports-aarch64le/wolfssl/work/wrap): -Wno-error=stringop-overflow=
+# Flags after the project's own (appended by the compiler wrappers in -): none
 # Libraries the agent adds go at the end of every link line, after the objects that need them.
 set(CMAKE_C_STANDARD_LIBRARIES "-lsocket")
 set(CMAKE_CXX_STANDARD_LIBRARIES "-lsocket")

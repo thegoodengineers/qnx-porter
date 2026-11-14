@@ -1,0 +1,36 @@
+Subject: [qnx-porter 0001] wcswidth-compat
+Source: deterministic rule
+Reason: QNX 8.0's libc has wcwidth() but no wcswidth(). POSIX defines wcswidth(s, n) as the sum of wcwidth() over the first n characters of s, or -1 if any is not printable; a small header (-included in every compile) implements exactly that on top of QNX's wcwidth().
+Error: /home/chirag/qnx-porter/ports-aarch64le/flac/work/src/src/flac/utils.c:223:(.text+0x184): undefined reference to `wcswidth'
+---
+--- a/qnx-toolchain.cmake
++++ b/qnx-toolchain.cmake
+@@ -13,8 +13,8 @@
+ set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+ # -g: debug info only (same code), so a crash on the target gives file:line in its backtrace
+-set(CMAKE_C_FLAGS_INIT "-g ")
+-set(CMAKE_CXX_FLAGS_INIT "-g ")
++set(CMAKE_C_FLAGS_INIT "-g -include /home/chirag/qnx-porter/ports-aarch64le/flac/work/qnx-compat/qnx-wcswidth.h -D_QNX_PORTER_WCSWIDTH")
++set(CMAKE_CXX_FLAGS_INIT "-g -include /home/chirag/qnx-porter/ports-aarch64le/flac/work/qnx-compat/qnx-wcswidth.h -D_QNX_PORTER_WCSWIDTH")
+ set(CMAKE_EXE_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/flac/work/stubs")
+ set(CMAKE_SHARED_LINKER_FLAGS_INIT "-L/home/chirag/qnx-porter/ports-aarch64le/flac/work/stubs")
+ # Flags after the project's own (appended by the compiler wrappers in -): none
+--- /dev/null
++++ b/qnx-compat/qnx-wcswidth.h
+@@ -0,0 +1,15 @@
++/* qnx-porter: POSIX wcswidth() on top of QNX 8.0's wcwidth() */
++#include <stddef.h>
++#include <wchar.h>
++static inline int qnx_porter_wcswidth(const wchar_t *s, size_t n)
++{
++    int width = 0;
++    for (; n > 0 && *s != L'\0'; n--, s++) {
++        int w = wcwidth(*s);
++        if (w < 0)
++            return -1;
++        width += w;
++    }
++    return width;
++}
++#define wcswidth qnx_porter_wcswidth

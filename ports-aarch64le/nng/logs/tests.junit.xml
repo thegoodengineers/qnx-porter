@@ -1,264 +1,1556 @@
 <?xml version='1.0' encoding='utf-8'?>
-<testsuite name="qnx-target" tests="86" failures="6" skipped="0"><testcase name="nng.core.aio_test" classname="qnx-target" /><testcase name="nng.core.buf_size_test" classname="qnx-target" /><testcase name="nng.core.errors_test" classname="qnx-target" /><testcase name="nng.core.id_test" classname="qnx-target" /><testcase name="nng.core.init_test" classname="qnx-target" /><testcase name="nng.core.list_test" classname="qnx-target" /><testcase name="nng.core.log_test" classname="qnx-target" /><testcase name="nng.core.message_test" classname="qnx-target" /><testcase name="nng.core.reconnect_test" classname="qnx-target" /><testcase name="nng.core.sock_test" classname="qnx-target" /><testcase name="nng.core.sockaddr_test" classname="qnx-target"><failure message="exit 1">Test nng_sockaddr_ipc:
-  sockaddr_test.c:27: Check strcmp(nng_str_sockaddr(&amp;sa, addr, sizeof(addr)), "/tmp/something") == 0... ok
+<testsuite name="qnx-target" tests="64" failures="61" skipped="0"><testcase name="nng.core.aio_test" classname="qnx-target"><failure message="exit None">Test sleep:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.args_test" classname="qnx-target"><failure message="exit None">Test simple options:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.buf_size_test" classname="qnx-target"><failure message="exit None">Test buffer options:
+  buf_size_test.c:26: nng_pair1_open(&amp;s1): expected success, got Hunky dory (0)... ok
+  Case recv-buffer:
+    buf_size_test.c:32: nng_socket_set_int(s1, opt, 1234): expected success, got Hunky dory (0)... ok
+    buf_size_test.c:33: nng_socket_get_int(s1, opt, &amp;val): expected success, got Hunky dory (0)... ok
+    buf_size_test.c:34: val == 1234... ok
+    buf_size_test.c:37: nng_socket_set_int(s1, opt, -5) fails with Invalid argument... ok
+    buf_size_test.c:40: nng_socket_set_int(s1, opt, 0x100000) fails with Invalid argument... ok
+  Case send-buffer:
+    buf_size_test.c:32: nng_socket_set_int(s1, opt, 1234): expected success, got Hunky dory (0)... ok
+    buf_size_test.c:33: nng_socket_get_int(s1, opt, &amp;val): expected success, got Hunky dory (0)... ok
+    buf_size_test.c:34: val == 1234... ok
+    buf_size_test.c:37: nng_socket_set_int(s1, opt, -5) fails with Invalid argument... ok
+    buf_size_test.c:40: nng_socket_set_int(s1, opt, 0x100000) fails with Invalid argument... ok
+    buf_size_test.c:42: nng_socket_close(s1)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.errors_test" classname="qnx-target"><failure message="exit None">Test known errors:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.id_test" classname="qnx-target"><failure message="exit None">Test basic:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.idhash_test" classname="qnx-target"><failure message="exit None">Test id basic:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.init_test" classname="qnx-target"><failure message="exit None">Test init parameter:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.list_test" classname="qnx-target"><failure message="exit None">Test list empty:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.log_test" classname="qnx-target"><failure message="exit None">Test log stderr:
+[DEBUG ]: 20:43:05.262: NNG-DATE: Date changed to 2026-11-13, TZ is +0000
+[INFO  ]: 20:43:05.251: something wicked
+[ERROR ]: 20:43:05.272: This is an error message
+[WARN  ]: 20:43:05.277: This is a warning message
+[NOTICE]: 20:43:05.283: This is a notice message
+[INFO  ]: 20:43:05.286: This is an info message
+[DEBUG ]: 20:43:05.291: This is a debug message
+[NOTICE]: 20:43:05.294: TESTMSG: This notice has a msg id
+[ERROR ]: 20:43:05.299: MONO: Uncolored messages
+[ERROR ]: 20:43:05.306: MONO: Also uncolored messages
+[NONE  ]: 20:43:05.314: WTF: This should be NONE
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.message_test" classname="qnx-target"><failure message="exit None">Test msg option:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.reconnect_test" classname="qnx-target"><failure message="exit None">Test dial before listen:
+  reconnect_test.c:20: nng_pair1_open(&amp;(s1)): expected success, got Hunky dory (0)... ok
+  reconnect_test.c:21: nng_pair1_open(&amp;(s2)): expected success, got Hunky dory (0)... ok
+  reconnect_test.c:25: nng_socket_set_ms(s2, NNG_OPT_RECONNMINT, 10): expected success, got Hunky dory (0)... ok
+  reconnect_test.c:26: nng_socket_set_ms(s2, NNG_OPT_RECONNMAXT, 10): expected success, got Hunky dory (0)... ok
+  reconnect_test.c:28: nng_dial(s2, addr, NULL, NNG_FLAG_NONBLOCK): expected success, got Hunky dory (0)... ok
+  reconnect_test.c:30: nng_listen(s1, addr, NULL, 0): expected success, got Hunky dory (0)... ok
+  reconnect_test.c:32: nng_send(s1, "hello", strlen("hello") + 1, 0): expected success, got Hunky dory (0)... ok
+  reconnect_test.c:33: nng_recv (0 Hunky dory)... ok
+  reconnect_test.c:33: length 6 want 6... ok
+  reconnect_test.c:33: hello == hello... ok
+  reconnect_test.c:35: nng_socket_close(s1): expected success, got Hunky dory (0)... ok
+  reconnect_test.c:36: nng_socket_close(s2): expected success, got Hunky dory
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.sock_test" classname="qnx-target"><failure message="exit None">Test recv timeout:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.sockaddr_test" classname="qnx-target"><failure message="exit None">Test nng_sockaddr_ipc:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.synch_test" classname="qnx-target"><failure message="exit None">Test mutex lock unlock:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.stats_test" classname="qnx-target"><failure message="exit None">Test socket stats:
+  stats_test.c:26: nng_pair1_open(&amp;(s1)): expected success, got Hunky dory (0)... ok
+  stats_test.c:27: nng_pair1_open(&amp;(s2)): expected success, got Hunky dory (0)... ok
+  stats_test.c:28: nuts_marry(s1, s2): expected success, got Hunky dory (0)... ok
+  stats_test.c:29: nng_send(s1, "ping", strlen("ping") + 1, 0): expected success, got Hunky dory (0)... ok
+  stats_test.c:30: nng_recv (0 Hunky dory)... ok
+  stats_test.c:30: length 5 want 5... ok
+  stats_test.c:30: ping == ping... ok
+  stats_test.c:33: stats != NULL... ok
+  stats_test.c:36: st1 != NULL... ok
+  stats_test.c:37: st2 != NULL... ok
+  stats_test.c:38: st1 != st2... ok
+  stats_test.c:40: item != NULL... ok
+  stats_test.c:41: nng_stat_value(item) == 1... ok
+  stats_test.c:42: nng_stat_unit(item) == NNG_UNIT_MESSAGES... ok
+  stats_test.c:44: item != NULL... ok
+  stats_test.c:45: nng_stat_value(item) == 1... ok
+  stats_test.c:46: nng_stat_unit(item) == NNG_UNIT_MESSAGES... ok
+  stats_test.c:47: nng_socket_close(s1): expected success, got Hunky dory (0).
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.core.url_test" classname="qnx-target"><failure message="exit None">Test url host:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.platform.files_test" classname="qnx-target"><failure message="exit None">Test permissions:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.platform.ipc_stream_test" classname="qnx-target"><failure message="exit None">Test ipc stream:
+  ipc_stream_test.c:40: nng_aio_alloc(&amp;daio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:41: nng_aio_alloc(&amp;laio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:42: nng_aio_alloc(&amp;maio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:43: nng_aio_alloc(&amp;aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:44: nng_aio_alloc(&amp;aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:46: nng_stream_listener_alloc(&amp;l, url): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:47: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:49: nng_stream_dialer_alloc(&amp;d, url): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:54: nng_aio_result(daio): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:56: nng_aio_result(laio): expected success, got Hunky dory (0)... ok
+  ipc_stream_test.c:60: c1 != NULL... ok
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.platform.platform_test" classname="qnx-target"><failure message="exit None">Test sleep:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.platform.resolver_test" classname="qnx-target"><failure message="exit None">Test resolve google dns:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.platform.tcp_stream_test" classname="qnx-target"><failure message="exit None">Test tcp stream:
+  tcp_stream_test.c:41: nng_aio_alloc(&amp;daio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:42: nng_aio_alloc(&amp;laio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:43: nng_aio_alloc(&amp;maio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:44: nng_aio_alloc(&amp;aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:45: nng_aio_alloc(&amp;aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:47: nng_stream_listener_alloc(&amp;l, "tcp://127.0.0.1"): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:48: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:49: nng_stream_listener_get_int(l, NNG_OPT_BOUND_PORT, &amp;port): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:50: port &gt; 0... ok
+  tcp_stream_test.c:51: port &lt;= 0xffff... ok
+  tcp_stream_test.c:56: nng_stream_dialer_alloc(&amp;d, uri): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:61: nng_aio_result(daio): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:63: nng_aio_result(laio): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:67: c1 != NULL... ok
+  tcp_stream_test.c:68: c2 != NULL... ok
+  tcp_stream_test.c:71: nng_stream_get_bool(c1, NNG_OPT_TCP_NODELAY, &amp;on): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:72: on... ok
+  tcp_stream_test.c:75: nng_stream_get_bool(c1, NNG_OPT_TCP_KEEPALIVE, &amp;on): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:97: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:98: nng_aio_count(aio1) == 5... ok
+  tcp_stream_test.c:100: nng_aio_result(aio2): expected success, got Hunky dory (0)... ok
+  tcp_stream_test.c:101: nng_aio_count(aio2) == 5... ok
+  tcp_stream_test.c:103: memcmp(buf1, buf2, 5) == 0... ok
+  tcp_stream_test.c:106: sap1-&gt;s_in.sa_family == NNG_AF_INET... ok
+  tcp_stream_test.c:109: sap2-&gt;s_in.sa_family == NNG_AF_INET... ok
+  tcp_stream_test.c
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.platform.udp_test" classname="qnx-target"><failure message="exit None">Test udp pair:
+  udp_test.c:49: nng_udp_open(&amp;u1, &amp;sa1): expected success, got Hunky dory (0)... ok
+  udp_test.c:50: nng_udp_open(&amp;u2, &amp;sa2): expected success, got Hunky dory (0)... ok
+  udp_test.c:52: nng_udp_sockname(u1, &amp;sa1): expected success, got Hunky dory (0)... ok
+  udp_test.c:53: nng_udp_sockname(u2, &amp;sa2): expected success, got Hunky dory (0)... ok
+  udp_test.c:55: nng_aio_alloc(&amp;aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+  udp_test.c:56: nng_aio_alloc(&amp;aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+  udp_test.c:61: nng_aio_set_iov(aio1, 1, &amp;iov1): expected success, got Hunky dory (0)... ok
+  udp_test.c:62: nng_aio_set_input(aio1, 0, &amp;to): expected success, got Hunky dory (0)... ok
+  udp_test.c:66: nng_aio_set_iov(aio2, 1, &amp;iov2): expected success, got Hunky dory (0)... ok
+  udp_test.c:67: nng_aio_set_input(aio2, 0, &amp;from): expected success, got Hunky dory (0)... ok
+  udp_test.c:74: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+  udp_test.c:75: nng_aio_result(aio2)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.platform.posix_ipcwinsec_test" classname="qnx-target"><failure message="exit None">Test ipc security descriptor:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.pipe_test" classname="qnx-target"><failure message="exit None">Test pipe msg id:
+  pipe_test.c:128: nng_mtx_alloc(&amp;push-&gt;lk): expected success, got Hunky dory (0)... ok
+  pipe_test.c:129: nng_cv_alloc(&amp;push-&gt;cv, push-&gt;lk): expected success, got Hunky dory (0)... ok
+  pipe_test.c:130: nng_mtx_alloc(&amp;pull-&gt;lk): expected success, got Hunky dory (0)... ok
+  pipe_test.c:131: nng_cv_alloc(&amp;pull-&gt;cv, pull-&gt;lk): expected success, got Hunky dory (0)... ok
+  pipe_test.c:133: nng_push0_open(&amp;push-&gt;s): expected success, got Hunky dory (0)... ok
+  pipe_test.c:134: nng_pull0_open(&amp;pull-&gt;s): expected success, got Hunky dory (0)... ok
+  pipe_test.c:136: nng_socket_set_ms(push-&gt;s, NNG_OPT_RECONNMINT, 10): expected success, got Hunky dory (0)... ok
+  pipe_test.c:137: nng_socket_set_ms(push-&gt;s, NNG_OPT_RECONNMAXT, 10): expected success, got Hunky dory (0)... ok
+  pipe_test.c:138: nng_socket_set_ms(pull-&gt;s, NNG_OPT_RECONNMINT, 10): expected success, got Hunky dory (0)... ok
+  pipe_test.c:139: nng_socket_set_ms(pull-&gt;s, NNG_OPT_RECONNMAXT, 10): expected success, got Hunky dory (0)... ok
+  pipe_test.c:141: nng_listener_create(&amp;pull-&gt;l, pull-&gt;s, addr): expected success, got Hunky dory (0)... ok
+  pipe_test.c:142: nng_dialer_create(&amp;push-&gt;d, push-&gt;s, addr): expected success, got Hunky dory (0)... ok
+  pipe_test.c:143: nng_listener_id(pull-&gt;l) &gt; 0... ok
+  pipe_test.c:144: nng_dialer_id(push-&gt;d) &gt; 0... ok
+  pipe_test.c:145: nng_dialer_set_ms(push-&gt;d, NNG_OPT_RECONNMINT, 10): expected success, got Hunky dory (0)... ok
+  pipe_test.c:146: nng_dialer_set_ms(push-&gt;d, NNG_OPT_RECONNMAXT, 10): expected success, got Hunky dory (0)... ok
+  pipe_test.c:148: nng_pipe_notify(push-&gt;s, NNG_PIPE_EV_ADD_PRE, notify, push): expected success, got Hunky dory (0)... ok
+  pipe_test.c:149: nng_pipe_notify(push-&gt;s, NNG_PIPE_EV_ADD_POST, notify, push): expected success, got Hunky dory (0)... ok
+  pipe_test.c:151: nng_pipe_notify(push-&gt;s, NNG_PIPE_EV_REM_POST, notify, push): expected success, got Hunky dory (0)... ok
+  pipe_test.c:153: nng_pipe_notify(pull-&gt;s, NNG_PIPE_EV_ADD_PRE, notify, pull): expected success, got Hunky dory (0)... ok
+  pipe_test.c:154: nng_pipe_notify(pull-&gt;s, NNG_PIPE_EV_ADD_POST, notify, pull): expected success, got Hunky dory (0)... ok
+  pipe_test.c:156: nng_pipe_notify(pull-&gt;s, NNG_PIPE_EV_REM_POST, notify, pull): expected success, got Hunky dory (0)... ok
+  pipe_test.c:174: nng_listener_start(pull-&gt;l, 0): expected success, got Hunky dory (0)... ok
+  pipe_test.c:175: nng_dialer_start(push-&gt;d, 0): expected success, got Hunky dory (0)... ok
+  pipe_test.c:176: expect(pull, &amp;pull-&gt;add_pre, 1)... ok
+  pipe_test.c:177: expect(pull, &amp;pull-&gt;add_post, 1)... ok
+  pipe_test.c:178: expect(pull, &amp;pull-&gt;rem, 0)... ok
+  pipe_test.c:179: expect(pull, &amp;pull-&gt;err, 0)... ok
+  pipe_test.c:180: expect(push, &amp;push-&gt;add_pre, 1)... ok
+  pipe_test.c:181: expect(push, &amp;push-&gt;add_post, 1)... ok
+  pipe_test.c:182: expect(push, &amp;push-&gt;rem, 0)... ok
+  pipe_test.c:183: expect(push, &amp;push-&gt;err, 0)... ok
+  pipe_test.c:210: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
+  pipe_test.c:211: nng_msg_append(msg, "hello", strlen("hello") + 1): expected success, got Hunky dory (0)... ok
+  pipe_test.c:212: nng_sendmsg(push.s, msg, 0)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.device_test" classname="qnx-target"><failure message="exit None">Test device not cooked:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.multistress_test" classname="qnx-target"><failure message="exit None">Test multi stress:
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock): expected success, got Hunky dory (0)... ok
+  multistress_test.c:836: c-&gt;nfail == 0... ok
+  multistress_test.c:837: (c-&gt;sent == NULL) || (c-&gt;nsend &gt; 0)... ok
+  multistress_test.c:838: (c-&gt;recd == NULL) || (c-&gt;nrecv &gt; 0)... ok
+  multistress_test.c:840: nng_socket_close(c-&gt;sock)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.nonblock_test" classname="qnx-target"><failure message="exit None">Test nonblocking:
+  nonblock_test.c:102: nng_rep0_open(&amp;rep): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:104: nng_req0_open(&amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:107: nng_thread_create(&amp;server, repthr, &amp;rep): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i]): expected success, got Hunky dory (0)... ok
+  nonblock_test.c:109: nng_thread_create(&amp;clients[i], reqthr, &amp;reqs[i])
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.scalability_test" classname="qnx-target"><failure message="exit None">  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:100: nng_socket_close(clients[i]): expected success, got Hunky dory (0)... ok
+  scalability_test.c:102: nng_socket_close(rep): expected success, got Hunky dory (0)... ok
   SUCCESS: All conditions have passed.
-  Duration: 0.001970 secs
+  Duration: 2.031481 secs
 
-Test nng_sockaddr_abstract:
-  sockaddr_test.c:39: Check strcmp(nng_str_sockaddr(&amp;sa, addr, sizeof(addr)), "abstract[something]") == 0... ok
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.reconnect_stress_test" classname="qnx-target"><failure message="exit None">  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:193: nng_aio_alloc(&amp;w-&gt;aio, ping_cb, w): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:190: nng_surveyor0_open(&amp;w-&gt;socket): expected success, got Hunky dory (0)... ok
+  reconnect_stress_test.c:191: nng_socket_set_ms( w-&gt;socket, NNG_OPT_SURVEYOR_SURVEYTIME, SURVEY_TIMEOUT_MS)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.bus0.bus_test" classname="qnx-target"><failure message="exit None">Test bus send drop stats:
+  bus_test.c:498: nng_bus0_open(&amp;bus): expected success, got Hunky dory (0)... ok
+  bus_test.c:499: nng_socket_set_int(bus, NNG_OPT_SENDBUF, 1): expected success, got Hunky dory (0)... ok
+  bus_test.c:500: nng_mtx_alloc(&amp;note.mtx): expected success, got Hunky dory (0)... ok
+  bus_test.c:501: nng_cv_alloc(&amp;note.cv, note.mtx): expected success, got Hunky dory (0)... ok
+  bus_test.c:502: nng_pipe_notify( bus, NNG_PIPE_EV_ADD_POST, bus_peer_connected, &amp;note): expected success, got Hunky dory (0)... ok
+  bus_test.c:504: nng_listen(bus, addr, NULL, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:505: nng_aio_alloc(&amp;aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  bus_test.c:507: nng_stream_dialer_alloc(&amp;dialer, addr): expected success, got Hunky dory (0)... ok
+  bus_test.c:510: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+  bus_test.c:512: nuts_stream_wait( nuts_stream_recv_start(peer, received, sizeof(received))): expected success, got Hunky dory (0)... ok
+  bus_test.c:514: nuts_stream_wait( nuts_stream_send_start(peer, header, sizeof(header))): expected success, got Hunky dory (0)... ok
+  bus_test.c:521: note.connected... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  bus_test.c:525: nng_msg_alloc(&amp;msg, 1024 * 1024): expected success, got Hunky dory (0)... ok
+  bus_test.c:526: nng_sendmsg(bus, msg, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.pair0.pair0_test" classname="qnx-target"><failure message="exit None">Test pair0 identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.pair1.pair1_test" classname="qnx-target"><failure message="exit None">Test pair1 mono identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.pair1.pair1_poly_test" classname="qnx-target"><failure message="exit None">Test pair1 poly identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.pipeline0.pull_test" classname="qnx-target"><failure message="exit None">Test pull stats:
+  pull_test.c:273: nng_push0_open(&amp;push): expected success, got Hunky dory (0)... ok
+  pull_test.c:274: raw ? nng_pull0_open_raw(&amp;pull) : nng_pull0_open(&amp;pull): expected success, got Hunky dory (0)... ok
+  pull_test.c:276: nng_socket_set_ms(push, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  pull_test.c:277: nng_socket_set_ms(pull, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  pull_test.c:278: nng_aio_alloc(&amp;aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  pull_test.c:280: nuts_marry(push, pull): expected success, got Hunky dory (0)... ok
+  pull_test.c:282: nng_send(push, "direct", strlen("direct") + 1, 0): expected success, got Hunky dory (0)... ok
+  pull_test.c:284: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:287: nuts_stat_wait(pull, "rx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:288: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 0, false)... ok
+  pull_test.c:290: nng_send(push, "held", strlen("held") + 1, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:291: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+  pull_test.c:292: nng_recv (0 Hunky dory)... ok
+  pull_test.c:292: length 5 want 5... ok
+  pull_test.c:292: held == held... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:293: nuts_stat_wait(pull, "rx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:294: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:296: nuts_stat_wait(push, "tx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:297: nuts_stat_wait(push, "tx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:298: nuts_stat_wait(pull, "rx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:299: nuts_stat_wait(pull, "rx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+  pull_test.c:301: nng_socket_close(push): expected success, got Hunky dory (0)... ok
+  pull_test.c:302: nng_socket_close(pull): expected success, got Hunky dory (0)... ok
+  pull_test.c:273: nng_push0_open(&amp;push): expected success, got Hunky dory (0)... ok
+  pull_test.c:274: raw ? nng_pull0_open_raw(&amp;pull) : nng_pull0_open(&amp;pull): expected success, got Hunky dory (0)... ok
+  pull_test.c:276: nng_socket_set_ms(push, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  pull_test.c:277: nng_socket_set_ms(pull, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  pull_test.c:278: nng_aio_alloc(&amp;aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  pull_test.c:280: nuts_marry(push, pull): expected success, got Hunky dory (0)... ok
+  pull_test.c:282: nng_send(push, "direct", strlen("direct") + 1, 0): expected success, got Hunky dory (0)... ok
+  pull_test.c:284: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:287: nuts_stat_wait(pull, "rx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:288: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 0, false)... ok
+  pull_test.c:290: nng_send(push, "held", strlen("held") + 1, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:291: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+  pull_test.c:292: nng_recv (0 Hunky dory)... ok
+  pull_test.c:292: length 5 want 5... ok
+  pull_test.c:292: held == held... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:293: nuts_stat_wait(pull, "rx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:294: nuts_stat_wait(pull, "rx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:296: nuts_stat_wait(push, "tx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:297: nuts_stat_wait(push, "tx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:298: nuts_stat_wait(pull, "rx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  pull_test.c:299: nuts_stat_wait(pull, "rx_bytes", NNG_UNIT_BYTES, 12, false)... ok
+  pull_test.c:301: nng_socket_close(push)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.pipeline0.push_test" classname="qnx-target"><failure message="exit None">  push_test.c:516: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 0, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:517: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 0, false)... ok
+  push_test.c:521: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:524: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 1, false)... ok
+  push_test.c:527: nng_aio_result(aio) fails with Operation canceled... ok
+  push_test.c:528: nng_aio_get_msg(aio) == msg... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:529: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:534: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 2, false)... ok
+  push_test.c:535: nuts_marry(push, pull): expected success, got Hunky dory (0)... ok
+  push_test.c:537: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+  push_test.c:538: nng_aio_get_msg(aio) == NULL... ok
+  push_test.c:539: nng_recv (0 Hunky dory)... ok
+  push_test.c:539: length 9 want 9... ok
+  push_test.c:539: buffered == buffered... ok
+  push_test.c:540: nng_recvmsg(pull, &amp;msg, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:542: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:543: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 0, false)... ok
+  push_test.c:545: nng_socket_set_int(push, NNG_OPT_SENDBUF, 0): expected success, got Hunky dory (0)... ok
+  push_test.c:546: nng_send(push, "direct", strlen("direct") + 1, 0): expected success, got Hunky dory (0)... ok
+  push_test.c:547: nng_recv (0 Hunky dory)... ok
+  push_test.c:547: length 7 want 7... ok
+  push_test.c:547: direct == direct... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:548: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:549: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
+  push_test.c:551: nng_socket_close(push): expected success, got Hunky dory (0)... ok
+  push_test.c:552: nng_socket_close(pull): expected success, got Hunky dory (0)... ok
+  push_test.c:507: raw ? nng_push0_open_raw(&amp;push) : nng_push0_open(&amp;push): expected success, got Hunky dory (0)... ok
+  push_test.c:509: nng_pull0_open(&amp;pull): expected success, got Hunky dory (0)... ok
+  push_test.c:510: nng_socket_set_int(push, NNG_OPT_SENDBUF, 1): expected success, got Hunky dory (0)... ok
+  push_test.c:511: nng_socket_set_ms(pull, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  push_test.c:512: nng_aio_alloc(&amp;aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  push_test.c:514: nng_send(push, "buffered", strlen("buffered") + 1, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:515: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:516: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 0, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:517: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 0, false)... ok
+  push_test.c:521: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:524: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 1, false)... ok
+  push_test.c:527: nng_aio_result(aio) fails with Operation canceled... ok
+  push_test.c:528: nng_aio_get_msg(aio) == msg... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:529: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:534: nuts_stat_wait(push, "tx_blocked", NNG_UNIT_MESSAGES, 2, false)... ok
+  push_test.c:535: nuts_marry(push, pull): expected success, got Hunky dory (0)... ok
+  push_test.c:537: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+  push_test.c:538: nng_aio_get_msg(aio) == NULL... ok
+  push_test.c:539: nng_recv (0 Hunky dory)... ok
+  push_test.c:539: length 9 want 9... ok
+  push_test.c:539: buffered == buffered... ok
+  push_test.c:540: nng_recvmsg(pull, &amp;msg, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:542: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:543: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 0, false)... ok
+  push_test.c:545: nng_socket_set_int(push, NNG_OPT_SENDBUF, 0): expected success, got Hunky dory (0)... ok
+  push_test.c:546: nng_send(push, "direct", strlen("direct") + 1, 0): expected success, got Hunky dory (0)... ok
+  push_test.c:547: nng_recv (0 Hunky dory)... ok
+  push_test.c:547: length 7 want 7... ok
+  push_test.c:547: direct == direct... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:548: nuts_stat_wait(push, "tx_direct", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  push_test.c:549: nuts_stat_wait(push, "tx_queued", NNG_UNIT_MESSAGES, 2, false)... ok
+  push_test.c:551: nng_socket_close(push): expected success, got Hunky dory (0)... ok
+  push_test.c:552: nng_socket_close(pull): e
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.pubsub0.pub_test" classname="qnx-target"><failure message="exit None">Test pub identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.pubsub0.sub_test" classname="qnx-target"><failure message="exit None">Test sub identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.pubsub0.xsub_test" classname="qnx-target"><failure message="exit None">Test xsub identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.reqrep0.req_test" classname="qnx-target"><failure message="exit None">Test req stats:
+  req_test.c:1008: nng_req0_open(&amp;req): expected success, got Hunky dory (0)... ok
+  req_test.c:1009: nng_rep0_open_raw(&amp;rep): expected success, got Hunky dory (0)... ok
+  req_test.c:1010: nng_socket_set_ms(req, NNG_OPT_REQ_RESENDTIME, 60000): expected success, got Hunky dory (0)... ok
+  req_test.c:1011: nng_socket_set_ms(rep, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  req_test.c:1012: nng_socket_set_ms(rep, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  req_test.c:1013: nng_ctx_open(&amp;ctx, req): expected success, got Hunky dory (0)... ok
+  req_test.c:1014: nng_aio_alloc(&amp;aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  req_test.c:1016: nuts_marry(req, rep): expected success, got Hunky dory (0)... ok
+  req_test.c:1019: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
+  req_test.c:1023: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+  req_test.c:1024: nng_recvmsg(rep, &amp;msg, 0): expected success, got Hunky dory (0)... ok
+  req_test.c:1019: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
+  req_test.c:1023: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+  req_test.c:1024: nng_recvmsg(rep, &amp;msg, 0): expected success, got Hunky dory (0)... ok
+  req_test.c:1030: nng_sendmsg(rep, old, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  req_test.c:1031: nuts_stat_wait(req, "rx_nomatch", NNG_UNIT_MESSAGES, 1, false)... ok
+  req_test.c:1032: nng_msg_dup(&amp;dup, msg): expected success, got Hunky dory (0)... ok
+  req_test.c:1033: nng_sendmsg(rep, msg, 0): expected success, got Hunky dory (0)... ok
+  req_test.c:1034: nng_sendmsg(rep, dup, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  req_test.c:1035: nuts_stat_wait(req, "rx_nomatch", NNG_UNIT_MESSAGES, 2, false)... ok
+  req_test.c:1038: nng_aio_result(aio): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  req_test.c:1041: nuts_stat_wait(req, "rx_malformed", NNG_UNIT_MESSAGES, 0, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  req_test.c:1042: nuts_stat_wait(req, "tx_retry", NNG_UNIT_MESSAGES, 0, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  req_test.c:1043: nuts_stat_wait(req, "tx_msgs", NNG_UNIT_MESSAGES, 2, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  req_test.c:1044: nuts_stat_wait(req, "tx_bytes", NNG_UNIT_BYTES, 0, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL.
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.reqrep0.rep_test" classname="qnx-target"><failure message="exit None">Test rep ttl stats:
+  rep_test.c:784: nng_req0_open_raw(&amp;req): expected success, got Hunky dory (0)... ok
+  rep_test.c:785: nng_rep0_open(&amp;rep): expected success, got Hunky dory (0)... ok
+  rep_test.c:786: nng_socket_set_int(rep, NNG_OPT_MAXTTL, 1): expected success, got Hunky dory (0)... ok
+  rep_test.c:787: nng_socket_set_ms(rep, NNG_OPT_RECVTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  rep_test.c:788: nng_socket_set_ms(req, NNG_OPT_SENDTIMEO, 1000): expected success, got Hunky dory (0)... ok
+  rep_test.c:789: nuts_marry(req, rep): expected success, got Hunky dory (0)... ok
+  rep_test.c:790: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
+  rep_test.c:791: nng_msg_append_u32(msg, 1): expected success, got Hunky dory (0)... ok
+  rep_test.c:792: nng_msg_append_u32(msg, 0x80000001u): expected success, got Hunky dory (0)... ok
+  rep_test.c:793: nng_sendmsg(req, msg, 0): expected success, got Hunky dory (0)... ok
+  rep_test.c:794: nng_msg_alloc(&amp;msg, 0): expected success, got Hunky dory (0)... ok
+  rep_test.c:795: nng_msg_header_append_u32(msg, 0x80000002u): expected success, got Hunky dory (0)... ok
+  rep_test.c:796: nng_msg_append(msg, "valid", 6): expected success, got Hunky dory (0)... ok
+  rep_test.c:797: nng_sendmsg(req, msg, 0): expected success, got Hunky dory (0)... ok
+  rep_test.c:798: nng_recv (0 Hunky dory)... ok
+  rep_test.c:798: length 6 want 6... ok
+  rep_test.c:798: valid == valid... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  rep_test.c:799: nuts_stat_wait(rep, "ttl_drop", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  rep_test.c:800: nuts_stat_wait(rep, "rx_malformed", NNG_UNIT_MESSAGES, 0, false)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.reqrep0.xrep_test" classname="qnx-target"><failure message="exit None">Test xrep identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.reqrep0.xreq_test" classname="qnx-target"><failure message="exit None">Test xreq identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.reqrep0.reqstress_test" classname="qnx-target"><failure message="exit None">Test req stress:
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket): expected success, got Hunky dory (0)... ok
+  reqstress_test.c:323: cases[i].nfail == 0... ok
+  reqstress_test.c:324: cases[i].nsend &gt; 0 || cases[i].nrecv &gt; 0... ok
+  reqstress_test.c:325: nng_socket_close(cases[i].socket)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.survey0.respond_test" classname="qnx-target"><failure message="exit None">Test respond identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.survey0.survey_test" classname="qnx-target"><failure message="exit None">Test survey send drop stats:
+  survey_test.c:683: nng_surveyor0_open(&amp;surv): expected success, got Hunky dory (0)... ok
+  survey_test.c:684: nng_respondent0_open(&amp;resp): expected success, got Hunky dory (0)... ok
+  survey_test.c:685: nuts_marry(surv, resp): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  survey_test.c:687: nng_send(surv, "survey", strlen("survey") + 1, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  survey_test.c:689: nuts_stat_wait(surv, "tx_drop", NNG_UNIT_MESSAGES, 1, true)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  survey_test.c:690: nuts_stat_wait(surv, "tx_nopipe", NNG_UNIT_MESSAGES, 0, false)
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.survey0.xrespond_test" classname="qnx-target"><failure message="exit None">Test xrespond identity:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.protocol.survey0.xsurvey_test" classname="qnx-target"><failure message="exit None">Test xsurvey no peer stats:
+  xsurvey_test.c:396: nng_surveyor0_open_raw(&amp;surv): expected success, got Hunky dory (0)... ok
+  xsurvey_test.c:397: nng_send(surv, "no peers", strlen("no peers") + 1, 0): expected success, got Hunky dory (0)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  xsurvey_test.c:398: nuts_stat_wait(surv, "tx_nopipe", NNG_UNIT_MESSAGES, 1, false)... ok
+  nuts.h:330: nng_stats_get(&amp;stats): expected success, got Hunky dory (0)... ok
+  nuts.h:332: st != NULL... ok
+  nuts.h:334: st != NULL... ok
+  nuts.h:335: nng_stat_type(st) == NNG_STAT_COUNTER... ok
+  nuts.h:336: nng_stat_unit(st) == unit... ok
+  xsurvey_test.c:399: nuts_stat_wait(surv, "tx_drop", NNG_UNIT_MESSAGES, 0, false)... ok
+  xsurvey_test.c:400: nng_socket_close(surv): expected success, got Hunky dory (0)... ok
   SUCCESS: All conditions have passed.
-  Duration: 0.000307 secs
+  Durati
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.transport.socket.sockfd_test" classname="qnx-target"><failure message="exit None">Test socket connect fail:
 
-Test nng_sockaddr_inproc:
-  ERROR: Test interrupted by SIGSEGV.
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.transport.inproc.inproc_test" classname="qnx-target"><failure message="exit None">Test inproc conn refused:
 
-Test nng_sockaddr_in:
-  sockaddr_test.c:64: Check strcmp(nng_str_sockaddr(&amp;sa, addr, sizeof(addr)), "127.0.0.1:80") == 0... ok
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.transport.ipc.ipc_test" classname="qnx-target"><failure message="exit None">Test ipc path too long:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.transport.tcp.tcp_test" classname="qnx-target"><failure message="exit None">Test tcp conn refused:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.transport.udp.udp_tran_test" classname="qnx-target"><failure message="exit None">Test udp wild card connect fail:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.transport.udp.udp_wire_test" classname="qnx-target"><failure message="exit None">Test udp wire bad headers:
+  udp_wire_test.c:197: nng_pull0_open(s): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:198: nng_socket_set_ms(*s, NNG_OPT_RECVTIMEO, WIRE_TIMEOUT): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:161: nng_mtx_alloc(&amp;events-&gt;mtx): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:162: nng_cv_alloc(&amp;events-&gt;cv, events-&gt;mtx): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:163: nng_pipe_notify(s, NNG_PIPE_EV_ADD_POST, wire_event, events): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:165: nng_pipe_notify(s, NNG_PIPE_EV_REM_POST, wire_event, events): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:200: nng_listener_create(&amp;l, *s, "udp4://127.0.0.1:0"): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:202: nng_listener_set_size(l, NNG_OPT_RECVMAXSZ, 64): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:203: nng_listener_set_size(l, NNG_OPT_UDP_MAX_PEERS, max_peers): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:204: nng_listener_start(l, 0): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:205: nng_listener_get_int(l, NNG_OPT_BOUND_PORT, &amp;port): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:82: nng_udp_open(&amp;p-&gt;udp, &amp;p-&gt;addr): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:83: nng_udp_sockname(p-&gt;udp, &amp;p-&gt;addr): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:84: nng_aio_alloc(&amp;p-&gt;send, NULL, NULL): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:85: nng_aio_alloc(&amp;p-&gt;recv, NULL, NULL): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:115: nng_aio_set_iov(p-&gt;recv, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:116: nng_aio_set_input(p-&gt;recv, 0, &amp;p-&gt;from): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:128: rv == NNG_OK... ok
+  udp_wire_test.c:133: p-&gt;len == WIRE_HEADER... ok
+  udp_wire_test.c:134: from == NULL || nng_sockaddr_equal(&amp;p-&gt;from, from)... ok
+  udp_wire_test.c:135: p-&gt;packet[0] == 1... ok
+  udp_wire_test.c:136: p-&gt;packet[1] == op... ok
+  udp_wire_test.c:137: wire_get16(p-&gt;packet + 4) == param... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:115: nng_aio_set_iov(p-&gt;recv, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:116: nng_aio_set_input(p-&gt;recv, 0, &amp;p-&gt;from): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:128: rv == NNG_OK... ok
+  udp_wire_test.c:133: p-&gt;len == WIRE_HEADER... ok
+  udp_wire_test.c:134: from == NULL || nng_sockaddr_equal(&amp;p-&gt;from, from)... ok
+  udp_wire_test.c:135: p-&gt;packet[0] == 1... ok
+  udp_wire_test.c:136: p-&gt;packet[1] == op... ok
+  udp_wire_test.c:137: wire_get16(p-&gt;packet + 4) == param... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:115: nng_aio_set_iov(p-&gt;recv, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:116: nng_aio_set_input(p-&gt;recv, 0, &amp;p-&gt;from): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:128: rv == NNG_OK... ok
+  udp_wire_test.c:133: p-&gt;len == WIRE_HEADER... ok
+  udp_wire_test.c:134: from == NULL || nng_sockaddr_equal(&amp;p-&gt;from, from)... ok
+  udp_wire_test.c:135: p-&gt;packet[0] == 1... ok
+  udp_wire_test.c:136: p-&gt;packet[1] == op... ok
+  udp_wire_test.c:137: wire_get16(p-&gt;packet + 4) == param... ok
+  udp_wire_test.c:216: wire_get16(p-&gt;packet + 2) == NUTS_PROTO(5, 1)... ok
+  udp_wire_test.c:217: wire_get16(p-&gt;packet + 6) == 1... ok
+  udp_wire_test.c:187: events-&gt;added == added... ok
+  udp_wire_test.c:188: events-&gt;removed == removed... ok
+  udp_wire_test.c:102: nng_aio_set_iov(p-&gt;send, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:103: nng_aio_set_input(p-&gt;send, 0, &amp;dest): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:106: nng_aio_result(p-&gt;send): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:115: nng_aio_set_iov(p-&gt;recv, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:116: nng_aio_set_input(p-&gt;recv, 0, &amp;p-&gt;from): expected success, got Hunky dory (0)... ok
+  udp_wire_test.c:128: rv == NNG_OK... ok
+  udp_wire_test.c:133: p-&gt;len == WIRE_HEADER... ok
+  udp_wire_test.c:134: from == NULL || nng_sockaddr_equal(&amp;p-&gt;from, from)... ok
+  udp_wire_test.c:135: p-&gt;packet[0] == 1... ok
+  udp_wire_test.c:136: p-&gt;packet[1] == op... ok
+  udp_wire_test.c:137: wire_get16(p-&gt;packet + 4) == param... ok
+  udp_wire_test.c:216: wire_get16(p-&gt;packet + 2) == NUTS_PROTO(5, 1)... ok
+  udp_wire_test.c:217: wire_get16(p-&gt;packet + 6) == 1... ok
+  udp_wire_test.c:187: events-&gt;added == added... ok
+  udp_wire_test.c:188: events-&gt;removed == removed... ok
+  udp_wire_test.c:249: nng_socket_close(s): expected success, got Hunky dory (0)... ok
+  SUCCESS: All con
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.sp.transport.ws.ws_test" classname="qnx-target"><failure message="exit None">Test ws dialer bind:
+
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.supplemental.http_client_test" classname="qnx-target"><failure message="exit None">Test http client request response:
+  http_client_test.c:169: nng_stream_listener_alloc(&amp;srv-&gt;listener, "tcp://127.0.0.1:0"): expected success, got Hunky dory (0)... ok
+  http_client_test.c:171: nng_stream_listener_listen(srv-&gt;listener): expected success, got Hunky dory (0)... ok
+  http_client_test.c:172: nng_stream_listener_get_int( srv-&gt;listener, NNG_OPT_BOUND_PORT, &amp;port): expected success, got Hunky dory (0)... ok
+  http_client_test.c:175: nng_thread_create(&amp;srv-&gt;thread, scripted_server_main, srv): expected success, got Hunky dory (0)... ok
+  http_client_test.c:196: nng_url_parse(urlp, urlstr): expected success, got Hunky dory (0)... ok
+  http_client_test.c:197: nng_aio_alloc(aiop, NULL, NULL): expected success, got Hunky dory (0)... ok
+  http_client_test.c:199: nng_http_client_alloc(clip, *urlp): expected success, got Hunky dory (0)... ok
+  http_client_test.c:202: nng_aio_result(*aiop): expected success, got Hunky dory (0)... ok
+  http_client_test.c:204: *connp != NULL... ok
+  http_client_test.c:245: nng_http_set_uri(conn, "/get", NULL): e
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.supplemental.http_server_test" classname="qnx-target"><failure message="exit None">Test server basic:
+  http_server_test.c:335: nng_http_handler_alloc_static( &amp;h, "/home.html", doc1, strlen(doc1), "text/html"): expected success, got Hunky dory (0)... ok
+  http_server_test.c:271: nng_url_parse(&amp;st-&gt;url, "http://127.0.0.1:0"): expected success, got Hunky dory (0)... ok
+  http_server_test.c:272: nng_aio_alloc(&amp;st-&gt;aio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  http_server_test.c:273: nng_http_server_hold(&amp;st-&gt;s, st-&gt;url): expected success, got Hunky dory (0)... ok
+  http_server_test.c:276: nng_http_server_add_handler(st-&gt;s, h): expected success, got Hunky dory (0)... ok
+  http_server_test.c:278: nng_http_server_start(st-&gt;s): expected success, got Hunky dory (0)... ok
+  http_server_test.c:279: nng_http_server_get_port(st-&gt;s, &amp;port): expected success, got Hunky dory (0)... ok
+  http_server_test.c:283: nng_http_client_alloc(&amp;st-&gt;cli, st-&gt;url): expected success, got Hunky dory (0)... ok
+  http_server_test.c:287: nng_aio_result(st-&gt;aio): expected success, got Hunky dory (0)... ok
+  http_server_test.c:289: st-&gt;conn != NULL... ok
+  http_server_test.c:290: nng_http_set_uri(st-&gt;conn, "/", NULL): expected success, got Hunky dory (0)... ok
+  http_server_test.c:340: nng_http_set_uri(st.conn, "/home.html", NULL): expected success, got Hunky dory (0)... ok
+  http_server_test.c:344: nng_aio_result(st.aio): expected success, got Hunky dory (0)... ok
+  http_server_test.c:348: nng_aio_result(st.aio): expected success, got Hunky dory (0)... ok
+  http_server_test.c:350: nng_http_get_status(st.conn) == (NNG_HTTP_STATUS_OK)... ok
+  http_server_test.c:353: ptr != NULL... ok
+  http_server_test.c:354: atoi(ptr) == (int) strlen(doc1)... ok
+  http_server_test.c:358: nng_aio_set_iov(st.aio, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  http_server_test.c:361: nng_aio_result(st.aio): expected success, got Hunky dory (0)... ok
+  http_server_test.c:362: nng_aio_count(st.aio) == strlen(doc1)... ok
+  http_server_test.c:363: memcmp(chunk, doc1, strlen(doc1)) == 0... ok
   SUCCESS: All conditions have passed.
-  Duration: 0.000943 secs
-
-Test nng_sockaddr_in6:
-  ERROR: Test interrupted by SIGSEGV.
-
-Test nng_sockaddr_in6 v4 mapped:
-  ERROR: Test interrupted by SIGSEGV.
-
-Test nng_sockaddr_in6 link local:
-  ERROR: Test interrupted by SIGSEGV.
-
-Test nng_sockaddr_in6 zero:
-  ERROR: Test interrupted by SIGSEGV.
-
-Test nng_sockaddr_in6 subnet:
-  ERROR: Test interrupted by SIGSEGV.
-
-Test nng_sockaddr_zt:
-  ERROR: Test interrupted by SIGSEGV.
-
-Summary:
-  Count of all unit tests:       10
-  Count of run unit tests:       10
-  Count of failed unit tests:     7
-  Count of skipped unit tests:    0
-FAILED: 7 of 10 unit tests have failed.
-</failure></testcase><testcase name="nng.core.stats_test" classname="qnx-target" /><testcase name="nng.core.url_test" classname="qnx-target" /><testcase name="nng.platform.platform_test" classname="qnx-target" /><testcase name="nng.platform.resolver_test" classname="qnx-target" /><testcase name="nng.platform.udp_test" classname="qnx-target"><failure message="exit 1">    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
-  udp_test.c:198: Check nng_udp_open(&amp;u1, &amp;sa1) succeeds... ok
-  udp_test.c:199: Check nng_udp_sockname(u1, &amp;sa1) succeeds... ok
-  udp_test.c:201: Check nng_aio_alloc(&amp;aio1, NULL, NULL) succeeds... ok
-  udp_test.c:205: Check nng_aio_set_iov(aio1, 1, &amp;iov1) succeeds... ok
-  udp_test.c:210: Check nng_aio_result(aio1) fails with Address invalid... ok
-  SUCCESS: All conditions have passed.
-  Duration: 0.018856 secs
-
-Test udp send ipc address:
-    INFO: NNG-TRAN: Registered transport: inproc
-    INFO: NNG-TRAN: Registered transport: ipc
-    INFO: NNG-TRAN: Registered transport: unix
-    INFO: NNG-TRAN: Registered transport: tcp
-    INFO: NNG-TRAN: Registered transport: tcp4
-    INFO: NNG-TRAN: Registered transport: tcp6
-    INFO: NNG-TRAN: Registered transport: tls+tcp
-    INFO: NNG-TRAN: Registered transport: tls+tcp4
-    INFO: NNG-TRAN: Registered transport: tls+tcp6
-    INFO: NNG-TRAN: Registered transport: ws
-    INFO: NNG-TRAN: Registered transport: ws4
-    INFO: NNG-TRAN: Registered transport: ws6
-    INFO: NNG-TRAN: Registered transport: wss
-    INFO: NNG-TRAN: Registered transport: wss4
-    INFO: NNG-TRAN: Registered transport: wss6
-    INFO: NNG-TRAN: Registered transport: socket
-    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
-  udp_test.c:237: Check nng_udp_open(&amp;u1, &amp;sa1) succeeds... ok
-  udp_test.c:238: Check nng_udp_sockname(u1, &amp;sa1) succeeds... ok
-  udp_test.c:240: Check nng_aio_alloc(&amp;aio1, NULL, NULL) succeeds... ok
-  udp_test.c  ERROR: Test interrupted by SIGABRT.
-
-Test udp bogus bind:
-  ERROR: Test interrupted by SIGABRT.
-
-Test udp duplicate bind:
-    INFO: NNG-TRAN: Registered transport: inproc
-    INFO: NNG-TRAN: Registered transport: ipc
-    INFO: NNG-TRAN: Registered transport: unix
-    INFO: NNG-TRAN: Registered transport: tcp
-    INFO: NNG-TRAN: Registered transport: tcp4
-    INFO: NNG-TRAN: Registered transport: tcp6
-    INFO: NNG-TRAN: Registered transport: tls+tcp
-    INFO: NNG-TRAN: Registered transport: tls+tcp4
-    INFO: NNG-TRAN: Registered transport: tls+tcp6
-    INFO: NNG-TRAN: Registered transport: ws
-    INFO: NNG-TRAN: Registered transport: ws4
-    INFO: NNG-TRAN: Registered transport: ws6
-    INFO: NNG-TRAN: Registered transport: wss
-    INFO: NNG-TRAN: Registered transport: wss4
-    INFO: NNG-TRAN: Registered transport: wss6
-    INFO: NNG-TRAN: Registered transport: socket
-    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
-  udp_test.c:285: Check nng_udp_open(&amp;u1, &amp;sa) succeeds... ok
-  udp_test.c:286: Check nng_udp_sockname(u1, &amp;sa) succeeds... ok
-  udp_test.c:287: Check nng_udp_open(&amp;u2, &amp;sa) fails with Address in use... ok
-  SUCCESS: All conditions have passed.
-  Duration: 0.025115 secs
-
-Test udp multicast membership:
-    INFO: NNG-TRAN: Registered transport: inproc
-    INFO: NNG-TRAN: Registered transport: ipc
-    INFO: NNG-TRAN: Registered transport: unix
-    INFO: NNG-TRAN: Registered transport: tcp
-    INFO: NNG-TRAN: Registered transport: tcp4
-    INFO: NNG-TRAN: Registered transport: tcp6
-    INFO: NNG-TRAN: Registered transport: tls+tcp
-    INFO: NNG-TRAN: Registered transport: tls+tcp4
-    INFO: NNG-TRAN: Registered transport: tls+tcp6
-    INFO: NNG-TRAN: Registered transport: ws
-    INFO: NNG-TRAN: Registered transport: ws4
-    INFO: NNG-TRAN: Registered transport: ws6
-    INFO: NNG-TRAN: Registered transport: wss
-    INFO: NNG-TRAN: Registered transport: wss4
-    INFO: NNG-TRAN: Registered transport: wss6
-    INFO: NNG-TRAN: Registered transport: socket
-    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
-  udp_test.c:304: Check nng_udp_open(&amp;u1, &amp;sa) succeeds... ok
-  udp_test.c:305: Check nng_udp_sockname(u1, &amp;sa) succeeds... ok
-  udp_test.c:306: Check nng_udp_multicast_membership(u1, &amp;mc, true) succeeds... ok
-  udp_test.c:307: Check nng_udp_multicast_membership(u1, &amp;mc, false) succeeds... ok
-  SUCCESS: All conditions have passed.
-  Duration: 0.024266 secs
-
-Test udp multicast send recv:
-    INFO: NNG-TRAN: Registered transport: inproc
-    INFO: NNG-TRAN: Registered transport: ipc
-    INFO: NNG-TRAN: Registered transport: unix
-    INFO: NNG-TRAN: Registered transport: tcp
-    INFO: NNG-TRAN: Registered transport: tcp4
-    INFO: NNG-TRAN: Registered transport: tcp6
-    INFO: NNG-TRAN: Registered transport: tls+tcp
-    INFO: NNG-TRAN: Registered transport: tls+tcp4
-    INFO: NNG-TRAN: Registered transport: tls+tcp6
-    INFO: NNG-TRAN: Registered transport: ws
-    INFO: NNG-TRAN: Registered transport: ws4
-    INFO: NNG-TRAN: Registered transport: ws6
-    INFO: NNG-TRAN: Registered transport: wss
-    INFO: NNG-TRAN: Registered transport: wss4
-    INFO: NNG-TRAN: Registered transport: wss6
-    INFO: NNG-TRAN: Registered transport: socket
-    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
-  udp_test.c:336: Check nng_udp_open(&amp;u1, &amp;sa1) succeeds... ok
-  udp_test.c:337: Check nng_udp_sockname(u1, &amp;sa1) succeeds... ok
-  udp_test.c:338: Check nng_udp_open(&amp;u2, &amp;sa2) succeeds... ok
-  udp_test.c:339: Check nng_udp_sockname(u2, &amp;sa2) succeeds... ok
-  udp_test.c:340: Check nng_udp_multicast_membership(u1, &amp;mc, true) succeeds... ok
-  udp_test.c:341: Check nng_udp_multicast_membership(u2, &amp;mc, true) succeeds... ok
-  udp_test.c:342: Check nng_aio_alloc(&amp;aio1, NULL, NULL) succeeds... ok
-  udp_test.c:343: Check nng_aio_alloc(&amp;aio2, NULL, NULL) succeeds... ok
-  udp_test.c:347: Check nng_aio_set_iov(aio1, 1, &amp;iov1) succeeds... ok
-  udp_test.c:348: Check nng_aio_set_input(aio1, 0, &amp;sa2) succeeds... ok
-  udp_test.c:352: Check nng_aio_set_iov(aio2, 1, &amp;iov2) succeeds... ok
-  udp_test.c:353: Check nng_aio_set_input(aio2, 0, &amp;ra2) succeeds... ok
-  udp_test.c:359: Check nng_aio_result(aio1) succeeds... ok
-  udp_test.c:360: Check nng_aio_result(aio2) succeeds... ok
-  udp_test.c:362: Check multi == multi... ok
-  SUCCESS: All conditions have passed.
-  Duration: 0.026330 secs
-
-Test udp send v6 from v4:
-    INFO: NNG-TRAN: Registered transport: inproc
-    INFO: NNG-TRAN: Registered transport: ipc
-    INFO: NNG-TRAN: Registered transport: unix
-    INFO: NNG-TRAN: Registered transport: tcp
-    INFO: NNG-TRAN: Registered transport: tcp4
-    INFO: NNG-TRAN: Registered transport: tcp6
-    INFO: NNG-TRAN: Registered transport: tls+tcp
-    INFO: NNG-TRAN: Registered transport: tls+tcp4
-    INFO: NNG-TRAN: Registered transport: tls+tcp6
-    INFO: NNG-TRAN: Registered transport: ws
-    INFO: NNG-TRAN: Registered transport: ws4
-    INFO: NNG-TRAN: Registered transport: ws6
-    INFO: NNG-TRAN: Registered transport: wss
-    INFO: NNG-TRAN: Registered transport: wss4
-    INFO: NNG-TRAN: Registered transport: wss6
-    INFO: NNG-TRAN: Registered transport: socket
-    NOTICE: NNG-INIT: NNG library version 1.8.0 initialized
-  udp_test.c:386: Check nng_aio_alloc(&amp;aio1, NULL, NULL) succeeds... ok
-  udp_test.c:387: Check nng_udp_open(&amp;u1, &amp;sa) succeeds... ok
-  udp_test.c:401: Check (rv == NNG_EADDRINVAL) || (rv == NNG_ENOTSUP) || (rv == NNG_EUNREACHABLE)... ok
-  SUCCESS: All conditions have passed.
-  Duration: 0.023448 secs
-
-Summary:
-  Count of all unit tests:        9
-  Count of run unit tests:        9
-  Count of failed unit tests:     2
-  Count of skipped unit tests:    0
-FAILED: 2 of 9 unit tests have failed.
-</failure></testcase><testcase name="nng.platform.posix_ipcwinsec_test" classname="qnx-target" /><testcase name="nng.sp.protocol.bus0.bus_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pair0.pair0_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pair1.pair1_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pair1.pair1_poly_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pipeline0.pull_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pipeline0.push_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pubsub0.pub_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pubsub0.sub_test" classname="qnx-target" /><testcase name="nng.sp.protocol.pubsub0.xsub_test" classname="qnx-target" /><testcase name="nng.sp.protocol.reqrep0.req_test" classname="qnx-target" /><testcase name="nng.sp.protocol.reqrep0.rep_test" classname="qnx-target" /><testcase name="nng.sp.protocol.reqrep0.xrep_test" classname="qnx-target" /><testcase name="nng.sp.protocol.reqrep0.xreq_test" classname="qnx-target" /><testcase name="nng.sp.protocol.survey0.respond_test" classname="qnx-target" /><testcase name="nng.sp.protocol.survey0.survey_test" classname="qnx-target" /><testcase name="nng.sp.protocol.survey0.xrespond_test" classname="qnx-target" /><testcase name="nng.sp.protocol.survey0.xsurvey_test" classname="qnx-target" /><testcase name="nng.sp.transport.socket.sockfd_test" classname="qnx-target" /><testcase name="nng.sp.transport.ipc.ipc_test" classname="qnx-target" /><testcase name="nng.sp.transport.tcp.tcp_test" classname="qnx-target" /><testcase name="nng.sp.transport.ws.ws_test" classname="qnx-target" /><testcase name="nng.supplemental.base64_test" classname="qnx-target" /><testcase name="nng.supplemental.sha1_test" classname="qnx-target" /><testcase name="nng.supplemental.idhash_test" classname="qnx-target" /><testcase name="nng.supplemental.wssfile_test" classname="qnx-target" /><testcase name="nng.supplemental.websocket_test" classname="qnx-target" /><testcase name="nng.inproc_lat" classname="qnx-target" /><testcase name="nng.inproc_thr" classname="qnx-target" /><testcase name="nng.compat.compat.nanomsg.compat_msg_test" classname="qnx-target" /><testcase name="nng.compat.compat.nanomsg.compat_tcp_test" classname="qnx-target" /><testcase name="nng.device" classname="qnx-target" /><testcase name="nng.files" classname="qnx-target" /><testcase name="nng.httpclient" classname="qnx-target"><failure message="exit 2">=== RUN: HTTP Client
-
-  Given a TCP connection to example.com ✔✔✔✘
-  Given a client ✔✔✔
-    One off exchange works ✔✔✘✔✔✔
-    Connection reuse works ✔✔✔✘✔✔✔
-  Client times out ⚠
-  Given a client (chunked) ✔✔✔
-    One off exchange works ✔✔✘✔✔✔
-
-
-Failures:
-
-  * Assertion Failed (Given a TCP connection to example.com)
-  File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
-  Line: 37
-  Test: nng_aio_result(aio) == 0
-  
-  * Assertion Failed (One off exchange works)
-  File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
-  Line: 37
-  Test: nng_aio_result(aio) == 0
-  
-  * Assertion Failed (Connection reuse works)
-  File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
-  Line: 37
-  Test: nng_aio_result(aio) == 0
-  
-  * Assertion Failed (One off exchange works)
-  File: /home/chirag/qnx-porter/ports-aarch64le/nng/work/src/tests/httpclient.c
-  Line: 37
-  Test: nng_aio_result(aio) == 0
-  
-
-
-29 assertions thus far (one or more sections skipped)
-
---- FAIL: HTTP Client (0.42s)
-FAIL
-FAIL    /home/chirag/qnx-porter/ports-aarch64le/nng/work/build/tests/httpclient   0.430s
-</failure></testcase><testcase name="nng.httpserver" classname="qnx-target" /><testcase name="nng.inproc" classname="qnx-target"><failure message="exit None">=== RUN: Inproc Transport
-
-  Given transport ✔✔✔✔
-    Scheme is correct ✔✔✔✔✔✔
-    Connection refused works ✔✔✔✔✔✔✔✔
-    Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
-    Listen and accept ✔✔✔✔✔✔✔✔✔
-    Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
-    Send and recv large data ✔
-killed on the target after 5 s
-</failure></testcase><testcase name="nng.ipc" classname="qnx-target"><failure message="exit None">=== RUN: IPC Transport
-
-  Given transport ✔✔✔✔
-    Scheme is correct ✔✔✔✔✔✔
-    Connection refused works ✔✔✔✔✔✔✔✔
-    Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
-    Listen and accept ✔✔✔✔✔✔✔✔✔
-    Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
-    Send and recv large data ✔
-killed on the target after 5 s
-</failure></testcase><testcase name="nng.ipcsupp" classname="qnx-target" /><testcase name="nng.multistress" classname="qnx-target" /><testcase name="nng.nonblock" classname="qnx-target" /><testcase name="nng.options" classname="qnx-target" /><testcase name="nng.pipe" classname="qnx-target" /><testcase name="nng.pollfd" classname="qnx-target" /><testcase name="nng.scalability" classname="qnx-target" /><testcase name="nng.synch" classname="qnx-target" /><testcase name="nng.tls" classname="qnx-target" /><testcase name="nng.tcpsupp" classname="qnx-target" /><testcase name="nng.tcp" classname="qnx-target" /><testcase name="nng.tcp6" classname="qnx-target" /><testcase name="nng.ws" classname="qnx-target"><failure message="exit None">=== RUN: WebSocket Transport
-
-  Given transport ✔✔✔✔
-    Scheme is correct ✔✔✔✔✔✔
-    Connection refused works ✔✔✔✔✔✔✔✔
-    Duplicate listen rejected ✔✔✔✔✔✔✔✔✔
-    Listen and accept ✔✔✔✔✔✔✔✔✔
-    Send and recv ✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔✔
-    Send and recv large data ✔
-killed on the target after 30 s
-</failure></testcase><testcase name="nng.wss" classname="qnx-target" /><testcase name="nng.reqctx" classname="qnx-target" /><testcase name="nng.reqstress" classname="qnx-target" /><testcase name="nng.compat_block" classname="qnx-target" /><testcase name="nng.compat_bug777" classname="qnx-target" /><testcase name="nng.compat_bus" classname="qnx-target" /><testcase name="nng.compat_cmsg" classname="qnx-target" /><testcase name="nng.compat_msg" classname="qnx-target" /><testcase name="nng.compat_iovec" classname="qnx-target" /><testcase name="nng.compat_device" classname="qnx-target" /><testcase name="nng.compat_pair" classname="qnx-target" /><testcase name="nng.compat_pipeline" classname="qnx-target" /><testcase name="nng.compat_poll" classname="qnx-target" /><testcase name="nng.compat_reqrep" classname="qnx-target" /><testcase name="nng.compat_survey" classname="qnx-target" /><testcase name="nng.compat_reqttl" classname="qnx-target" /><testcase name="nng.compat_shutdown" classname="qnx-target" /><testcase name="nng.compat_surveyttl" classname="qnx-target" /><testcase name="nng.compat_options" classname="qnx-target" /><testcase name="nng.cplusplus_pair" classname="qnx-target" /></testsuite>
+  Duration: 0.065152
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.supplemental.sha1_test" classname="qnx-target" /><testcase name="nng.supplemental.base64_test" classname="qnx-target" /><testcase name="nng.supplemental.wssfile_test" classname="qnx-target" /><testcase name="nng.supplemental.websocket_test" classname="qnx-target"><failure message="exit None">Test websocket stream wildcard:
+  websocket_test.c:39: nng_stream_listener_alloc(&amp;l, "ws://127.0.0.1:0/test"): expected success, got Hunky dory (0)... ok
+  websocket_test.c:41: nng_stream_listener_listen(l): expected success, got Hunky dory (0)... ok
+  websocket_test.c:44: nng_stream_listener_get_int(l, NNG_OPT_BOUND_PORT, &amp;port): expected success, got Hunky dory (0)... ok
+  websocket_test.c:45: port != 0... ok
+  websocket_test.c:49: nng_stream_dialer_alloc(&amp;d, uri): expected success, got Hunky dory (0)... ok
+  websocket_test.c:50: nng_aio_alloc(&amp;daio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  websocket_test.c:51: nng_aio_alloc(&amp;laio, NULL, NULL): expected success, got Hunky dory (0)... ok
+  websocket_test.c:52: nng_aio_alloc(&amp;aio1, NULL, NULL): expected success, got Hunky dory (0)... ok
+  websocket_test.c:53: nng_aio_alloc(&amp;aio2, NULL, NULL): expected success, got Hunky dory (0)... ok
+  websocket_test.c:65: nng_aio_result(laio): expected success, got Hunky dory (0)... ok
+  websocket_test.c:66: nng_aio_result(daio): expected success, got Hunky dory (0)... ok
+  websocket_test.c:69: c1 != NULL... ok
+  websocket_test.c:70: c2 != NULL... ok
+  websocket_test.c:74: sap2-&gt;s_family == NNG_AF_INET... ok
+  websocket_test.c:75: nuts_be32(sap2-&gt;s_in.sa_addr) == 0x7F000001u... ok
+  websocket_test.c:76: sap2-&gt;s_in.sa_port != 0... ok
+  websocket_test.c:80: sap1-&gt;s_family == sap2-&gt;s_family... ok
+  websocket_test.c:81: sap1-&gt;s_in.sa_addr == sap2-&gt;s_in.sa_addr... ok
+  websocket_test.c:82: sap1-&gt;s_in.sa_port == sap2-&gt;s_in.sa_port... ok
+  websocket_test.c:92: nng_aio_set_iov(aio1, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  websocket_test.c:96: nng_aio_set_iov(aio2, 1, &amp;iov): expected success, got Hunky dory (0)... ok
+  websocket_test.c:103: nng_aio_result(aio1): expected success, got Hunky dory (0)... ok
+  websocket_test.c:104: nng_aio_count(aio1) == 5... ok
+  websocket_test.c:106: nng_aio_result(aio2): expected success, got Hunky dory (0)... ok
+  websocket_test.c:107: nng_aio_count(aio2) == 5... ok
+  websocket_test.c:108: memcmp(buf1, buf2, 5) == 0
+killed on the target after 60 s
+</failure></testcase><testcase name="nng.inproc_lat" classname="qnx-target"><failure message="exit None">killed on the target after 30 s
+</failure></testcase><testcase name="nng.inproc_thr" classname="qnx-target"><failure message="exit None">killed on the target after 30 s
+</failure></testcase><testcase name="nng.pubdrop" classname="qnx-target"><failure message="exit None">killed on the target after 60 s
+</failure></testcase><testcase name="nng.cplusplus_pair" classname="qnx-target"><failure message="exit None">killed on the target after 15 s
+</failure></testcase></testsuite>
