@@ -102,7 +102,9 @@ TOC_JS = """<script>
     }, { rootMargin: '0px 0px -75% 0px' });
     Object.keys(by).forEach(function (id) { var h = document.getElementById(id); if (h) io.observe(h); });
   }
-  document.querySelectorAll('pre').forEach(function (pre) {
+  // navigator.clipboard exists only in secure contexts (https, localhost); a page opened from
+  // file:// or plain http on a LAN gets no buttons rather than ones that throw on click.
+  if (navigator.clipboard) document.querySelectorAll('pre').forEach(function (pre) {
     if (pre.closest('.runit')) return;
     var btn = document.createElement('button');
     btn.className = 'copy-btn';
@@ -111,11 +113,13 @@ TOC_JS = """<script>
     btn.setAttribute('aria-label', 'Copy code snippet');
     btn.addEventListener('click', function () {
       var code = pre.querySelector('code') || pre;
-      navigator.clipboard.writeText(code.textContent.trim()).then(function () {
-        btn.textContent = 'Copied!';
-        btn.classList.add('copied');
-        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
-      });
+      function show(text, cls) {
+        btn.textContent = text; btn.classList.add(cls);
+        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove(cls); }, 1500);
+      }
+      navigator.clipboard.writeText(code.textContent.trim()).then(
+        function () { show('Copied!', 'copied'); },
+        function () { show('Copy failed', 'failed'); });
     });
     pre.appendChild(btn);
   });
