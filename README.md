@@ -54,7 +54,7 @@ Not done: no real hardware; the QNX C library reports are drafted, not sent. Eve
 is missing, with numbers: [docs/LIMITATIONS.md](docs/LIMITATIONS.md).
 
 ## For judges, start here
-- **Demo video:** [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4) (YouTube link: added at submission).
+- **Demo video (2:58):** [youtu.be/tG_pURc5X6g](https://youtu.be/tG_pURc5X6g), also [`video/out/qnx-porter-demo.mp4`](video/out/qnx-porter-demo.mp4).
   Every command in it ran for real against the QNX 8.0 target; `video/make.sh` re-records it.
 - **Evidence of QNX use:** see [Evidence of QNX use](#evidence-of-qnx-use) below. Every claim points at a file.
 - **Headline** (written by `scripts/ports_csv.py`): <!-- headline:start -->aarch64le: 58 of 61 libraries built for QNX 8.0; 1546 of 1642 of their own tests passed on a QNX 8.0 target (43 libraries with tests that ran); 32 patches, 32 by rules (29 of the 31 libraries oss.qnx.com does not list built); x86_64: 58 of 61 libraries built for QNX 8.0; 1563 of 1658 of their own tests passed on a QNX 8.0 target (43 libraries with tests that ran); 31 patches, 31 by rules (29 of the 31 libraries oss.qnx.com does not list built).<!-- headline:end -->
