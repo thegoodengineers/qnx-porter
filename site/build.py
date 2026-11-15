@@ -373,7 +373,8 @@ def index(reps: list[dict]) -> str:
 then runs the library's <em>own</em> test suite on a QNX 8.0 target: x86_64 under KVM, and aarch64 on QEMU.
 A port only counts when those tests ran there.</p>
 <p class="cta"><a class="btn primary" href="codelab-port-a-library.html">Try the codelab</a>
-<a class="btn ghost" href="evidence.html">See the evidence</a></p>
+<a class="btn ghost" href="evidence.html">See the evidence</a>
+<a class="btn ghost" href="https://youtu.be/tG_pURc5X6g">Watch the demo (2:58)</a></p>
 </header>
 <div class="tiles">{tiles}</div>
 

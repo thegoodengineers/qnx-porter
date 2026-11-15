@@ -225,6 +225,6 @@ python, rust, qnx, qnx-sdp-8.0, qcc, qemu, cmake, meson, autotools, cargo, git, 
 - Repo: https://github.com/thegoodengineers/qnx-porter
 - Website: https://thegoodengineers.github.io/qnx-porter/
 - Codelab: https://thegoodengineers.github.io/qnx-porter/codelab-port-a-library.html
-- Video: `video/out/qnx-porter-demo.mp4` in the repo; the YouTube link is added at submission.
+- Video: https://youtu.be/tG_pURc5X6g (also `video/out/qnx-porter-demo.mp4` in the repo).
 - PyPI: https://pypi.org/project/qnx-porter/
 - Architecture: https://github.com/thegoodengineers/qnx-porter/blob/main/docs/ARCHITECTURE.md
