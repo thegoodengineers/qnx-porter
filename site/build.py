@@ -95,12 +95,30 @@ README = readme_facts()
 
 TOC_JS = """<script>
 (function () {
-  var links = document.querySelectorAll('.here a'); if (!links.length || !('IntersectionObserver' in window)) return;
-  var by = {}; links.forEach(function (a) { by[decodeURIComponent(a.hash.slice(1))] = a; });
-  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return;
-    links.forEach(function (a) { a.removeAttribute('aria-current'); }); by[e.target.id].setAttribute('aria-current', 'location'); });
-  }, { rootMargin: '0px 0px -75% 0px' });
-  Object.keys(by).forEach(function (id) { var h = document.getElementById(id); if (h) io.observe(h); });
+  var links = document.querySelectorAll('.here a'); if (links.length && ('IntersectionObserver' in window)) {
+    var by = {}; links.forEach(function (a) { by[decodeURIComponent(a.hash.slice(1))] = a; });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (!e.isIntersecting) return;
+      links.forEach(function (a) { a.removeAttribute('aria-current'); }); by[e.target.id].setAttribute('aria-current', 'location'); });
+    }, { rootMargin: '0px 0px -75% 0px' });
+    Object.keys(by).forEach(function (id) { var h = document.getElementById(id); if (h) io.observe(h); });
+  }
+  document.querySelectorAll('pre').forEach(function (pre) {
+    if (pre.closest('.runit')) return;
+    var btn = document.createElement('button');
+    btn.className = 'copy-btn';
+    btn.type = 'button';
+    btn.textContent = 'Copy';
+    btn.setAttribute('aria-label', 'Copy code snippet');
+    btn.addEventListener('click', function () {
+      var code = pre.querySelector('code') || pre;
+      navigator.clipboard.writeText(code.textContent.trim()).then(function () {
+        btn.textContent = 'Copied!';
+        btn.classList.add('copied');
+        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1500);
+      });
+    });
+    pre.appendChild(btn);
+  });
 })();
 </script>"""
 
@@ -150,7 +168,7 @@ def page(title: str, body: str, current: str, depth: int = 0, desc: str = "") ->
 <main class="col" id="main">{body}
 <footer><span>Apache-2.0 &middot; built from the repository by CI; every number is read from a file in it</span>
 <a href="{REPO}">{REPO.removeprefix('https://')}</a><span>No cookies, no trackers, no scripts from other sites.</span></footer>
-</main></div>{TOC_JS if here else ''}
+</main></div>{TOC_JS}
 </body></html>
 """
 
