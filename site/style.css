@@ -30,12 +30,14 @@ code, kbd, .mono { font-family: var(--mono); font-size: 0.88em; }
 code { background: var(--paper); padding: 0.1em 0.35em; overflow-wrap: anywhere; }
 pre { font-family: var(--mono); background: var(--paper); border: 1px solid var(--rule); padding: 12px 14px; margin: 0 0 14px;
       overflow-x: auto; font-size: 12px; line-height: 1.6; position: relative; }
-pre:hover .copy-btn { opacity: 1; }
+pre:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
+@media (hover: none) { .copy-btn { opacity: 1; } }  /* touch screens have no hover to reveal it */
 .copy-btn { position: absolute; top: 6px; right: 6px; font-family: var(--mono); font-size: 10px;
   background: var(--bg); border: 1px solid var(--rule); color: var(--muted); padding: 2px 7px;
   cursor: pointer; opacity: 0; transition: opacity .15s, color .15s, border-color .15s; }
 .copy-btn:hover { color: var(--blue); border-color: var(--blue); }
 .copy-btn.copied { color: var(--ok-ink); border-color: var(--ok-ink); }
+.copy-btn.failed { color: var(--bad-ink); border-color: var(--bad-ink); }
 pre code { background: none; padding: 0; font-size: inherit; overflow-wrap: normal; }
 pre.diff .add { color: var(--ok-ink); } pre.diff .del { color: var(--bad-ink); } pre.diff .hunk { color: var(--muted); }
 img { max-width: 100%; height: auto; }
