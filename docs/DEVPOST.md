@@ -42,6 +42,15 @@ on a QNX 8.0 target.
 - **Crash triage from QNX core dumps.** When a test crashes on the target, the core is copied back and read
   with the SDP's own gdb. A `printf("%s", NULL)`, which glibc prints as `(null)` and QNX's libc faults on, is
   fixed by a rule, and the fix stays only if more tests pass. json-c, libconfig, tinyxml2 and capstone now pass.
+- **Hangs diagnosed on the target with QNX's own tools** (`docs/ON_TARGET_DIAGNOSIS.md`). Just before a test is
+  killed at its time limit, qnx-porter records `pidin` (each thread's state, what it is blocked on, its last
+  kernel call) and a 2 s `tracelogger` kernel trace, read with the SDP's `traceprinter`. For nng 2.1.0, in 59
+  of 60 hung tests the main thread waits on a condition variable while thread 2 spins: 141,731 to 267,831
+  kernel calls in 2 s, mostly `MSG_SENDV`. That matches `poll()` reporting no `POLLHUP` on a closed pipe.
+- **A porting advisor for Linux-only kernel interfaces** (`qnx_porter/advisor.py`). When a build stops on one,
+  it names QNX's equivalent and its docs page, and the library is shown as "needs a QNX equivalent", not
+  counted as built: can-utils uses SocketCAN in 41 files (QNX: a `dev-can-*` driver with `CAN_DEVCTL_*`),
+  libgpiod the GPIO character device in 38 (QNX: the GPIO resource manager or SDP 8.0.5's GPIO framework).
 - **aarch64 found its own problems**, each now a rule with a test (`docs/LEARNINGS.md`): cmocka guessed a
   32-bit word size, yaml-cpp's tests assumed signed `char`, and QNX's aarch64 libc names its strlen frame
   differently, which crash triage now recognises.
@@ -209,8 +218,6 @@ submission period.
   blaming the OS.
 
 ## What's next
-- Publish the campaign at the latest upstream release of each library (`campaign.yaml`); the published results
-  use the 2024 pins (`campaign-2024.yaml`).
 - Run on real hardware. Every result so far is from QEMU, and the real-time numbers above mean little until
   they are measured on a board.
 - Follow the five contributions sent upstream on 14 Nov 2026 through review (nng issues #2419 and #2421 with
