@@ -290,7 +290,7 @@ differently. Take googletest's death tests, which abort on QNX 8.0.
 The same method found every report in [docs/qnx-reports/](qnx-reports/): `strtod()` rounding, `strftime()`
 with `%Ex`, and a libsrtp test that sorts with a random comparator.
 
-## 10. The same pipeline on aarch64 on QEMU
+## 10. The same pipeline on aarch64 on QEMU (15 min)
 QNX 8.0 also runs on 64-bit Arm. The SDP cross-compiles for it (`gcc_ntoaarch64le`), and `mkqnximage` can boot
 an aarch64 QNX image on QEMU's `virt` machine. This is aarch64 on QEMU, not hardware.
 
@@ -308,7 +308,7 @@ architecture. The results committed in this repository today are x86_64 only.
 
 To cross-build every library without a target: `python3 scripts/run_campaign.py --arch aarch64le --target none`.
 
-## 11. Survive a network drop or a hung target
+## 11. Survive a network drop or a hung target (5 min)
 A full campaign runs for hours, and on our run the network did not stay up. Here is what the campaign does on
 its own, and what you do afterwards.
 
@@ -370,7 +370,7 @@ python3 scripts/run_campaign.py --only <the libraries after the hang>
 Under heavy host load the QEMU target can stop answering; `QNX_PORTER_JOBS=2` keeps the compiles from
 starving it.
 
-## 12. Hand a port to qnx-ports as a build-files recipe
+## 12. Hand a port to qnx-ports as a build-files recipe (5 min)
 QNX keeps hand-made recipes in [qnx-ports/build-files](https://github.com/qnx-ports/build-files).
 `scripts/emit_recipes.py` writes one in that layout for every CMake library the campaign built that qnx-ports
 does not have yet (names in `results/qnx_ports_names.txt`), from what the campaign actually built and tested.
@@ -395,7 +395,7 @@ to build it from a build-files checkout and lists every QNX change with its reas
 The script never sends anything. The pull request text for qnx-ports is drafted, not sent:
 [docs/upstream/qnx-ports-build-files-PR.md](upstream/qnx-ports-build-files-PR.md).
 
-## 13. Watch upstream HEAD every week
+## 13. Watch upstream HEAD every week (5 min)
 A port at a release tag says nothing about next month's commits. `.github/workflows/weekly-head.yml` runs every
 Monday (and on demand): it ports every library in `campaign.yaml` at its upstream default branch, build only and
 rules only, and appends one row per library to `results/head/history.csv` on the `data/head-history` branch.
