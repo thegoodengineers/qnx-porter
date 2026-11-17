@@ -439,6 +439,7 @@ When you are done: `scripts/qemu_target.sh stop` (and `QNX_TARGET_ARCH=aarch64le
 | `QNX target ... did not answer over ssh` from `run_campaign.py` | same as above | start the target, or build only: `python3 scripts/run_campaign.py --no-tests` |
 | `Could not resolve host` in the campaign log | the network dropped | step 11: re-run those libraries with `--only` |
 | Tests fail with "No space left" | `/data` too small | raise `--data-size` in `scripts/qemu_target.sh`, delete `~/qnx-images/qemu`, run `build` again |
+| `qnx-porter: command not found` | pip user binary directory is not on PATH | export `PATH="$HOME/.local/bin:$PATH"` (add to `~/.bashrc`) |
 | A library ends `failed` | something no rule handles | read "Still failing" in its REPORT.md; try step 6, or write a rule (step 7) |
 
 ## What you learned
